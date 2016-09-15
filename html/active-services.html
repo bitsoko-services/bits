@@ -1,0 +1,464 @@
+<!-- Defines element markup --><html><head><style>
+    
+
+active-services::shadow .grid-container > .grid-row {    
+    text-align: left;
+}   
+    
+active-services::shadow .grid-container > .grid-row > .addserv {    
+    
+    bottom: 10px;
+    position: absolute;
+    left: 50%;
+    padding: 0px!important;
+    width: 60px!important;
+    margin-left: -30px;
+    
+}
+
+active-services::shadow .grid-container > .grid-row > .plug {    
+    font-size: 120%;
+    width: 23%;
+    padding: 12.5%;
+    text-align: center;
+}   
+
+active-services::shadow .grid-container > .grid-row > .plug > img {    
+    opacity: 1;
+    width: 100%;
+}
+    
+</style>
+
+</head><body><template class="all-services-template-b">
+    
+    <div class="plug" style="    font-size: 120%;
+    width: 20%;
+    padding: 12.5px 14%;
+    display: inline-block;
+    line-height: 15px;">
+         
+         <img class="acs-img" src="" style="opacity:0.35;">
+                           <span class="acs-name" style="
+  font-size: 50%;
+  text-transform: capitalize;
+  margin-top: 5px;"></span>
+                    
+      
+     
+       
+    </div>
+</template>
+
+<template class="all-services-template-a">
+    
+    <style>
+         @import "../bitsAssets/font-awesome/css/font-awesome.min.css"; 
+    
+
+.meta:before{
+    content: '\f1f6';
+}
+
+    </style>
+   <h3 class="serv-name" style="
+    text-transform: uppercase;
+    font-size: 90%;
+    font-weight: bold;
+    text-align: left;
+    margin: 10px 1% 0px 5%;;
+    width: 70%;
+    display: inline-block;
+    float: left;
+    ">New Transaction</h3>
+    <p class="serv-desc" style="
+     font-size: 65%;
+     margin: 0px 0px 10px 5%!important;
+     text-align: left;
+     text-overflow: ellipsis;
+     width: 80%;
+     overflow: hidden;
+     display: inline-block;
+     float: left;
+">select or search recipient
+</p>
+   <ul class="icons serv-action-buttons" style="
+    display: inline-block;
+    margin: 5px -30px;
+    float: right;
+    padding: 0px;
+    position: absolute;
+    width: 30%;
+    ">
+					<li style="float: left;
+    display: inline-block;
+    margin: 5px 5px;" cdata='{"id":"0","name":"Add New Service","def":"yes","icon":"fa fa-plus","desc":"search by name","charge":"1","pholder":"Search","type":"serv-type-add","manhidden":"hiddenplug","hidden":"false addserv","enabled":"0","content":"","plugowner":"bitsoko","status":"active","statuscs":"actv-plug"}'><a id="" class="acs-img pressable fa fa-search solo notcurrent" style="border-radius: 100%;
+    border: 1px solid rgba(0,0,0,0.36);
+    padding: 10.5px;
+    width: 20px;
+    height: 20px;
+    font-size: 130%;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;color: rgba(0,0,0,0.36);"><span style="display: none;">add</span></a></li>
+               
+			</ul>
+
+                <div id="serv-msg">
+                    
+                
+                </div>
+                   <div class="grid-container" style="    overflow: scroll;
+    width: 100%;
+    overflow-x: hidden;
+    height: calc(50% - 50px);min-height: 445px;">
+              <div id="plugins" class="grid-row" style="margin-bottom: 50px;">
+   
+</div>
+            </div>
+                    <!--<all-services></all-services>-->
+          
+        
+        
+</template>
+
+
+<script>
+
+    
+    function createACS (shadowRootACS,template,templateb,thatDoc){
+     //var hii=this;
+       
+        shadowRootACS.querySelector('.grid-container>.grid-row').innerHTML = '';
+        updateServices(thatDoc,shadowRootACS,templateb);
+       /*
+       var req = getObjectStore('data', 'readwrite').get('services');
+        req.onerror = function(e) {
+            console.log(e);
+        };
+        req.onsuccess = function(event) {
+            
+         var services=$.parseJSON(event.target.result); 
+    
+    for(var i = 0; i < services.length; ++i) {
+       document.querySelector('active-services::shadow>.grid-container>.grid-row').appendChild(thatDoc.importNode(templateb, true));
+        
+      
+	   }
+	   };
+		 // Creates the shadow root
+            //console.log(e);
+        
+            
+                 console.log('doing ',e);
+             for(var i = 0; i < e.length; ++i) {
+         var servdata = {}
+         try {
+         var cdata = e[i].desc;
+         var cname = e[i].name;
+         var asIcon = e[i].icon;
+         var ctype = 'trusted';
+         }catch(err){
+             console.log('Weird Error: cant process service!' , e);
+             continue;
+         }
+          
+                 
+        var allCs = document.querySelectorAll('active-services::shadow>.as-holder');
+    for(var ii = 0, val = val; ii < allCs.length; ++ii) {
+        allCs[ii].remove();       
+             };
+            
+            
+            template.querySelector('.as-name').innerHTML = cname;
+            template.querySelector('.as-data').innerHTML = cdata;
+            template.querySelector('.as-holder').setAttribute("cdata", JSON.stringify(e[i]));
+            template.querySelector('.as-holder').setAttribute("ctype", ctype);
+            template.querySelector('.as-holder').setAttribute("cem", cdata);
+            template.querySelector('.as-holder').setAttribute("cname", cname);
+            //template.querySelector('.as-img').setAttribute("src", asIcon).css("opacity","1");
+            template.querySelector(".as-img").src = asIcon;
+            template.querySelector(".as-img").style.opacity = 1;
+            
+       //template.querySelector(".c-cholder > .c-action").addEventListener("touchstart", handlePay, false);
+       //template.querySelector(".as-img").addEventListener("touchstart", handleTouch, false);
+                    //shadowRootAS.appendChild(thatDoc.importNode(templateb, true));
+ shadowRootAS.appendChild(thatDoc.importNode(template, true));
+
+           
+                 
+           var shroot = shadowRootAS.querySelectorAll(".as-img");
+              var sData = sData;
+             for(var i = 0, m = null, sData = sData; i < shroot.length; ++i) {
+                 
+                 shroot[i].addEventListener("touchstart", handleServSel, false); 
+                 
+             };
+             
+           
+            
+ };
+   */
+        //            shadowRootAS.appendChild(thatDoc.importNode(templateb, true));
+        // Adds a template clone into shadow root
+    //console.log(e[i]);
+        //template.querySelector('img').src = e[i].link[0].href;
+   
+          
+    }    
+  
+    
+function updateServices(thatDoc,shadowRootACS,templateb) {
+
+     //  console.log('services updating..');
+   //console.log(thatDoc);
+    //
+        try{
+          
+            var dummyVal=dummy();
+            //console.log('subed '+dummyVal);
+        var activePlugs=[];
+        
+        for(var i = 0; i < defaultPlugins.length; ++i) {
+		if(defaultPlugins[i].enabled=='1'){
+		activePlugs.push(defaultPlugins[i]);
+        }
+		}
+            
+     // hioDoc = thatDoc;
+    //console.log(thatDoc);         
+            var store = getObjectStore('data', 'readwrite').get("services");
+store.onsuccess = function (event) {
+    //var hioDoc=hioDoc;
+    //console.log(hioDoc);
+    try{
+         var plugins=$.parseJSON(event.target.result); 
+    
+    for(var i = 0; i < plugins.length; ++i) {
+		
+		//getServiceOpts(plugins[i].name);
+		if ((location.hash).substring(0, 5)=='#test'){
+        activePlugs.push(plugins[i]);
+		$('a[href*="#manserv-panel"]').css("pointer-events","all")
+		continue;
+			
+		}
+			
+			
+        //if (localStorage.getItem('bitsoko-settings-verified')!='true'){
+         if(plugins[i].def=='yes'){
+             plugins[i].def='defplug';
+         }else{
+             plugins[i].def='defplug';
+         }
+        
+        //}
+        
+        if(plugins[i].enabled=='1'){
+        activePlugs.push(plugins[i]);
+           //console.log(plugins[i]);
+        }else{
+        
+        }
+        //console.log(plugins[i]);
+            templateb.querySelector('.plug').setAttribute("cdata", JSON.stringify(plugins[i]));
+            templateb.querySelector('.plug').className = "plug "+plugins[i].hidden;
+        templateb.querySelector(".acs-img").src = 'images/services/'+plugins[i].icon;
+        templateb.querySelector(".acs-name").innerHTML = plugins[i].name;
+            templateb.querySelector(".acs-img").style.opacity = 1;
+        shadowRootACS.querySelector('.grid-container>.grid-row').appendChild(thatDoc.importNode(templateb, true));
+       
+           
+          
+        
+    }
+         var shroot = shadowRootACS.querySelectorAll(".acs-img");
+             for(var i = 0, m = null, sData = sData; i < shroot.length; ++i) {
+                 
+                 shroot[i].addEventListener("touchstart", handleActServSel, false); 
+                 
+             };
+        
+    } catch (err){
+    console.log('no installed services', err);
+    }
+    
+     
+}
+store.onerror = function (event) {
+	alert('cant find services');
+	
+} 
+
+   // console.log(activePlugs); 
+
+    for(var ii = 0, shadowRootACS=shadowRootACS, thatDoc=thatDoc; ii < activePlugs.length; ++ii) {
+        
+            templateb.querySelector('.plug').setAttribute("cdata", JSON.stringify(activePlugs[ii]));
+        
+            templateb.querySelector('.plug').className = "plug "+activePlugs[ii].hidden;
+        templateb.querySelector(".acs-img").src = 'images/services/'+activePlugs[ii].icon;
+        templateb.querySelector(".acs-name").innerHTML = activePlugs[ii].name;
+            templateb.querySelector(".acs-img").style.opacity = 1;
+       shadowRootACS.querySelector('.grid-container>.grid-row').appendChild(thatDoc.importNode(templateb, true));
+        
+           var shroot = shadowRootACS.querySelectorAll(".acs-img");
+             for(var i = 0, m = null, sData = sData; i < shroot.length; ++i) {
+                 
+                 shroot[i].addEventListener("touchstart", handleActServSel, false); 
+                 
+             };
+      
+	   }
+       // return activePlugs;
+        }catch(err){
+        console.log('unable to update services', err);
+        }
+        
+}
+    
+    
+    function handleActServSel (evt){
+       
+        var paro = $(this).parent();
+    //event.preventDefault();
+    
+        var data = JSON.parse(paro.attr('cdata'));
+        
+       //  $(".selImagAS").attr( 'src', data.icon ).css("opacity","1");
+       document.querySelector("active-services").style.display = 'none';
+    
+     viewModel.activeServ(data);
+        // console.log(viewModel.activeServ());
+    UpdPlugin();
+        
+    
+            
+         
+    }
+    
+(function(window, document, undefined) {
+    // Refers to the "importer", which is index.html
+    var thatDoc = document;
+    
+    
+
+       
+    // Refers to the "importee", which is src/hello-world.html
+    var thisDoc =  (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
+
+    // Gets content from <template>
+    var elmACS;
+var template = thisDoc.querySelector('.all-services-template-a').content;
+
+    // Gets content from <template>
+    var templateb = thisDoc.querySelector('.all-services-template-b').content;
+
+    // Creates an object based in the HTML Element prototype
+    var MyElementProto = Object.create(HTMLElement.prototype);
+
+    // Creates the "who" attribute and sets a default value
+    MyElementProto.who = 'World';
+
+    // Fires when an instance of the element is created
+    MyElementProto.createdCallback = function() {
+        elmACS = this.createShadowRoot();
+           elmACS.appendChild(thatDoc.importNode(template, true));
+       
+       createACS(elmACS,template,templateb,thatDoc);
+    };
+
+    // Fires when an attribute was added, removed, or updated
+    MyElementProto.attributeChangedCallback = function(attr, oldVal, newVal) {
+        if (attr === 'filter') {
+            this.setFilter(newVal);
+            //console.log(newVal);
+        }else if (attr === 'build') {
+       createACS(elmACS,template,templateb,thatDoc);
+        }
+    };
+
+    // Sets new value to "who" attribute
+    MyElementProto.setFilter = function(val) {
+        this.filter = val;
+
+        // Sets "who" value into <strong>
+        
+    };
+
+    
+    
+	window.addEventListener("message", function receiveMessage(event) {
+        var e = event.data;
+        var action = e.action;
+        var e=e.data;
+  switch (action) {
+       case 'getServs':
+          if(e.length>0){
+          
+        var req = getObjectStore('data', 'readwrite').put(JSON.stringify(e), 'services');
+        req.onerror = function(e) {
+            console.log(e);
+        };
+        req.onsuccess = function(event) {
+            //console.log('recreating active services');
+            //console.log(elmACS,template,templateb,thatDoc);
+            createACS(elmACS,template,templateb,thatDoc);
+            
+	   };    
+          }else{
+    
+          }
+	  
+	   
+$( "#serv-panel" ).panel( "close" ); 
+          break;
+case 'saveServs':
+          
+      
+        var store = getObjectStore('data', 'readwrite');
+	  
+        var req = store.put(JSON.stringify(e), 'services');
+        req.onerror = function(e) {
+            console.log(e);
+        };
+        req.onsuccess = function(event) {
+            //console.log('recreating active services');
+            //console.log(elmACS,template,templateb,thatDoc);
+            createACS(elmACS,template,templateb,thatDoc);
+	   };
+	   
+
+     //console.log('added ',newPlugin); 
+         $("#accno").val('');
+         $("#manservsearch").val('');
+    $('all-services').css('display','block');
+    
+         $(".serv-accno-add").css("display","none");
+         $(".selImagAS").css("display","none");
+         $(".featImagAS").css("display","inline-block");
+     dummy('');
+     //addNewService('[]');
+      //$( "#serv-opts-panel" ).panel().panel( "close" );
+           
+    $( "#serv-panel" ).panel( "close" );
+    
+      break;
+          
+       
+          
+  };
+        
+    });
+    
+    // Registers <all-contacts> in the main document
+    window.MyElement = thatDoc.registerElement('active-services', {
+        prototype: MyElementProto
+    });
+})(window, document);
+    
+</script>
+</body></html>

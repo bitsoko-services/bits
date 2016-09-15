@@ -5,6 +5,15 @@
  *
  * Made By MaterializeCSS.com
  */
+.bits-nav-bal{
+	font-size: 0px
+}
+.bits-expanded{
+	height:400px!important;
+	
+
+}
+
 
 .bitsred{
 	background:red;
