@@ -1,0 +1,254 @@
+/*----------------------------------------
+    Blog
+------------------------------------------*/
+/* ----- Blog Card -----*/
+//@extend-elements
+
+//original selectors
+//.blog-card .card .card-content .card-title, .blog-card .card .card-reveal .card-title
+%blog_card_extend {
+	font-size: 1.2rem;
+	line-height: 1.6rem;
+	font-weight: 400;
+}
+
+.blog-card {
+	.card {
+		margin: 0;
+		.card-content {
+			padding: 5px 10px;
+			.card-title {
+				@extend %blog_card_extend;
+			}
+		}
+		.card-reveal .card-title {
+			@extend %blog_card_extend;
+		}
+	}
+	ul.card-action-buttons {
+		margin: -26px 10px 0 0;
+		text-align: right;
+		li {
+			display: inline-block;
+			padding-left: 5px;
+		}
+	}
+}
+
+/* -----Blogs Masonery Page----- */
+//@extend-elements
+
+//original selectors
+//.blog .card .card-content .card-title, .blog .card .card-reveal .card-title
+%blog_extend {
+	font-size: 1.2rem;
+	line-height: 1.6rem;
+	font-weight: 400;
+}
+.blog {
+	width: 20%;
+	padding: 10px;
+	.card {
+		margin: 0;
+		.card-content {
+			padding: 5px 10px;
+			.card-title {
+				@extend %blog_extend;
+			}
+		}
+		.card-reveal .card-title {
+			@extend %blog_extend;
+		}
+	}
+	ul.card-action-buttons {
+		margin: -26px 10px 0 0;
+		text-align: right;
+		li {
+			display: inline-block;
+			padding-left: 5px;
+		}
+	}
+}
+.blog-sizer {
+	width: 20%;
+}
+.blog-post-content {
+	padding-bottom: 10px;
+}
+/*  blog page media queries */
+@media screen and(max-width: 2200px) {
+	.blog-sizer {
+		width: 20%;
+	}
+	.blog {
+		width: 20%;
+	}
+	.doughnut-chart-status{
+		top: -100px;
+	}
+	.product-sizer {
+		width: 20%;
+	}
+	.product {
+		width: 20%;
+	}
+	.gallary-sizer {
+		width: 20%;
+	}
+	.gallary-item img {
+		width: 20%;
+	}
+}
+@media screen and(max-width: 1800px) {
+	.blog-sizer {
+		width: 30%;
+	}
+	.blog {
+		width: 30%;
+	}
+	.product-sizer {
+		width: 30%;
+	}
+	.product {
+		width: 30%;
+	}
+	.gallary-sizer {
+		width: 30%;
+	}
+	.gallary-item img {
+		width: 30%;
+	}
+}
+@media screen and(max-width: 1600px) {
+	.blog-sizer {
+		width: 33.33%;
+	}
+	.doughnut-chart-status{
+		top: -75px;
+	}
+	.blog {
+		width: 33.33%;
+	}
+	.product-sizer {
+		width: 25%;
+	}
+	.product {
+		width: 25%;
+	}
+	.gallary-sizer {
+		width: 25%;
+	}
+	.gallary-item img {
+		width: 25%;
+	}
+}
+@media screen and(max-width: 1224px) {
+	.blog-sizer {
+		width: 33.33%;
+	}
+	.doughnut-chart-status{
+		top: -75px;
+	}
+	.doughnut-chart-status{
+		top: -100px;
+	}
+	.blog {
+		width: 33.33%;
+	}
+	.product-sizer {
+		width: 33.33%;
+	}
+	.product {
+		width: 33.33%;
+	}
+	.gallary-sizer {
+		width: 33.33%;
+	}
+	.gallary-item img {
+		width: 33.33%;
+	}
+}
+@media screen and(max-width: 980px) {
+	.blog-sizer {
+		width: 50%;
+	}
+	.blog {
+		width: 50%;
+	}
+	.product-sizer {
+		width: 50%;
+	}
+	.product {
+		width: 50%;
+	}
+	.gallary-sizer {
+		width: 50%;
+	}
+	.gallary-item img {
+		width: 50%;
+	}
+}
+@media screen and(max-width: 720px) {
+	.blog-sizer {
+		width: 50%;
+	}
+	.blog {
+		width: 50%;
+	}
+	.product-sizer {
+		width: 50%;
+	}
+	.product {
+		width: 50%;
+	}
+	.gallary-sizer {
+		width: 50%;
+	}
+	.gallary-item img {
+		width: 50%;
+	}
+}
+@media screen and(max-width: 480px) {
+	.blog-sizer {
+		width: 100%;
+	}
+	.blog {
+		width: 100%;
+	}
+	.product-sizer {
+		width: 100%;
+	}
+	.product {
+		width: 100%;
+	}
+	.gallary-sizer {
+		width: 100%;
+	}
+	.gallary-item img {
+		width: 100%;
+	}
+}
+/* -----Blogs Page Full width 2----- */
+#blog-post-full {
+	.card-title {
+		//Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		text-shadow: 1px 1px 4px $black;
+		font-weight: 300;
+		font-size: 2rem;
+	}
+	.blog-post-full-cat {
+		padding: 5px;
+		margin: 25px;
+		right: 0;
+		left: inherit;
+		font-size: 15px;
+		font-weight: 500;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		a {
+			color: $white;
+			//Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+			text-shadow: none;
+		}
+	}
+}

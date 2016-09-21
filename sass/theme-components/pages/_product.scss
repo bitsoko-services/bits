@@ -1,0 +1,100 @@
+/*----------------------------------------
+    Products
+------------------------------------------*/
+
+/* ---- Product Card ----- */
+
+//@extend-elements
+
+//original selectors
+//.product-card .card .card-content .card-title, .product-card .card .card-reveal .card-title
+%product_card_extend {
+	font-size: 1.1rem;
+	line-height: 1.6rem;
+	font-weight: 400;
+}
+
+.product-card {
+	.card {
+		margin: 0;
+		.card-content {
+			padding: 5px 10px;
+			.card-title {
+				@extend %product_card_extend;
+			}
+		}
+		.btn-price {
+			width: 65px;
+			height: 65px;
+			font-weight: 600;
+			font-size: 1.0rem;
+			line-height: 65px;
+			margin: 10px;
+			position: absolute;
+			top: 0;
+			letter-spacing: 0;
+		}
+		.card-reveal .card-title {
+			@extend %product_card_extend;
+		}
+	}
+	ul.card-action-buttons {
+		margin: -26px 10px 0 0;
+		text-align: right;
+		li {
+			display: inline-block;
+			padding-left: 5px;
+		}
+	}
+}
+
+/* -----Products Masonery ----- */
+
+//@extend-elements
+
+//original selectors
+//.product .card .card-content .card-title, .product .card .card-reveal .card-title
+%product_extend {
+	font-size: 1.1rem;
+	line-height: 1.6rem;
+	font-weight: 400;
+}
+
+.product {
+	width: 20%;
+	padding: 10px;
+	.card {
+		margin: 0;
+		.card-content {
+			padding: 5px 10px;
+			.card-title {
+				@extend %product_extend;
+			}
+		}
+		.btn-price {
+			width: 65px;
+			height: 65px;
+			font-weight: 600;
+			font-size: 1.0rem;
+			line-height: 65px;
+			margin: 10px;
+			position: absolute;
+			top: 0;
+			letter-spacing: 0;
+		}
+		.card-reveal .card-title {
+			@extend %product_extend;
+		}
+	}
+	ul.card-action-buttons {
+		margin: -26px 10px 0 0;
+		text-align: right;
+		li {
+			display: inline-block;
+			padding-left: 5px;
+		}
+	}
+}
+.product-sizer {
+	width: 20%;
+}

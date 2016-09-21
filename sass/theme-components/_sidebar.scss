@@ -1,0 +1,155 @@
+/*=================================================================================
+    Sidebar
+====================================================================================*/
+/*----------------------------------------
+    Sidebar Main Menu 
+------------------------------------------*/
+
+
+nav {
+	&.top-nav {
+		height: 122px;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: none;
+		a.page-title {
+			line-height: 122px;
+			font-size: 48px;
+		}
+	}
+	ul li.no-hover:hover {
+		background: none;
+	}
+}
+.side-nav {
+	a {
+		line-height: 42px;
+		height: 42px;
+	}
+	&.leftside-navigation .collapsible-body li.active {
+		background-color: $black_4;
+	}
+	&.fixed.leftside-navigation .collapsible-body li.active {
+		background-color: $black_4;
+	}
+	.collapsible-body li a {
+		margin: 0 1rem 0 3rem;
+	}
+}
+
+//DOTHIS
+ul.side-nav {
+	&.leftside-navigation {
+		top: 64px;
+		overflow: hidden;
+		hr {
+			display: block;
+			height: 1px;
+			border: 0;
+			border-top: 1px solid $color_bon_jour_approx;
+			margin: 1em 0;
+			padding: 0;
+		}
+		li {
+			line-height: 44px;
+			&:hover {
+				background-color: $black_4;
+			}
+			&.active {
+				background-color: $black_4;
+			}
+			a {
+				font-size: 14px;
+				font-weight: 400;
+			}
+			&.user-details {
+				background: $url_1 no-repeat center center;
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+				margin-bottom: 15px;
+				padding: 15px 0 0 15px;
+				#profile-dropdown{
+					a{
+					     padding: 8px 15px;
+					}
+				}
+			}
+		}
+		&:hover {
+		}
+		.profile-image {
+		}
+		.profile-btn {
+			margin: 0;
+			text-transform: capitalize;
+			padding: 0;
+			//Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+			text-shadow: 1px 1px 1px $color_tundora_approx;
+			font-size: 15px;
+		}
+		ul.collapsible-accordion {
+			background-color: $white;
+		}
+	}
+	li {
+		padding: 0;
+	}
+	.collapsible-header {
+		margin: 0;
+	}
+}
+#slide-out {
+	li a i {
+		line-height: inherit;
+		width: 2rem;
+		font-size: 1.6rem;
+		display: block;
+		float: left;
+		text-align: center;
+		margin-right: 1rem;
+	}
+	ul.side-nav li {
+		padding: 0 !important;
+	}
+}
+.caption {
+	font-size: 1.25rem;
+	font-weight: 300;
+	margin-bottom: 30px;
+}
+.caption-uppercase {
+	font-size: 1.25rem;
+	font-weight: 300;
+	margin-bottom: 30px;
+	text-transform: uppercase;
+}
+.sidebar-collapse {
+	position: absolute;
+	left: -170px;
+	top: -45px;
+}
+.user-task,
+.user-time {
+	margin: 0;
+	font-size: 13px;
+	color: $white;
+}
+.user-roal {
+	color: $white;
+	margin-top: -16px;
+	font-size: 13px;
+	//Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	text-shadow: 1px 1px 1px $color_tundora_approx;
+}
+.user-details .row {
+	margin: 0;
+}
+.bold > a {
+	font-weight: bold;
+}
+.rightside-navigation {
+	overflow: hidden;
+}

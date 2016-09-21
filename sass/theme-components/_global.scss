@@ -1,0 +1,95 @@
+/*================================================================================
+  Item Name: Materialize - Material Design Admin Template
+  Version: 3.1
+  Author: GeeksLabs
+  Author URL: http://www.themeforest.net/user/geekslabs
+================================================================================*/
+/*-----------------------------------------
+
+------------------------------------------*/
+/*=================================================================================
+    General
+====================================================================================*/
+
+/*----------------------------------------
+  General Layout Style
+------------------------------------------*/
+
+body {
+	background-color: $color_black_haze_approx;
+}
+#main {
+	padding-left: 240px;
+}
+footer {
+	padding-left: 240px;
+	&.page-footer {
+		padding-top: 0px;
+	}
+}
+select {
+	background-color: transparent;
+	width: 100%;
+	padding: 5px;
+	border: none;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 2px;
+	height: 3rem;
+	border-bottom: 1px solid $color_star_dust_approx;
+}
+#sidenav-overlay {
+	background-color: transparent;
+}
+.container {
+	padding: 0 0.5rem;
+	margin: 0 auto;
+	max-width: 100% !important;
+	width: 98%;
+}
+#left-sidebar-nav {
+	position: fixed;
+	width: 100px;
+	left: 180px;
+	z-index: 999;
+	height: auto;
+	span.badge.new {
+		line-height: 20px;
+		margin-top: 11px;
+	}
+}
+#content {
+	.header-search-wrapper {
+		width: 100%;
+		margin: 0 auto;
+		height: 40px;
+		display: inline-block;
+		position: relative;
+	}
+	.container .row {
+		margin-bottom: 0;
+	}
+}
+@media only screen and(min-width: 601px) {
+	.container {
+		width: 98%;
+	}
+}
+@media only screen and(min-width: 993px) {
+	.container {
+		width: 98%;
+	}
+}
+@media only screen and(max-width: 993px) {
+	#main {
+		padding-left: 0;
+	}
+	footer {
+		padding-left: 0;
+	}
+}
+.ps-scrollbar-x-rail {
+	z-index: 9999;
+}
+.ps-scrollbar-y-rail {
+	z-index: 9999;
+}

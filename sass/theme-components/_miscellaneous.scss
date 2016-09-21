@@ -1,0 +1,263 @@
+/*----------------------------------------
+    Color Palette css for css-color.html page
+------------------------------------------*/
+
+//@extend-elements
+//original selectors
+//.dynamic-color .red, .dynamic-color .pink, .dynamic-color .purple, .dynamic-color .deep-purple, .dynamic-color .indigo, .dynamic-color .blue, .dynamic-color .light-blue, .dynamic-color .cyan, .dynamic-color .teal, .dynamic-color .green, .dynamic-color .light-green, .dynamic-color .lime, .dynamic-color .yellow, .dynamic-color .amber, .dynamic-color .orange, .dynamic-color .deep-orange, .dynamic-color .brown, .dynamic-color .grey, .dynamic-color .blue-grey
+%dynamic_color_extend {
+	height: 55px;
+	width: 100%;
+	padding: 0 15px;
+	line-height: 55px;
+	font-weight: 500;
+	font-size: 12px;
+	display: block;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	//Instead of the line below you could use @include box-sizing($bs)
+	box-sizing: border-box;
+}
+.dynamic-color {
+	.red {
+		@extend %dynamic_color_extend;
+	}
+	.pink {
+		@extend %dynamic_color_extend;
+	}
+	.purple {
+		@extend %dynamic_color_extend;
+	}
+	.deep-purple {
+		@extend %dynamic_color_extend;
+	}
+	.indigo {
+		@extend %dynamic_color_extend;
+	}
+	.blue {
+		@extend %dynamic_color_extend;
+	}
+	.light-blue {
+		@extend %dynamic_color_extend;
+	}
+	.cyan {
+		@extend %dynamic_color_extend;
+	}
+	.teal {
+		@extend %dynamic_color_extend;
+	}
+	.green {
+		@extend %dynamic_color_extend;
+	}
+	.light-green {
+		@extend %dynamic_color_extend;
+	}
+	.lime {
+		@extend %dynamic_color_extend;
+	}
+	.yellow {
+		@extend %dynamic_color_extend;
+	}
+	.amber {
+		@extend %dynamic_color_extend;
+	}
+	.orange {
+		@extend %dynamic_color_extend;
+	}
+	.deep-orange {
+		@extend %dynamic_color_extend;
+	}
+	.brown {
+		@extend %dynamic_color_extend;
+	}
+	.grey {
+		@extend %dynamic_color_extend;
+	}
+	.blue-grey {
+		@extend %dynamic_color_extend;
+	}
+	.col {
+		margin-bottom: 55px;
+	}
+}
+tr.group {
+	background-color: $color_alto_approx !important;
+	&:hover {
+		background-color: $color_alto_approx !important;
+	}
+}
+@media only screen and(max-width: 1024px) {
+	tfoot {
+		display: none;
+	}
+}
+
+
+/*----------------------------------------
+    Grid - Flat Site Mockup
+------------------------------------------*/
+
+#site-layout-example-left {
+	background-color: $color_cascade_approx;
+	height: 300px;
+}
+#site-layout-example-right {
+	background-color: $color_jungle_green_approx;
+	height: 300px;
+}
+#site-layout-example-top {
+	background-color: $color_sunglo_approx;
+	height: 50px;
+}
+.flat-text-header {
+	height: 35px;
+	width: 80%;
+	background-color: $white_15;
+	display: block;
+	margin: 27px auto;
+}
+.flat-text {
+	height: 25px;
+	width: 80%;
+	background-color: $black_15;
+	display: block;
+	margin: 27px auto;
+	&.small {
+		width: 25%;
+		height: 25px;
+		background-color: $black_15;
+	}
+	&.full-width {
+		width: 100%;
+	}
+}
+.col.grid-example {
+	border: 1px solid $color_gallery_approx;
+	margin: 7px 0;
+	text-align: center;
+	line-height: 50px;
+	font-size: 28px;
+	background-color: $color_persimmon_approx;
+	color: $white;
+	padding: 0;
+	span {
+		font-weight: 200;
+		line-height: 50px;
+	}
+}
+.waves-color-demo .collection-item {
+	height: 57px;
+	line-height: 57px;
+}
+/*----------------------------------------
+    Chrome Browser Grid Example
+------------------------------------------*/
+
+.browser-window {
+	text-align: left;
+	width: 100%;
+	height: auto;
+	display: inline-block;
+	-webkit-border-radius: 5px 5px 2px 2px;
+	-moz-border-radius: 5px 5px 2px 2px;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 5px 5px 2px 2px;
+	//Instead of the line below you could use @include background-clip($clip)
+	background-clip: padding-box;
+	background-color: transparent;
+	margin: 20px 0;
+	overflow: hidden;
+	.top-bar {
+		height: 30px;
+		-webkit-border-radius: 5px 5px 0 0;
+		-moz-border-radius: 5px 5px 0 0;
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 5px 5px 0 0;
+		//Instead of the line below you could use @include background-clip($clip)
+		background-clip: padding-box;
+		border-top: thin solid $color_gray_nurse_approx;
+		border-bottom: thin solid $color_alto_approx;
+		background: linear-gradient($color_mercury_approx, $color_bon_jour_approx);
+	}
+	.circle {
+		height: 10px;
+		width: 10px;
+		display: inline-block;
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 50%;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		background-color: $white;
+		margin-right: 1px;
+	}
+	.circles {
+		margin: 5px 12px;
+	}
+	.content {
+		margin: 0;
+		width: 100%;
+		display: inline-block;
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 0 0 5px 5px;
+		background-color: $alabaster;
+	}
+	.row {
+		margin: 0;
+	}
+}
+#close-circle {
+	background-color: $color_carnation_approx;
+}
+#minimize-circle {
+	background-color: $color_texas_rose_approx;
+}
+#maximize-circle {
+	background-color: $color_malachite_approx;
+}
+.clear {
+	clear: both;
+}
+.promo i {
+	color: $color_froly_approx;
+	font-size: 6rem;
+	display: block;
+}
+.promo-caption {
+	font-size: 1.7rem;
+	font-weight: 500;
+	margin-top: 5px;
+	margin-bottom: 0;
+}
+
+/*----------------------------------------
+    Shadow effect
+------------------------------------------*/
+
+.shadow-demo {
+	background-color: $color_jungle_green_approx;
+	width: 100px;
+	height: 100px;
+	margin: 20px auto;
+}
+.collapsible-header {
+	font-weight: 500;
+}
+
+/* Sidebar nav open close icons*/
+
+.collapsible-header:after {
+    font-family: "Material-Design-Icons";
+    content: "\e7c3";
+    float: right; 
+    color: #9e9e9e; 
+    font-size: 18px;
+}
+.collapsible-header.active:after {
+    content: "\e7c1";
+}
+
+#input-select .input-field label {
+	position: absolute; //DOTHIS
+	top: -14px;
+	font-size: 0.8rem;
+}

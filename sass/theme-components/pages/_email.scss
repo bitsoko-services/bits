@@ -1,0 +1,197 @@
+/*----------------------------------------
+    Email Page
+------------------------------------------*/
+
+
+#mail-app {
+	hr {
+		display: block;
+		height: 1px;
+		border: 0;
+		border-top: 1px solid $color_bon_jour_approx;
+		margin: 1em 0;
+		padding: 0;
+	}
+	#email-sidebar {
+		margin-top: 0;
+	}
+	#email-list {
+		margin-top: 0;
+	}
+	#email-details {
+		margin-top: 0;
+	}
+	.modal .modal-content {
+		padding: 0;
+	}
+}
+.email-unread .email-title {
+	font-weight: 500;
+}
+#email-sidebar {
+	min-height: 650px;
+	li {
+		padding: 10px 0;
+		text-align: center;
+		i {
+			padding: 12px;
+			color: $color_shark_approx;
+			&.active {
+				background: $color_alto_approx;
+				//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+				border-radius: 2px;
+				-webkit-border-radius: 2px;
+				-moz-border-radius: 2px;
+			}
+			&:hover {
+				background: $color_alto_approx;
+				//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+				border-radius: 2px;
+				-webkit-border-radius: 2px;
+				-moz-border-radius: 2px;
+			}
+		}
+	}
+}
+#email-list {
+	padding: 0;
+	.collection {
+		margin: 0;
+		.collection-item {
+			&.avatar {
+				height: auto;
+				padding-left: 72px;
+				position: relative;
+				.secondary-content {
+					position: absolute;
+					top: 10px;
+					right: -4px;
+					&.email-time {
+						right: 8px;
+					}
+				}
+				.icon {
+					position: absolute;
+					width: 42px;
+					height: 42px;
+					overflow: hidden;
+					left: 15px;
+					display: inline-block;
+					text-align: center;
+					vertical-align: middle;
+					top: 20px;
+				}
+				.circle {
+					position: absolute;
+					width: 42px;
+					height: 42px;
+					overflow: hidden;
+					left: 15px;
+					display: inline-block;
+					vertical-align: middle;
+					text-align: center;
+					font-size: 1.5rem;
+					color: $white;
+					font-weight: 300;
+					padding: 10px;
+				}
+				img.circle {
+					padding: 0;
+				}
+			}
+			&:hover {
+				background: $color_pattens_blue_approx;
+				cursor: pointer;
+			}
+			&.selected {
+				background: $color_pattens_blue_approx;
+				border-left: 4px solid $color_picton_blue_approx;
+			}
+		}
+	}
+	.attach-file {
+		-ms-transform: rotate(90deg);
+		-webkit-transform: rotate(90deg);
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: rotate(90deg);
+		color: $color_star_dust_approx;
+		font-size: 1.1rem;
+	}
+}
+#email-details {
+	padding: 15px;
+	.email-subject {
+		font-size: 1.2rem;
+		i {
+			font-size: 2.2rem;
+		}
+	}
+	.email-tag {
+		padding: 3px;
+		font-size: 0.9rem;
+	}
+	.collection {
+		border: none;
+		.collection-item {
+			&.avatar {
+				height: auto;
+				padding-left: 72px;
+				position: relative;
+				.icon {
+					position: absolute;
+					width: 42px;
+					height: 42px;
+					overflow: hidden;
+					left: 15px;
+					display: inline-block;
+					vertical-align: middle;
+					top: 20px;
+				}
+				.circle {
+					position: absolute;
+					width: 42px;
+					height: 42px;
+					overflow: hidden;
+					left: 15px;
+					display: inline-block;
+					vertical-align: middle;
+					text-align: center;
+					font-size: 1.5rem;
+					color: $white;
+					font-weight: 300;
+					padding: 10px;
+				}
+				img.circle {
+					padding: 0;
+				}
+			}
+			&.selected {
+				background: $color_pattens_blue_approx;
+				border-left: 4px solid $color_picton_blue_approx;
+			}
+		}
+	}
+	.email-actions {
+		padding-top: 25px;
+		a {
+			color: $color_tapa_approx;
+			padding: 5px;
+		}
+	}
+}
+.email-reply {
+	padding-top: 20px;
+	a {
+		color: $color_tapa_approx;
+		i {
+			font-size: 2rem;
+		}
+	}
+	p {
+		color: $color_tapa_approx;
+		margin: 0;
+	}
+}
+.model-email-content {
+	padding: 24px;
+}

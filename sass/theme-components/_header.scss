@@ -1,0 +1,195 @@
+/*=================================================================================
+    Header
+====================================================================================*/
+/*----------------------------------------
+    Page Header
+------------------------------------------*/
+
+h1 {
+	&.logo-wrapper {
+		margin: 0;
+	}
+	span.logo-text {
+		display: none;
+	}
+}
+.menu-sidebar-collapse {
+	margin: 0 10px;
+	i {
+		line-height: 36px !important;
+	}
+}
+header .brand-logo {
+	margin: 1px 0;
+	padding: 14px 20px; 
+	img {
+		width: 172px;
+	}
+}
+@media only screen and(max-width: 992px) {
+	nav .nav-wrapper {
+		text-align: center;
+		a.page-title {
+			font-size: 36px;
+		}
+	}
+	ul.side-nav.leftside-navigation {
+		top: 56px !important;
+	}
+}
+/*Search box*/ 
+
+.header-search-wrapper {
+	margin: 10px auto 0 240px;
+	width: calc(100% - 600px);
+	height: 40px;
+	display: inline-block;
+	position: relative;
+	i {
+		position: absolute;
+		font-size: 24px;
+		top: 6px;
+		left: 24px;
+		line-height: 32px !important;
+		-webkit-transition: color 200ms ease;
+		//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+		transition: color 200ms ease;
+	}
+}
+
+input.header-search-input {
+	display: block;
+	padding: 8px 8px 8px 72px;
+	width: 100%;
+	background: $white_30;
+	height: 24px;
+	-webkit-transition: all 200ms ease;
+	//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+	transition: all 200ms ease;
+	border: none;
+	font-size: 16px;
+	appearance: textfield;
+	font-weight: 400;
+	outline: none;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 3px;
+	&:hover {
+		background: $white_50;
+	}
+	&:focus {
+		color: $color_mine_shaft_approx;
+		background: $white;
+		border-bottom: none !important;
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: none !important;
+	}
+}
+.header-search-wrapper-focus i {
+	color: $color_tundora_approx;
+}
+
+.header-search-input::-webkit-input-placeholder {
+	color: $white;
+	font-size: 16px;
+	font-weight: 400;
+}
+.header-search-input::-moz-placeholder {
+	color: $white;
+	font-size: 16px;
+	font-weight: 400;
+}
+.header-search-input {
+	&:-ms-input-placeholder {
+		color: $white;
+		font-size: 16px;
+		font-weight: 400;
+	}
+	&:focus::-webkit-input-placeholder {
+		color: $color_mine_shaft_approx;
+		font-size: 16px;
+		font-weight: 400;
+	}
+	&:focus::-moz-placeholder {
+		color: $color_mine_shaft_approx;
+		font-size: 16px;
+		font-weight: 400;
+	}
+	&:focus::placeholder {
+		color: $color_mine_shaft_approx;
+		font-size: 16px;
+		font-weight: 400;
+	}
+	&:focus:-ms-input-placeholder {
+		color: $color_mine_shaft_approx;
+		font-size: 16px;
+		font-weight: 400;
+	}
+}
+.header-search-input::placeholder {
+	color: $white;
+	font-size: 16px;
+	font-weight: 400;
+}
+.search-out {
+	display: none;
+	input[type=text]:focus:not([readonly]) {
+		border-bottom: 1px solid $white !important;
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: none;
+	}
+}
+.search-out-text {
+	border-bottom: 1px solid $white !important;
+}
+
+.translation-button {
+	img {
+	    position: relative;
+	    top: 12px;
+	}
+}
+#translation-dropdown {
+	.language-select{
+		position: relative;
+    	top: -9px;
+	}
+}
+.notification-badge {
+    position: relative;
+    right: 5px;
+    top: -20px;
+    color: #ffffff;
+    background-color: #FF4081;
+    margin: 0 -.8em;
+    border-radius: 50%;
+    padding: 4px 5px;
+}
+#notifications-dropdown {
+	h5 {
+		font-size: 1rem;
+		text-transform: capitalize;
+		font-weight: 500;
+	}
+	li {
+		padding: 10px;
+		font-size: 1rem;
+		> a {
+			padding: 0;
+			font-size: 1rem;
+			font-weight: 300;
+			> i {
+				display: inline-block;
+				font-size: 1.2rem;
+				position: relative;
+				top: 4px;
+			}
+		}
+		> time {
+			font-size: 0.8rem;
+			font-weight: 400;
+		}
+		&.divider {
+			padding: 0;
+		}
+	}
+}
