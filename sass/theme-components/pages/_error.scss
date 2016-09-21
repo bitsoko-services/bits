@@ -1,0 +1,14 @@
+/*----------------------------------------
+    Error Page
+------------------------------------------*/
+
+.text-long-shadow {
+	//Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	text-shadow: $color_elm_approx 1px 1px, $color_elm_approx 2px 2px, $color_elm_approx 3px 3px, $color_elm_approx 4px 4px, $color_elm_approx 5px 5px, $color_elm_approx 6px 6px, $color_elm_approx 7px 7px, $color_elm_approx 8px 8px, $color_elm_approx 9px 9px, $color_elm_approx 10px 10px, $color_elm_approx 11px 11px, $color_elm_approx 12px 12px, $color_elm_approx 13px 13px, $color_elm_approx 14px 14px, $color_elm_approx 15px 15px, $color_elm_approx 16px 16px, $color_elm_approx 17px 17px, $color_elm_approx 18px 18px, $color_elm_approx 19px 19px, $color_elm_approx 20px 20px, $color_elm_approx 21px 21px, $color_lochinvar_approx 22px 22px, $color_lochinvar_approx 23px 23px, $color_lochinvar_approx 24px 24px, $color_lochinvar_approx 25px 25px, $color_lochinvar_approx 26px 26px, $color_lochinvar_approx 27px 27px, $color_lochinvar_approx 28px 28px, $color_lochinvar_approx 29px 29px, $color_lochinvar_approx 30px 30px, $color_jungle_green_approx 31px 31px, $color_jungle_green_approx 32px 32px, $color_jungle_green_approx 33px 33px, $color_jungle_green_approx 34px 34px, $color_jungle_green_approx 35px 35px, $color_jungle_green_approx 36px 36px, $color_jungle_green_approx 37px 37px;
+	background-color: $color_jungle_green_approx;
+	width: 100%;
+	font-size: 10rem;
+	color: $white !important;
+	text-align: center;
+	padding: 20px 0 !important;
+}

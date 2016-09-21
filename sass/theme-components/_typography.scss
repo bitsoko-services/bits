@@ -1,0 +1,80 @@
+/*---------------------------------
+    Typography
+-----------------------------------*/
+
+
+.small {
+	font-size: 1.0rem;
+	margin: 0;
+	padding: 0;
+}
+.medium-small {
+	font-size: 0.9rem;
+	margin: 0;
+	padding: 0;
+}
+.ultra-small {
+	font-size: 0.8rem;
+	margin: 0;
+	padding: 0;
+}
+small {
+	font-size: 0.8rem;
+}
+.strong {
+	font-weight: 600;
+}
+h4 {
+	&.header {
+		line-height: 2.508rem;
+		margin: 1.14rem 0 0.912rem 0;
+		font-size: 1.4rem;
+		font-weight: 400;
+		text-transform: uppercase;
+	}
+	&.header2 {
+		font-size: 1.1rem;
+		font-weight: 400;
+		text-transform: uppercase;
+	}
+}
+p {
+	&.title {
+		font-size: 1.3rem;
+	}
+	&.header {
+		font-size: 1rem;
+		font-weight: 500;
+		text-transform: uppercase;
+	}
+}
+li {
+	&.li-hover:hover {
+		background: transparent !important;
+	}
+	&.search-out:hover {
+		background: transparent;
+	}
+	&.mobile:before {
+		background: $color_sunset_orange_approx;
+	}
+	&.kitchen:before {
+		background: $color_fountain_blue_approx;
+	}
+	&.home:before {
+		background: $color_texas_rose_approx;
+	}
+}
+.more-text {
+	padding: 5px 20px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+.valign-demo {
+	height: 400px;
+	background-color: $color_alto_approx;
+}
+.margin {
+	margin: 0 !important;
+}
