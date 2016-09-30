@@ -9482,11 +9482,11 @@ form p:last-child {
 }
 
 .switch label input[type=checkbox]:checked + .lever {
-  background-color: #f7c7d8;
+  background-color: #c7c8f7;
 }
 
 .switch label input[type=checkbox]:checked + .lever:after {
-  background-color: #ff4081;
+  background-color: #0f5f76;
 }
 
 .switch label .lever {

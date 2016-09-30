@@ -13,6 +13,12 @@
 /*----------------------------------------
   General Layout Style
 ------------------------------------------*/
+.modal-bits{
+  max-height: 85%;
+}
+.linesMid{
+  line-height: 2.5;
+}
 .bits {
     background-color: #0f5f76 !important;
 }
