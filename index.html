@@ -7,26 +7,24 @@
 	Author: GeeksLabs
 	Author URL: http://www.themeforest.net/user/geekslabs
 ================================================================================ -->
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
-    <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
-    <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
-    <title>Bits </title>
+	<meta name="og:title" content="BITS | wallet">
+	<meta name="og:url" content="https://bitsoko.co.ke/app">
+	<meta name="og:image" content="/bits/images/icon.png">        
+ <meta name="og:description" content="a free, simple and secure mobile wallet">        
+<meta name="description" content="a free, simple and secure mobile wallet">     
+     <title>Bits </title>
 
     <!-- Favicons-->
     <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
     <!-- Favicons-->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
-    <!-- For iPhone -->
-    <meta name="msapplication-TileColor" content="#00bcd4">
-    <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
-    <!-- For Windows Phone -->
 
-
+<script src="../bitsAssets/js/webcomponents.js" async></script>
     <!-- CORE CSS-->    
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
@@ -42,7 +40,8 @@
 
 </head>
 
-<body>
+<body onload="starting()">
+	<bits-connect></bits-connect>
     <!-- Start Page Loading -->
     <div id="loader-wrapper">
         <div id="loader"></div>        
@@ -53,6 +52,7 @@
 
     <!-- //////////////////////////////////////////////////////////////////////////// -->
 
+    
     <!-- START HEADER -->
     <header id="header" class="page-topbar bits">
         <!-- start header nav-->
@@ -107,22 +107,15 @@
                         <li><a href="#"><i class="mdi-hardware-keyboard-tab"></i> Logout</a>
                         </li>
                     </ul>
-                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">John Doe<i class="mdi-navigation-arrow-drop-down right"></i></a>
-                    <p class="user-roal">Administrator</p>
+                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn username-label" href="#" data-activates="profile-dropdown">Jane Mwangi<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                    <p class="user-roal username-addr" style="margin:0px 5px;"></p>
+                    <p class="user-roal" style="margin:0px 5px;">1 BTC = 0 <span class="conf-curr"></span></p>
                 </div>
             </div>
             </li>
             <li ><div class="">
         <div class="col s12 m6">
-          <div class="profile card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">Bits Services</span>
-              <!--<p>Wallet address</p> --><center>
-                <!--<img src="img/qr.jpg" width="100" height="100">
-              <p style="font-size:11px">123esdfy654323456uygfde46567uygfde332</p> -->
-              <p></p><center>1 BTC = 0 KSH</center><p></p></center>
-            </div>
-           
+            <div id="qrcode">
           </div>
         </div>
       </div></li>
@@ -170,6 +163,7 @@
         </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only bits"><i class="mdi-navigation-menu"></i></a>
         </aside>
+      <!-- END LEFT SIDEBAR NAV-->
       <!-- END LEFT SIDEBAR NAV-->
 
             <!-- //////////////////////////////////////////////////////////////////////////// -->
@@ -348,7 +342,17 @@
     <!--scrollbar-->
     <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     
-
+ <script src="../bitsAssets/js/bitcore-ecies.min.js"></script> 
+	<script src="../bitsAssets/js/bitcore.min.js"></script>
+	    <script src="../bitsAssets/js/knockout-3.1.0.js" async></script>
+	    <script src="../bitsAssets/js/raphQR.js" async></script>
+	    <script src="../bitsAssets/js/qrcodesvg.js" async></script>
+	    <script src="../bitsAssets/js/broadcastChannel.js" async></script>
+	    <script src="../bitsAssets/js/moment.js" async></script>
+	    <script src="../bitsAssets/js/storeManager.js"></script>
+	    <script src="../bitsAssets/js/globalServices.js" async></script>
+	    <script src="../bitsAssets/js/pushManager.js" async></script>
+  
   
 
     
