@@ -24,7 +24,7 @@
     <!-- Favicons-->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
 
-<script src="../bitsAssets/js/webcomponents.js" async></script>
+<script src="https://bitsoko.io/bitsAssets/js/webcomponents.js" async></script>
     <!-- CORE CSS-->    
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
@@ -70,7 +70,7 @@
                     translation-button -->
                    
                     <!-- notifications-dropdown -->
-                   
+                   <div class="bits-nav-bal right" id="bits-nav-bal"style="color:#fff; padding-right:10px;" >0.00 KSH</div>
                 </div>
             </nav>
         </div>
@@ -87,8 +87,8 @@
 
            <!-- START LEFT SIDEBAR NAV-->
       <aside id="left-sidebar-nav">
-        <ul id="slide-out" class="side-nav fixed leftside-navigation">
-            <li class="user-details cyan darken-2"  style="background-color:#7eb7c8!important;">
+        <ul id="slide-out" class="side-nav fixed leftside-navigation ">
+            <li class="user-details cyan darken-2"  style="background-color:##228dac!important;">
             <div class="row">
                 <div class="col col s4 m4 l4">
                     <img src="images/avatar.jpg" alt="" class="circle responsive-img valign profile-image">
@@ -108,15 +108,15 @@
                         </li>
                     </ul>
                     <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn username-label" href="#" data-activates="profile-dropdown">Jane Mwangi<i class="mdi-navigation-arrow-drop-down right"></i></a>
-                    <p class="user-roal username-addr" style="margin:0px 5px;"></p>
+                    <p class="user-roal username-addr left" style="margin:0px 5px; margin-left: -75%;"></p>
                     <p class="user-roal" style="margin:0px 5px;">1 BTC = 0 <span class="conf-curr"></span></p>
                 </div>
             </div>
             </li>
             <li ><div class="">
-        <div class="col s12 m6">
+        <div class="col s12 m6"><center>
             <div id="qrcode">
-          </div>
+          </div></center>
         </div>
       </div></li>
             <li class="li-hover"><div class="divider"></div></li>
@@ -169,15 +169,31 @@
             <!-- //////////////////////////////////////////////////////////////////////////// -->
 
             <!-- START CONTENT -->
-            <section id="content">
+            <section id="content ">
 
                 <!--start container-->
-                <div class="container">
+                <div class=" bits nav-wrapper">
+<div id="index-banner" class="waves">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center teal-text text-lighten-2"><img src="images/bitsoko_logo.png" width="55%" height=""></h1>
+        <div class="row center">
+          <h5 class="header col s12 light">Balance</h5>
+        </div>
+        <div class="row center">
+          <a  id="download-button" class="" style="font-size:18px">0.00 KSH</a><p><br>
+          <a  id="download-button" class="">0 btc</a>
+         <!-- btn-large waves-effect waves-light  bits -->
+        </div>
+        <br><br>
 
-                  
+      </div>
+    </div></div>
+    </div>
 
                     <!-- //////////////////////////////////////////////////////////////////////////// -->
-
+<div class="container">
 
                     <!-- //////////////////////////////////////////////////////////////////////////// -->
 
@@ -187,7 +203,7 @@
 
                           
 
-                        <div class="row">
+                      
                             <!-- blog card -->
                          
 
@@ -196,7 +212,7 @@
                                 <div class="product-card">
                                     <div class="card small">
                                         <div class="card-image waves-effect waves-block waves-light">
-                                            <a href="#" class="btn-floating btn-large btn-price waves-effect waves-light  bits accent-2">$189</a>
+                                            <a href="#" class="btn-floating btn-large btn-price waves-effect waves-light  bits accent-2">KSh 189</a>
                                             <img src="images/gallary/33.jpg" alt="product-img">
                                         </div>
                                         <ul class="card-action-buttons">
@@ -211,7 +227,45 @@
 
                                             <div class="row">
                                                 <div class="col s8">
-                                                    <p class="card-title grey-text text-darken-4"><a href="#" class="grey-text text-darken-4">Featured Product of The Month</a>
+                                                    <p class="card-title grey-text text-darken-4"><a href="#" class="grey-text text-darken-4">Carrots, broccoli, Onions and Green peppers </a>
+                                                    </p>
+                                                </div>
+                                                <div class="col s4 no-padding">
+                                                    <a href=""></a><img src="images/amazon.jpg" alt="amazon" class="responsive-img">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-reveal">
+                                            <span class="card-title grey-text text-darken-4"><i class="mdi-navigation-close right"></i> Apple MacBook Pro A1278 13"</span>
+                                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+</br>
+                            <!-- map-card -->
+                             <!-- product-card -->
+                            <div class="col s12 m12 l4">
+                                <div class="product-card">
+                                    <div class="card small">
+                                        <div class="card-image waves-effect waves-block waves-light">
+                                            <a href="#" class="btn-floating btn-large btn-price waves-effect waves-light  bits accent-2">KSh 200</a>
+                                            <img src="images/gallary/34.jpg" alt="product-img">
+                                        </div>
+                                        <ul class="card-action-buttons">
+                                            <li><a class="btn-floating waves-effect waves-light green accent-4"><i class="mdi-av-repeat"></i></a>
+                                            </li>
+                                            <li><a class="btn-floating waves-effect waves-light red accent-2"><i class="mdi-action-favorite"></i></a>
+                                            </li>
+                                            <!--<li><a class="btn-floating waves-effect waves-light light-blue"><i class="mdi-action-info activator"></i></a>
+                                            </li>-->
+                                        </ul>
+                                        <div class="card-content">
+
+                                            <div class="row">
+                                                <div class="col s8">
+                                                    <p class="card-title grey-text text-darken-4"><a href="#" class="grey-text text-darken-4">Grapes, Tomattos and pepper</a>
                                                     </p>
                                                 </div>
                                                 <div class="col s4 no-padding">
@@ -342,18 +396,20 @@
     <!--scrollbar-->
     <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     
- <script src="../bitsAssets/js/bitcore-ecies.min.js"></script> 
-	<script src="../bitsAssets/js/bitcore.min.js"></script>
-	    <script src="../bitsAssets/js/knockout-3.1.0.js" async></script>
-	    <script src="../bitsAssets/js/raphQR.js" async></script>
-	    <script src="../bitsAssets/js/qrcodesvg.js" async></script>
-	    <script src="../bitsAssets/js/broadcastChannel.js" async></script>
-	    <script src="../bitsAssets/js/moment.js" async></script>
-	    <script src="../bitsAssets/js/storeManager.js"></script>
-	    <script src="../bitsAssets/js/globalServices.js" async></script>
-	    <script src="../bitsAssets/js/pushManager.js" async></script>
+ <script src="https://bitsoko.io/bitsAssets/js/bitcore-ecies.min.js"></script> 
+	<script src="https://bitsoko.io/bitsAssets/js/bitcore.min.js"></script>
+	    <script src="https://bitsoko.io/bitsAssets/js/knockout-3.1.0.js" async></script>
+	    <script src="https://bitsoko.io/bitsAssets/js/raphQR.js" async></script>
+	    <script src="https://bitsoko.io/bitsAssets/js/qrcodesvg.js" async></script>
+	    <script src="https://bitsoko.io/bitsAssets/js/broadcastChannel.js" async></script>
+	    <script src="https://bitsoko.io/bitsAssets/js/moment.js" async></script>
+	    <script src="https://bitsoko.io/bitsAssets/js/storeManager.js"></script>
+	    <script src="https://bitsoko.io/bitsAssets/js/globalServices.js" async></script>
+	    <script src="https://bitsoko.io/bitsAssets/js/pushManager.js" async></script>
   
   
+    <script type="text/javascript" src="https://bitsoko.io/app/js/bitsoko-core.js"></script>
+    <script type="text/javascript" src="https://bitsoko.io/app/js/init.js" defer></script>
 
     
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
@@ -552,7 +608,15 @@ $('.serviceListHolder').append(' <li class="collection-item avatar"><img src="im
       
              };
       
-                       
+                 $(window).scroll(function(){
+  var boxje = $("#bits-nav-bal").offset().top;
+  var value = 200;
+    if (boxje>value) {
+      $("#bits-nav-bal").css({"display":"initial"});
+    } else {
+      $("#bits-nav-bal").css({"display":"none"});
+    } 
+    });     
 		</script>
 </body>
 

@@ -12,7 +12,16 @@
 ====================================================================================*/
 /*----------------------------------------
   General Layout Style
-------------------------------------------*/
+--------------{----------------------------
+aside>ul{
+  left: -250px !important;
+}*/
+.bits-full{
+  width:100% !important;
+}
+.side-nav-bits{
+  width: 260px !important;
+}
 .modal-bits{
   max-height: 85%;
 }
@@ -708,7 +717,7 @@ ul.side-nav .collapsible-header {
 .user-roal {
   color: #fff;
   margin-top: -16px;
-  font-size: 13px;
+  font-size: 12px;
   text-shadow: 1px 1px 1px #444;
 }
 
