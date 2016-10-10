@@ -8,21 +8,26 @@
 	Author URL: http://www.themeforest.net/user/geekslabs
 ================================================================================ -->
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="msapplication-tap-highlight" content="no">
-	<meta name="og:title" content="BITS | wallet">
-	<meta name="og:url" content="https://bitsoko.co.ke/app">
-	<meta name="og:image" content="/bits/images/icon.png">        
- <meta name="og:description" content="a free, simple and secure mobile wallet">        
-<meta name="description" content="a free, simple and secure mobile wallet">     
-     <title>Bits </title>
+   <title>#{name}</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        
+        
+		<meta name="og:title" content="#{name}" />
+        <meta name="og:url" content="https://bitsoko.co.ke/app" />
+        <meta name="og:image" content="#{img}" />
+        
+		<meta name="og:description" content="#{desc}" />
+        
+		<meta name="description" content="#{desc}" />
+        <meta name="keywords" content="" />
+        <link rel="shortcut icon" type="image/png" href="#{img}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width,user-scalable=no">
+        <meta name="msapplication-navbutton-color" content="#0f5f76">
+   <meta name="theme-color" content="#0f5f76">
+  <meta name="google-signin-client_id" content="#{cid}"></meta>
 
-    <!-- Favicons-->
-    <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
-    <!-- Favicons-->
-    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+  <link rel="manifest" href="web-manifest.json">
 
 <script src="https://bitsoko.io/bitsAssets/js/webcomponents.js" async></script>
     <!-- CORE CSS-->    
@@ -37,7 +42,7 @@
     <link href="js/plugins/jvectormap/jquery-jvectormap.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
-
+<link rel="import" href="https://bitsoko.io/bitsAssets/html/connector.html">
 </head>
 
 <body onload="starting()">
@@ -57,10 +62,11 @@
     <header id="header" class="page-topbar bits">
         <!-- start header nav-->
         <div class="navbar-fixed">
-            <nav class="navbar-color bits">
+            <div  id="bits-header" class="navbar-color bits">
                 <div class="nav-wrapper">
-                    <ul class="left">                      
-                      <li><h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="materialize logo"></a> <span class="logo-text">Materialize</span></h1></li>
+                    <ul class="center">                      
+                      <li ><h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="materialize logo"></a> <span class="logo-text">Bits</span></h1></li>
+                      <li></li>
                     </ul>
                   <!--   <div class="header-search-wrapper hide-on-med-and-down">
                         <i class="mdi-action-search"></i>
@@ -68,11 +74,11 @@
                     </div>
                     
                     translation-button -->
-                   
+                    <div class="bits-nav-bal right" id="bits-nav-bal"style="color:#fff; padding-right:10px; margin-top: -55px;" >0.00 KSH</div>
                     <!-- notifications-dropdown -->
-                   <div class="bits-nav-bal right" id="bits-nav-bal"style="color:#fff; padding-right:10px;" >0.00 KSH</div>
+                  
                 </div>
-            </nav>
+            </div>
         </div>
         <!-- end header nav-->
     </header>
@@ -127,7 +133,7 @@
                   <i class="mdi-communication-location-on"></i>
                     Location  
                     <label>
-                      <input type="checkbox" class="">
+                      <input type="checkbox" class="js-loc-button-notification">
                       <span class="lever right" style="margin-top:13px;"></span>
                     </label>
                   </div>
@@ -172,33 +178,31 @@
             <section id="content ">
 
                 <!--start container-->
-                <div class=" bits nav-wrapper">
-<div id="index-banner" class="waves">
+                <div class=" bits nav-wrapper center">
+<div id="index-banner" class="waves-effect">
     <div class="section no-pad-bot">
       <div class="container">
-        <br><br>
-        <h1 class="header center teal-text text-lighten-2"><img src="images/bitsoko_logo.png" width="55%" height=""></h1>
-        <div class="row center">
-          <h5 class="header col s12 light">Balance</h5>
+       <div class="row center">
+          <h5 class="header col s12 light" style="color:#fff;">Balance</h5>
         </div>
         <div class="row center">
-          <a  id="download-button" class="" style="font-size:18px">0.00 KSH</a><p><br>
-          <a  id="download-button" class="">0 btc</a>
+          <a  id="download-button" class="" style="font-size:18px; color:#fff !important;">0.00 KSH</a><p>
+          <a  id="download-button" class="" style="color:#fff;">0 btc</a>
          <!-- btn-large waves-effect waves-light  bits -->
         </div>
-        <br><br>
+        
 
       </div>
     </div></div>
     </div>
-
+<br>
                     <!-- //////////////////////////////////////////////////////////////////////////// -->
 <div class="container">
 
                     <!-- //////////////////////////////////////////////////////////////////////////// -->
 
                     <!--card widgets start-->
-                    <div id="card-widgets">
+                    <div id="card-widgets" class="promoHolder">
                         
 
                           
@@ -208,82 +212,8 @@
                          
 
                             <!-- product-card -->
-                            <div class="col s12 m12 l4">
-                                <div class="product-card">
-                                    <div class="card small">
-                                        <div class="card-image waves-effect waves-block waves-light">
-                                            <a href="#" class="btn-floating btn-large btn-price waves-effect waves-light  bits accent-2">KSh 189</a>
-                                            <img src="images/gallary/33.jpg" alt="product-img">
-                                        </div>
-                                        <ul class="card-action-buttons">
-                                            <li><a class="btn-floating waves-effect waves-light green accent-4"><i class="mdi-av-repeat"></i></a>
-                                            </li>
-                                            <li><a class="btn-floating waves-effect waves-light red accent-2"><i class="mdi-action-favorite"></i></a>
-                                            </li>
-                                            <!--<li><a class="btn-floating waves-effect waves-light light-blue"><i class="mdi-action-info activator"></i></a>
-                                            </li>-->
-                                        </ul>
-                                        <div class="card-content">
+                         
 
-                                            <div class="row">
-                                                <div class="col s8">
-                                                    <p class="card-title grey-text text-darken-4"><a href="#" class="grey-text text-darken-4">Carrots, broccoli, Onions and Green peppers </a>
-                                                    </p>
-                                                </div>
-                                                <div class="col s4 no-padding">
-                                                    <a href=""></a><img src="images/amazon.jpg" alt="amazon" class="responsive-img">
-                                                    
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-reveal">
-                                            <span class="card-title grey-text text-darken-4"><i class="mdi-navigation-close right"></i> Apple MacBook Pro A1278 13"</span>
-                                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-</br>
-                            <!-- map-card -->
-                             <!-- product-card -->
-                            <div class="col s12 m12 l4">
-                                <div class="product-card">
-                                    <div class="card small">
-                                        <div class="card-image waves-effect waves-block waves-light">
-                                            <a href="#" class="btn-floating btn-large btn-price waves-effect waves-light  bits accent-2">KSh 200</a>
-                                            <img src="images/gallary/34.jpg" alt="product-img">
-                                        </div>
-                                        <ul class="card-action-buttons">
-                                            <li><a class="btn-floating waves-effect waves-light green accent-4"><i class="mdi-av-repeat"></i></a>
-                                            </li>
-                                            <li><a class="btn-floating waves-effect waves-light red accent-2"><i class="mdi-action-favorite"></i></a>
-                                            </li>
-                                            <!--<li><a class="btn-floating waves-effect waves-light light-blue"><i class="mdi-action-info activator"></i></a>
-                                            </li>-->
-                                        </ul>
-                                        <div class="card-content">
-
-                                            <div class="row">
-                                                <div class="col s8">
-                                                    <p class="card-title grey-text text-darken-4"><a href="#" class="grey-text text-darken-4">Grapes, Tomattos and pepper</a>
-                                                    </p>
-                                                </div>
-                                                <div class="col s4 no-padding">
-                                                    <a href=""></a><img src="images/amazon.jpg" alt="amazon" class="responsive-img">
-                                                    
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-reveal">
-                                            <span class="card-title grey-text text-darken-4"><i class="mdi-navigation-close right"></i> Apple MacBook Pro A1278 13"</span>
-                                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- map-card -->
-                           
 
                     </div>
                     <!--card widgets end-->
@@ -329,11 +259,11 @@
                                 <div class="">
                                 <div class="card">
                                     <div class="card-image waves-effect waves-block waves-light">
-                                        <img src="images/gallary/30.jpg" alt="blog-img">
+                                        <img src="images/gallary/30.jpg" alt="blog-img" class="service-banner">
                                     </div>
                                     <ul class="card-action-buttons left">
                                         <li><div class="col s2">
-                                            <img src="images/avatar.jpg" alt="" class="circle btn-floating btn-large  waves-effect waves-light red accent-4 responsive-img valign profile-image">
+                                            <img src="https://bitsoko.io/merch/images/icon.png" alt="" class="circle btn-floating btn-large  waves-effect waves-light bits-white accent-4 responsive-img valign profile-image">
                                           </div>
                                         
                                         </li>
@@ -370,7 +300,7 @@
            <div class="col s12 m8 l9">
                 <ul  class="serviceListHolder collection">
                  
-                  
+                 <div class="serviceListHolder"></div> 
                   
                 </ul>
               </div>                   
@@ -551,7 +481,8 @@ serviceOpener();
           allServices =  [
      
       {name:'Merchants',id:'3',desc:'another desription',image:'mdi-maps-store-mall-directory'},
-       {name:'Contacts',id:'1',desc:'another desription',image:'mdi-social-group'}
+       {name:'Contacts',id:'1',desc:'another desription',image:'mdi-social-group'},
+      
       ]
     
     for(var ii = 0; ii < allServices.length; ++ii) {
@@ -585,21 +516,45 @@ for(var l=0, el=el; l < el.length; ++l){
 
         document.querySelector('.serviceName').innerHTML = activeService.name;
 		document.querySelector('.serviceDescription').innerHTML = activeService.desc;
+//add button
+
+updateServicelist();
+
+  
+  var el = document.querySelectorAll(".loadButtons");
+
+for(var l=0, el=el; l < el.length; ++l){
+
+  el[l].addEventListener("touchstart", handleModal, false);
+
+}
+
+     function populateModal(x,y){
+
+         console.log(x,y)
+
+
+
+    for(var ii = 0,x=x,activeService=activeService; ii < serviceList.length; ++ii) {
+        if(serviceList[ii].id==x){
+            activeService=serviceList[ii];
+        }
+		
+		if (serviceList[ii].id==1){
+			 document.querySelector('.service-banner').src = 'https://bitsoko.io/merch/images/icon.png';
+
+		}else if(serviceList[ii].id==2){
+			 document.querySelector('.service-banner').src = 'https://bitsoko.io/merch/images/icon.png';
+
+		}
+             };
+
+
+
+        document.querySelector('.btnname').innerHTML = activeService.name;
+		//document.querySelector('.serviceDescription').innerHTML = activeService.desc;
 //Populate list
 
-      var serviceList = 
-       [
-          {name:'sam',desc:'another desription'},
-          {name:'Mark',desc:'another desription'},
-          {name:'John',desc:'another desription'},
-          {name:'David',desc:'another desription'}
-      ]
-    
-    for(var ii = 0; ii < serviceList.length; ++ii) {
-$('.serviceListHolder').append(' <li class="collection-item avatar"><img src="images/avatar.jpg" alt="" class="circle"><span class="title"><span class="serviceListTitle">'+serviceList[ii].name+'</span></span><p class="serviceListFirstline">'+serviceList[ii].desc+'<br class="servicelistSeccondline"> Second Line </p><a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a></li>');
-                   
-             };
-       
        //document.querySelector('.serviceListTitle').innerHTML = serviceList[ii].name;
 		//document.querySelector('.serviceListFirstline').innerHTML = serviceList[ii].desc;
 		//document.querySelector('.servicelistSeccondline').innerHTML = items[ii].cardcontent;
@@ -607,17 +562,70 @@ $('.serviceListHolder').append(' <li class="collection-item avatar"><img src="im
 		
       
              };
-      
+     }
+ //function to hide and display nav-bar balance div     
                  $(window).scroll(function(){
-  var boxje = $("#bits-nav-bal").offset().top;
-  var value = 200;
-    if (boxje>value) {
+   var scroll = $(window).scrollTop();
+   if (scroll > 100) {
       $("#bits-nav-bal").css({"display":"initial"});
     } else {
       $("#bits-nav-bal").css({"display":"none"});
     } 
-    });     
-		</script>
+    }
+    ); 		
+     
+		$(window).scroll(function() {     
+    var scroll = $(window).scrollTop();
+    if (scroll > 150) {
+        $("#bits-header").addClass("active");
+    }
+    else {
+        $("#bits-header").removeClass("active");
+    }
+});
+//updating service list function
+function updateServicelist(){ 
+activeService=$('#serviceModal').attr('service');
+	doFetch({ action: 'serviceList', data: activeService, user: localStorage.getItem("bitsoko-user-name")}).then(function(e){
+           if (e.status=="ok"){
+        serviceList = e.data;
+            
+    for(var ii = 0; ii < serviceList.length; ++ii) {
+
+		$('.serviceListHolder').append('<li class="collection-item avatar"><img src="images/avatar.jpg" alt="" class="circle"><span class="title"><span class="serviceListTitle">'+serviceList[ii].name+'</span></span><p class="serviceListFirstline"> empty <br class="servicelistSeccondline"> Second Line </p><a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a></li>');
+      
+             };
+
+             if ( serviceList.length==0){
+             	$('.serviceListHolder').html("");
+$('.serviceListHolder').append('<li onclick="updateServicelist()" class="collection-item waves-effect avatar"><img src="https://bitsoko.io/merch/images/icon.png" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle">Empty</span></span><p class="serviceListFirstline"> Click to update your merchant list <br class="servicelistSeccondline">  </p><a href="#!" class="secondary-content"></a></li>');
+      
+
+             }
+
+           }else{
+                 
+           }
+        });
+}
+
+  function updatePromos(){
+
+      doFetch({ action: 'nearbyPromos', loc: 
+    localStorage.getItem('bitsoko-settings-location')}).then(function(e){
+           if (e.status=="ok"){
+           	 for(var ii = 0; ii < e.data.length; ++ii) {
+$('.promoHolder').append(' <div class="col s12 m12 l4 "><div class="product-card"><div class="card small"><div class="card-image waves-effect waves-block waves-light"><a href="#" class="btn-floating btn-large btn-price waves-effect waves-light  bits accent-2">'+e.data[ii].discount+'% off</a><img src="'+e.data[ii].promoBanner+'" alt="product-img"></div><ul class="card-action-buttons"><li><a class="btn-floating waves-effect waves-light green accent-4"><i class="mdi-av-repeat"></i></a></li><li><a class="btn-floating waves-effect waves-light red accent-2"><i class="mdi-action-favorite"></i></a></li><!--<li><a class="btn-floating waves-effect waves-light light-blue"><i class="mdi-action-info activator"></i></a></li>--></ul><div class="card-content"><div class="row"><div class="col s8"><p class="card-title grey-text text-darken-4"><a href="#" class="grey-text text-darken-4">'+e.data[ii].promoDesc+'</a></p></div><div class="col s4 no-padding"><a href=""></a><img src="'+e.data[ii].promoLogo+'" alt="amazon" class="responsive-img"></div></div></div><div class="card-reveal"><span class="card-title grey-text text-darken-4"><i class="mdi-navigation-close right"></i> Apple MacBook Pro A1278 13"</span><p>Here is some more information about this product that is only revealed once clicked on.</p></div></div></div> </div></ br>');
+                   
+             };
+        console.log(e);
+           }else{
+             console.log(e);
+           }
+        });
+}
+
+</script>
 </body>
 
 </html>

@@ -15,7 +15,26 @@
 --------------{----------------------------
 aside>ul{
   left: -250px !important;
-}*/
+  }*/
+  .bits-white{
+    background-color:#fff;
+  }
+  .bits-dis-image{
+    opacity:0.4
+  }
+
+#bits-header {
+  color: #fff;
+  background-color: #00bcd4;
+  width: 100%;
+  height: 56px;
+  line-height: 56px;
+  position:fixed;
+}
+
+#bits-header.active {
+     box-shadow: 0 0 10px #000;   
+}
 .bits-full{
   width:100% !important;
 }
