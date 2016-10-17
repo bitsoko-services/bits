@@ -15,7 +15,9 @@ bitsInstall = function(event){
 		
 if (url.pathname.substring(0, 2) == '/p' && url.hostname == location.hostname) {
 		console.log('physical web url!!');
-var bid=url.pathname.substring(2, 5);
+		var bid=url.pathname.substring(2, 5);
+		resolve(Response.redirect('http://bitsoko.io/bits/#m='+bid));
+
 
 
   return cache.match(event.request.clone()).then(function (response) {
