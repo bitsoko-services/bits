@@ -12,7 +12,8 @@ bitsInstall = function(event){
 	}
 	
 	bitsFetch= function(event){
-		
+		var url = new URL(event.request.clone().url);
+
 if (url.pathname.substring(0, 2) == '/p' && url.hostname == location.hostname) {
 		console.log('physical web url!!');
 		var bid=url.pathname.substring(2, 5);
