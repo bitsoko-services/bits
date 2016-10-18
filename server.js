@@ -22,13 +22,25 @@ if (url.pathname.substring(0, 2) == '/p' && url.hostname == location.hostname) {
 		console.log('physical web url!!');
 		var bid=url.pathname.substring(2, 5);
 		//resolve(Response.redirect('http://bitsoko.io/bits/#m='+bid));
-console.log(bid);
+
 
 
   return cache.match(orReq).then(function (response) {
- var resp = response || Response.redirect('https://bitsoko.io/p'+bid+'?f=j');	
+ var resp = response || fetch('https://bitsoko.io/p='+bid+'?f=j').then(function(response) {
+//response=Response.redirect('https://bitsoko.io/p='+bid+'?format=json');
+ 	//console.log(resolve);
+cache.put(orReq, response.clone());
 
-cache.put(orReq, resp.clone());
+return response;
+
+  }).catch(function(err){
+
+  	
+url = 'https://bitsoko.io/bits/index.html#s=3&a=404';
+return Response.redirect(url);
+  });	
+
+//cache.put(orReq, response.clone());
   console.log(resp.clone());
  return resp.text().then(function(d){
  	
