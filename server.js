@@ -11,7 +11,7 @@ bitsInstall = function(event){
 	
 	}
 	
-	bitsFetch= function(event,cache){
+	bitsFetch= function(event,cache,resolve){
 		
 		var orReq=event.request.clone();
 
