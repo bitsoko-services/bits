@@ -11,7 +11,7 @@ bitsInstall = function(event){
 	
 	}
 	
-	bitsFetch= function(event){
+	bitsFetch= function(event,cache){
 		
 		var modReq=event.request.clone();
 		modReq.url=modReq.url+'?format=json';
