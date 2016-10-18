@@ -26,7 +26,7 @@ if (url.pathname.substring(0, 2) == '/p' && url.hostname == location.hostname) {
 
 
   return cache.match(orReq).then(function (response) {
- var resp = response || fetch('https://bitsoko.io/p='+bid+'?f=j').then(function(response) {
+ var resp = response || fetch('https://bitsoko.io/p'+bid+'?f=j').then(function(response) {
 //response=Response.redirect('https://bitsoko.io/p='+bid+'?format=json');
  	//console.log(resolve);
 cache.put(orReq, response.clone());
