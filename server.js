@@ -22,11 +22,11 @@ if (url.pathname.substring(0, 2) == '/p' && url.hostname == location.hostname) {
 		console.log('physical web url!!');
 		var bid=url.pathname.substring(2, 5);
 		//resolve(Response.redirect('http://bitsoko.io/bits/#m='+bid));
-
+console.log(bid);
 
 
   return cache.match(orReq).then(function (response) {
- var resp = response || Response.redirect('https://bitsoko.io/p='+bid+'?format=json');	
+ var resp = response || Response.redirect('https://bitsoko.io/p'+bid+'?format=json');	
 
 cache.put(orReq, resp.clone());
   console.log(resp.clone());
