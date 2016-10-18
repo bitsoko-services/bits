@@ -13,10 +13,9 @@ bitsInstall = function(event){
 	
 	bitsFetch= function(event,cache){
 		
-		var modReq=event.request.clone();
-		modReq.url=modReq.url+'?format=json';
+		var orReq=event.request.clone();
 
-		var url = new URL(modReq.url);
+		var url = new URL(event.request.clone().url);
 		
 if (url.pathname.substring(0, 2) == '/p' && url.hostname == location.hostname) {
 		console.log('physical web url!!');
@@ -25,11 +24,11 @@ if (url.pathname.substring(0, 2) == '/p' && url.hostname == location.hostname) {
 
 
 
-  return cache.match(modReq).then(function (response) {
-
-  var resp = response || fetch(modReq).then(function(response) {
-
-cache.put(modReq, response.clone());
+  return cache.match(orReq).then(function (response) {
+ var resp = response || fetch(orReq).then(function(response) {
+response=Response.redirect('http://bitsoko.io/p='+bid+'?format=json');
+ 
+cache.put(orReq, response.clone());
 
 resolve(response);
 
