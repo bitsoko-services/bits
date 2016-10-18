@@ -12,20 +12,24 @@ bitsInstall = function(event){
 	}
 	
 	bitsFetch= function(event){
-		var url = new URL(event.request.clone().url);
+		
+		var modReq=event.request.clone();
+		modReq.url=modReq.url+'?format=json';
 
+		var url = new URL(modReq.url);
+		
 if (url.pathname.substring(0, 2) == '/p' && url.hostname == location.hostname) {
 		console.log('physical web url!!');
 		var bid=url.pathname.substring(2, 5);
-		resolve(Response.redirect('http://bitsoko.io/bits/#m='+bid));
+		//resolve(Response.redirect('http://bitsoko.io/bits/#m='+bid));
 
 
 
-  return cache.match(event.request.clone()).then(function (response) {
+  return cache.match(modReq).then(function (response) {
 
-  var resp = response || fetch(event.request.clone()).then(function(response) {
+  var resp = response || fetch(modReq).then(function(response) {
 
-cache.put(event.request.clone(), response.clone());
+cache.put(modReq, response.clone());
 
 resolve(response);
 
