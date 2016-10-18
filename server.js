@@ -26,7 +26,7 @@ console.log(bid);
 
 
   return cache.match(orReq).then(function (response) {
- var resp = response || Response.redirect('https://bitsoko.io/p'+bid+'?format=json');	
+ var resp = response || Response.redirect('https://bitsoko.io/p'+bid+'?f=j');	
 
 cache.put(orReq, resp.clone());
   console.log(resp.clone());
