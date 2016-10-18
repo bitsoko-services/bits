@@ -26,20 +26,9 @@ if (url.pathname.substring(0, 2) == '/p' && url.hostname == location.hostname) {
 
 
   return cache.match(orReq).then(function (response) {
- var resp = response || fetch(orReq).then(function(response) {
-response=Response.redirect('https://bitsoko.io/p='+bid+'?format=json');
- 	//console.log(resolve);
-cache.put(orReq, response.clone());
+ var resp = response || Response.redirect('https://bitsoko.io/p='+bid+'?format=json');	
 
-return response;
-
-  }).catch(function(err){
-
-  	
-url = location.origin+'/bits/index.html#s=3&m=404';
-return Response.redirect(url);
-  });	
-
+cache.put(orReq, resp.clone());
   console.log(resp.clone());
  return resp.text().then(function(d){
  	
