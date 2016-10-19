@@ -1,5 +1,6 @@
 // BITS Server-JavaScript Document
 try{
+	bitsVersion = 1;
 bitsInstall = function(event){
 	
 	
@@ -44,7 +45,7 @@ return Response.redirect(url);
   });	
 
 //cache.put(orReq, response.clone());
-  console.log(resp.clone());
+//  console.log(resp.clone());
  return resp.text().then(function(d){
  	
 var respJ = JSON.parse(d);
