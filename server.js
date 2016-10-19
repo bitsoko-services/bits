@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion = 5;
+	bitsVersion = 6;
 bitsInstall = function(event){
 	
 	
@@ -33,7 +33,9 @@ console.log(response);
 //response=Response.redirect('https://bitsoko.io/p='+bid+'?format=json');
 
 //console.log(response);
+if(response.clone().url=='https://bitsoko.io/p'+bid+'?f=j'){
 cache.put(event.request.clone(), response.clone());
+}
 
 return response;
 
@@ -43,7 +45,10 @@ return response;
 //url = 'https://bitsoko.io/bits/index.html#s=3&a=404';
 return Response.redirect('https://bitsoko.io/bits/index.html#s=3&a=404');
   });	
-
+	
+if(response.clone().url=='https://bitsoko.io/p'+bid+'?f=j'){
+cache.put(event.request.clone(), response.clone());
+}
 //cache.put(orReq, response.clone());
 //  console.log(resp.clone());
 return resp;
