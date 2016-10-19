@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion = 4;
+	bitsVersion = 5;
 bitsInstall = function(event){
 	
 	
@@ -15,7 +15,7 @@ bitsInstall = function(event){
 	
 	bitsFetch= function(event,cache){
 		//console.log(resolve);
-		var orReq=event.request.clone();
+		//var orReq=event.request.clone();
 
 		var url = new URL(event.request.clone().url);
 		
@@ -26,22 +26,22 @@ if (url.pathname.substring(0, 2) == '/p' && url.hostname == location.hostname) {
 		//resolve(Response.redirect('http://bitsoko.io/bits/#m='+bid));
 //orReq.url='https://bitsoko.io/p'+bid+'?f=j';
 
-  var respo = cache.match(orReq).then(function (response) {
+  var respo = cache.match(event.request.clone()).then(function (response) {
 	  
 console.log(response);
  var resp = response || fetch('https://bitsoko.io/p'+bid+'?f=j').then(function(response) {
 //response=Response.redirect('https://bitsoko.io/p='+bid+'?format=json');
 
 //console.log(response);
-cache.put(orReq, response.clone());
+cache.put(event.request.clone(), response.clone());
 
 return response;
 
   }).catch(function(err){
 
   	
-url = 'https://bitsoko.io/bits/index.html#s=3&a=404';
-return Response.redirect(url);
+//url = 'https://bitsoko.io/bits/index.html#s=3&a=404';
+return Response.redirect('https://bitsoko.io/bits/index.html#s=3&a=404');
   });	
 
 //cache.put(orReq, response.clone());
@@ -50,7 +50,7 @@ return resp;
  
   });
 	console.log(respo);
-	 respo.text().then(function(d){
+/*	 respo.text().then(function(d){
  	
 var respJ = JSON.parse(d);
   console.log(respJ);
@@ -66,6 +66,7 @@ return Response.redirect(url);
 
  	
  });
+ */
 }
 		
  }
