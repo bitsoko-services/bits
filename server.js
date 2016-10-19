@@ -35,15 +35,15 @@ console.log(response);
 //console.log(response);
 if(response.clone().url=='https://bitsoko.io/p'+bid+'?f=j' && event.request.clone().url=='https://bitsoko.io/p'+bid){
 	
-cache.put(event.request.clone(), response.clone());
-
 return response.clone().text().then(function(d){
  	
 var respJ = JSON.parse(d);
-  console.log(respJ);
+ // console.log(respJ);
 url = location.origin+'/bits/index.html#s='+respJ.s+'&a='+respJ.a;
+var trResp=Response.redirect(url);
+cache.put(event.request.clone(), trResp.clone());
 
-return Response.redirect(url);
+return trResp;
 
 
  	
