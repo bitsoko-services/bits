@@ -54,7 +54,6 @@ return resp;
  
   });
 	console.log(respo);
- return 
  var respon;
 	respon = respo.text().then(function(d){
  	
