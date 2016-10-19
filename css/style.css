@@ -16,6 +16,22 @@
 aside>ul{
   left: -250px !important;
   }*/
+  
+  .dropdown-bits {
+
+  border-bottom: 0px solid #9e9e9e !important;
+
+  font-size: 10px;
+ 
+}
+  .bis-font-size{
+    font-size:14px !important;
+    color:#000;
+    left:20% !important;
+  }
+  .bits-lh{
+       color: #fff;
+  }
   .bits-up{
     margin-top: -15px;
   }

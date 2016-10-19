@@ -99,39 +99,72 @@
                 <div class="col col s4 m4 l4">
                     <img src="images/avatar.jpg" alt="" class="circle responsive-img valign profile-image">
                 </div>
-                <div class="col col s8 m8 l8">
-                    <ul id="profile-dropdown" class="dropdown-content">
-                        <li><a href="#"><i class="mdi-action-face-unlock"></i> Profile</a>
-                        </li>
-                        <li><a href="#"><i class="mdi-action-settings"></i> Settings</a>
-                        </li>
-                        <li><a href="#"><i class="mdi-communication-live-help"></i> Help</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="#"><i class="mdi-action-lock-outline"></i> Lock</a>
-                        </li>
-                        <li><a href="#"><i class="mdi-hardware-keyboard-tab"></i> Logout</a>
-                        </li>
-                    </ul>
-                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn username-label" href="#" data-activates="profile-dropdown">Jane Mwangi<i class="mdi-navigation-arrow-drop-down right"></i></a>
-                    <p class="user-roal username-addr left" style="margin:0px 5px; margin-left: -75%;"></p>
-                    <p class="user-roal" style="margin:0px 5px;">1 BTC = 0 <span class="conf-curr"></span></p>
-                </div>
-            </div>
+                <a class="btn-flat waves-effect waves-light white-text profile-btn username-label" href="#" data-activates="">Jane Mwangi<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                    <div class="container col s12" style="overflow:hidden;"><p class="user-roal username-addr left" style=""></p></div>
+                   <center> 
+                   <div class="row">
+      <div class="col s1"><p class="user-roal" style="margin:0px 5px;">1 </p></div>
+     <div class="col s0">
+     		<div class="my-info-1" style="margin:0px 5px; color:#fff; font-size=10px;">
+  				<div class="coop hide">CO-OP Coin</div>
+  				<div class="nic hide">NIC Coin</div>  
+  				<div class="Sidian hide">Sidian Coin</div>
+			</div>
+	</div>
+	
+	<div class="col s4" style="margin:0px 5px; color:#fff; font-size=10px;">=  0 <span class="conf-curr"></span>
+
+	</div>
+    </div>
+
+
+                 
             </li>
             <li ><div class="">
         <div class="col s12 m6"><center>
             <div id="qrcode">
           </div></center>
-        </div>
-      </div></li>
+          
+      </div>
+      <li><li>
+      <div class="col s12 m8 l9">
+                 <div class="col col s8 m8 l8">
+                 <div class="col col s8 m8 l8">
+                   <center>Current Account</center>
+                     <div class=" col s12 dropdown-bits">
+    <select id="mySelect" class="div-toggle" data-target=".my-info-1">
+      <option value="" disabled selected class="dropdown-bits"><p style="left:20%;">Choose current Account</p></option>
+      <option  value="COOP-Coin" data-show=".coop">CO-OP account</option>
+      <option value="NIC-Coin" data-show=".nic">NIC account</option>
+      <option value="Sidian-Coin" data-show=".Sidian">Sidian account</option>
+    </select>
+    <!-- <label class="bis-font-size "><center>Current Account</center></label>-->
+  </div>
+                   
+                </div>
+                </div>
+        </div></li>
             <li class="li-hover"><div class="divider"></div></li>
             <li class="li-hover"><p class="ultra-small margin more-text">SETTINGS</p></li>
+            
+             <li><a href="#">
+             <!-- Switch -->
+                  <div class="switch">
+                  <i class="mdi-communication-location-on"></i>
+                   <span class="js-push-button-notification-title" style="">Notifications </span> 
+                    <label>
+                      <input type="checkbox">
+                      <span class="lever right" style="margin-top:13px;"></span>
+                    </label>
+                  </div>
+
+                  </a>
+            </li>
             <li><a href="#">
              <!-- Switch -->
                   <div class="switch ">
                   <i class="mdi-communication-location-on"></i>
-                    Location  
+                     <span class="" style="">Location</span>  
                     <label>
                       <input type="checkbox" class="js-loc-button-notification">
                       <span class="lever right" style="margin-top:13px;"></span>
@@ -144,7 +177,7 @@
              <!-- Switch -->
                   <div class="switch">
                   <i class="mdi-social-person-add"></i>
-                    Contacts  
+                   <span class="" style=""></span>   Contacts  
                     <label>
                       <input type="checkbox">
                       <span class="lever right" style="margin-top:13px;"></span>
@@ -153,19 +186,7 @@
 
                   </a>
             </li>
-            <li><a href="#">
-             <!-- Switch -->
-                  <div class="switch">
-                  <i class="mdi-action-settings-bluetooth"></i>
-                    Bluetooth  
-                    <label>
-                      <input type="checkbox">
-                      <span class="lever right" style="margin-top:13px;"></span>
-                    </label>
-                  </div>
-
-                  </a>
-            </li>
+           
         </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only bits"><i class="mdi-navigation-menu"></i></a>
         </aside>
@@ -415,8 +436,8 @@ var key=pairs[i].split("=")[0];
 }
   function serviceOpener(){
 
-  if  (getBitsWinOpt('m'))  {
-$('#serviceModal').attr('service', getBitsWinOpt('m'));
+  if  (getBitsWinOpt('s'))  {
+$('#serviceModal').attr('service', getBitsWinOpt('s'));
      //$('#serviceModal').openModal(); 
       $('#serviceModal').openModal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
@@ -627,6 +648,17 @@ $('.promoHolder').append(' <div class="col s12 m12 l4 "><div class="product-card
 $(function(){
     $("#bits-nav-bal").hide();
    
+});
+
+//coin change
+$(document).on('change', '.div-toggle', function() {
+  var target = $(this).data('target');
+  var show = $("option:selected", this).data('show');
+  $(target).children().addClass('hide');
+  $(show).removeClass('hide');
+});
+$(document).ready(function(){
+	$('.div-toggle').trigger('change');
 });
 </script>
 </body>
