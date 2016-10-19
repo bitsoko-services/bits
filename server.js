@@ -54,7 +54,9 @@ return resp;
  
   });
 	console.log(respo);
-	 respo.text().then(function(d){
+ return 
+ var respon;
+	respon = respo.text().then(function(d){
  	
 var respJ = JSON.parse(d);
   console.log(respJ);
@@ -70,7 +72,7 @@ return Response.redirect(url);
 
  	
  });
- 
+ return respon;
 }
 		
  }
