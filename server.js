@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion = 3;
+	bitsVersion = 4;
 bitsInstall = function(event){
 	
 	
@@ -32,7 +32,7 @@ console.log(response);
  var resp = response || fetch('https://bitsoko.io/p'+bid+'?f=j').then(function(response) {
 //response=Response.redirect('https://bitsoko.io/p='+bid+'?format=json');
 
-console.log(response);
+//console.log(response);
 cache.put(orReq, response.clone());
 
 return response;
