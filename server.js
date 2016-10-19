@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion = 7;
+	bitsVersion = 8;
 bitsInstall = function(event){
 	
 	
@@ -54,7 +54,7 @@ return resp;
  
   });
 	console.log(respo);
-/*	 respo.text().then(function(d){
+	 respo.text().then(function(d){
  	
 var respJ = JSON.parse(d);
   console.log(respJ);
@@ -70,7 +70,7 @@ return Response.redirect(url);
 
  	
  });
- */
+ 
 }
 		
  }
