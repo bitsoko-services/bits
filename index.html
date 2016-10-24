@@ -164,7 +164,7 @@
              <!-- Switch -->
                   <div class="switch ">
                   <i class="mdi-communication-location-on"></i>
-                     <span class="js-loc-button-notification-title" style="">Location</span>  
+                     <span class="" style="">Location</span>  
                     <label>
                       <input type="checkbox" class="js-loc-button-notification">
                       <span class="lever right" style="margin-top:13px;"></span>
@@ -249,7 +249,7 @@
                     <!-- Floating Action Button -->
                     <div class="fixed-action-btn " style="bottom: 50px; right: 19px;">
                         <a class="btn-floating btn-large bits">
-                          <i class="mdi-action-stars"></i>
+                          <i class="mdi-content-add"></i>
                         </a>
                         <ul class="serviceButtonsHolder">
                          
@@ -280,12 +280,12 @@
                                 <div class="">
                                 <div class="card">
                                     <div class="card-image waves-effect waves-block waves-light">
-                                        <img src="images/gallary/30.jpg" alt="blog-img" class="service-banner">
+                                      <img  src="" alt="blog-img" class="cardimage service-banner"> 
                                     </div>
                                     <ul class="card-action-buttons left">
                                         <li><div class="col s2">
-                                            <img src="https://bitsoko.io/merch/images/icon.png" alt="" class="bits-up circle btn-floating btn-large  waves-effect waves-light bits-white accent-4 responsive-img valign profile-image">
-                                          </div>
+                                        <img src="" alt="" class="cardLogo bits-up circle btn-floating btn-large  waves-effect waves-light bits-white accent-4 responsive-img valign profile-image">
+                                            </div>
                                         
                                         </li>
                                         
@@ -306,7 +306,7 @@
                                           <div class="col s9 "> <h5 class="serviceName"></h5></div>
                                         </div>
                                       <div class="row">
-                                        <p class="serviceDescription">Here is some more information about this Merchant</p>
+                                        <p class="serviceDescription"></p>
                                       </div>  
                                     </div>
                                     <div class="card-reveal">
@@ -501,14 +501,13 @@ serviceOpener();
           var activeService;
           allServices =  [
      
-      {name:'Merchants',id:'3',desc:'another desription',image:'mdi-maps-store-mall-directory'},
-       {name:'Contacts',id:'1',desc:'another desription',image:'mdi-social-group'},
-      
+      {name:'Merchants',id:'3',desc:'Merchant desription',cardimage:'merchantsBanner',cardLogo:'merchants',image:'mdi-maps-store-mall-directory',list:[]},
+       {name:'Contacts',id:'1',desc:'Contacts desription',cardimage:'contactsBanner',cardLogo:'contacts',image:'mdi-social-group',list:[]},      
       ]
     
     for(var ii = 0; ii < allServices.length; ++ii) {
 
-		$('.serviceButtonsHolder').append('<li><a  href="#serviceModal" service="'+allServices[ii].id+'" class="serviceButtons btn-floating blue modal-trigger"><i class="large '+allServices[ii].image+'"></i></a></li>');
+		$('.serviceButtonsHolder').append('<li><a  href="#serviceModal" service="'+allServices[ii].id+'" class="serviceButtons btn-floating bits modal-trigger"><i class="large '+allServices[ii].image+'"></i>text</a></li>');
       
              };
 
@@ -530,12 +529,21 @@ for(var l=0, el=el; l < el.length; ++l){
         if(allServices[ii].id==x){
             activeService=allServices[ii];
         }
-		
-             };
+		};
+
+
+
+             if ( activeService.list.length==0){
+             	$('.serviceListHolder').html("");
+$('.serviceListHolder').append('<li onclick="updateServicelist()" class="collection-item waves-effect avatar"><img src="images/'+activeService.cardLogo+'.png" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle">Empty</span></span><p class="serviceListFirstline"> Click to update your '+activeService.name+' list <br class="servicelistSeccondline">  </p><a href="#!" class="secondary-content"></a></li>');
+      
+             }
 
 
 
         document.querySelector('.serviceName').innerHTML = activeService.name;
+        document.querySelector('.cardimage').src = "images/"+activeService.cardimage+".png";
+         document.querySelector('.cardLogo').src = "images/"+activeService.cardLogo+".png";
 		document.querySelector('.serviceDescription').innerHTML = activeService.desc;
 //add button
 
@@ -616,13 +624,6 @@ activeService=$('#serviceModal').attr('service');
 		$('.serviceListHolder').append('<li class="collection-item avatar"><img src="images/avatar.jpg" alt="" class="circle"><span class="title"><span class="serviceListTitle">'+serviceList[ii].name+'</span></span><p class="serviceListFirstline"> empty <br class="servicelistSeccondline"> Second Line </p><a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a></li>');
       
              };
-
-             if ( serviceList.length==0){
-             	$('.serviceListHolder').html("");
-$('.serviceListHolder').append('<li onclick="updateServicelist()" class="collection-item waves-effect avatar"><img src="https://bitsoko.io/merch/images/icon.png" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle">Empty</span></span><p class="serviceListFirstline"> Click to update your merchant list <br class="servicelistSeccondline">  </p><a href="#!" class="secondary-content"></a></li>');
-      
-
-             }
 
            }else{
                  
