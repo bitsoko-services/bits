@@ -1,9 +1,49 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion = 12;
+	bitsVersion = 13;
 bitsInstall = function(event){
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	}
+	bitsMessage = function(event){
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	}
+	bitsPush = function(event){
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	}
+		bitsNotification = function(title,body,tag,icon,actions,sticky,silent){
+	
+	 var note = self.registration.showNotification(title, {  
+          body: body,  
+          icon:  icon,  
+          tag: tag,
+          actions: [{action: 'signIn', title: "Sign In"}],
+            sticky: sticky,
+            silent: silent
+        });
 	
 	
 	
