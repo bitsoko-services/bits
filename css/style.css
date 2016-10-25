@@ -16,7 +16,14 @@
 aside>ul{
   left: -250px !important;
   }*/
-  
+  .bits-13{
+    font-size: 13px;
+  }
+  .bits-ellipsis{
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .dropdown-bits {
 
   border-bottom: 0px solid #9e9e9e !important;

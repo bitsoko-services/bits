@@ -97,11 +97,11 @@
             <li class="user-details cyan darken-2"  style="background-color:##228dac!important;">
             <div class="row">
                 <div class="col col s4 m4 l4">
-                    <img src="images/avatar.jpg" alt="" class="circle responsive-img valign profile-image">
+                    <img src="images/contacts.png" alt="" class="circle responsive-img valign profile-image"style="background-color: white;">
                 </div>
                 <a class="btn-flat waves-effect waves-light white-text profile-btn username-label" href="#" data-activates="">Jane Mwangi<i class="mdi-navigation-arrow-drop-down right"></i></a>
-                    <div class="container col s12" style="overflow:hidden;"><p class="user-roal username-addr left" style=""></p></div>
-                   <center> 
+                    <div class="container col s8" style="overflow:hidden; margin-left:-10px;"><span class=" user-roal username-addr left col s10 bits-ellipsis" style=""></span></div>
+                   </div>
                    <div class="row">
       <div class="col s1"><p class="user-roal" style="margin:0px 5px;">1 </p></div>
      <div class="col s0">
@@ -122,7 +122,7 @@
             </li>
             <li ><div class="">
         <div class="col s12 m6"><center>
-            <div id="qrcode">
+            <div  id="qrcode">
           </div></center>
           
       </div>
@@ -151,9 +151,9 @@
              <!-- Switch -->
                   <div class="switch">
                   <i class="mdi-communication-location-on"></i>
-                   <span class="js-push-button-notification-title" style="">Notifications </span> 
+                   <span class="js-push-button-notification-title bits-13" style="">Notifications </span> 
                     <label>
-                      <input type="checkbox" class="js-push-button-notification">
+                      <input type="checkbox">
                       <span class="lever right" style="margin-top:13px;"></span>
                     </label>
                   </div>
@@ -164,7 +164,7 @@
              <!-- Switch -->
                   <div class="switch ">
                   <i class="mdi-communication-location-on"></i>
-                     <span class="" style="">Location</span>  
+                     <span class="bits-13" style="">Location</span>  
                     <label>
                       <input type="checkbox" class="js-loc-button-notification">
                       <span class="lever right" style="margin-top:13px;"></span>
@@ -177,7 +177,7 @@
              <!-- Switch -->
                   <div class="switch">
                   <i class="mdi-social-person-add"></i>
-                   <span class="" style=""></span>   Contacts  
+                   <span class="bits-13" style=""></span>   Contacts  
                     <label>
                       <input type="checkbox">
                       <span class="lever right" style="margin-top:13px;"></span>
@@ -207,7 +207,7 @@
           <h5 class="header col s12 light" style="color:#fff;">Balance</h5>
         </div>
         <div class="row center">
-          <a  id="download-button" class="" style="font-size:18px; color:#fff !important;">0.00 KSH</a><p>
+          <a  id="download-button" class="" style="font-size:18px; color:#fff !important;"><span style="font-size:26px;">0.00 </span>KSH</a><p>
           <a  id="download-button" class="" style="color:#fff;">0 btc</a>
          <!-- btn-large waves-effect waves-light  bits -->
         </div>
@@ -637,7 +637,7 @@ activeService=$('#serviceModal').attr('service');
     localStorage.getItem('bitsoko-settings-location')}).then(function(e){
            if (e.status=="ok"){
            	 for(var ii = 0; ii < e.data.length; ++ii) {
-$('.promoHolder').append(' <div class="col s12 m12 l4 "><div class="product-card"><div class="card small"><div class="card-image waves-effect waves-block waves-light"><a href="#" class="btn-floating btn-large btn-price waves-effect waves-light  bits accent-2">'+e.data[ii].discount+'% off</a><img src="'+e.data[ii].promoBanner+'" alt="product-img"></div><ul class="card-action-buttons"><li><a class="btn-floating waves-effect waves-light green accent-4"><i class="mdi-av-repeat"></i></a></li><li><a class="btn-floating waves-effect waves-light red accent-2"><i class="mdi-action-favorite"></i></a></li><!--<li><a class="btn-floating waves-effect waves-light light-blue"><i class="mdi-action-info activator"></i></a></li>--></ul><div class="card-content"><div class="row"><div class="col s8"><p class="card-title grey-text text-darken-4"><a href="#" class="grey-text text-darken-4">'+e.data[ii].promoDesc+'</a></p></div><div class="col s4 no-padding"><a href=""></a><img src="'+e.data[ii].promoLogo+'" alt="amazon" class="responsive-img"></div></div></div><div class="card-reveal"><span class="card-title grey-text text-darken-4"><i class="mdi-navigation-close right"></i> Apple MacBook Pro A1278 13"</span><p>Here is some more information about this product that is only revealed once clicked on.</p></div></div></div> </div></ br>');
+$('.promoHolder').append(' <div class="col s12 m12 l4 "><div class="product-card"><div class="card small"><div class="card-image waves-effect waves-block waves-light"><a href="#" class="btn-floating btn-large btn-price waves-effect waves-light  bits accent-2">'+e.data[ii].discount+'% off</a><img src="'+e.data[ii].promoBanner+'" alt="product-img"></div><ul class="card-action-buttons"><li><a class="btn-floating waves-effect waves-light green accent-4"><i class="mdi-av-repeat"></i></a></li><li><a class="btn-floating waves-effect waves-light red accent-2"><i class="mdi-action-favorite"></i></a></li><!--<li><a class="btn-floating waves-effect waves-light light-blue"><i class="mdi-action-info activator"></i></a></li>--></ul><div class="card-content"><div class="row"><div class="col s8"><p class="card-title grey-text text-darken-4"><img src="'+e.data[ii].promoLogo+'" alt="amazon" class="responsive-img"><p><a href="#" class="grey-text text-darken-4">'+e.data[ii].promoDesc+'</a></p></div><div class="col s4 no-padding"><a href=""></a></div></div></div><div class="card-reveal"><span class="card-title grey-text text-darken-4"><i class="mdi-navigation-close right"></i> Apple MacBook Pro A1278 13"</span><p>Here is some more information about this product that is only revealed once clicked on.</p></div></div></div> </div></ br>');
                    
              };
         console.log(e);
