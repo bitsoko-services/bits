@@ -16,6 +16,12 @@
 aside>ul{
   left: -250px !important;
   }*/
+  .bits-row{
+    margin-bottom: 0px !important;
+  }
+  .bits-move{
+margin-left: -37%;
+}
   .bits-13{
     font-size: 13px;
   }
@@ -40,7 +46,8 @@ aside>ul{
        color: #fff;
   }
   .bits-up{
-    margin-top: -15px;
+   margin-top: -19px;
+    margin-left: 20%;
   }
   .bits-white{
     background-color:#fff;
