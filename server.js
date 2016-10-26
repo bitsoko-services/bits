@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion = 15;
+	bitsVersion = 16;
 bitsInstall = function(event){
 	
 	
@@ -28,7 +28,7 @@ return new Promise(function(resolve, reject) {
       case 'anonyMode':
      data = dat;
     console.log(data);
-           bitsNotification('Wallet not Backed up','If you lose your phone you will lose your wallet, Sign in to back up your private infomation','AnonMsg',icon,[{action: 'signIn', title: "Sign In"}],true,true);
+           bitsNotification('Wallet not Backed up','If you lose your phone you will lose your wallet, Sign in to back up your private infomation','AnonMsg','bits/images/no.png',[{action: 'signIn', title: "Sign In"}],true,true);
        
       break;
 			}
