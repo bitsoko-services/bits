@@ -202,6 +202,14 @@ function starting(){
         try{
         
     var address = JSON.parse(event.target.result).bitcoinAddress;
+    sendMessage({
+            data: {req:'anonyMode',switch:'on',app:'bits'},
+            //url: document.querySelector('#url').value
+          }).then(function() {
+            // If the promise resolves, just display a success message.
+            console.log('Added to cache.');
+              
+          }).catch(console.log('wallet cache error')); 
 	}catch(err){
 	
     var address = '';	
@@ -224,14 +232,7 @@ store.onsuccess = function (event) {
     
 }; 
 	
-    sendMessage({
-            data: {req:'anonyMode',switch:'on',app:'bits'},
-            //url: document.querySelector('#url').value
-          }).then(function() {
-            // If the promise resolves, just display a success message.
-            console.log('Added to cache.');
-              
-          }).catch(console.log('wallet cache error')); 
+    
 
 	//},1500);
   return;
