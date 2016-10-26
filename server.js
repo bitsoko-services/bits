@@ -12,13 +12,29 @@ bitsInstall = function(event){
 	
 	
 	}
-	bitsMessage = function(event){
+	bitsMessage = function(dat){
+	
+    
+  id=dat.mid ? dat.mid : randomString(20);
+    
+   msDat = dat;
+    console.log(dat);
+return new Promise(function(resolve, reject) {
+	 switch (dat.req) {
+      // This command returns a list of the URLs corresponding to the Request objects
+      // that serve as keys for the current cache.
+      // This command adds a new request/response pair to the cache.
+             
+      case 'anonyMode':
+     data = dat;
+    console.log(data);
+           // bitsNotification = function(title,body,tag,icon,actions,sticky,silent);
+       
+      break;
+			}
 	
 	
-	
-	
-	
-	
+});
 	
 	
 	
