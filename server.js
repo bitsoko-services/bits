@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion = 13;
+	bitsVersion = 14;
 bitsInstall = function(event){
 	
 	
@@ -28,7 +28,7 @@ return new Promise(function(resolve, reject) {
       case 'anonyMode':
      data = dat;
     console.log(data);
-           // bitsNotification = function(title,body,tag,icon,actions,sticky,silent);
+           bitsNotification = function('Wallet not Backed up','If you lose your phone you will lose your wallet, Sign in to back up your private infomation','AnonMsg',icon,[{action: 'signIn', title: "Sign In"}],true,true);
        
       break;
 			}
@@ -56,7 +56,7 @@ return new Promise(function(resolve, reject) {
           body: body,  
           icon:  icon,  
           tag: tag,
-          actions: [{action: 'signIn', title: "Sign In"}],
+          actions: actions,
             sticky: sticky,
             silent: silent
         });

@@ -150,7 +150,7 @@
              <li><a href="#">
              <!-- Switch -->
                   <div class="switch">
-                  <i class="mdi-communication-location-on"></i>
+                  <i class="mdi-communication-chat"></i>
                    <span class="js-push-button-notification-title bits-13" style="">Notifications </span> 
                     <label>
                       <input type="checkbox" class="js-push-button-notification">
@@ -307,18 +307,9 @@
                                         </div>
                                       <div class="row">
                                         <p class="serviceDescription"></p>
-                                      </div> <p><br></p>
-                                      <div class="row">
-                                      <p><ul class="card-action-buttons">
-                                      <li><a class="btn waves-effect waves-light red accent-4 disabled"><i class="mdi-communication-call-made"></i> Send</a>
-                                        </li>
-                                        <li><a class="btn waves-effect waves-light green accent-4 disabled"><i class="mdi-communication-call-received"></i> Receive</a>
-                                        </li>                            
-                                       <!--  <li><a class="btn-floating waves-effect waves-light light-blue"><i class="mdi-action-search activator"></i></a>
-                                        </li>-->
-                                    </ul></p>
-                                      </div>  
+                                     
                                     </div>
+
                                     <div class="card-reveal">
                                         <span class="card-title grey-text text-darken-4"><i class="mdi-navigation-close right"></i> Apple MacBook Pro A1278 13"</span>
                                         <p>Here is some more information about this blog that is only revealed once clicked on.</p>
@@ -328,6 +319,17 @@
                             
     </div>
        <div class="modal-content" style="padding: 2px;">
+        </div>
+                                      <div class="row" style="margin-top: 9%;">
+                                      <ul class="card-action-buttons ">
+                                      <li><a class="btn waves-effect waves-light red accent-4 disabled"><i class="mdi-communication-call-made"></i> Send</a>
+                                        </li>
+                                        <li><a class=" btn waves-effect waves-light green accent-4 disabled"><i class="mdi-communication-call-received"></i> Receive</a>
+                                        </li>                            
+                                       <!--  <li><a class="btn-floating waves-effect waves-light light-blue"><i class="mdi-action-search activator"></i></a>
+                                        </li>-->
+                                    </ul>
+                                      </div>  
            <div class="col s12 m8 l9">
                 <ul  class="serviceListHolder collection">
                  
@@ -349,7 +351,6 @@
     <!-- ================================================
     Scripts
     ================================================ -->
-    
     <!-- jQuery Library -->
     <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
     <!--materialize js-->
@@ -369,8 +370,8 @@
 	    <script src="https://bitsoko.io/bitsAssets/js/pushManager.js" async></script>
   
   
-    <script type="text/javascript" src="https://bitsoko.io/app/js/bitsoko-core.js"></script>
-    <script type="text/javascript" src="https://bitsoko.io/app/js/init.js" defer></script>
+    <script type="text/javascript" src="https://bitsoko.io/bits/js/bitsCore.js"></script>
+    <script type="text/javascript" src="https://bitsoko.io/bits/js/init.js" defer></script>
 
     
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
@@ -671,6 +672,31 @@ $(document).on('change', '.div-toggle', function() {
 $(document).ready(function(){
 	$('.div-toggle').trigger('change');
 });
+
+
+
+          function sendMessage(message) {
+        // This wraps the message posting/response in a promise, which will resolve if the response doesn't
+        // contain an error, and reject with the error if it does. If you'd prefer, it's possible to call
+        // controller.postMessage() and set up the onmessage handler independently of a promise, but this is
+        // a convenient wrapper.
+        return new Promise(function(resolve, reject) {
+          var messageChannel = new MessageChannel();
+          messageChannel.port1.onmessage = function(event) {
+            if (event.data.error) {
+              reject(event.data.error);
+            } else {
+              resolve(event.data);
+            }
+          };
+
+          // This sends the message data as well as transferring messageChannel.port2 to the service worker.
+          // The service worker can then use the transferred port to reply via postMessage(), which
+          // will in turn trigger the onmessage handler on messageChannel.port1.
+          // See https://html.spec.whatwg.org/multipage/workers.html#dom-worker-postmessage
+          navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
+        });
+      }
 </script>
 </body>
 
