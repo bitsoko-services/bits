@@ -472,7 +472,7 @@ $('#serviceModal').attr('service', getBitsWinOpt('s'));
       out_duration: 200, // Transition out duration
       starting_top: '4%', // Starting top style attribute
       ending_top: '10%', // Ending top style attribute
-      ready: function() {  }, // Callback for Modal open
+      ready: function() {serviceOpener();}, // Callback for Modal open
      // complete: function() { alert('Closed'); } // Callback for Modal close
     }); 
   } 
@@ -684,10 +684,7 @@ $(document).on('change', '.div-toggle', function() {
   $(target).children().addClass('hide');
   $(show).removeClass('hide');
 });
-$(document).ready(function(){
-	serviceOpener(); 
-	$('.div-toggle').trigger('change');
-});
+
 
 
 
