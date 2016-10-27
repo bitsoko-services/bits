@@ -16,6 +16,9 @@
 aside>ul{
   left: -250px !important;
   }*/
+  .bits-max{
+    width: 100%;
+  }
   .bits-transpatent{
    background-color: rgba(0, 0, 0, 0) !important;
   }

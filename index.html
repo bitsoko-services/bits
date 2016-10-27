@@ -470,9 +470,8 @@ if ( parseInt(getBitsWinOpt('s')) >3 )
 		document.querySelector('.serviceDescription').innerHTML = e.data.desc;
 		 $('.serviceListHolder').html("");
  for(var ii = 0; ii < e.data.list.length; ++ii) {
-        $('.serviceListHolder').append('<li onclick="updateServicelist()" class="collection-item waves-effect avatar"><img src="'+e.data.list[ii].image+'" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle"> '+e.data.list[ii].name+' </span></span><p class="serviceListFirstline"> '+e.data.list[ii].desc+'</p><a href="#!" class="secondary-content"></a></li>');
- 
-		};
+        $('.serviceListHolder').append('<li onclick="updateServicelist()" class="collection-item waves-effect avatar bits-max"><img src="'+e.data.list[ii].image+'" alt="" class="circle"><span class="title"><span class="serviceListTitle"> '+e.data.list[ii].name+' </span></span><p class="serviceListFirstline"> '+e.data.list[ii].desc+'</p><span class="secondary-content"><p> <input type="checkbox" id='+e.data.list[ii].name+'><label for='+e.data.list[ii].name+'></label></p></span></li>');
+        	};
 
 console.log('service'+getBitsWinOpt('s')+' not found')
 
