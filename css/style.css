@@ -16,11 +16,14 @@
 aside>ul{
   left: -250px !important;
   }*/
+  .bits-transpatent{
+   background-color: rgba(0, 0, 0, 0) !important;
+  }
   .bits-row{
     margin-bottom: 0px !important;
   }
   .bits-move{
-margin-left: -37%;
+margin-left: -7%;
 }
   .bits-13{
     font-size: 13px;
