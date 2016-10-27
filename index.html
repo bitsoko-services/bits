@@ -132,12 +132,12 @@
                  <div class="col col s8 m8 l8">
                    <center>Current Account</center>
                      <div class=" col s12 dropdown-bits">
-    <select id="mySelect" class="div-toggle" data-target=".my-info-1">
+    <select id="" class="icons">
       <option value="" disabled selected class="dropdown-bits"><p style="left:20%;">Choose current Account</p></option>
-      <option  value="COOP-Coin" data-show=".coop">CO-OP account</option>
-      <option value="NIC-Coin" data-show=".nic">NIC account</option>
-      <option value="Sidian-Coin" data-show=".Sidian">Sidian account</option>
+      <option  value="" data-show="" data-icon="images/contacts.png" class="left circle">Anonymous</option>
+      <option value="" data-show="" data-icon="images/sample-1.jpg" class="left circle"></i>Google Account</option>
     </select>
+
     <!-- <label class="bis-font-size "><center>Current Account</center></label>-->
   </div>
                    
@@ -321,10 +321,10 @@
        <div class="modal-content" style="padding: 2px;">
         </div>
                                       <div class="row" style="margin-top: 9%;">
-                                      <ul class="card-action-buttons ">
-                                      <li><a class="btn waves-effect waves-light red accent-4 disabled"><i class="mdi-communication-call-made"></i> Send</a>
+                                     <ul class="card-action-buttons col s12 m8 l9 ">
+                                      <li class="card-action-buttons col s6 m8 l9 "><a class="col s12 m8 l9  btn waves-effect waves-light red accent-4 disabled"><i class="mdi-communication-call-made"></i> Send</a>
                                         </li>
-                                        <li><a class=" btn waves-effect waves-light green accent-4 disabled"><i class="mdi-communication-call-received"></i> Receive</a>
+                                        <li class="card-action-buttons col s6 m8 l9 "><a class=" col s12 m8 l9 btn waves-effect waves-light green accent-4 disabled"><i class="mdi-communication-call-received"></i> Receive</a>
                                         </li>                            
                                        <!--  <li><a class="btn-floating waves-effect waves-light light-blue"><i class="mdi-action-search activator"></i></a>
                                         </li>-->
@@ -449,6 +449,21 @@ var key=pairs[i].split("=")[0];
 
   if  (getBitsWinOpt('s'))  {
 $('#serviceModal').attr('service', getBitsWinOpt('s'));
+ if ( parseInt(getBitsWinOpt('s')) >3 ) 
+ {
+ 	 doFetch({ action: 'serviceProfile', id: getBitsWinOpt('s')}).then(function(e){
+           if (e.status=="ok"){
+           	
+        document.querySelector('.serviceName').innerHTML = activeService.name;
+        document.querySelector('.cardimage').src = "images/"+activeService.cardimage+".png";
+         document.querySelector('.cardLogo').src = "images/"+activeService.cardLogo+".png";
+		document.querySelector('.serviceDescription').innerHTML = activeService.desc;
+
+           }else{
+                
+           }
+        }); 
+ } 
      //$('#serviceModal').openModal(); 
       $('#serviceModal').openModal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
@@ -697,6 +712,14 @@ $(document).ready(function(){
           navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
         });
       }
+    /*  function profileLoaded(id){
+    
+     
+    
+    */
+     $(document).ready(function() {
+    $('select').material_select();
+  });
 </script>
 </body>
 
