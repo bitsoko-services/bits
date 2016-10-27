@@ -449,7 +449,17 @@ var key=pairs[i].split("=")[0];
 
   if  (getBitsWinOpt('s'))  {
 $('#serviceModal').attr('service', getBitsWinOpt('s'));
- if ( parseInt(getBitsWinOpt('s')) >3 ) 
+ 
+     //$('#serviceModal').openModal(); 
+      $('#serviceModal').openModal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: .5, // Opacity of modal background
+      in_duration: 300, // Transition in duration
+      out_duration: 200, // Transition out duration
+      starting_top: '4%', // Starting top style attribute
+      ending_top: '10%', // Ending top style attribute
+      ready: function() { 
+if ( parseInt(getBitsWinOpt('s')) >3 ) 
  {
  	 doFetch({ action: 'serviceProfile', id: getBitsWinOpt('s')}).then(function(e){
            if (e.status=="ok"){
@@ -464,15 +474,7 @@ $('#serviceModal').attr('service', getBitsWinOpt('s'));
            }
         }); 
  } 
-     //$('#serviceModal').openModal(); 
-      $('#serviceModal').openModal({
-      dismissible: true, // Modal can be dismissed by clicking outside of the modal
-      opacity: .5, // Opacity of modal background
-      in_duration: 300, // Transition in duration
-      out_duration: 200, // Transition out duration
-      starting_top: '4%', // Starting top style attribute
-      ending_top: '10%', // Ending top style attribute
-      ready: function() {serviceOpener();}, // Callback for Modal open
+       }, // Callback for Modal open
      // complete: function() { alert('Closed'); } // Callback for Modal close
     }); 
   } 
@@ -684,7 +686,9 @@ $(document).on('change', '.div-toggle', function() {
   $(target).children().addClass('hide');
   $(show).removeClass('hide');
 });
-
+$(document).ready(function(){
+	$('.div-toggle').trigger('change');
+});
 
 
 

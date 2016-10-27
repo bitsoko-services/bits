@@ -249,7 +249,7 @@ store.onsuccess = function (event) {
         console.log('access error');
     }
 
-    
+    	serviceOpener(); 
   
 }
 
