@@ -454,10 +454,10 @@ $('#serviceModal').attr('service', getBitsWinOpt('s'));
  	 doFetch({ action: 'serviceProfile', id: getBitsWinOpt('s')}).then(function(e){
            if (e.status=="ok"){
            	
-        document.querySelector('.serviceName').innerHTML = e.name;
-        document.querySelector('.cardimage').src = "images/"+e.banner+".png";
-         document.querySelector('.cardLogo').src = "images/"+e.icon+".png";
-		document.querySelector('.serviceDescription').innerHTML = e.desc;
+        document.querySelector('.serviceName').innerHTML = e.data.name;
+        document.querySelector('.cardimage').src = e.data.banner;
+         document.querySelector('.cardLogo').src = e.data.icon;
+		document.querySelector('.serviceDescription').innerHTML = e.data.desc;
 
            }else{
                 
