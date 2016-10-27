@@ -468,7 +468,15 @@ if ( parseInt(getBitsWinOpt('s')) >3 )
         document.querySelector('.cardimage').src = e.data.banner;
          document.querySelector('.cardLogo').src = e.data.icon;
 		document.querySelector('.serviceDescription').innerHTML = e.data.desc;
+		 $('.serviceListHolder').html("");
+ for(var ii = 0; ii < e.data.list.length; ++ii) {
+        $('.serviceListHolder').append('<li onclick="updateServicelist()" class="collection-item waves-effect avatar"><img src="'+e.data.image+'" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle"> '+e.data.name+' </span></span><p class="serviceListFirstline"> '+e.data.desc+'</p><a href="#!" class="secondary-content"></a></li>');
+ 
+		};
 
+console.log('service'+getBitsWinOpt('s')+' not found')
+
+             
            }else{
                 
            }
