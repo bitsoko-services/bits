@@ -63,27 +63,6 @@ var req = getObjectStore('data', 'readwrite').put(newCount, 'country');
   });
 }
 
-function getLoc(){
-     navigator.permissions.query({name:'geolocation'}).then(function(p)
-{  
-         
-       var locButton = document.querySelector('.js-loc-button-notification');
-  if (p.state === 'granted') {
-      
-    var latlng;
-  navigator.geolocation.getCurrentPosition(showPosition, showError);
-    locButton.checked = true;
-    
-} else{
-      navigator.geolocation.getCurrentPosition(showPosition, showError);
-    locButton.checked = false;
-    
-    reqLoc();
-} 
-}); 
-}
-
-
 function profileLoaded(id){
     /*
       doFetch({ action: 'recWal', name: id}).then(function(e){
