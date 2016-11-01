@@ -16,6 +16,49 @@
 aside>ul{
   left: -250px !important;
   }*/
+  .bits-profile{
+
+  max-width: 20% !important;
+  }
+  
+  .user-details{
+    line-height:30px!important;
+  }
+  .pinned>.maincard{
+      background-color: #0f5f76 !important;
+      height: 140px;
+  }
+   .pinned>div>.card-image>img{
+     top:-120px;
+   }
+  .pinned>div>.card-image{
+    max-height: 30% !important;
+   
+     
+  }
+  .pinned.card-bit{
+ margin-top: 56px;
+    z-index: 10000;
+    background-color: #0f5f76 !important;
+    width: 100%; 
+    /* margin-left: -2.7% !important; */
+    /* margin-right: 10% !important; */
+    color: #fff;
+    /* box-shadow: 0 0 10px #000; */
+  }
+  .bits-badge{
+    min-width: 3rem;
+    padding: 0 6px;
+    text-align: center;
+    font-size: 1rem;
+    line-height: inherit;
+    color: #fafafa;
+    position: absolute;
+    /* right: 15px; */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
   .bits-max{
     width: 100%;
   }
@@ -52,7 +95,7 @@ margin-left: -10px;
        color: #fff;
   }
   .bits-up{
-   margin-top: -19px;
+   margin-top: -59px;
     margin-left: 20%;
   }
   .bits-white{
