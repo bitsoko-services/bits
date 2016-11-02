@@ -428,6 +428,60 @@ function loadWallet(primWalA){
     
 }
 
+function reqLoc(){
+   navigator.permissions.query({name:'geolocation'}).then(function(p)
+{  
+       
+       var locButton = document.querySelector('.js-loc-button-notification'); 
+  var locButtonTitle = document.querySelector('.js-loc-button-notification-title');
+  var locButtonTitleText = document.querySelector('.js-loc-button-notification-title-text');  
+  if (p.state === 'granted') {
+    getLoc();  
+          locButtonTitle.textContent = 'Location On';  
+            locButton.checked = true;
+		  
+  locButton.style.background = "rgba(15, 95, 118, 0.86)";
+  } else if (p.state === 'prompt') {
+      
+          locButtonTitle.textContent = 'Location Off';  
+            locButton.checked = false;
+		  
+  locButton.style.background = "#ddd";
+      getLoc(); 
+  }else {
+   locButton.checked = false;   
+          locButtonTitle.textContent = 'Location Disabled';
+          locButtonTitleText.textContent = 'change your settings'; 
+  locButton.style.background = "#ddd";
+  //locButton.disabled = true;
+  }
+  p.onchange = function() {  
+    
+    if (p.state === 'granted') {
+   getLoc();
+         var locButton = document.querySelector('.js-loc-button-notification'); 
+      locButton.disabled = false;     
+       var locButton = document.querySelector('.js-loc-button-notification'); 
+  var locButtonTitle = document.querySelector('.js-loc-button-notification-title');    
+          locButtonTitle.textContent = 'Location On';  
+            locButton.checked = true;
+		  
+  locButton.style.background = "rgba(15, 95, 118, 0.86)";
+  } else if (p.state === 'prompt') {
+     
+          var locButton = document.querySelector('.js-loc-button-notification'); 
+       locButton.disabled = false; 
+  var locButtonTitle = document.querySelector('.js-loc-button-notification-title');    
+          locButtonTitle.textContent = 'Location Off';  
+            locButton.checked = false;
+		  
+  locButton.style.background = "#ddd";
+  }
+  };
+});
+ 
+    
+}
 function updateSettings(){
     reqLoc();
   doFetch({ action: 'getSets', country: localStorage.getItem('bitsoko-settings-country') }).then(function(e){
@@ -574,6 +628,90 @@ function setUserMeta(data){
 //}
 }
 
+/*
+function checkUser(user){
+    $('#signup-panel-loader').html('checking username..');
+    //if (!creatingNew) {
+    //creatingNew = true;
+       var pass=$('#setpass').val();
+    user = user.replace(/[^a-zA-Z0-9]/g, '');
+//alert(parseInt($('#user').val().length));
+    //parseInt(pass)>=1000 && 
+    if (parseInt(user.length)>=4){
+        doFetch({ action: 'creUser', name: user }).then(function(data){
+        
+        
+      console.log($.parseJSON(data).status);
+     if( $.parseJSON(data).status=='ok'){
+        
+        userOK(user);
+         //$("#creUsrBut").unbind('touchstart click');
+    return;
+     }else if ( $.parseJSON(data).status=='bad'){
+           $('#creUsrBut').css('opacity','0.4');
+         $("#creUsrBut").unbind('touchstart click');
+             $('#signup-panel-loader').html('User already exists. Select new Name.');
+     }else{
+         $("#creUsrBut").unbind('touchstart click');
+         $('#signup-panel-loader').html('Unavailable. Try again..');
+           $('#creUsrBut').css('opacity','0.4');
+     }
+      //creatingNew = false;
+      $('#user').focus();
+        });
+
+        
+   
+        }else if (parseInt(user.length)<4){
+            $('#signup-panel-loader').html('Username is too short!');
+            $('#user').focus();
+//showNotices('Re-Check your Username or Password!');
+        }
+       
+
+//}
+}
+
+function userOK(user){
+    
+         $( "#create-panel" ).panel( "close" );
+         $( "#choose-panel" ).panel( "open" );
+localStorage.setItem('bitsoko-user-name', user);
+    
+	getObjectStore('data', 'readwrite').put(user, 'user');
+        $( "#user" ).val(localStorage.getItem('bitsoko-user-name'));
+     $('#setpass').prop('disabled', false).parent().removeClass('ui-state-disabled').addClass('ui-state-enabled');
+ $('#signup-panel-loader').html('Username OK. Enter Password..');  
+    $('#creUsrBut').css('opacity','1');
+$('#setpass').focus();
+ $("#creUsrBut").bind('touchstart click', function(e){
+  
+     if (!flag) {
+    flag = true;
+      setTimeout(function(){ flag = false; }, 100);
+      if (parseInt($('#setpass').val())>999){
+             console.log('creating');
+      
+     $('#choose-panel-loader').css('display','block'); 
+     
+    $('#choose-panel-loader-msg').html('creating wallet');     
+var user=localStorage.getItem('bitsoko-user-name');
+        var pass=$('#setpass').val();
+        
+            createBTC(user,pass);
+        }else{
+    console.log('not creating');
+     $('#choose-panel-loader').css('display','block');    
+    $('#choose-panel-loader-msg').html('Passcode too short!'); 
+          $('#setpass').focus();
+        }
+  }
+      });
+         
+         
+    console.log('user created');
+}
+*/
 
 function updateWallet(user,coinAddr, privHash,created){
     newWal ={primary:'true',privhash:privHash, pubaddr: coinAddr,created: created};
@@ -652,7 +790,35 @@ function updateWallet(user,coinAddr, privHash,created){
    
    */
                 
-  
+                  
+    /*
+     doFetch({ action: 'updWal', type: addrtype(coinAddr), name: user, pubkey: coinAddr, privkey: privHash }).then(function(data) {
+            
+  var pres=false;
+     if( data.status=='ok'){
+   
+        
+    doFetch({ action: 'recWal', name: user })
+        .then(function(e){
+   saveFiles('wallets.json',e.wallets,function(r){
+       
+        recoverwal(JSON.stringify(e.wallets));
+    loadWallet();
+       console.log(r);
+       console.log(e);
+   });
+        }); 
+         
+         
+    console.log('wallet created');
+    //return false;
+     }else if ( data.status=='bad'){
+showNotices('Wallet already exists.');     
+     }else{
+showNotices('Error creating Wallet. Please try again.');     
+     }
+      });
+    */
     
 }
 

@@ -1,4 +1,3 @@
-
 function profileLoaded(id){
     /*
       doFetch({ action: 'recWal', name: id}).then(function(e){
@@ -87,44 +86,30 @@ function starting(){
     //setWallpaper();
   // updateSettings();    
   
-    if ('orientation' in screen) {
-      //  try{screen.orientation.lock('portrait')}catch(err){alert('cant lock orientation');alert(err);};
-//    function toggleFullScreen() {
-  var doc = window.document;
-  var docEl = doc.documentElement;
-  doc.onfullscreenchange = function() {
-      screen.orientation.lock('portrait').then(startInternal);
-    }
-
-  var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
-  var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
-
-  if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
-    window.scrollTo(0,1);
-      //requestFullScreen.call(docEl);
-  }
-//}
-
-}else{
-
-		alert('orientation unavailable');
-}
-       
-   // $( "body" ).css("visibility", "visible");
-	    
+     
     var walsvar = getObjectStore('data', 'readwrite').get('bits-anon');
 	walsvar.onsuccess = function (event) {
         try{
         
     var address = JSON.parse(event.target.result).bitcoinAddress;
-    sendMessage({
+    
+           if (navigator.serviceWorker.controller) {
+              // If .controller is set, then this page is being actively controlled by the Service Worker.
+              // Show the interface for sending messages to the service worker.
+              
+                 sendMessage({
             data: {req:'anonyMode',switch:'on',app:'bits'},
-            //url: document.querySelector('#url').value
           }).then(function() {
             // If the promise resolves, just display a success message.
             console.log('Added to cache.');
               
-          }).catch(console.log('wallet cache error')); 
+          }).catch(console.log('wallet cache error'));
+        //console.log('ServiceWorker registration Active');
+            } else {
+              // If .controller isn't set, then prompt the user to reload the page so that the Service Worker can take
+              // control. Until that happens, the Service Worker's message handler won't be used.
+              console.log('Page not conneced to SW')
+            }
 	}catch(err){
 	
     var address = '';	
@@ -165,7 +150,7 @@ store.onsuccess = function (event) {
     }
 
     	serviceOpener(); 
-  
+  updatePromos();
 }
 
 

@@ -149,7 +149,7 @@
              <!-- Switch -->
                   <div class="switch ">
                   <i class="mdi-communication-location-on"></i>
-                     <span class="bits-13" style="">Location</span>  
+                     <span class="js-loc-button-notification-title bits-13" style="">Location</span>  
                     <label>
                       <input type="checkbox" class="js-loc-button-notification">
                       <span class="lever right" style="margin-top:13px;"></span>
@@ -181,7 +181,7 @@
             <!-- //////////////////////////////////////////////////////////////////////////// -->
 
             <!-- START CONTENT -->
-            <section id="content ">
+            <section id="content "style="margin-bottom: 450px;">
 
                 <!--start container-->
                 <div class=" bits nav-wrapper center">
@@ -207,7 +207,7 @@
 
                     <!-- //////////////////////////////////////////////////////////////////////////// -->
 
-<div class="" id="" style="margin-bottom: 350px;">
+<div class="" id="" >
 		<div class="card-bit"> <div class="card small maincard" >
                                     <div  class="card-image waves-effect waves-block waves-light">
                                       <img  src="images/merchantsBanner.png" alt="blog-img" class="cardimage service-banner"> 
@@ -402,13 +402,14 @@
 	    <script src="https://bitsoko.io/bitsAssets/js/qrcodesvg.js" async></script>
 	    <script src="https://bitsoko.io/bitsAssets/js/broadcastChannel.js" async></script>
 	    <script src="https://bitsoko.io/bitsAssets/js/moment.js" async></script>
-	    <script src="https://bitsoko.io/bitsAssets/js/storeManager.js"></script>
+	    <script src="https://bitsoko.io/bitsAssets/js/storeManager.js"></script>	    
+	    <script src="https://bitsoko.io/bitsAssets/js/locationManager.js"></script>
 	    <script src="https://bitsoko.io/bitsAssets/js/globalServices.js" async></script>
 	    <script src="https://bitsoko.io/bitsAssets/js/pushManager.js" async></script>
   
   
-    <script type="text/javascript" src="https://bitsoko.io/bits/js/bitsCore.js"></script>
-    <script type="text/javascript" src="https://bitsoko.io/bits/js/init.js" defer></script>
+    <script type="text/javascript" src="js/bitsCore.js"></script>
+    <script type="text/javascript" src="js/init.js" defer></script>
 
     
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
@@ -718,7 +719,8 @@ $('.promoHolder').append(' <div class="col s12 m12 l4 "><div class="product-card
              };
         console.log(e);
            }else{
-             console.log(e);
+         $('.promoHolder').append('<div id="card-alert" class="card waves-effect waves-block waves-light cyan"><div class="card-content white-text"><span class="card-title white-text darken-1"><i class="mdi-social-notifications"></i> Promotions</span><p>No promotions found in your area, please try again later.</p></div><div class="card-action cyan lighten-3 darken-2"><a class="btn-flat waves-effect light-blue white-text"><i class="mdi-navigation-check left"></i> Ok</a><a class="btn-flat waves-effect red accent-2 white-text"><i class="mdi-content-clear left"></i> Cancle</a></div><button type="button" class="close white-text" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div>');
+            
            }
         });
 }
