@@ -16,17 +16,20 @@
 aside>ul{
   left: -250px !important;
   }*/
+ .pinned+div>ul{
+   margin-top:210px;
+ }
   .bits-profile{
 
   max-width: 20% !important;
   }
-  
+
   .user-details{
     line-height:30px!important;
   }
   .pinned>.maincard{
       background-color: #0f5f76 !important;
-      height: 140px;
+      height: 160px;
   }
    .pinned>div>.card-image>img{
      top:-120px;
