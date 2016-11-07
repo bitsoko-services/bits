@@ -207,8 +207,8 @@
 
                     <!-- //////////////////////////////////////////////////////////////////////////// -->
 
-<div class="" id="" >
-		<div class="card-bit"> <div class="card small maincard" >
+<div class="card-container-bits " id="" >
+		<div class="card-bit"> <div class="card small maincard"  style="border-radius: 0px;">
                                     <div  class="card-image waves-effect waves-block waves-light">
                                       <img  src="images/merchantsBanner.png" alt="blog-img" class="cardimage service-banner"> 
                                     </div>
@@ -236,11 +236,11 @@
                                       </div> 
                                      
                                 </div>
-                                <div class="row" style="margin-top:-200px; margin-bottom: 0px;">
-                                     <ul class="card-action-buttons col s12 m8 l9 ">
-                                      <li class="card-action-buttons col s6 m8 l9 "><a class="bits-transpatent col s12 m8 l9  btn waves-effect waves-light  accent-4 disabled"style="background-color: rgba(0, 0, 0, 0) !important;"><i class="mdi-communication-call-made"></i> Send</a>
+                                <div class="row bits-tab" style=" margin-bottom: 0px;">
+                                     <ul class="card-action-buttons col s12 m8 l9 "style="margin-top: 5px;">
+                                      <li class="card-action-buttons col s6 m8 l9  white-text"><a class="bits-transpatent col s12 m8 l9 btn-flat  white-text btn waves-effect waves-light  accent-4 "style="background-color: rgba(0, 0, 0, 0) !important;"><i class="mdi-communication-call-made"></i> Send</a>
                                         </li>
-                                        <li class="card-action-buttons col s6 m8 l9 "><a class="bits-transpatent col s12 m8 l9 btn waves-effect waves-light  accent-4 disabled"style="background-color: rgba(0, 0, 0, 0) !important;"><i class="mdi-communication-call-received"></i> Receive</a>
+                                        <li class="card-action-buttons col s6 m8 l9 "><a class="bits-transpatent col s12 m8 l9 btn waves-effect waves-light  accent-4 btn-flat  white-text"style="background-color: rgba(0, 0, 0, 0) !important;"><i class="mdi-communication-call-received"></i> Receive</a>
                                         </li>                            
                                        <!--  <li><a class="btn-floating waves-effect waves-light light-blue"><i class="mdi-action-search activator"></i></a>
                                         </li>-->
@@ -698,7 +698,7 @@ activeService=$('#serviceModal').attr('service');
             
     for(var ii = 0; ii < serviceList.length; ++ii) {
 
-		$('.serviceListHolder').append('<li class="collection-item avatar"><img src="images/avatar.jpg" alt="" class="circle"><span class="title"><span class="serviceListTitle">'+serviceList[ii].name+'</span></span><p class="serviceListFirstline"> empty <br class="servicelistSeccondline"> Second Line </p><a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a></li>');
+		$('.serviceListHolder').append('<li class="collection-item avatar"><img src="images/avatar.jpg" alt="" class="circle"><span class="title"><span class="serviceListTitle">'+serviceList[ii].name+'</span></span><p class="serviceListFirstline"><br class="servicelistSeccondline"> Second Line </p><a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a></li>');
       
              };
 
@@ -719,7 +719,7 @@ $('.promoHolder').append(' <div class="col s12 m12 l4 "><div class="product-card
              };
         console.log(e);
            }else{
-         $('.promoHolder').append('<div id="card-alert" class="card waves-effect waves-block waves-light cyan"><div class="card-content white-text"><span class="card-title white-text darken-1"><i class="mdi-social-notifications"></i> Promotions</span><p>No promotions found in your area, please try again later.</p></div><div class="card-action cyan lighten-3 darken-2"><a class="btn-flat waves-effect light-blue white-text"><i class="mdi-navigation-check left"></i> Ok</a><a class="btn-flat waves-effect red accent-2 white-text"><i class="mdi-content-clear left"></i> Cancle</a></div><button type="button" class="close white-text" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div>');
+         $('.promoHolder').append('<div id="card-alert" class="card waves-effect waves-block waves-light "><div class="card-content grey-text text-darken-2"><span class="card-title darken-1"><i class="mdi-social-notifications"></i> Promotions</span><p>No promotions found in your area, please try again later.</p></div>');
             
            }
         });
@@ -773,6 +773,15 @@ $(document).ready(function(){
      	$('.card-bit').pushpin({ top: $('.card-bit').offset().top });
   });
       
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+$(".card-container-bit").hide();
+  $("#preview").click(function() {
+    $("#div1").hide();
+    $("#div2").show();
+  });
+});
 </script>
 </body>
 
