@@ -1,0 +1,57 @@
+
+.result {
+    width: 100%;
+    height: 70px;
+	color: #fff;
+  display:block;
+    font-family: sans-serif;
+    margin:5px auto;
+    text-align: right;
+    padding-top:20px;
+    font-size:20px;
+    outline: none;
+    overflow: hidden;
+    letter-spacing: 4px;
+    position: relative;
+}
+.btn-style:hover{
+	
+    background-color: #ebecef!important;
+    border: 1px solid #ccc8c8;   
+}
+.rows{
+	
+	margin-bottom: 2px;}
+#first-rows {
+    margin-bottom: 20px;
+    position: relative;
+    top:10px;
+}
+
+
+
+
+/* Button styling */
+.btn-style {
+    
+    width: 28%;
+    height: 60px;
+}
+
+
+.first-child {margin-left: 10px;
+}
+
+
+/* Adding background color to the number values */
+ .num-bg {
+  background: #fafafa;
+    color: #0f5f76 !important;
+    font-size: 19px;
+    cursor: pointer;
+    outline: none;
+    border: 1px solid #eae8e8;
+}
+
+ 
+

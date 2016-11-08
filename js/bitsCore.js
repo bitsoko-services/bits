@@ -276,46 +276,18 @@ function showNotices(msg,tm,bt) {
     
 }
 
-function startPay(name,recp,amount,ref){
+function startPay(name,recp,amount,action,ref){
  
-    var amount = parseInt(currPayAmt());
-viewModel.payEntry('amount');
-    $("#confpass").removeClass('inpactive');
-    $("#confamt").addClass('inpactive');
-    // keyelm.addClass('inpactive');
-   // $("#payer").attr( "soko-name", name ).attr( "soko-recp", recp ).attr( "soko-amount", amount ).attr( "soko-ref", ref );
-      $( "#payer-upd" ).css("display","none");
-      $( '.keypadinp' ).removeClass("keypadinpactive");
-   
-    
-  
 if (amount <=0 || amount == "undefined" || amount === undefined || amount === null){
-$('#wamtn').css('display','inline-block');
-$('#wamt').css('display','inline-block');
-   amount=0;
+
+   currentTransaction.amount=0;
  //$( "#conf-iamt" ).focus();   
-}else{
- 
-   currAmt(amount);
-$('#wamt').css('display','none');
-$('#wamtn').css('display','inline-block');
-    viewModel.payEntry('pass');
-    $("#confamt").removeClass('inpactive');
-    $("#confpass").addClass('inpactive');
 }
    
-           if (viewModel.activeServ().type=="serv-type-1"){
-                                                           
-    var sendPoint = viewModel.activeServ().accno;                                                   
-       
-           }else{
-                                                         
-    var sendPoint = viewModel.activeServ().name + "-" + viewModel.activeServ().accno;                                                   
-         
-           }        
-      if (currPayAction()=='send'){
+                
+      if (action=='send'){
     
-    $("#conf-act").html('to');
+    
            if (navigator.vibrate) {
     // vibration API supported
     navigator.vibrate([200,200,200]);
@@ -327,9 +299,7 @@ $('#wamtn').css('display','inline-block');
     navigator.vibrate(600);
 }
     }                                                    
-   $( "#conf-merch" ).html(sendPoint);
-
- document.getElementById('payPop').showModal();   
+   
 
 }
 

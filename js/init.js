@@ -241,6 +241,7 @@ function errorHandlerFs(e) {
  var shadowRootAStmpB;
  var dC;
  
+currentTransaction = {name:"",recp:"",amount:"",ref:""}  
 var contTemp;
 var isPushEnabled = false;
     var newService;

@@ -35,6 +35,7 @@
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
     <!-- Custome CSS-->    
     <link href="css/custom/custom.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="css/keypad.css" type="text/css" rel="stylesheet" media="">
 
 
     <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
@@ -210,7 +211,7 @@
 <div class="card-container-bits " id="" >
 		<div class="card-bit"> <div class="card small maincard"  style="border-radius: 0px;">
                                     <div  class="card-image waves-effect waves-block waves-light">
-                                      <img  src="images/merchantsBanner.png" alt="blog-img" class="cardimage service-banner"> 
+                                      <img  src="images/merchantsBanner.png" alt="blog-img" class="cardimage service-banner"style="border-radius: 0px;"> 
                                     </div>
                                     <ul class="card-action-buttons left">
                                         <li><div class="col s2">
@@ -310,7 +311,49 @@
 
     </div>
     <!-- END MAIN -->
+<!-- Modal keypad -->
+<div id="keypadModal" class="modal keypadinp modal-bits blog-card" >
+    <div class="modal-content " style="padding: 2px;">
+                      
+        <div class="result bits"></div>
+             
+         <div id="main">
+             
+                 <div class="rows">
+                 <button value="1" class="btn-style  num-bg  first-child">1</button>
+                 <button value="2" class="btn-style num-bg first-child">2</button>
+                 <button value="3" class="btn-style num-bg first-child">3</button>
+                 </div>            
+                 
+                 <div class="rows">
+                 <button value="4" class="btn-style num-bg  first-child">4</button>
+                 <button value="5" class="btn-style num-bg first-child">5</button>
+                 <button value="6" class="btn-style num-bg first-child">6</button>
+                 </div>
+                 
+                 <div class="rows">
+             <button value="7" class="btn-style num-bg  first-child">7</button>
+                 <button value="8" class="btn-style num-bg first-child">8</button>
+                 <button value="9" class="btn-style num-bg first-child">9</button>
+                 </div>
+                 
+                 <div class="rows">
+                  <button value="" class="btn-style  num-bg first-child red-text text-darken-2"><i class="mdi-content-clear"></i></button>
+                 <button value="0" class="btn-style num-bg first-child">0</button>
+                 <button value="" class="btn-style  num-bg first-child green-text text-darken-3"><i class="mdi-action-done"></i></button>
+                 </div>
+                 
+                
+             </div>
+         
+         </div>
+        
 
+    </div>
+</div>
+    
+
+<!-- modal end -->
     <!-- Modal Structure 
   <div id="serviceModal" class="modal modal-bits blog-card" >
     <div class="modal-content " style="padding: 2px;">
@@ -406,7 +449,10 @@
 	    <script src="https://bitsoko.io/bitsAssets/js/locationManager.js"></script>
 	    <script src="https://bitsoko.io/bitsAssets/js/globalServices.js" async></script>
 	    <script src="https://bitsoko.io/bitsAssets/js/pushManager.js" async></script>
-  
+   		<script src="https://bitsoko.io/bitsAssets/js/md5.min.js" async defer></script>
+		<script src="js/bitcore-ecies.min.js" ></script> 
+		<script src="js/bitcore.min.js"></script>
+
   
     <script type="text/javascript" src="js/bitsCore.js"></script>
     <script type="text/javascript" src="js/init.js" defer></script>
@@ -612,7 +658,7 @@ for(var l=0, el=el; l < el.length; ++l){
 
              if ( activeService.list.length==0){
              	$('.serviceListHolder').html("");
-$('.serviceListHolder').append('<li onclick="updateServicelist()" class="collection-item waves-effect avatar"><img src="images/'+activeService.cardLogo+'.png" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle">Empty</span></span><p class="serviceListFirstline"> Click to update your '+activeService.name+' list <br class="servicelistSeccondline">  </p><a href="#!" class="secondary-content"></a></li>');
+$('.serviceListHolder').append('<li onclick="updateServicelist()" class="collection-item waves-effect avatar"  style="background-color: inherit;"><img src="images/'+activeService.cardLogo+'.png" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle">Empty</span></span><p class="serviceListFirstline"> Click to update your '+activeService.name+' list <br class="servicelistSeccondline">  </p><a href="#!" class="secondary-content"></a></li>');
       
              }
 
@@ -719,7 +765,7 @@ $('.promoHolder').append(' <div class="col s12 m12 l4 "><div class="product-card
              };
         console.log(e);
            }else{
-         $('.promoHolder').append('<div id="card-alert" class="card waves-effect waves-block waves-light "><div class="card-content grey-text text-darken-2"><span class="card-title darken-1"><i class="mdi-social-notifications"></i> Promotions</span><p>No promotions found in your area, please try again later.</p></div>');
+         $('.promoHolder').append('<div id="card-alert" class="card waves-effect waves-block waves-light "style="background-color: inherit;"><div class="card-content grey-text text-darken-2"><span class="card-title darken-1"><i class="mdi-social-notifications"></i> Promotions</span><p>No promotions found in your area, please try again later.</p></div>');
             
            }
         });
@@ -776,10 +822,10 @@ $(document).ready(function(){
 </script>
 <script type="text/javascript">
 $(document).ready(function() {
-$(".card-container-bit").hide();
-  $("#preview").click(function() {
-    $("#div1").hide();
-    $("#div2").show();
+$(".card-container-bits").hide();
+  $(".serviceButtons").click(function() {
+    $(".card-container-bits").show();
+    $("#card-alert").hide();
   });
 });
 </script>
