@@ -69,7 +69,7 @@ margin-top:-31px;
   }
   .pinned.card-bit{
  margin-top: 56px;
-    z-index: 10000;
+    z-index: 500;
     background-color: #0f5f76 !important;
     width: 100%; 
     /* margin-left: -2.7% !important; */

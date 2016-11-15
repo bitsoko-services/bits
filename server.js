@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion = 37;
+	bitsVersion = 38;
 bitsInstall = function(event){
 	
 	
@@ -12,6 +12,29 @@ bitsInstall = function(event){
 	
 	
 	}
+
+bitsNotificationClick = function(event){
+	
+	
+	
+	 switch (dat.req) {
+      // This command returns a list of the URLs corresponding to the Request objects
+      // that serve as keys for the current cache.
+      // This command adds a new request/response pair to the cache.
+             
+      case 'createBackup':
+    
+           bitsNotification('Wallet Backed Up','Thank you for backing up your wallet you are one step closer to saving the world','AnonMsg','bits/images/no.png',[{action: '', title: "Backed up"}],true,true);
+       
+      break;
+			}
+	
+	
+	
+	
+	
+	}
+	
 	bitsMessage = function(dat){
 	
     
@@ -28,7 +51,7 @@ return new Promise(function(resolve, reject) {
       case 'anonyMode':
      data = dat;
     console.log(data);
-           bitsNotification('Wallet not Backed up','If you lose your phone you will lose your wallet, Sign in to back up your private infomation','AnonMsg','bits/images/no.png',[{action: 'signIn', title: "Sign In"}],true,true);
+           bitsNotification('Backed up Wallet','You can Download an offline copy of your wallet incase you loose your device, Click to download your private infomation','AnonMsg','bits/images/no.png',[{action: 'createBackup', title: "Back up"}],true,true);
        
       break;
 			}
