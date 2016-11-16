@@ -17,10 +17,10 @@ aside>ul{
   left: -250px !important;
   }*/
   .pin-top>div>.bits-tab{
-margin-top:-31px;
+margin-top:-19px;
   }
   .pinned>div>.bits-tab{
-    margin-top:-15px;
+    margin-top:-14px;
   }
   maincard{
     border-radius: 0px !important;
@@ -57,7 +57,7 @@ margin-top:-31px;
   }
   .pinned>.maincard{
       background-color: #0f5f76 !important;
-      height: 220px;
+      height: 240px;
   }
    .pinned>div>.card-image>img{
      top:-120px;

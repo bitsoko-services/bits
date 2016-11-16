@@ -15,3 +15,15 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     text-align: center;
     margin-top: 10px;
 }
+.card .card-content {
+    padding: 0px !important; 
+}
+
+.pinned>.card.maincard {
+    background-color: #0f5f76 !important;
+    height: 240px !important;
+}
+
+.card.small {
+    height: 341px !important;
+}
