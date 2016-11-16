@@ -8,12 +8,12 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/app/index.html#p=2",
+  "start_url": "/bits/",
   "display": "standalone",
   "orientation": "portrait",
     "background_color": "#ffffff",
     "theme_color": "#0f5f76",
-    "scope": "/app/",
+    "scope": "/bits/",
   "gcm_sender_id": "1056993243377",  
   "gcm_user_visible_only": true  
 }
