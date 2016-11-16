@@ -159,19 +159,19 @@
 
                   </a>
             </li>
-           <!-- <li><a href="#">
+            <li><a href="#">
               Switch 
                   <div class="switch">
                   <i class="mdi-social-person-add"></i>
-                   <span class="bits-13" style=""></span>   Contacts  
-                    <label>
-                      <input type="checkbox">
+                   <span class="bits-13" style=""></span>   Backup  
+                    <!-- <label>
+                     <input type="checkbox">
                       <span class="lever right" style="margin-top:13px;"></span>
-                    </label>
+                    </label>-->
                   </div>
 
                   </a>
-            </li>-->
+            </li>
            
         </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only bits"><i class="mdi-navigation-menu"></i></a>
@@ -239,11 +239,12 @@
                                 </div>
                                 <div class="row bits-tab" style=" margin-bottom: 0px;">
                                      <ul class="card-action-buttons col s12 m8 l9 "style="margin-top: 5px;">
-                                      <li class="card-action-buttons col s6 m8 l9  white-text"><a class="saleButton bits-transpatent col s12 m8 l9 btn-flat  white-text btn waves-effect waves-light  accent-4 "style="background-color: rgba(0, 0, 0, 0) !important;"><i class="mdi-communication-call-made"></i> Send</a>
+                                     <p><span> Totals:</span> <span class="totals"></span></p>
+                                      <!--<li class="card-action-buttons col s6 m8 l9  white-text"><a class="saleButton bits-transpatent col s12 m8 l9 btn-flat  white-text btn waves-effect waves-light  accent-4 "style="background-color: rgba(0, 0, 0, 0) !important;"><i class="mdi-communication-call-made"></i> Send</a>
                                         </li>
                                         <li class="card-action-buttons col s6 m8 l9 "><a class="saleButton bits-transpatent col s12 m8 l9 btn waves-effect waves-light  accent-4 btn-flat  white-text"style="background-color: rgba(0, 0, 0, 0) !important;" ><i class="mdi-communication-call-received"></i> Receive</a>
                                         </li>                            
-                                       <!--  <li><a class="btn-floating waves-effect waves-light light-blue"><i class="mdi-action-search activator"></i></a>
+                                         <li><a class="btn-floating waves-effect waves-light light-blue"><i class="mdi-action-search activator"></i></a>
                                         </li>-->
                                     </ul> 
                                     </div>
@@ -276,7 +277,7 @@
                            
                     <!--work collections end-->
 
-                    <!-- Floating Action Button -->
+                    <!-- Floating Action Button 
                     <div class="fixed-action-btn " style="bottom: 50px; right: 19px;">
                         <a class="btn-floating btn-large bits">
                           <i class="mdi-content-add"></i>
@@ -523,6 +524,24 @@ var key=pairs[i].split("=")[0];
     
     
 }
+function tabulateTotals(){
+	console.log(this);
+var addproducts = document.querySelectorAll(".bitsInputQty");
+var totals = 0;
+for(var i = 0; i< addproducts.length; ++i){
+//addproducts[i].addEventListener("change",tabulateTotals,false);
+try{
+	var itVal=$(addproducts[i]).val() ? $(addproducts[i]).val() : 0;
+totals = totals+(parseInt($(addproducts[i]).attr("price"))*parseInt(itVal));
+
+$(".totals").html(totals);
+}catch(err){}
+}
+
+
+
+}
+
   function serviceOpener(){
 
   
@@ -540,12 +559,18 @@ $(".resDisplay").html( e.data.name);
         document.querySelector('.cardimage').src = e.data.banner;
          document.querySelector('.cardLogo').src = e.data.icon;
 		//document.querySelector('.serviceDescription').innerHTML = e.data.price;
-		document.querySelector('.serviceDescription').innerHTML = e.data.desc;
+		document.querySelector('.serviceDescription').innerHTML = e.data.description;
 		//document.querySelector('.serviceDescription').innerHTML = e.data.metric;
 		 $('.serviceListHolder').html("");
  for(var ii = 0; ii < e.data.list.length; ++ii) {
-        $('.serviceListHolder').append('<li onclick="updateServicelist()" class="collection-item waves-effect avatar bits-max"><img src="'+e.data.list[ii].image+'" alt="" class="circle"><span class="title"><span class="serviceListTitle"> '+e.data.list[ii].name+' </span></span><p class="serviceListFirstline"> <span class="bits-badge bits left">'+e.data.list[ii].price+' KSH per '+e.data.list[ii].metric+' </span></p><span class="secondary-content"><p> <input type="checkbox" id='+e.data.list[ii].name+'><label for='+e.data.list[ii].name+'></label></p></span></li>');
+        $('.serviceListHolder').append('<li class="collection-item waves-effect avatar bits-max"><img src="'+e.data.list[ii].image+'" alt="" class="circle"><span class="title"><span class="serviceListTitle"> '+e.data.list[ii].name+' </span></span><p class="serviceListFirstline"> <span class="bits-badge bits left">'+e.data.list[ii].price+' <span class="localCurr"></span> per '+e.data.list[ii].metric+' </span></p><span class="secondary-content"><p class="col s4"> <input class="number bitsInputQty" price="'+e.data.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+e.data.list[ii].name+'> '+e.data.list[ii].metric+' (s)<label for='+e.data.list[ii].name+'></label></p></span></li>');
+        	
         	};
+var addproducts = document.querySelectorAll(".bitsInputQty");
+for(var i = 0; i< addproducts.length; ++i){
+	addproducts[i].addEventListener("change",tabulateTotals,false);
+
+}
 
  $( "body" ).scrollTop( 268 );
 
@@ -670,7 +695,7 @@ $('.serviceListHolder').append('<li onclick="updateServicelist()" class="collect
         document.querySelector('.serviceName').innerHTML = activeService.name;
         document.querySelector('.cardimage').src = "images/"+activeService.cardimage+".png";
          document.querySelector('.cardLogo').src = "images/"+activeService.cardLogo+".png";
-		document.querySelector('.serviceDescription').innerHTML = activeService.desc;
+		document.querySelector('.serviceDescription').innerHTML = activeService.desription;
 //add button
 
 updateServicelist();

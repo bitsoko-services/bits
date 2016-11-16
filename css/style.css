@@ -45,7 +45,7 @@ margin-top:-31px;
     border-top: 1px solid rgb(87, 99, 103);
   }
  .pinned+div>ul{
-   margin-top:210px;
+   margin-top:270px;
  }
   .bits-profile{
 
@@ -57,13 +57,13 @@ margin-top:-31px;
   }
   .pinned>.maincard{
       background-color: #0f5f76 !important;
-      height: 160px;
+      height: 220px;
   }
    .pinned>div>.card-image>img{
      top:-120px;
    }
   .pinned>div>.card-image{
-    max-height: 30% !important;
+    max-height: 40% !important;
    
      
   }
