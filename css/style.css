@@ -16,6 +16,9 @@
 aside>ul{
   left: -250px !important;
   }*/
+  .row.bal{
+    margin-bottom: 0px !important;
+     }
   .pin-top>div>.bits-tab{
 margin-top:-19px;
   }
@@ -45,7 +48,7 @@ margin-top:-19px;
     border-top: 1px solid rgb(87, 99, 103);
   }
  .pinned+div>ul{
-   margin-top:270px;
+   margin-top:310px;
  }
   .bits-profile{
 
