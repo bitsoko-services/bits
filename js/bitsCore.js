@@ -277,7 +277,8 @@ function showNotices(msg,tm,bt) {
 }
 
 function startPay(name,recp,amount,action,ref){
- 
+ console.log(name,recp,amount,action,ref);
+ return
 if (amount <=0 || amount == "undefined" || amount === undefined || amount === null){
 
    currentTransaction.amount=0;

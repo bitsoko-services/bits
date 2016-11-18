@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =43;
+	bitsVersion =44;
 bitsInstall = function(event){
 	
 	
@@ -25,6 +25,11 @@ bitsNotificationClick = function(event){
       case 'createBackup':
     
            bitsNotification('Wallet Backed Up','Thank you for backing up your wallet you are one step closer to saving the world','AnonMsg','bits/images/no.png',[{action: '', title: "Backed up"}],true,true);
+       
+      break;
+        case 'gotMoney':
+    
+           bitsNotification('You have recevied '+dat.amt,'sam has sent you  '+dat.amt+' Click to view your balance','AnonMsg','bits/images/no.png',[{action: '', title: "Backed up"}],true,true);
        
       break;
 			}

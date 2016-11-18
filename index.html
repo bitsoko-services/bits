@@ -237,12 +237,12 @@
                                 </div>
                                 <div class="row bits-tab" style=" margin-bottom: 0px;">
                                      <ul class="card-action-buttons col s12 m8 l9 "style="margin-top: 5px;">
-                                     <p class="center"><span > Totals:</span> <span class="totals"></span></p>
-                                      <!--<li class="card-action-buttons col s6 m8 l9  white-text"><a class="saleButton bits-transpatent col s12 m8 l9 btn-flat  white-text btn waves-effect waves-light  accent-4 "style="background-color: rgba(0, 0, 0, 0) !important;"><i class="mdi-communication-call-made"></i> Send</a>
+                                     <p class="center" style="display:none;"><span > Totals:</span> <span class="totals"></span></p>
+                                      <li class="card-action-buttons col s6 m8 l9  white-text"><a class="saleButton bits-transpatent col s12 m8 l9 btn-flat  white-text btn waves-effect waves-light  accent-4 "style="background-color: rgba(0, 0, 0, 0) !important;" value="send"><i class="mdi-communication-call-made"></i> Send</a>
                                         </li>
-                                        <li class="card-action-buttons col s6 m8 l9 "><a class="saleButton bits-transpatent col s12 m8 l9 btn waves-effect waves-light  accent-4 btn-flat  white-text"style="background-color: rgba(0, 0, 0, 0) !important;" ><i class="mdi-communication-call-received"></i> Receive</a>
+                                        <li class="card-action-buttons col s6 m8 l9 "><a class="saleButton bits-transpatent col s12 m8 l9 btn waves-effect waves-light  accent-4 btn-flat  white-text"style="background-color: rgba(0, 0, 0, 0) !important;" value="Receive" ><i class="mdi-communication-call-received"></i> Receive</a>
                                         </li>                            
-                                         <li><a class="btn-floating waves-effect waves-light light-blue"><i class="mdi-action-search activator"></i></a>
+                                         <!--<li><a class="btn-floating waves-effect waves-light light-blue"><i class="mdi-action-search activator"></i></a>
                                         </li>-->
                                     </ul> 
                                     </div>
@@ -539,68 +539,60 @@ $(".totals").html(totals);
 
 
 }
-
+//save to local storage
   function serviceOpener(){
-
-  
-
-  	if (getBitsWinOpt('s') && parseInt(getBitsWinOpt('s')) >3 ) 
+if (getBitsWinOpt('s') && parseInt(getBitsWinOpt('s')) >3 ) 
  {
-
  	$(".serviceListHolder").show();
  	$(".serviceListCard").show();
  $(".promoHolder").hide();
+ localStorage.setItem('bits-active-service',getBitsWinOpt('s'));
  	 doFetch({ action: 'serviceProfile', id: getBitsWinOpt('s')}).then(function(e){
            if (e.status=="ok"){
-$(".resDisplay").html( e.data.name);
-        document.querySelector('.serviceName').innerHTML = e.data.name;
-        document.querySelector('.cardimage').src = e.data.banner;
-         document.querySelector('.cardLogo').src = e.data.icon;
-		//document.querySelector('.serviceDescription').innerHTML = e.data.price;
-		document.querySelector('.serviceDescription').innerHTML = e.data.description;
-		//document.querySelector('.serviceDescription').innerHTML = e.data.metric;
+           	      localStorage.setItem('bits-merchant-id-'+e.data.id, JSON.stringify(e.data));
+           	      populateService(e.data.id);
+	                }else{
+                $(".serviceListHolder").hide();
+                $(".serviceListCard").hide();
+ $(".promoHolder").show();
+           }
+        })
+         .catch(function(){
+         	populateService(getBitsWinOpt('s'));
+
+        });
+         } 
+
+
+  }  
+//end save
+
+//populateService function
+ function populateService(id){
+
+
+
+
+ 	var mDet = JSON.parse(localStorage.getItem('bits-merchant-id-'+id));
+
+$(".resDisplay").html( mDet.name);
+        document.querySelector('.serviceName').innerHTML = mDet.name;
+        document.querySelector('.cardimage').src = mDet.banner;
+         document.querySelector('.cardLogo').src = mDet.icon;
+		document.querySelector('.serviceDescription').innerHTML = mDet.description;
 		 $('.serviceListHolder').html("");
- for(var ii = 0; ii < e.data.list.length; ++ii) {
-        $('.serviceListHolder').append('<li class="collection-item waves-effect avatar bits-max"><img src="'+e.data.list[ii].image+'" alt="" class="circle"><span class="title"><span class="serviceListTitle"> '+e.data.list[ii].name+' </span></span><p class="serviceListFirstline"> <span class="bits-badge bits left">'+e.data.list[ii].price+' <span class="localCurr"></span> per '+e.data.list[ii].metric+' </span></p><span class="secondary-content"><p class="col s4"> <input class="number bitsInputQty" price="'+e.data.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+e.data.list[ii].name+'> '+e.data.list[ii].metric+' (s)<label for='+e.data.list[ii].name+'></label></p></span></li>');
+ for(var ii = 0; ii < mDet.list.length; ++ii) {
+        $('.serviceListHolder').append('<li class="collection-item waves-effect avatar bits-max"><img src="'+mDet.list[ii].image+'" alt="" class="circle"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"></span> per '+mDet.list[ii].metric+' </span></p><span class="secondary-content"><p class="col s4"> <input class="number bitsInputQty" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'> '+mDet.list[ii].metric+' (s)<label for='+mDet.list[ii].name+'></label></p></span></li>');
         	
         	};
 var addproducts = document.querySelectorAll(".bitsInputQty");
 for(var i = 0; i< addproducts.length; ++i){
 	addproducts[i].addEventListener("change",tabulateTotals,false);
+ }
+ $( "body" ).scrollTop( 156 );        
+ }
 
-}
-
- $( "body" ).scrollTop( 156 );
-
-             
-           }else{
-                $(".serviceListHolder").hide();
-                $(".serviceListCard").hide();
- $(".promoHolder").show();
-           }
-
-          
-        });
-         
- } 
-//$('#serviceModal').attr('service', getBitsWinOpt('s'));
- 
-     //$('#serviceModal').openModal(); 
-   /*   $('#serviceModal').openModal({
-      dismissible: true, // Modal can be dismissed by clicking outside of the modal
-      opacity: .5, // Opacity of modal background
-      in_duration: 300, // Transition in duration
-      out_duration: 200, // Transition out duration
-      starting_top: '4%', // Starting top style attribute
-      ending_top: '10%', // Ending top style attribute
-      ready: function() { 
-
-       }, // Callback for Modal open
-     // complete: function() { alert('Closed'); } // Callback for Modal close
-    }); */
-  
-
-  }   
+//end populateService function
 
 
 
@@ -863,7 +855,8 @@ $(".serviceListCard").show();
 
     $(".saleButton").click(function() {
     $("#keypadModal").openModal();
-   // $("#keypadModal").closeModal();
+  currentTransaction.action = $(this).attr('value');
+  
   });
 
 
@@ -875,12 +868,25 @@ $(".serviceListCard").show();
 
     $(".keypadKey").click(function() {
     console.log($(this).attr('value'));
+    if($(this).attr('value')=='ok'){
+startPay(actvServ().name,actvServ().bannerPath,currentTransaction.amount,currentTransaction.action,'');
+    }else{
+    
     currentTransaction.amount=currentTransaction.amount+$(this).attr('value');
     console.log(currentTransaction.amount);
-    $(".amtDisplay").html(currentTransaction.amount)
+    $(".amtDisplay").html(currentTransaction.amount)	
+    }
+
+    
        
   });
   });
+
+  function actvServ(){
+e=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits-active-service')));
+	return e;
+
+  }
 </script>
 </body>
 
