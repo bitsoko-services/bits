@@ -784,8 +784,9 @@ activeService=$('#serviceModal').attr('service');
 }
 
   function updatePromos(){
-
-      doFetch({ action: 'nearbyPromos', loc: 
+  	     navigator.permissions.query({name:'geolocation'}).then(function(p)
+{  
+    doFetch({ action: 'nearbyPromos', loc: 
     localStorage.getItem('bitsoko-settings-location')}).then(function(e){
            if (e.status=="ok"){
            	 for(var ii = 0; ii < e.promotions.length; ++ii) {
@@ -803,7 +804,14 @@ $(function(){
     $("#bits-nav-bal").hide();
    
 });
+      
 
+}).catch(function(e){
+	showPositionError()
+})
+; 
+
+     
 //coin change
 /*$(document).on('change', '.div-toggle', function() {
   var target = $(this).data('target');
