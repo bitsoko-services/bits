@@ -898,6 +898,12 @@ e=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits
 	return e;
 
   }
+  function showPositionError(e) {
+      $('.promoHolder').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>Switch on your Location </strong></p><p class="collections-content"></p></div></li></ul>');
+            
+ console.log(e);
+}    
+
 </script>
 </body>
 
