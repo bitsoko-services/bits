@@ -794,7 +794,7 @@ $('.promoHolder').append(' <li class="col s12 m12 l4 "><div class="product-card"
              };
         console.log(e);
            }else{
-         $('.promoHolder').append('<li id="card-alert" class="card waves-effect waves-block waves-light "style="background-color: inherit;"><div class="card-content grey-text text-darken-2"><span class="card-title darken-1"><i class="mdi-social-notifications"></i> Promotions</span><p>No promotions found in your area, please try again later.</p></li>');
+         $('.promoHolder').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>No Promotions found</strong></p><p class="collections-content">'+e.msg+'</p></div></li></ul>');
             
            }
         });

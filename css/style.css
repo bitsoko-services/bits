@@ -16,6 +16,9 @@
 aside>ul{
   left: -250px !important;
   }*/
+  .collection .collection-item {
+    background-color: #f9f9f9 !important; 
+    }
 .min-card{
     margin-top: -121px;  
       color: #fff;
