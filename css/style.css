@@ -16,6 +16,13 @@
 aside>ul{
   left: -250px !important;
   }*/
+.pinned>.card-image.bitsimg{
+      margin-top:;
+}
+.bitsimg{
+      margin-top: -70px;
+}
+
   .row.bal{
     margin-bottom: 0px !important;
      }
@@ -63,7 +70,7 @@ margin-top:-19px;
       height: 240px;
   }
    .pinned>div>.card-image>img{
-     top:-120px;
+     top:-70px;
    }
   .pinned>div>.card-image{
     max-height: 40% !important;
@@ -387,8 +394,8 @@ li.home:before {
   height: 150px;
   margin: -75px 0 0 -75px;
   border-radius: 50%;
-  border: 3px solid transparent;
-  border-top-color: #3498db;
+  border: 8px solid transparent;
+  border-top-color: rgba(15, 95, 118, 0.37);
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
   z-index: 1001;
@@ -402,8 +409,8 @@ li.home:before {
   right: 5px;
   bottom: 5px;
   border-radius: 50%;
-  border: 3px solid transparent;
-  border-top-color: #e74c3c;
+  border: 5px solid transparent;
+  border-top-color: rgba(15, 95, 118, 0.73);
   -webkit-animation: spin 3s linear infinite;
   animation: spin 3s linear infinite;
 }
@@ -416,8 +423,8 @@ li.home:before {
   right: 15px;
   bottom: 15px;
   border-radius: 50%;
-  border: 3px solid transparent;
-  border-top-color: #f9c922;
+  border: 2px solid transparent;
+  border-top-color: #0f5f76;
   -webkit-animation: spin 1.5s linear infinite;
   animation: spin 1.5s linear infinite;
 }
@@ -431,7 +438,7 @@ li.home:before {
   z-index: 1001;
 }
 
-@-webkit-keyframes spin {
+@keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
@@ -444,16 +451,16 @@ li.home:before {
   }
 }
 
-@keyframes spin {
+@keyframes spinback {
   0% {
     -webkit-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    transform: rotate(360deg);
+    -webkit-transform: rotate(-360deg);
+    -ms-transform: rotate(-360deg);
+    transform: rotate(-360deg);
   }
 }
 
