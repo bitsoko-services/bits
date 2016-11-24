@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =50;
+	bitsVersion =51;
 bitsInstall = function(event){
 	
 	
@@ -134,39 +134,6 @@ return trResp;
  });	
 	
 }
-else 
-if (url.pathname.substring(0, 2) == '/w' && url.hostname == location.hostname) {
-	
-		console.log('physical web url!!');
-		var bid=url.pathname.substring(2, 5);
-		//resolve(Response.redirect('http://bitsoko.io/bits/#m='+bid));
-//orReq.url='https://bitsoko.io/p'+bid+'?f=j';
-
-  return cache.match(event.request.clone()).then(function (response) {
-	  
-console.log(response);
- return response || fetch('https://bitsoko.io/w'+bid+'?f=j').then(function(response) {
-//response=Response.redirect('https://bitsoko.io/p='+bid+'?format=json');
-
-//console.log(response);
-if(response.clone().url=='https://bitsoko.io/w'+bid+'?f=j' && event.request.clone().url=='https://bitsoko.io/w'+bid){
-	
-return response.clone().text().then(function(d){
- 	
-var respJ = JSON.parse(d);
- // console.log(respJ);
-url ='http://'+respJ.a;
-var trResp=Response.redirect(url);
-cache.put(event.request.clone(), trResp.clone());
-
-return trResp;
-
-
- 	
- });	
-	
-}
-
 
 
   }).catch(function(err){
@@ -180,7 +147,40 @@ return Response.redirect('https://bitsoko.io/bits/index.html#s=3&a=404');
 
   });
 
-}
-		
+} 
+else if (url.pathname.substring(0, 2) == '/w' && url.hostname == location.hostname) {
+	
+		console.log('wallet web url!!');
+		var bid=url.pathname.substring(2, 5);
+			//resolve(Response.redirect('http://bitsoko.io/bits/#m='+bid));
+			//orReq.url='https://bitsoko.io/p'+bid+'?f=j';
+
+			return cache.match(event.request.clone()).then(function (response) {
+	  
+				console.log(response);
+				return response || fetch('https://bitsoko.io/w'+bid+'?f=j').then(function(response) {
+				//response=Response.redirect('https://bitsoko.io/p='+bid+'?format=json');
+
+				//console.log(response);
+				if(response.clone().url=='https://bitsoko.io/w'+bid+'?f=j' && event.request.clone().url=='https://bitsoko.io/w'+bid){
+	
+					return response.clone().text().then(function(d){
+ 	
+						var respJ = JSON.parse(d);
+						// console.log(respJ);
+						url ='http://'+respJ.a;
+						var trResp=Response.redirect(url);
+						cache.put(event.request.clone(), trResp.clone());
+
+						return trResp;
+
+
+ 	
+					});	
+	
+				}	
+			});		
+		});
+	}				
  }
 }catch(err){console.log(err)}
