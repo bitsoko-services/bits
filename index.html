@@ -106,15 +106,7 @@
             </div>
             
             </li>
-            <ul id="store-dropdown" class="dropdown-content" style="width: 300px; position: absolute; top: 163px; left: 0px; opacity: 1; display: block;">
-                        <li><a href="#" class="editStore"><i class="mdi-content-create"></i>Google account</a>
-                        </li>
-                        <li><a href="#" class="switchStore"><i class="mdi-action-swap-horiz switchStore"></i>Mobile Account</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="#" class="newStore"><i class="mdi-content-add-circle-outline"></i>log out</a>
-                        </li>
-                    </ul>
+            
             <li ><div class="">
         <div class="col s12 m6"><center>
             <div  id="qrcode">
@@ -184,6 +176,15 @@
             </li>
            
         </ul>
+        <ul id="store-dropdown" class="dropdown-content" style="width: 300px; position: absolute; top: 163px; left: 0px;  display: block;">
+                        <li><a href="#" class="editStore"><i class="mdi-content-create"></i>Google account</a>
+                        </li>
+                        <li><a href="#" class="switchStore"><i class="mdi-action-assignment-ind"></i>Mobile Account</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#" class="newStore"><i class="mdi-content-add-circle-outline"></i>log out</a>
+                        </li>
+                    </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only bits"><i class="mdi-navigation-menu"></i></a>
         </aside>
       <!-- END LEFT SIDEBAR NAV-->
@@ -195,11 +196,11 @@
             <div id="content "style="margin-bottom: 450px;">
 
                 <!--start container-->
-                <div class="bal bits nav-wrapper center">
+                <div class="bal bits nav-wrapper center"  style="padding-bottom:20px;">
 <div id="index-banner" class="waves-effect">
     <div class=" no-pad-bot">
       <div class="container">
-       <div class="row center bal"><p>
+       <div class="row center bal"><p style="line-height: 1.9;">
           <span class="header col s12 light" style="color:#fff; font-size:16px;">Balance</span>        
           <span  id="download-button" class="" style="font-size:18px; color:#fff !important;"><span style="font-size:16px;">0.00 </span>KSH</span>  
           <span  id="download-button" class="header col s12 light" style="color:#fff;">0 btc</span></p>
@@ -220,7 +221,7 @@
 		<div class="card-bit serviceListCard"> <div class="card small maincard"  style="border-radius: 0px;">
                                     <div  class="card-image waves-effect waves-block waves-light">
                                       <img  src="images/merchantsBanner.png" alt="blog-img" class="bitsimg cardimage service-banner"style="border-radius: 0px;"> 
-                                    </div>
+                                    </div><div class="min-card">
                                     <ul class="card-action-buttons left">
                                         <li><div class="col s2">
                                         <img src="images/merchants.png" alt="" class="cardLogo bits-up circle btn-floating btn-large  waves-effect waves-light bits-white accent-4 responsive-img valign profile-image">
@@ -243,9 +244,9 @@
                                         <p class="serviceDescription "style="min-height:45px; margin-left: 11px;">Loading....</p>
                                     
                                       </div> 
-                                     
+                                     </div>
                                 </div>
-                                <div class="row bits-tab" style=" margin-bottom: 0px;">
+                                <div class="row bits-tab" style=" margin-bottom: 0px;     z-index: 2;">
                                      <ul class="card-action-buttons col s12 m8 l9 "style="margin-top: 5px;">
                                      <p class="center" style="display:none;"><span > Totals:</span> <span class="totals"></span></p>
                                       <li class="card-action-buttons col s6 m8 l9  white-text"><a class="saleButton bits-transpatent col s12 m8 l9 btn-flat  white-text btn waves-effect waves-light  accent-4 "style="background-color: rgba(0, 0, 0, 0) !important;" value="send"><i class="mdi-communication-call-made"></i> Send</a>
