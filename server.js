@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =46;
+	bitsVersion =47;
 bitsInstall = function(event){
 	
 	
@@ -43,7 +43,7 @@ bitsNotificationClick = function(event){
 	bitsMessage = function(dat){
 	
     
-  id=dat.mid ? dat.mid : urandomString(20);
+  id=dat.mid ? dat.mid : randomString(20);
     
    msDat = dat;
     console.log(dat);
