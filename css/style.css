@@ -414,7 +414,7 @@ li.home:before {
   height: 150px;
   margin: -75px 0 0 -75px;
   border-radius: 50%;
-  border: 8px solid transparent;
+  border: 16px solid transparent;
   border-top-color: rgba(15, 95, 118, 0.37);
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
@@ -429,7 +429,7 @@ li.home:before {
   right: 5px;
   bottom: 5px;
   border-radius: 50%;
-  border: 5px solid transparent;
+  border: 8px solid transparent;
   border-top-color: rgba(15, 95, 118, 0.73);
   -webkit-animation: spin 3s linear infinite;
   animation: spin 3s linear infinite;
@@ -443,7 +443,7 @@ li.home:before {
   right: 15px;
   bottom: 15px;
   border-radius: 50%;
-  border: 2px solid transparent;
+  border: 3px solid transparent;
   border-top-color: #0f5f76;
   -webkit-animation: spin 1.5s linear infinite;
   animation: spin 1.5s linear infinite;
