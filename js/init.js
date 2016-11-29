@@ -124,13 +124,8 @@ if (address == "" || address == "undefined" || address == "null" || address == n
       getObjectStore('data', 'readwrite').put('[]', 'transactions');
         //return;
       
-		createWallet('anon'); 
-             var store = getObjectStore('data', 'readwrite').get("bits-wallets");
-store.onsuccess = function (event) {
 	
-    loadWallet(JSON.parse(event.target.result).bitcoinAddress);
-    
-}; 
+    loadWallet(createWallet('anon'));
 	
     
 
