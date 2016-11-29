@@ -1887,7 +1887,7 @@ saveWallet(user, publicAddress, privateKey.toString());
 
 function saveWallet(user, publicAddress, privateKey){
    var created = moment().valueOf();
-   var walData={user:user, bitcoinAddress:publicAddress, privateKey:privateKey, created:created};
+   var walData={user:user, publicAddress:publicAddress, privateKey:privateKey, created:created, coin:'btc'};
 
 var walSaving = getObjectStore('data', 'readwrite').put(JSON.stringify(walData), 'bits-wallets');
 	walSaving.onsuccess = function (event) {
