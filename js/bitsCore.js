@@ -396,7 +396,7 @@ function loadWallet(primWalA){
   delete walData.privateKey;
 	   doFetch({action:'addVisit', data: walData}).then(function(e){
        
-      alert(e); 
+      console.log(e); 
        
    });
       
