@@ -1872,7 +1872,7 @@ function createWallet(user){
 
 function createBTC(user){
 var privateKey = new bitcore.PrivateKey();
-var bitcoinAddress =privateKey.toAddress().toString();
+var publicAddress =privateKey.toAddress().toString();
     
 //updateWallet(user, bitcoinAddress, bsoko.encoder({"action":"encrypt", "privkey":""+privateKey.toString()+"", "pass":""+pass+""}));
  
