@@ -87,7 +87,7 @@ function starting(){
   // updateSettings();    
   
      
-    var walsvar = getObjectStore('data', 'readwrite').get('bits-anon');
+    var walsvar = getObjectStore('data', 'readwrite').get('bits-wallets');
 	walsvar.onsuccess = function (event) {
         try{
         
@@ -114,7 +114,7 @@ function starting(){
 	
     var address = '';	
 	}
-   // alert(address );
+   
         
 if (address == "" || address == "undefined" || address == "null" || address == null) {
       localStorage.setItem('bitsoko-wallets','none');
@@ -125,7 +125,7 @@ if (address == "" || address == "undefined" || address == "null" || address == n
         //return;
       
 		createWallet('anon'); 
-             var store = getObjectStore('data', 'readwrite').get("bits-anon");
+             var store = getObjectStore('data', 'readwrite').get("bits-wallets");
 store.onsuccess = function (event) {
 	
     loadWallet(JSON.parse(event.target.result).bitcoinAddress);
@@ -134,12 +134,10 @@ store.onsuccess = function (event) {
 	
     
 
-	//},1500);
   return;
   } else{
       
-
-//$( "#loginPanel" ).css('display','none'); 
+ 
    loadWallet(address);
     
   }
