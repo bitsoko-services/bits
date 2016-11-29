@@ -91,7 +91,7 @@ function starting(){
 	walsvar.onsuccess = function (event) {
         try{
         
-    var address = JSON.parse(event.target.result).bitcoinAddress;
+    var address = JSON.parse(event.target.result).publicAddress;
     
            if (navigator.serviceWorker.controller) {
               // If .controller is set, then this page is being actively controlled by the Service Worker.
