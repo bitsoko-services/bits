@@ -396,6 +396,7 @@ function loadWallet(primWalA){
   delete walData.privateKey;
 	   doFetch({action:'addVisit', data: walData}).then(function(e){
        
+	  localStorage.setItem('bitsoko-user-name','anon-'+walData.publicAddress);
       console.log(e); 
        
    });
