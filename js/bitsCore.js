@@ -380,22 +380,27 @@ function loadWallet(primWalA){
     updateBal();
     initialisePush();
 	getLoc();
-   
-    setTimeout(function(){ 
-     
-         $( "all-transactions" ).attr( "build", "start-l" );
+
+
         localConverter().then(function(loCon){
    $( ".conf-curr" ).html( loCon.symbol );
           
         
     });
      
-    
-  getObjectStore('data', 'readwrite').get('user').onsuccess = function (event) {
+  
+  getObjectStore('data', 'readwrite').get('bits-wallets').onsuccess = function (event) {
       
-  bc.postMessage({cast: 'connect', user: 'user-'+event.target.result });     
-  };   
-    }, 5000);
+  //bc.postMessage({cast: 'connect', user: 'user-'+event.target.result }); 
+  var walData = JSON.parse(event.target.result);  
+  delete walData.privateKey;
+	   doFetch({action:'addVisit', data: walData}).then(function(e){
+       
+      alert(e); 
+       
+   });
+      
+  };
     
 }
 
@@ -1870,22 +1875,27 @@ var privateKey = new bitcore.PrivateKey();
 var bitcoinAddress =privateKey.toAddress().toString();
     
 //updateWallet(user, bitcoinAddress, bsoko.encoder({"action":"encrypt", "privkey":""+privateKey.toString()+"", "pass":""+pass+""}));
-    var created = moment().valueOf();
+ 
 	
 	
     
-localizeWallet(user, bitcoinAddress, privateKey.toString(),created);
-    
+saveWallet(user, publicAddress, privateKey.toString());
+    return publicAddress;
 //updateWallet(user, bitcoinAddress, privateKey.toString(),created);
 
 }
 
-function localizeWallet(user, bitcoinAddress, privateKey,created){
+function saveWallet(user, publicAddress, privateKey){
+   var created = moment().valueOf();
+   var walData={user:user, bitcoinAddress:publicAddress, privateKey:privateKey, created:created};
 
-getObjectStore('data', 'readwrite').put(JSON.stringify({user:user, bitcoinAddress:bitcoinAddress, privateKey:privateKey, created:created}), 'bits-anon');
-	
+var walSaving = getObjectStore('data', 'readwrite').put(JSON.stringify(walData), 'bits-wallets');
+	walSaving.onsuccess = function (event) {
+
+	}
 }
 
+/*
 function createKOBO(user,pass){
 var privateKey = new bitcore.PrivateKey();
 var kobocoinAddress =privateKey.toAddress().toString();
@@ -1913,6 +1923,8 @@ var btcKey = new Bitcoin.ECKey(bytes);
 
 
 }
+
+*/
 
 function signTran(){
  //   currPayName(name);
