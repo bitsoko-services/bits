@@ -570,13 +570,23 @@ $(".totals").html(totals);
 }
 //save to local storage
   function serviceOpener(){
-if (getBitsWinOpt('s') && parseInt(getBitsWinOpt('s')) >3 ) 
+if (getBitsWinOpt('s') ) 
  {
+	 
+if(parseInt(getBitsWinOpt('s')) >5){
+var servID=getBitsWinOpt('s');
+}else{
+var servID=getBitsWinOpt('a');
+}	 
+	 
+	 
+	 
+	 
  	$(".serviceListHolder").show();
  	$(".serviceListCard").show();
  $(".promoHolder").hide();
- localStorage.setItem('bits-active-service',getBitsWinOpt('s'));
- 	 doFetch({ action: 'serviceProfile', id: getBitsWinOpt('s')}).then(function(e){
+ localStorage.setItem('bits-active-service',servID);
+ 	 doFetch({ action: 'serviceProfile', id: servID}).then(function(e){
            if (e.status=="ok"){
            	      localStorage.setItem('bits-merchant-id-'+e.data.id, JSON.stringify(e.data));
            	      populateService(e.data.id);
@@ -906,7 +916,7 @@ $(".serviceListCard").show();
     $(".keypadKey").click(function() {
     console.log($(this).attr('value'));
     if($(this).attr('value')=='ok'){
-startPay(actvServ().name,actvServ().bannerPath,currentTransaction.amount,currentTransaction.action,'');
+startPay(localStorage.getItem('bits-user-name'),'servID-'+getBitsWinOpt('s')+'-'+getBitsWinOpt('a'),currentTransaction.amount,currentTransaction.action,'qwerty');
     }else{
     
     currentTransaction.amount=currentTransaction.amount+$(this).attr('value');
