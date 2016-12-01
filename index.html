@@ -898,7 +898,7 @@ $(".serviceListCard").show();
     $(".keypadKey").click(function() {
     console.log($(this).attr('value'));
     if($(this).attr('value')=='ok'){
-startPay(actvServ().name,actvServ().bannerPath,currentTransaction.amount,currentTransaction.action,'');
+startPay(localStorage.getItem('bits-user-name'),'servID-'+getBitsWinOpt('s')+'-'+getBitsWinOpt('a'),currentTransaction.amount,currentTransaction.action,'qwerty');
     }else{
     
     currentTransaction.amount=currentTransaction.amount+$(this).attr('value');
