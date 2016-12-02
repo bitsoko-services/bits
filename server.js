@@ -109,21 +109,27 @@ if (url.pathname.substring(0, 2) == '/p' && url.hostname == location.hostname) {
 		var bid=url.pathname.substring(2, 5);
 		//resolve(Response.redirect('http://bitsoko.io/bits/#m='+bid));
 //orReq.url='https://bitsoko.io/p'+bid+'?f=j';
+	 
+	 	      var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for(var i = 0; i < 60; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
 
   return cache.match(event.request.clone()).then(function (response) {
 	  
 console.log(response);
- return response || fetch('https://bitsoko.io/p'+bid+'?f=j').then(function(response) {
+ return response || fetch('https://bitsoko.io/p'+bid+'?f=j&p='+text).then(function(response) {
 //response=Response.redirect('https://bitsoko.io/p='+bid+'?format=json');
 
 //console.log(response);
-if(response.clone().url=='https://bitsoko.io/p'+bid+'?f=j' && event.request.clone().url=='https://bitsoko.io/p'+bid){
+if(response.clone().url=='https://bitsoko.io/p'+bid+'?f=j&p='+text && event.request.clone().url=='https://bitsoko.io/p'+bid+'&p='+text ){
 	
 return response.clone().text().then(function(d){
  	
 var respJ = JSON.parse(d);
  // console.log(respJ);
-url = location.origin+'/bits/index.html#s='+respJ.s+'&a='+respJ.a;
+url = location.origin+'/bits/index.html#s='+respJ.s+'&a='+respJ.a+'&p='+text;
 var trResp=Response.redirect(url);
 cache.put(event.request.clone(), trResp.clone());
 
