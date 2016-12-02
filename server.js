@@ -129,7 +129,7 @@ return response.clone().text().then(function(d){
  	
 var respJ = JSON.parse(d);
  // console.log(respJ);
-url = location.origin+'/bits/index.html#s='+respJ.s+'&a='+respJ.a+'&p='+text;
+url = location.origin+'/bits/index.html#s='+respJ.s+'&a='+respJ.a+'&p='+respJ.p;
 var trResp=Response.redirect(url);
 cache.put(event.request.clone(), trResp.clone());
 
