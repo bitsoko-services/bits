@@ -124,7 +124,9 @@ console.log(response);
  return response || fetch(sendUrl).then(function(response) {
 //response=Response.redirect('https://bitsoko.io/p='+bid+'?format=json');
 
-//console.log(response);
+//console.log(response.clone().url);
+//console.log(event.request.clone().url);
+//console.log(sendUrl);
 if(response.clone().url==sendUrl && event.request.clone().url==sendUrl ){
 	
 return response.clone().text().then(function(d){
