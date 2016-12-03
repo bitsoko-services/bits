@@ -119,11 +119,13 @@ if (url.pathname.substring(0, 2) == '/p' && url.hostname == location.hostname) {
   return cache.match(event.request.clone()).then(function (response) {
 	  
 console.log(response);
- return response || fetch('https://bitsoko.io/p'+bid+'?f=j&p='+text).then(function(response) {
+	  var sendUrl='https://bitsoko.io/p'+bid+'?f=j&p='+text;
+	  
+ return response || fetch(sendUrl).then(function(response) {
 //response=Response.redirect('https://bitsoko.io/p='+bid+'?format=json');
 
 //console.log(response);
-if(response.clone().url=='https://bitsoko.io/p'+bid+'?f=j&p='+text && event.request.clone().url=='https://bitsoko.io/p'+bid+'&p='+text ){
+if(response.clone().url==sendUrl && event.request.clone().url==sendUrl ){
 	
 return response.clone().text().then(function(d){
  	
