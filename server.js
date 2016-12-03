@@ -128,12 +128,12 @@ console.log(response.clone().url);
 console.log(event.request.clone().url);
 console.log(sendUrl);
 if(response.clone().url==sendUrl ){
-	
+	console.log(response.clone().text());
 return response.clone().text().then(function(d){
  	
 var respJ = JSON.parse(d);
   console.log(respJ);
-url = location.origin+'/bits/index.html#s='+respJ.s+'&a='+respJ.a+'&p='+respJ.p;
+url = location.origin+'/bits/#s='+respJ.s+'&a='+respJ.a+'&p='+respJ.p;
 var trResp=Response.redirect(url);
 cache.put(event.request.clone(), trResp.clone());
 
