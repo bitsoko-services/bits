@@ -124,15 +124,15 @@ console.log(response);
  return response || fetch(sendUrl).then(function(response) {
 //response=Response.redirect('https://bitsoko.io/p='+bid+'?format=json');
 
-//console.log(response.clone().url);
-//console.log(event.request.clone().url);
-//console.log(sendUrl);
+console.log(response.clone().url);
+console.log(event.request.clone().url);
+console.log(sendUrl);
 if(response.clone().url==sendUrl && event.request.clone().url==sendUrl ){
 	
 return response.clone().text().then(function(d){
  	
 var respJ = JSON.parse(d);
- // console.log(respJ);
+  console.log(respJ);
 url = location.origin+'/bits/index.html#s='+respJ.s+'&a='+respJ.a+'&p='+respJ.p;
 var trResp=Response.redirect(url);
 cache.put(event.request.clone(), trResp.clone());
