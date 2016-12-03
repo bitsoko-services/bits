@@ -127,7 +127,7 @@ console.log(response);
 console.log(response.clone().url);
 console.log(event.request.clone().url);
 console.log(sendUrl);
-if(response.clone().url==sendUrl && event.request.clone().url==sendUrl ){
+if(response.clone().url==sendUrl ){
 	
 return response.clone().text().then(function(d){
  	
