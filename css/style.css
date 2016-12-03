@@ -20,7 +20,7 @@ aside>ul{
     background-color: #f9f9f9 !important; 
     }
 .min-card{
-    margin-top:100px ;  
+    margin-top:-100px ;  
       color: #fff;
     position: relative;
     z-index:1;
