@@ -26,9 +26,28 @@
         <meta name="msapplication-navbutton-color" content="#0f5f76">
    <meta name="theme-color" content="#0f5f76">
   <meta name="google-signin-client_id" content="#{cid}"></meta>
-<meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2017-01-12" content="AvwH05WjeD812bDpeWTWGEc3d81qoKI1Z4YsUtPVo4poXAr61FSAZ/Rp3zd3tqCkOqw8Ay+/aSYvxYG4oJtDqgMAAABReyJvcmlnaW4iOiAiaHR0cHM6Ly9iaXRzb2tvLmlvOjQ0MyIsICJmZWF0dXJlIjogIldlYlNoYXJlIiwgImV4cGlyeSI6IDE0ODQyMzkxMzZ9">
-  <link rel="manifest" href="web-manifest.json">
 
+  <link rel="manifest" href="web-manifest.json">
+<script src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="jspdf.js"></script>
+<script type="text/javascript">
+var doc = new jsPDF();
+var specialElementHandlers = {
+'#editor': function (element, renderer) {
+return true;
+}
+};
+
+$(document).ready(function() {
+$('#btn').click(function () {
+doc.fromHTML($('#content').html(), 15, 15, {
+'width': 170,
+'elementHandlers': specialElementHandlers
+});
+doc.save('BitsWallet_Backup.pdf');
+});
+});
+</script>
 <script src="https://bitsoko.io/bitsAssets/js/webcomponents.js" async></script>
     <!-- CORE CSS-->    
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
@@ -96,8 +115,8 @@
       <aside id="left-sidebar-nav">
         <ul id="slide-out" class="side-nav fixed leftside-navigation ">
          <li class="user-details cyan darken-2 dropdown-button"  style="background-color:#228dac!important " href="#" data-activates="account-dropdown">
-  	      
-		      <div class="row" style="text-align:center;">
+  	       
+		      <div class="row" id="content" style="text-align:center;">
                 <img src="images/contacts.png" alt="" class="bits-profile circle responsive-img valign profile-image"style="background-color: white;">
                  <a class="btn-flat waves-effect waves-light white-text profile-btn username-label dropdown-button" href="#" data-activates="store-dropdown">Jane Mwangi<i class="mdi-navigation-arrow-drop-down right"></i></a>
                    <center><span class=" user-roal username-addr left col s12 bits-ellipsis" style=""></center></span><p><center>
@@ -164,8 +183,8 @@
             <li><a href="#">
              
                   <div class="switch">
-                  <i class="mdi-social-person-add"></i>
-                   <span class="bits-13" style=""></span>   Backup  
+                  <i class="mdi-file-cloud-download"></i>
+                   <span class="bits-13" style=""></span> <span href id="btn">Backup Wallet</span>    
                     <!-- <label>
                      <input type="checkbox">
                       <span class="lever right" style="margin-top:13px;"></span>
@@ -176,13 +195,13 @@
             </li>
            
         </ul>
-        <ul id="store-dropdown" class="dropdown-content" style="width: 300px; position: absolute; top: 163px; left: 0px;  display: block;">
-                        <li><a href="#" class="editStore"><i class="mdi-content-create"></i>Google account</a>
+        <ul id="store-dropdown" class="dropdown-content drop-down-content-bits" style="">
+                        <li><a href="#" class="editStore"><i class="mdi-action-account-circle"></i>Google account</a>
                         </li>
                         <li><a href="#" class="switchStore"><i class="mdi-action-assignment-ind"></i>Mobile Account</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="#" class="newStore"><i class="mdi-content-add-circle-outline"></i>log out</a>
+                        <li><a href="#" class="newStore"><i class="mdi-action-lock-outline"></i>log out</a>
                         </li>
                     </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only bits"><i class="mdi-navigation-menu"></i></a>
@@ -262,7 +281,7 @@
      
                                           
            <div class="col s12 m8 l9">
-                <ul  class="serviceListHolder collection" style="display:none;">
+                <ul  class="serviceListHolder collection popup-gallery" style="display:none;">
                  
                 
                   
@@ -621,9 +640,10 @@ $(".resDisplay").html( mDet.name);
 		document.querySelector('.serviceDescription').innerHTML = mDet.description;
 		 $('.serviceListHolder').html("");
  for(var ii = 0; ii < mDet.list.length; ++ii) {
-        $('.serviceListHolder').append('<li class="collection-item waves-effect avatar bits-max"><img src="'+mDet.list[ii].image+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"></span> per '+mDet.list[ii].metric+' </span></p><span class="secondary-content"><p class="col s4"> <input class="number bitsInputQty" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'> '+mDet.list[ii].metric+' (s)<label for='+mDet.list[ii].name+'></label></p></span></li>');
+        $('.serviceListHolder').append('<li class="collection-item waves-effect avatar bits-max "><img src="'+mDet.list[ii].imagePath+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"></span> per '+mDet.list[ii].metric+' </span></p><span class="secondary-content"><p class="col s4"> <input class="number bitsInputQty" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'> '+mDet.list[ii].metric+' (s)<label for='+mDet.list[ii].name+'></label></p></span></li>');
         	
         	};
+        	 $('.materialboxed').materialbox();
 var addproducts = document.querySelectorAll(".bitsInputQty");
 for(var i = 0; i< addproducts.length; ++i){
 	addproducts[i].addEventListener("change",tabulateTotals,false);
@@ -882,6 +902,7 @@ $(document).ready(function(){
     */
      $(document).ready(function(){
      	$('.card-bit').pushpin({ top: $('.card-bit').offset().top });
+     	 
   });
       
 </script>
