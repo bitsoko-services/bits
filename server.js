@@ -1,20 +1,4 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @SamBitsoko
- Watch 0
-  Star 0
-  Fork 0 bitsoko-services/bits
- Code  Issues 1  Pull requests 0  Projects 0  Wiki  Pulse  Graphs
-Branch: master Find file Copy pathbits/server.js
-1931b56  3 days ago
-@bitsoko-services bitsoko-services Update server.js
-2 contributors @SamBitsoko @bitsoko-services
-RawBlameHistory     
-197 lines (113 sloc)  4.67 KB
+
 // BITS Server-JavaScript Document
 try{
 	bitsVersion =54;
@@ -212,4 +196,4 @@ else if (url.pathname.substring(0, 2) == '/w' && url.hostname == location.hostna
  }
 }catch(err){console.log(err)}
 Contact GitHub API Training Shop Blog About
-© 2016 GitHub, Inc. Terms Privacy Security Status Help
+Â© 2016 GitHub, Inc. Terms Privacy Security Status Help
