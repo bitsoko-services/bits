@@ -28,9 +28,15 @@
   <meta name="google-signin-client_id" content="#{cid}"></meta>
 
   <link rel="manifest" href="web-manifest.json">
+	
 <script src="jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="jspdf.js"></script>
 <script type="text/javascript">
+	var ss = document.createElement("link");
+ss.rel = "manifest";
+ss.href = "web-manifest.json?s="+getBitsWinOpt('s');
+document.getElementsByTagName("head")[0].appendChild(ss);
+	
 var doc = new jsPDF();
 var specialElementHandlers = {
 '#editor': function (element, renderer) {
