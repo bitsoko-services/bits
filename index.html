@@ -597,11 +597,8 @@ var servID=getBitsWinOpt('s');
 }else{
 var servID=getBitsWinOpt('a');
 }	
-document.querySelector("link[rel='manifest']").href = "https://bitsoko.io/bits/web-manifest.json?s="+getBitsWinOpt('s');
-	 
-	 
-	 
-	 
+document.querySelector("link[rel='manifest']").href = "https://bitsoko.io/bits/web-manifest.json?s="+servID;
+	  
  	$(".serviceListHolder").show();
  	$(".serviceListCard").show();
  $(".promoHolder").hide();
