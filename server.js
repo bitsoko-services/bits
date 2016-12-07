@@ -195,5 +195,3 @@ else if (url.pathname.substring(0, 2) == '/w' && url.hostname == location.hostna
 	}				
  }
 }catch(err){console.log(err)}
-Contact GitHub API Training Shop Blog About
-© 2016 GitHub, Inc. Terms Privacy Security Status Help
