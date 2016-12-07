@@ -48,9 +48,15 @@ var key=pairs[i].split("=")[0];
     
     
 }
+	 
+if(parseInt(getBitsWinOpt('s')) >5){
+var servID=getBitsWinOpt('s');
+}else{
+var servID=getBitsWinOpt('a');
+}
 	var ss = document.createElement("link");
 ss.rel = "manifest";
-ss.href = "web-manifest.json?s="+getBitsWinOpt('s');
+ss.href = "web-manifest.json?s="+servID;
 document.getElementsByTagName("head")[0].appendChild(ss);
 	
 var doc = new jsPDF();
