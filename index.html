@@ -195,7 +195,7 @@ doc.save('BitsWallet_Backup.pdf');
            
         </ul>
         <ul id="store-dropdown" class="dropdown-content drop-down-content-bits" style="">
-                        <li><a href="#" class="editStore customBtn" id="#googSign"><i class="mdi-action-account-circle"></i></a>
+                        <li><a href="#" class="editStore customBtn" id="signin-button"><i class="mdi-action-account-circle"></i></a>
                         </li>
                         <li><a href="#" class="switchStore"><i class="mdi-action-assignment-ind"></i>Mobile Account</a>
                         </li>
@@ -483,20 +483,10 @@ doc.save('BitsWallet_Backup.pdf');
     function onFailure(error) {
       console.log(error);
     }
-    function renderButton() {
-      gapi.signin2.render('#googSign', {
-        'scope': 'profile email',
-        'width': 240,
-        'height': 50,
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': onSuccess,
-        'onfailure': onFailure
-      });
-    }
+   
   </script>
 <script src="https://bitsoko.io/bitsAssets/js/google.js"async defer></script>
-  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+  <script src="https://apis.google.com/js/platform.js?onload=startGoogle" async defer></script>
     
     <!-- jQuery Library -->
     <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
