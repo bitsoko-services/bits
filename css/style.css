@@ -16,11 +16,68 @@
 aside>ul{
   left: -250px !important;
   }*/
+#materialbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(41, 41, 41, 0.37) !important;
+    z-index: 999;
+    will-change: opacity;
+}
+.abcRioButtonBlue {
+    background-color: #fefefe !important;
+    border: none;
+    color: #616161 !important;
+    left:0% !important;
+    box-shadow: 0 0px 0px 0 rgba(255, 255, 255, 0.25) !important;
+        margin-left: -5%;
+}
+  /*Google signin css*/
+  #customBtn {
+      display: inline-block;
+      background: white;
+      color: #444;
+      width: 190px;
+      border-radius: 5px;
+      border: thin solid #888;
+      box-shadow: 1px 1px 1px grey;
+      white-space: nowrap;
+    }
+    #customBtn:hover {
+      cursor: pointer;
+    }
+    span.label {
+      font-family: serif;
+      font-weight: normal;
+    }
+    span.icon {
+      background: url('/identity/sign-in/g-normal.png') transparent 5px 50% no-repeat;
+      display: inline-block;
+      vertical-align: middle;
+      width: 42px;
+      height: 42px;
+    }
+    span.buttonText {
+      display: inline-block;
+      vertical-align: middle;
+      padding-left: 42px;
+      padding-right: 42px;
+      font-size: 14px;
+      font-weight: bold;
+      /* Use the Roboto font that is loaded in the <head> */
+      font-family: 'Roboto', sans-serif;
+    }
+  /*Google signin css end*/
+  .drop-down-content-bits{
+    width: 100% !important; left: 0% !important; position: absolute; top: 163px; left: ;  display: block;
+  }
   .collection .collection-item {
     background-color: #f9f9f9 !important; 
     }
 .min-card{
-    margin-top:-100px ;  
+    margin-top:100px ;  
       color: #fff;
     position: relative;
     z-index:1;
