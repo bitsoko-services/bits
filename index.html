@@ -666,7 +666,7 @@ $(".resDisplay").html( mDet.name);
 		document.querySelector('.serviceDescription').innerHTML = mDet.description;
 		 $('.serviceListHolder').html("");
  for(var ii = 0; ii < mDet.list.length; ++ii) {
-        $('.serviceListHolder').append('<li class="collection-item waves-effect avatar bits-max "><img src="'+mDet.list[ii].imagePath+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"></span> per '+mDet.list[ii].metric+' </span></p><span class="secondary-content"><p class="col s4" style="display: none;"> <input class="number bitsInputQty" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'> '+mDet.list[ii].metric+' (s)<label for='+mDet.list[ii].name+'></label></p></span></li>');
+        $('.serviceListHolder').append('<li class="collection-item avatar bits-max "><img src="'+mDet.list[ii].imagePath+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"></span> per '+mDet.list[ii].metric+' </span></p><span class="secondary-content"><p class="col s4" style="display: none;"> <input class="number bitsInputQty" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'> '+mDet.list[ii].metric+' (s)<label for='+mDet.list[ii].name+'></label></p></span></li>');
         	
         	};
         	 $('.materialboxed').materialbox();
