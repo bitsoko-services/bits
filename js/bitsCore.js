@@ -1799,11 +1799,11 @@ var publicAddress =privateKey.toAddress().toString();
 	
 	
     
-//saveWallet(user, publicAddress, privateKey.toString());
-//    return publicAddress;
+saveWallet(user, publicAddress, privateKey.toString());
+    return publicAddress;
 //updateWallet(user, bitcoinAddress, privateKey.toString(),created);
 
-//}
+}
 
 function saveWallet(user, publicAddress, privateKey){
    var created = moment().valueOf();
