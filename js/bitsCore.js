@@ -1801,7 +1801,7 @@ function saveWallet(user, publicAddress, privateKey){
 	var wd=walData;
 	delete wd.privatekey;
 
-        doFetch({action:'saveUserwallet', data: JSON.stringify(wd)}).then(function(e){
+        doFetch({action:'saveUserWallet', data: JSON.stringify(wd)}).then(function(e){
             if (e.status=="ok"){
    
           
