@@ -2986,10 +2986,7 @@ console.log(addrtype(data[i].pubaddr));
        
     
 getObjectStore('data', 'readwrite').put(JSON.stringify(wallets), 'wallets').onsuccess = function (event) {
-        hideNotices(1000);
-        loadWallet(primWal);
-    showNav();
-           
+        
        }
 
 }
