@@ -338,7 +338,12 @@ return false;
 }
 
 function loadWallet(primWalA){  
- 
+  primWalA=primWalA ? primWalA : '';
+
+        doFetch({action:'addVisit', data: primWalA}).then(function(e){
+      console.log(e); 
+       
+   });
     data = primWalA;
      showAddr('bitcoin:'+data);
     $( ".username-addr" ).html( data );
@@ -389,10 +394,6 @@ function loadWallet(primWalA){
           
         
     });
-        doFetch({action:'addVisit', data: primWalA}).then(function(e){
-      console.log(e); 
-       
-   });
     
 }
 
