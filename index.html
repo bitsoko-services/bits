@@ -1,12 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!--================================================================================
-	Item Name: Materialize - Material Design Admin Template
-	Version: 3.1
-	Author: GeeksLabs
-	Author URL: http://www.themeforest.net/user/geekslabs
-================================================================================ -->
 <head>
    <title>#{name}</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -195,15 +188,14 @@ doc.save('BitsWallet_Backup.pdf');
            
         </ul>
         <ul id="store-dropdown" class="dropdown-content drop-down-content-bits" style="">
-                        <li><a href="#" class="editStore customBtn">
-  <div id="gConnect">
+                        <li><div id="gConnect">
     <div id="signin-button"></div>
-  </div><i class="mdi-action-account-circle"></i></a>
+  </div>
                         </li>
-                        <li><a href="#" class="switchStore"><i class="mdi-action-assignment-ind"></i>Mobile Account</a>
-                        </li>
+                        <!--<li><a href="#" class="switchStore"><i class="mdi-action-assignment-ind"></i>Mobile Account</a>
+                        </li>-->
                         <li class="divider"></li>
-                        <li><a href="#" class="newStore"><i class="mdi-action-lock-outline"></i>log out</a>
+                        <li><a href="#" class="newStore"><i class="mdi-action-lock-outline"></i>signout</a>
                         </li>
                     </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only bits"><i class="mdi-navigation-menu"></i></a>
@@ -479,15 +471,6 @@ doc.save('BitsWallet_Backup.pdf');
     ================================================ 
 -->
 
- <script>
-    function onSuccess(googleUser) {
-      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-    }
-    function onFailure(error) {
-      console.log(error);
-    }
-   
-  </script>
 <script src="https://bitsoko.io/bitsAssets/js/google.js"async defer></script>
   <script src="https://apis.google.com/js/client:platform.js?onload=startGoogle" async defer></script>
     
