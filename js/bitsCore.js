@@ -259,10 +259,11 @@ function showNotices(msg,tm,bt) {
         tm=6000;
     }else if(tm==0){tm==60000}
     if(!bt || bt==undefined){
-        document.getElementById('notify-but').style.display = "none";
         
+       
+//Materialize.toast('loading profile...', 3000);
     }else{
-         document.getElementById('notify-but').style.display = "block";
+         //document.getElementById('notify-but').style.display = "block";
         tm=60000;
     }
     //try{document.getElementById('notify').close()}catch(err){};
@@ -271,7 +272,8 @@ function showNotices(msg,tm,bt) {
     $('#notify').css('background-color','rgba(255, 252, 252, 0.98)');
     $('#notify').css('padding-top','20px');
     
-    setTimeout(function(){document.getElementById('notify').showModal()},1000);
+    setTimeout(function(){//document.getElementById('notify').showModal()
+    },1000);
     hideNotices(tm);
     
 }
