@@ -389,21 +389,10 @@ function loadWallet(primWalA){
           
         
     });
-     
-  
-  getObjectStore('data', 'readwrite').get('bits-wallets').onsuccess = function (event) {
-      
-  //bc.postMessage({cast: 'connect', user: 'user-'+event.target.result }); 
-  var walData = JSON.parse(event.target.result);  
-  delete walData.privateKey;
-	   doFetch({action:'addVisit', data: walData}).then(function(e){
-       
-	  localStorage.setItem('bits-user-name','anon-'+walData.publicAddress);
+        doFetch({action:'addVisit', data: primWalA}).then(function(e){
       console.log(e); 
        
    });
-      
-  };
     
 }
 
