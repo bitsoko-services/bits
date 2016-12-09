@@ -1799,20 +1799,34 @@ var publicAddress =privateKey.toAddress().toString();
 	
 	
     
-saveWallet(user, publicAddress, privateKey.toString());
-    return publicAddress;
+//saveWallet(user, publicAddress, privateKey.toString());
+//    return publicAddress;
 //updateWallet(user, bitcoinAddress, privateKey.toString(),created);
 
-}
+//}
 
 function saveWallet(user, publicAddress, privateKey){
    var created = moment().valueOf();
    var walData={user:user, publicAddress:publicAddress, privateKey:privateKey, created:created, coin:'btc'};
+	var wd=walData;
+	delete wd.privatekey;
 
+        doFetch({action:'saveUserwallet', data: JSON.stringify(wd)}).then(function(e){
+            if (e.status=="ok"){
+   
+          
 var walSaving = getObjectStore('data', 'readwrite').put(JSON.stringify(walData), 'bits-wallets');
 	walSaving.onsuccess = function (event) {
 
+Materialize.toast('created new wallet', 3000);
 	}
+                } else{
+		
+Materialize.toast('failed to create wallet, please try again', 3000);
+		
+		}           
+               
+        });
 }
 
 /*
