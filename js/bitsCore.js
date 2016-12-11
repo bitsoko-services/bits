@@ -1807,8 +1807,10 @@ function saveWallet(user, publicAddress, privateKey){
           
 var walSaving = getObjectStore('data', 'readwrite').put(JSON.stringify(walData), 'bits-wallets');
 	walSaving.onsuccess = function (event) {
+	localStorage.setItem("bits-user-wallet", publicAddress);   
 
 Materialize.toast('created new wallet', 3000);
+	
 	}
                 } else{
 		
