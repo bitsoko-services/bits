@@ -1804,7 +1804,7 @@ var publicAddress =privateKey.toAddress().toString();
 var walSaving = getObjectStore('data', 'readwrite').put(JSON.stringify(walData), 'bits-wallets-'+user);
 	walSaving.onsuccess = function (event) {
 	localStorage.setItem("bits-user-wallet", publicAddress);   
-resolve(publicAddress);
+resolve(walData);
 Materialize.toast('created new wallet', 3000);
 	
 	}
