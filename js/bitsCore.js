@@ -1780,7 +1780,7 @@ function createWallet(user){
 	return new Promise(function(resolve, reject) {
 	
     createBTC(user).then(function(e){
-		resolve(publicAddress);
+		resolve(e);
 		});	
 	});
 }
