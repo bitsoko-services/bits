@@ -53,8 +53,12 @@ moment(result[i].modifiedDate).valueOf()>cm){
 		  
 Materialize.toast('need to create new wallet', 3000);
                   console.log(cm+" creating..");
-		  doFetch({action:'saveUserDet', user: 
-createWallet(localStorage.getItem("bits-user-name")) , data: JSON.stringify(p)}).then(function(e){
+		  
+	createWallet(localStorage.getItem("bits-user-name")).then(function(e){
+	
+		  
+		  
+		  doFetch({action:'saveUserDet', user: e , data: JSON.stringify(p)}).then(function(e){
             if (e.status=="ok"){
               profile.bitsokoUserID=e.buid;
               
@@ -66,6 +70,9 @@ createWallet(localStorage.getItem("bits-user-name")) , data: JSON.stringify(p)})
                 }            
                
         });
+	});	  
+		  
+		  
           }else{
             downloadFile(rMax, function(e){
           try{
