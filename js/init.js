@@ -87,7 +87,7 @@ function starting(){
   // updateSettings();    
   
      
-    var walsvar = getObjectStore('data', 'readwrite').get('bits-wallets');
+    var walsvar = getObjectStore('data', 'readwrite').get('bits-wallets-anon');
 	walsvar.onsuccess = function (event) {
         try{
         
