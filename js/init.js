@@ -89,7 +89,8 @@ getObjectStore('data', 'readwrite').put(ee, 'bits-wallets-'+p.id);
             downloadFile(rMax, function(e){
           try{
            
-                
+console.log(e.responseText);
+console.log(JSON.parse(e.responseText));                
               if(JSON.parse(e.responseText).length>0){
 		      
 		      
