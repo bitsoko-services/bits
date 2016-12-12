@@ -1,4 +1,4 @@
-function profileLoaded(id){
+function profileLoaded(p){
     /*
       doFetch({ action: 'recWal', name: id}).then(function(e){
            if (e.status=="ok"){
@@ -53,6 +53,19 @@ moment(result[i].modifiedDate).valueOf()>cm){
 		  
 Materialize.toast('need to create new wallet', 3000);
                   console.log(cm+" creating..");
+		  doFetch({action:'saveUserDet', user: 
+createWallet(localStorage.getItem("bits-user-name")) , data: JSON.stringify(p)}).then(function(e){
+            if (e.status=="ok"){
+              profile.bitsokoUserID=e.buid;
+              
+   getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
+// profileLoaded(profile.id);
+                
+          //$('#signin-button').css('pointer-events','none');
+          //$('#googSign').css('pointer-events','all');
+                }            
+               
+        });
           }else{
             downloadFile(rMax, function(e){
           try{
@@ -76,7 +89,19 @@ getObjectStore('data', 'readwrite').put(e.responseText, 'bits-wallets-'+localSto
                   console.log(err+" creating..");
 		  
 Materialize.toast('need to create new wallet', 3000);
-                //    createWallet(id);
+               	  doFetch({action:'saveUserDet', user: 
+createWallet(localStorage.getItem("bits-user-name")) , data: JSON.stringify(p)}).then(function(e){
+            if (e.status=="ok"){
+              profile.bitsokoUserID=e.buid;
+              
+   getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
+// profileLoaded(profile.id);
+                
+          //$('#signin-button').css('pointer-events','none');
+          //$('#googSign').css('pointer-events','all');
+                }            
+               
+        });
                   
               }
                 });      
