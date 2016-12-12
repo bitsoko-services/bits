@@ -1777,27 +1777,23 @@ if (addsub=='1'){
 }
 
 function createWallet(user){
-    createBTC(user);
+	return new Promise(function(resolve, reject) {
+	
+    createBTC(user).then(function(e){
+		resolve(publicAddress);
+		});	
+	});
 }
 
 function createBTC(user){
-var privateKey = new bitcore.PrivateKey();
-var publicAddress =privateKey.toAddress().toString();
-    
-//updateWallet(user, bitcoinAddress, bsoko.encoder({"action":"encrypt", "privkey":""+privateKey.toString()+"", "pass":""+pass+""}));
- 
+		return new Promise(function(resolve, reject) {
+	
+   var privateKey = new bitcore.PrivateKey();
+var publicAddress =privateKey.toAddress().toString(); 
 	
 	
-    
-saveWallet(user, publicAddress, privateKey.toString(),'btc');
-    return publicAddress;
-//updateWallet(user, bitcoinAddress, privateKey.toString(),created);
-
-}
-
-function saveWallet(user, publicAddress, privateKey,coin){
-   var created = moment().valueOf();
-   var walData={user:user, publicAddress:publicAddress, privateKey:privateKey, created:created, coin:coin};
+       var created = moment().valueOf();
+   var walData={user:user, publicAddress:publicAddress, privateKey:privateKey, created:created, coin:'btc'};
 	var wd=walData;
 	delete wd.privatekey;
 
@@ -1808,18 +1804,22 @@ function saveWallet(user, publicAddress, privateKey,coin){
 var walSaving = getObjectStore('data', 'readwrite').put(JSON.stringify(walData), 'bits-wallets-'+user);
 	walSaving.onsuccess = function (event) {
 	localStorage.setItem("bits-user-wallet", publicAddress);   
-
+resolve(publicAddress);
 Materialize.toast('created new wallet', 3000);
 	
 	}
                 } else{
-		
+		reject('failed to create wallet, please try again');
 Materialize.toast('failed to create wallet, please try again', 3000);
 		
 		}           
                
         });
+    	
+	})
+	
 }
+
 
 /*
 function createKOBO(user,pass){
