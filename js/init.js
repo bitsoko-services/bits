@@ -16,7 +16,7 @@ function profileLoaded(id){
     
     */
     
-    showNotices('loading wallets..',60000);
+Materialize.toast('loading wallets', 3000);
       var retrievePageOfFiles = function(request, result) {
            console.log(result);
     request.execute(function(resp) {
