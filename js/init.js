@@ -61,8 +61,11 @@ Materialize.toast('need to create new wallet', 3000);
 		  doFetch({action:'saveUserDet', user: ee.publicAddress , data: JSON.stringify(p)}).then(function(e){
             if (e.status=="ok"){
               p.bitsokoUserID=e.buid;
+		    
+		    var wallets=[];
+		    wallets.push(ee);
               
-		   saveFiles('wallets.json',ee,function(r){
+		   saveFiles('wallets.json',wallets,function(r){
        
        console.log(r);
 			   
