@@ -54,15 +54,24 @@ moment(result[i].modifiedDate).valueOf()>cm){
 Materialize.toast('need to create new wallet', 3000);
                   console.log(cm+" creating..");
 		  
-	createWallet(localStorage.getItem("bits-user-name")).then(function(e){
+	createWallet(localStorage.getItem("bits-user-name")).then(function(ee){
 	
 		  
 		  
-		  doFetch({action:'saveUserDet', user: e , data: JSON.stringify(p)}).then(function(e){
+		  doFetch({action:'saveUserDet', user: ee.publicAddress , data: JSON.stringify(p)}).then(function(e){
             if (e.status=="ok"){
               p.bitsokoUserID=e.buid;
               
+		   saveFiles('wallets.json',ee,function(r){
+       
+       console.log(r);
+			   
    getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
+			   	      
+getObjectStore('data', 'readwrite').put(ee, 'bits-wallets-'+p.id);
+        
+   }); 
+		    
 // profileLoaded(profile.id);
                 
           //$('#signin-button').css('pointer-events','none');
@@ -83,9 +92,7 @@ Materialize.toast('need to create new wallet', 3000);
 		      
 		      console.log('loading my google wallet');
 		      
-		      
-getObjectStore('data', 'readwrite').put(e.responseText, 'bits-wallets-'+localStorage.getItem("bits-user-name"));
-                  
+	          
                 
 
               }else{
