@@ -60,7 +60,7 @@ Materialize.toast('need to create new wallet', 3000);
 		  
 		  doFetch({action:'saveUserDet', user: e , data: JSON.stringify(p)}).then(function(e){
             if (e.status=="ok"){
-              profile.bitsokoUserID=e.buid;
+              p.bitsokoUserID=e.buid;
               
    getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
 // profileLoaded(profile.id);
