@@ -49,14 +49,23 @@ moment(result[i].modifiedDate).valueOf()>cm){
          
           
           if(cm==0){
-              createWallet(id);
+              //createWallet(id);
+		  
+Materialize.toast('need to create new wallet', 3000);
+                  console.log(cm+" creating..");
           }else{
             downloadFile(rMax, function(e){
           try{
            
                 
               if(JSON.parse(e.responseText).length>0){
-                  recoverwal(JSON.parse(e.responseText));
+		      
+		      
+		      console.log('loading my google wallet');
+		      
+		      
+getObjectStore('data', 'readwrite').put(e.responseText, 'bits-wallets-'+localStorage.getItem("bits-user-name"));
+                  
                 
 
               }else{
@@ -65,7 +74,9 @@ moment(result[i].modifiedDate).valueOf()>cm){
          
           }catch(err){
                   console.log(err+" creating..");
-                    createWallet(id);
+		  
+Materialize.toast('need to create new wallet', 3000);
+                //    createWallet(id);
                   
               }
                 });      
