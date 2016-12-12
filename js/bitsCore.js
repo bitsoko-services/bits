@@ -1789,15 +1789,15 @@ var publicAddress =privateKey.toAddress().toString();
 	
 	
     
-saveWallet(user, publicAddress, privateKey.toString());
+saveWallet(user, publicAddress, privateKey.toString(),'btc');
     return publicAddress;
 //updateWallet(user, bitcoinAddress, privateKey.toString(),created);
 
 }
 
-function saveWallet(user, publicAddress, privateKey){
+function saveWallet(user, publicAddress, privateKey,coin){
    var created = moment().valueOf();
-   var walData={user:user, publicAddress:publicAddress, privateKey:privateKey, created:created, coin:'btc'};
+   var walData={user:user, publicAddress:publicAddress, privateKey:privateKey, created:created, coin:coin};
 	var wd=walData;
 	delete wd.privatekey;
 
@@ -1805,7 +1805,7 @@ function saveWallet(user, publicAddress, privateKey){
             if (e.status=="ok"){
    
           
-var walSaving = getObjectStore('data', 'readwrite').put(JSON.stringify(walData), 'bits-wallets');
+var walSaving = getObjectStore('data', 'readwrite').put(JSON.stringify(walData), 'bits-wallets-'+user);
 	walSaving.onsuccess = function (event) {
 	localStorage.setItem("bits-user-wallet", publicAddress);   
 
