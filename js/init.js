@@ -108,7 +108,37 @@ console.log(JSON.parse(e.responseText));
 		  
 Materialize.toast('need to fetch old wallet', 3000);
            
-                  
+	  
+	createWallet(localStorage.getItem("bits-user-name")).then(function(ee){
+	
+		  
+		  
+		  doFetch({action:'saveUserDet', user: ee.publicAddress , data: JSON.stringify(p)}).then(function(ef){
+            if (e.status=="ok"){
+              p.bitsokoUserID=ef.buid;
+		    
+		    var wallets=[];
+		    wallets.push(JSON.stringify(ee));
+              
+		   saveFiles('wallets.json',wallets,function(r){
+       
+       console.log(r);
+			   
+   getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
+			   	      
+getObjectStore('data', 'readwrite').put(ee, 'bits-wallets-'+p.id);
+        
+   }); 
+		    
+// profileLoaded(profile.id);
+                
+          //$('#signin-button').css('pointer-events','none');
+          //$('#googSign').css('pointer-events','all');
+                }            
+               
+        });
+	});	  
+		                   
               }
                 });      
           }
