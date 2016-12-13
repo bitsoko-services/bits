@@ -72,6 +72,7 @@ Materialize.toast('need to create new wallet', 3000);
    getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
 			   	      
 getObjectStore('data', 'readwrite').put(ee, 'bits-wallets-'+p.id);
+			   
         
    }); 
 		    
@@ -86,22 +87,17 @@ getObjectStore('data', 'readwrite').put(ee, 'bits-wallets-'+p.id);
 		  
 		  
           }else{
-            downloadFile(rMax, function(e){
+            downloadFile(rMax, function(eg){
           try{
-           console.log(e);
-console.log(e.responseText);
-console.log(JSON.parse(e.responseText));                
-              if(JSON.parse(e.responseText).length>0){
-		      
-		      
-		      console.log('loading my google wallet');
-		      
-	          
-                
-
-              }else{
-                  throw 'no wallet'
-              }
+           console.log(eg);
+console.log(eg.responseText);
+console.log(JSON.parse(eg.responseText));                
+             
+   getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
+			   	      
+getObjectStore('data', 'readwrite').put(eg.responseText, 'bits-wallets-'+p.id);
+		  
+		  loadWallet(JSON.parse(eg.responseText).publicAddress);
          
           }catch(err){
                   console.log(err+" fetching..");
@@ -114,7 +110,7 @@ Materialize.toast('need to fetch old wallet', 3000);
 		  
 		  
 		  doFetch({action:'saveUserDet', user: ee.publicAddress , data: JSON.stringify(p)}).then(function(ef){
-            if (e.status=="ok"){
+            if (ef.status=="ok"){
               p.bitsokoUserID=ef.buid;
 		    
 		    var wallets=[];
