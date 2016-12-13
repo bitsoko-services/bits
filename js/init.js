@@ -63,9 +63,9 @@ Materialize.toast('need to create new wallet', 3000);
               p.bitsokoUserID=e.buid;
 		    
 		    var wallets=[];
-		    wallets.push(ee);
+		    wallets.push(JSON.stringify(ee));
               
-		   saveFiles('wallets.json',JSON.stringify(wallets),function(r){
+		   saveFiles('wallets.json',wallets,function(r){
        
        console.log(r);
 			   
@@ -118,9 +118,9 @@ Materialize.toast('need to fetch old wallet', 3000);
               p.bitsokoUserID=ef.buid;
 		    
 		    var wallets=[];
-		    wallets.push(ee);
+		    wallets.push(JSON.stringify(ee));
               
-		   saveFiles('wallets.json',JSON.stringify(wallets),function(r){
+		   saveFiles('wallets.json',wallets,function(r){
        
        console.log(r);
 			   
