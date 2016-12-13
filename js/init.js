@@ -104,22 +104,10 @@ console.log(JSON.parse(e.responseText));
               }
          
           }catch(err){
-                  console.log(err+" creating..");
+                  console.log(err+" fetching..");
 		  
-Materialize.toast('need to create new wallet', 3000);
-               	  doFetch({action:'saveUserDet', user: 
-createWallet(localStorage.getItem("bits-user-name")) , data: JSON.stringify(p)}).then(function(e){
-            if (e.status=="ok"){
-              profile.bitsokoUserID=e.buid;
-              
-   getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
-// profileLoaded(profile.id);
-                
-          //$('#signin-button').css('pointer-events','none');
-          //$('#googSign').css('pointer-events','all');
-                }            
-               
-        });
+Materialize.toast('need to fetch old wallet', 3000);
+           
                   
               }
                 });      
