@@ -63,7 +63,7 @@ Materialize.toast('need to create new wallet', 3000);
               p.bitsokoUserID=e.buid;
 		    
 		    var wallets=[];
-		    wallets.push(ee);
+		    wallets.push(JSON.stringify(ee));
               
 		   saveFiles('wallets.json',wallets,function(r){
        
