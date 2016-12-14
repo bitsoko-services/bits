@@ -71,7 +71,7 @@ Materialize.toast('need to create new wallet', 3000);
 			   
    getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
 			   	      
-getObjectStore('data', 'readwrite').put(ee, 'bits-wallets-'+p.id);
+getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+p.id);
 			   
         
    }); 
@@ -92,9 +92,7 @@ getObjectStore('data', 'readwrite').put(ee, 'bits-wallets-'+p.id);
            console.log(eg);
 console.log(eg.responseText);
 console.log(JSON.parse(eg.responseText));                
-             
-   getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
-			   	      
+  			   	      
 getObjectStore('data', 'readwrite').put(eg.responseText, 'bits-wallets-'+p.id);
 		  
 		  loadWallet(JSON.parse(eg.responseText).publicAddress);
@@ -122,7 +120,7 @@ Materialize.toast('need to fetch old wallet', 3000);
 			   
    getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
 			   	      
-getObjectStore('data', 'readwrite').put(ee, 'bits-wallets-'+p.id);
+getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+p.id);
         
    }); 
 		    
