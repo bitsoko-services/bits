@@ -970,8 +970,8 @@ e=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits
  //web Share start
  document.querySelector("#share").addEventListener('click', function(event) {
        navigator.share({
-    title: document.title,
-    text: "Hello World",
+    title: actvServ().name,
+    text:actvServ().desription ,
     url: window.location.href
 }).then(() => console.log('Successful share'))
 .catch(error => console.log('Error sharing:', error));
@@ -979,8 +979,4 @@ e=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits
  
 
 
-//web Share end
-  </script>
-</body>
-
-</html>
+//web Share end location.hash=location.hash+"&i="+
