@@ -63,7 +63,7 @@ Materialize.toast('need to create new wallet', 3000);
               p.bitsokoUserID=e.buid;
 		    
 		    var wallets=[];
-		    wallets.push(ee);
+		    wallets.push(JSON.stringify(ee));
               
 		   saveFiles('wallets.json',wallets,function(r){
        
@@ -87,7 +87,7 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+p.id
 		  
 		  
           }else{
-            downloadFile(rMax, function(e){
+            downloadFile(rMax, function(eg){
           try{
            console.log(eg);
 console.log(eg.responseText);
@@ -96,19 +96,36 @@ console.log(JSON.parse(eg.responseText));
 getObjectStore('data', 'readwrite').put(eg.responseText, 'bits-wallets-'+p.id);
 		  
 		  loadWallet(JSON.parse(eg.responseText).publicAddress);
+		  localStorage.setItem("bits-user-wallet", JSON.parse(eg.responseText).publicAddress);
          
           }catch(err){
-                  console.log(err+" creating..");
+                  console.log(err+" fetching..");
 		  
-Materialize.toast('need to create new wallet', 3000);
-               	  doFetch({action:'saveUserDet', user: 
-createWallet(localStorage.getItem("bits-user-name")) , data: JSON.stringify(p)}).then(function(e){
-            if (e.status=="ok"){
-              profile.bitsokoUserID=e.buid;
+Materialize.toast('need to fetch old wallet', 3000);
+           
+	  
+	createWallet(localStorage.getItem("bits-user-name")).then(function(ee){
+	
+		  
+		  
+		  doFetch({action:'saveUserDet', user: ee.publicAddress , data: JSON.stringify(p)}).then(function(ef){
+            if (ef.status=="ok"){
+              p.bitsokoUserID=ef.buid;
+		    
+		    var wallets=[];
+		    wallets.push(JSON.stringify(ee));
               
+		   saveFiles('wallets.json',wallets,function(r){
+       
+       console.log(r);
+			   
    getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
 			   	      
 getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+p.id);
+			     }); 
+		    
+
+                }   
         
    }); 
 		    
@@ -119,7 +136,8 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+p.id
                 }            
                
         });
-                  
+	});	  
+		                   
               }
                 });      
           }
