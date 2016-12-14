@@ -128,12 +128,7 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+p.id
                 }   
         
    }); 
-		    
-// profileLoaded(profile.id);
-                
-          //$('#signin-button').css('pointer-events','none');
-          //$('#googSign').css('pointer-events','all');
-                }            
+		        
                
         });
 	});	  
