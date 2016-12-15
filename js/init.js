@@ -54,7 +54,7 @@ moment(result[i].modifiedDate).valueOf()>cm){
 Materialize.toast('need to create new wallet', 3000);
                   console.log(cm+" creating..");
 		  
-	createWallet(localStorage.getItem("bits-user-name")).then(function(ee){
+	createWallet(p.id).then(function(ee){
 	
 		  
 		  
@@ -68,12 +68,14 @@ Materialize.toast('need to create new wallet', 3000);
 		   saveFiles('wallets.json',wallets,function(r){
        
        console.log(r);
-			   
+		  localStorage.setItem("bits-user-wallet", ee.publicAddress);
+		  
+			 localStorage.setItem('bits-user-name',p.id);  
    getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
 			   	      
 getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+p.id);
 			   
-        
+        starting();
    }); 
 		    
 // profileLoaded(profile.id);
@@ -88,15 +90,26 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+p.id
 		  
           }else{
             downloadFile(rMax, function(eg){
-          try{
-           console.log(eg);
-console.log(eg.responseText);
-console.log(JSON.parse(eg.responseText));                
-  			   	      
-getObjectStore('data', 'readwrite').put(eg.responseText, 'bits-wallets-'+p.id);
+          try{               
+  		  
+		
 		  
-		  loadWallet(JSON.parse(eg.responseText).publicAddress);
-		  localStorage.setItem("bits-user-wallet", JSON.parse(eg.responseText).publicAddress);
+		  
+		  
+		  doFetch({action:'saveUserDet', user: adr , data: JSON.stringify(p)}).then(function(ef){
+            if (ef.status=="ok"){
+              p.bitsokoUserID=ef.buid;
+		  var adr=JSON.parse(eg.responseText).publicAddress;
+		  //loadWallet(adrr);
+		  localStorage.setItem("bits-user-wallet", adr);
+		  
+			 localStorage.setItem('bits-user-name',p.id);
+		  	   	      
+getObjectStore('data', 'readwrite').put(eg.responseText, 'bits-wallets-'+p.id);
+		    
+   getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
+	    }
+		  });
          
           }catch(err){
                   console.log(err+" fetching..");
@@ -119,6 +132,9 @@ Materialize.toast('need to fetch old wallet', 3000);
        
        console.log(r);
 			   
+		  localStorage.setItem("bits-user-wallet", ee.publicAddress);
+		  
+			 localStorage.setItem('bits-user-name',p.id);  
    getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
 			   	      
 getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+p.id);
@@ -147,12 +163,32 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+p.id
 }
 
 function starting(){
+startUser(localStorage.getItem('bits-user-name')).then(function(e){
+
+	
+   // loadWallet(createWallet('anon'));
+	
+   loadWallet(e);
     
-    //setWallpaper();
-  // updateSettings();    
+    	serviceOpener(); 
+  updatePromos();
+}).catch(function(err){
+	var user=localStorage.getItem('bits-user-name');
+	if (user == "" || user == "undefined" || user == "null" || user == null) {
+	
+createWallet('anon');	
+	}
+});
+}
+
+function startUser(user){
+     return new Promise(function(resolve, reject) {
+    if(user==undefined){
+    user=anon;
+    }    
   
      
-    var walsvar = getObjectStore('data', 'readwrite').get('bits-wallets-anon');
+    var walsvar = getObjectStore('data', 'readwrite').get('bits-wallets-'+user);
 	walsvar.onsuccess = function (event) {
         try{
         
@@ -177,11 +213,13 @@ function starting(){
             }
 	}catch(err){
 	
-    var address = '';	
+    //var address = '';	
+		reject('no wallet');
 	}
    
         
-if (address == "" || address == "undefined" || address == "null" || address == null) {
+if (!address || address == "" || address == "undefined" || address == "null" || address == null) {
+	reject('no wallet');
       localStorage.setItem('bitsoko-wallets','none');
 	   localStorage.setItem('bitsoko-settings-country','default');
 	  
@@ -189,26 +227,22 @@ if (address == "" || address == "undefined" || address == "null" || address == n
       getObjectStore('data', 'readwrite').put('[]', 'transactions');
         //return;
       
-	
-    loadWallet(createWallet('anon'));
-	
-    
 
   return;
   } else{
       
- 
-   loadWallet(address);
+ resolve(address);
     
   }
     
 }   
     walsvar.onerror = function (event) {
         console.log('access error');
+	    reject('no wallet');
     }
 
-    	serviceOpener(); 
-  updatePromos();
+	     
+     });
 }
 
 
