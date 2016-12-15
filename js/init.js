@@ -108,6 +108,8 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+p.id
 getObjectStore('data', 'readwrite').put(eg.responseText, 'bits-wallets-'+p.id);
 		    
    getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
+		    
+        starting();
 	    }
 		  });
          
@@ -138,6 +140,8 @@ Materialize.toast('need to fetch old wallet', 3000);
    getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
 			   	      
 getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+p.id);
+			   
+        starting();
 			     }); 
 		    
 
