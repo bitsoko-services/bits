@@ -386,8 +386,7 @@ function loadWallet(primWalA){
       });
     });
     updateBal();
-    initialisePush();
-	getLoc();
+    	getLoc();
 
 
         localConverter().then(function(loCon){
