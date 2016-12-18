@@ -180,7 +180,10 @@ startUser(localStorage.getItem('bits-user-name')).then(function(e){
 	var user=localStorage.getItem('bits-user-name');
 	if (user == "" || user == "undefined" || user == "null" || user == null) {
 	
-createWallet('anon');	
+createWallet('anon').then(function(e){
+
+loadWallet(e.publicAddress);
+});	
 	}
 });
 }
