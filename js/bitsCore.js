@@ -389,6 +389,9 @@ function loadWallet(primWalA){
     updateBal();
     	getLoc();
 
+    
+    	serviceOpener(); 
+  updatePromos();
 
         localConverter().then(function(loCon){
    $( ".conf-curr" ).html( loCon.symbol );
