@@ -173,9 +173,6 @@ startUser(localStorage.getItem('bits-user-name')).then(function(e){
    // loadWallet(createWallet('anon'));
 	
    loadWallet(e);
-    
-    	serviceOpener(); 
-  updatePromos();
 }).catch(function(err){
 	var user=localStorage.getItem('bits-user-name');
 	if (user == "" || user == "undefined" || user == "null" || user == null) {
