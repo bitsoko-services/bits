@@ -51,7 +51,7 @@ moment(result[i].modifiedDate).valueOf()>cm){
           if(cm==0){
               //createWallet(id);
 		  
-Materialize.toast('need to create new wallet', 3000);
+//Materialize.toast('need to create new wallet', 3000);
                   console.log(cm+" creating..");
 		  
 	createWallet(p.id).then(function(ee){
@@ -116,7 +116,7 @@ getObjectStore('data', 'readwrite').put(eg.responseText, 'bits-wallets-'+p.id);
           }catch(err){
                   console.log(err+" fetching..");
 		  
-Materialize.toast('need to fetch old wallet', 3000);
+//Materialize.toast('need to fetch old wallet', 3000);
            
 	  
 	createWallet(localStorage.getItem("bits-user-name")).then(function(ee){
