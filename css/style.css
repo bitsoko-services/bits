@@ -16,6 +16,14 @@
 aside>ul{
   left: -250px !important;
   }*/
+  .bits-col{
+    width: 95%;
+    margin-left: 2.5%;
+    }
+ .promo-collection{ background-color: antiquewhite !important; }
+  .bits-red{
+   background-color:#760F0F;
+  }
 .promoHolder{
   width: 90%;margin-left: 5%;
 }
@@ -134,7 +142,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
     margin-bottom: 0px;
     
   }
- .pinned>div>ul{
+ .pinned>div>div>ul{
    margin-top:310px;
  }
   .bits-profile{
