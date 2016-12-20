@@ -16,6 +16,9 @@
 aside>ul{
   left: -250px !important;
   }*/
+.promoHolder{
+  width: 90%;margin-left: 5%;
+}
 #materialbox-overlay {
     position: fixed;
     top: 0;
