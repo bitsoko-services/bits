@@ -16,6 +16,22 @@
 aside>ul{
   left: -250px !important;
   }*/
+.collection .collection-item.avatar {
+    min-height: 84px;
+    padding-left: 55px !important;
+    position: relative;
+}
+  
+.collection .collection-item.avatar .circle {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    overflow: hidden;
+    left: 7px !important;
+    display: inline-block;
+    vertical-align: middle;
+}
+
   .bits-col{
     width: 95%;
     margin-left: 2.5%;
