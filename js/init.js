@@ -176,11 +176,13 @@ startUser(localStorage.getItem('bits-user-name')).then(function(e){
 }).catch(function(err){
 	var user=localStorage.getItem('bits-user-name');
 	if (user == "" || user == "undefined" || user == "null" || user == null) {
-	
+	startGoogle();
 createWallet('anon').then(function(e){
 
 loadWallet(e.publicAddress);
+                requestID();
 });	
+		
 	}
 });
 }
