@@ -131,7 +131,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
     margin-bottom: 0px;
     
   }
- .pinned+div>ul{
+ .pinned>div>ul{
    margin-top:310px;
  }
   .bits-profile{
