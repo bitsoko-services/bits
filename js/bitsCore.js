@@ -1007,7 +1007,7 @@ var req = store.put('default', 'country');
      }
 
 });
-
+/*
 $("#more-but").bind( "touchstart click", function(event, ui) {
 
      if (!flag) {
@@ -1074,7 +1074,6 @@ $("#signup-panel-loader").html('');
   
 });
    
-  /* 
   $("#servStartSearch").bind( "touchstart click", function(event, ui) {
      if (!flag) {
     flag = true;
@@ -1124,14 +1123,10 @@ createWallet($(this).attr("coin"));
 });
      
     });
-$( document ).ajaxError(function() {
-  //console.log( "Triggered ajaxError handler." );
-});
-
 /*********************************************************************************/
 /* Bindings                                                                     */
 /*********************************************************************************/
-
+/*
  function bindPlugins(){
  
 //$("#plugins").live("click", function() {
@@ -1227,7 +1222,7 @@ $(".navigation").bind('touchstart click', function(e){
 
   return false
 });
-
+*/
 
 
 $(".servsearch").bind('touchstart click', function(e){
