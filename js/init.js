@@ -758,7 +758,7 @@ var keyelm=$(this);
                  }, false); 
                  
              };
-    bindPlugins();
+  //  bindPlugins();
 }, false);   
 
 
