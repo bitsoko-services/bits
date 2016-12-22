@@ -123,7 +123,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 }
 .bitsimg{
       margin-top: -70px;
-      max-height: 350px;
+     /* max-height: 350px;*/
 }
 
   .row.bal{
