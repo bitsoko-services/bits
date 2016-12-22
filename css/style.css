@@ -17,7 +17,7 @@ aside>ul{
   left: -250px !important;
   }*/
   .displayNone{
-    display:none;
+    display:none !important;
   }
 .collection .collection-item.avatar {
     min-height: 84px;
@@ -30,7 +30,7 @@ aside>ul{
     width: 42px;
     height: 42px;
     overflow: hidden;
-    left: 7px !important;
+    /*left: 7px !important;*/
     display: inline-block;
     vertical-align: middle;
 }
