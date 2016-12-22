@@ -21,7 +21,7 @@ aside>ul{
   }
 .collection .collection-item.avatar {
     min-height: 84px;
-    padding-left: 55px !important;
+    /*padding-left: 55px !important;*/
     position: relative;
 }
   
