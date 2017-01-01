@@ -49,9 +49,13 @@ aside>ul{
     }
 
  .promo-collection{ 
-   background-color: white !important; 
-       height: 100%;
+ background-color: white !important;
+    height: 100%;
     overflow: overlay;
+    width: 90%!important;
+    padding-bottom: 20px;
+    margin: 5%;
+    border: 1px solid rgba(0,0,0,0.1);
 }
 
   .bits-red{
