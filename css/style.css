@@ -31,7 +31,8 @@ aside>ul{
 }
 .promo-collection>div>img {
     width:100%;
-      padding: 5%;
+  padding: 2%;
+    height: 140px;
 }
   
 .collection .collection-item.avatar .circle {
@@ -52,9 +53,9 @@ aside>ul{
  background-color: white !important;
     height: 100%;
     overflow: overlay;
-    width: 90%!important;
+    width: 96%!important;
     padding-bottom: 20px;
-    margin: 5%;
+    margin: 2%;
     border: 1px solid rgba(0,0,0,0.1);
 }
 
