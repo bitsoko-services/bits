@@ -50,7 +50,8 @@ aside>ul{
 
  .promo-collection{ 
    background-color: white !important; 
-   height: 340px;
+       height: 100%;
+    overflow: overlay;
 }
 
   .bits-red{
