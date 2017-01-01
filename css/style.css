@@ -31,6 +31,7 @@ aside>ul{
 }
 .promo-collection>div>img {
     width:100%;
+      padding: 5%;
 }
   
 .collection .collection-item.avatar .circle {
@@ -48,7 +49,8 @@ aside>ul{
     }
 
  .promo-collection{ 
-   background-color: antiquewhite !important; 
+   background-color: white !important; 
+   height: 340px;
 }
 
   .bits-red{
