@@ -788,53 +788,15 @@ window.addEventListener("online", function(e) {
 
 
 function updateBal(notif){
-  
-	getObjectStore('data', 'readwrite').get('wallets').onsuccess = function (event) {
-    try{      
-    var wallets = JSON.parse(event.target.result);
     
-    }catch(err) {
-    
-    console.log(err);
-	return;
-} 
-    var balance;
-    var fiat=0;
-    $('#coinbal').html('');
-    localConverter().then(function(e){
-    $('#currency').html(e.symbol).css('text-transform','uppercase');
-         $('#xrates').html('').append('<span style="">1 BTC = </span><span style="text-transform:uppercase;">'+numberify(e.xrate*e.rate,0) +' '+e.symbol+'</span>');
-    });
-        
-    
-    //localStorage.getItem('bitsoko-pub-key')    
-  //var wallets=$.parseJSON(localStorage.getItem('bitsoko-wallets'));  
- try{   
-for(var i = 0, m = null; i < wallets.length; ++i) {
-    $('#coinbal').append('<div style="opacity: 0.7;"><span style="display: inline-block;">'+parseFloat(wallets[i].balance/100000000)+'</span><span style="font-size:70%;text-transform:lowercase;">&nbsp;'+wallets[i].type+'</span></div>');
-    
-    //if (wallets[i].type == 'btc'){
-        
-    balance = wallets[i].balance;
-    
-//}
-     
-}
-             
- }
-catch(err) {
-    
-    //$( "#disclaimer" ).popup( "open" );
-   return;
-} 
     localConverter().then(function(e){
     
- var infiat = parseInt(balance)/100000000;
+ var infiat = parseInt(localStorage.getItem('bits-wallets-bal'))/100000000;
      var infiat=infiat*e.xrate*e.rate;
         
         
         fiat=fiat+infiat;
-    $( "#fiatbal" ).html(fiat.toFixed(2));
+    $( ".bitsoko-balance" ).html(fiat.toFixed(2));
         
     });
  
@@ -854,8 +816,6 @@ catch(err) {
      //   showNotices('Your new balance is '+fiat.toFixed(2));
     }
         }
-}
-    //}
             
  
 }
