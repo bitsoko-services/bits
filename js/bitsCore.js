@@ -872,16 +872,16 @@ catch(err) {
 
 function setBalFig() {
      
-var ttr = getObjectStore('data', 'readwrite').get("wallets").onsuccess = function (event) {
+var ttr = getObjectStore('data', 'readwrite').get("bits-wallets-"+localStorage.getItem('bits-user-name')).onsuccess = function (event) {
    
      var wallets=$.parseJSON(event.target.result); 
 
     for(var i = 0; i < wallets.length; ++i) {
-        if (wallets[i].pubadd==localStorage.getItem('bitsoko-wallets-addr')){
+        if (wallets[i].publicAddress==localStorage.getItem('bits-user-wallet')){
          
 wallets[i].balance=parseFloat(localStorage.getItem('bitsoko-wallets-bal'));
     
-var req = getObjectStore('data', 'readwrite').put(JSON.stringify(wallets), 'wallets');
+var req = getObjectStore('data', 'readwrite').put(JSON.stringify(wallets), "bits-wallets-"+localStorage.getItem('bits-user-name'));
         req.onerror = function(e) {
             console.log(e);
             updateBal();
@@ -901,17 +901,11 @@ var req = getObjectStore('data', 'readwrite').put(JSON.stringify(wallets), 'wall
 function getBal() {
     
    var item; 
-    $( "#balance-counter" ).css('opacity','0.4');
-    $( "#balance-counter-upd" ).css( 'display','block' ).css( 'opacity','1' );
    
-    //return;
-
-    //getAdDet($.parseJSON(localStorage.getItem('bitsoko-wallets'))[i].pubadd);
-    
     //$(function() {
 
       
-    doFetch({action:'updBal', data: localStorage.getItem('bitsoko-wallets-addr') }).then(function(e){
+    doFetch({action:'updBal', data: localStorage.getItem('bits-user-wallet') }).then(function(e){
         try{
               var tlist = e.data.txs;
         console.log(tlist);
