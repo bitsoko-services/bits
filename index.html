@@ -185,6 +185,19 @@ doc.save('BitsWallet_Backup.pdf');
 
                   </a>
             </li>
+            <li><a href="#">
+             
+                  <div class="switch">
+                  <i class="mdi-action-settings"></i>
+                   <span class="bits-13" style=""></span> <span href id="btn">Settings </span>    
+                    <!-- <label>
+                     <input type="checkbox">
+                      <span class="lever right" style="margin-top:13px;"></span>
+                    </label>-->
+                  </div>
+
+                  </a>
+            </li>
            
         </ul>
         <ul id="store-dropdown" class="dropdown-content drop-down-content-bits" style="">
@@ -662,8 +675,15 @@ $(".resDisplay").html( mDet.name);
 		document.querySelector('.serviceDescription').innerHTML = mDet.description;
 		 $('.serviceListHolder').html("");
 		 for(var ii = 0; ii < mDet.promotions.length; ++ii) { 
-		 $('.serviceListHolder').prepend('<li class="collection-item avatar bits-max promo-collection"><img src="https://bitsoko.io'+mDet.promotions[ii].promoBanner+'" data-caption="'+mDet.promotions[ii].promoDesc+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.promotions[ii].promoDesc+' </span></span><p class="serviceListFirstline"> <span class="bits-badge bits left">'+mDet.promotions[ii].discount+' <span class="localCurr"></span> % off</span></p><span class="secondary-content"></span></li>'); 
+			var dailyCost=(parseInt(mDet.promotions[ii].discount)/100)*mDet.promotions[ii].promoPrice;
+		 $('.serviceListHolder').prepend('<li class="avatar bits-max promo-collection">'+
+						 '<img src="https://bitsoko.io'+mDet.promotions[ii].promoBanner+'" data-caption="'+mDet.promotions[ii].promoDesc+'" alt="'+mDet.promotions[ii].promoDesc+'" class="materialboxed">'+
+						 '<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+mDet.promotions[ii].promoDesc+' </span></span>'+
+						 '<p class="serviceListFirstline"> <span class="bits-badge bits left" style="margin-left: 20px;">'+Math.ceil(dailyCost)+' <span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>'+
+						 '<div class="switch" style="width: 200px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="">Not Subcribed</span> <label><input type="checkbox" class="promoSubButton-'+mDet.promotions[ii].promoBanner+'" style="background: rgb(128, 210, 147);"> <span style="margin-top:2px;" class="lever right"></span></label></div></li>'); 
+
        }; 
+	 
  for(var ii = 0; ii < mDet.list.length; ++ii) {
 
         $('.serviceListHolder').append('<li class="collection-item avatar bits-max "><img src="https://bitsoko.io'+mDet.list[ii].imagePath+'" data-caption="'+mDet.list[ii].description+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"></span>'+mDet.list[ii].metric+' </span></p><span class="secondary-content"><p class="col s4" style="display: none;"> <input class="number bitsInputQty" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'> '+mDet.list[ii].metric+' (s)<label for='+mDet.list[ii].name+'></label></p></span></li>');

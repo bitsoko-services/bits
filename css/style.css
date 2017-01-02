@@ -21,8 +21,18 @@ aside>ul{
   }
 .collection .collection-item.avatar {
     min-height: 84px;
-    /*padding-left: 55px !important;*/
+    padding-left: 55px!important;
     position: relative;
+}
+.collection.promo-collection.avatar {
+    min-height: 84px;
+    padding-left: 25px!important;
+    position: relative;
+}
+.promo-collection>div>img {
+    width:100%;
+  padding: 2%;
+    height: 140px;
 }
   
 .collection .collection-item.avatar .circle {
@@ -30,7 +40,6 @@ aside>ul{
     width: 42px;
     height: 42px;
     overflow: hidden;
-    /*left: 7px !important;*/
     display: inline-block;
     vertical-align: middle;
 }
@@ -39,7 +48,17 @@ aside>ul{
     width: 95%;
     margin-left: 2.5%;
     }
- .promo-collection{ background-color: antiquewhite !important; }
+
+ .promo-collection{ 
+ background-color: white !important;
+    height: 100%;
+    overflow: overlay;
+    width: 96%!important;
+    padding-bottom: 20px;
+    margin: 2%;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
   .bits-red{
    background-color:#760F0F;
   }
