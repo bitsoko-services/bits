@@ -792,7 +792,7 @@ function updateBal(notif){
     localConverter().then(function(e){
     
  var infiat = parseInt(localStorage.getItem('bits-wallets-bal'))/100000000;
-     var infiat=infiat*e.xrate*e.rate;
+     var infiat=infiat*parseInt(e.xrate)*parseInt(e.rate);
         
         
     $( ".bitsoko-balance" ).html(infiat.toFixed(2));
