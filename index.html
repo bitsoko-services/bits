@@ -712,7 +712,7 @@ $(".resDisplay").html( mDet.name);
 						 '<img src="https://bitsoko.io'+mDet.promotions[ii].promoBanner+'" data-caption="'+mDet.promotions[ii].promoDesc+'" alt="'+mDet.promotions[ii].promoDesc+'" class="materialboxed">'+
 						 '<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+mDet.promotions[ii].promoDesc+' </span></span>'+
 						 '<p class="serviceListFirstline"> <span class="bits-badge bits left" style="margin-left: 20px;">'+Math.ceil(dailyCost)+' <span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>'+
-						 '<div class="switch" style="width: 200px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="">Not Subscribed</span> <label><input type="checkbox" pid="'+mDet.promotions[ii].id+'" class="promoSubButton" style="background: rgb(128, 210, 147);"> <span style="margin-top:2px;" class="lever right"></span></label></div></li>'); 
+						 '<div class="switch" style="width: 200px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="">Not Subscribed</span> <label><input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+mDet.promotions[ii].id+'" class="promoSubButton" style="background: rgb(128, 210, 147);"> <span style="margin-top:2px;" class="lever right"></span></label></div></li>'); 
 
        }; 
 	 doSubscribe();
