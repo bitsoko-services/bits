@@ -1,7 +1,7 @@
 
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =89;
+	bitsVersion =90;
 bitsInstall = function(event){
 	
 	
@@ -80,7 +80,7 @@ var config = {
   firebase.initializeApp(config);
 
 const messaging = firebase.messaging();
-messaging.requestPermission()
+firebase.messaging().RequestPermission()
 .then (function()
 {
 	console.log('we got permission baby!')
