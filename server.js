@@ -1,7 +1,7 @@
 
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =88;
+	bitsVersion =89;
 bitsInstall = function(event){
 	
 	
@@ -70,13 +70,24 @@ return new Promise(function(resolve, reject) {
 	}
 	bitsPush = function(event){
 	
-	
-	
-	
-	
-	
-	
-	
+var config = {
+    apiKey: "AIzaSyAsqSLYO7ZDulCM7QX4-SjYSAWMbySCY8M",
+    authDomain: "bitsoko-server.firebaseapp.com",
+    databaseURL: "https://bitsoko-server.firebaseio.com",
+    storageBucket: "bitsoko-server.appspot.com",
+    messagingSenderId: "476194103258"
+  };
+  firebase.initializeApp(config);
+
+const messaging = firebase.messaging();
+messaging.requestPermission()
+.then (function()
+{
+	console.log('we got permission baby!')
+})
+.catch(function(err){
+	console.log('damn we missed it!');
+})
 	
 	}
 		bitsNotification = function(title,body,tag,icon,actions,sticky,silent){
