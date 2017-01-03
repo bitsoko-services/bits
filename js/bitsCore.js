@@ -791,7 +791,7 @@ function updateBal(notif){
     
     localConverter().then(function(e){
     
- var infiat = parseInt(localStorage.getItem('bits-wallets-bal'))/100000000;
+ var infiat = parseInt(localStorage.getItem('bitsoko-wallets-bal'))/100000000;
      var infiat=infiat*parseInt(e.xrate)*parseInt(e.rate);
         
         
