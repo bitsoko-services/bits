@@ -346,6 +346,7 @@ var isPushEnabled = false;
   var bitcore = require('bitcore');
    var ECIES = require('bitcore-ecies');
 prscnin = false;
+flag=false;
 // The view model is an abstract description of the state of the UI, but without any knowledge of the UI technology (HTML)
 //var viewModel = {
 var defaultPlugins = JSON.parse('[{"id":"1","name":"contacts","def":"yes","icon":"contacts.png","desc":"search email or phone number","charge":"0","pholder":"Search","type":"serv-type-1","manhidden":"hiddenplug","hidden":"false","enabled":"1","content":"","plugowner":"bitsoko","status":"active","statuscs":"actv-plug","accno":" "},{"id":"2","name":"groups","def":"yes","icon":"fa-users","desc":"send or withdraw from your groups","charge":"0","pholder":"Search","type":"serv-type-1","manhidden":"hiddenplug","hidden":"hiddenplug","enabled":"0","content":"","plugowner":"bitsoko","status":"active","statuscs":"actv-plug","accno":" "},{"id":"3","name":"merchants","def":"yes","icon":"merchants.png","desc":"Enter Merchant Name","charge":"1","pholder":"Till Number","type":"serv-type-1","manhidden":"hiddenplug","hidden":"false","enabled":"1","content":"","plugowner":"bitsoko","status":"active","statuscs":"actv-plug"},{"id":"0","name":"Add","def":"yes","icon":"fa-plus","desc":"add new service","charge":"1","pholder":"Search","type":"serv-type-add","manhidden":"hiddenplug","hidden":"false addserv","enabled":"0","content":"","plugowner":"bitsoko","status":"active","statuscs":"actv-plug"}]');
