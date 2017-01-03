@@ -795,8 +795,7 @@ function updateBal(notif){
      var infiat=infiat*e.xrate*e.rate;
         
         
-        fiat=fiat+infiat;
-    $( ".bitsoko-balance" ).html(fiat.toFixed(2));
+    $( ".bitsoko-balance" ).html(infiat.toFixed(2));
         
     });
  
@@ -809,7 +808,7 @@ function updateBal(notif){
     }else{
      if (isHidden()){
          //txtFld.value += "Tab Hidden!\n";
-       doNotification ('Wallet Balance','Your balance is '+fiat.toFixed(2),5);
+       doNotification ('Wallet Balance','Your balance is '+infiat.toFixed(2),5);
      }else{
          //txtFld.value += "Tab Visible!\n";
           
