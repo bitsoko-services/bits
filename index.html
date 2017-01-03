@@ -86,8 +86,7 @@ doc.save('BitsWallet_Backup.pdf');
                     </div>
                     
                     translation-button -->
-                    <div class="bits-nav-bal right" id="bits-nav-bal"style="color:#fff; padding-right:10px; margin-top: -55px;" >0.00 KSH</div>
-                    <!-- notifications-dropdown -->
+                    <div class="bits-nav-bal right" id="bits-nav-bal"style="color:#fff; padding-right:10px; margin-top: -55px;" ><span class="bitsoko-balance">0.00</span><span class="bitsoko-currency"></span></div>
                   
                 </div>
             </div>
@@ -112,7 +111,7 @@ doc.save('BitsWallet_Backup.pdf');
                 <img src="images/contacts.png" alt="" class="bits-profile userProfImg circle responsive-img valign profile-image"style="background-color: white;">
                  <a class="btn-flat waves-effect waves-light white-text profile-btn username-label dropdown-button" href="#" data-activates="store-dropdown">Jane Mwangi<i class="mdi-navigation-arrow-drop-down right"></i></a>
                    <center><span class=" user-roal username-addr left col s12 bits-ellipsis" style=""></center></span><p><center>
-                    <span class="user-roal store-desc white-text" style="text-align:left; "> 1 BTC = 0 KSH</span></p></center>
+                    <span class="bitsoko-xrate user-roal store-desc white-text" style="text-align:left; "> 1 BTC = 0 KSH</span></p></center>
                
             </div>
             
@@ -659,6 +658,12 @@ if (e.data.payments=="true"){
 
   }  
 //end save
+	    
+function doSubscribe(pid){
+	
+	".promoSubButton-"+mDet.promotions[ii].id
+
+}
 
 //populateService function
  function populateService(id){
@@ -680,8 +685,19 @@ $(".resDisplay").html( mDet.name);
 						 '<img src="https://bitsoko.io'+mDet.promotions[ii].promoBanner+'" data-caption="'+mDet.promotions[ii].promoDesc+'" alt="'+mDet.promotions[ii].promoDesc+'" class="materialboxed">'+
 						 '<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+mDet.promotions[ii].promoDesc+' </span></span>'+
 						 '<p class="serviceListFirstline"> <span class="bits-badge bits left" style="margin-left: 20px;">'+Math.ceil(dailyCost)+' <span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>'+
-						 '<div class="switch" style="width: 200px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="">Not Subcribed</span> <label><input type="checkbox" class="promoSubButton-'+mDet.promotions[ii].promoBanner+'" style="background: rgb(128, 210, 147);"> <span style="margin-top:2px;" class="lever right"></span></label></div></li>'); 
+						 '<div class="switch" style="width: 200px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="">Not Subscribed</span> <label><input type="checkbox" class="promoSubButton-'+mDet.promotions[ii].id+'" style="background: rgb(128, 210, 147);"> <span style="margin-top:2px;" class="lever right"></span></label></div></li>'); 
+$(".promoSubButton-"+mDet.promotions[ii].id).bind( "touchstart click", function(event, ui) {
 
+     if (!flag) {
+    flag = true;
+    setTimeout(function(){ flag = false; }, 100);
+	     
+     event.preventDefault();
+	doSubscribe(mDet.promotions[ii].id);     
+	     
+     }
+
+});
        }; 
 	 
  for(var ii = 0; ii < mDet.list.length; ++ii) {
