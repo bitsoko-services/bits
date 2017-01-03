@@ -14,6 +14,7 @@
   General Layout Style
 --------------{----------------------------
 aside>ul{
+      margin-top: -399px;
   left: -250px !important;
   }*/
   .displayNone{
@@ -21,18 +22,8 @@ aside>ul{
   }
 .collection .collection-item.avatar {
     min-height: 84px;
-    padding-left: 55px!important;
+    /*padding-left: 55px !important;*/
     position: relative;
-}
-.collection.promo-collection.avatar {
-    min-height: 84px;
-    padding-left: 25px!important;
-    position: relative;
-}
-.promo-collection>div>img {
-    width:100%;
-  padding: 2%;
-    height: 140px;
 }
   
 .collection .collection-item.avatar .circle {
@@ -40,6 +31,7 @@ aside>ul{
     width: 42px;
     height: 42px;
     overflow: hidden;
+    /*left: 7px !important;*/
     display: inline-block;
     vertical-align: middle;
 }
@@ -48,17 +40,7 @@ aside>ul{
     width: 95%;
     margin-left: 2.5%;
     }
-
- .promo-collection{ 
- background-color: white !important;
-    height: 100%;
-    overflow: overlay;
-    width: 96%!important;
-    padding-bottom: 20px;
-    margin: 2%;
-    border: 1px solid rgba(0,0,0,0.1);
-}
-
+ .promo-collection{ background-color: antiquewhite !important; }
   .bits-red{
    background-color:#760F0F;
   }
@@ -142,7 +124,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 }
 .bitsimg{
       margin-top: -70px;
-     /* max-height: 350px;*/
+     max-height: 350px !important;
 }
 
   .row.bal{
@@ -152,7 +134,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 margin-top:-19px;
   }
   .pinned>div>.bits-tab{
-    margin-top:-14px;
+    /*margin-top:-14px;*/
   }
   maincard{
     border-radius: 0px !important;
@@ -182,7 +164,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
     
   }
  .pinned>div>div>ul{
-   margin-top:310px;
+  /* margin-top:310px;*/
  }
   .bits-profile{
 
