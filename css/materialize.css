@@ -8892,8 +8892,8 @@ input[type=search].valid,
 input[type=search]:focus.valid,
 textarea.materialize-textarea.valid,
 textarea.materialize-textarea:focus.valid {
-  border-bottom: 1px solid #00E676;
-  box-shadow: 0 1px 0 0 #00E676;
+  border-bottom: 1px solid #0f5f76;
+  box-shadow: 0 1px 0 0 #0f5f76;
 }
 
 input[type=text].valid + label:after,
@@ -8919,7 +8919,7 @@ input[type=search]:focus.valid + label:after,
 textarea.materialize-textarea.valid + label:after,
 textarea.materialize-textarea:focus.valid + label:after {
   content: attr(data-success);
-  color: #00E676;
+  color: #0f5f76;
   opacity: 1;
 }
 
