@@ -1,7 +1,7 @@
 
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =90;
+	bitsVersion =91;
 bitsInstall = function(event){
 	
 	
@@ -68,6 +68,7 @@ return new Promise(function(resolve, reject) {
 	
 	
 	}
+//.............................................................................................
 	bitsPush = function(event){
 	
 var config = {
@@ -84,10 +85,36 @@ firebase.messaging().RequestPermission()
 .then (function()
 {
 	console.log('we got permission baby!')
+	return messaging.getTocken();
+})
+.then (function(token)
+{
+	console.log(token);
 })
 .catch(function(err){
 	console.log('damn we missed it!');
 })
+
+//.................................................................................................
+// Retrieve an instance of Firebase Messaging so that it can handle background
+// messages.
+messaging.onMessage(function(payload) {
+  console.log("Message received. ", payload);
+});
+//..................................................................................................
+messaging.setBackgroundMessageHandler(function(payload) {
+  console.log('[firebase-messaging-sw.js] Received background message ', payload);
+  // Customize notification here dummy data for testng 
+  const notificationTitle = 'Message Title';
+  const notificationOptions = {
+    body: ' Message body.',
+    icon: '/logo.png'
+  };
+
+  return self.registration.showNotification(notificationTitle,
+      notificationOptions);
+});
+//....................................................................................................
 	
 	}
 		bitsNotification = function(title,body,tag,icon,actions,sticky,silent){
