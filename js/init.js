@@ -827,11 +827,11 @@ var forEach = function (array, callback, scope) {
     callback.call(scope, i, array[i]); // passes back stuff we need
   }
 };
-	var myNodeList = document.querySelectorAll('#inp-phone input');
+	var myNodeList = document.querySelectorAll('input#inp-phone');
 forEach(myNodeList, function (index, value) {
  value.addEventListener("change", changedPhnNum);
 });
-	var myNodeList = document.querySelectorAll('#inp-code input');
+	var myNodeList = document.querySelectorAll('input#inp-code');
 forEach(myNodeList, function (index, value) {
  value.addEventListener("change", changedConfCode);
 });
@@ -844,10 +844,14 @@ function changedPhnNum(t){
 	  doFetch({action: 'doMobiVeri', address : localStorage.getItem('bits-user-wallet')
 		   ,val: val}).then(function (e){
       if(e.status=='ok'){
-         
+         $('#inp-phone').prop('disabled', true);
+         $('#inp-code').prop('disabled', false);
     Materialize.toast('confirmation code sent', 5000);
 	      
       }else{
+	      
+         $('#inp-phone').prop('disabled', false);
+         $('#inp-code').prop('disabled', true);
       console.log(e);
       } 
 	  });
@@ -861,6 +865,8 @@ function changedConfCode(t){
 		   ,val: val}).then(function (e){
       if(e.status=='ok'){
          
+         $('#inp-phone').prop('disabled', false);
+         $('#inp-code').prop('disabled', true);
     Materialize.toast('Phone Number added', 3000);
 	      
       }else{
