@@ -121,7 +121,7 @@ doc.save('BitsWallet_Backup.pdf');
         <div class="col s12 m6"><center>
             <div  id="qrcode">
           </div></center>
-          
+         <button  id="shareQR" value="ShareQR"class="btn btn-small btn-price" style="/*float: right !important;opacity: 0.7; right: 0%;  margin-top: -240px;*/"><i class="mdi-social-share"></i></button>
       </div>
       </li>
       <!--<li>
@@ -144,74 +144,46 @@ doc.save('BitsWallet_Backup.pdf');
         </div></li>-->
             <li class="li-hover"><div class="divider"></div></li>
             <li class="li-hover"><p class="ultra-small margin more-text">SETTINGS</p></li>
+            <li>
+            <a href="#">
+            		<!-- Switch-->
+            		<div class="switch">
+            		<i class="mdi-communication-chat"></i> 
+                    <span style="" class="js-push-button-notification-title bits-13">Notifications On</span> 
+                    <label>
+                    <input type="checkbox" class="js-push-button-notification" style="background: rgb(128, 210, 147);"> 
+                    <span style="margin-top:13px;" class="lever right"></span>
+                    </label>
+                    </div>
+             </a>
+             </li>
+             <li>
+             <a href="#">
+                    <!-- Switch-->
+                    <div class="switch">
+                    <i class="mdi-communication-location-on"></i> 
+                    <span style="" class="js-loc-button-notification-title bits-13">Location On</span>                                          
+                    <label>
+                    <input type="checkbox" class="js-loc-button-notification" style="background: rgba(15, 95, 118, 0.862745);"> 
+                    <span style="margin-top:13px;" class="lever right"></span>
+                    </label>
+                    </div>
+              </a>
+              </li>
+            <ul class="collapsible collapsible-accordion">
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-settings"></i>More Settings</a>
+                        <div class="collapsible-body" style="display: block;">
+                            <ul>
+                                <li><a href="#"> <i class="mdi-file-cloud-download"></i><span class="bits-13" style=""></span> <span href id="btn">Backup </span>  </a>  
+                                </li>
+                                <li><a href="#MobileModal"class="modal-trigger"> <i class="mdi-communication-phone"></i><span class="bits-13" style=""></span> <span href id="btn">Mobile Number</span> </a>
+                                </li>
+                                
+                             </ul>
+                        </div>
+                    </li>
+                    </ul>
             
-             <li><a href="#">
-             <!-- Switch -->
-                  <div class="switch">
-                  <i class="mdi-communication-chat"></i>
-                   <span class="js-push-button-notification-title bits-13" style="">Notifications </span> 
-                    <label>
-                      <input type="checkbox" class="js-push-button-notification">
-                      <span class="lever right" style="margin-top:13px;"></span>
-                    </label>
-                  </div>
-
-                  </a>
-            </li>
-            <li><a href="#">
-             <!-- Switch -->
-                  <div class="switch ">
-                  <i class="mdi-communication-location-on"></i>
-                     <span class="js-loc-button-notification-title bits-13" style="">Location</span>  
-                    <label>
-                      <input type="checkbox" class="js-loc-button-notification">
-                      <span class="lever right" style="margin-top:13px;"></span>
-                    </label>
-                  </div>
-
-                  </a>
-            </li>
-            <li><a href="#">
-             
-                  <div class="switch">
-                  <i class="mdi-file-cloud-download"></i>
-                   <span class="bits-13" style=""></span> <span href id="btn">Backup </span>    
-                    <!-- <label>
-                     <input type="checkbox">
-                      <span class="lever right" style="margin-top:13px;"></span>
-                    </label>-->
-                  </div>
-
-                  </a>
-            </li> 
-            <li><a class="modal-trigger" href="#MobileModal">
-             
-                  <div class="switch">
-                  <i class="mdi-communication-phone"></i>
-                   <span class="bits-13" style=""></span> <span href id="btn">Mobile Number</span>    
-                    <!-- <label>
-                     <input type="checkbox">
-                      <span class="lever right" style="margin-top:13px;"></span>
-                    </label>-->
-                  </div>
-
-                  </a>
-            </li><!-- Modal Trigger 
-  -->
-
-            <li><a href="#">
-             
-                  <div class="switch">
-                  <i class="mdi-action-settings"></i>
-                   <span class="bits-13" style=""></span> <span href id="btn">Settings </span>    
-                    <!-- <label>
-                     <input type="checkbox">
-                      <span class="lever right" style="margin-top:13px;"></span>
-                    </label>-->
-                  </div>
-
-                  </a>
-            </li>
            
         </ul>
         <ul id="store-dropdown" class="dropdown-content drop-down-content-bits" style="">
@@ -1072,3 +1044,12 @@ e=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits
 
 
 //web Share end location.hash=location.hash+"&i="+
+ //web ShareQR start
+ document.querySelector("#shareQR").addEventListener('click', function(event) {
+       navigator.share({
+    title: "Bitcoin Address",
+    text: document.querySelectorAll("#qrcode")
+   // url: window.location.href
+}).then(() => console.log('Successful shareQR'))
+.catch(error => console.log('Error sharingQR:', error));
+            });
