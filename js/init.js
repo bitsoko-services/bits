@@ -821,29 +821,52 @@ currPayRef(JSON.stringify({serv: viewModel.activeServ().id, acc: cem, ref: tloc}
 
 
 
-function menu(action){
-  $( "#loginPanel" ).css('display','none');
-
-    item=$( "#menuPanel" );  
-    if (action=='open'){
-        
-$( "#more-but-ho" ).css('display','none');
- $( ".more-but-ho" ).css('display','none');
-        
-    setTimeout(function(){ $( "#menuPanel-inner" ).css('display','block') }, 600);
-
-    item.css('height','100%').css('border-bottom-left-radius','0%').css('border-bottom-right-radius','0%').css('background-color','rgba(255,255,255,1)');
-         window.location.hash = "#menu=open"
-    hideNav(); 
-        
-    }else{
-        
-$( ".more-but-ho" ).css('display','block');
-        
-$( "#more-but-ho" ).css('display','block');
-$( "#menuPanel-inner" ).css('display','none');
-    item.css('height','15%').css('border-bottom-left-radius','100%').css('border-bottom-right-radius','100%').css('background-color','rgba(255,255,255,0.6)');
-    
-    }
+function addMobiVeri(){
+var forEach = function (array, callback, scope) {
+  for (var i = 0; i < array.length; i++) {
+    callback.call(scope, i, array[i]); // passes back stuff we need
+  }
+};
+	var myNodeList = document.querySelectorAll('#inp-phone input');
+forEach(myNodeList, function (index, value) {
+ value.addEventListener("change", changedPhnNum);
+});
+	var myNodeList = document.querySelectorAll('#inp-code input');
+forEach(myNodeList, function (index, value) {
+ value.addEventListener("change", changedConfCode);
+});
 }
 
+function changedPhnNum(t){
+	console.log($(t.target).val());
+	var val = $(t.target).val();
+	
+	  doFetch({action: 'doMobiVeri', address : localStorage.getItem('bits-user-wallet')
+		   ,val: val}).then(function (e){
+      if(e.status=='ok'){
+         
+    Materialize.toast('confirmation code sent', 5000);
+	      
+      }else{
+      console.log(e);
+      } 
+	  });
+
+}
+function changedConfCode(t){
+	console.log($(t.target).val());
+	var val = $(t.target).val();
+	
+	  doFetch({action: 'doMobiVeriCode', address : localStorage.getItem('bits-user-wallet')
+		   ,val: val}).then(function (e){
+      if(e.status=='ok'){
+         
+    Materialize.toast('Phone Number added', 3000);
+	      
+      }else{
+      console.log(e);
+      } 
+	  });
+
+}
+addMobiVeri();
