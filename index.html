@@ -120,9 +120,9 @@ doc.save('BitsWallet_Backup.pdf');
             <li ><div class="">
         <div class="col s12 m6"><center>
             <div  id="qrcode">
-          </div></center>
+          </div>
          <button  id="shareQR" value="ShareQR"class="btn btn-small btn-price" style="/*float: right !important;opacity: 0.7; right: 0%;  margin-top: -240px;*/"><i class="mdi-social-share"></i></button>
-      </div>
+      </center></div>
       </li>
       <!--<li>
       <div class="col s12 m8 l9">
@@ -143,7 +143,9 @@ doc.save('BitsWallet_Backup.pdf');
                 </div>
         </div></li>-->
             <li class="li-hover"><div class="divider"></div></li>
-            <li class="li-hover"><p class="ultra-small margin more-text">SETTINGS</p></li>
+            <li class="li-hover"><p class="ultra-small margin more-text"></p></li>
+            
+            <ul class="collapsible collapsible-accordion">
             <li>
             <a href="#">
             		<!-- Switch-->
@@ -170,7 +172,6 @@ doc.save('BitsWallet_Backup.pdf');
                     </div>
               </a>
               </li>
-            <ul class="collapsible collapsible-accordion">
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-settings"></i>More Settings</a>
                         <div class="collapsible-body" style="display: block;">
                             <ul>
@@ -1048,7 +1049,7 @@ e=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits
  document.querySelector("#shareQR").addEventListener('click', function(event) {
        navigator.share({
     title: "Bitcoin Address",
-    text: document.querySelectorAll("#qrcode")
+    text: $('#qrcode')
    // url: window.location.href
 }).then(() => console.log('Successful shareQR'))
 .catch(error => console.log('Error sharingQR:', error));
