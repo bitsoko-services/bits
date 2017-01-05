@@ -17,6 +17,16 @@ aside>ul{
       margin-top: -399px;
   left: -250px !important;
   }*/
+  bits-no shadow{
+    box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0);
+  }
+  bits-color{
+       color: #0f5f76 !important;
+
+  }
+  .side-nav .collapsible-body li a {
+  margin: 0 0rem 0 0rem !important;
+}
   .displayNone{
     display:none !important;
   }
