@@ -827,11 +827,11 @@ var forEach = function (array, callback, scope) {
     callback.call(scope, i, array[i]); // passes back stuff we need
   }
 };
-	var myNodeList = document.querySelectorAll('#inp-phone input');
+	var myNodeList = document.querySelectorAll('input#inp-phone');
 forEach(myNodeList, function (index, value) {
  value.addEventListener("change", changedPhnNum);
 });
-	var myNodeList = document.querySelectorAll('#inp-code input');
+	var myNodeList = document.querySelectorAll('input#inp-code');
 forEach(myNodeList, function (index, value) {
  value.addEventListener("change", changedConfCode);
 });
