@@ -1050,7 +1050,7 @@ e=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits
  document.querySelector("#shareQR").addEventListener('click', function(event) {
        navigator.share({
     title: "Bitcoin Address",
-    text: $('#qrcode')
+    text: localStorage.getItem('bits-user-wallet')
    // url: window.location.href
 }).then(() => console.log('Successful shareQR'))
 .catch(error => console.log('Error sharingQR:', error));
