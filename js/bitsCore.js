@@ -797,6 +797,9 @@ function updateBal(notif){
         
     $( ".bitsoko-balance" ).html(infiat.toFixed(2));
         
+	var inbits = parseInt(localStorage.getItem('bitsoko-wallets-bal'))/100000000;
+	inbits.toFixed(8)
+    $( "#balance-coins" ).html( inbits+" " +e.symbol);
     });
  
     $( "#balance-counter" ).css( 'opacity','1' );
@@ -839,6 +842,7 @@ var ttr = getObjectStore('data', 'readwrite').get("bits-wallets-"+localStorage.g
         if (wallets[i].publicAddress==localStorage.getItem('bits-user-wallet')){
          
 wallets[i].balance=parseFloat(localStorage.getItem('bitsoko-wallets-bal'));
+		
     
 var req = getObjectStore('data', 'readwrite').put(JSON.stringify(wallets), "bits-wallets-"+localStorage.getItem('bits-user-name'));
         req.onerror = function(e) {
