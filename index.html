@@ -690,7 +690,7 @@ var dr = $(this).attr('dailyR');
 			var action='subscribe';
 		}
 		
-	doFetch({ action: 'doSubscription', action: action, pid: pid, uid: localStorage.getItem('bitsoko-owner-id')}).then(function(e){
+	doFetch({ action: 'doSubscription', todo: action, pid: pid, uid: localStorage.getItem('bitsoko-owner-id')}).then(function(e){
            if (e.status=="ok"){
            	      
 		Materialize.toast('Successfully subscribed', 5000);
