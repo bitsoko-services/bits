@@ -700,8 +700,10 @@ var dr = $(this).attr('dailyR');
 		Materialize.toast(action+'d successfully', 5000);
 		   if(action=='subscribe'){
 		   $( ".promoSubButton-"+pid ).prop( "checked",true);
+			   $(".promoSubState-"+pid).html("Subscribed");
 	          }else{
 		  $( ".promoSubButton-"+pid ).prop( "checked",false);
+			  $(".promoSubState-"+pid).html("Not Subscribed");
 	           }
 		         }else{
                 
