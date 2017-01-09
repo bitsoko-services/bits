@@ -683,6 +683,31 @@ var dr = $(this).attr('dailyR');
         if(infiat>(dr*1.1)){
 		
             Materialize.toast('able to subscribe', 1500);
+		if($( ".promoSubButton-"+pid ).prop( "checked" )){
+			var action='unsubscribe';
+		}else{
+		Materialize.toast('unable to subscribe', 1500);
+			var action='subscribe';
+		}
+		
+	doFetch({ action: 'doSubscription', action: action, pid: pid, uid: localStorage.getItem('bitsoko-owner-id')}).then(function(e){
+           if (e.status=="ok"){
+           	      
+		Materialize.toast('Successfully subscribed', 5000);
+	                }else{
+                
+		Materialize.toast('unable to subscribe'+e.msg, 3000);
+           }
+        })
+         .catch(function(){
+         	
+		Materialize.toast('temporary error. please try again', 3000);
+
+        });	
+		
+		
+		
+		
 	}else{
             Materialize.toast('unable to subscribe', 1500);
 	}
