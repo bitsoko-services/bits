@@ -796,10 +796,11 @@ function updateBal(notif){
         
         
     $( ".bitsoko-balance" ).html(infiat.toFixed(2));
+    $( ".bitsoko-balance-currency" ).html(" "+e.symbol);
         
 	var inbits = parseInt(localStorage.getItem('bitsoko-wallets-bal'))/100000000;
 	inbits.toFixed(8)
-    $( "#balance-coins" ).html( inbits+" " +e.symbol);
+    $( "#balance-coins" ).html( inbits+" btc");
     });
  
     $( "#balance-counter" ).css( 'opacity','1' );
