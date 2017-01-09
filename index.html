@@ -681,18 +681,23 @@ var dr = $(this).attr('dailyR');
      var infiat=infiat*parseInt(e.xrate)*parseInt(e.rate);
         console.log(infiat);
         if(infiat>(dr*1.1)){
-		
-            Materialize.toast('able to subscribe', 1500);
 		if($( ".promoSubButton-"+pid ).prop( "checked" )){
 			var action='unsubscribe';
+			
+		
+            Materialize.toast('unsubscribing..', 1000);
 		}else{
 			var action='subscribe';
+			
+		
+            Materialize.toast('subscribing..', 1000);
 		}
+		
 		
 	doFetch({ action: 'doSubscription', todo: action, pid: pid, uid: localStorage.getItem('bitsoko-owner-id')}).then(function(e){
            if (e.status=="ok"){
            	      
-		Materialize.toast('Successfully subscribed', 5000);
+		Materialize.toast(action+'d successfully', 5000);
 		   if(action=='subscribe'){
 		   $( ".promoSubButton-"+pid ).prop( "checked",true);
 	          }else{
@@ -700,7 +705,7 @@ var dr = $(this).attr('dailyR');
 	           }
 		         }else{
                 
-		Materialize.toast('unable to subscribe'+e.msg, 3000);
+		Materialize.toast('unable to subscribe '+e.msg, 3000);
            }
         })
          .catch(function(){
