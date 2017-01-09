@@ -686,7 +686,6 @@ var dr = $(this).attr('dailyR');
 		if($( ".promoSubButton-"+pid ).prop( "checked" )){
 			var action='unsubscribe';
 		}else{
-		Materialize.toast('unable to subscribe', 1500);
 			var action='subscribe';
 		}
 		
@@ -694,7 +693,12 @@ var dr = $(this).attr('dailyR');
            if (e.status=="ok"){
            	      
 		Materialize.toast('Successfully subscribed', 5000);
-	                }else{
+		   if(action=='subscribe'){
+		   $( ".promoSubButton-"+pid ).prop( "checked",true);
+	          }else{
+		  $( ".promoSubButton-"+pid ).prop( "checked",false);
+	           }
+		         }else{
                 
 		Materialize.toast('unable to subscribe'+e.msg, 3000);
            }
