@@ -1,7 +1,7 @@
 
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =102;
+	bitsVersion =103;
 bitsInstall = function(event){
 	
 	
@@ -25,7 +25,7 @@ bitsNotificationClick = function(dat){
              
       case 'createBackup':
     //do backup
-importScripts('js/jspdf.js');
+importScripts('bits/js/jspdf.js');
 var doc = new jsPDF();
 var specialElementHandlers = {
 '#editor': function (element, renderer) {
