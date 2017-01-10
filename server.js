@@ -1,7 +1,7 @@
 
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =103;
+	bitsVersion =104;
 bitsInstall = function(event){
 	
 	
@@ -25,7 +25,7 @@ bitsNotificationClick = function(dat){
              
       case 'createBackup':
     //do backup
-importScripts('bits/js/jspdf.js');
+/*importScripts('bits/js/jspdf.js');
 var doc = new jsPDF();
 var specialElementHandlers = {
 '#editor': function (element, renderer) {
@@ -33,15 +33,11 @@ return true;
 }
 };
 
-$(document).ready(function() {
-$('#btn').click(function () {
 doc.fromHTML($('#content').html(), 15, 15, {
 'width': 170,
 'elementHandlers': specialElementHandlers
 });
-doc.save('BitsWallet_Backup.pdf');
-});
-});
+doc.save('BitsWallet_Backup.pdf');*/
 
     
            bitsNotification('Wallet Backed Up','Thank you for backing up your wallet you are one step closer to saving the world','','bits/images/no.png',[{action: '', title: "Backed up"}],true,true);

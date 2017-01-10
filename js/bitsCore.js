@@ -2797,7 +2797,7 @@ doFetch({action : 'updContDet', data: contUpd},allconts).then(function(e){
    }
     
     
-getObjectStore('data', 'readwrite').put(JSON.stringify(allconts), 'bits-google-contacts');
+getObjectStore('data', 'readwrite').put(JSON.stringify(allconts), 'bits-contacts-'+localStorage.getItem('bits-user-name'));
 
 elmSTOne.querySelector("all-contacts").setAttribute("build", Date.now());
     
