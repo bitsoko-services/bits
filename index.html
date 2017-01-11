@@ -306,7 +306,7 @@ doc.save('BitsWallet_Backup.pdf');
                            
                     <!--work collections end-->
 
-                    <!-- Floating Action Button 
+                  <!--   Floating Action Button -->
                     <div class="fixed-action-btn " style="bottom: 50px; right: 19px;">
                         <a class="btn-floating btn-large bits">
                           <i class="mdi-content-add"></i>
@@ -829,8 +829,8 @@ for(var i = 0; i< addproducts.length; ++i){
           var activeService;
           allServices =  [
      
-      {name:'Merchants',id:'3',desc:'Merchant desription',cardimage:'merchantsBanner',cardLogo:'merchants',image:'mdi-maps-store-mall-directory',list:[]},
-       {name:'Contacts',id:'1',desc:'Contacts desription',cardimage:'contactsBanner',cardLogo:'contacts',image:'mdi-social-group',list:[]},      
+      //{name:'Merchants',id:'3',desc:'Merchant desription',cardimage:'merchantsBanner',cardLogo:'merchants',image:'mdi-maps-store-mall-directory',list:[]},
+       {name:'Contacts',id:'1',desc:'Contacts desription',cardimage:'/bits/images/contactsBanner',cardLogo:'/bits/images/contacts',image:'mdi-social-group',list:[]},      
       ]
     
     for(var ii = 0; ii < allServices.length; ++ii) {
@@ -863,7 +863,7 @@ for(var l=0, el=el; l < el.length; ++l){
 
              if ( activeService.list.length==0){
              	$('.serviceListHolder').html("");
-$('.serviceListHolder').append('<li onclick="updateServicelist()" class="collection-item waves-effect avatar"  style="background-color: inherit;"><img src="images/'+activeService.cardLogo+'.png" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle">Empty</span></span><p class="serviceListFirstline"> Click to update your '+activeService.name+' list <br class="servicelistSeccondline">  </p><a href="#!" class="secondary-content"></a></li>');
+$('.serviceListHolder').append('<li onclick="updateServicelist()" class="collection-item waves-effect avatar"  style="background-color: inherit;"><img src="'+activeService.cardLogo+'.png" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle">Empty</span></span><p class="serviceListFirstline"> Click to update your '+activeService.name+' list <br class="servicelistSeccondline">  </p><a href="#!" class="secondary-content"></a></li>');
       
              }
 
@@ -946,6 +946,7 @@ activeService=$('#serviceModal').attr('service');
 	doFetch({ action: 'serviceList', data: activeService, user: localStorage.getItem("bitsoko-user-name")}).then(function(e){
            if (e.status=="ok"){
         serviceList = e.data;
+        reqContacts()
             
     for(var ii = 0; ii < serviceList.length; ++ii) {
 
