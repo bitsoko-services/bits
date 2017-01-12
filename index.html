@@ -658,7 +658,9 @@ var servID=getBitsWinOpt('a');
          	populateService(servID);
 
         });
-         } 
+         }else{
+	 updatePromos();
+	 } 
 if (e.data.payments=="true"){
 	 $("#paymentBTN").removeClass("displayNone")
 }
