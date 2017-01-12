@@ -751,7 +751,7 @@ $(".resDisplay").html( mDet.name);
 		 $('.serviceListHolder').html("");
 	 
 	 // incase the user is the owner of this shop, then show POS button
-	 if(mDet.owner==parseInt(localStorage.setItem('bitsoko-owner-id'))){
+	 if(mDet.owner==parseInt(localStorage.getItem('bitsoko-owner-id'))){
 	 $('#manage-store').css("display","block");
 	 }else{
 	  $('#manage-store').css("display","none");
