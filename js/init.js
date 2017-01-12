@@ -61,7 +61,7 @@ moment(result[i].modifiedDate).valueOf()>cm){
 		  doFetch({action:'saveUserDet', user: ee.publicAddress , data: JSON.stringify(p)}).then(function(e){
             if (e.status=="ok"){
               p.bitsokoUserID=e.buid;
-		    
+		    localStorage.setItem('bitsoko-owner-id',e.buid)
 		    var wallets=[];
 		    wallets.push(JSON.stringify(ee));
               
