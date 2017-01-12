@@ -1,7 +1,7 @@
 
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =99;
+	bitsVersion =106;
 bitsInstall = function(event){
 	
 	
@@ -14,7 +14,7 @@ bitsInstall = function(event){
 	
 	}
 
-bitsNotificationClick = function(event){
+bitsNotificationClick = function(dat){
 	
 	
 	
@@ -24,8 +24,23 @@ bitsNotificationClick = function(event){
       // This command adds a new request/response pair to the cache.
              
       case 'createBackup':
+    //do backup
+/*importScripts('bits/js/jspdf.js');
+var doc = new jsPDF();
+var specialElementHandlers = {
+'#editor': function (element, renderer) {
+return true;
+}
+};
+
+doc.fromHTML($('#content').html(), 15, 15, {
+'width': 170,
+'elementHandlers': specialElementHandlers
+});
+doc.save('BitsWallet_Backup.pdf');*/
+
     
-           bitsNotification('Wallet Backed Up','Thank you for backing up your wallet you are one step closer to saving the world','AnonMsg','bits/images/no.png',[{action: '', title: "Backed up"}],true,true);
+           bitsNotification('Wallet Backed Up','Thank you for backing up your wallet you are one step closer to saving the world','','bits/images/no.png',[{action: '', title: "Backed up"}],true,true);
        
       break;
         case 'gotMoney':
@@ -57,7 +72,7 @@ return new Promise(function(resolve, reject) {
       case 'anonyMode':
      data = dat;
     console.log(data);
-           bitsNotification('Backed up Wallet','You can Download an offline copy of your wallet incase you loose your device, Click to download your private infomation','AnonMsg','bits/images/no.png',[{action: 'createBackup', title: "Back up"}],true,true);
+           bitsNotification('Backed up Wallet','You can Download an offline copy of your wallet incase you loose your device, Click to download your private infomation','createBackup','bits/images/no.png',[{action: 'createBackup', title: "Back up"}],true,true);
        
       break;
 			}

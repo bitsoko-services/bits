@@ -110,18 +110,17 @@ doc.save('BitsWallet_Backup.pdf');
 		      <div class="row" id="content" style="text-align:center;">
                 <img src="images/contacts.png" alt="" class="bits-profile userProfImg circle responsive-img valign profile-image"style="background-color: white;">
                  <a class="btn-flat waves-effect waves-light white-text profile-btn username-label dropdown-button" href="#" data-activates="store-dropdown">Anonymous<i class="mdi-navigation-arrow-drop-down right"></i></a>
-                   <center><span class=" user-roal username-addr left col s12 bits-ellipsis" style=""></center></span><p><center>
-                    <span class="bitsoko-xrate user-roal store-desc white-text" style="text-align:left; "> 1 BTC = 0 KSH</span></p></center>
-               
-            </div>
-            
-            </li>
+                  <center><span class="bitsoko-xrate user-roal store-desc white-text" style="text-align:left; "> 1 BTC = 0 KSH</span></center>
+               </div>
+             </li>
             
             <li ><div class="">
         <div class="col s12 m6"><center>
             <div  id="qrcode">
 		</div></center>
-          <ul> <li><a href="#" id="shareQR"> <i class="mdi-social-share bits-color"></i><span class="bits-13" style=""></span> <span href id="">Share </span>  </a>  
+		<ul> 
+			<li  class="bits-ellipsis col s6 m8 l9" style="margin-left: 15px;"><span class="username-addr " style=""></span></li>
+			<li><a href="#" id="shareQR"> <i class="mdi-social-share bits-color"></i><span class="bits-13" style=""></span> <span href id="">Share </span>  </a>  
         </ul><!-- <button  value="ShareQR"class="btn btn-small btn-price" style=" background:none !important; /*float: right !important;opacity: 0.7; right: 0%;  margin-top: -240px;*/"></button>
       --></div>
       </li>
@@ -145,7 +144,7 @@ doc.save('BitsWallet_Backup.pdf');
         </div></li>-->
             <li class="li-hover"><div class="divider"></div></li>
             <li class="li-hover"><p class="ultra-small margin more-text"></p></li>
-            
+            <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>My Offers</a></li>
             <ul class="collapsible collapsible-accordion">
           
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-settings"></i>Settings</a>
@@ -192,13 +191,13 @@ doc.save('BitsWallet_Backup.pdf');
         <ul id="store-dropdown" class="dropdown-content drop-down-content-bits" style="">
                         <li><div id="customBtn" class="customGPlusSignIn">
       <span class="icon"></span>
-      <span class="buttonText">Google</span>
+      <span class="buttonText">Google signin</span>
     </div>
                         </li>
                         <!--<li><a href="#" class="switchStore"><i class="mdi-action-assignment-ind"></i>Mobile Account</a>
                         </li>-->
                         <li class="divider"></li>
-                        <li><a href="#" class="newStore"><i class="mdi-action-lock-outline"></i>signout</a>
+                        <li><a href="#" class="newStore"><i class="mdi-action-lock-outline"></i>Signout</a>
                         </li>
                     </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only bits"><i class="mdi-navigation-menu"></i></a>
@@ -309,7 +308,7 @@ doc.save('BitsWallet_Backup.pdf');
                            
                     <!--work collections end-->
 
-                    <!-- Floating Action Button 
+                  <!--   Floating Action Button -->
                     <div class="fixed-action-btn " style="bottom: 50px; right: 19px;">
                         <a class="btn-floating btn-large bits">
                           <i class="mdi-content-add"></i>
@@ -841,8 +840,8 @@ for(var i = 0; i< addproducts.length; ++i){
           var activeService;
           allServices =  [
      
-      {name:'Merchants',id:'3',desc:'Merchant desription',cardimage:'merchantsBanner',cardLogo:'merchants',image:'mdi-maps-store-mall-directory',list:[]},
-       {name:'Contacts',id:'1',desc:'Contacts desription',cardimage:'contactsBanner',cardLogo:'contacts',image:'mdi-social-group',list:[]},      
+      //{name:'Merchants',id:'3',desc:'Merchant desription',cardimage:'merchantsBanner',cardLogo:'merchants',image:'mdi-maps-store-mall-directory',list:[]},
+       {name:'Contacts',id:'1',desc:'Contacts desription',cardimage:'/bits/images/contactsBanner',cardLogo:'/bits/images/contacts',image:'mdi-social-group',list:[]},      
       ]
     
     for(var ii = 0; ii < allServices.length; ++ii) {
@@ -875,7 +874,7 @@ for(var l=0, el=el; l < el.length; ++l){
 
              if ( activeService.list.length==0){
              	$('.serviceListHolder').html("");
-$('.serviceListHolder').append('<li onclick="updateServicelist()" class="collection-item waves-effect avatar"  style="background-color: inherit;"><img src="images/'+activeService.cardLogo+'.png" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle">Empty</span></span><p class="serviceListFirstline"> Click to update your '+activeService.name+' list <br class="servicelistSeccondline">  </p><a href="#!" class="secondary-content"></a></li>');
+$('.serviceListHolder').append('<li onclick="updateServicelist()" class="collection-item waves-effect avatar"  style="background-color: inherit;"><img src="'+activeService.cardLogo+'.png" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle">Empty</span></span><p class="serviceListFirstline"> Click to update your '+activeService.name+' list <br class="servicelistSeccondline">  </p><a href="#!" class="secondary-content"></a></li>');
       
              }
 
@@ -958,6 +957,7 @@ activeService=$('#serviceModal').attr('service');
 	doFetch({ action: 'serviceList', data: activeService, user: localStorage.getItem("bitsoko-user-name")}).then(function(e){
            if (e.status=="ok"){
         serviceList = e.data;
+        reqContacts()
             
     for(var ii = 0; ii < serviceList.length; ++ii) {
 
