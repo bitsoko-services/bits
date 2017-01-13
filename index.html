@@ -411,7 +411,24 @@ doc.save('BitsWallet_Backup.pdf');
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
 </div>
- 
+<!--modal login-->
+ <div id="loginModal" class="modal modal-fixed-footer bottom-sheet" >
+   <div class="modal-content">
+      <div class="row">
+        <h5>Log In</h5>
+     <p> We have noticed you are using the wallet in Anonymous mode please signin to enjoy more of our app <p>
+                   <div id="customBtn" class="customGPlusSignIn">
+      <span class="icon"></span>
+      <span class="buttonText">Google signin</span>
+    </div>
+    </div>
+    </div>
+           
+    
+    <div class="modal-footer blue-grey lighten-5">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Not now</a>
+    </div>
+</div>
     <!-- Modal Structure 
   <div id="serviceModal" class="modal modal-bits blog-card" >
     <div class="modal-content " style="padding: 2px;">
@@ -1099,7 +1116,19 @@ e=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits
             
  console.log(e);
 }    
+//if ststements for popup login modal if user is on anon mode
 
+ //$(document).ready(
+ function checkanon() {
+ var x = document.getElementById("names").textContent;
+ 
+if (x == "Anonymous") {
+	$('#loginModal').openModal()
+}
+else {  console.log("user logged in")}
+}
+//)
+//end if popup login
 </script>
 
  <script>
