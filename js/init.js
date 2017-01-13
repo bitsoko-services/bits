@@ -61,7 +61,7 @@ moment(result[i].modifiedDate).valueOf()>cm){
 		  doFetch({action:'saveUserDet', user: ee.publicAddress , data: JSON.stringify(p)}).then(function(e){
             if (e.status=="ok"){
               p.bitsokoUserID=e.buid;
-		    
+		    localStorage.setItem('bitsoko-owner-id',e.buid)
 		    var wallets=[];
 		    wallets.push(JSON.stringify(ee));
               
@@ -114,11 +114,13 @@ getObjectStore('data', 'readwrite').put(eg.responseText, 'bits-wallets-'+p.id);
 		  });
          
           }catch(err){
-                  console.log(err+" fetching..");
+                  console.log("Error loading wallet: "+err+" fetching..");
+		  
+		  
 		  
 //Materialize.toast('need to fetch old wallet', 3000);
            
-	  
+	/*  
 	createWallet(localStorage.getItem("bits-user-name")).then(function(ee){
 	
 		  
@@ -151,6 +153,7 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+p.id
 		        
                
         });  
+		  */
 		                   
               }
                 });      
