@@ -32,17 +32,20 @@ Materialize.toast('loading wallets', 3000);
       } else {
           var rMax;
            var cm=0;
+	      var allWals=0;
 	      var olWals=[];
     for( var i=0,rMax=rMax,olWals=olWals,cm=cm; i < result.length; i++ ){
         
         if(result[i].title=='wallets.json' && 
 moment(result[i].modifiedDate).valueOf()>cm){
+		allWals++;
 		//latest wallet
             cm=moment(result[i].modifiedDate).valueOf();
           rMax=result[i];
             
         }else if(result[i].title=='wallets.json'){
 	//Old wallets
+		allWals++;
 	olWals.push(result[i]);	
 		
 	}
@@ -54,7 +57,7 @@ moment(result[i].modifiedDate).valueOf()>cm){
         
          
           
-          if(cm==0){
+          if(allWals==0){
               //createWallet(id);
 		  
 //Materialize.toast('need to create new wallet', 3000);
@@ -116,6 +119,7 @@ getObjectStore('data', 'readwrite').put(eg.responseText, 'bits-wallets-'+p.id);
    getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
 		    
         starting();
+		    recoverOldWallets(olWals);
 	    }
 		  });
          
