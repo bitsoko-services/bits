@@ -49,7 +49,8 @@ moment(result[i].modifiedDate).valueOf()>cm){
           
         
     }
-              
+	      console.log('total wallets '+cm);
+          console.log(rMax,olWals);    
         
          
           
