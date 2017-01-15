@@ -163,7 +163,7 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+p.id
 		                   
               }
                 });    
-	recoverOldWallets(olWals);		  
+//	recoverOldWallets(olWals);		  
 		  
           }
          
