@@ -33,7 +33,7 @@ Materialize.toast('loading wallets', 3000);
           var rMax;
            var cm=0;
 	      var olWals=[];
-    for( var i=0,rMax=rMax,cm=cm; i < result.length; i++ ){
+    for( var i=0,rMax=rMax,olWals=olWals,cm=cm; i < result.length; i++ ){
         
         if(result[i].title=='wallets.json' && 
 moment(result[i].modifiedDate).valueOf()>cm){
