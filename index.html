@@ -978,7 +978,7 @@ activeService=$('#serviceModal').attr('service');
             
     for(var ii = 0; ii < serviceList.length; ++ii) {
 
-		$('.serviceListHolder').append('<li class="collection-item avatar"><img src="images/avatar.jpg" alt="" class="circle"><span class="title"><span class="serviceListTitle">'+serviceList[ii].name+'</span></span><p class="serviceListFirstline"><br class="servicelistSeccondline"> Second Line </p><a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a></li>');
+		$('.serviceListHolder').append('<li class="collection-item avatar avatar bits-max promo-collection"><img src="images/avatar.jpg" alt="" class="circle"><span class="title"><span class="serviceListTitle">'+serviceList[ii].name+'</span></span><p class="serviceListFirstline"><br class="servicelistSeccondline"> Second Line </p><a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a></li>');
       
              };
 
@@ -994,8 +994,9 @@ activeService=$('#serviceModal').attr('service');
     doFetch({ action: 'nearbyPromos', loc: 
     localStorage.getItem('bitsoko-settings-location')}).then(function(e){
            if (e.status=="ok"){
-           	 for(var ii = 0; ii < e.promotions.length; ++ii) {
-$('.promoHolder').append(' <li class="col s12 m12 l4 "><div class="product-card"><div class="card small"><div class="card-image waves-effect waves-block waves-light"><a href="#" class="btn-floating btn-large btn-price waves-effect waves-light  bits accent-2">'+e.promotions[ii].discount+'% off</a><img src="https://bitsoko.io'+e.promotions[ii].promoBanner+'" alt="product-img"></div><ul class="card-action-buttons"><li><a class="btn-floating waves-effect waves-light green accent-4"><i class="mdi-av-repeat"></i></a></li><li><a class="btn-floating waves-effect waves-light red accent-2"><i class="mdi-action-favorite"></i></a></li><!--<li><a class="btn-floating waves-effect waves-light light-blue"><i class="mdi-action-info activator"></i></a></li>--></ul><div class="card-content"><div class="row"><div class="col s8"><p class="card-title grey-text text-darken-4"><img src="'+e.promotions[ii].promoLogo+'" alt="amazon" class="responsive-img"><p><a href="#" class="grey-text text-darken-4">'+e.promotions[ii].promoDesc+'</a></p></div><div class="col s4 no-padding"><a href=""></a></div></div></div><div class="card-reveal"><span class="card-title grey-text text-darken-4"><i class="mdi-navigation-close right"></i> Apple MacBook Pro A1278 13"</span><p>Here is some more information about this product that is only revealed once clicked on.</p></div></div></div> </li>');
+           	
+           	 for(var ii = 0; ii < e.promotions.length; ++ii) { var dailyCost=(parseInt(e.promotions[ii].discount)/100)*e.promotions[ii].promoPrice
+$('.promoHolder').append(' <li class="col s12 m12 l4 avatar bits-max promo-collection">'+'<img src="https://bitsoko.io'+e.promotions[ii].promoBanner+'" data-caption="'+e.promotions[ii].promoDesc+'" alt="'+e.promotions[ii].promoDesc+'" class="materialboxed promoHome"><div class="product-card">'+'<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+e.promotions[ii].promoDesc+' </span></span>'+'<p class="serviceListFirstline"><span class="bits-badge bits left" style="margin-left: 20px;">'+Math.ceil(dailyCost)+'<span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>'+'<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-'+e.promotions[ii].id+'"> Not Subscribed</span> <label> <input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+e.promotions[ii].id+'" class="promoSubButton promoSubButton-'+e.promotions[ii].id+'" style="background: rgb(128, 210, 147);"><span style="margin-top:2px;" class="lever right"></span></label></div></li>');
                    
              };
         console.log(e);
