@@ -22,6 +22,20 @@
   <link rel="manifest" href="web-manifest.json">
 <script src="jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="jspdf.js"></script>
+  <script type="text/javascript">
+    function onLoad() {
+      gapi.load('auth2', function() {
+        gapi.auth2.init();
+      });
+    }
+ 
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
 <script type="text/javascript">
 var doc = new jsPDF();
 var specialElementHandlers = {
@@ -120,7 +134,7 @@ doc.save('BitsWallet_Backup.pdf');
 		</div></center>
 		<ul> 
 			<li  class="bits-ellipsis col s6 m8 l9 displayNone" style="margin-left: 15px;"><span class="username-addr " style=""></span></li>
-			<li class="displayNone"><a href="#" id="shareQR"> <i class="mdi-social-share bits-color"></i><span class="bits-13" style=""></span> <span href id="">Share </span>  </a>  
+			<li class=""><a href="#" id="shareQR"> <i class="mdi-social-share bits-color"></i><span class="bits-13" style=""></span> <span href id="">Share Wallet</span>  </a>  
         </ul><!-- <button  value="ShareQR"class="btn btn-small btn-price" style=" background:none !important; /*float: right !important;opacity: 0.7; right: 0%;  margin-top: -240px;*/"></button>
       --></div>
       </li>
@@ -138,11 +152,11 @@ doc.save('BitsWallet_Backup.pdf');
 
      <label class="bis-font-size "><center>Current Account</center></label>
   </div>
-                  <li class="li-hover"><div class="divider"></div></li>  
+                 
                 </div>
                 </div>
         </div></li>-->
-           
+            <li class="li-hover"><div class="divider"></div></li>  
             <li class="li-hover"><p class="ultra-small margin more-text"></p></li>
             <li class="bold"><a href="?" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>Nearby Offers</a></li>
             <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>My Offers</a></li>
@@ -198,7 +212,7 @@ doc.save('BitsWallet_Backup.pdf');
                         <!--<li><a href="#" class="switchStore"><i class="mdi-action-assignment-ind"></i>Mobile Account</a>
                         </li>-->
                         <li class="divider"></li>
-                        <li><a href="#" class="newStore"><i class="mdi-action-lock-outline"></i>Signout</a>
+                        <li><a href="#" class="newStore" onclick="signOut();"><i class="mdi-action-lock-outline"></i>Signout</a>
                         </li>
                     </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only bits"><i class="mdi-navigation-menu"></i></a>
@@ -521,7 +535,9 @@ doc.save('BitsWallet_Backup.pdf');
     messagingSenderId: "476194103258"
   };
   firebase.initializeApp(config);
+
 </script>
+
 <script src="https://bitsoko.io/bitsAssets/js/google.js"async defer></script>
   <script src="https://apis.google.com/js/client:platform.js?onload=startGoogle" async defer></script>
     
@@ -687,7 +703,7 @@ if (e.data.payments=="true"){
 function doSubscribe(){
 	
 	$(".promoSubButton").bind( "touchstart click", function(event, ui) {
-	
+	checkanon()
      event.preventDefault();
 var pid = $(this).attr('pid');
 var dr = $(this).attr('dailyR');
@@ -996,7 +1012,7 @@ activeService=$('#serviceModal').attr('service');
            if (e.status=="ok"){
            	
            	 for(var ii = 0; ii < e.promotions.length; ++ii) { var dailyCost=(parseInt(e.promotions[ii].discount)/100)*e.promotions[ii].promoPrice
-$('.promoHolder').append(' <li class="col s12 m12 l4 avatar bits-max promo-collection">'+'<img src="https://bitsoko.io'+e.promotions[ii].promoBanner+'" data-caption="'+e.promotions[ii].promoDesc+'" alt="'+e.promotions[ii].promoDesc+'" class="materialboxed promoHome"><div class="product-card">'+'<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+e.promotions[ii].promoDesc+' </span></span>'+'<p class="serviceListFirstline"><span class="bits-badge bits left" style="margin-left: 20px;">'+Math.ceil(dailyCost)+'<span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>'+'<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-'+e.promotions[ii].id+'"> Not Subscribed</span> <label> <input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+e.promotions[ii].id+'" class="promoSubButton promoSubButton-'+e.promotions[ii].id+'" style="background: rgb(128, 210, 147);"><span style="margin-top:2px;" class="lever right"></span></label></div></li>');
+$('.promoHolder').append(' <li class="col s12 m6 l4 avatar bits-max promo-collection">'+'<img src="https://bitsoko.io'+e.promotions[ii].promoBanner+'" data-caption="'+e.promotions[ii].promoDesc+'" alt="'+e.promotions[ii].promoDesc+'" class="materialboxed promoHome"><div class="product-card">'+'<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+e.promotions[ii].promoDesc+' </span></span>'+'<p class="serviceListFirstline"><span class="bits-badge bits left" style="margin-left: 20px;">'+Math.ceil(dailyCost)+'<span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>'+'<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-'+e.promotions[ii].id+'"> Not Subscribed</span> <label> <input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+e.promotions[ii].id+'" class="promoSubButton promoSubButton-'+e.promotions[ii].id+'" style="background: rgb(128, 210, 147);"><span style="margin-top:2px;" class="lever right"></span></label></div></li>');
                    
              };
         console.log(e);
