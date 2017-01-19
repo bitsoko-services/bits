@@ -30,6 +30,8 @@ jsPDF standard_fonts_metrics plugin
 Copyright (c) 2012 Willow Systems Corporation, willow-systems.com
 MIT license.
 */
+
+
 var jsPDF=function(){function f(g,d,e,h){g="undefined"===typeof g?"p":g.toString().toLowerCase();"undefined"===typeof d&&(d="mm");"undefined"===typeof e&&(e="a4");"undefined"===typeof h&&"undefined"===typeof zpipe&&(h=!1);var a=e.toString().toLowerCase(),p=[],j=0,m=h;h={a3:[841.89,1190.55],a4:[595.28,841.89],a5:[420.94,595.28],letter:[612,792],legal:[612,1008]};var u="0 g",c=0,q=[],C=2,F=!1,H=[],n={},x={},z=16,A,y,s,r,I={title:"",subject:"",author:"",keywords:"",creator:""},w=0,aa=0,D={},G=new k(D),
 B,v=function(c){return c.toFixed(2)},V=function(c){var e=c.toFixed(0);return 10>c?"0"+e:e},l=function(e){F?q[c].push(e):(p.push(e),j+=e.length+1)},N=function(){C++;H[C]=j;l(C+" 0 obj");return C},Q=function(c){l("stream");l(c);l("endstream")},J,ca,R,t=function(c,e){var d;d=c;var j=e,a,h,b,p,g,m;void 0===j&&(j={});a=j.sourceEncoding?a:"Unicode";b=j.outputEncoding;if((j.autoencode||b)&&n[A].metadata&&n[A].metadata[a]&&n[A].metadata[a].encoding)if(a=n[A].metadata[a].encoding,!b&&n[A].encoding&&(b=n[A].encoding),
 !b&&a.codePages&&(b=a.codePages[0]),"string"===typeof b&&(b=a[b]),b){g=!1;p=[];a=0;for(h=d.length;a<h;a++)(m=b[d.charCodeAt(a)])?p.push(String.fromCharCode(m)):p.push(d[a]),p[a].charCodeAt(0)>>8&&(g=!0);d=p.join("")}for(a=d.length;void 0===g&&0!==a;)d.charCodeAt(a-1)>>8&&(g=!0),a--;if(g){p=j.noBOM?[]:[254,255];a=0;for(h=d.length;a<h;a++){m=d.charCodeAt(a);j=m>>8;if(j>>8)throw Error("Character at position "+a.toString(10)+" of string '"+d+"' exceeds 16bits. Cannot be encoded into UCS-2 BE");p.push(j);

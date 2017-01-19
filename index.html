@@ -134,6 +134,9 @@ doc.save('BitsWallet_Backup.pdf');
 		</div></center>
 		<ul> 
 			<li  class="bits-ellipsis col s6 m8 l9 displayNone" style="margin-left: 15px;"><span class="username-addr " style=""></span></li>
+			 
+            <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>My Offers</a></li>
+                       <li class="bold"><a href="?" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>Nearby Offers</a></li>
 			<li class=""><a href="#" id="shareQR"> <i class="mdi-social-share bits-color"></i><span class="bits-13" style=""></span> <span href id="">Share Wallet</span>  </a>  
         </ul><!-- <button  value="ShareQR"class="btn btn-small btn-price" style=" background:none !important; /*float: right !important;opacity: 0.7; right: 0%;  margin-top: -240px;*/"></button>
       --></div>
@@ -157,9 +160,7 @@ doc.save('BitsWallet_Backup.pdf');
                 </div>
         </div></li>-->
             <li class="li-hover"><div class="divider"></div></li>  
-            <li class="li-hover"><p class="ultra-small margin more-text"></p></li>
-            <li class="bold"><a href="?" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>Nearby Offers</a></li>
-            <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>My Offers</a></li>
+
             <ul class="collapsible collapsible-accordion">
           
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-settings"></i>Settings</a>
@@ -323,11 +324,22 @@ doc.save('BitsWallet_Backup.pdf');
                     <!--work collections end-->
 
                   <!--   Floating Action Button -->
-                    <div class="fixed-action-btn " style="bottom: 50px; right: 19px;">
+                    <div class="fixed-action-btn fixed-a " id="fixed-a" style="bottom: 50px; right: 19px;">
                         <a class="btn  bits">
                            New Transaction
                         </a>
-                        <ul class="serviceButtonsHolder">
+                        <ul class="serviceButtonsHolder ">
+                         
+                         
+                        </ul>
+                    </div>
+                    <!-- Floating Action Button -->
+ <!--   Floating Action Button -->
+                    <div class="fixed-action-btn fixed-b" id="fixed-b"style="bottom: 50px; right: 19px;">
+                       <div class="row">
+                        <a class ="btn  col s6 m6 bits wdthh"><i class="mdi-communication-call-made"></i> Send</a>
+                        <a class="btn  col s6 m6 bits wdthh"><i class="right mdi-communication-received"></i>Recive</a>
+                        <ul class="serviceButtonsHolder ">
                          
                          
                         </ul>
@@ -749,16 +761,35 @@ var dr = $(this).attr('dailyR');
 
 }
 // getContacts
- function populateContacts(){
-//var cont = localStorage.getItem('bits-contacts-100528339852620145751');
-   // document.querySelector(".serviceName").innerHTML = localStorage.getItem("name");
-//  $(".contacts").html( cont.name);
-     //  document.querySelector('.serviceName').innerHTML = cont.phone;
-    //    $('.serviceListHolder').prepend('<li class="avatar bits-max promo-collection">'+'<img src="https://bitsoko.io'+cont.promotions[ii].phone+'"</li>'); 
+function contact(){
+ var ctFunc = getObjectStore('data', 'readwrite').get('bits-contacts-'+localStorage.getItem('bits-user-name'));
+  ctFunc.onerror = function (event) {
+   reqContacts();   
+  }
 
-       	
-//         document.querySelector('.cardLogo').src = cont.icon;
- }
+ ctFunc.onsuccess = function (event) {
+
+        try{
+        	//contacts found
+
+    var allContacts = JSON.parse(event.target.result);
+  for(var iii = 0 ;  iii < allContacts.length; ++iii) { 
+		console.log("contacts")	 
+			//var dailyCost=(parseInt(mDet.promotions[ii].discount)/100)*mDet.promotions[ii].promoPrice;
+		 $('.serviceListHolder').append('<li onclick="" class="collection-item waves-effect avatar" style="background-color: inherit;"><span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+allContacts[iii].name+' </span><img src="https://bitsoko.io/'+allContacts[iii].img+'" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle"></span></span><p class="serviceListFirstline">'+allContacts[iii].contact+' <br class="servicelistSeccondline"> </li>'); 
+    
+   
+            } 
+	}
+catch(e) {
+            	console.log("no contacts")	 
+         $('.serviceListHolder').append('<li onclick="contacts()" class="collection-item waves-effect avatar"  style="background-color: inherit;"><img src="'+activeService.cardLogo+'.png" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle">Empty</span></span><p class="serviceListFirstline"> Click to update your '+activeService.name+' list <br class="servicelistSeccondline">  </p><a href="#!" class="secondary-content"></a></li>');
+         	// no contacts
+           reqContacts();     
+            }
+	}
+}
+
 //populateService function
  function populateService(id){
 
@@ -864,23 +895,33 @@ for(var i = 0; i< addproducts.length; ++i){
           var activeService;
           allServices =  [
      
-      //{name:'Merchants',id:'3',desc:'Merchant desription',cardimage:'merchantsBanner',cardLogo:'merchants',image:'mdi-maps-store-mall-directory',list:[]},
-       {name:'Contacts',id:'1',desc:'Contacts desription',cardimage:'/bits/images/contactsBanner',cardLogo:'/bits/images/contacts',image:'mdi-social-group',list:[]},      
+      {name:'Merchants',id:'3',desc:'Merchant desription',cardimage:'/bits/images/merchantsBanner',cardLogo:'/bits/images/merchants',image:'mdi-maps-store-mall-directory',list:[]},
+       {name:'Contacts',id:'2',desc:'Contacts desription',cardimage:'/bits/images/contactsBanner',cardLogo:'/bits/images/contacts',image:'mdi-social-group',list:[]},      
       ]
     
     for(var ii = 0; ii < allServices.length; ++ii) {
 
-		$('.serviceButtonsHolder').append('<li><a  href="#serviceModal" service="'+allServices[ii].id+'" class="serviceButtons btn-floating bits "><i class="large '+allServices[ii].image+'"></i>text</a></li>');
+
+		$('.serviceButtonsHolder').append('<li><a href="?s='+allServices[ii].id+'" service="'+allServices[ii].id+'" class="serviceButtons btn bits  "><i class="large '+allServices[ii].image+'"></i> '+allServices[ii].name+'</a></li>');
       
              };
 
-  var el = document.querySelectorAll(".serviceButtons");
 
-for(var l=0, el=el; l < el.length; ++l){
+ var bts = document.querySelectorAll(".serviceButtons");
 
-  el[l].addEventListener("touchstart", handleModal, false);
 
+    for(var ii = 0; ii < bts.length; ++ii) {
+
+
+bts[ii].addEventListener('touchstart', function(event) {
+ 	console.log($(this).attr('service'));
+if ($(this).attr('service')=='2'){
+	contact();
 }
+
+ });
+             };
+
 
      function populateModal(x,y){
 
@@ -898,8 +939,7 @@ for(var l=0, el=el; l < el.length; ++l){
 
              if ( activeService.list.length==0){
              	$('.serviceListHolder').html("");
-$('.serviceListHolder').append('<li onclick="updateServicelist()" class="collection-item waves-effect avatar"  style="background-color: inherit;"><img src="'+activeService.cardLogo+'.png" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle">Empty</span></span><p class="serviceListFirstline"> Click to update your '+activeService.name+' list <br class="servicelistSeccondline">  </p><a href="#!" class="secondary-content"></a></li>');
-      
+
              }
 
 
@@ -981,7 +1021,7 @@ activeService=$('#serviceModal').attr('service');
 	doFetch({ action: 'serviceList', data: activeService, user: localStorage.getItem("bitsoko-user-name")}).then(function(e){
            if (e.status=="ok"){
         serviceList = e.data;
-        reqContacts()
+      
             
     for(var ii = 0; ii < serviceList.length; ++ii) {
 
@@ -1084,15 +1124,13 @@ $(document).ready(function(){
 $(document).ready(function() {
 $(".serviceListHolder").hide();
 $(".serviceListCard").hide();
- $(".promoHolder").show();
-
+$(".promoHolder").show();
+$(".fixed-b").hide();
 
   $(".serviceButtons").click(function() {
-    
-$(".serviceListHolder").show();
-$(".serviceListCard").show();
-    $(".promoHolder").hide();
+//$(".fixed-a").hide();
   });
+
 
 
     $(".saleButton").click(function() {
@@ -1152,6 +1190,8 @@ else {  console.log("user logged in")}
  <script>
  //web Share start
  document.querySelector("#share").addEventListener('click', function(event) {
+
+ 	
        navigator.share({
     title: actvServ().name,
     text:actvServ().desription ,
@@ -1172,3 +1212,11 @@ else {  console.log("user logged in")}
 }).then(() => console.log('Successful shareQR'))
 .catch(error => console.log('Error sharingQR:', error));
             });
+
+
+ function navMenu(sId){
+//navigate to the sId service page
+
+ 	contact();
+
+ }
