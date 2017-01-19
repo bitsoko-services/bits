@@ -187,12 +187,21 @@ return response.clone().text().then(function(d){
  	
 var respJ = JSON.parse(d);
   console.log(respJ);
+	if(respJ.a=='3'&&respJ.s=='3'){
+//This is a sokopos Default url so redirect to homepage
+url = location.origin+'/merch/';
+var trResp=Response.redirect(url);
+
+return trResp;	   
+	   }else{
+
 url = location.origin+'/bits/?s='+respJ.s+'&a='+respJ.a+'&p='+respJ.p;
 var trResp=Response.redirect(url);
 cache.put(event.request.clone(), trResp.clone());
 
 return trResp;
-
+	   
+	   }
 
  	
  });	
