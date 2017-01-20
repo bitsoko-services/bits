@@ -17,6 +17,24 @@ aside>ul{
       margin-top: -399px;
   left: -250px !important;
   }*/
+  .wdthh{
+    width: 120px !important;
+  }
+  .fixed-action-btn ul {
+    left: 0;
+    right: 0;
+    text-align: center;
+    position: absolute;
+    bottom: 34px !important;
+    margin: 0;
+    visibility: hidden;
+    opacity:0.9;
+}
+  .promoHome{
+    width: 100%;
+    padding: 2%;
+    height: 140px;
+  }
   bits-no shadow{
     box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0);
   }
