@@ -649,7 +649,10 @@ if(parseInt(getBitsWinOpt('s')) >5){
 var servID=getBitsWinOpt('s');
 }else{
 var servID=getBitsWinOpt('a');
-}	 
+}
+	  if(parseInt(getBitsWinOpt('s')) == 2){
+contact();
+}
 	 
 	document.querySelector("link[rel='manifest']").href = "https://bitsoko.io/bits/web-manifest.json?s="+servID; 
 //document.querySelector("link[rel='manifest']").href = "https://bitsoko.io/bits/web-manifest.json?s="+servID; 
