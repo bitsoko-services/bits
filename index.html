@@ -340,14 +340,11 @@ doc.save('BitsWallet_Backup.pdf');
                     </div>
                     <!-- Floating Action Button -->
  <!--   Floating Action Button -->
-                    <div class="fixed-action-btn fixed-b" id="fixed-b"style="bottom: 50px; right: 19px;">
+                    <div class="fixed-action-btn fixed-b displayNone" id="fixed-b">
                        <div class="row">
-                        <a class ="btn  col s6 m6 bits wdthh"><i class="mdi-communication-call-made"></i> Send</a>
-                        <a class="btn  col s6 m6 bits wdthh"><i class="right mdi-communication-received"></i>Recive</a>
-                        <ul class="serviceButtonsHolder ">
-                         
-                         
-                        </ul>
+                        <a class ="btn  col s6 m6 bits wdthh waves" style="margin-right: 5px;">Send</a>
+                        <a class="btn  col s6 m6 bits wdthh waves">Receive</a>
+                      
                     </div>
                     <!-- Floating Action Button -->
 
@@ -666,10 +663,11 @@ if(parseInt(getBitsWinOpt('s')) >5){
 var servID=getBitsWinOpt('s');
 }else{
 var servID=getBitsWinOpt('a');
-}
-	  if(parseInt(getBitsWinOpt('s')) == 2){
-contact();
-}
+}	
+
+    if(parseInt(getBitsWinOpt('s')) == 2){ 
+contact(); 
+}  
 	 
 	document.querySelector("link[rel='manifest']").href = "https://bitsoko.io/bits/web-manifest.json?s="+servID; 
 //document.querySelector("link[rel='manifest']").href = "https://bitsoko.io/bits/web-manifest.json?s="+servID; 
@@ -1258,3 +1256,19 @@ else {  console.log("user logged in")}
  	contact();
 
  }
+ </script>
+    <!-- ================================================
+//     Scripts
+//     ================================================ -->
+
+    
+
+<!--  <script type="text/javascript" src="js/html2canvas.js"></script>
+    <script type="text/javascript">
+     setTimeout(function() {
+        html2canvas(document.body).then(function(canvas) {
+            document.body.appendChild(canvas);
+        });
+        }, 2000);
+    </script>
+  -->
