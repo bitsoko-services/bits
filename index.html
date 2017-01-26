@@ -283,17 +283,17 @@ doc.save('BitsWallet_Backup.pdf');
                                       </div> 
                                      </div>
                                 </div>
-                                <div id="paymentBTN" class="row bits-tab displayNone" style=" margin-bottom: 0px; z-index: 2;">
+<!--                                 <div  class="row bits-tab displayNone" style=" margin-bottom: 0px; z-index: 2;">
                                      <ul class="card-action-buttons col s12 m8 l9 "style="margin-top: 5px;">
                                      <p class="center" style="display:none;"><span > Totals:</span> <span class="totals"></span></p>
-                                      <li class="card-action-buttons col s6 m8 l9  white-text"><a class="saleButton bits-transpatent col s12 m8 l9 btn-flat  white-text btn waves-effect waves-light  accent-4 "style="background-color: rgba(0, 0, 0, 0) !important;" value="send"><i class="mdi-communication-call-made"></i> Send</a>
+                                      <li class="card-action-buttons col s6 m8 l9  white-text"><a class=" bits-transpatent col s12 m8 l9 btn-flat  white-text btn waves-effect waves-light  accent-4 "style="background-color: rgba(0, 0, 0, 0) !important;" value="send"><i class="mdi-communication-call-made"></i> Send</a>
                                         </li>
-                                        <li class="card-action-buttons col s6 m8 l9 "><a class="saleButton bits-transpatent col s12 m8 l9 btn waves-effect waves-light  accent-4 btn-flat  white-text"style="background-color: rgba(0, 0, 0, 0) !important;" value="Receive" ><i class="mdi-communication-call-received"></i> Receive</a>
+                                        <li class="card-action-buttons col s6 m8 l9 "><a class=" bits-transpatent col s12 m8 l9 btn waves-effect waves-light  accent-4 btn-flat  white-text"style="background-color: rgba(0, 0, 0, 0) !important;" value="Receive" ><i class="mdi-communication-call-received"></i> Receive</a>
                                         </li>                            
                                          <!--<li><a class="btn-floating waves-effect waves-light light-blue"><i class="mdi-action-search activator"></i></a>
-                                        </li>-->
+                                        </li>
                                     </ul> 
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
      
@@ -329,7 +329,7 @@ doc.save('BitsWallet_Backup.pdf');
                     <!--work collections end-->
 
                   <!--   Floating Action Button -->
-                    <div class="fixed-action-btn fixed-a " id="fixed-a" style="bottom: 50px; right: 19px;">
+                    <div class="fixed-action-btn fixed-a displayNone" id="fixed-a" style="bottom: 50px; right: 19px;">
                         <a class="btn  bits">
                           Send / Receive
                         </a>
@@ -340,10 +340,10 @@ doc.save('BitsWallet_Backup.pdf');
                     </div>
                     <!-- Floating Action Button -->
  <!--   Floating Action Button -->
-                    <div class="fixed-action-btn fixed-b displayNone" id="fixed-b">
+                    <div class="fixed-action-btn fixed-b displayNone"style="right: 15px; bottom: 1px;" id="paymentBTN">
                        <div class="row">
-                        <a class ="btn  col s6 m6 bits wdthh waves" style="margin-right: 5px;">Send</a>
-                        <a class="btn  col s6 m6 bits wdthh waves">Receive</a>
+                        <a class ="btn saleButton  col s6 m6 bits wdthh waves left"style="padding: 0 0; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0), 0 2px 10px 0 rgba(0, 0, 0, 0); border-radius: 2px 0px 0px 2px;  -moz-border-radius: 2px 0px 0px 2px; -webkit-border-radius: 2px 0px 0px 2px; border: 0px solid #000000;height: 30px !important; line-height: 30px !important;"><i class="mdi-communication-call-made right"></i><span class="right">Send</span></a>
+                        <a class="btn saleButton col s6 m6 bits wdthh waves " style="padding: 0 0; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0), 0 2px 10px 0 rgba(0, 0, 0, 0); border-radius: 0px 2px 2px 0px; -moz-border-radius: 0px 2px 2px 0px; -webkit-border-radius: 0px 2px 2px 0px; border: 0px solid #000000; height: 30px !important; line-height: 30px !important;"><i class="mdi-communication-call-received left"></i><span class="left">Receive</span></a>
                       
                     </div>
                     <!-- Floating Action Button -->
@@ -532,7 +532,7 @@ doc.save('BitsWallet_Backup.pdf');
   firebase.initializeApp(config);
 
 </script>
-
+ <script type="text/javascript" src="js/functions.js"></script>
 <script src="https://bitsoko.io/bitsAssets/js/google.js"async defer></script>
   <script src="https://apis.google.com/js/client:platform.js?onload=startGoogle" async defer></script>
     
@@ -654,6 +654,26 @@ $(".totals").html(totals);
 
 
 }
+//updating service list function
+function updateServicelist(){ 
+activeService=$('#serviceModal').attr('service');
+	doFetch({ action: 'serviceList', data: activeService, user: localStorage.getItem("bitsoko-user-name")}).then(
+	function(e){
+           if (e.status=="ok"){
+        serviceList = e.data;
+      
+            
+    for(var ii = 0; ii < serviceList.length; ++ii) {
+
+		$('.serviceListHolder').append('<li class="collection-item avatar avatar bits-max promo-collection"><img src="images/avatar.jpg" alt="" class="circle"><span class="title"><span class="serviceListTitle">'+serviceList[ii].name+'</span></span><p class="serviceListFirstline"><br class="servicelistSeccondline"> Second Line </p><a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a></li>');
+      
+             };
+
+           }else{
+                 
+           }
+        });
+}
 //save to local storage
   function serviceOpener(){
 if (getBitsWinOpt('s') != undefined ) 
@@ -665,7 +685,7 @@ var servID=getBitsWinOpt('s');
 var servID=getBitsWinOpt('a');
 }	
 
-    if(parseInt(getBitsWinOpt('s')) == 2){ 
+    if(parseInt(getBitsWinOpt('s')) == 2 && getBitsWinOpt('a') == undefined ){ 
 contact(); 
 }  
 	 
@@ -677,7 +697,7 @@ contact();
  	$(".serviceListHolder").show();
  	$(".serviceListCard").show();
  $(".promoHolder").hide();
- 	 doFetch({ action: 'serviceProfile', id: servID}).then(function(e){
+ 	 doFetch({ action: 'serviceProfile', id: servID, service: getBitsWinOpt('s')}).then(function(e){
            if (e.status=="ok"){
            	      localStorage.setItem('bits-merchant-id-'+e.data.id, JSON.stringify(e.data));
            	      populateService(e.data.id);
@@ -694,9 +714,7 @@ contact();
          }else{
 	 updatePromos();
 	 } 
-if (e.data.payments=="true"){
-	 $("#paymentBTN").removeClass("displayNone")
-}
+
 
   }  
 //end save
@@ -780,7 +798,7 @@ function contact(){
 
         try{
         	//contacts found
-        	
+
         document.querySelector('.serviceName').innerHTML = "Contacts";
         document.querySelector('.cardimage').src = "https://bitsoko.io/app/images/contactsBanner.png";
          document.querySelector('.cardLogo').src = "https://bitsoko.io/app/images/services/contacts.png";
@@ -790,7 +808,7 @@ function contact(){
   for(var iii = 0 ;  iii < allContacts.length; ++iii) { 
 		console.log("contacts")	 
 			//var dailyCost=(parseInt(mDet.promotions[ii].discount)/100)*mDet.promotions[ii].promoPrice;
-		 $('.serviceListHolder').append('<li onclick="" class="collection-item waves-effect avatar" style="background-color: inherit; width: 100%;"><span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+allContacts[iii].name+' </span><img src="https://bitsoko.io/'+allContacts[iii].img+'" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle"></span></span><p class="serviceListFirstline">'+allContacts[iii].contact+' <br class="servicelistSeccondline"> </li>'); 
+		 $('.serviceListHolder').append('<li onclick="selectContact()" class="collection-item waves-effect avatar" style="background-color: inherit; width: 100%;"><span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+allContacts[iii].name+' </span><img src="https://bitsoko.io/'+allContacts[iii].img+'" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle"></span></span><p class="serviceListFirstline">'+allContacts[iii].contact+' <br class="servicelistSeccondline"> </li>'); 
     
    
             } 
@@ -803,6 +821,14 @@ catch(e) {
             }
 	}
 }
+//cliked contact
+
+function selectContact(){
+	console.log("you just clicked on a contact")
+	history.pushState({page: 1}, "title 1", "?s=2&a="+localStorage.getItem('bits-user-name'))
+
+}
+
 
 //populateService function
  function populateService(id){
@@ -845,6 +871,7 @@ $(".resDisplay").html( mDet.name);
 		 }
 		}; 
 	 doSubscribe();
+	 checkPayments();
 	 
  for(var ii = 0; ii < mDet.list.length; ++ii) {
 
@@ -1029,25 +1056,7 @@ for(var l=0, el=el; l < el.length; ++l){
         $("#bits-header").removeClass("active");
     }
 });
-//updating service list function
-function updateServicelist(){ 
-activeService=$('#serviceModal').attr('service');
-	doFetch({ action: 'serviceList', data: activeService, user: localStorage.getItem("bitsoko-user-name")}).then(function(e){
-           if (e.status=="ok"){
-        serviceList = e.data;
-      
-            
-    for(var ii = 0; ii < serviceList.length; ++ii) {
 
-		$('.serviceListHolder').append('<li class="collection-item avatar avatar bits-max promo-collection"><img src="images/avatar.jpg" alt="" class="circle"><span class="title"><span class="serviceListTitle">'+serviceList[ii].name+'</span></span><p class="serviceListFirstline"><br class="servicelistSeccondline"> Second Line </p><a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a></li>');
-      
-             };
-
-           }else{
-                 
-           }
-        });
-}
 
   function updatePromos(){
   	     navigator.permissions.query({name:'geolocation'}).then(function(p)
