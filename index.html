@@ -554,6 +554,18 @@ messaging.requestPermission()
 .catch(function(err) {
   console.log('Unable to get permission to notify.', err);
 });
+	messaging.onTokenRefresh(function() {
+  messaging.getToken()
+  .then(function(refreshedToken) {
+    console.log('Token refreshed.');
+    // Indicate that the new Instance ID token has not yet been sent to the
+  
+    // ...
+  })
+  .catch(function(err) {
+    console.log('Unable to retrieve refreshed token ', err);
+  });
+});
 	
 
 </script>
