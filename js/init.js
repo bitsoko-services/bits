@@ -724,9 +724,7 @@ window.addEventListener('load', function(e) {
 	
   var config = {
     apiKey: "AIzaSyAsqSLYO7ZDulCM7QX4-SjYSAWMbySCY8M",
-    authDomain: "bitsoko-server.firebaseapp.com",
-    databaseURL: "https://bitsoko-server.firebaseio.com",
-    storageBucket: "bitsoko-server.appspot.com",
+    authDomain: "bitsoko.io",
     messagingSenderId: "476194103258"
   };
   firebase.initializeApp(config);
