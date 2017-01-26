@@ -733,6 +733,7 @@ var servID=getBitsWinOpt('s');
 var servID=getBitsWinOpt('a');
 }	
 
+ localStorage.setItem('bits-active-service',servID);
     if(parseInt(getBitsWinOpt('s')) == 2 && getBitsWinOpt('a') == undefined ){ 
 contact(); 
 }  
@@ -856,7 +857,9 @@ function contact(){
   for(var iii = 0 ;  iii < allContacts.length; ++iii) { 
 		console.log("contacts")	 
 			//var dailyCost=(parseInt(mDet.promotions[ii].discount)/100)*mDet.promotions[ii].promoPrice;
-		 $('.serviceListHolder').append('<li onclick="selectContact()" class="collection-item waves-effect avatar" style="background-color: inherit; width: 100%;"><span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+allContacts[iii].name+' </span><img src="https://bitsoko.io/'+allContacts[iii].img+'" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle"></span></span><p class="serviceListFirstline">'+allContacts[iii].contact+' <br class="servicelistSeccondline"> </li>'); 
+			var id = allContacts[iii].uid ? allContacts[iii].uid : 'undefined';
+			
+		 $('.serviceListHolder').append('<li onclick="selectContact('+id+')" class="collection-item waves-effect avatar" style="background-color: inherit; width: 100%;"><span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+allContacts[iii].name+' </span><img src="https://bitsoko.io/'+allContacts[iii].img+'" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle"></span></span><p class="serviceListFirstline">'+allContacts[iii].contact+' <br class="servicelistSeccondline"> </li>'); 
     
    
             } 
@@ -871,9 +874,9 @@ catch(e) {
 }
 //cliked contact
 
-function selectContact(){
+function selectContact(id){
 	console.log("you just clicked on a contact")
-	history.pushState({page: 1}, "title 1", "?s=2&a="+localStorage.getItem('bits-user-name'))
+	history.pushState({page: 1}, "", "?s=2&a="+id)
 
 }
 
@@ -886,7 +889,6 @@ function selectContact(){
 
  	var mDet = JSON.parse(localStorage.getItem('bits-merchant-id-'+id));
 
- localStorage.setItem('bits-active-service',id);
 $(".resDisplay").html( mDet.name);
         document.querySelector('.serviceName').innerHTML = mDet.name;
         document.querySelector('.cardimage').src = 'https://bitsoko.io'+mDet.bannerPath;
@@ -1246,20 +1248,7 @@ startPay(localStorage.getItem('bits-user-name'),'servID-'+getBitsWinOpt('s')+'-'
 // 	}
 
 // });
-  $(document).ready(function() {
-	 setTimeout(function() {
-         if ( $('.promoHome').is(':visible') ){
-		console.log("i can see you")
-		$(".fixed-a").show();
-		$(".fixed-b").hide();
-	}
-else {
-	console.log("i can not see you")
-    $(".fixed-b").show();
-		$(".fixed-a").hide();
-}
-    }, 7000);
-});
+
 
   function actvServ(){
 e=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits-active-service')));
