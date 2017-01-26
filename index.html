@@ -536,7 +536,7 @@ window.onload = function() {
   firebase.initializeApp(config);
 	const messaging = firebase.messaging();
 	
-		    messaging.useServiceWorker(reg);
+		    messaging.useServiceWorker(swReg);
 messaging.requestPermission()
 .then(function() {
   console.log('Notification permission granted.');
