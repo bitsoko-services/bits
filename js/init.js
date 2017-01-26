@@ -720,6 +720,60 @@ function setupDC1() {
    // Check if a new cache is available on page load.
   
 window.addEventListener('load', function(e) {
+	
+	
+  var config = {
+    apiKey: "AIzaSyAsqSLYO7ZDulCM7QX4-SjYSAWMbySCY8M",
+    authDomain: "bitsoko-server.firebaseapp.com",
+    databaseURL: "https://bitsoko-server.firebaseio.com",
+    storageBucket: "bitsoko-server.appspot.com",
+    messagingSenderId: "476194103258"
+  };
+  firebase.initializeApp(config);
+	const messaging = firebase.messaging();
+	
+		    messaging.useServiceWorker(swReg);
+messaging.requestPermission()
+.then(function() {
+  console.log('Notification permission granted.');
+ 
+	messaging.getToken()
+  .then(function(currentToken) {
+    if (currentToken) {
+      console.log(currentToken);
+    } else {
+      // Show permission request.
+      console.log('No Instance ID token available. Request permission to generate one.');
+     
+    }
+  })
+  .catch(function(err) {
+    console.log('An error occurred while retrieving token. ', err);
+    
+  });
+
+})
+.catch(function(err) {
+  console.log('Unable to get permission to notify.', err);
+});
+	messaging.onTokenRefresh(function() {
+  messaging.getToken()
+  .then(function(refreshedToken) {
+    console.log('Token refreshed.');
+    // Indicate that the new Instance ID token has not yet been sent to the
+  
+    // ...
+  })
+  .catch(function(err) {
+    console.log('Unable to retrieve refreshed token ', err);
+  });
+});
+	
+
+messaging.onMessage(function(payload) {
+  console.log("Message received. ", payload);
+  // ...
+});
  
      bc.addEventListener('message', function(e) {
   
@@ -742,7 +796,8 @@ window.addEventListener('load', function(e) {
             console.log(pl);
       break;
 		}  
-});   
+});  
+	
 window.addEventListener('beforeunload', function(event, ui) {
 
          window.location.hash='';
