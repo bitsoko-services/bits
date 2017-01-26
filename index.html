@@ -519,49 +519,7 @@ doc.save('BitsWallet_Backup.pdf');
 -->
 
 <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAsqSLYO7ZDulCM7QX4-SjYSAWMbySCY8M",
-    authDomain: "bitsoko.io",
-    databaseURL: "https://bitsoko-server.firebaseio.com",
-    storageBucket: "bitsoko-server.appspot.com",
-    messagingSenderId: "476194103258"
-  };
-  firebase.initializeApp(config);
-	const messaging = firebase.messaging();
-	messaging.useServiceWorker(swReg);
-	messaging.requestPermission()
-.then(function() {
-  console.log('Notification permission granted.');
-  // TODO(developer): Retrieve an Instance ID token for use with FCM.
-  messaging.getToken()
-    .then(function(currentToken) {
-      if (currentToken) {
-        console.log(currentToken);
-      } else {
-        // Show permission request.
-        console.log('No Instance ID token available. Request permission to generate one.');
-        // Show permission UI.
-        
-      }
-    })
-    .catch(function(err) {
-      console.log('An error occurred while retrieving token. ', err);
-      
-    });
-})
-.catch(function(err) {
-  console.log('Unable to get permission to notify.', err);
-});
-	  messaging.onMessage(function(payload) {
-    console.log("Message received. ", payload);
-    // [START_EXCLUDE]
-    // Update the UI to include the received message.
-    
-    // [END_EXCLUDE]
-  });
-</script>
+
  <script type="text/javascript" src="js/functions.js"></script>
 
 <script src="https://bitsoko.io/bitsAssets/js/google.js"async defer></script>
