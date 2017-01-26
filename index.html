@@ -522,6 +522,10 @@ doc.save('BitsWallet_Backup.pdf');
 
 <script>
   // Initialize Firebase
+	
+	
+window.onload = function() {
+  
   var config = {
     apiKey: "AIzaSyAsqSLYO7ZDulCM7QX4-SjYSAWMbySCY8M",
     authDomain: "bitsoko-server.firebaseapp.com",
@@ -566,8 +570,7 @@ messaging.requestPermission()
     console.log('Unable to retrieve refreshed token ', err);
   });
 });
-	
-
+};
 </script>
 
 <script src="https://bitsoko.io/bitsAssets/js/google.js"async defer></script>
