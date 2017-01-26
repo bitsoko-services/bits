@@ -522,6 +522,10 @@ doc.save('BitsWallet_Backup.pdf');
 
 <script>
   // Initialize Firebase
+	
+	
+window.onload = function() {
+  
   var config = {
     apiKey: "AIzaSyAsqSLYO7ZDulCM7QX4-SjYSAWMbySCY8M",
     authDomain: "bitsoko-server.firebaseapp.com",
@@ -568,6 +572,11 @@ messaging.requestPermission()
 });
 	
 
+messaging.onMessage(function(payload) {
+  console.log("Message received. ", payload);
+  // ...
+});
+};
 </script>
  <script type="text/javascript" src="js/functions.js"></script>
 <script src="https://bitsoko.io/bitsAssets/js/google.js"async defer></script>
