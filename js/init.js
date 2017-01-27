@@ -739,31 +739,70 @@ messaging.requestPermission()
   .then(function(currentToken) {
     if (currentToken) {
       console.log(currentToken);
+	    
+doFetch({ action: 'pushSub', user: localStorage.getItem('bitsoko-owner-id'), data: currentToken });
+       
+        // Set your UI to show they have subscribed for  
+        // push messages  
+        pushButtonTitle.textContent = 'Notifications On';
+        pushButton.checked = true;
+        isPushEnabled = true;  
+      })  
+      .catch(function(err) {  
+        console.warn('Error saving subscription', err);  
+      });  
     } else {
       // Show permission request.
       console.log('No Instance ID token available. Request permission to generate one.');
      
+        pushButtonTitle.textContent = 'Notifications Off';
+        pushButton.checked = false;
+        isPushEnabled = false; 
     }
   })
   .catch(function(err) {
     console.log('An error occurred while retrieving token. ', err);
     
+        pushButtonTitle.textContent = 'Notifications Off';
+        pushButton.checked = false;
+        isPushEnabled = false; 
   });
 
 })
 .catch(function(err) {
   console.log('Unable to get permission to notify.', err);
+	
+        pushButtonTitle.textContent = 'Notifications Off';
+        pushButton.checked = false;
+        isPushEnabled = false; 
 });
 	messaging.onTokenRefresh(function() {
   messaging.getToken()
   .then(function(refreshedToken) {
     console.log('Token refreshed.');
-    // Indicate that the new Instance ID token has not yet been sent to the
-  
-    // ...
+        
+doFetch({ action: 'pushSub', user: localStorage.getItem('bitsoko-owner-id'), data: refreshedToken });
+       
+        // Set your UI to show they have subscribed for  
+        // push messages  
+        pushButtonTitle.textContent = 'Notifications On';
+        pushButton.checked = true;
+        isPushEnabled = true;  
+      })  
+      .catch(function(err) {  
+        console.warn('Error saving subscription', err);  
+	  
+        pushButtonTitle.textContent = 'Notifications Off';
+        pushButton.checked = false;
+        isPushEnabled = false; 
+      }); 
   })
   .catch(function(err) {
     console.log('Unable to retrieve refreshed token ', err);
+		
+        pushButtonTitle.textContent = 'Notifications Off';
+        pushButton.checked = false;
+        isPushEnabled = false; 
   });
 });
 	
