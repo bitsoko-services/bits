@@ -747,10 +747,7 @@ doFetch({ action: 'pushSub', user: localStorage.getItem('bitsoko-owner-id'), dat
         pushButtonTitle.textContent = 'Notifications On';
         pushButton.checked = true;
         isPushEnabled = true;  
-      })  
-      .catch(function(err) {  
-        console.warn('Error saving subscription', err);  
-      });  
+      
     } else {
       // Show permission request.
       console.log('No Instance ID token available. Request permission to generate one.');
