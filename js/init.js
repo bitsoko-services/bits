@@ -785,14 +785,7 @@ doFetch({ action: 'pushSub', user: localStorage.getItem('bitsoko-owner-id'), dat
         pushButtonTitle.textContent = 'Notifications On';
         pushButton.checked = true;
         isPushEnabled = true;  
-      })  
-      .catch(function(err) {  
-        console.warn('Error saving subscription', err);  
-	  
-        pushButtonTitle.textContent = 'Notifications Off';
-        pushButton.checked = false;
-        isPushEnabled = false; 
-      }); 
+      
   })
   .catch(function(err) {
     console.log('Unable to retrieve refreshed token ', err);
