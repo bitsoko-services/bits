@@ -731,6 +731,9 @@ window.addEventListener('load', function(e) {
 	const messaging = firebase.messaging();
 	
 		    messaging.useServiceWorker(swReg);
+	
+  pushButton = document.querySelector('.js-push-button-notification');  
+  pushButtonTitle = document.querySelector('.js-push-button-notification-title'); 
 messaging.requestPermission()
 .then(function() {
   console.log('Notification permission granted.');
