@@ -11,3 +11,16 @@ else{
 }
 } 
 //checkPayments end ...................................................................................................................
+//....................................
+function urlCheck(){
+	if(
+window.location.href=="bitsoko.io/bits/"
+)
+{
+/* some code to load */
+ $(".promoHome").removeClass("displayNone");
+}else{
+
+}
+
+}
