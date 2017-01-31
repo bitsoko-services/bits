@@ -669,7 +669,9 @@ if (getBitsWinOpt('s') != undefined )
  {
 servicePageLoader()
          }else{
-         	console.log("home page")
+         	
+              $(".promoHome").removeClass("displayNone");
+  $(".fixed-a").removeClass("displayNone");
 	 updatePromos();
 
 	 } 
@@ -1039,8 +1041,7 @@ $('.promoHolder-home').append(' <li class="promoHome displayNone col s12 m6 l4 a
 // 	 doSubscribe(); 
   
              };
-              $(".promoHome").removeClass("displayNone");
-  $(".fixed-a").removeClass("displayNone");
+             
         console.log(e);
            }else{
          $('.promoHolder-home').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>No Promotions found</strong></p><p class="collections-content">'+e.msg+'</p></div></li></ul>');
@@ -1152,7 +1153,7 @@ $(".promoHolder").hide();
     $(".keypadKey").click(function() {
     console.log($(this).attr('value'));
     if($(this).attr('value')=='ok'){
-startPay(localStorage.getItem('bits-user-name'),'servID-'+getBitsWinOpt('s')+'-'+getBitsWinOpt('a'),currentTransaction.amount,currentTransaction.action,'qwerty');
+startPay(actvServ().storeAddress,'servID-'+getBitsWinOpt('s')+'-'+getBitsWinOpt('a'),currentTransaction.amount,currentTransaction.action,'qwerty');
     }else{
     
     currentTransaction.amount=currentTransaction.amount+$(this).attr('value');
