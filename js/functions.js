@@ -19,6 +19,8 @@ window.location.href=="bitsoko.io/bits/"
 {
 /* some code to load */
  $(".promoHome").removeClass("displayNone");
+  $(".fixed-a").removeClass("displayNone");
+
 }else{
 
 }
