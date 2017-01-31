@@ -12,23 +12,23 @@ else{
 } 
 //checkPayments end ...................................................................................................................
 //url check sees the url and determines which content to show ....................................
- $(document).ready(function urlCheck(){
- 	var u;
- 	u=window.location.href
-	if(
-u=="https://bitsoko.io/bits/"||"https://bitsoko.io/bits/#"
-)
-{
-/* some code to load */
-console.log("Home Page")
- $(".promoHome").removeClass("displayNone");
-  $(".fixed-a").removeClass("displayNone");
+//  $(document).ready(function urlCheck(){
+//  	var u;
+//  	u=window.location.href
+// 	if(
+// u=="https://bitsoko.io/bits/"||"https://bitsoko.io/bits/#"
+// )
+// {
+// /* some code to load */
+// console.log("Home Page")
+//  $(".promoHome").removeClass("displayNone");
+//   $(".fixed-a").removeClass("displayNone");
 
-}else{
+// }else{
 
-}
+// }
 
-});
+// });
 //...........................URL check end//.................................................................................................................................................
 //function service Page loader..........
 function servicePageLoader(){
