@@ -1,7 +1,7 @@
 
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =139;
+	bitsVersion =140;
 bitsInstall = function(event){
 	
 	
@@ -86,7 +86,7 @@ return new Promise(function(resolve, reject) {
 //.............................................................................................
 	bitsPush = function(dat){
 		return new Promise(function(resolve, reject) {
-	  bitsNotification('Incoming Transaction',dat.name+' has sent'+dat.amt,[],true,true);
+	  bitsNotification('Incoming Transaction',dat.name+' has sent'+dat.amt,'tag','icon',[],true,true);
        });
 // var config = {
 //     apiKey: "AIzaSyAsqSLYO7ZDulCM7QX4-SjYSAWMbySCY8M",
