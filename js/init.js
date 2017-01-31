@@ -67,7 +67,7 @@ moment(result[i].modifiedDate).valueOf()>cm){
 	
 		  
 		  
-		  doFetch({action:'saveUserDet', user: ee.publicAddress , data: JSON.stringify(p)}).then(function(e){
+		  doFetch({action:'saveUserDet', user: p.id , data: JSON.stringify(p)}).then(function(e){
             if (e.status=="ok"){
               p.bitsokoUserID=e.buid;
 		    localStorage.setItem('bitsoko-owner-id',e.buid)
@@ -79,10 +79,10 @@ moment(result[i].modifiedDate).valueOf()>cm){
        console.log(r);
 		  localStorage.setItem("bits-user-wallet", ee.publicAddress);
 		  
-			 localStorage.setItem('bits-user-name',p.id);  
-   getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
+			 localStorage.setItem('bits-user-name',e.buid);  
+   getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+e.buid);
 			   	      
-getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+p.id);
+getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+e.buid);
 			   
         starting();
    }); 
