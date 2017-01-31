@@ -13,8 +13,10 @@ else{
 //checkPayments end ...................................................................................................................
 //url check sees the url and determines which content to show ....................................
  $(document).ready(function urlCheck(){
+ 	var u;
+ 	u=window.location.href
 	if(
-window.location.href=="https://bitsoko.io/bits/"
+u=="https://bitsoko.io/bits/"||"https://bitsoko.io/bits/#"
 )
 {
 /* some code to load */
