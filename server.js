@@ -1,7 +1,7 @@
 
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =138;
+	bitsVersion =139;
 bitsInstall = function(event){
 	
 	
@@ -85,8 +85,9 @@ return new Promise(function(resolve, reject) {
 	}
 //.............................................................................................
 	bitsPush = function(dat){
+		return new Promise(function(resolve, reject) {
 	  bitsNotification('Incoming Transaction',dat.name+' has sent'+dat.amt,[],true,true);
-       
+       });
 // var config = {
 //     apiKey: "AIzaSyAsqSLYO7ZDulCM7QX4-SjYSAWMbySCY8M",
 //     authDomain: "bitsoko-server.firebaseapp.com",
