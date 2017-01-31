@@ -11,13 +11,14 @@ else{
 }
 } 
 //checkPayments end ...................................................................................................................
-//....................................
+//url check sees the url and determines which content to show ....................................
  $(document).ready(function urlCheck(){
 	if(
 window.location.href=="https://bitsoko.io/bits/"
 )
 {
 /* some code to load */
+console.log("Home Page")
  $(".promoHome").removeClass("displayNone");
   $(".fixed-a").removeClass("displayNone");
 
@@ -26,4 +27,4 @@ window.location.href=="https://bitsoko.io/bits/"
 }
 
 });
-//.................................................................................................................................................
+//...........................URL check end//.................................................................................................................................................
