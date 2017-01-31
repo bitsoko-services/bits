@@ -14,7 +14,7 @@ else{
 //....................................
 function urlCheck(){
 	if(
-window.location.href=="bitsoko.io/bits/"
+window.location.href=="https://bitsoko.io/bits/"
 )
 {
 /* some code to load */
