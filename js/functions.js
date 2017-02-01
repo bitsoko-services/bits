@@ -11,3 +11,59 @@ else{
 }
 } 
 //checkPayments end ...................................................................................................................
+//url check sees the url and determines which content to show ....................................
+//  $(document).ready(function urlCheck(){
+//  	var u;
+//  	u=window.location.href
+// 	if(
+// u=="https://bitsoko.io/bits/"||"https://bitsoko.io/bits/#"
+// )
+// {
+// /* some code to load */
+// console.log("Home Page")
+//  $(".promoHome").removeClass("displayNone");
+//   $(".fixed-a").removeClass("displayNone");
+
+// }else{
+
+// }
+
+// });
+//...........................URL check end//.................................................................................................................................................
+//function service Page loader..........
+function servicePageLoader(){
+		 
+if(parseInt(getBitsWinOpt('s')) >5){
+var servID=getBitsWinOpt('s');
+}else{
+var servID=getBitsWinOpt('a');
+}	
+
+ localStorage.setItem('bits-active-service',servID);
+    if(parseInt(getBitsWinOpt('s')) == 2 && getBitsWinOpt('a') == undefined ){ 
+contact(); 
+}  
+	 
+	document.querySelector("link[rel='manifest']").href = "https://bitsoko.io/bits/web-manifest.json?s="+servID; 
+//document.querySelector("link[rel='manifest']").href = "https://bitsoko.io/bits/web-manifest.json?s="+servID; 
+     
+	 
+	 
+ 	$(".serviceListHolder").show();
+ 	$(".serviceListCard").show();
+ $(".promoHolder").hide();
+ 	 doFetch({ action: 'serviceProfile', id: servID, service: getBitsWinOpt('s')}).then(function(e){
+           if (e.status=="ok"){
+           	      localStorage.setItem('bits-merchant-id-'+e.data.id, JSON.stringify(e.data));
+           	      populateService(e.data.id);
+	                }else{
+                $(".serviceListHolder").hide();
+                $(".serviceListCard").hide();
+ $(".promoHolder").show();
+           }
+        })
+         .catch(function(){
+         	populateService(servID);
+
+        });
+}

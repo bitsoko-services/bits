@@ -314,7 +314,7 @@ doc.save('BitsWallet_Backup.pdf');
                 
                   
                 </ul>
-                  <ul id="card-widgets" class="promoHolder-home collection"  style="width: 90%;margin-left: 5%;">
+                  <ul id="card-widgets" class="promoHolder-home collection"  style="">
                  
                 
                   
@@ -329,7 +329,7 @@ doc.save('BitsWallet_Backup.pdf');
                     <!--work collections end-->
 
                   <!--   Floating Action Button -->
-                    <div class="fixed-action-btn fixed-a displayNone" id="fixed-a" style="bottom: 50px; right: 19px;">
+                    <div class="fixed-action-btn fixed-a displayNone " id="fixed-a" style="bottom: 50px; right: 19px;">
                         <a class="btn  bits">
                           Send / Receive
                         </a>
@@ -342,8 +342,8 @@ doc.save('BitsWallet_Backup.pdf');
  <!--   Floating Action Button -->
                     <div class="fixed-action-btn fixed-b displayNone"style="right: 15px; bottom: 1px;" id="paymentBTN">
                        <div class="row">
-                        <a class ="btn saleButton  col s6 m6 bits wdthh waves left"style="padding: 0 0; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0), 0 2px 10px 0 rgba(0, 0, 0, 0); border-radius: 2px 0px 0px 2px;  -moz-border-radius: 2px 0px 0px 2px; -webkit-border-radius: 2px 0px 0px 2px; border: 0px solid #000000;height: 30px !important; line-height: 30px !important;"><i class="mdi-communication-call-made right"></i><span class="right">Send</span></a>
-                        <a class="btn saleButton col s6 m6 bits wdthh waves " style="padding: 0 0; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0), 0 2px 10px 0 rgba(0, 0, 0, 0); border-radius: 0px 2px 2px 0px; -moz-border-radius: 0px 2px 2px 0px; -webkit-border-radius: 0px 2px 2px 0px; border: 0px solid #000000; height: 30px !important; line-height: 30px !important;"><i class="mdi-communication-call-received left"></i><span class="left">Receive</span></a>
+                        <a class ="btn saleButton send-receive col s6 m6 bits wdthh waves left" id="send" value="Send" style="padding: 0 0; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0), 0 2px 10px 0 rgba(0, 0, 0, 0); border-radius: 2px 0px 0px 2px;  -moz-border-radius: 2px 0px 0px 2px; -webkit-border-radius: 2px 0px 0px 2px; border: 0px solid #000000;height: 30px !important; line-height: 30px !important;"><i class="mdi-hardware-keyboard-arrow-up right"></i><span class="right">Send</span></a>
+                        <a class="btn saleButton send-receive col s6 m6 bits wdthh waves " id="rec" value="Receive" style="padding: 0 0; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0), 0 2px 10px 0 rgba(0, 0, 0, 0); border-radius: 0px 2px 2px 0px; -moz-border-radius: 0px 2px 2px 0px; -webkit-border-radius: 0px 2px 2px 0px; border: 0px solid #000000; height: 30px !important; line-height: 30px !important;"><i class="mdi-hardware-keyboard-arrow-down left"></i><span class="left">Receive</span></a>
                       
                     </div>
                     <!-- Floating Action Button -->
@@ -369,7 +369,7 @@ doc.save('BitsWallet_Backup.pdf');
 <div id="keypadModal" class="modal keypadinp" >
     <div class="modal-content " style="padding: 2px;">
                       
-        <div class="result"><span class="black-text">Send <span class="amtDisplay"></span> to <span class="resDisplay"></span></span></div>
+        <div class="result"><span class="black-text"><span class="actionDisplay"></span> <span class="amtDisplay"></span> <span class="from-to-Display"></span> <span class="resDisplay"></span></span></div>
              
          <div id="main">
              
@@ -518,7 +518,7 @@ doc.save('BitsWallet_Backup.pdf');
     ================================================ 
 -->
 
-<script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js" async defer></script>
 
  <script type="text/javascript" src="js/functions.js"></script>
 
@@ -667,48 +667,15 @@ activeService=$('#serviceModal').attr('service');
   function serviceOpener(){
 if (getBitsWinOpt('s') != undefined ) 
  {
-	 
-if(parseInt(getBitsWinOpt('s')) >5){
-var servID=getBitsWinOpt('s');
-}else{
-var servID=getBitsWinOpt('a');
-}	
-document.querySelector("link[rel='manifest']").href = "https://bitsoko.io/bits/web-manifest.json?s="+servID; 
-	
- localStorage.setItem('bits-active-service',servID);
-    if(parseInt(getBitsWinOpt('s')) == 2){ 
-contact(); 
-}  
-  if(parseInt(getBitsWinOpt('s')) == 3){ 
-merchants(); 
-}  
 
 	 
- 	$(".serviceListHolder").show();
- 	$(".serviceListCard").show();
- $(".promoHolder").hide();	 
-  if(getBitsWinOpt('a') == undefined ){ 
-
-	    return;
-}  
-	 
-	 
- 	 doFetch({ action: 'serviceProfile', id: servID, service: getBitsWinOpt('s')}).then(function(e){
-           if (e.status=="ok"){
-           	      localStorage.setItem('bits-merchant-id-'+e.data.id, JSON.stringify(e.data));
-           	      populateService(e.data.id);
-	                }else{
-                $(".serviceListHolder").hide();
-                $(".serviceListCard").hide();
- $(".promoHolder").show();
-           }
-        })
-         .catch(function(){
-         	populateService(servID);
-
-        });
+servicePageLoader();
          }else{
+         	
+              $(".promoHome").removeClass("displayNone");
+  $(".fixed-a").removeClass("displayNone");
 	 updatePromos();
+
 	 } 
 
 
@@ -1063,7 +1030,7 @@ for(var l=0, el=el; l < el.length; ++l){
            if (e.status=="ok"){
            	
            	 for(var ii = 0; ii < e.promotions.length; ++ii) { var dailyCost=(parseInt(e.promotions[ii].discount)/100)*e.promotions[ii].promoPrice
-$('.promoHolder-home').append(' <li class="promoHome col s12 m6 l4 avatar bits-max promo-collection">'+'<img src="https://bitsoko.io'+e.promotions[ii].promoBanner+'" data-caption="'+e.promotions[ii].promoDesc+'" alt="'+e.promotions[ii].promoDesc+'" class="materialboxed promoHome"><div class="product-card">'+'<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+e.promotions[ii].promoDesc+' </span></span>'+'<p class="serviceListFirstline"><span class="bits-badge bits left" style="margin-left: 20px;">'+Math.ceil(dailyCost)+'<span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>'+'<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-'+e.promotions[ii].id+'"> Not Subscribed</span> <label> <input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+e.promotions[ii].id+'" class="promoSubButton promoSubButton-'+e.promotions[ii].id+'" style="background: rgb(128, 210, 147);"><span style="margin-top:2px;" class="lever right"></span></label></div></li>');
+$('.promoHolder-home').append(' <li class="promoHome displayNone col s12 m6 l4 avatar bits-max promo-collection">'+'<img src="https://bitsoko.io'+e.promotions[ii].promoBanner+'" data-caption="'+e.promotions[ii].promoDesc+'" alt="'+e.promotions[ii].promoDesc+'" class="materialboxed promoHome"><div class="product-card">'+'<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+e.promotions[ii].promoDesc+' </span></span>'+'<p class="serviceListFirstline"><span class="bits-badge bits left" style="margin-left: 20px;">'+Math.ceil(dailyCost)+'<span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>'+'<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-'+e.promotions[ii].id+'"> Not Subscribed</span> <label> <input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+e.promotions[ii].id+'" class="promoSubButton promoSubButton-'+e.promotions[ii].id+'" style="background: rgb(128, 210, 147);"><span style="margin-top:2px;" class="lever right"></span></label></div></li>');
                 //               subs=JSON.parse(e.promotions[ii].promoSubs);
 // 		 for(var iii = 0,subs=subs,mDet=e; iii < subs.length; ++iii) { 
 // 			 if(subs[iii]==localStorage.getItem('bitsoko-owner-id')){
@@ -1073,8 +1040,10 @@ $('.promoHolder-home').append(' <li class="promoHome col s12 m6 l4 avatar bits-m
 // 			 };
 // 		 }
 // 		}; 
-// 	 doSubscribe();   
+// 	 doSubscribe(); 
+  
              };
+             
         console.log(e);
            }else{
          $('.promoHolder-home').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>No Promotions found</strong></p><p class="collections-content">'+e.msg+'</p></div></li></ul>');
@@ -1171,11 +1140,22 @@ $(".promoHolder").hide();
     currentTransaction.amount='';
     $("#keypadModal").closeModal();
   });
+//keypad function 
+ $(".send-receive").click(function() {
+    console.log($(this).attr('value'));
+     $(".actionDisplay").html($(this).attr('value'))
+    if($(this).attr('value')=='Send'){
+ $(".from-to-Display").html('to')
+    }
+    else{
+    	$(".from-to-Display").html('from')
+    }
+    });
 
     $(".keypadKey").click(function() {
     console.log($(this).attr('value'));
     if($(this).attr('value')=='ok'){
-startPay(localStorage.getItem('bits-user-name'),'servID-'+getBitsWinOpt('s')+'-'+getBitsWinOpt('a'),currentTransaction.amount,currentTransaction.action,'qwerty');
+startPay(actvServ().storeAddress,'servID-'+getBitsWinOpt('s')+'-'+getBitsWinOpt('a'),currentTransaction.amount,currentTransaction.action,'qwerty');
     }else{
     
     currentTransaction.amount=currentTransaction.amount+$(this).attr('value');
