@@ -32,26 +32,32 @@ else{
 //...........................URL check end//.................................................................................................................................................
 //function service Page loader..........
 function servicePageLoader(){
-		 
+
 if(parseInt(getBitsWinOpt('s')) >5){
 var servID=getBitsWinOpt('s');
 }else{
 var servID=getBitsWinOpt('a');
 }	
-
+document.querySelector("link[rel='manifest']").href = "https://bitsoko.io/bits/web-manifest.json?s="+servID; 
+	
  localStorage.setItem('bits-active-service',servID);
-    if(parseInt(getBitsWinOpt('s')) == 2 && getBitsWinOpt('a') == undefined ){ 
+    if(parseInt(getBitsWinOpt('s')) == 2){ 
 contact(); 
 }  
-	 
-	document.querySelector("link[rel='manifest']").href = "https://bitsoko.io/bits/web-manifest.json?s="+servID; 
-//document.querySelector("link[rel='manifest']").href = "https://bitsoko.io/bits/web-manifest.json?s="+servID; 
-     
-	 
+  if(parseInt(getBitsWinOpt('s')) == 3){ 
+merchants(); 
+}  
+
 	 
  	$(".serviceListHolder").show();
  	$(".serviceListCard").show();
- $(".promoHolder").hide();
+ $(".promoHolder").hide();	 
+  if(getBitsWinOpt('a') == undefined ){ 
+
+	    return;
+}  
+	 
+	 
  	 doFetch({ action: 'serviceProfile', id: servID, service: getBitsWinOpt('s')}).then(function(e){
            if (e.status=="ok"){
            	      localStorage.setItem('bits-merchant-id-'+e.data.id, JSON.stringify(e.data));
@@ -66,4 +72,5 @@ contact();
          	populateService(servID);
 
         });
+
 }
