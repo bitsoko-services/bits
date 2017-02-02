@@ -106,7 +106,7 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+e.bu
 		  adrr=JSON.parse(eg.responseText).publicAddress;
 		  
 		  
-		  doFetch({action:'saveUserDet', user: adrr , data: JSON.stringify(p)}).then(function(ef){
+		  doFetch({action:'saveUserDet', user: p.id , data: JSON.stringify(p)}).then(function(ef){
             if (ef.status=="ok"){
               p.bitsokoUserID=ef.buid;
 		  //loadWallet(adrr);
