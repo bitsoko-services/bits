@@ -61,7 +61,7 @@ moment(result[i].modifiedDate).valueOf()>cm){
               //createWallet(id);
 		  
 //Materialize.toast('need to create new wallet', 3000);
-                  console.log(cm+" creating..");
+            //      console.log(cm+" creating..");
 		  
 	createWallet(p.id).then(function(ee){
 	
@@ -103,7 +103,7 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+e.bu
   		  
 		
 		  
-		  //adrr=JSON.parse(eg.responseText).publicAddress;
+		  console.log('Loaded wallet: ',JSON.parse(eg.responseText));
 		  
 		  
 		  doFetch({action:'saveUserDet', user: p.id , data: JSON.stringify(p)}).then(function(ef){
