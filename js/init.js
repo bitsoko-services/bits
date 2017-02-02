@@ -112,11 +112,11 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+e.bu
 		  //loadWallet(adrr);
 		  //localStorage.setItem("bits-user-wallet", adrr);
 		  
-			 localStorage.setItem('bits-user-name',p.id);
+			 localStorage.setItem('bits-user-name',ef.buid);
 		  	   	      
-getObjectStore('data', 'readwrite').put(eg.responseText, 'bits-wallets-'+p.id);
+getObjectStore('data', 'readwrite').put(eg.responseText, 'bits-wallets-'+ef.buid);
 		    
-   getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
+   getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+ef.buid);
 		    
         starting();
 		    recoverOldWallets(olWals);
