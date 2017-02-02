@@ -103,14 +103,14 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+e.bu
   		  
 		
 		  
-		  adrr=JSON.parse(eg.responseText).publicAddress;
+		  //adrr=JSON.parse(eg.responseText).publicAddress;
 		  
 		  
 		  doFetch({action:'saveUserDet', user: p.id , data: JSON.stringify(p)}).then(function(ef){
             if (ef.status=="ok"){
               p.bitsokoUserID=ef.buid;
 		  //loadWallet(adrr);
-		  localStorage.setItem("bits-user-wallet", adrr);
+		  //localStorage.setItem("bits-user-wallet", adrr);
 		  
 			 localStorage.setItem('bits-user-name',p.id);
 		  	   	      

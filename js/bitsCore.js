@@ -1752,7 +1752,7 @@ var publicAddress =privateKey.toAddress().toString();
        var created = moment().valueOf();
    var walData={publicAddress:publicAddress, privateKey:privateKey, created:created, coin:'btc'};
 	var wd=walData;
-	delete wd.privatekey;
+	delete wd.privateKey;
 
         doFetch({action:'saveUserWallet', data: JSON.stringify(wd), user:user }).then(function(e){
             if (e.status=="ok"){
