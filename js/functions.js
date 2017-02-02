@@ -45,7 +45,7 @@ document.querySelector("link[rel='manifest']").href = "https://bitsoko.io/bits/w
 contact(); 
 }  
   if(parseInt(getBitsWinOpt('s')) == 3){ 
-merchants(); 
+//merchants(); 
 }  
 
 	 
