@@ -260,7 +260,7 @@ console.log(user);
     //var address = '';	
 		reject('no wallet');
 	}
-   
+console.log(address);   
         
 if (!address || address == "" || address == "undefined" || address == "null" || address == null) {
 	reject('no wallet');
