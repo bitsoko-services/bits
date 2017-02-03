@@ -230,7 +230,7 @@ function startUser(user){
     if(user==undefined){
     user=anon;
     }    
-  
+console.log(user);  
      
     var walsvar = getObjectStore('data', 'readwrite').get('bits-wallets-'+user);
 	walsvar.onsuccess = function (event) {
