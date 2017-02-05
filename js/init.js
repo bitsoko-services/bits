@@ -61,7 +61,7 @@ moment(result[i].modifiedDate).valueOf()>cm){
               //createWallet(id);
 		  
 //Materialize.toast('need to create new wallet', 3000);
-                  console.log(cm+" creating..");
+            //      console.log(cm+" creating..");
 		  
 	createWallet(p.id).then(function(ee){
 	
@@ -103,20 +103,20 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+e.bu
   		  
 		
 		  
-		  adrr=JSON.parse(eg.responseText).publicAddress;
+		  console.log('Loaded wallet: ',JSON.parse(eg.responseText));
 		  
 		  
-		  doFetch({action:'saveUserDet', user: adrr , data: JSON.stringify(p)}).then(function(ef){
+		  doFetch({action:'saveUserDet', user: p.id , data: JSON.stringify(p)}).then(function(ef){
             if (ef.status=="ok"){
               p.bitsokoUserID=ef.buid;
 		  //loadWallet(adrr);
-		  localStorage.setItem("bits-user-wallet", adrr);
+		  //localStorage.setItem("bits-user-wallet", adrr);
 		  
-			 localStorage.setItem('bits-user-name',p.id);
+			 localStorage.setItem('bits-user-name',ef.buid);
 		  	   	      
-getObjectStore('data', 'readwrite').put(eg.responseText, 'bits-wallets-'+p.id);
+getObjectStore('data', 'readwrite').put(eg.responseText, 'bits-wallets-'+ef.buid);
 		    
-   getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.id);
+   getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+ef.buid);
 		    
         starting();
 		    recoverOldWallets(olWals);
@@ -230,7 +230,7 @@ function startUser(user){
     if(user==undefined){
     user=anon;
     }    
-  
+console.log(user);  
      
     var walsvar = getObjectStore('data', 'readwrite').get('bits-wallets-'+user);
 	walsvar.onsuccess = function (event) {
@@ -260,7 +260,7 @@ function startUser(user){
     //var address = '';	
 		reject('no wallet');
 	}
-   
+console.log(address);   
         
 if (!address || address == "" || address == "undefined" || address == "null" || address == null) {
 	reject('no wallet');
