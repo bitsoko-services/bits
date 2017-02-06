@@ -342,7 +342,7 @@ doc.save('BitsWallet_Backup.pdf');
  <!--   Floating Action Button -->
                     <div class="fixed-action-btn fixed-b displayNone"style="right: 15px; bottom: 1px;" id="paymentBTN">
                        <div class="row">
-                        <a class ="btn saleButton send-receive col s6 m6 bits wdthh waves left" id="send" value="Send" style="padding: 0 0; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0), 0 2px 10px 0 rgba(0, 0, 0, 0); border-radius: 2px 0px 0px 2px;  -moz-border-radius: 2px 0px 0px 2px; -webkit-border-radius: 2px 0px 0px 2px; border: 0px solid #000000;height: 30px !important; line-height: 30px !important;"><i class="mdi-hardware-keyboard-arrow-up right"></i><center><span class="">Send</span></center></a>
+                        <a class ="btn saleButton send-receive col s6 m6 bits wdthh-left waves left" id="send" value="Send" style="padding: 0 0; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0), 0 2px 10px 0 rgba(0, 0, 0, 0); border-radius: 2px 0px 0px 2px;  -moz-border-radius: 2px 0px 0px 2px; -webkit-border-radius: 2px 0px 0px 2px; border: 0px solid #000000;height: 30px !important; line-height: 30px !important;"><i class="mdi-hardware-keyboard-arrow-up right"></i><center><span class="right">Send</span></center></a>
                         <a class="btn saleButton send-receive col s6 m6 bits wdthh waves " id="rec" value="Receive" style="padding: 0 0; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0), 0 2px 10px 0 rgba(0, 0, 0, 0); border-radius: 0px 2px 2px 0px; -moz-border-radius: 0px 2px 2px 0px; -webkit-border-radius: 0px 2px 2px 0px; border: 0px solid #000000; height: 30px !important; line-height: 30px !important;"><i class="mdi-hardware-keyboard-arrow-down left"></i><span class="left">Receive</span></a>
                       
                     </div>
@@ -446,10 +446,29 @@ doc.save('BitsWallet_Backup.pdf');
       <div class="row">
         <h5>Log In</h5>
      <p> We have noticed you are using the wallet in Anonymous mode please signin to enjoy more of our app <p>
-                   <div id="customBtn" class="customGPlusSignIn">
-      <span class="icon"></span>
-      <span class="buttonText">Google signin</span>
-    </div>
+                  <div id="my-signin2"></div>
+  <script>
+    function onSuccess(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  </script>
+
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
     </div>
     </div>
            
@@ -1203,7 +1222,7 @@ e=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits
 
  //$(document).ready(
  function checkanon() {
- var x = document.getElementById("names").textContent;
+ var x = document.getElementById("name").textContent;
  
 if (x == "Anonymous") {
 	$('#loginModal').openModal()
