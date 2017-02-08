@@ -729,6 +729,7 @@ var dr = $(this).attr('dailyR');
            if (e.status=="ok"){
            	      
 		Materialize.toast(action+'d successfully', 5000);
+		//send promo data to db
 		   if(action=='subscribe'){
 		   $( ".promoSubButton-"+pid ).prop( "checked",true);
 			   $(".promoSubState-"+pid).html("Subscribed");

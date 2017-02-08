@@ -389,8 +389,6 @@ function loadWallet(primWalA){
     updateBal();
     	getLoc();
 
-    
-    	serviceOpener(); 
   updatePromos();
 
         localConverter().then(function(loCon){

@@ -223,6 +223,9 @@ loadWallet(e.publicAddress);
 		
 	}
 });
+
+    
+    	serviceOpener(); 
 }
 
 function startUser(user){
