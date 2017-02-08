@@ -123,7 +123,7 @@ doc.save('BitsWallet_Backup.pdf');
   	       
 		      <div class="row" id="content" style="text-align:center;">
                 <img src="images/contacts.png" alt="" class="bits-profile userProfImg circle responsive-img valign profile-image"style="background-color: white;">
-                 <a class="btn-flat waves-effect waves-light white-text profile-btn username-label dropdown-button" href="#" data-activates="store-dropdown" id="name">Anonymous<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                 <a class="btn-flat waves-effect waves-light white-text profile-btn username-label dropdown-button" href="#"  id="name">Anonymous<i class="mdi-navigation-arrow-drop-down right"></i></a>
                   <center><span class="bitsoko-xrate user-roal store-desc white-text" style="text-align:left; "> 1 BTC = 0 KSH</span></center>
                </div>
              </li>
@@ -138,7 +138,7 @@ doc.save('BitsWallet_Backup.pdf');
             <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>My Offers</a></li>
                        <li class="bold"><a href="?" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>Nearby Offers</a></li>
 			<li class=""><a href="#" id="shareQR"> <i class="mdi-social-share bits-color"></i><span class="bits-13" style=""></span> <span href id="">Share Wallet</span>  </a>  
-        </ul><!-- <button  value="ShareQR"class="btn btn-small btn-price" style=" background:none !important; /*float: right !important;opacity: 0.7; right: 0%;  margin-top: -240px;*/"></button>
+        </ul><!-- <button  value="ShareQR"class="btn btn-small btn-price" style=" background:none !important; /*float: right !important;opacity: 0.7; right: 0%;  margin-top: -240px;*/">data-activates="store-dropdown"</button>
       --></div>
       </li>
       <!--<li>
@@ -205,16 +205,13 @@ doc.save('BitsWallet_Backup.pdf');
            
         </ul>
         <ul id="store-dropdown" class="dropdown-content drop-down-content-bits" style="">
-                        <li><div id="customBtn" class="customGPlusSignIn">
-      <span class="icon"></span>
-      <span class="buttonText">Google signin</span>
-    </div>
+                        <li>
                         </li>
                         <!--<li><a href="#" class="switchStore"><i class="mdi-action-assignment-ind"></i>Mobile Account</a>
                         </li>-->
-                        <li class="divider"></li>
+<!--                         <li class="divider"></li>
                         <li><a href="#" class="newStore" onclick="signOut();"><i class="mdi-action-lock-outline"></i>Signout</a>
-                        </li>
+                        </li> -->
                     </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only bits"><i class="mdi-navigation-menu"></i></a>
         </aside>
@@ -440,35 +437,32 @@ doc.save('BitsWallet_Backup.pdf');
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
 </div>
+<!-- modal check adresses -->
+<!--modal login-->
+ <div id="adressesModal" class="modal modal-fixed-footer bottom-sheet" >
+   <div class="modal-content">
+      <div class="row">
+       
+adress
+
+    </div>
+    </div>
+           
+    
+    <div class="modal-footer blue-grey lighten-5">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+</div>
 <!--modal login-->
  <div id="loginModal" class="modal modal-fixed-footer bottom-sheet" >
    <div class="modal-content">
       <div class="row">
         <h5>Log In</h5>
      <p> We have noticed you are using the wallet in Anonymous mode please signin to enjoy more of our app <p>
-                  <div id="my-signin2"></div>
-  <script>
-    function onSuccess(googleUser) {
-      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-    }
-    function onFailure(error) {
-      console.log(error);
-    }
-    function renderButton() {
-      gapi.signin2.render('my-signin2', {
-        'scope': 'profile email',
-        'width': 240,
-        'height': 50,
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': onSuccess,
-        'onfailure': onFailure
-      });
-    }
-  </script>
-
-  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-
+        <div id="customBtn" class="customGPlusSignIn">
+      <span class="icon"></span>
+      <span class="buttonText">Google signin</span>
+    </div>  
     </div>
     </div>
            
