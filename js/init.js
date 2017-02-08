@@ -743,7 +743,7 @@ messaging.requestPermission()
     if (currentToken) {
       console.log(currentToken);
 	    
-doFetch({ action: 'pushSub', user: localStorage.getItem('bitsoko-owner-id'), data: currentToken });
+doFetch({ action: 'pushSub', user: localStorage.getItem('bits-user-name'), data: currentToken });
        
         // Set your UI to show they have subscribed for  
         // push messages  
