@@ -2,17 +2,14 @@
 <html lang="en">
 <head>
    <title>#{name}</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        
-        
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
 		<meta name="og:title" content="#{name}" />
         <meta name="og:url" content="https://bitsoko.io/app" />
         <meta name="og:image" content="#{img}" />
         <!-- Origin Trial Token, feature = Web Share, origin = https://bitsoko.io, expires = 2017-01-12 -->
-<meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2017-01-12" content="AvwH05WjeD812bDpeWTWGEc3d81qoKI1Z4YsUtPVo4poXAr61FSAZ/Rp3zd3tqCkOqw8Ay+/aSYvxYG4oJtDqgMAAABReyJvcmlnaW4iOiAiaHR0cHM6Ly9iaXRzb2tvLmlvOjQ0MyIsICJmZWF0dXJlIjogIldlYlNoYXJlIiwgImV4cGlyeSI6IDE0ODQyMzkxMzZ9">
-<!--         <meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2017-01-03" content="AvwH05WjeD812bDpeWTWGEc3d81qoKI1Z4YsUtPVo4poXAr61FSAZ/Rp3zd3tqCkOqw8Ay+/aSYvxYG4oJtDqgMAAABReyJvcmlnaW4iOiAiaHR0cHM6Ly9iaXRzb2tvLmlvOjQ0MyIsICJmZWF0dXJlIjogIldlYlNoYXJlIiwgImV4cGlyeSI6IDE0ODQyMzkxMzZ9"> -->
+		<meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2017-01-12" content="AvwH05WjeD812bDpeWTWGEc3d81qoKI1Z4YsUtPVo4poXAr61FSAZ/Rp3zd3tqCkOqw8Ay+/aSYvxYG4oJtDqgMAAABReyJvcmlnaW4iOiAiaHR0cHM6Ly9iaXRzb2tvLmlvOjQ0MyIsICJmZWF0dXJlIjogIldlYlNoYXJlIiwgImV4cGlyeSI6IDE0ODQyMzkxMzZ9">
+<!------<meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2017-01-03" content="AvwH05WjeD812bDpeWTWGEc3d81qoKI1Z4YsUtPVo4poXAr61FSAZ/Rp3zd3tqCkOqw8Ay+/aSYvxYG4oJtDqgMAAABReyJvcmlnaW4iOiAiaHR0cHM6Ly9iaXRzb2tvLmlvOjQ0MyIsICJmZWF0dXJlIjogIldlYlNoYXJlIiwgImV4cGlyeSI6IDE0ODQyMzkxMzZ9"> -->
 		<meta name="og:description" content="#{desc}" />
-        
 		<meta name="description" content="#{desc}" />
         <meta name="keywords" content="" />
         <link rel="shortcut icon" type="image/png" href="#{img}">
@@ -26,6 +23,7 @@
  <script src="https://apis.google.com/js/client:platform.js?onload=startGoogle" async defer></script>
 <script type="text/javascript" src="jspdf.js"></script>
   <script type="text/javascript">
+  // start function google authentication
     function onLoad() {
       gapi.load('auth2', function() {
         gapi.auth2.init();
@@ -38,8 +36,10 @@
       console.log('User signed out.');
     });
   }
+//end google authentication  
 </script>
 <script type="text/javascript">
+// Jspdf start
 var doc = new jsPDF();
 var specialElementHandlers = {
 '#editor': function (element, renderer) {
@@ -49,13 +49,14 @@ return true;
 
 $(document).ready(function() {
 $('#btn').click(function () {
-doc.fromHTML($('#content').html(), 15, 15, {
+doc.fromHTML($('#adressesModal').html(), 15, 15, {
 'width': 170,
 'elementHandlers': specialElementHandlers
 });
 doc.save('BitsWallet_Backup.pdf');
 });
 });
+// JSPDF end
 </script>
 <script src="https://bitsoko.io/bitsAssets/js/webcomponents.js" async></script>
     <!-- CORE CSS-->    
@@ -137,16 +138,14 @@ doc.save('BitsWallet_Backup.pdf');
 		</div></center>
 		<ul> 
 			<li  class="bits-ellipsis col s6 m8 l9 displayNone" style="margin-left: 15px;"><span class="username-addr " style=""></span></li>
-			 
             <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>My Offers</a></li>
-<!--              <li class="bold"><a href="#" onclick="checkanon()"class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>login</a></li> -->
-                       <li class="bold"><a href="?" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>Nearby Offers</a></li>
+			<li class="bold"><a href="?" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>Nearby Offers</a></li>
 			<li class=""><a href="#" id="shareQR"> <i class="mdi-social-share bits-color"></i><span class="bits-13"  style=""></span> <span href id="">Share Wallet</span>  </a>  
-        </ul><!-- <button  value="ShareQR"class="btn btn-small btn-price" style=" background:none !important; /*float: right !important;opacity: 0.7; right: 0%;  margin-top: -240px;*/"></button>
-      --></div>
+        </ul></div>
       </li>
-      <!--<li>
-      <div class="col s12 m8 l9">
+<!---------------- commented change account dropdown ----------------------------
+      <li> 
+          <div class="col s12 m8 l9">
                  <div class="col col s8 m8 l8">
                  <div class="col col s8 m8 l8">
                    <center>Current Account</center>
@@ -158,11 +157,11 @@ doc.save('BitsWallet_Backup.pdf');
     </select>
 
      <label class="bis-font-size "><center>Current Account</center></label>
-  </div>
-                 
+  </div>               
                 </div>
                 </div>
-        </div></li>-->
+        </div></li>
+-------------- commented change account dropdown end ----------------------------->
             <li class="li-hover"><div class="divider"></div></li>  
 
             <ul class="collapsible collapsible-accordion">
@@ -223,18 +222,11 @@ doc.save('BitsWallet_Backup.pdf');
                     </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only bits"><i class="mdi-navigation-menu"></i></a>
         </aside>
-      <!-- END LEFT SIDEBAR NAV-->
-      <!-- END LEFT SIDEBAR NAV-->
-
-            <!-- //////////////////////////////////////////////////////////////////////////// -->
-
-            <!-- START CONTENT -->
-              
- 
-
-            <div id="content" style="margin-bottom: 450px;">
-
-                <!--start container-->
+<!-------------------------------------------- END LEFT SIDEBAR NAV -------------------------------------------------------------------------------------->
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-------------------------------------------- START CONTENT --------------------------------------------------------------------------------------------->
+              <div id="content" style="margin-bottom: 450px;">
+<!-------------------------------------------- start container ------------------------------------------------------------------------------------------->
                 <div class="bal bits nav-wrapper center"  style="padding-bottom:20px;">
 <div id="index-banner" class="waves-effect">
     <div class=" no-pad-bot">
@@ -243,19 +235,13 @@ doc.save('BitsWallet_Backup.pdf');
           <span class="header col s12 light" style="color:#fff; font-size:16px;">Balance</span>        
           <span  id="download-button" class="" style="font-size:18px; color:#fff !important;"><span class="bitsoko-balance" style="font-size:16px;">0.00</span> <span class="bitsoko-balance-currency" style="font-size:16px;"> btc</span></span>  
           <span  id="balance-coins" class="header col s12 light" style="color:#fff;">0 btc</span></p>
-         <!-- btn-large waves-effect waves-light  bits -->
-        </div>
-        
-
+         </div>     
       </div>
     </div></div>
     </div>
-
-                    <!-- //////////////////////////////////////////////////////////////////////////// -->
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <div class="">
-
-                    <!-- //////////////////////////////////////////////////////////////////////////// -->
-
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <div class="card-container-bits " id="" >
 		<div id="serviceListCard" class="card-bit serviceListCard pinned"> <div class="card small maincard"  style="border-radius: 0px;">
                                     <div  class="card-image waves-effect waves-block waves-light">
@@ -268,27 +254,23 @@ doc.save('BitsWallet_Backup.pdf');
                                         <li><div class="col s2">
                                         <img src="" alt="" class="cardLogo bits-up circle btn-floating btn-large  waves-effect waves-light bits-white accent-4 responsive-img valign profile-image">
                                             </div>
-                                        
-                                        </li>
+									</li>
                                         
                                     </ul>
-                                    <ul class="card-action-buttons">
-                                     
-                                    </ul>
+                                    <ul class="card-action-buttons"></ul>
                                     <div class="card-content ">
-                                        
-                                                                               
-                                        <div class="row bits-row">
-                                          
-                                          <div class="col s12 "style="margin-top: -12px;"> <h5 id="serviceName" class="serviceName "></h5></div>
-                                        </div>
+                                    <div class="row bits-row">
+                                     <div class="col s12 "style="margin-top: -12px;"> <h5 id="serviceName" class="serviceName "></h5></div>
+                                      </div>
                                       <div class="row "style="    width: 80%; float: left;">
                                         <p id="serviceDescription" class="serviceDescription "style="min-height:45px; margin-left: 11px;">Loading....</p>
-                                    
-                                      </div> 
+                                        </div> 
                                      </div>
                                 </div>
-<!--                                 <div  class="row bits-tab displayNone" style=" margin-bottom: 0px; z-index: 2;">
+
+<!--       
+-------------- commented send / recive buttons  ---------------------------- 
+                         <div  class="row bits-tab displayNone" style=" margin-bottom: 0px; z-index: 2;">
                                      <ul class="card-action-buttons col s12 m8 l9 "style="margin-top: 5px;">
                                      <p class="center" style="display:none;"><span > Totals:</span> <span class="totals"></span></p>
                                       <li class="card-action-buttons col s6 m8 l9  white-text"><a class=" bits-transpatent col s12 m8 l9 btn-flat  white-text btn waves-effect waves-light  accent-4 "style="background-color: rgba(0, 0, 0, 0) !important;" value="send"><i class="mdi-communication-call-made"></i> Send</a>
@@ -298,42 +280,23 @@ doc.save('BitsWallet_Backup.pdf');
                                          <!--<li><a class="btn-floating waves-effect waves-light light-blue"><i class="mdi-action-search activator"></i></a>
                                         </li>
                                     </ul> 
-                                    </div> -->
+                                    </div>
+
+-------------- commented send / recive buttons  ------------------------------>
                                 </div>
                             </div>
-     
-                                          
-           
-
-                    </div>            
-                            
-    </div>
+                         </div>            
+					</div>
+<!------------------------------------------------------------------------------------------------------------>
+<!----------------------list holder  collections start ------------------------------------------------------->
             <div class="col s12 m8 l9" id="UlHolder">
-                <ul  class="serviceListHolder collection popup-gallery" style="display:none;">
-                 
-                
-                  
-                </ul>
-                 <ul id="card-widgets" class="promoHolder collection"style="width: 90%;margin-left: 5%;">
-                 
-                
-                  
-                </ul>
-                  <ul id="card-widgets" class="promoHolder-home collection"  style="">
-                 
-                
-                  
-                </ul>
-              </div>      
-
-                    <!-- //////////////////////////////////////////////////////////////////////////// -->
-
-                    <!--work collections start-->
-                    
-                           
-                    <!--work collections end-->
-
-                  <!--   Floating Action Button -->
+                <ul  class="serviceListHolder collection popup-gallery" style="display:none;"></ul>
+                 <ul id="card-widgets" class="promoHolder collection"style="width: 90%;margin-left: 5%;"></ul>
+                  <ul id="card-widgets" class="promoHolder-home collection"  style=""></ul>
+              </div> 
+<!--list holder  end-->
+<!-- ----------------------------------------------------------------------------------------------------------------- -->
+<!-- ---------------------  Floating Action Button Home page sends you to contact or merchants page ------------------ -->
                     <div class="fixed-action-btn fixed-a displayNone " id="fixed-a" style="bottom: 50px; right: 19px;">
                         <a class="btn  bits">
                           Send / Receive
@@ -343,76 +306,59 @@ doc.save('BitsWallet_Backup.pdf');
                          
                         </ul>
                     </div>
-                    <!-- Floating Action Button -->
- <!--   Floating Action Button -->
+<!-- ---------------------------------- Floating Action Button homepage End --------------------------------------------------------->
+<!----------Floating Action Button Merchants and contacts pages. opens modal for key in amount and send or recive cash--------------->
                     <div class="fixed-action-btn fixed-b displayNone"style="right: 15px; bottom: 1px;" id="paymentBTN">
                        <div class="row">
                         <a class ="btn saleButton send-receive col s6 m6 bits wdthh-left waves left" id="send" value="Send" style="padding: 0 0; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0), 0 2px 10px 0 rgba(0, 0, 0, 0); border-radius: 2px 0px 0px 2px;  -moz-border-radius: 2px 0px 0px 2px; -webkit-border-radius: 2px 0px 0px 2px; border: 0px solid #000000;height: 30px !important; line-height: 30px !important;"><i class="mdi-hardware-keyboard-arrow-up right"></i><center><span class="right">Send</span></center></a>
                         <a class="btn saleButton send-receive col s6 m6 bits wdthh waves " id="rec" value="Receive" style="padding: 0 0; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0), 0 2px 10px 0 rgba(0, 0, 0, 0); border-radius: 0px 2px 2px 0px; -moz-border-radius: 0px 2px 2px 0px; -webkit-border-radius: 0px 2px 2px 0px; border: 0px solid #000000; height: 30px !important; line-height: 30px !important;"><i class="mdi-hardware-keyboard-arrow-down left"></i><span class="left">Receive</span></a>
                       
                     </div>
-                    <!-- Floating Action Button -->
+<!----------Floating Action Button Merchants and contacts pages end ----------------------------------------------------------------->
+<!-- Floating Action Buttons end-->
 
                 </div>
                 <!--end container-->
             </div>
             <!-- END CONTENT -->
-
-            <!-- //////////////////////////////////////////////////////////////////////////// -->
-            <!-- START RIGHT SIDEBAR NAV-->
-          
-            <!-- LEFT RIGHT SIDEBAR NAV-->
-
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
         </div>
         <!-- END WRAPPER -->
-
     </div>
-
     <!-- END MAIN -->
-  
-<!-- Modal keypad -->
+<!------------------------------------- Modal keypad start---------------------------------------------------------------------------------->
 <div id="keypadModal" class="modal keypadinp" >
     <div class="modal-content " style="padding: 2px;">
                       
         <div class="result"><span class="black-text"><span class="actionDisplay"></span> <span class="amtDisplay"></span> <span class="from-to-Display"></span> <span class="resDisplay"></span></span></div>
              
          <div id="main">
-             
                  <div class="rows">
                  <button value="1" class="keypadKey btn-style num-bg  first-child">1</button>
                  <button value="2" class="keypadKey btn-style num-bg first-child">2</button>
                  <button value="3" class="keypadKey btn-style num-bg first-child">3</button>
                  </div>            
-                 
                  <div class="rows">
                  <button value="4" class="keypadKey btn-style num-bg  first-child">4</button>
                  <button value="5" class="keypadKey btn-style num-bg first-child">5</button>
                  <button value="6" class="keypadKey btn-style num-bg first-child">6</button>
                  </div>
-                 
                  <div class="rows">
-             <button value="7" class="keypadKey btn-style num-bg  first-child">7</button>
+             	 <button value="7" class="keypadKey btn-style num-bg  first-child">7</button>
                  <button value="8" class="keypadKey btn-style num-bg first-child">8</button>
                  <button value="9" class="keypadKey btn-style num-bg first-child">9</button>
                  </div>
-                 
                  <div class="rows">
                   <button value="cancel" class="KeypadButtonClose btn-style  num-bg first-child red-text text-darken-2"><i class="mdi-content-clear"></i></button>
                  <button value="0" class="keypadKey btn-style num-bg first-child">0</button>
                  <button value="ok" class="keypadKey btn-style  num-bg first-child green-text text-darken-3"><i class="mdi-action-done"></i></button>
-                 </div>
-                 
-                
+                 </div>  
              </div>
-         
-         </div>
-        
-
-    </div>
+           </div>
+        </div>
 </div>
-    
-
-<!-- modal end -->
+<!------------------------------------- Modal keypad end ------------------------------------------------------------------------------------>
+<!------------------------------------ modal enter phone number start ----------------------------------------------------------------------->
 <div id="MobileModal" class="modal modal-fixed-footer bottom-sheet" >
    <div class="modal-content">
       <div class="row">
@@ -445,20 +391,16 @@ doc.save('BitsWallet_Backup.pdf');
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
 </div>
-<!-- modal check adresses -->
-<!--modal login-->
+<!------------------------------------ modal enter phone number end ----------------------------------------------------------------------->
+<!--------------------------------------------- modal check adresses start ---------------------------------------------------------------->
+<!----------------------------------------------modal will contain all the user adresses and qr codes ------------------------------------->
  <div id="adressesModal" class="modal modal-fixed-footer bottom-sheet" >
    <div class="modal-content">
       <div class="row">
-  
-            <div  id="qrcode" class="">
-		</div>
-		
+		 <div  id="qrcode" class=""></div>		
 <!-- 			<li  class="bits-ellipsis col s6 m8 l9 " style="margin-left: 15px;"></li> -->
 			<span class="username-addr " style=""></span>
-			 
-
-    </div>
+    		</div>
     </div>
            
     
@@ -479,17 +421,14 @@ doc.save('BitsWallet_Backup.pdf');
       <span class="buttonText">Google</span>
     </div>
   </div>
-<!--   <div id="name"></div>
-  <script>startApp();</script> -->
+<!-------------------------------------------------------  <div id="name"></div><script>startApp();</script> -->
     </div>
     </div>
-           
-    
     <div class="modal-footer blue-grey lighten-5">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Not now</a>
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Not now</a>
     </div>
-</div>
-   <!-- Modal Structure -->
+	</div>
+<!--------------------------------------------------------- Modal Structure ---------------------------------------------------------->
   <div id="contactModle" class="modal modal-bits blog-card" >
     <div class="modal-content " style="padding: 2px;">
                                 <div class="">
@@ -501,36 +440,23 @@ doc.save('BitsWallet_Backup.pdf');
                                         <li><div class="col s2">
                                         <img src="images/merchants.png" alt="" class="cardLogo bits-up circle btn-floating btn-large  waves-effect waves-light bits-white accent-4 responsive-img valign profile-image">
                                             </div>
-                                        
                                         </li>
-                                        
                                     </ul>
-                                    
-                                    <div class="card-content">
-                                        
-                                                                               
+                                    <div class="card-content">                              
                                         <div class="row bits-row">
-                                          
                                           <div class="col s12 "> <h5 class="serviceName bits-move"></h5></div>
                                         </div>
                                       <div class="row">
                                         <p class="serviceDescription">Loading....</p>
-                                     
                                     </div>
-
-                                    
                                 </div>
                                 </div>
-                            
     </div>
        <div class="modal-content" style="padding: 2px;">
         </div>
-              
            <div class="col s12 m8 l9">
                 <ul  class="serviceListHolder collection">
-                 
                  <div class="serviceListHolder"></div> 
-                  
                 </ul>
               </div>                   
                             

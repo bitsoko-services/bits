@@ -1,7 +1,7 @@
 
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =155;
+	bitsVersion =156;
 bitsInstall = function(event){
 	
 	
@@ -86,7 +86,28 @@ return new Promise(function(resolve, reject) {
 //.............................................................................................
 	bitsPush = function(dat){
 		return new Promise(function(resolve, reject) {
-	  bitsNotification('Incoming Transaction',dat.name+' has sent'+dat.amt,'tag','icon',[],true,true);
+	 // bitsNotification('Incoming Transaction',dat.name+' has sent'+dat.amt,'tag','icon',[],true,true);
+
+
+	   switch (dat.action) {
+      // This command returns a list of the URLs corresponding to the Request objects
+      // that serve as keys for the current cache.
+      // This command adds a new request/response pair to the cache.
+             
+      case 'sent':
+     data = dat;
+    console.log(data);
+           bitsNotification('Backed up Wallet','You can Download an offline copy of your wallet incase you loose your device, Click to download your private infomation','createBackup','bits/images/no.png',[{action: 'createBackup', title: "Back up"}],true,true);
+       
+      break;
+			
+			case 'merchantMessage':
+     data = dat;
+    console.log(data);
+           bitsNotification('Backed up Wallet','You can Download an offline copy of your wallet incase you loose your device, Click to download your private infomation','createBackup','bits/images/no.png',[{action: 'createBackup', title: "Back up"}],true,true);
+       
+      break;
+			}
        });
 // var config = {
 //     apiKey: "AIzaSyAsqSLYO7ZDulCM7QX4-SjYSAWMbySCY8M",
