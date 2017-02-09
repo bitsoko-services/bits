@@ -126,7 +126,7 @@ doc.save('BitsWallet_Backup.pdf');
   	       
 		      <div class="row" id="content" style="text-align:center;">
                 <img src="images/contacts.png" alt="" class="bits-profile userProfImg circle responsive-img valign profile-image"style="background-color: white;">
-                 <a class="btn-flat waves-effect waves-light white-text profile-btn username-label dropdown-button" href="#"  id="name">Anonymous<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                 <a class="btn-flat waves-effect waves-light white-text profile-btn username-label dropdown-button" href="#" data-activates="store-dropdown" id="name">Anonymous<i class="mdi-navigation-arrow-drop-down right"></i></a>
                   <center><span class="bitsoko-xrate user-roal store-desc white-text" style="text-align:left; "> 1 BTC = 0 KSH</span></center>
                </div>
              </li>
@@ -141,8 +141,8 @@ doc.save('BitsWallet_Backup.pdf');
             <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>My Offers</a></li>
 <!--              <li class="bold"><a href="#" onclick="checkanon()"class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>login</a></li> -->
                        <li class="bold"><a href="?" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>Nearby Offers</a></li>
-			<li class=""><a href="#" id="shareQR"> <i class="mdi-social-share bits-color"></i><span class="bits-13" style=""></span> <span href id="">Share Wallet</span>  </a>  
-        </ul><!-- <button  value="ShareQR"class="btn btn-small btn-price" style=" background:none !important; /*float: right !important;opacity: 0.7; right: 0%;  margin-top: -240px;*/">data-activates="store-dropdown"</button>
+			<li class=""><a href="#" id="shareQR"> <i class="mdi-social-share bits-color"></i><span class="bits-13"  style=""></span> <span href id="">Share Wallet</span>  </a>  
+        </ul><!-- <button  value="ShareQR"class="btn btn-small btn-price" style=" background:none !important; /*float: right !important;opacity: 0.7; right: 0%;  margin-top: -240px;*/"></button>
       --></div>
       </li>
       <!--<li>
@@ -211,6 +211,10 @@ doc.save('BitsWallet_Backup.pdf');
         <ul id="store-dropdown" class="dropdown-content drop-down-content-bits" style="">
                         <li>
                         </li>
+                                <li><div id="customBtn" class="customGPlusSignIn"> 
+      <span class="icon"></span> 
+      <span class="buttonText">Google signin</span> 
+    </div> 
                         <!--<li><a href="#" class="switchStore"><i class="mdi-action-assignment-ind"></i>Mobile Account</a>
                         </li>-->
 <!--                         <li class="divider"></li>
@@ -446,8 +450,13 @@ doc.save('BitsWallet_Backup.pdf');
  <div id="adressesModal" class="modal modal-fixed-footer bottom-sheet" >
    <div class="modal-content">
       <div class="row">
-       
-adress
+  
+            <div  id="qrcode" class="">
+		</div>
+		
+<!-- 			<li  class="bits-ellipsis col s6 m8 l9 " style="margin-left: 15px;"></li> -->
+			<span class="username-addr " style=""></span>
+			 
 
     </div>
     </div>
