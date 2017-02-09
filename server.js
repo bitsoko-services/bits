@@ -1,7 +1,7 @@
 
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =156;
+	bitsVersion =157;
 bitsInstall = function(event){
 	
 	
@@ -89,7 +89,7 @@ return new Promise(function(resolve, reject) {
 	 // bitsNotification('Incoming Transaction',dat.name+' has sent'+dat.amt,'tag','icon',[],true,true);
 
 
-	   switch (dat.action) {
+	   switch (dat.req) {
       // This command returns a list of the URLs corresponding to the Request objects
       // that serve as keys for the current cache.
       // This command adds a new request/response pair to the cache.
