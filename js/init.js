@@ -205,6 +205,7 @@ Materialize.toast('Error loading old wallets', 10000);
 }
 
 function starting(){
+	startGoogle(); 
 startUser(localStorage.getItem('bits-user-name')).then(function(e){
 
 	
@@ -225,7 +226,8 @@ loadWallet(e.publicAddress);
 });
 
     
-    	serviceOpener(); 
+    	serviceOpener();
+
 }
 
 function startUser(user){
