@@ -610,22 +610,21 @@ function doSubscribe(){
         console.log(infiat);
 		if($( ".promoSubButton-"+pid ).prop( "checked" )){
 			var action='unsubscribe';	
-            Materialize.toast('unsubscribing..', 1000);
+           // Materialize.toast('unsubscribing..', 1000);
 		}else{
 			var action='subscribe';
-            Materialize.toast('subscribing..', 1000);
+            //Materialize.toast('subscribing..', 1000);
 		}
-        if(infiat>(dr*1.1)){
-		//Materialize.toast('Insufficient Balance. Promotion not active', 1500);
-			
-	}else{
-            Materialize.toast('Insufficient Balance. Promotion not active', 1500);
-	}
+        
 		
 	doFetch({ action: 'doSubscription', todo: action, pid: pid, uid: localStorage.getItem('bits-user-name')}).then(function(e){
            if (e.status=="ok"){
-           	      
+           	    if(infiat<(dr*1.1)){
+		 Materialize.toast(action+'d. Insufficient Funds', 6500);	
+	}else{
 		Materialize.toast(action+'d successfully', 5000);
+	}  
+		
 //---------------------------------------send promo data to db-----------------------------------------------------------------------------
 		   if(action=='subscribe'){
 		   $( ".promoSubButton-"+pid ).prop( "checked",true);
