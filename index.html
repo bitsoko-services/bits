@@ -1108,11 +1108,11 @@ e=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits
 // }
 // else {  console.log("user logged in")}
 if(localStorage.getItem('bits-user-name')==null){
-return false	
+	$('#loginModal').openModal()
+return false;	
 }
 else{
-	return true
-	$('#loginModal').openModal()
+	return true;
 }
 }
 
