@@ -219,6 +219,7 @@ Materialize.toast('Error loading old wallets', 10000);
 }
 
 function starting(){
+	$('#loginModal').closeModal()
 	startGoogle(); 
 startUser(localStorage.getItem('bits-user-name')).then(function(e){
 

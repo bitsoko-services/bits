@@ -1099,13 +1099,21 @@ e=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits
 
  //$(document).ready(
  function checkanon() {
- var x = document.getElementById("name").textContent;
+//  var x = document.getElementById("name").textContent;
  
-if (x == "Anonymous") {
+// if (x == "Anonymous") {
+// 	$('#loginModal').openModal()
+// }
+// else {  console.log("user logged in")}
+if(localStorage.getItem('bits-user-name')==null){
+return false	
+}
+else{
+	return true
 	$('#loginModal').openModal()
 }
-else {  console.log("user logged in")}
 }
+
 //)
 //end if popup login
 </script>
