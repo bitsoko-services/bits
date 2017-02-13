@@ -565,7 +565,7 @@ $(".totals").html(totals);
 //-----------------------------------------updating service list function-------------------------------------------------------------------------------------------
 function updateServicelist(){ 
 activeService=$('#serviceModal').attr('service');
-	doFetch({ action: 'serviceList', data: activeService, user: localStorage.getItem("bitsoko-user-name")}).then(
+	doFetch({ action: 'serviceList', data: activeService, user: localStorage.getItem("bits-user-name")}).then(
 	function(e){
            if (e.status=="ok"){
         serviceList = e.data;
@@ -608,7 +608,6 @@ function doSubscribe(){
 	var infiat = parseInt(localStorage.getItem('bitsoko-wallets-bal'))/100000000;
     var infiat=infiat*parseInt(e.xrate)*parseInt(e.rate);
         console.log(infiat);
-        if(infiat>(dr*1.1)){
 		if($( ".promoSubButton-"+pid ).prop( "checked" )){
 			var action='unsubscribe';	
             Materialize.toast('unsubscribing..', 1000);
@@ -616,7 +615,14 @@ function doSubscribe(){
 			var action='subscribe';
             Materialize.toast('subscribing..', 1000);
 		}
-	doFetch({ action: 'doSubscription', todo: action, pid: pid, uid: localStorage.getItem('bitsoko-owner-id')}).then(function(e){
+        if(infiat>(dr*1.1)){
+		//Materialize.toast('Insufficient Balance. Promotion not active', 1500);
+			
+	}else{
+            Materialize.toast('Insufficient Balance. Promotion not active', 1500);
+	}
+		
+	doFetch({ action: 'doSubscription', todo: action, pid: pid, uid: localStorage.getItem('bits-user-name')}).then(function(e){
            if (e.status=="ok"){
            	      
 		Materialize.toast(action+'d successfully', 5000);
@@ -636,10 +642,7 @@ function doSubscribe(){
         })
          .catch(function(){
 		Materialize.toast('temporary error. please try again', 3000);
-        });	
-	}else{
-            Materialize.toast('unable to subscribe', 1500);
-	}
+        });
     //$( ".bitsoko-balance" ).html(infiat.toFixed(2));
         
     });     
