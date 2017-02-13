@@ -565,7 +565,7 @@ $(".totals").html(totals);
 //-----------------------------------------updating service list function-------------------------------------------------------------------------------------------
 function updateServicelist(){ 
 activeService=$('#serviceModal').attr('service');
-	doFetch({ action: 'serviceList', data: activeService, user: localStorage.getItem("bitsoko-user-name")}).then(
+	doFetch({ action: 'serviceList', data: activeService, user: localStorage.getItem("bits-user-name")}).then(
 	function(e){
            if (e.status=="ok"){
         serviceList = e.data;
@@ -616,7 +616,7 @@ function doSubscribe(){
 			var action='subscribe';
             Materialize.toast('subscribing..', 1000);
 		}
-	doFetch({ action: 'doSubscription', todo: action, pid: pid, uid: localStorage.getItem('bitsoko-owner-id')}).then(function(e){
+	doFetch({ action: 'doSubscription', todo: action, pid: pid, uid: localStorage.getItem('bits-user-name')}).then(function(e){
            if (e.status=="ok"){
            	      
 		Materialize.toast(action+'d successfully', 5000);
