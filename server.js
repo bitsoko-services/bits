@@ -1,7 +1,7 @@
 
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =170;
+	bitsVersion =171;
 bitsInstall = function(event){
 	
 	
@@ -110,7 +110,7 @@ store.onsuccess = function (event) {
 	   var data = event.target.result;
 	   data= JSON.parse(data);
 	  
-	 console.log(data.discount+"% of" +data.name,dat.msg,"bits-promo-"+dat.pid,'bits/images/no.png',data.imagePath,[{action: 'createBackup', title: "Back up"}],true,true);
+	 console.log(data.discount+"% off" +data.name,dat.msg,"bits-promo-"+dat.pid,'bits/images/no.png',data.imagePath,[{action: 'createBackup', title: "Back up"}],true,true);
       bitsNotification(data.discount+"% of" +data.name,dat.msg,"bits-promo-"+dat.pid,'bits/images/no.png',data.imagePath,[{action: 'createBackup', title: "Back up"}],true,true);
      
 }
