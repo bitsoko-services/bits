@@ -624,6 +624,8 @@ function doSubscribe(){
 		   if(action=='subscribe'){
 		   $( ".promoSubButton-"+pid ).prop( "checked",true);
 			   $(".promoSubState-"+pid).html("Subscribed");
+			    getObjectStore('data', 'readwrite').put(JSON.stringify(e.prom), 'bits-promo-'+pid);
+
 	          }else{
 		  $( ".promoSubButton-"+pid ).prop( "checked",false);
 			  $(".promoSubState-"+pid).html("Not Subscribed");
