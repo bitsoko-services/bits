@@ -219,6 +219,7 @@ Materialize.toast('Error loading old wallets', 10000);
 }
 
 function starting(){
+	startGoogle(); 
 startUser(localStorage.getItem('bits-user-name')).then(function(e){
 
 	
@@ -228,7 +229,7 @@ startUser(localStorage.getItem('bits-user-name')).then(function(e){
 }).catch(function(err){
 	var user=localStorage.getItem('bits-user-name');
 	if (user == "" || user == "undefined" || user == "null" || user == null) {
-	startGoogle();
+	//startGoogle();
 createWallet('anon').then(function(e){
 
 loadWallet(e.publicAddress);
@@ -237,6 +238,10 @@ loadWallet(e.publicAddress);
 		
 	}
 });
+
+    
+    	serviceOpener();
+
 }
 
 function startUser(user){
@@ -757,7 +762,7 @@ messaging.requestPermission()
     if (currentToken) {
       console.log(currentToken);
 	    
-doFetch({ action: 'pushSub', user: localStorage.getItem('bitsoko-owner-id'), data: currentToken });
+doFetch({ action: 'pushSub', user: localStorage.getItem('bits-user-name'), data: currentToken });
        
         // Set your UI to show they have subscribed for  
         // push messages  
@@ -795,7 +800,7 @@ doFetch({ action: 'pushSub', user: localStorage.getItem('bitsoko-owner-id'), dat
   .then(function(refreshedToken) {
     console.log('Token refreshed.');
         
-doFetch({ action: 'pushSub', user: localStorage.getItem('bitsoko-owner-id'), data: refreshedToken });
+doFetch({ action: 'pushSub', user: localStorage.getItem('bitsoko-user-name'), data: refreshedToken });
        
         // Set your UI to show they have subscribed for  
         // push messages  

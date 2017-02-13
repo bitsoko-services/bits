@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
    <title>#{name}</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        
-        
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
 		<meta name="og:title" content="#{name}" />
         <meta name="og:url" content="https://bitsoko.io/app" />
         <meta name="og:image" content="#{img}" />
-        <meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2017-01-03" content="AohGU5J8SvW2+BfB8UxiHc0TIJ0Ba97J/EQPm6GEPk2rLoxSMWxoBY51Rei9wTTi1WB/hyMbh5dpFbaJqFoYOgQAAABfeyJvcmlnaW4iOiJodHRwczovL2JpdHNva28uaW86NDQzIiwiZmVhdHVyZSI6IldlYlNoYXJlIiwiZXhwaXJ5IjoxNDg1MjAxNzQzLCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
+        <!-- Origin Trial Token, feature = Web Share, origin = https://bitsoko.io, expires = 2017-01-12 -->
+		<meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2017-01-12" content="AvwH05WjeD812bDpeWTWGEc3d81qoKI1Z4YsUtPVo4poXAr61FSAZ/Rp3zd3tqCkOqw8Ay+/aSYvxYG4oJtDqgMAAABReyJvcmlnaW4iOiAiaHR0cHM6Ly9iaXRzb2tvLmlvOjQ0MyIsICJmZWF0dXJlIjogIldlYlNoYXJlIiwgImV4cGlyeSI6IDE0ODQyMzkxMzZ9">
+<!------<meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2017-01-03" content="AvwH05WjeD812bDpeWTWGEc3d81qoKI1Z4YsUtPVo4poXAr61FSAZ/Rp3zd3tqCkOqw8Ay+/aSYvxYG4oJtDqgMAAABReyJvcmlnaW4iOiAiaHR0cHM6Ly9iaXRzb2tvLmlvOjQ0MyIsICJmZWF0dXJlIjogIldlYlNoYXJlIiwgImV4cGlyeSI6IDE0ODQyMzkxMzZ9"> -->
 		<meta name="og:description" content="#{desc}" />
-        
 		<meta name="description" content="#{desc}" />
         <meta name="keywords" content="" />
         <link rel="shortcut icon" type="image/png" href="#{img}">
@@ -21,8 +20,10 @@
 <meta name="google-signin-client_id" content="476194103258-98t0j7p1lrela49ispgj3jfokl2r3ils.apps.googleusercontent.com">
   <link rel="manifest" href="web-manifest.json">
 <script src="jquery-1.7.1.min.js"></script>
+ <script src="https://apis.google.com/js/client:platform.js" async defer></script>
 <script type="text/javascript" src="jspdf.js"></script>
   <script type="text/javascript">
+  // start function google authentication
     function onLoad() {
       gapi.load('auth2', function() {
         gapi.auth2.init();
@@ -35,8 +36,10 @@
       console.log('User signed out.');
     });
   }
+//end google authentication  
 </script>
 <script type="text/javascript">
+// Jspdf start
 var doc = new jsPDF();
 var specialElementHandlers = {
 '#editor': function (element, renderer) {
@@ -46,13 +49,14 @@ return true;
 
 $(document).ready(function() {
 $('#btn').click(function () {
-doc.fromHTML($('#content').html(), 15, 15, {
+doc.fromHTML($('#adressesModal').html(), 15, 15, {
 'width': 170,
 'elementHandlers': specialElementHandlers
 });
 doc.save('BitsWallet_Backup.pdf');
 });
 });
+// JSPDF end
 </script>
 <script src="https://bitsoko.io/bitsAssets/js/webcomponents.js" async></script>
     <!-- CORE CSS-->    
@@ -119,11 +123,11 @@ doc.save('BitsWallet_Backup.pdf');
            <!-- START LEFT SIDEBAR NAV-->
       <aside id="left-sidebar-nav">
         <ul id="slide-out" class="side-nav fixed leftside-navigation ">
-         <li class="user-details cyan darken-2 dropdown-button"  style="background-color:#228dac!important " href="#" data-activates="account-dropdown">
+         <li class="user-details cyan darken-2 dropdown-button"  style="background-color:#228dac!important " href="#">
   	       
 		      <div class="row" id="content" style="text-align:center;">
                 <img src="images/contacts.png" alt="" class="bits-profile userProfImg circle responsive-img valign profile-image"style="background-color: white;">
-                 <a class="btn-flat waves-effect waves-light white-text profile-btn username-label dropdown-button" href="#" data-activates="store-dropdown" id="names">Anonymous<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                 <a class="btn-flat waves-effect waves-light white-text profile-btn username-label dropdown-button" href="#" id="name">Anonymous</i></a>
                   <center><span class="bitsoko-xrate user-roal store-desc white-text" style="text-align:left; "> 1 BTC = 0 KSH</span></center>
                </div>
              </li>
@@ -134,15 +138,14 @@ doc.save('BitsWallet_Backup.pdf');
 		</div></center>
 		<ul> 
 			<li  class="bits-ellipsis col s6 m8 l9 displayNone" style="margin-left: 15px;"><span class="username-addr " style=""></span></li>
-			 
             <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>My Offers</a></li>
-                       <li class="bold"><a href="?" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>Nearby Offers</a></li>
-			<li class=""><a href="#" id="shareQR"> <i class="mdi-social-share bits-color"></i><span class="bits-13" style=""></span> <span href id="">Share Wallet</span>  </a>  
-        </ul><!-- <button  value="ShareQR"class="btn btn-small btn-price" style=" background:none !important; /*float: right !important;opacity: 0.7; right: 0%;  margin-top: -240px;*/"></button>
-      --></div>
+			<li class="bold"><a href="?" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>Nearby Offers</a></li>
+			<li class=""><a href="#" id="shareQR"> <i class="mdi-social-share bits-color"></i><span class="bits-13"  style=""></span> <span href id="">Share Wallet</span>  </a>  
+        </ul></div>
       </li>
-      <!--<li>
-      <div class="col s12 m8 l9">
+<!---------------- commented change account dropdown ----------------------------
+      <li> 
+          <div class="col s12 m8 l9">
                  <div class="col col s8 m8 l8">
                  <div class="col col s8 m8 l8">
                    <center>Current Account</center>
@@ -154,11 +157,11 @@ doc.save('BitsWallet_Backup.pdf');
     </select>
 
      <label class="bis-font-size "><center>Current Account</center></label>
-  </div>
-                 
+  </div>               
                 </div>
                 </div>
-        </div></li>-->
+        </div></li>
+-------------- commented change account dropdown end ----------------------------->
             <li class="li-hover"><div class="divider"></div></li>  
 
             <ul class="collapsible collapsible-accordion">
@@ -192,7 +195,7 @@ doc.save('BitsWallet_Backup.pdf');
                     </div>
               </a>
               </li>
-                                <li><a href="#"> <i class="mdi-file-cloud-download"></i><span class="bits-13" style=""></span> <span href id="btn">Backup </span>  </a>  
+                                <li><a href="#adressesModal" class="modal-trigger"> <i class="mdi-action-assignment"></i><span class="bits-13" style=""></span> <span href id="btn">Adrreses</span>  </a>  
                                 </li>
                                 <li><a href="#MobileModal"class="modal-trigger"> <i class="mdi-communication-phone"></i><span class="bits-13" style=""></span> <span href id="btn">Mobile Number</span> </a>
                                 </li>
@@ -205,31 +208,22 @@ doc.save('BitsWallet_Backup.pdf');
            
         </ul>
         <ul id="store-dropdown" class="dropdown-content drop-down-content-bits" style="">
-                        <li><div id="customBtn" class="customGPlusSignIn">
-      <span class="icon"></span>
-      <span class="buttonText">Google signin</span>
-    </div>
+                        <li>
                         </li>
+                                <li>
                         <!--<li><a href="#" class="switchStore"><i class="mdi-action-assignment-ind"></i>Mobile Account</a>
                         </li>-->
-                        <li class="divider"></li>
+<!--                         <li class="divider"></li>
                         <li><a href="#" class="newStore" onclick="signOut();"><i class="mdi-action-lock-outline"></i>Signout</a>
-                        </li>
+                        </li> -->
                     </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only bits"><i class="mdi-navigation-menu"></i></a>
         </aside>
-      <!-- END LEFT SIDEBAR NAV-->
-      <!-- END LEFT SIDEBAR NAV-->
-
-            <!-- //////////////////////////////////////////////////////////////////////////// -->
-
-            <!-- START CONTENT -->
-              
- 
-
-            <div id="content" style="margin-bottom: 450px;">
-
-                <!--start container-->
+<!-------------------------------------------- END LEFT SIDEBAR NAV -------------------------------------------------------------------------------------->
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-------------------------------------------- START CONTENT --------------------------------------------------------------------------------------------->
+              <div id="content" style="margin-bottom: 450px;">
+<!-------------------------------------------- start container ------------------------------------------------------------------------------------------->
                 <div class="bal bits nav-wrapper center"  style="padding-bottom:20px;">
 <div id="index-banner" class="waves-effect">
     <div class=" no-pad-bot">
@@ -238,21 +232,15 @@ doc.save('BitsWallet_Backup.pdf');
           <span class="header col s12 light" style="color:#fff; font-size:16px;">Balance</span>        
           <span  id="download-button" class="" style="font-size:18px; color:#fff !important;"><span class="bitsoko-balance" style="font-size:16px;">0.00</span> <span class="bitsoko-balance-currency" style="font-size:16px;"> btc</span></span>  
           <span  id="balance-coins" class="header col s12 light" style="color:#fff;">0 btc</span></p>
-         <!-- btn-large waves-effect waves-light  bits -->
-        </div>
-        
-
+         </div>     
       </div>
     </div></div>
     </div>
-
-                    <!-- //////////////////////////////////////////////////////////////////////////// -->
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <div class="">
-
-                    <!-- //////////////////////////////////////////////////////////////////////////// -->
-
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <div class="card-container-bits " id="" >
-		<div class="card-bit serviceListCard pinned"> <div class="card small maincard"  style="border-radius: 0px;">
+		<div id="serviceListCard" class="card-bit serviceListCard pinned"> <div class="card small maincard"  style="border-radius: 0px;">
                                     <div  class="card-image waves-effect waves-block waves-light">
                                       <img  src="images/merchantsBanner.png" alt="blog-img" class="bitsimg cardimage service-banner"style="border-radius: 0px;"> 
 					<a id="manage-store" style="display:none;float: right !important;opacity: 0.7;right: 65px;  margin-top: -240px;" href="../merch/" class="btn-floating btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>
@@ -263,72 +251,39 @@ doc.save('BitsWallet_Backup.pdf');
                                         <li><div class="col s2">
                                         <img src="" alt="" class="cardLogo bits-up circle btn-floating btn-large  waves-effect waves-light bits-white accent-4 responsive-img valign profile-image">
                                             </div>
-                                        
-                                        </li>
+									</li>
                                         
                                     </ul>
-                                    <ul class="card-action-buttons">
-                                     
-                                    </ul>
+                                    <ul class="card-action-buttons"></ul>
                                     <div class="card-content ">
-                                        
-                                                                               
-                                        <div class="row bits-row">
-                                          
-                                          <div class="col s12 "style="margin-top: -12px;"> <h5 id="serviceName" class="serviceName "></h5></div>
-                                        </div>
+                                    <div class="row bits-row">
+                                     <div class="col s12 "style="margin-top: -12px;"> <h5 id="serviceName" class="serviceName "></h5></div>
+                                      </div>
                                       <div class="row "style="    width: 80%; float: left;">
                                         <p id="serviceDescription" class="serviceDescription "style="min-height:45px; margin-left: 11px;">Loading....</p>
-                                    
-                                      </div> 
+                                        </div> 
                                      </div>
                                 </div>
-<!--                                 <div  class="row bits-tab displayNone" style=" margin-bottom: 0px; z-index: 2;">
-                                     <ul class="card-action-buttons col s12 m8 l9 "style="margin-top: 5px;">
-                                     <p class="center" style="display:none;"><span > Totals:</span> <span class="totals"></span></p>
-                                      <li class="card-action-buttons col s6 m8 l9  white-text"><a class=" bits-transpatent col s12 m8 l9 btn-flat  white-text btn waves-effect waves-light  accent-4 "style="background-color: rgba(0, 0, 0, 0) !important;" value="send"><i class="mdi-communication-call-made"></i> Send</a>
-                                        </li>
-                                        <li class="card-action-buttons col s6 m8 l9 "><a class=" bits-transpatent col s12 m8 l9 btn waves-effect waves-light  accent-4 btn-flat  white-text"style="background-color: rgba(0, 0, 0, 0) !important;" value="Receive" ><i class="mdi-communication-call-received"></i> Receive</a>
-                                        </li>                            
-                                         <!--<li><a class="btn-floating waves-effect waves-light light-blue"><i class="mdi-action-search activator"></i></a>
-                                        </li>
-                                    </ul> 
-                                    </div> -->
+
+<!--       
+-------------- commented send / recive buttons  ---------------------------- 
+
+
+-------------- commented send / recive buttons  ------------------------------>
                                 </div>
                             </div>
-     
-                                          
-           
-
-                    </div>            
-                            
-    </div>
-            <div class="col s12 m8 l9">
-                <ul  class="serviceListHolder collection popup-gallery" style="display:none;">
-                 
-                
-                  
-                </ul>
-                 <ul id="card-widgets" class="promoHolder collection"style="width: 90%;margin-left: 5%;">
-                 
-                
-                  
-                </ul>
-                  <ul id="card-widgets" class="promoHolder-home collection"  style="">
-                 
-                
-                  
-                </ul>
-              </div>      
-
-                    <!-- //////////////////////////////////////////////////////////////////////////// -->
-
-                    <!--work collections start-->
-                    
-                           
-                    <!--work collections end-->
-
-                  <!--   Floating Action Button -->
+                         </div>            
+					</div>
+<!------------------------------------------------------------------------------------------------------------>
+<!----------------------list holder  collections start ------------------------------------------------------->
+            <div class="col s12 m8 l9" id="UlHolder">
+                <ul  class="serviceListHolder collection popup-gallery" style="display:none;"></ul>
+                 <ul id="card-widgets" class="promoHolder collection"style="width: 90%;margin-left: 5%;"></ul>
+                  <ul id="card-widgets" class="promoHolder-home collection"  style=""></ul>
+              </div> 
+<!--list holder  end-->
+<!-- ----------------------------------------------------------------------------------------------------------------- -->
+<!-- ---------------------  Floating Action Button Home page sends you to contact or merchants page ------------------ -->
                     <div class="fixed-action-btn fixed-a displayNone " id="fixed-a" style="bottom: 50px; right: 19px;">
                         <a class="btn  bits">
                           Send / Receive
@@ -338,76 +293,59 @@ doc.save('BitsWallet_Backup.pdf');
                          
                         </ul>
                     </div>
-                    <!-- Floating Action Button -->
- <!--   Floating Action Button -->
+<!-- ---------------------------------- Floating Action Button homepage End --------------------------------------------------------->
+<!----------Floating Action Button Merchants and contacts pages. opens modal for key in amount and send or recive cash--------------->
                     <div class="fixed-action-btn fixed-b displayNone"style="right: 15px; bottom: 1px;" id="paymentBTN">
                        <div class="row">
-                        <a class ="btn saleButton send-receive col s6 m6 bits wdthh waves left" id="send" value="Send" style="padding: 0 0; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0), 0 2px 10px 0 rgba(0, 0, 0, 0); border-radius: 2px 0px 0px 2px;  -moz-border-radius: 2px 0px 0px 2px; -webkit-border-radius: 2px 0px 0px 2px; border: 0px solid #000000;height: 30px !important; line-height: 30px !important;"><i class="mdi-hardware-keyboard-arrow-up right"></i><span class="right">Send</span></a>
+                        <a class ="btn saleButton send-receive col s6 m6 bits wdthh-left waves left" id="send" value="Send" style="padding: 0 0; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0), 0 2px 10px 0 rgba(0, 0, 0, 0); border-radius: 2px 0px 0px 2px;  -moz-border-radius: 2px 0px 0px 2px; -webkit-border-radius: 2px 0px 0px 2px; border: 0px solid #000000;height: 30px !important; line-height: 30px !important;"><i class="mdi-hardware-keyboard-arrow-up right"></i><center><span class="right">Send</span></center></a>
                         <a class="btn saleButton send-receive col s6 m6 bits wdthh waves " id="rec" value="Receive" style="padding: 0 0; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0), 0 2px 10px 0 rgba(0, 0, 0, 0); border-radius: 0px 2px 2px 0px; -moz-border-radius: 0px 2px 2px 0px; -webkit-border-radius: 0px 2px 2px 0px; border: 0px solid #000000; height: 30px !important; line-height: 30px !important;"><i class="mdi-hardware-keyboard-arrow-down left"></i><span class="left">Receive</span></a>
                       
                     </div>
-                    <!-- Floating Action Button -->
+<!----------Floating Action Button Merchants and contacts pages end ----------------------------------------------------------------->
+<!-- Floating Action Buttons end-->
 
                 </div>
                 <!--end container-->
             </div>
             <!-- END CONTENT -->
-
-            <!-- //////////////////////////////////////////////////////////////////////////// -->
-            <!-- START RIGHT SIDEBAR NAV-->
-          
-            <!-- LEFT RIGHT SIDEBAR NAV-->
-
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
         </div>
         <!-- END WRAPPER -->
-
     </div>
-
     <!-- END MAIN -->
-  
-<!-- Modal keypad -->
+<!------------------------------------- Modal keypad start---------------------------------------------------------------------------------->
 <div id="keypadModal" class="modal keypadinp" >
     <div class="modal-content " style="padding: 2px;">
                       
         <div class="result"><span class="black-text"><span class="actionDisplay"></span> <span class="amtDisplay"></span> <span class="from-to-Display"></span> <span class="resDisplay"></span></span></div>
              
          <div id="main">
-             
                  <div class="rows">
                  <button value="1" class="keypadKey btn-style num-bg  first-child">1</button>
                  <button value="2" class="keypadKey btn-style num-bg first-child">2</button>
                  <button value="3" class="keypadKey btn-style num-bg first-child">3</button>
                  </div>            
-                 
                  <div class="rows">
                  <button value="4" class="keypadKey btn-style num-bg  first-child">4</button>
                  <button value="5" class="keypadKey btn-style num-bg first-child">5</button>
                  <button value="6" class="keypadKey btn-style num-bg first-child">6</button>
                  </div>
-                 
                  <div class="rows">
-             <button value="7" class="keypadKey btn-style num-bg  first-child">7</button>
+             	 <button value="7" class="keypadKey btn-style num-bg  first-child">7</button>
                  <button value="8" class="keypadKey btn-style num-bg first-child">8</button>
                  <button value="9" class="keypadKey btn-style num-bg first-child">9</button>
                  </div>
-                 
                  <div class="rows">
                   <button value="cancel" class="KeypadButtonClose btn-style  num-bg first-child red-text text-darken-2"><i class="mdi-content-clear"></i></button>
                  <button value="0" class="keypadKey btn-style num-bg first-child">0</button>
                  <button value="ok" class="keypadKey btn-style  num-bg first-child green-text text-darken-3"><i class="mdi-action-done"></i></button>
-                 </div>
-                 
-                
+                 </div>  
              </div>
-         
-         </div>
-        
-
-    </div>
+           </div>
+        </div>
 </div>
-    
-
-<!-- modal end -->
+<!------------------------------------- Modal keypad end ------------------------------------------------------------------------------------>
+<!------------------------------------ modal enter phone number start ----------------------------------------------------------------------->
 <div id="MobileModal" class="modal modal-fixed-footer bottom-sheet" >
    <div class="modal-content">
       <div class="row">
@@ -440,25 +378,43 @@ doc.save('BitsWallet_Backup.pdf');
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
 </div>
+<!------------------------------------ modal enter phone number end ----------------------------------------------------------------------->
+<!--------------------------------------------- modal check adresses start ---------------------------------------------------------------->
+<!----------------------------------------------modal will contain all the user adresses and qr codes ------------------------------------->
+ <div id="adressesModal" class="modal modal-fixed-footer bottom-sheet" >
+   <div class="modal-content">
+      <div class="row">
+		 <div  id="qrcode" class=""></div>		
+<!-- 			<li  class="bits-ellipsis col s6 m8 l9 " style="margin-left: 15px;"></li> -->
+			<span class="username-addr " style=""></span>
+    		</div>
+    </div>
+           
+    
+    <div class="modal-footer blue-grey lighten-5">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+</div>
 <!--modal login-->
  <div id="loginModal" class="modal modal-fixed-footer bottom-sheet" >
    <div class="modal-content">
       <div class="row">
         <h5>Log In</h5>
      <p> We have noticed you are using the wallet in Anonymous mode please signin to enjoy more of our app <p>
-                   <div id="customBtn" class="customGPlusSignIn">
-      <span class="icon"></span>
-      <span class="buttonText">Google signin</span>
+      <div id="customBtn" class="customGPlusSignIn"> 
+      <span class="icon"></span> 
+      <span class="buttonText">Google signin</span> 
+    </div> 
+    </div>
+  </div>
+<!-------------------------------------------------------  <div id="name"></div><script>startApp();</script> ------------------------->
     </div>
     </div>
-    </div>
-           
-    
     <div class="modal-footer blue-grey lighten-5">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Not now</a>
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Not now</a>
     </div>
-</div>
-   <!-- Modal Structure -->
+	</div>
+<!--------------------------------------------------------- Modal Structure ---------------------------------------------------------->
   <div id="contactModle" class="modal modal-bits blog-card" >
     <div class="modal-content " style="padding: 2px;">
                                 <div class="">
@@ -470,68 +426,39 @@ doc.save('BitsWallet_Backup.pdf');
                                         <li><div class="col s2">
                                         <img src="images/merchants.png" alt="" class="cardLogo bits-up circle btn-floating btn-large  waves-effect waves-light bits-white accent-4 responsive-img valign profile-image">
                                             </div>
-                                        
                                         </li>
-                                        
                                     </ul>
-                                    
-                                    <div class="card-content">
-                                        
-                                                                               
+                                    <div class="card-content">                              
                                         <div class="row bits-row">
-                                          
                                           <div class="col s12 "> <h5 class="serviceName bits-move"></h5></div>
                                         </div>
                                       <div class="row">
                                         <p class="serviceDescription">Loading....</p>
-                                     
                                     </div>
-
-                                    
                                 </div>
                                 </div>
-                            
     </div>
        <div class="modal-content" style="padding: 2px;">
         </div>
-              
            <div class="col s12 m8 l9">
                 <ul  class="serviceListHolder collection">
-                 
                  <div class="serviceListHolder"></div> 
-                  
                 </ul>
               </div>                   
                             
     </div>
     </div>
-
-    <!-- //////////////////////////////////////////////////////////////////////////// -->
-
-    <!-- START FOOTER -->
-   
-    <!-- END FOOTER -->
-
-
-    <!-- ================================================
-    Scripts
-    ================================================ 
--->
-
+<!-- //////////////////////////////////////////////////////////////////////////// -->
+<!-- ================================================Scripts================================================-->
 <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js" async defer></script>
-
  <script type="text/javascript" src="js/functions.js"></script>
-
-<script src="https://bitsoko.io/bitsAssets/js/google.js"async defer></script>
-  <script src="https://apis.google.com/js/client:platform.js?onload=startGoogle" async defer></script>
-    
+<script src="https://bitsoko.io/bitsAssets/js/google.js"async defer></script>    
     <!-- jQuery Library -->
     <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
     <!--materialize js-->
     <script type="text/javascript" src="js/materialize.js"></script>
     <!--scrollbar-->
-    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    
+    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>    
  <script src="https://bitsoko.io/bitsAssets/js/bitcore-ecies.min.js"></script> 
 	<script src="https://bitsoko.io/bitsAssets/js/bitcore.min.js"></script>
 	    <script src="https://bitsoko.io/bitsAssets/js/knockout-3.1.0.js" async></script>
@@ -546,13 +473,9 @@ doc.save('BitsWallet_Backup.pdf');
 	    <script src="https://bitsoko.io/bitsAssets/js/pushManager-fcm.js" async></script>
    		<script src="https://bitsoko.io/bitsAssets/js/md5.min.js" async defer></script>
 		<script src="js/bitcore-ecies.min.js" ></script> 
-		<script src="js/bitcore.min.js"></script>
-
-  
-    <script type="text/javascript" src="js/bitsCore.js"></script>
-    <script type="text/javascript" src="js/init.js" defer></script>
-
-    
+		<script src="js/bitcore.min.js"></script>  
+    	<script type="text/javascript" src="js/bitsCore.js"></script>
+    	<script type="text/javascript" src="js/init.js" defer></script>    
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="js/plugins.js"></script>
     <!--custom-script.js - Add your own theme custom JS-->
@@ -573,9 +496,9 @@ doc.save('BitsWallet_Backup.pdf');
     });
     </script> -->
     <script>
-    //floating button change
-    
-		
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------floating button change  --------------------------------------------------------------------
 	if ((!location.port || location.port == "80") && location.protocol != 'https:') {
         //location.protocol = 'https:';
       }
@@ -590,11 +513,9 @@ doc.save('BitsWallet_Backup.pdf');
 }
         window.addEventListener("hashchange", locationHashChanged, false);
            //console.log("The browser supports the hashchange event!");
-}           
- 
-
-
-       function getBitsOpt(aKey){      
+}  
+//-----------------------------------------------------------------------------------------------------------------------------------         
+  function getBitsOpt(aKey){      
  var pairs = window.location.hash.slice(1).split("&");
             
 for(var i = 0, aKey=aKey; i < pairs.length; ++i) {
@@ -626,6 +547,7 @@ var key=pairs[i].split("=")[0];
     
     
 }
+//---------------------------------------function gets the totals of all items on a list----------------------------------------------------------------------------
 function tabulateTotals(){
 	console.log(this);
 var addproducts = document.querySelectorAll(".bitsInputQty");
@@ -639,11 +561,8 @@ totals = totals+(parseInt($(addproducts[i]).attr("price"))*parseInt(itVal));
 $(".totals").html(totals);
 }catch(err){}
 }
-
-
-
 }
-//updating service list function
+//-----------------------------------------updating service list function-------------------------------------------------------------------------------------------
 function updateServicelist(){ 
 activeService=$('#serviceModal').attr('service');
 	doFetch({ action: 'serviceList', data: activeService, user: localStorage.getItem("bitsoko-user-name")}).then(
@@ -663,58 +582,45 @@ activeService=$('#serviceModal').attr('service');
            }
         });
 }
-//save to local storage
-  function serviceOpener(){
+//-----------------------------------------------save to local storage------------------------------------------------------------------
+function serviceOpener(){
 if (getBitsWinOpt('s') != undefined ) 
- {
-
-	 
+ {	 
 servicePageLoader();
          }else{
-         	
               $(".promoHome").removeClass("displayNone");
   $(".fixed-a").removeClass("displayNone");
 	 updatePromos();
-
 	 } 
-
-
   }  
-//end save
-	    
-function doSubscribe(){
-	
+//------------------------------------------end save--------------------------------------------------------------------------------------
+//---------------------------------------- subscription function--------------------------------------------------------------------------	    
+function doSubscribe(){	
 	$(".promoSubButton").bind( "touchstart click", function(event, ui) {
 	checkanon()
      event.preventDefault();
-var pid = $(this).attr('pid');
-var dr = $(this).attr('dailyR');
+	var pid = $(this).attr('pid');
+	var dr = $(this).attr('dailyR');
      if (!flag) {
     flag = true;
     setTimeout(function(){ flag = false; }, 100);
-	localConverter().then(function(e){
-    
- var infiat = parseInt(localStorage.getItem('bitsoko-wallets-bal'))/100000000;
-     var infiat=infiat*parseInt(e.xrate)*parseInt(e.rate);
+	localConverter().then(function(e){    
+	var infiat = parseInt(localStorage.getItem('bitsoko-wallets-bal'))/100000000;
+    var infiat=infiat*parseInt(e.xrate)*parseInt(e.rate);
         console.log(infiat);
         if(infiat>(dr*1.1)){
 		if($( ".promoSubButton-"+pid ).prop( "checked" )){
-			var action='unsubscribe';
-			
-		
+			var action='unsubscribe';	
             Materialize.toast('unsubscribing..', 1000);
 		}else{
 			var action='subscribe';
-			
-		
             Materialize.toast('subscribing..', 1000);
 		}
-		
-		
 	doFetch({ action: 'doSubscription', todo: action, pid: pid, uid: localStorage.getItem('bitsoko-owner-id')}).then(function(e){
            if (e.status=="ok"){
            	      
 		Materialize.toast(action+'d successfully', 5000);
+//---------------------------------------send promo data to db-----------------------------------------------------------------------------
 		   if(action=='subscribe'){
 		   $( ".promoSubButton-"+pid ).prop( "checked",true);
 			   $(".promoSubState-"+pid).html("Subscribed");
@@ -723,19 +629,12 @@ var dr = $(this).attr('dailyR');
 			  $(".promoSubState-"+pid).html("Not Subscribed");
 	           }
 		         }else{
-                
 		Materialize.toast('unable to subscribe '+e.msg, 3000);
            }
         })
          .catch(function(){
-         	
 		Materialize.toast('temporary error. please try again', 3000);
-
         });	
-		
-		
-		
-		
 	}else{
             Materialize.toast('unable to subscribe', 1500);
 	}
@@ -749,26 +648,21 @@ var dr = $(this).attr('dailyR');
 });
 
 }
-// getContacts
-function contact(){
-	
+//----------------------------------- function getContacts-------------------------------------------------------------------------------------
+function contact(){	
  var ctFunc = getObjectStore('data', 'readwrite').get('bits-contacts-'+localStorage.getItem('bits-user-name'));
   ctFunc.onerror = function (event) {
-   reqContacts();   
+   reqContacts();  
   }
-
  ctFunc.onsuccess = function (event) {
-
         try{
         	//contacts found
-
         document.querySelector('.serviceName').innerHTML = "Contacts";
         document.querySelector('.cardimage').src = "https://bitsoko.io/app/images/contactsBanner.png";
          document.querySelector('.cardLogo').src = "https://bitsoko.io/app/images/services/contacts.png";
 		document.querySelector('.serviceDescription').innerHTML = "All your contacts";
-
     var allContacts = JSON.parse(event.target.result);
-  for(var iii = 0 ;  iii < allContacts.length; ++iii) { 
+  	for(var iii = 0 ;  iii < allContacts.length; ++iii) { 
 		console.log("contacts")	 
 			//var dailyCost=(parseInt(mDet.promotions[ii].discount)/100)*mDet.promotions[ii].promoPrice;
 			var id = allContacts[iii].uid ? allContacts[iii].uid : 'undefined';
@@ -1008,8 +902,20 @@ for(var l=0, el=el; l < el.length; ++l){
     } else {
       $("#bits-nav-bal").css({"display":"none"});
     } 
-    }
-    ); 		
+    })
+    	$(window).scroll(function(){if($('#serviceListCard').hasClass("pin-top")){
+//console.log("not pinned")
+//$("#UlHolder").fadeIn(3000);
+$("#UlHolder").removeClass("top-magrin fade-in one");
+
+	}
+	else{
+		//console.log("pinned")
+	//	$("#UlHolder").fadeIn(3000);
+		$("#UlHolder").addClass("top-magrin");
+		
+	}
+  }); 		
      
 		$(window).scroll(function() {     
     var scroll = $(window).scrollTop();
@@ -1191,7 +1097,7 @@ e=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits
 
  //$(document).ready(
  function checkanon() {
- var x = document.getElementById("names").textContent;
+ var x = document.getElementById("name").textContent;
  
 if (x == "Anonymous") {
 	$('#loginModal').openModal()
