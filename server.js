@@ -1,7 +1,7 @@
 
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =167;
+	bitsVersion =168;
 bitsInstall = function(event){
 	
 	
@@ -104,8 +104,17 @@ return new Promise(function(resolve, reject) {
 			case 'merchantMessage':
      data = dat;
     console.log(data);
-           bitsNotification('Merchant Message',dat.msg,'createBackup','bits/images/no.png','bits/images/no.png',[{action: 'createBackup', title: "Back up"}],true,true);
+
+     var store = getObjectStore('data', 'readwrite').get("bits-promo-"+dat.pid);
+store.onsuccess = function (event) {
+	   var data = event.target.result;
+	   data= JSON.parse(data);
+	  
+	 bitsNotification(data.discount+"% of" +data.name,dat.msg,'bits/images/no.png',data.imagePath,[{action: 'createBackup', title: "Back up"}],true,true);
        
+}
+
+          
       break;
 			}
        });
