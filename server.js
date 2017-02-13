@@ -1,7 +1,7 @@
 
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =165;
+	bitsVersion =166;
 bitsInstall = function(event){
 	
 	
@@ -97,7 +97,7 @@ return new Promise(function(resolve, reject) {
       case 'sent':
      data = dat;
     console.log(data);
-           bitsNotification('Backed up Wallet','You can Download an offline copy of your wallet incase you loose your device, Click to download your private infomation','createBackup','bits/images/no.png',[{action: 'createBackup', title: "Back up"}],true,true);
+           bitsNotification('Sent Message','You can Download an offline copy of your wallet incase you loose your device, Click to download your private infomation','createBackup','bits/images/no.png',[{action: 'createBackup', title: "Back up"}],true,true);
        
       break;
 			
