@@ -55,8 +55,20 @@ moment(result[i].modifiedDate).valueOf()>cm){
 	      console.log('total wallets '+cm);
           console.log(rMax,olWals);    
         
-         
-          
+          // start loading old wallets
+	      
+    for( var ii=0; ii < olWals.length; ii++ ){
+		
+	downloadFile(olWals[ii], function(eg){
+           
+	console.log('Loaded old wallet: ',JSON.parse(eg.responseText));
+		      
+   getObjectStore('data', 'readwrite').put(eg.responseText, 'bits-oldwallets-'+localStorage.getItem('bits-user-name'));
+	      
+	  });    
+      }  
+          // end loading old wallets
+	      
           if(allWals==0){
               //createWallet(id);
 		  
@@ -111,7 +123,9 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+e.bu
               p.bitsokoUserID=ef.buid;
 		  //loadWallet(adrr);
 		  //localStorage.setItem("bits-user-wallet", adrr);
-		  
+		   console.log(eg.responseText, 'bits-wallets-'+ef.buid);
+		   console.log(JSON.stringify(p), 'user-profile-'+ef.buid);
+		 
 			 localStorage.setItem('bits-user-name',ef.buid);
 		  	   	      
 getObjectStore('data', 'readwrite').put(eg.responseText, 'bits-wallets-'+ef.buid);
