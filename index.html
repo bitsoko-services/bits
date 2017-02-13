@@ -458,8 +458,7 @@ doc.save('BitsWallet_Backup.pdf');
     <!--materialize js-->
     <script type="text/javascript" src="js/materialize.js"></script>
     <!--scrollbar-->
-    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    
+    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>    
  <script src="https://bitsoko.io/bitsAssets/js/bitcore-ecies.min.js"></script> 
 	<script src="https://bitsoko.io/bitsAssets/js/bitcore.min.js"></script>
 	    <script src="https://bitsoko.io/bitsAssets/js/knockout-3.1.0.js" async></script>
@@ -497,9 +496,9 @@ doc.save('BitsWallet_Backup.pdf');
     });
     </script> -->
     <script>
-    //floating button change
-    
-		
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------floating button change  --------------------------------------------------------------------
 	if ((!location.port || location.port == "80") && location.protocol != 'https:') {
         //location.protocol = 'https:';
       }
@@ -514,11 +513,9 @@ doc.save('BitsWallet_Backup.pdf');
 }
         window.addEventListener("hashchange", locationHashChanged, false);
            //console.log("The browser supports the hashchange event!");
-}           
- 
-
-
-       function getBitsOpt(aKey){      
+}  
+//-----------------------------------------------------------------------------------------------------------------------------------         
+  function getBitsOpt(aKey){      
  var pairs = window.location.hash.slice(1).split("&");
             
 for(var i = 0, aKey=aKey; i < pairs.length; ++i) {
@@ -550,6 +547,7 @@ var key=pairs[i].split("=")[0];
     
     
 }
+//---------------------------------------function gets the totals of all items on a list----------------------------------------------------------------------------
 function tabulateTotals(){
 	console.log(this);
 var addproducts = document.querySelectorAll(".bitsInputQty");
@@ -563,11 +561,8 @@ totals = totals+(parseInt($(addproducts[i]).attr("price"))*parseInt(itVal));
 $(".totals").html(totals);
 }catch(err){}
 }
-
-
-
 }
-//updating service list function
+//-----------------------------------------updating service list function-------------------------------------------------------------------------------------------
 function updateServicelist(){ 
 activeService=$('#serviceModal').attr('service');
 	doFetch({ action: 'serviceList', data: activeService, user: localStorage.getItem("bitsoko-user-name")}).then(
@@ -587,59 +582,45 @@ activeService=$('#serviceModal').attr('service');
            }
         });
 }
-//save to local storage
-  function serviceOpener(){
+//-----------------------------------------------save to local storage------------------------------------------------------------------
+function serviceOpener(){
 if (getBitsWinOpt('s') != undefined ) 
- {
-
-	 
+ {	 
 servicePageLoader();
          }else{
-         	
               $(".promoHome").removeClass("displayNone");
   $(".fixed-a").removeClass("displayNone");
 	 updatePromos();
-
 	 } 
-
-
   }  
-//end save
-	    
-function doSubscribe(){
-	
+//------------------------------------------end save--------------------------------------------------------------------------------------
+//---------------------------------------- subscription function--------------------------------------------------------------------------	    
+function doSubscribe(){	
 	$(".promoSubButton").bind( "touchstart click", function(event, ui) {
 	checkanon()
      event.preventDefault();
-var pid = $(this).attr('pid');
-var dr = $(this).attr('dailyR');
+	var pid = $(this).attr('pid');
+	var dr = $(this).attr('dailyR');
      if (!flag) {
     flag = true;
     setTimeout(function(){ flag = false; }, 100);
-	localConverter().then(function(e){
-    
- var infiat = parseInt(localStorage.getItem('bitsoko-wallets-bal'))/100000000;
-     var infiat=infiat*parseInt(e.xrate)*parseInt(e.rate);
+	localConverter().then(function(e){    
+	var infiat = parseInt(localStorage.getItem('bitsoko-wallets-bal'))/100000000;
+    var infiat=infiat*parseInt(e.xrate)*parseInt(e.rate);
         console.log(infiat);
         if(infiat>(dr*1.1)){
 		if($( ".promoSubButton-"+pid ).prop( "checked" )){
-			var action='unsubscribe';
-			
-		
+			var action='unsubscribe';	
             Materialize.toast('unsubscribing..', 1000);
 		}else{
 			var action='subscribe';
-			
-		
             Materialize.toast('subscribing..', 1000);
 		}
-		
-		
 	doFetch({ action: 'doSubscription', todo: action, pid: pid, uid: localStorage.getItem('bitsoko-owner-id')}).then(function(e){
            if (e.status=="ok"){
            	      
 		Materialize.toast(action+'d successfully', 5000);
-		//send promo data to db
+//---------------------------------------send promo data to db-----------------------------------------------------------------------------
 		   if(action=='subscribe'){
 		   $( ".promoSubButton-"+pid ).prop( "checked",true);
 			   $(".promoSubState-"+pid).html("Subscribed");
@@ -648,19 +629,12 @@ var dr = $(this).attr('dailyR');
 			  $(".promoSubState-"+pid).html("Not Subscribed");
 	           }
 		         }else{
-                
 		Materialize.toast('unable to subscribe '+e.msg, 3000);
            }
         })
          .catch(function(){
-         	
 		Materialize.toast('temporary error. please try again', 3000);
-
         });	
-		
-		
-		
-		
 	}else{
             Materialize.toast('unable to subscribe', 1500);
 	}
@@ -674,26 +648,21 @@ var dr = $(this).attr('dailyR');
 });
 
 }
-// getContacts
-function contact(){
-	
+//----------------------------------- function getContacts-------------------------------------------------------------------------------------
+function contact(){	
  var ctFunc = getObjectStore('data', 'readwrite').get('bits-contacts-'+localStorage.getItem('bits-user-name'));
   ctFunc.onerror = function (event) {
-   reqContacts();   
+   reqContacts();  
   }
-
  ctFunc.onsuccess = function (event) {
-
         try{
         	//contacts found
-
         document.querySelector('.serviceName').innerHTML = "Contacts";
         document.querySelector('.cardimage').src = "https://bitsoko.io/app/images/contactsBanner.png";
          document.querySelector('.cardLogo').src = "https://bitsoko.io/app/images/services/contacts.png";
 		document.querySelector('.serviceDescription').innerHTML = "All your contacts";
-
     var allContacts = JSON.parse(event.target.result);
-  for(var iii = 0 ;  iii < allContacts.length; ++iii) { 
+  	for(var iii = 0 ;  iii < allContacts.length; ++iii) { 
 		console.log("contacts")	 
 			//var dailyCost=(parseInt(mDet.promotions[ii].discount)/100)*mDet.promotions[ii].promoPrice;
 			var id = allContacts[iii].uid ? allContacts[iii].uid : 'undefined';

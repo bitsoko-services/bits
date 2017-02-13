@@ -786,7 +786,7 @@ doFetch({ action: 'pushSub', user: localStorage.getItem('bits-user-name'), data:
   .then(function(refreshedToken) {
     console.log('Token refreshed.');
         
-doFetch({ action: 'pushSub', user: localStorage.getItem('bitsoko-owner-id'), data: refreshedToken });
+doFetch({ action: 'pushSub', user: localStorage.getItem('bitsoko-user-name'), data: refreshedToken });
        
         // Set your UI to show they have subscribed for  
         // push messages  
