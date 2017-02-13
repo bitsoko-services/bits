@@ -1,7 +1,7 @@
 
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =164;
+	bitsVersion =165;
 bitsInstall = function(event){
 	
 	
@@ -104,7 +104,7 @@ return new Promise(function(resolve, reject) {
 			case 'merchantMessage':
      data = dat;
     console.log(data);
-           bitsNotification('Backed up Wallet','You can Download an offline copy of your wallet incase you loose your device, Click to download your private infomation','createBackup','bits/images/no.png',[{action: 'createBackup', title: "Back up"}],true,true);
+           bitsNotification('Merchant Message',dat.msg,'createBackup','bits/images/no.png','bits/images/no.png',[{action: 'createBackup', title: "Back up"}],true,true);
        
       break;
 			}
@@ -155,11 +155,12 @@ return new Promise(function(resolve, reject) {
 //....................................................................................................
 	
 	}
-		bitsNotification = function(title,body,tag,icon,actions,sticky,silent){
+		bitsNotification = function(title,body,tag,icon,image,actions,sticky,silent){
 	
 	 var note = self.registration.showNotification(title, {  
           body: body,  
-          icon:  icon,  
+          icon:  icon,
+          image: image,  
           tag: tag,
           actions: actions,
             sticky: sticky,
