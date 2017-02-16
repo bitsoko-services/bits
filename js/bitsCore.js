@@ -23,7 +23,7 @@ sequence.goTo(3, 1);
     });
    
 }
-
+//stay
 function procScn(data){
   
    // var data = 'bitcoin:12A1MyfXbW6RhdRAZEqofac5jCQQjwEPBu?amount=1.2&message=bits-1-kitungu';
@@ -196,7 +196,7 @@ showNotices('signed in to terminal');
     qry.timer = setTimeout(qry.loop,qryLoopTime);
 }
 
-
+// stay and mod
 
 function veriPay(recp,amt,ref) {
   
@@ -243,7 +243,7 @@ catch(err) {
        
 }
 
-
+//go to functions
 
 function hideNotices(tm) {
     
@@ -253,31 +253,31 @@ function hideNotices(tm) {
     //console.log('trying to rehide..');
        
 }
-
-function showNotices(msg,tm,bt) {
-    if(!tm || tm==undefined){
-        tm=6000;
-    }else if(tm==0){tm==60000}
-    if(!bt || bt==undefined){
+// go to functions
+// function showNotices(msg,tm,bt) {
+//     if(!tm || tm==undefined){
+//         tm=6000;
+//     }else if(tm==0){tm==60000}
+//     if(!bt || bt==undefined){
         
        
-//Materialize.toast('loading profile...', 3000);
-    }else{
-         //document.getElementById('notify-but').style.display = "block";
-        tm=60000;
-    }
-    //try{document.getElementById('notify').close()}catch(err){};
-    //console.log(msg);
-    $("#notify div").html(msg);
-    $('#notify').css('background-color','rgba(255, 252, 252, 0.98)');
-    $('#notify').css('padding-top','20px');
+// //Materialize.toast('loading profile...', 3000);
+//     }else{
+//          //document.getElementById('notify-but').style.display = "block";
+//         tm=60000;
+//     }
+//     //try{document.getElementById('notify').close()}catch(err){};
+//     //console.log(msg);
+//     $("#notify div").html(msg);
+//     $('#notify').css('background-color','rgba(255, 252, 252, 0.98)');
+//     $('#notify').css('padding-top','20px');
     
-    setTimeout(function(){//document.getElementById('notify').showModal()
-    },1000);
-    hideNotices(tm);
+//     setTimeout(function(){//document.getElementById('notify').showModal()
+//     },1000);
+//     hideNotices(tm);
     
-}
-
+// }
+// stay
 function startPay(name,recp,amount,action,ref){
  console.log(name,recp,amount,action,ref);
  return
@@ -306,37 +306,37 @@ if (amount <=0 || amount == "undefined" || amount === undefined || amount === nu
 
 }
 
-function testPayment(data,e){
-    var func=$("#servid").attr( "soko-serv" ).toLowerCase();
-    console.log(func);
-if (func=='airtime' && data.length==10 ){
-    $( "#conf-amt" ).html( 10 );
-    $( "#conf-iamt" ).val( 10 );
-    $( "#conf-iamt" ).attr( 'min','10' );
-return true;
-}else if (func=='send'){
-    $( "#conf-amt" ).html( 10 );
-    $( "#conf-iamt" ).val( 10 );
-    $( "#conf-iamt" ).attr( 'min','10' );
-return true;
-}else if (func=='merchant'){
-    $( "#conf-amt" ).html( 10 );
-    $( "#conf-iamt" ).val( 10 );
-    $( "#conf-iamt" ).attr( 'min','10' );
-return true;
-}else if (func=='mobile'){
-    $( "#conf-amt" ).html( 10 );
-    $( "#conf-iamt" ).val( 10 );
-    $( "#conf-iamt" ).attr( 'min','50' );
-return true;
-}else{
+// function testPayment(data,e){
+//     var func=$("#servid").attr( "soko-serv" ).toLowerCase();
+//     console.log(func);
+// if (func=='airtime' && data.length==10 ){
+//     $( "#conf-amt" ).html( 10 );
+//     $( "#conf-iamt" ).val( 10 );
+//     $( "#conf-iamt" ).attr( 'min','10' );
+// return true;
+// }else if (func=='send'){
+//     $( "#conf-amt" ).html( 10 );
+//     $( "#conf-iamt" ).val( 10 );
+//     $( "#conf-iamt" ).attr( 'min','10' );
+// return true;
+// }else if (func=='merchant'){
+//     $( "#conf-amt" ).html( 10 );
+//     $( "#conf-iamt" ).val( 10 );
+//     $( "#conf-iamt" ).attr( 'min','10' );
+// return true;
+// }else if (func=='mobile'){
+//     $( "#conf-amt" ).html( 10 );
+//     $( "#conf-iamt" ).val( 10 );
+//     $( "#conf-iamt" ).attr( 'min','50' );
+// return true;
+// }else{
     
-$( "#conf-iamt" ).attr( 'min','0' );
-return false;
+// $( "#conf-iamt" ).attr( 'min','0' );
+// return false;
     
-}
-}
-
+// }
+// }
+// move to init.js
 function loadWallet(primWalA){  
   primWalA=primWalA ? primWalA : '';
 
@@ -398,7 +398,7 @@ function loadWallet(primWalA){
     });
     
 }
-
+//to functions.js
 function reqLoc(){
    navigator.permissions.query({name:'geolocation'}).then(function(p)
 {  
@@ -450,9 +450,10 @@ function reqLoc(){
   }
   };
 });
- 
+ //
     
 }
+// to functions
 function updateSettings(){
     reqLoc();
   doFetch({ action: 'getSets', country: localStorage.getItem('bitsoko-settings-country') }).then(function(e){
@@ -463,144 +464,144 @@ function updateSettings(){
 
 }
 
-
-function recoverWallet(user){
+//
+// function recoverWallet(user){
     
-   // if (!reCovering) {
-   // reCovering = true;
-    $( "#rec-user" ).blur();
-    $( "#rec-pass" ).blur();
-    var type;
-     var waldata;  
+//    // if (!reCovering) {
+//    // reCovering = true;
+//     $( "#rec-user" ).blur();
+//     $( "#rec-pass" ).blur();
+//     var type;
+//      var waldata;  
     
-        var user=$('#rec-user').val();
-        var pass=$('#rec-pass').val();
-//alert(parseInt($('#user').val().length));
-    if (parseInt(pass)>=1000 && parseInt(user.length)>=4){
+//         var user=$('#rec-user').val();
+//         var pass=$('#rec-pass').val();
+// //alert(parseInt($('#user').val().length));
+//     if (parseInt(pass)>=1000 && parseInt(user.length)>=4){
 
-$('#rec-panel-loader-spinner').css('display','block');  
-         listFiles('wallets.json',function(r){
+// $('#rec-panel-loader-spinner').css('display','block');  
+//          listFiles('wallets.json',function(r){
        
-    //loadWallet();
-       console.log(r);
+//     //loadWallet();
+//        console.log(r);
                 
-      /*
-      saveFiles('wallets.json',e.wallets,function(r){
+//       /*
+//       saveFiles('wallets.json',e.wallets,function(r){
        
-        recoverwal(JSON.stringify(e.wallets));
-    loadWallet();
-       console.log(r);
-       console.log(e);
-   }); 
+//         recoverwal(JSON.stringify(e.wallets));
+//     loadWallet();
+//        console.log(r);
+//        console.log(e);
+//    }); 
    
-   */
+//    */
                 
                 
                 
                 
-   }); 
+//    }); 
         
-        /*
+//         /*
                
-        doFetch({ action: 'recWal', name: $('#rec-user').val()}).then(function(e){
-            if(e.status=='bad'){
-$("#googSign").bind( "touchstart click", function(event, ui) {
+//         doFetch({ action: 'recWal', name: $('#rec-user').val()}).then(function(e){
+//             if(e.status=='bad'){
+// $("#googSign").bind( "touchstart click", function(event, ui) {
 
-     if (!flag) {
-    flag = true;
-    setTimeout(function(){ flag = false; }, 300);
-      if($('#setpass').val().length > 4){
+//      if (!flag) {
+//     flag = true;
+//     setTimeout(function(){ flag = false; }, 300);
+//       if($('#setpass').val().length > 4){
           
-              createBTC(id,$('#setpass').val()); 
+//               createBTC(id,$('#setpass').val()); 
           
-                }else{
-              $('#setpass').focus();      
-                }  
+//                 }else{
+//               $('#setpass').focus();      
+//                 }  
          
-     }
+//      }
 
-});  
+// });  
                 
-            }else{
+//             }else{
        
-        recoverwal(JSON.stringify(e.wallets));
-    loadWallet();
+//         recoverwal(JSON.stringify(e.wallets));
+//     loadWallet();
                 
-            }
-        });
- */
-        }else if (parseInt(user.length)<4){
-            $('#rec-panel-loader').css('display','block');
-            $('#rec-panel-loader-spinner').css('display','none');
-            $('#rec-panel-loader-msg').html('Recheck your Username!');
-//showNotices('Re-Check your Username or Password!');
-        }else if (parseInt(pass)<1000){
-            $('#rec-panel-loader').css('display','block');
-            $('#rec-panel-loader-spinner').css('display','none');
-            $('#rec-panel-loader-msg').html('Passcode too short!');
-//showNotices('Re-Check your Username or Password!');
-        }
-      //  }
-}
+//             }
+//         });
+//  */
+//         }else if (parseInt(user.length)<4){
+//             $('#rec-panel-loader').css('display','block');
+//             $('#rec-panel-loader-spinner').css('display','none');
+//             $('#rec-panel-loader-msg').html('Recheck your Username!');
+// //showNotices('Re-Check your Username or Password!');
+//         }else if (parseInt(pass)<1000){
+//             $('#rec-panel-loader').css('display','block');
+//             $('#rec-panel-loader-spinner').css('display','none');
+//             $('#rec-panel-loader-msg').html('Passcode too short!');
+// //showNotices('Re-Check your Username or Password!');
+//         }
+//       //  }
+// }
 
-  
-function recUserMeta(data){
-    doFetch({ action: 'recUserMeta', meta: JSON.stringify(data)}).then(function(data){
-    console.log($.parseJSON(data));
-     if( $.parseJSON(data).status=='ok'){
+//  
+// function recUserMeta(data){
+//     doFetch({ action: 'recUserMeta', meta: JSON.stringify(data)}).then(function(data){
+//     console.log($.parseJSON(data));
+//      if( $.parseJSON(data).status=='ok'){
         
-     }else if ( $.parseJSON(data).status=='bad'){
+//      }else if ( $.parseJSON(data).status=='bad'){
           
-     }else{
+//      }else{
         
-     }
-    }).catch(function(then){
+//      }
+//     }).catch(function(then){
     
-      console.log('error: unable to post user meta ');
+//       console.log('error: unable to post user meta ');
     
-    });
-}
+//     });
+// }
   
-function setUserMeta(data){
-    //$('#signup-panel-loader').html('checking username..');
-    //if (!creatingNew) {
-    //creatingNew = true;
-       var user=data.name;
+// function setUserMeta(data){
+//     //$('#signup-panel-loader').html('checking username..');
+//     //if (!creatingNew) {
+//     //creatingNew = true;
+//        var user=data.name;
     
-    user = user.replace(/[^a-zA-Z0-9]/g, '');
-//alert(parseInt($('#user').val().length));
-    //parseInt(pass)>=1000 && 
-    console.log(data.picture);
-    var pic=encodeURIComponent(data.picture);
-    if (parseInt(user.length)>=4){
-    doFetch({ action: 'updUserMeta', name: localStorage.getItem('bits-user-name'), meta: JSON.stringify(data)}).then(function(data){
-    console.log($.parseJSON(data));
-     if( $.parseJSON(data).status=='ok'){
+//     user = user.replace(/[^a-zA-Z0-9]/g, '');
+// //alert(parseInt($('#user').val().length));
+//     //parseInt(pass)>=1000 && 
+//     console.log(data.picture);
+//     var pic=encodeURIComponent(data.picture);
+//     if (parseInt(user.length)>=4){
+//     doFetch({ action: 'updUserMeta', name: localStorage.getItem('bits-user-name'), meta: JSON.stringify(data)}).then(function(data){
+//     console.log($.parseJSON(data));
+//      if( $.parseJSON(data).status=='ok'){
         
-     }else if ( $.parseJSON(data).status=='bad'){
+//      }else if ( $.parseJSON(data).status=='bad'){
           
-     }else{
+//      }else{
         
-     }
-    }).catch(function(then){
+//      }
+//     }).catch(function(then){
     
-      console.log('error: unable to post user meta ');
+//       console.log('error: unable to post user meta ');
     
-    });
+//     });
         
    
-        }else if (parseInt(user.length)<4){
-            $('#signup-panel-loader').html('Username is too short!');
-            $('#user').focus();
-//showNotices('Re-Check your Username or Password!');
-        }
+//         }else if (parseInt(user.length)<4){
+//             $('#signup-panel-loader').html('Username is too short!');
+//             $('#user').focus();
+// //showNotices('Re-Check your Username or Password!');
+//         }
        
 
-//}
-}
+// //}
+// }
 
 
-
+//stays
 function updateWallet(user,coinAddr, privHash,created){
     newWal ={primary:'true',privhash:privHash, pubaddr: coinAddr,created: created};
     
@@ -710,7 +711,7 @@ showNotices('Error creating Wallet. Please try again.');
     
 }
 
-
+//move to functions
     function makeid()
 {
     var text = "";
@@ -768,7 +769,7 @@ console.log('creating new address');
 }
 */
 
-
+//move to functions
 window.addEventListener("offline", function(e) {
  // alert("offline");
     //showNotices('Offline!');
@@ -784,7 +785,7 @@ window.addEventListener("online", function(e) {
      //$('.info2').css('background-image',"url('../images/bitsoko-off.png')");
 }, false);
 
-
+//stays
 function updateBal(notif){
     
     localConverter().then(function(e){
@@ -821,16 +822,16 @@ function updateBal(notif){
  
 }
 
-  function procserv(e,cb) {
+//   function procserv(e,cb) {
       
-       localStorage.setItem('bitsoko-pay-callback',cb);
-     startPay(currPayName(),currPayRecp(),currPayAmt(),currPayRef());
+//        localStorage.setItem('bitsoko-pay-callback',cb);
+//      startPay(currPayName(),currPayRecp(),currPayAmt(),currPayRef());
      
       
-  }
+//   }
 
  
-
+//stays
 function setBalFig() {
      
 var ttr = getObjectStore('data', 'readwrite').get("bits-wallets-"+localStorage.getItem('bits-user-name')).onsuccess = function (event) {
@@ -859,7 +860,7 @@ var req = getObjectStore('data', 'readwrite').put(JSON.stringify(wallets), "bits
     $( "#balance-counter" ).css( 'opacity','1' );
     $( "#balance-counter-upd" ).css( 'display','none' );
 }
-
+//stays
 function getBal() {
     
    var item; 
@@ -901,7 +902,7 @@ prepUpdates();
 
 
 //
-
+// move to init
 $( document ).on( "pageinit", function( event ) {
      
 	$.mobile.page.prototype.options.keepNative = "select, input";
@@ -1440,118 +1441,9 @@ $( "#serv-panel-prev" ).css("display","block").addClass("empty");
 
 window.location.hash='#p='+getBitsWinOpt('p');
 } );
+//end of move to init.js//
+//
 
-function PluginOpts(data){
-   //console.log(data);
-    newService=data;
-     $('#addNewServ').addClass('dis-butt');
-     $('#manservsearch').val('undefined').val('');
-    manServSearch('[]');
-    $( "#serv-opts-name" ).html(data.name);
-    $( "#serv-opts-desc" ).html(data.desc);
-    $( "#serv-opts-icon" ).removeClass().addClass('plugin fa solo yes '+data.icon);
-    $( "#accno" ).val(data.accno);
-    $( "#serv-opts-panel" ).trigger( "updatelayout" ).panel( "open" );
-    
-}
-
-function UpdPlugin(data){
-    
-   document.querySelector("#serv-type-ui-panel-inner").innerHTML = "<serv-type-1 ></serv-type-1>";
-    
-            document.querySelector("serv-type-1").setAttribute("build", "");
-            document.querySelector("serv-type-1").setAttribute("build", viewModel.activeServ().type);
-    $( "#serv-panel" ).trigger( "updatelayout" ).panel( "open" );
-   // document.querySelector("#serv-type-ui-panel-inner")
-        // elmSTOne.querySelector('#servInfoImg').setAttribute("src", '/app/images/services/'+viewModel.activeServ().name.toLowerCase()+'.png');
-    elmSTOne.querySelector('header-bar').setAttribute("filtering", data);
-    
-    return;
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    $( ".serv-type" ).css("display","none");
-    $( '.'+viewModel.activeServ().type ).css("display","block");
-      
-    //console.log(viewModel.activeServ().type);
-    viewModel.servInfoName('');
-    viewModel.servInfoImg('/app/images/services/contacts.png');
-    viewModel.servInfoAddr('');
-    //viewModel.currCharge(viewModel.activeServ().charge);
-    
-    $( "#currCharge" ).html( viewModel.activeServ().charge );
-    
-    $( "#payer" ).attr( "soko-serv", viewModel.activeServ().name );
-    $( ".meta" ).attr( "placeholder", viewModel.activeServ().pholder );
-    $( ".serv-name" ).html(viewModel.activeServ().name);
-    $( ".serv-trns-list > .eachtran" ).css('display','none');
-   $( ".trans-serv-"+viewModel.activeServ().id ).css('display','block');
-    
-    
-    //$( "#serv-rates" ).html();
-    $( ".serv-icon" ).removeClass().addClass('serv-icon plugin fa solo yes '+viewModel.activeServ().icon+' '+viewModel.activeServ().def);
-    $( ".serv-desc" ).html(viewModel.activeServ().desc);
-    $( ".serv-accno" ).html(viewModel.activeServ().accno);
-    $( "#serv-panel" ).trigger( "updatelayout" ).panel( "open" );
-    
-    console.log(viewModel.activeServ());
-    
-    
-    //$( "#conf-merch" ).html( viewModel.activeServ().accno );
-    
-    $('.meta').val('');
-      
-    if($( "#servid" ).attr( "soko-serv")=="win"){
-    $( "#servInfoImg" ).css("width","150px").css("height","150px");
-           // $( "#meta" ).parent().css("display","none");
-        }
-    if(viewModel.activeServ().type=="serv-type-5"){
-    //$( "#serv-type-2" ).html(set.content);
-    viewModel.servInfoImg('/app/images/merch.png');
-    $( "serv-action-bar" ).attr( "active", "all" );
-    }else{
-	//getServiceOpts();
-       // servdummy("");
-
-    $( "serv-action-bar" ).attr( "active", "none" );
-    	
-	} 
-    
-currPayServ(viewModel.activeServ().name)
-      
-    if (data!=undefined){
-    $('.meta').val(data.name);
-        
-     currPayName(data.name);
-currPayAmt(data.amt);
-currPayRecp(data.recp);
-currPayRef(data.ref);
-       // $("#servid").attr("soko-name",data.name).attr("soko-recp",data.recp).attr("soko-ref",data.ref).attr("soko-amt",data.amt).attr("soko-serv",data.plug);
-    //getServDet();
-    }
-    	 
-    //$( ".serv-action" ).css("opacity","0.3").css("pointer-events","none");
-    $("all-contacts").css("display","block");
-    
-    //$( "serv-action-bar" ).css("display","none!important");
-         $("all-transactions").css("display","none");
-         $(".servInfoImg").css("opacity","0.4");
-}
 
 /*
 function getServDet(servdata){
@@ -1638,90 +1530,7 @@ function onMessageReceived(message) {
     
 }
 */
- function smsVerify(){
-     if (localStorage.getItem('bitsoko-settings-verified') != 'true' && confirm('Send a One-time SMS to Verify your Bitsoko Account?')) {
-       localStorage.setItem('bitsoko-settings-verified','false');
-     
-      
-   $.ajax({
-  type: "GET",
-  url: bsoko.settings.datapath,
-  data: { action: 'getveri', name: localStorage.getItem('bits-user-name') }
-})
-  .done(function( data ) {
-      console.log(data);
-     if( $.parseJSON(data).status=='ok'){
-        
-       
-var body = localStorage.getItem('bits-user-name')+'-'+ $.parseJSON(data).smsveri;
-
-     try{
-		 //+$.parseJSON(localStorage.getItem('bitsoko-settings-global')).helptel
-        smss.send ( $.parseJSON(localStorage.getItem('bitsoko-settings-global')).regtel, body).then(
-  function(message) {
-   showNotices('Verification Message Sent');
-  //confVeri();
-  },
-  function(error) {   
-   showNotices('Verification SMS not sent');
-  } );     
-          //alert('message sent');
-}catch(err) {
-   showNotices('Unable to send Verification SMS.');
-}
-
-    
-
-
-       
-     } else {
-    
-      showNotices('Cant verify.');
-    }
-  }); 
- //}
-    } else {
-      // Manifest didn't changed. Nothing new to server.
-    }
-
-
-}
-
-function confVeri(){
-    localStorage.setItem('bitsoko-settings-verified','waiting');
-    confVeriTimer = setInterval(function(){
-    //$('#username-veri').css('color','#747474').html('Verifying...');
-        $("#serv-msg" ).html("Verifying..");
-    
-   //showNotices('Verifying Account..');
-            
-   $.ajax({
-  type: "GET",
-  url: bsoko.settings.datapath,
-  data: { action: 'confveri', name: localStorage.getItem('bits-user-name')}
-   })
-  .done(function( data ) {
-      console.log(data);
-	  var data = $.parseJSON(data);
-     if( data.status=='ok'){
-         clearInterval(confVeriTimer); 
-
-         localStorage.setItem('bitsoko-settings-verified','true');
-         localStorage.setItem('bitsoko-settings-network',data.network);
-         loadWallet();
-       
-     } else {
-    
-      //showNotices('');
-    }
-  }); 
-  }, 10000);
-//clearInterval(confVeriTimer); 
-}
-
-
-
-
+//stays
 function addrtype(addr){
 var addsub=addr.substring(0, 1);
 if (addsub=='1'){
@@ -1730,7 +1539,7 @@ if (addsub=='1'){
     return 'ltc';
     } 
 }
-
+//stays
 function createWallet(user){
 	return new Promise(function(resolve, reject) {
 	
@@ -1739,7 +1548,7 @@ function createWallet(user){
 		});	
 	});
 }
-
+//stays
 function createBTC(user){
 		return new Promise(function(resolve, reject) {
 	
@@ -1806,7 +1615,7 @@ var btcKey = new Bitcoin.ECKey(bytes);
 }
 
 */
-
+//stays
 function signTran(){
  //   currPayName(name);
 //currPayAmt(amount);
@@ -2177,87 +1986,89 @@ alert('Sorry! unable to access your primary wallet.');
     });
 } 
 
-function cast(){
-    //for(hsh = hsh; recast < 3; ++recast) {
-    //console.log(time);
+// function cast(){
+//     //for(hsh = hsh; recast < 3; ++recast) {
+//     //console.log(time);
     
-      var trns=$.parseJSON(localStorage.getItem('bitsoko-signed-trns'));  
-for(var i = 0, m = null; i < trns.length; ++i) {
-    //console.log(trns[i].time);
-    //if(trns[i].trns != hsh)
-        //console.log('not '+trns[i].time);
-     //   continue;
-    //var rawTxHex = tx.serializeHex()
+//       var trns=$.parseJSON(localStorage.getItem('bitsoko-signed-trns'));  
+// for(var i = 0, m = null; i < trns.length; ++i) {
+//     //console.log(trns[i].time);
+//     //if(trns[i].trns != hsh)
+//         //console.log('not '+trns[i].time);
+//      //   continue;
+//     //var rawTxHex = tx.serializeHex()
 
-    //console.log(trns[i].trns);
- $.ajax({
-  type: "GET",
-  //dataType: 'jsonp',
-        data: {action:'cast',
-        user:localStorage.getItem('bits-user-name'),
-        trns:trns[i].trns,
-        serv:trns[i].serv,
-        recp:trns[i].recp,
-        meta:trns[i].meta,
-        amount:trns[i].amount,
-        time: trns[i].time},
-        url: bsoko.settings.datapath,
-         })
-  .done(function( data ) {
-      console.log(data);
-      $( "#payer-upd" ).css("display","none");
+//     //console.log(trns[i].trns);
+//  $.ajax({
+//   type: "GET",
+//   //dataType: 'jsonp',
+//         data: {action:'cast',
+//         user:localStorage.getItem('bits-user-name'),
+//         trns:trns[i].trns,
+//         serv:trns[i].serv,
+//         recp:trns[i].recp,
+//         meta:trns[i].meta,
+//         amount:trns[i].amount,
+//         time: trns[i].time},
+//         url: bsoko.settings.datapath,
+//          })
+//   .done(function( data ) {
+//       console.log(data);
+//       $( "#payer-upd" ).css("display","none");
      
           
-        $( '.keypadinp' ).removeClass("keypadinpactive");
-      try{
-      var data=$.parseJSON(data);
+//         $( '.keypadinp' ).removeClass("keypadinpactive");
+//       try{
+//       var data=$.parseJSON(data);
          
       
-   //var nwamt =jQuery.parseJSON(localStorage.getItem('bitsoko-trn-pen'));
-    if (data.status=='good'){
-    showNotices(data.msg);
+//    //var nwamt =jQuery.parseJSON(localStorage.getItem('bitsoko-trn-pen'));
+//     if (data.status=='good'){
+//     showNotices(data.msg);
     
    
-    try{document.getElementById('payPop').close();}catch(err){}
-        sequence.goTo(2, 1);
-        //showNotices('Completed');
-                             navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
+//     try{document.getElementById('payPop').close();}catch(err){}
+//         sequence.goTo(2, 1);
+//         //showNotices('Completed');
+//                              navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
  
-if (navigator.vibrate) {
-    // vibration API supported
-    navigator.vibrate(500,250,500);
-}
- }else if (data.status=='recast'){
-     console.log('recasting.. ');
- cast(hsh);
- }else{
+// if (navigator.vibrate) {
+//     // vibration API supported
+//     navigator.vibrate(500,250,500);
+// }
+//  }else if (data.status=='recast'){
+//      console.log('recasting.. ');
+//  cast(hsh);
+//  }else{
  
    
-    try{document.getElementById('payPop').close();}catch(err){}
-        sequence.goTo(2, 1);
-        showNotices('Completed');
- }
- }catch(err){
+//     try{document.getElementById('payPop').close();}catch(err){}
+//         sequence.goTo(2, 1);
+//         showNotices('Completed');
+//  }
+//  }catch(err){
  
- console.log('recasting.. ');
- //cast(hsh);
+//  console.log('recasting.. ');
+//  //cast(hsh);
  
- }     
-      //return true;
-getBal();
-  })
- .error(function() {
-    console.log('recasting.. ');
- cast();
-  })
-.always(function() {
+//  }     
+//       //return true;
+// getBal();
+//   })
+//  .error(function() {
+//     console.log('recasting.. ');
+//  cast();
+//   })
+// .always(function() {
    
-  }); 
+//   }); 
 
-//break;
-}
+// //break;
+// }
    
-}
+// }
+
+//stays
     function prepUpdates(){
          var store = getObjectStore('data', 'readwrite').get("transactions");
 store.onsuccess = function (event) {
@@ -2282,7 +2093,7 @@ store.onsuccess = function (event) {
 }; 
     }
     
-
+//stays
 
     function updateTransactions(trnsLs){
     
@@ -2333,164 +2144,12 @@ console.log('cant update transactions');
                });
     }
     
-    
-
-function updatePrevList(){
-
- //var prevs = [];
-    //alert('$( "#servid" ).attr( "soko-serv")');
-    if ($( "#servid" ).attr( "soko-serv")=='sende'){
-    
-        
-   var allprevs=$.parseJSON(localStorage.getItem('bitsoko-user-contacts'));  
-    for(var i = 0; i < allprevs.length; ++i) {
-    //console.log(allprevs[i].service);
-    //console.log($( "#servid" ).attr( "soko-serv"));
-        //alert(allprevs[i].email[0]);
-        //if(allprevs[i].service==$( "#servid" ).attr( "soko-serv")){
-        try{allprevs[i].img="http://www.gravatar.com/avatar/"+md5(allprevs[i].email[0]);}catch(err){}
-    //var contact={name:$( payEl ).attr("soko-name"), address:$( payEl ).attr("soko-recp"), img:viewModel.servInfoImg()};
-        viewModel.prevList.push(allprevs[i]);
-            $( "#serv-panel-prev" ).removeClass("empty");
-       //}
-    }
-    }else{
-    
-    
-   var allprevs=$.parseJSON(localStorage.getItem('bitsoko-prev-contacts'));  
-    for(var i = 0; i < allprevs.length; ++i) {
-    //console.log(allprevs[i].service);
-    //console.log($( "#servid" ).attr( "soko-serv"));
-        if(allprevs[i].service==$( "#servid" ).attr( "soko-serv")){
-        viewModel.prevList.push(allprevs[i]);
-            $( "#serv-panel-prev" ).removeClass("empty");
-        }
-    }
-    }
- //   return prevs;
-console.log(viewModel.prevList());
-    
-$(".prevcont").bind('touchstart click', function(e){
-  if (!flag) {
-    flag = true;
-    setTimeout(function(){ flag = false; }, 100);
-      
-    $( "#serv-panel-prev" ).css("display","none");
-      $("#serv-panel-content").removeClass('searching').css("display","block");
-         viewModel.servInfoName($( this ).attr('prevname'));
-      for(var i = 0; i < allprevs.length; ++i) {
-      if(allprevs[i].service==$( "#servid" ).attr( "soko-serv") && allprevs[i].address==$( this ).attr('prevaddr')){
-        
-         viewModel.servInfoImg(allprevs[i].img);
-        }
-      }
-         $('.meta').val($( this ).attr('prevname'));
-        $('#servid').attr( 'soko-recp',$( this ).attr('prevaddr')).attr( 'soko-name',$( this ).attr('prevname'));
-      viewModel.servInfoAddr($( this ).attr('prevaddr'));
-      
-      
-  }
-
-  return false
-});
-}
 
 
-function servSearch(search){
-    
-    doFetch({action:'searchplugs',
-        search: search,
-        country:localStorage.getItem('bitsoko-settings-country')}).then(function(e){
-          var e = event.data;
-        var action = e.action;
-        var e=e.data;
-        shadowRootAS.innerHTML = '';         
-        shadowRootAS.appendChild(document.importNode(shadowRootAStmpB, true));
-        
-        shadowRootAS.querySelector("#as-count").innerHTML = e.length;
-          
-         $(".featImagAS").css("display","block");
-           //shadowRootAS.querySelector("#as-count-s").innerHTML = '';
-          if (e.length>0){
-          
-         //$(".serv-desc").css("display","none");
-         $(".featImagAS").css("display","none");
-          }else if (e.length>1){
-           shadowRootAS.querySelector("#as-count-s").innerHTML = 's';
-          
-         //$(".serv-desc").css("display","block");
-          }
-             for(var i = 0; i < e.length; ++i) {
-         var servdata = {}
-         try {
-         var cdata = e[i].desc;
-         var cname = e[i].name;
-         var asIcon = e[i].icon;
-         var ctype = 'trusted';
-         }catch(err){
-             console.log('Weird Error: cant process service!' , e);
-             continue;
-         }
-          
-            /*
-        servdata.ref=cdata;  
-        servdata.origin='service';
-        servdata.serv='send $ receive';
-            */
-            
-            shadowRootAStmpA.querySelector('.as-name').innerHTML = cname;
-            shadowRootAStmpA.querySelector('.as-data').innerHTML = cdata;
-            shadowRootAStmpA.querySelector('.as-holder').setAttribute("cdata", JSON.stringify(e[i]));
-            shadowRootAStmpA.querySelector('.as-holder').setAttribute("ctype", ctype);
-            shadowRootAStmpA.querySelector('.as-holder').setAttribute("cem", cdata);
-            shadowRootAStmpA.querySelector('.as-holder').setAttribute("cname", cname);
-            //template.querySelector('.as-img').setAttribute("src", asIcon).css("opacity","1");
-            shadowRootAStmpA.querySelector(".as-img").src = 'images/services/'+asIcon;
-            shadowRootAStmpA.querySelector(".as-img").style.opacity = 1;
-            
-       //template.querySelector(".c-cholder > .c-action").addEventListener("touchstart", handlePay, false);
-       //template.querySelector(".as-img").addEventListener("touchstart", handleTouch, false);
-                    //shadowRootAS.appendChild(thatDoc.importNode(templateb, true));
- shadowRootAS.appendChild(document.importNode(shadowRootAStmpA, true));
-
-            
- };
-          
-   elmSTOne.querySelector('all-services').setAttribute('feature', Date.now());              
-           var shroot = shadowRootAS.querySelectorAll(".as-img");
-             for(var i = 0; i < shroot.length; ++i) {
-                 
-                 shroot[i].addEventListener("touchstart", handleServSel, false); 
-                 
-             };
-        });
-    
-  
-}
-
-
- function hideNav(){
-  
- $('#loginPanel').css('height','100%');
- $('#pages').css('height','100%');
- $('#controls').css('height','0%');
  
- } 
-
- function showNav(){
-  try{ $( "#curr-panel" ).panel().panel( "close" );  }catch(e){}
-     
-   document.getElementById("menuPanel-inner").style.display = "none";
- menu('close');           
-$('#loginPanel').css('height','0%');
- $('#pages').css('height','85%');
- $('#controls').css('height','15%');  
-  
- }          
 
 
-
-            //
+ // move to functions           //
         
 function getHiddenProp(){
     var prefixes = ['webkit','moz','ms','o'];
@@ -2507,14 +2166,14 @@ function getHiddenProp(){
     // otherwise it's not supported
     return null;
 }
-
+// to functions
 function isHidden() {
     var prop = getHiddenProp();
     if (!prop) return false;
     
     return document[prop];
 }
-
+// to init.js
 function processContacts(){
    var numbs=[];
     var conts=JSON.parse(localStorage.getItem('bitsoko-user-contacts'));
@@ -2576,53 +2235,7 @@ return;
   // }
 //}
     ///}, false);
-	
-	function sendSMS(to,body){
-		//alert('sending '+body+' to '+ to);
-		 try{
-		 
-        smss.send ( to, body).then(
-  function(message) {
-	 showNotices('Message Sent');
-    return true;
-  
-  },
-  function(error) {   
-   return false;
-   showNotices('SMS not sent');
-  } );     
-          //alert('message sent');
-}catch(err) {
-   alert('Unable to send SMS.');
-	return false;
-}
-		
-	}
-	
-	function execMobileOpt(invoiceid,amount,service,recp){
-		var network= localStorage.getItem('bitsoko-settings-network');
-	
-      $( "#payer-upd" ).css("display","none");
-      $( '.keypadinp' ).removeClass("keypadinpactive");
-		
-	if(recp=='airtime'){
-		
-	var servnum='';
-	if (network.toLowerCase()=='air'){
-		
-		servnum='5050';
-		sendSMS(servnum,'2u 0'+$.parseJSON(localStorage.getItem('bitsoko-settings-global')).regtel.substring(4)+' '+amount+' 1234');
-		
-	}if (network.toLowerCase()=='saf'){
-		servnum='140';
-		sendSMS(servnum,'*'+servnum+'*'+$(e).attr("id")+'*'+$.parseJSON(localStorage.getItem('bitsoko-settings-global')).regtel+'#');
-		
-	}
-	return;
-	}
-		
-		
-	}
+
 /*
 	function updateServTrans(){
 	 //var e=$( "#servid" ).attr( "soko-serv" );
@@ -2651,72 +2264,7 @@ $.ajax({
   }); 	
 	}
 */
-	function getServiceOpts(e){
-	 //var e=$( "#servid" ).attr( "soko-serv" );
-
-$.ajax({
-  type: "GET",
-  //dataType: 'jsonp',
-        data: {action:'getservopt',
-        service:e
-              },
-        url: bsoko.settings.datapath,
-        //url: 'trans.json',
-         })
-  .done(function( data ) {
-      //localStorage.setItem('bitsoko-all-trns',data);
-      //console.log(data);
-         var data = JSON.parse(data);
-      //console.log(data);
-     var updated=false;
-     var servopts=JSON.parse(localStorage.getItem('bitsoko-serv-opts'));
-    var ii = 0;
-	var optsho;
-    for(var i = 0, ii=ii; i < data.length; ++i) {
-       //console.log(servopts);
-         
-    for(var ii = 0; ii < servopts.length; ++ii) {
-       //console.log(servopts[ii].service);
-        if (data[i].service.toLowerCase()==servopts[ii].service.toLowerCase()){
-        //alert('found match' +data[i].number+' & '+ conts[ii].number);
-		//var opts='[{"name":"'+data[i].name+'","id":"'+data[i].id+'","amount":"'+data[i].amount+'"}]';
-		//optsho=JSON.parse('[{"service":"'+data[i].service+'","data":"'+opts+'"}]');
-		
-            //conts[ii].service=data[i].name;
-            //conts[ii].id=opts;
-            //conts[ii].amount=data[i].amount;
-			
-        servopts.splice(ii-1, 1, data[i]);
-		updated=true;
-        }
-        //numbs.push(conts[i].Numb[ii]);  
-   }
-   
-	}
-	//alert(ii);
-    
-	if (ii==0 && data.length>0){
-		
-        servopts.push(data[0]);
-		updated=true;
-	}
-    if (updated){
-		
-    localStorage.setItem('bitsoko-serv-opts', JSON.stringify(servopts));
-    servdummy('');
-	}
-    
-  })
- .error(function() {
-  
-     
-  })
-.always(function() {
-    //updateTransactions(); 
-  }); 	
-	}
-
-
+// to functions
 function addDigit(data){
     
     if (viewModel.payEntry()=='pass'){
@@ -2728,12 +2276,12 @@ function addDigit(data){
     }
     
 }
-
+// to functions
 function validateEmail(email) {
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     return re.test(email);
     }
-
+//to functions
 function updateContacts(){
 
        $.ajax({
@@ -2804,7 +2352,7 @@ elmSTOne.querySelector("all-contacts").setAttribute("build", Date.now());
         }
     });
 }
-
+// to init
 function updateMerchants(){
 
 
@@ -2904,116 +2452,62 @@ currPayRef(datab.code);
          
          }    
 */
+//
+// function recoverwal(data){
 
-function recoverwal(data){
-
-     // console.log(data);
-      if (data.length==0){
-           $('#rec-panel-loader-msg').html('Not found!');
-      return;
-      }
+//      // console.log(data);
+//       if (data.length==0){
+//            $('#rec-panel-loader-msg').html('Not found!');
+//       return;
+//       }
     
-        var wallets=[];
-        var serverWallets=[]; 
-    var primWal;
-    var uid;
-   for(var i = 0, m = null,primWal=primWal; i < data.length; ++i) {
-       waldata=data[i];
+//         var wallets=[];
+//         var serverWallets=[]; 
+//     var primWal;
+//     var uid;
+//    for(var i = 0, m = null,primWal=primWal; i < data.length; ++i) {
+//        waldata=data[i];
           
-console.log(addrtype(data[i].pubaddr));
-       var nwwal='{"type": "'+addrtype(data[i].pubaddr)+'","uid": "'+data[i].uid+'","primary": "'+data[i].primary+'","pubadd": "'+data[i].pubaddr+'","privhash": "'+data[i].privhash+'","balance":"0","created":"'+data[i].created+'"}'; 
-           if (data[i].primary=='true'){
-               primWal = data[i].pubaddr;
-               //uid = data[i].uid;
-               localStorage.setItem('bitsoko-wallets-addr',data[i].pubaddr); 
+// console.log(addrtype(data[i].pubaddr));
+//        var nwwal='{"type": "'+addrtype(data[i].pubaddr)+'","uid": "'+data[i].uid+'","primary": "'+data[i].primary+'","pubadd": "'+data[i].pubaddr+'","privhash": "'+data[i].privhash+'","balance":"0","created":"'+data[i].created+'"}'; 
+//            if (data[i].primary=='true'){
+//                primWal = data[i].pubaddr;
+//                //uid = data[i].uid;
+//                localStorage.setItem('bitsoko-wallets-addr',data[i].pubaddr); 
                
-        wallets.push(JSON.parse(nwwal)); 
-               var sw=JSON.parse(nwwal);
-               sw.privhash=false;
-       serverWallets.push(sw); 
-           }    
-        //localStorage.setItem('bitsoko-wallets',JSON.stringify(wallets)); 
+//         wallets.push(JSON.parse(nwwal)); 
+//                var sw=JSON.parse(nwwal);
+//                sw.privhash=false;
+//        serverWallets.push(sw); 
+//            }    
+//         //localStorage.setItem('bitsoko-wallets',JSON.stringify(wallets)); 
          
        
        
-     } 
+//      } 
     
-   doFetch({ action: 'saveWals', user: localStorage.getItem('bits-user-name'), wals: serverWallets }).then(function(e){
+//    doFetch({ action: 'saveWals', user: localStorage.getItem('bits-user-name'), wals: serverWallets }).then(function(e){
        
-       if(e.status=='ok'){
+//        if(e.status=='ok'){
        
     
-getObjectStore('data', 'readwrite').put(JSON.stringify(wallets), 'wallets').onsuccess = function (event) {
+// getObjectStore('data', 'readwrite').put(JSON.stringify(wallets), 'wallets').onsuccess = function (event) {
         
-       }
+//        }
 
-}
-   });
+// }
+//    });
         
     
-       $('#rec-panel-loader-spinner').css('display','none');
-   reCovering = false; 
+//        $('#rec-panel-loader-spinner').css('display','none');
+//    reCovering = false; 
             
-    setTimeout(function(){ 
-     $('#rec-panel-loader-msg').html('');
-    $('#rec-panel-loader').css('display','none');
-     $('#rec-user').val('');
-    $('#rec-pass').val('');
+//     setTimeout(function(){ 
+//      $('#rec-panel-loader-msg').html('');
+//     $('#rec-panel-loader').css('display','none');
+//      $('#rec-user').val('');
+//     $('#rec-pass').val('');
         
-    //reCovering = false;
-    }, 45000);
-}                            
-
-
-function updateWallpaper(){
-
-	
-            // Create XHR
-            var xhr = new XMLHttpRequest();
-	
-            xhr.open("GET", "images/wallpaper/"+
-    localStorage.getItem('bitsoko-settings-country').toLowerCase()+".jpg", true);
-            // Set the responseType to blob
-            xhr.responseType = "blob";
- 
-            xhr.addEventListener("load", function () {
-                if (xhr.status === 200) {
-                    setWallpaper();
-                }else{
-					console.log('cant update wallpaper');
-					setWallpaper();
-				}
-            }, false);
-            // Send XHR
-            xhr.send();
-	
-	
-	};
-	
-	function setWallpaper(){
-		 var store = getObjectStore('data', 'readwrite').get("country");
-store.onsuccess = function (event) {
-	
-	
-   var country = localStorage.getItem('bitsoko-settings-country');
-    //country = localStorage.getItem('bitsoko-settings-country');
-    
-if (country!=undefined || country!=null){
-    
-     country = 'images/wallpaper/'+country.toLowerCase()+'.jpg';
-    $('#first').css({"background": "url("+country+")","background-position": "center center","background-size": "cover"});
-	
-	}else{
-   // console.log('setting default wall paper');
-    $('#first').css({"background": "url('images/wallpaper/default.jpg')","background-position": "center center","background-size": "cover"});
-     
-    };
-	
-	
-	};
-        store.onerror = function (event) {
-        
-        $('#first').css({"background": "url('images/wallpaper/default.jpg')","background-position": "center center","background-size": "cover"});
-     
-        };
-	}
+//     //reCovering = false;
+//     }, 45000);
+// }                            
