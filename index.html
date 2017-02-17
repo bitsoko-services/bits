@@ -141,7 +141,7 @@ doc.save('BitsWallet_Backup.pdf');
             <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>My Offers</a></li>
 			<li class="bold"><a href="?" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>Nearby Offers</a></li>
 			<li class=""><a href="#" id="shareQR"> <i class="mdi-social-share bits-color"></i><span class="bits-13"  style=""></span> <span href id="">Share Wallet</span>  </a>  
-        	<li class="bold"><a href="#" class="waves-effect waves-cyan"><i class=""></i>Use app anonymously</a></li>
+        	<li class="bold"><a href="#" onclick="signOut();"class="waves-effect waves-cyan"><i class="mdi-communication-live-help"></i>Use app anonymously</a></li>
         </ul></div>
       </li>
 <!--------------------------------------------- commented change account dropdown -----------------------------------------------------------------
@@ -785,8 +785,7 @@ for(var i = 0; i< addproducts.length; ++i){
 //       {name:'sam',desc:'another desription',image:'background5.jpg'},
 //       {name:'sam',desc:'another desription',image:'background5.jpg'}
 //       ]
-    
-//     for(var ii = 0; ii < items.length; ++ii) {
+    //     for(var ii = 0; ii < items.length; ++ii) {
        
 //        // document.querySelector('.serviceName').innerHTML = items[ii].name;
 // 		//document.querySelector('.serviceDescription').innerHTML = items[ii].desc;
@@ -932,7 +931,14 @@ for(var l=0, el=el; l < el.length; ++l){
     }
 });
 
-
+//-----------------------------------------------signOut---------------------------------------------------
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+//---------------------------------------------------end signOut------------------------------------------
   function updatePromos(){
   	     navigator.permissions.query({name:'geolocation'}).then(function(p)
 {  
