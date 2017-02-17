@@ -353,7 +353,7 @@ function loadWallet(primWalA){
   try{
   
        var upData = JSON.parse(event.target.result); 
-	initialisePush(JSON.stringify(upData.bitsokoUserID));
+	//initialisePush(JSON.stringify(upData.bitsokoUserID));
   
     $( ".username-label" ).html(upData.name);
    $( ".userProfImg" ).attr( "src", upData.image );
