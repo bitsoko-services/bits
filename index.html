@@ -48,7 +48,7 @@ return true;
 };
 
 $(document).ready(function() {
-$('#btn').click(function () {
+$('#btn_save').click(function () {
 doc.fromHTML($('#adressesModal').html(), 15, 15, {
 'width': 170,
 'elementHandlers': specialElementHandlers
@@ -141,9 +141,10 @@ doc.save('BitsWallet_Backup.pdf');
             <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>My Offers</a></li>
 			<li class="bold"><a href="?" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>Nearby Offers</a></li>
 			<li class=""><a href="#" id="shareQR"> <i class="mdi-social-share bits-color"></i><span class="bits-13"  style=""></span> <span href id="">Share Wallet</span>  </a>  
+        	<li class="bold"><a href="#" class="waves-effect waves-cyan"><i class=""></i>Use app anonymously</a></li>
         </ul></div>
       </li>
-<!---------------- commented change account dropdown ----------------------------
+<!--------------------------------------------- commented change account dropdown -----------------------------------------------------------------
       <li> 
           <div class="col s12 m8 l9">
                  <div class="col col s8 m8 l8">
@@ -161,7 +162,7 @@ doc.save('BitsWallet_Backup.pdf');
                 </div>
                 </div>
         </div></li>
--------------- commented change account dropdown end ----------------------------->
+-------------------- commented change account dropdown end -------------------------------------------------------------------------------------->
             <li class="li-hover"><div class="divider"></div></li>  
 
             <ul class="collapsible collapsible-accordion">
@@ -1108,8 +1109,9 @@ e=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits
 // }
 // else {  console.log("user logged in")}
 if(localStorage.getItem('bits-user-name')==null){
-	$('#loginModal').openModal()
+	
 return false;	
+$('#loginModal').openModal()
 }
 else{
 	return true;

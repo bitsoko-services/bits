@@ -1,7 +1,7 @@
 
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =180;
+	bitsVersion =182;
 bitsInstall = function(event){
 	
 	
@@ -16,7 +16,37 @@ bitsInstall = function(event){
 
 bitsNotificationClick = function(dat){
 	
-	
+// 	      event.notification.close();
+//      event.waitUntil(
+        
+    clients.matchAll({ 
+includeUncontrolled: true, 	
+      type: "all"  
+    })
+    .then(function(clientList) {
+
+      for (var i = 0; i < clientList.length; i++) {  
+        var client = clientList[i]; 
+		console.log(client);	
+client.postMessage('notification clicked');
+  var requestURL = new URL(client.url);
+   
+	    if (requestURL.pathname.split("/")[1] == opserv){  
+        //if (client.url == 'https://bitsoko.co.ke/app/index.html?web=1' && 'focus' in client) 
+        
+          client.focus();  
+          return client.postMessage('notification clicked');
+        }
+      }  
+      if (clients.openWindow) {
+        clients.openWindow(opurl); 
+          return client.postMessage('notification clicked');
+      }
+        
+        
+    })
+      
+  
 	
 	 switch (dat.req) {
       // This command returns a list of the URLs corresponding to the Request objects
