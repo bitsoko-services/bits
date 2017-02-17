@@ -196,7 +196,7 @@ doc.save('BitsWallet_Backup.pdf');
                     </div>
               </a>
               </li>
-                                <li><a href="#adressesModal" class="modal-trigger"> <i class="mdi-action-assignment"></i><span class="bits-13" style=""></span> <span href id="btn">Adrreses</span>  </a>  
+                                <li><a href="#adressesModal" class="modal-trigger"> <i class="mdi-action-assignment"></i><span class="bits-13" style=""></span> <span href id="btn">Addresses</span>  </a>  
                                 </li>
                                 <li><a href="#MobileModal"class="modal-trigger"> <i class="mdi-communication-phone"></i><span class="bits-13" style=""></span> <span href id="btn">Mobile Number</span> </a>
                                 </li>
@@ -935,6 +935,11 @@ for(var l=0, el=el; l < el.length; ++l){
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
+    	localStorage.setItem("bits-user-name", "");
+    	localStorage.setItem("bits-user-wallet", "");
+    	localStorage.setItem("bitsoko-settings-location", "");
+//     	localStorage.setItem("bits-user-name", "");
+//     	localStorage.setItem("bits-user-name", "");
       console.log('User signed out.');
     });
   }
