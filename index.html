@@ -943,7 +943,7 @@ function signOut() {
 //     	localStorage.setItem("bits-user-name", "");
 //     	localStorage.setItem("bits-user-name", "");
 		window.location.reload();
-		
+
       console.log('User signed out.');
     });
   }
@@ -1055,6 +1055,7 @@ $(".promoHolder").hide();
 
 
     $(".saleButton").click(function() {
+    	if(checkanon()==false){return}
     $("#keypadModal").openModal();
   currentTransaction.action = $(this).attr('value');
   
