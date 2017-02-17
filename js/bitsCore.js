@@ -943,9 +943,9 @@ var req = store.put('default', 'country');
 
     localStorage.setItem('bitsoko-settings-country','default');
              fetchRates().then(function(e){
-                 getBal();
-                 updateWallpaper();
-            setWallpaper();
+                
+                 //updateWallpaper();
+            //setWallpaper();
     });
             
               
