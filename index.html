@@ -1056,9 +1056,12 @@ $(".promoHolder").hide();
 
 
     $(".saleButton").click(function() {
-    	showLogin();
-    $("#keypadModal").openModal();
+    	if(checkanon()==false){$('#loginModal').openModal()}
+    	else{
+    		 $("#keypadModal").openModal();
   currentTransaction.action = $(this).attr('value');
+    	}
+   
   
   });
 
