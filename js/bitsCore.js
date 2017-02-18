@@ -811,7 +811,7 @@ function updateBal(notif){
     }else{
      if (isHidden()){
          //txtFld.value += "Tab Hidden!\n";
-       doNotification ('Wallet Balance','Your balance is '+infiat.toFixed(2),5);
+       //doNotification ('Wallet Balance','Your balance is '+infiat.toFixed(2),5);
      }else{
          //txtFld.value += "Tab Visible!\n";
           
