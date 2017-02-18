@@ -811,7 +811,10 @@ function updateBal(notif){
     }else{
      if (isHidden()){
          //txtFld.value += "Tab Hidden!\n";
-       doNotification ('Wallet Balance','Your balance is '+infiat.toFixed(2),5);
+       //doNotification ('Wallet Balance','Your balance is '+infiat.toFixed(2),5);
+	     
+Materialize.toast('Your balance is '+infiat.toFixed(2), 3000);
+	     
      }else{
          //txtFld.value += "Tab Visible!\n";
           
@@ -2221,11 +2224,7 @@ return;
 
 }
 
-//var visProp = getHiddenProp();
-//if (visProp) {
-//  var evtname = visProp.replace(/[H|h]idden/,'') + 'visibilitychange';
-//  document.addEventListener(evtname, visChange);
-//}
+var visProp = getHiddenProp();
 
 //function visChange() {
    //var txtFld = document.getElementById('visChangeText');
