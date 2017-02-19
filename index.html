@@ -1042,18 +1042,7 @@ $(document).ready(function() {
 $(".serviceListHolder").hide();
 $(".serviceListCard").hide();
 $(".promoHolder").hide();
-	//$(".fixed-a").hide();
-		//$(".fixed-b").hide();
-//$(".promoHolder").hide();
-
-
-//   $(".serviceButtons").click(function() {
-// $(".promoHolder").show();
-
-// $(".promoHolder-home").hide();
-//   });
-
-
+	
 
     $(".saleButton").click(function() {
     	if(checkanon()==false){$('#loginModal').openModal()}
@@ -1099,14 +1088,6 @@ startPay(actvServ().storeAddress,'servID-'+getBitsWinOpt('s')+'-'+getBitsWinOpt(
   });
   });
 
-//   $(document).ready(function() {
-// 	if ($('.promoHolder-home').is(':visible')){
-// 		$(".fixed-a").show();
-// 		$(".fixed-b").hide();
-// 	}
-
-// });
-
 
   function actvServ(){
 e=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits-active-service')));
@@ -1124,14 +1105,9 @@ function showLogin(){
 	if(checkanon()==false){$('#loginModal').openModal()}
 }
 //------------------end function -------------------------------------------------------------------------------------
- //$(document).ready(
- function checkanon() {
-//  var x = document.getElementById("name").textContent;
  
-// if (x == "Anonymous") {
-// 	$('#loginModal').openModal()
-// }
-// else {  console.log("user logged in")}
+ function checkanon() {
+
 if(localStorage.getItem('bits-user-name')==null){
 	
 return false;	
@@ -1180,18 +1156,3 @@ else{
 
  }
  </script>
-    <!-- ================================================
-//     Scripts
-//     ================================================ -->
-
-    
-
-<!--  <script type="text/javascript" src="js/html2canvas.js"></script>
-    <script type="text/javascript">
-     setTimeout(function() {
-        html2canvas(document.body).then(function(canvas) {
-            document.body.appendChild(canvas);
-        });
-        }, 2000);
-    </script>
-  -->
