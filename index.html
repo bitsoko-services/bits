@@ -686,10 +686,12 @@ catch(e) {
             }
 	}
 }
-//--------------------------------------------------click contact function-----------------------------------------------------------------------------------------------------------------------------------
+//cliked contact
+
 function selectContact(id){
 	console.log("you just clicked on a contact")
 	history.pushState({page: 1}, "", "?s=2&a="+id)
+
 }
 //----------------------------------------------populateService function----------------------------------------------------------------------------------------------------------------------------------------
  function populateService(id){
@@ -737,16 +739,25 @@ for(var i = 0; i< addproducts.length; ++i){
  }
 
 //---------------------------------------------------end populateService function------------------------------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------  function handleModal---------------------------------------------------------------------------------------------------------------------------------------
+function handleModal(){
       console.log(this);
       $('#serviceModal').attr('service',$(this).attr('service'));
       $('#serviceModal').attr('account',$(this).attr('account'));
+
       populateModal($(this).attr('service'),$(this).attr('account')); 
-  }  
- var items =  [ 
+
+  }        
+      var items =  [ 
       {dataModal:'#modal'}
-      ]  
+      ]
+    
     for(var ii = 0; ii < items.length; ++ii) {
+       
+       // template.querySelector('data-modal').innerHTML = items[ii].dataModal;
+		
+
+		// homeFeed.appendChild(thatDoc.importNode(template, true));
       
              };
 
