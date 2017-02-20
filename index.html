@@ -938,8 +938,8 @@ function signOut() {
     auth2.signOut().then(function () {
     	getObjectStore('data', 'readwrite').put('', 'bits-wallets-'+localStorage.getItem('bits-user-name'));
     	getObjectStore('data', 'readwrite').put('', 'user-profile-'+localStorage.getItem('bits-user-name'));
-    	localStorage.setItem("bits-user-name", "");
-    	localStorage.setItem("bits-user-wallet", "");
+    	localStorage.removeItem("bits-user-name");
+    	localStorage.setItem("bits-user-wallet", '');
     	localStorage.setItem("bitsoko-settings-location", "");
 //     	localStorage.setItem("bits-user-name", "");
 //     	localStorage.setItem("bits-user-name", "");
