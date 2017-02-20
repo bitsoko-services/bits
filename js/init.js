@@ -56,17 +56,27 @@ moment(result[i].modifiedDate).valueOf()>cm){
           console.log(rMax,olWals);    
         
           // start loading old wallets
-	      
-    for( var ii=0; ii < olWals.length; ii++ ){
+	      new Promise(function(resolve, reject) {
+	   var olWalss=[];
+    for( var ii=0, olWalss= olWalss; ii < olWals.length; ii++ ){
 		
 	downloadFile(olWals[ii], function(eg){
            
 	console.log('Loaded old wallet: ',JSON.parse(eg.responseText));
 		      
-   getObjectStore('data', 'readwrite').put(eg.responseText, 'bits-oldwallets-'+localStorage.getItem('bits-user-name'));
-	      
+  	      olWalss.push(JSON.parse(eg.responseText));
+		if(olWalss.length==olWals.length){
+		resolve(olWalss);
+		}
 	  });    
-      }  
+      }   
+		      
+	     }).then(function(e){
+	       getObjectStore('data', 'readwrite').put(JSON.stringify(e), 'bits-oldwallets-'+localStorage.getItem('bits-user-name'));
+
+	      
+	      });
+	   
           // end loading old wallets
 	      
           if(allWals==0){
