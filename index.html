@@ -514,97 +514,60 @@ doc.save('BitsWallet_Backup.pdf');
     <script type="text/javascript" src="js/plugins.js"></script>
     <!--custom-script.js - Add your own theme custom JS-->
     <script type="text/javascript" src="js/custom-script.js"></script>
-    <!-- Toast Notification
-    <script type="text/javascript">
-    // Toast Notification
-    $(window).load(function() {
-        setTimeout(function() {
-            Materialize.toast('<span>Hiya! I am a toast.</span>', 1500);
-        }, 1500);
-        setTimeout(function() {
-            Materialize.toast('<span>You can swipe me too!</span>', 3000);
-        }, 5000);
-        setTimeout(function() {
-            Materialize.toast('<span>You have new order.</span><a class="btn-flat yellow-text" href="#">Read<a>', 3000);
-        }, 15000);
-    });
-    </script> -->
+<!--=============================================================================================================================================================== -->
     <script>
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------floating button change  --------------------------------------------------------------------
-	if ((!location.port || location.port == "80") && location.protocol != 'https:') {
-        //location.protocol = 'https:';
-      }
-            
+	if ((!location.port || location.port == "80") && location.protocol != 'https:') {}       
  	if ("onhashchange" in window) {
- 
      function locationHashChanged(e) {
-         console.log(e);
-      // mgHash(e.newURL);
-       serviceOpener()
-         
+       console.log(e);
+       serviceOpener()         
 }
         window.addEventListener("hashchange", locationHashChanged, false);
-           //console.log("The browser supports the hashchange event!");
 }  
 //-----------------------------------------------------------------------------------------------------------------------------------         
-  function getBitsOpt(aKey){      
- var pairs = window.location.hash.slice(1).split("&");
-            
-for(var i = 0, aKey=aKey; i < pairs.length; ++i) {
-var key=pairs[i].split("=")[0];
-    var value=pairs[i].split("=")[1];
+ function getBitsOpt(aKey){      
+ var pairs = window.location.hash.slice(1).split("&");       
+ for(var i = 0, aKey=aKey; i < pairs.length; ++i) {
+ var key=pairs[i].split("=")[0];
+ var value=pairs[i].split("=")[1];
  if (key==aKey){
-     
      return value;
- 
- }  
-    
+  }  
+ }
 }
-    
-    
-}
-        function getBitsWinOpt(aKey){     
- var pairs = window.location.search.slice(1).split("&");
-            
-for(var i = 0, aKey=aKey; i < pairs.length; ++i) {
-var key=pairs[i].split("=")[0];
-    var value=pairs[i].split("=")[1];
- if (key==aKey){
-     
-     return value;
- 
- }  
-    
-}
-    
-    
+ function getBitsWinOpt(aKey){     
+ var pairs = window.location.search.slice(1).split("&");           
+ for(var i = 0, aKey=aKey; i < pairs.length; ++i) {
+ var key=pairs[i].split("=")[0];
+ var value=pairs[i].split("=")[1];
+ if (key==aKey){   
+ return value;
+ }     
+}   
 }
 //---------------------------------------function gets the totals of all items on a list----------------------------------------------------------------------------
-function tabulateTotals(){
+	function tabulateTotals(){
 	console.log(this);
-var addproducts = document.querySelectorAll(".bitsInputQty");
-var totals = 0;
-for(var i = 0; i< addproducts.length; ++i){
-//addproducts[i].addEventListener("change",tabulateTotals,false);
-try{
+	var addproducts = document.querySelectorAll(".bitsInputQty");
+	var totals = 0;
+	for(var i = 0; i< addproducts.length; ++i){
+	try{
 	var itVal=$(addproducts[i]).val() ? $(addproducts[i]).val() : 0;
-totals = totals+(parseInt($(addproducts[i]).attr("price"))*parseInt(itVal));
-
-$(".totals").html(totals);
-}catch(err){}
-}
-}
+	totals = totals+(parseInt($(addproducts[i]).attr("price"))*parseInt(itVal));
+	$(".totals").html(totals);
+	}catch(err){}
+	}
+	}
 //-----------------------------------------updating service list function-------------------------------------------------------------------------------------------
 function updateServicelist(){ 
 activeService=$('#serviceModal').attr('service');
 	doFetch({ action: 'serviceList', data: activeService, user: localStorage.getItem("bits-user-name")}).then(
 	function(e){
-           if (e.status=="ok"){
-        serviceList = e.data;
-      
-            
+    if (e.status=="ok"){
+    serviceList = e.data;        
     for(var ii = 0; ii < serviceList.length; ++ii) {
 
 		$('.serviceListHolder').append('<li class="collection-item avatar avatar bits-max promo-collection"><img src="images/avatar.jpg" alt="" class="circle"><span class="title"><span class="serviceListTitle">'+serviceList[ii].name+'</span></span><p class="serviceListFirstline"><br class="servicelistSeccondline"> Second Line </p><a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a></li>');
@@ -760,9 +723,8 @@ $(".resDisplay").html( mDet.name);
 	 checkPayments();
  for(var ii = 0; ii < mDet.list.length; ++ii) {
 // -------------------------------------------------loads the shops product lists --------------------------------------------------------------------------------------------------------------------------
-        $('.serviceListHolder').append('<li class="collection-item avatar bits-max "><img src="https://bitsoko.io'+mDet.list[ii].imagePath+'" data-caption="'+mDet.list[ii].description+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"><span class="conf-curr"></span> </span>'+mDet.list[ii].metric+' </span></p><span class="secondary-content"><p class="col s4" style="display: none;"> <input class="number bitsInputQty" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'> '+mDet.list[ii].metric+' (s)<label for='+mDet.list[ii].name+'></label></p></span></li>');
-             	};
-        	 $('.materialboxed').materialbox();
+ $('.serviceListHolder').append('<li class="collection-item avatar bits-max "><img src="https://bitsoko.io'+mDet.list[ii].imagePath+'" data-caption="'+mDet.list[ii].description+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"><span class="conf-curr"></span> </span>'+mDet.list[ii].metric+' </span></p><span class="secondary-content"><p class="col s4" style="display: none;"> <input class="number bitsInputQty" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'> '+mDet.list[ii].metric+' (s)<label for='+mDet.list[ii].name+'></label></p></span></li>');};
+ $('.materialboxed').materialbox();
 var addproducts = document.querySelectorAll(".bitsInputQty");
 for(var i = 0; i< addproducts.length; ++i){
 	addproducts[i].addEventListener("change",tabulateTotals,false);
@@ -776,89 +738,40 @@ function handleModal(){
       console.log(this);
       $('#serviceModal').attr('service',$(this).attr('service'));
       $('#serviceModal').attr('account',$(this).attr('account'));
-
       populateModal($(this).attr('service'),$(this).attr('account')); 
-
   }        
       var items =  [ 
       {dataModal:'#modal'}
       ]
-    
-    for(var ii = 0; ii < items.length; ++ii) {
-       
-       // template.querySelector('data-modal').innerHTML = items[ii].dataModal;
-		
-
-		// homeFeed.appendChild(thatDoc.importNode(template, true));
-      
+        for(var ii = 0; ii < items.length; ++ii) {  
              };
-
-//       var items =  [
-//       {name:'sam',desc:'another desription',image:'background5.jpg'},
-//       {name:'sam',desc:'another desription',image:'background5.jpg'}
-//       ]
-    //     for(var ii = 0; ii < items.length; ++ii) {
-       
-//        // document.querySelector('.serviceName').innerHTML = items[ii].name;
-// 		//document.querySelector('.serviceDescription').innerHTML = items[ii].desc;
-// 		//template.querySelector('.card-reveal-content').innerHTML = items[ii].cardcontent;
-
-// 		 //homeFeed.appendChild(thatDoc.importNode(template, true));
-      
-//              };
-
-          var activeService;
+ var activeService;
           allServices =  [
-     
-      {name:'Merchants',id:'3',desc:'Merchant desription',cardimage:'/bits/images/merchantsBanner',cardLogo:'/bits/images/merchants',image:'mdi-maps-store-mall-directory',list:[]},
+      //{name:'Merchants',id:'3',desc:'Merchant desription',cardimage:'/bits/images/merchantsBanner',cardLogo:'/bits/images/merchants',image:'mdi-maps-store-mall-directory',list:[]},
        {name:'Contacts',id:'2',desc:'Contacts desription',cardimage:'/bits/images/contactsBanner',cardLogo:'/bits/images/contacts',image:'mdi-social-group',list:[]}    
       ]
-    
-    for(var ii = 0; ii < allServices.length; ++ii) {
-
-
+        for(var ii = 0; ii < allServices.length; ++ii) {
 		$('.serviceButtonsHolder').append('<li><a href="?s='+allServices[ii].id+'" service="'+allServices[ii].id+'" class="serviceButtons btn bits  "><i class="large '+allServices[ii].image+'"></i> '+allServices[ii].name+'</a></li>');
-      
-             };
-
-
+           };
  var bts = document.querySelectorAll(".serviceButtons");
-
-
     for(var ii = 0; ii < bts.length; ++ii) {
-
-
 bts[ii].addEventListener('touchstart', function(event) {
  	console.log($(this).attr('service'));
 if ($(this).attr('service')=='2'){
 	contact();
 }
-
  });
              };
-
-
      function populateModal(x,y){
-
          console.log(x,y)
-
-
-
     for(var ii = 0,x=x,activeService=activeService; ii < allServices.length; ++ii) {
         if(allServices[ii].id==x){
             activeService=allServices[ii];
         }
 		};
-
-
-
              if ( activeService.list.length==0){
              	$('.serviceListHolder').html("");
-
              }
-
-
-
         document.querySelector('.serviceName').innerHTML = activeService.name;
         document.querySelector('.cardimage').src = "https://bitsoko.io"+activeService.cardimage+".png";
          document.querySelector('.cardLogo').src = "https://bitsoko.io"+activeService.cardLogo+".png";
@@ -866,51 +779,26 @@ if ($(this).attr('service')=='2'){
 //add button
 
 updateServicelist();
-
-  
-  var el = document.querySelectorAll(".loadButtons");
-
+    var el = document.querySelectorAll(".loadButtons");
 for(var l=0, el=el; l < el.length; ++l){
-
   el[l].addEventListener("touchstart", handleModal, false);
-
 }
-
      function populateModal(x,y){
-
          console.log(x,y)
-
-
-
     for(var ii = 0,x=x,activeService=activeService; ii < serviceList.length; ++ii) {
         if(serviceList[ii].id==x){
             activeService=serviceList[ii];
         }
-		
-		if (serviceList[ii].id==1){
+			if (serviceList[ii].id==1){
 			 document.querySelector('.service-banner').src = 'https://bitsoko.io/app/images/services/contacts.png';
-
 		}else if(serviceList[ii].id==2){
 			 document.querySelector('.service-banner').src = 'https://bitsoko.io/app/images/services/contacts.png';
-
 		}
              };
-
-
-
-        document.querySelector('.btnname').innerHTML = activeService.name;
-		//document.querySelector('.serviceDescription').innerHTML = activeService.desc;
-//Populate list
-
-       //document.querySelector('.serviceListTitle').innerHTML = serviceList[ii].name;
-		//document.querySelector('.serviceListFirstline').innerHTML = serviceList[ii].desc;
-		//document.querySelector('.servicelistSeccondline').innerHTML = items[ii].cardcontent;
-
-		
-      
+        document.querySelector('.btnname').innerHTML = activeService.name;    
              };
      }
- //function to hide and display nav-bar balance div     
+//--------------------------function to hide and display nav-bar balance div  ----------------------------------------------------------------------------   
                  $(window).scroll(function(){
    var scroll = $(window).scrollTop();
    if (scroll > 100) {
@@ -919,20 +807,6 @@ for(var l=0, el=el; l < el.length; ++l){
       $("#bits-nav-bal").css({"display":"none"});
     } 
     })
-    	//$(window).scroll(function(){if($('#serviceListCard').hasClass("pin-top")){
-//console.log("not pinned")
-//$("#UlHolder").fadeIn(3000);
-//$("#UlHolder").removeClass("top-magrin fade-in one");
-
-// 	}
-// 	else{
-// 		//console.log("pinned")
-// 	//	$("#UlHolder").fadeIn(3000);
-// 		$("#UlHolder").addClass("top-magrin");
-		
-// 	}
-//   }); 		
-     
 		$(window).scroll(function() {     
     var scroll = $(window).scrollTop();
     if (scroll > 150) {
@@ -999,21 +873,6 @@ $(function(){
 	showPositionError()
 })
 }; 
-
-     
-//coin change
-/*$(document).on('change', '.div-toggle', function() {
-  var target = $(this).data('target');
-  var show = $("option:selected", this).data('show');
-  $(target).children().addClass('hide');
-  $(show).removeClass('hide');
-});
-$(document).ready(function(){
-	$('.div-toggle').trigger('change');
-});*/
-
-
-
           function sendMessage(message) {
         // This wraps the message posting/response in a promise, which will resolve if the response doesn't
         // contain an error, and reject with the error if it does. If you'd prefer, it's possible to call
@@ -1109,31 +968,31 @@ e=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits
       $('.promoHolder').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>Switch on your Location </strong></p><p class="collections-content"></p></div></li></ul>');
             
  console.log(e);
-}    
-//if ststements for popup login modal if user is on anon mode
-//------------------function to pop up login modal--------------------------------------------------------------------
-function showLogin(){
-	if(checkanon()==false){$('#loginModal').openModal()}
 }
-//------------------end function -------------------------------------------------------------------------------------
- 
- function checkanon() {
-
-if(localStorage.getItem('bits-user-name')==null){
-	
-return false;	
-//$('#loginModal').openModal()
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------function to check if wallet is anon----------------------------------------------------------------------------------------------------
+function checkanon() {
+if(localStorage.getItem('bits-user-name')==null){	
+return false;
 }
 else{
 	return true;
 }
 }
-
-//)
-//end if popup login
+//--------------------------------------end if popup login----------------------------------------------------------------------------------------- 
+//----------------------------------------------if ststements for popup login modal if user is on anon mode----------------------------------------
+//----------------------------------------------function to pop up login modal---------------------------------------------------------------------
+function showLogin(){
+if(checkanon()==false){$('#loginModal').openModal()}
+}
+//------------------end function -------------------------------------------------------------------------------------
+//------------------function to pop up login toast--------------------------------------------------------------------
+function showlogintoast(){
+	if(checkanon()==false){Materialize.toast('<span class="toastlogin">You are using the app anonymously.</span><a onclick="showLogin()" class="btn-flat yellow-text">Login<a>', 7000);}
+}
+//------------------end function -------------------------------------------------------------------------------------
 </script>
-
- <script>
+<script>
  //web Share start
  document.querySelector("#share").addEventListener('click', function(event) {
 

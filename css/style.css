@@ -17,7 +17,11 @@ aside>ul{
       margin-top: -399px;
   left: -250px !important;
   }*/
+/*--------------------------------custom toast------------------------------------------------------------------------   */
+.toastlogin {
+    word-break:normal !important;
 
+}
 /* ---------------------------------------------------sticky css-------------------------------------------------------- */
 #one { position: sticky; top: 10px; }* {
   box-sizing: border-box;
