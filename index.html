@@ -2,28 +2,28 @@
 <html lang="en">
 <head>
    <title>#{name}</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
-		<meta name="og:title" content="#{name}" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+	<meta name="og:title" content="#{name}" />
         <meta name="og:url" content="https://bitsoko.io/app" />
         <meta name="og:image" content="#{img}" />
         <!-- Origin Trial Token, feature = Web Share, origin = https://bitsoko.io, expires = 2017-01-12 -->
 <!-- Origin Trial Token, feature = Web Share, origin = https://bitsoko.io, expires = 2017-03-31 -->
 <meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2017-03-31" content="AmhVefTF40eyTfFt5ZHxLSoKVazcEs/9vGgan3XHC/BIk1f2i3FEkF0VdA/oxRRA0jQvIBD+431GPVLADBVaGAoAAABfeyJvcmlnaW4iOiJodHRwczovL2JpdHNva28uaW86NDQzIiwiZmVhdHVyZSI6IldlYlNoYXJlIiwiZXhwaXJ5IjoxNDkwOTczMDU4LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
 <!------<meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2017-01-03" content="AvwH05WjeD812bDpeWTWGEc3d81qoKI1Z4YsUtPVo4poXAr61FSAZ/Rp3zd3tqCkOqw8Ay+/aSYvxYG4oJtDqgMAAABReyJvcmlnaW4iOiAiaHR0cHM6Ly9iaXRzb2tvLmlvOjQ0MyIsICJmZWF0dXJlIjogIldlYlNoYXJlIiwgImV4cGlyeSI6IDE0ODQyMzkxMzZ9"> -->
-		<meta name="og:description" content="#{desc}" />
-		<meta name="description" content="#{desc}" />
+	<meta name="og:description" content="#{desc}" />
+	<meta name="description" content="#{desc}" />
         <meta name="keywords" content="" />
         <link rel="shortcut icon" type="image/png" href="#{img}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="viewport" content="width=device-width,user-scalable=no">
+	<meta name="viewport" content="width=device-width,user-scalable=no">
         <meta name="msapplication-navbutton-color" content="#0f5f76">
-   <meta name="theme-color" content="#0f5f76">
-<meta name="google-signin-client_id" content="476194103258-98t0j7p1lrela49ispgj3jfokl2r3ils.apps.googleusercontent.com">
-  <link rel="manifest" href="web-manifest.json">
+        <meta name="theme-color" content="#0f5f76">
+        <meta name="google-signin-client_id" content="476194103258-98t0j7p1lrela49ispgj3jfokl2r3ils.apps.googleusercontent.com">
+        <link rel="manifest" href="web-manifest.json">
 <script src="jquery-1.7.1.min.js"></script>
- <script src="https://apis.google.com/js/client:platform.js" async defer></script>
+<script src="https://apis.google.com/js/client:platform.js" async defer></script>
 <script type="text/javascript" src="jspdf.js"></script>
-  <script type="text/javascript">
+<script type="text/javascript">
   // start function google authentication
     function onLoad() {
       gapi.load('auth2', function() {
@@ -471,6 +471,24 @@ doc.save('BitsWallet_Backup.pdf');
                                     </div>
                                 </div>
                                 </div>
+<!-------------------------------------------------Merchant page slider. This can be moved to preferred position--------------------------------------------->
+<div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="images/merchants.png" alt="" > <!-- merchant image -->
+        <div class="caption center-align">
+          <!--<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>-->
+        </div>
+      </li>
+      <li>
+        <img src="images/merchants.png" alt=""> <!-- merchant image -->
+        <div class="caption center-align">
+          <!--<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>-->
+        </div>
+      </li>
+    </ul>
+  </div>
+<!------------------------------------------------- End of Merchant page slider--------------------------------------------->				
     </div>
        <div class="modal-content" style="padding: 2px;">
         </div>
@@ -1167,3 +1185,12 @@ else{
 
  }
  </script>
+
+<script>
+//jQuery Initialization for Merchant Slider
+//Materializecss Slider
+
+$(document).ready(function(){
+      $('.slider').slider();
+    });
+ </script>       
