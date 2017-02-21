@@ -18,7 +18,7 @@ bitsNotificationClick = function(dat){
 	
 // 	      event.notification.close();
 //      event.waitUntil(
-        
+   console.log(dat);     
     clients.matchAll({ 
 includeUncontrolled: true, 	
       type: "all"  
