@@ -3055,7 +3055,7 @@ video.responsive-video {
 }
 
 .pinned {
-  position: fixed !important;
+/*   position: fixed !important; */
 }
 
 /*********************

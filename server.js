@@ -1,7 +1,7 @@
 
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =164;
+	bitsVersion =198;
 bitsInstall = function(event){
 	
 	
@@ -16,7 +16,37 @@ bitsInstall = function(event){
 
 bitsNotificationClick = function(dat){
 	
-	
+// 	      event.notification.close();
+//      event.waitUntil(
+        
+    clients.matchAll({ 
+includeUncontrolled: true, 	
+      type: "all"  
+    })
+    .then(function(clientList) {
+
+      for (var i = 0; i < clientList.length; i++) {  
+        var client = clientList[i]; 
+		console.log(client);	
+client.postMessage('notification clicked');
+  var requestURL = new URL(client.url);
+   
+	    if (requestURL.pathname.split("/")[1] == opserv){  
+        //if (client.url == 'https://bitsoko.co.ke/app/index.html?web=1' && 'focus' in client) 
+        
+          client.focus();  
+          return client.postMessage('notification clicked');
+        }
+      }  
+      if (clients.openWindow) {
+        clients.openWindow(opurl); 
+          return client.postMessage('notification clicked');
+      }
+        
+        
+    })
+      
+  
 	
 	 switch (dat.req) {
       // This command returns a list of the URLs corresponding to the Request objects
@@ -94,18 +124,35 @@ return new Promise(function(resolve, reject) {
       // that serve as keys for the current cache.
       // This command adds a new request/response pair to the cache.
              
+      case 'admin':
+     data = dat;
+    console.log(data);
+           bitsNotification(dat.title,dat.msg,"bits-admin",'/bits/images/logo-bits.png','',[{action: 'update', title: "Update"}],true,true);
+   
+      break;
+	     
       case 'sent':
      data = dat;
     console.log(data);
-           bitsNotification('Backed up Wallet','You can Download an offline copy of your wallet incase you loose your device, Click to download your private infomation','createBackup','bits/images/no.png',[{action: 'createBackup', title: "Back up"}],true,true);
+           bitsNotification('Sent Message','You can Download an offline copy of your wallet incase you loose your device, Click to download your private infomation','createBackup','bits/images/no.png',[{action: 'createBackup', title: "Back up"}],true,true);
        
       break;
 			
 			case 'merchantMessage':
      data = dat;
     console.log(data);
-           bitsNotification('Backed up Wallet','You can Download an offline copy of your wallet incase you loose your device, Click to download your private infomation','createBackup','bits/images/no.png',[{action: 'createBackup', title: "Back up"}],true,true);
-       
+
+     var store = getObjectStore('data', 'readwrite').get("bits-promo-"+dat.pid);
+store.onsuccess = function (event) {
+	   var data = event.target.result;
+	   data= JSON.parse(data);
+	  
+	 //console.log(data.discount+"% off" +data.name,dat.msg,"bits-promo-"+dat.pid,'bits/images/no.png',data.imagePath,[{action: 'createBackup', title: "Back up"}],true,true);
+      bitsNotification(data.discount+"% off " +data.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,[{action: 'redeem', title: "Buy Offer"},{action: 'unsubscribe', title: "Unsubscribe"}],true,true);
+     
+}
+
+          
       break;
 			}
        });
@@ -155,11 +202,12 @@ return new Promise(function(resolve, reject) {
 //....................................................................................................
 	
 	}
-		bitsNotification = function(title,body,tag,icon,actions,sticky,silent){
+		bitsNotification = function(title,body,tag,icon,image,actions,sticky,silent){
 	
 	 var note = self.registration.showNotification(title, {  
           body: body,  
-          icon:  icon,  
+          icon:  icon,
+          image: image,  
           tag: tag,
           actions: actions,
             sticky: sticky,

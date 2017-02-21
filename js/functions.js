@@ -84,3 +84,27 @@ contact();
 // 	}
 // }  );
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//------------------------------load name and image of user profile---------------------------------------------------------------------
+function loadProfData(){
+	 var stor=getObjectStore('data', 'readwrite').get('user-profile-'+localStorage.getItem('bits-user-name'));
+	stor.onsuccess = function (event) {
+  try{
+  
+       var upData = JSON.parse(event.target.result); 
+  
+    $( ".username-label" ).html(upData.name);
+   $( ".userProfImg" ).attr( "src", upData.image );
+  }catch(err){
+  
+    $( ".username-label" ).html('Anonymous');
+   $( ".userProfImg" ).attr( "src", '' );
+  }    
+  };
+	stor.onerror = function () {
+  
+    $( ".username-label" ).html('Anonymous');
+   $( ".userProfImg" ).attr( "src", '' );
+  };   
+}
+//------------------------------load name and image of user profile---------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
