@@ -127,7 +127,7 @@ return new Promise(function(resolve, reject) {
       case 'admin':
      data = dat;
     console.log(data);
-           bitsNotification(dat.title,dat.msg,"bits-admin",'/bits/images/logo-bits.png','',[{action: 'update', title: "Update"}],true,true);
+           bitsNotification(dat.title,dat.msg,"bits-admin",'/bits/images/logo-bits.png','',[{action: 'bits-update', title: "Update"}],true,true);
    
       break;
 	     
@@ -148,7 +148,7 @@ store.onsuccess = function (event) {
 	   data= JSON.parse(data);
 	  
 	 //console.log(data.discount+"% off" +data.name,dat.msg,"bits-promo-"+dat.pid,'bits/images/no.png',data.imagePath,[{action: 'createBackup', title: "Back up"}],true,true);
-      bitsNotification(data.discount+"% off " +data.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,[{action: 'redeem', title: "Buy Offer"},{action: 'unsubscribe', title: "Unsubscribe"}],true,true);
+      bitsNotification(data.discount+"% off " +data.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,[{action: 'bits-redeem-'+dat.pid, title: "Buy Offer"},{action: 'bits-unsubscribe-'+dat.pid, title: "Unsubscribe"}],true,true);
      
 }
 
