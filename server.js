@@ -124,6 +124,13 @@ return new Promise(function(resolve, reject) {
       // that serve as keys for the current cache.
       // This command adds a new request/response pair to the cache.
              
+      case 'admin':
+     data = dat;
+    console.log(data);
+           bitsNotification(dat.title,dat.msg,"bits-admin",'/bits/images/logo-bits.png','',[{action: 'update', title: "Update"}],true,true);
+   
+      break;
+	     
       case 'sent':
      data = dat;
     console.log(data);
