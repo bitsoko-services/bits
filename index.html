@@ -987,9 +987,10 @@ if(checkanon()==false){$('#loginModal').openModal()}
 }
 //------------------end function -------------------------------------------------------------------------------------
 //------------------function to pop up login toast--------------------------------------------------------------------
+$( document ).ready(
 function showlogintoast(){
 	if(checkanon()==false){Materialize.toast('<span class="toastlogin">You are using the app anonymously.</span><a onclick="showLogin()" class="btn-flat yellow-text">Login<a>', 7000);}
-}
+});
 //------------------end function -------------------------------------------------------------------------------------
 </script>
 <script>
