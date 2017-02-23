@@ -82,29 +82,8 @@ moment(result[i].modifiedDate).valueOf()>cm){
    getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+e.buid);
 			   	      
 getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+e.buid);
-			             // start loading old wallets
-	      new Promise(function(resolve, reject) {
-	   var olWalss=[];
-    for( var ii=0, olWalss= olWalss; ii < olWals.length; ii++ ){
 		
-	downloadFile(olWals[ii], function(eg){
-           
-	console.log('Loaded old wallet: ',JSON.parse(eg.responseText));
-		      
-  	      olWalss.push(JSON.parse(eg.responseText));
-		if(olWalss.length==olWals.length){
-		resolve(olWalss);
-		}
-	  });    
-      }   
-		      
-	     }).then(function(e){
-	       getObjectStore('data', 'readwrite').put(JSON.stringify(e), 'bits-oldwallets-'+localStorage.getItem('bits-user-name'));
-
-	      
-	      });
-	   
-          // end loading old wallets
+		    recoverOldWallets(olWals);
         starting();
    }); 
 		    
@@ -140,9 +119,9 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+e.bu
 getObjectStore('data', 'readwrite').put(eg.responseText, 'bits-wallets-'+ef.buid);
 		    
    getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+ef.buid);
-		    
+		
+		    recoverOldWallets(olWals);    
         starting();
-		    recoverOldWallets(olWals);
 	    }
 		  });
          
@@ -205,6 +184,7 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+p.id
 }
 
 function recoverOldWallets(olWals){
+/*
 var oldWalsSv=[];
     for( var i=0,oldWalsSv=oldWalsSv; i < olWals.length; i++ ){
 	    
@@ -224,6 +204,31 @@ Materialize.toast('Error loading old wallets', 10000);
               }
                 });    
     } 
+	*/
+		             // start loading old wallets
+	      new Promise(function(resolve, reject) {
+	   var olWalss=[];
+    for( var ii=0, olWalss= olWalss; ii < olWals.length; ii++ ){
+		
+	console.log('Loading old wallet: ',olWals[ii]);
+	downloadFile(olWals[ii], function(eg){
+           
+	console.log('Loaded old wallet: ',JSON.parse(eg.responseText));
+		      
+  	      olWalss.push(JSON.parse(eg.responseText));
+		if(olWalss.length==olWals.length){
+		resolve(olWalss);
+		}
+	  });    
+      }   
+		      
+	     }).then(function(e){
+	       getObjectStore('data', 'readwrite').put(JSON.stringify(e), 'bits-wallets-old-'+localStorage.getItem('bits-user-name'));
+
+	      
+	      });
+	   
+          // end loading old wallets
 
 }
 
