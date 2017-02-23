@@ -2360,6 +2360,49 @@ elmSTOne.querySelector("all-merchants").setAttribute("build", Date.now());
          
 }
 
+function localConverter(){
+    
+return new Promise(function(resolve, reject) {
+    var returns = new Object();
+     var store = getObjectStore('data', 'readwrite').get("xrates");
+store.onsuccess = function (event) {
+ 
+    try{
+  // var dat=localStorage.getItem('bitsoko-settings-country').toLowerCase();
+  var curropts=JSON.parse(event.target.result);
+     $('.bitsoko-currency').html(curropts.curcode).css('text-transform','uppercase');
+         $('.bitsoko-xrate').html('').append('<span style="">1 BTC = </span><span style="text-transform:uppercase;">'+numberify(curropts.curpr*curropts.basex,0) +' '+curropts.curcode+'</span>');
+    
+
+         returns.xrate=curropts.curpr;
+         returns.rate=curropts.basex;
+returns.symbol=curropts.curcode;
+resolve(returns);
+    } catch(err){  
+   
+         returns.xrate=0;
+         returns.rate=1;
+returns.symbol='usd';
+    console.log('exchange rates error: '+err);
+       // getBal();
+    resolve(returns);
+    }
+     
+}
+store.onerror = function (event) {
+	
+         returns.rate=1;
+returns.symbol='usd';
+    console.log('cant access exchange rates');
+    reject(returns);
+}
+
+   // updateSettings();
+});
+}
+
+
+
 /*
          function servDetUser(datab){
              
