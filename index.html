@@ -142,8 +142,9 @@ doc.save('BitsWallet_Backup.pdf');
             <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>My Offers</a></li>
 			<li class="bold"><a href="?" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>Nearby Offers</a></li>
 			<li class=""><a href="#" id="shareQR"> <i class="mdi-social-share bits-color"></i><span class="bits-13"  style=""></span> <span href id="">Share Wallet</span>  </a>  
-        	<li class="bold"><a href="#" onclick="signOut();"class="waves-effect waves-cyan"><i class="mdi-communication-live-help"></i>Use app anonymously</a></li>
-        </ul></div>
+        	<li class="bold"><a href="#" id="useAnon" onclick="signOut();"class="waves-effect waves-cyan"><i class="mdi-communication-live-help"></i>Use app anonymously</a></li>
+        	<li class="bold"><a href="#" id="useLogin" onclick="showLogin();"class="waves-effect waves-cyan"><i class="mdi-action-lock-open"></i>Login</a></li>
+            </ul></div>
       </li>
 <!--------------------------------------------- commented change account dropdown -----------------------------------------------------------------
       <li> 
@@ -472,6 +473,28 @@ doc.save('BitsWallet_Backup.pdf');
                                     </div>
                                 </div>
                                 </div>
+<<<<<<<
+
+=======
+<!-- Merchant page slider. This can be moved to preferred position -->
+<div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="images/merchants.png" alt="" > <!-- merchant image -->
+         <!--<div class="caption center-align">
+         <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>-->
+      </li>
+      <li>
+        <img src="images/merchants.png" alt=""> <!-- merchant image -->
+        <div class="caption center-align">
+          <h5 class="light grey-text text-lighten-3">Loading...</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
+<!-- End of Merchant page slider -->				
+>>>>>>>
     </div>
        <div class="modal-content" style="padding: 2px;">
         </div>
@@ -1000,41 +1023,39 @@ if(checkanon()==false){$('#loginModal').openModal()}
 //------------------function to pop up login toast--------------------------------------------------------------------
 $( document ).ready(
 function showlogintoast(){
-	if(checkanon()==false){Materialize.toast('<span class="toastlogin">You are using the app anonymously.</span><a onclick="showLogin()" class="btn-flat toastlogin yellow-text">Login<a>', 10000);}
+if(checkanon()==false){Materialize.toast('<span class="toastlogin">You are using the app anonymously.</span><a onclick="showLogin()" class="btn-flat toastlogin yellow-text">Login<a>', 10000);}
+});
+//------------------end function -------------------------------------------------------------------------------------
+//------------------function to pop up login toast--------------------------------------------------------------------
+$( document ).ready(
+function togglebuttons(){
+if(checkanon()==false){ $("#useAnon").addClass("displayNone");}
+else{ $("#useLogin").addClass("displayNone");}
 });
 //------------------end function -------------------------------------------------------------------------------------
 </script>
 <script>
  //web Share start
- document.querySelector("#share").addEventListener('click', function(event) {
-
- 	
-       navigator.share({
+document.querySelector("#share").addEventListener('click', function(event) {
+    navigator.share({
     title: actvServ().name,
     text:actvServ().desription ,
     url: window.location.href
 }).then(() => console.log('Successful share'))
 .catch(error => console.log('Error sharing:', error));
             });
- 
-
-
 //web Share end location.hash=location.hash+"&i="+
- //web ShareQR start
- document.querySelector("#shareQR").addEventListener('click', function(event) {
-       navigator.share({
+//web ShareQR start
+document.querySelector("#shareQR").addEventListener('click', function(event) {
+    navigator.share({
     title: "Bitcoin Address",
     text: localStorage.getItem('bits-user-wallet')
-   // url: window.location.href
+// url: window.location.href
 }).then(() => console.log('Successful shareQR'))
 .catch(error => console.log('Error sharingQR:', error));
             });
-
-
- function navMenu(sId){
+function navMenu(sId){
 //navigate to the sId service page
-
- 	contact();
-
+contact();
  }
  </script>
