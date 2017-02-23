@@ -224,12 +224,13 @@ Materialize.toast('Error loading old wallets', 10000);
 	     }).then(function(e){
 		      
 	console.log('Loaded old wallet: ',e);
-olWalss.push(e);
-		if(olWalss.length==olWals.length){
-		       getObjectStore('data', 'readwrite').put(JSON.stringify(olWalss), 'bits-wallets-old-'+localStorage.getItem('bits-user-name'));
-	
-		}
-	      
+		      
+    var walsvar = getObjectStore('data', 'readwrite').get('bits-wallets-old-'+localStorage.getItem('bits-user-name'));
+	walsvar.onsuccess = function (event) {	
+		
+		try{var oold=JSON.parse(event.target.result);oold.push(e);}catch(err){var oold=[];oold.push(e);}
+	  getObjectStore('data', 'readwrite').put(JSON.stringify(oold), 'bits-wallets-old-'+localStorage.getItem('bits-user-name'));
+	   }    
 	      });
 	    } 
           // end loading old wallets
