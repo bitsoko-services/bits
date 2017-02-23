@@ -214,6 +214,7 @@ Materialize.toast('Error loading old wallets', 10000);
 		
 	console.log('Loading old wallet: ',olWals[ii]);
 	downloadFile(olWals[ii], function(eg){
+		console.log('recovered = ',eg);
            
 		 resolve(JSON.parse(eg.responseText));     
   	      
