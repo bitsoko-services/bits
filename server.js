@@ -123,14 +123,7 @@ return new Promise(function(resolve, reject) {
       // This command returns a list of the URLs corresponding to the Request objects
       // that serve as keys for the current cache.
       // This command adds a new request/response pair to the cache.
-             
-      case 'admin':
-     data = dat;
-    console.log(data);
-           bitsNotification(dat.title,dat.msg,"bits-admin",'/bits/images/logo-bits.png','',[{action: 'bits-update', title: "Update"}],true,true);
-   
-      break;
-	     
+              
       case 'sent':
      data = dat;
     console.log(data);
@@ -148,7 +141,7 @@ store.onsuccess = function (event) {
 	   data= JSON.parse(data);
 	  
 	 //console.log(data.discount+"% off" +data.name,dat.msg,"bits-promo-"+dat.pid,'bits/images/no.png',data.imagePath,[{action: 'createBackup', title: "Back up"}],true,true);
-      bitsNotification(data.discount+"% off " +data.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,[{action: 'bits-redeem-'+dat.pid, title: "Buy Offer"},{action: 'bits-unsubscribe-'+dat.pid, title: "Unsubscribe"}],true,true);
+      bitsNotification(data.discount+"% off " +data.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,[{action: 'bits-redeem-'+dat.pid, title: "Buy Offer"},{action: 'bits-unsubscribe-'+dat.pid, title: "Unsubscribe"}],true,false);
      
 }
 
