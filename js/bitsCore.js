@@ -769,22 +769,6 @@ console.log('creating new address');
 }
 */
 
-//move to functions
-window.addEventListener("offline", function(e) {
- // alert("offline");
-    //showNotices('Offline!');
-   // doNotification('You are Offline!', 'transactions will be saved after you reconnect', 0, '../bitsAssets/images/icon-offline.png');
-    //sequence.goTo(2, 1);
-    // $('.info2').css('background-image',"url('../images/bitsoko.png')");
-    
-}, false);
-
-window.addEventListener("online", function(e) {
-  //loadWallet();
- 
-     //$('.info2').css('background-image',"url('../images/bitsoko-off.png')");
-}, false);
-
 //stays
 function updateBal(notif){
     
