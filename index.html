@@ -2,28 +2,28 @@
 <html lang="en">
 <head>
    <title>#{name}</title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
-	<meta name="og:title" content="#{name}" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+		<meta name="og:title" content="#{name}" />
         <meta name="og:url" content="https://bitsoko.io/app" />
         <meta name="og:image" content="#{img}" />
         <!-- Origin Trial Token, feature = Web Share, origin = https://bitsoko.io, expires = 2017-01-12 -->
 <!-- Origin Trial Token, feature = Web Share, origin = https://bitsoko.io, expires = 2017-03-31 -->
 <meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2017-03-31" content="AmhVefTF40eyTfFt5ZHxLSoKVazcEs/9vGgan3XHC/BIk1f2i3FEkF0VdA/oxRRA0jQvIBD+431GPVLADBVaGAoAAABfeyJvcmlnaW4iOiJodHRwczovL2JpdHNva28uaW86NDQzIiwiZmVhdHVyZSI6IldlYlNoYXJlIiwiZXhwaXJ5IjoxNDkwOTczMDU4LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
 <!------<meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2017-01-03" content="AvwH05WjeD812bDpeWTWGEc3d81qoKI1Z4YsUtPVo4poXAr61FSAZ/Rp3zd3tqCkOqw8Ay+/aSYvxYG4oJtDqgMAAABReyJvcmlnaW4iOiAiaHR0cHM6Ly9iaXRzb2tvLmlvOjQ0MyIsICJmZWF0dXJlIjogIldlYlNoYXJlIiwgImV4cGlyeSI6IDE0ODQyMzkxMzZ9"> -->
-	<meta name="og:description" content="#{desc}" />
-	<meta name="description" content="#{desc}" />
+		<meta name="og:description" content="#{desc}" />
+		<meta name="description" content="#{desc}" />
         <meta name="keywords" content="" />
         <link rel="shortcut icon" type="image/png" href="#{img}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="viewport" content="width=device-width,user-scalable=no">
+		<meta name="viewport" content="width=device-width,user-scalable=no">
         <meta name="msapplication-navbutton-color" content="#0f5f76">
-        <meta name="theme-color" content="#0f5f76">
-        <meta name="google-signin-client_id" content="476194103258-98t0j7p1lrela49ispgj3jfokl2r3ils.apps.googleusercontent.com">
-        <link rel="manifest" href="web-manifest.json">
+   <meta name="theme-color" content="#0f5f76">
+<meta name="google-signin-client_id" content="476194103258-98t0j7p1lrela49ispgj3jfokl2r3ils.apps.googleusercontent.com">
+  <link rel="manifest" href="web-manifest.json">
 <script src="jquery-1.7.1.min.js"></script>
-<script src="https://apis.google.com/js/client:platform.js" async defer></script>
+ <script src="https://apis.google.com/js/client:platform.js" async defer></script>
 <script type="text/javascript" src="jspdf.js"></script>
-<script type="text/javascript">
+  <script type="text/javascript">
   // start function google authentication
     function onLoad() {
       gapi.load('auth2', function() {
@@ -280,7 +280,8 @@ doc.save('BitsWallet_Backup.pdf');
                                       <img  src="images/merchantsBanner.png" alt="blog-img" class="bitsimg cardimage service-banner"style="border-radius: 0px;"> 
 					<a id="manage-store" style="display:none;float: right !important;opacity: 0.7;right: 65px;  margin-top: -240px;" href="../soko/" class="btn-floating btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>
                                       	
-                                      	<button  id="share" value="Share"class="btn-floating btn-large btn-price" style="float: right !important;opacity: 0.7;/* right: 0%; */ margin-top: -240px;"><i class="mdi-social-share"></i></button>
+                                      	<button  id="share" value="Share" class="btn-floating btn-large btn-price" style="float: right !important;opacity: 0.7;/* right: 0%; */ margin-top: -240px;"><i class="mdi-social-share"></i></button>
+                                      	<button  id="search" value="search" class="btn-floating btn-large btn-price" style="float: right !important;opacity: 0.7;/* right: 0%; */ margin-top: -240px;"><i class="mdi-action-search"></i></button>
                                     </div><div class="min-card">
                                     <ul class="card-action-buttons left">
                                         <li><div class="col s2">
@@ -294,7 +295,7 @@ doc.save('BitsWallet_Backup.pdf');
                                     <div class="row bits-row">
                                      <div class="col s12 "style="margin-top: -12px;"> <h5 id="serviceName" class="serviceName "></h5></div>
                                       </div>
-                                      <div class="row "style="  margin-bottom: -9px !important;  width: 80%; float: left;">
+                                      <div class="row "style="  margin-bottom: -9px !important;  width: 98%; float: left;">
                                         <p id="serviceDescription" class="serviceDescription "style="min-height:45px; margin-left: 11px;">Loading....</p>
                                         </div> 
                                      </div>
@@ -504,24 +505,6 @@ doc.save('BitsWallet_Backup.pdf');
                                     </div>
                                 </div>
                                 </div>
-<!-- Merchant page slider. This can be moved to preferred position -->
-<div class="slider">
-    <ul class="slides">
-      <li>
-        <img src="images/merchants.png" alt="" > <!-- merchant image -->
-         <!--<div class="caption center-align">
-         <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>-->
-      </li>
-      <li>
-        <img src="images/merchants.png" alt=""> <!-- merchant image -->
-        <div class="caption center-align">
-          <h5 class="light grey-text text-lighten-3">Loading...</h5>
-        </div>
-      </li>
-    </ul>
-  </div>
-<!-- End of Merchant page slider -->				
     </div>
        <div class="modal-content" style="padding: 2px;">
         </div>
@@ -565,97 +548,60 @@ doc.save('BitsWallet_Backup.pdf');
     <script type="text/javascript" src="js/plugins.js"></script>
     <!--custom-script.js - Add your own theme custom JS-->
     <script type="text/javascript" src="js/custom-script.js"></script>
-    <!-- Toast Notification
-    <script type="text/javascript">
-    // Toast Notification
-    $(window).load(function() {
-        setTimeout(function() {
-            Materialize.toast('<span>Hiya! I am a toast.</span>', 1500);
-        }, 1500);
-        setTimeout(function() {
-            Materialize.toast('<span>You can swipe me too!</span>', 3000);
-        }, 5000);
-        setTimeout(function() {
-            Materialize.toast('<span>You have new order.</span><a class="btn-flat yellow-text" href="#">Read<a>', 3000);
-        }, 15000);
-    });
-    </script> -->
+<!--=============================================================================================================================================================== -->
     <script>
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------floating button change  --------------------------------------------------------------------
-	if ((!location.port || location.port == "80") && location.protocol != 'https:') {
-        //location.protocol = 'https:';
-      }
-            
+	if ((!location.port || location.port == "80") && location.protocol != 'https:') {}       
  	if ("onhashchange" in window) {
- 
      function locationHashChanged(e) {
-         console.log(e);
-      // mgHash(e.newURL);
-       serviceOpener()
-         
+       console.log(e);
+       serviceOpener()         
 }
         window.addEventListener("hashchange", locationHashChanged, false);
-           //console.log("The browser supports the hashchange event!");
 }  
 //-----------------------------------------------------------------------------------------------------------------------------------         
-  function getBitsOpt(aKey){      
- var pairs = window.location.hash.slice(1).split("&");
-            
-for(var i = 0, aKey=aKey; i < pairs.length; ++i) {
-var key=pairs[i].split("=")[0];
-    var value=pairs[i].split("=")[1];
+ function getBitsOpt(aKey){      
+ var pairs = window.location.hash.slice(1).split("&");       
+ for(var i = 0, aKey=aKey; i < pairs.length; ++i) {
+ var key=pairs[i].split("=")[0];
+ var value=pairs[i].split("=")[1];
  if (key==aKey){
-     
      return value;
- 
- }  
-    
+  }  
+ }
 }
-    
-    
-}
-        function getBitsWinOpt(aKey){     
- var pairs = window.location.search.slice(1).split("&");
-            
-for(var i = 0, aKey=aKey; i < pairs.length; ++i) {
-var key=pairs[i].split("=")[0];
-    var value=pairs[i].split("=")[1];
- if (key==aKey){
-     
-     return value;
- 
- }  
-    
-}
-    
-    
+ function getBitsWinOpt(aKey){     
+ var pairs = window.location.search.slice(1).split("&");           
+ for(var i = 0, aKey=aKey; i < pairs.length; ++i) {
+ var key=pairs[i].split("=")[0];
+ var value=pairs[i].split("=")[1];
+ if (key==aKey){   
+ return value;
+ }     
+}   
 }
 //---------------------------------------function gets the totals of all items on a list----------------------------------------------------------------------------
-function tabulateTotals(){
+	function tabulateTotals(){
 	console.log(this);
-var addproducts = document.querySelectorAll(".bitsInputQty");
-var totals = 0;
-for(var i = 0; i< addproducts.length; ++i){
-//addproducts[i].addEventListener("change",tabulateTotals,false);
-try{
+	var addproducts = document.querySelectorAll(".bitsInputQty");
+	var totals = 0;
+	for(var i = 0; i< addproducts.length; ++i){
+	try{
 	var itVal=$(addproducts[i]).val() ? $(addproducts[i]).val() : 0;
-totals = totals+(parseInt($(addproducts[i]).attr("price"))*parseInt(itVal));
-
-$(".totals").html(totals);
-}catch(err){}
-}
-}
+	totals = totals+(parseInt($(addproducts[i]).attr("price"))*parseInt(itVal));
+	$(".totals").html(totals);
+	}catch(err){}
+	}
+	}
 //-----------------------------------------updating service list function-------------------------------------------------------------------------------------------
 function updateServicelist(){ 
 activeService=$('#serviceModal').attr('service');
 	doFetch({ action: 'serviceList', data: activeService, user: localStorage.getItem("bits-user-name")}).then(
 	function(e){
-           if (e.status=="ok"){
-        serviceList = e.data;
-      
-            
+    if (e.status=="ok"){
+    serviceList = e.data;        
     for(var ii = 0; ii < serviceList.length; ++ii) {
 
 		$('.serviceListHolder').append('<li class="collection-item avatar avatar bits-max promo-collection"><img src="images/avatar.jpg" alt="" class="circle"><span class="title"><span class="serviceListTitle">'+serviceList[ii].name+'</span></span><p class="serviceListFirstline"><br class="servicelistSeccondline"> Second Line </p><a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a></li>');
@@ -712,9 +658,19 @@ function doSubscribe(){
 		
 //---------------------------------------send promo data to db-----------------------------------------------------------------------------
 		   if(action=='subscribe'){
+			   //START-TODO-remove support for individually listed promos in db, moved to "bits-mypromos-USERID"
+			    getObjectStore('data', 'readwrite').put(JSON.stringify(e.prom), 'bits-promo-'+pid);
+			   //END-TODO
+			         
+    var walsvar = getObjectStore('data', 'readwrite').get('bits-mypromos-'+localStorage.getItem('bits-user-name'));
+	walsvar.onsuccess = function (event) {	
+		
+		try{var oold=JSON.parse(event.target.result);oold.push(e.prom);}catch(err){var oold=[];oold.push(e.prom);}
+	  getObjectStore('data', 'readwrite').put(JSON.stringify(oold), 'bits-mypromos-'+localStorage.getItem('bits-user-name'));
+		
 		   $( ".promoSubButton-"+pid ).prop( "checked",true);
 			   $(".promoSubState-"+pid).html("Subscribed");
-			    getObjectStore('data', 'readwrite').put(JSON.stringify(e.prom), 'bits-promo-'+pid);
+	   } 
 
 	          }else{
 		  $( ".promoSubButton-"+pid ).prop( "checked",false);
@@ -811,9 +767,8 @@ $(".resDisplay").html( mDet.name);
 	 checkPayments();
  for(var ii = 0; ii < mDet.list.length; ++ii) {
 // -------------------------------------------------loads the shops product lists --------------------------------------------------------------------------------------------------------------------------
-        $('.serviceListHolder').append('<li class="collection-item avatar bits-max "><img src="https://bitsoko.io'+mDet.list[ii].imagePath+'" data-caption="'+mDet.list[ii].description+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"><span class="conf-curr"></span></span>'+mDet.list[ii].metric+' </span></p><span class="secondary-content"><p class="col s4" style="display: none;"> <input class="number bitsInputQty" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'> '+mDet.list[ii].metric+' (s)<label for='+mDet.list[ii].name+'></label></p></span></li>');
-             	};
-        	 $('.materialboxed').materialbox();
+ $('.serviceListHolder').append('<li class="collection-item avatar bits-max "><img src="https://bitsoko.io'+mDet.list[ii].imagePath+'" data-caption="'+mDet.list[ii].description+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"><span class="conf-curr"></span> </span>'+mDet.list[ii].metric+' </span></p><span class="secondary-content"><p class="col s4" style="display: none;"> <input class="number bitsInputQty" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'> '+mDet.list[ii].metric+' (s)<label for='+mDet.list[ii].name+'></label></p></span></li>');};
+ $('.materialboxed').materialbox();
 var addproducts = document.querySelectorAll(".bitsInputQty");
 for(var i = 0; i< addproducts.length; ++i){
 	addproducts[i].addEventListener("change",tabulateTotals,false);
@@ -827,89 +782,40 @@ function handleModal(){
       console.log(this);
       $('#serviceModal').attr('service',$(this).attr('service'));
       $('#serviceModal').attr('account',$(this).attr('account'));
-
       populateModal($(this).attr('service'),$(this).attr('account')); 
-
   }        
       var items =  [ 
       {dataModal:'#modal'}
       ]
-    
-    for(var ii = 0; ii < items.length; ++ii) {
-       
-       // template.querySelector('data-modal').innerHTML = items[ii].dataModal;
-		
-
-		// homeFeed.appendChild(thatDoc.importNode(template, true));
-      
+        for(var ii = 0; ii < items.length; ++ii) {  
              };
-
-//       var items =  [
-//       {name:'sam',desc:'another desription',image:'background5.jpg'},
-//       {name:'sam',desc:'another desription',image:'background5.jpg'}
-//       ]
-    //     for(var ii = 0; ii < items.length; ++ii) {
-       
-//        // document.querySelector('.serviceName').innerHTML = items[ii].name;
-// 		//document.querySelector('.serviceDescription').innerHTML = items[ii].desc;
-// 		//template.querySelector('.card-reveal-content').innerHTML = items[ii].cardcontent;
-
-// 		 //homeFeed.appendChild(thatDoc.importNode(template, true));
-      
-//              };
-
-          var activeService;
+ var activeService;
           allServices =  [
-     
-      {name:'Merchants',id:'3',desc:'Merchant desription',cardimage:'/bits/images/merchantsBanner',cardLogo:'/bits/images/merchants',image:'mdi-maps-store-mall-directory',list:[]},
+      //{name:'Merchants',id:'3',desc:'Merchant desription',cardimage:'/bits/images/merchantsBanner',cardLogo:'/bits/images/merchants',image:'mdi-maps-store-mall-directory',list:[]},
        {name:'Contacts',id:'2',desc:'Contacts desription',cardimage:'/bits/images/contactsBanner',cardLogo:'/bits/images/contacts',image:'mdi-social-group',list:[]}    
       ]
-    
-    for(var ii = 0; ii < allServices.length; ++ii) {
-
-
+        for(var ii = 0; ii < allServices.length; ++ii) {
 		$('.serviceButtonsHolder').append('<li><a href="?s='+allServices[ii].id+'" service="'+allServices[ii].id+'" class="serviceButtons btn bits  "><i class="large '+allServices[ii].image+'"></i> '+allServices[ii].name+'</a></li>');
-      
-             };
-
-
+           };
  var bts = document.querySelectorAll(".serviceButtons");
-
-
     for(var ii = 0; ii < bts.length; ++ii) {
-
-
 bts[ii].addEventListener('touchstart', function(event) {
  	console.log($(this).attr('service'));
 if ($(this).attr('service')=='2'){
 	contact();
 }
-
  });
              };
-
-
      function populateModal(x,y){
-
          console.log(x,y)
-
-
-
     for(var ii = 0,x=x,activeService=activeService; ii < allServices.length; ++ii) {
         if(allServices[ii].id==x){
             activeService=allServices[ii];
         }
 		};
-
-
-
              if ( activeService.list.length==0){
              	$('.serviceListHolder').html("");
-
              }
-
-
-
         document.querySelector('.serviceName').innerHTML = activeService.name;
         document.querySelector('.cardimage').src = "https://bitsoko.io"+activeService.cardimage+".png";
          document.querySelector('.cardLogo').src = "https://bitsoko.io"+activeService.cardLogo+".png";
@@ -917,51 +823,26 @@ if ($(this).attr('service')=='2'){
 //add button
 
 updateServicelist();
-
-  
-  var el = document.querySelectorAll(".loadButtons");
-
+    var el = document.querySelectorAll(".loadButtons");
 for(var l=0, el=el; l < el.length; ++l){
-
   el[l].addEventListener("touchstart", handleModal, false);
-
 }
-
      function populateModal(x,y){
-
          console.log(x,y)
-
-
-
     for(var ii = 0,x=x,activeService=activeService; ii < serviceList.length; ++ii) {
         if(serviceList[ii].id==x){
             activeService=serviceList[ii];
         }
-		
-		if (serviceList[ii].id==1){
+			if (serviceList[ii].id==1){
 			 document.querySelector('.service-banner').src = 'https://bitsoko.io/app/images/services/contacts.png';
-
 		}else if(serviceList[ii].id==2){
 			 document.querySelector('.service-banner').src = 'https://bitsoko.io/app/images/services/contacts.png';
-
 		}
              };
-
-
-
-        document.querySelector('.btnname').innerHTML = activeService.name;
-		//document.querySelector('.serviceDescription').innerHTML = activeService.desc;
-//Populate list
-
-       //document.querySelector('.serviceListTitle').innerHTML = serviceList[ii].name;
-		//document.querySelector('.serviceListFirstline').innerHTML = serviceList[ii].desc;
-		//document.querySelector('.servicelistSeccondline').innerHTML = items[ii].cardcontent;
-
-		
-      
+        document.querySelector('.btnname').innerHTML = activeService.name;    
              };
      }
- //function to hide and display nav-bar balance div     
+//--------------------------function to hide and display nav-bar balance div  ----------------------------------------------------------------------------   
                  $(window).scroll(function(){
    var scroll = $(window).scrollTop();
    if (scroll > 100) {
@@ -970,20 +851,6 @@ for(var l=0, el=el; l < el.length; ++l){
       $("#bits-nav-bal").css({"display":"none"});
     } 
     })
-    	//$(window).scroll(function(){if($('#serviceListCard').hasClass("pin-top")){
-//console.log("not pinned")
-//$("#UlHolder").fadeIn(3000);
-//$("#UlHolder").removeClass("top-magrin fade-in one");
-
-// 	}
-// 	else{
-// 		//console.log("pinned")
-// 	//	$("#UlHolder").fadeIn(3000);
-// 		$("#UlHolder").addClass("top-magrin");
-		
-// 	}
-//   }); 		
-     
 		$(window).scroll(function() {     
     var scroll = $(window).scrollTop();
     if (scroll > 150) {
@@ -1050,21 +917,6 @@ $(function(){
 	showPositionError()
 })
 }; 
-
-     
-//coin change
-/*$(document).on('change', '.div-toggle', function() {
-  var target = $(this).data('target');
-  var show = $("option:selected", this).data('show');
-  $(target).children().addClass('hide');
-  $(show).removeClass('hide');
-});
-$(document).ready(function(){
-	$('.div-toggle').trigger('change');
-});*/
-
-
-
           function sendMessage(message) {
         // This wraps the message posting/response in a promise, which will resolve if the response doesn't
         // contain an error, and reject with the error if it does. If you'd prefer, it's possible to call
@@ -1160,31 +1012,32 @@ e=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits
       $('.promoHolder').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>Switch on your Location </strong></p><p class="collections-content"></p></div></li></ul>');
             
  console.log(e);
-}    
-//if ststements for popup login modal if user is on anon mode
-//------------------function to pop up login modal--------------------------------------------------------------------
-function showLogin(){
-	if(checkanon()==false){$('#loginModal').openModal()}
 }
-//------------------end function -------------------------------------------------------------------------------------
- 
- function checkanon() {
-
-if(localStorage.getItem('bits-user-name')==null){
-	
-return false;	
-//$('#loginModal').openModal()
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------function to check if wallet is anon----------------------------------------------------------------------------------------------------
+function checkanon() {
+if(localStorage.getItem('bits-user-name')==null){	
+return false;
 }
 else{
 	return true;
 }
 }
-
-//)
-//end if popup login
+//--------------------------------------end if popup login----------------------------------------------------------------------------------------- 
+//----------------------------------------------if ststements for popup login modal if user is on anon mode----------------------------------------
+//----------------------------------------------function to pop up login modal---------------------------------------------------------------------
+function showLogin(){
+if(checkanon()==false){$('#loginModal').openModal()}
+}
+//------------------end function -------------------------------------------------------------------------------------
+//------------------function to pop up login toast--------------------------------------------------------------------
+$( document ).ready(
+function showlogintoast(){
+	if(checkanon()==false){Materialize.toast('<span class="toastlogin">You are using the app anonymously.</span><a onclick="showLogin()" class="btn-flat toastlogin yellow-text">Login<a>', 10000);}
+});
+//------------------end function -------------------------------------------------------------------------------------
 </script>
-
- <script>
+<script>
  //web Share start
  document.querySelector("#share").addEventListener('click', function(event) {
 
@@ -1218,12 +1071,3 @@ else{
 
  }
  </script>
-
-<script>
-//jQuery Initialization for Merchant Slider
-//Materializecss Slider
-
-$(document).ready(function(){
-      $('.slider').slider();
-    });
- </script>       

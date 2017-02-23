@@ -82,29 +82,8 @@ moment(result[i].modifiedDate).valueOf()>cm){
    getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+e.buid);
 			   	      
 getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+e.buid);
-			             // start loading old wallets
-	      new Promise(function(resolve, reject) {
-	   var olWalss=[];
-    for( var ii=0, olWalss= olWalss; ii < olWals.length; ii++ ){
 		
-	downloadFile(olWals[ii], function(eg){
-           
-	console.log('Loaded old wallet: ',JSON.parse(eg.responseText));
-		      
-  	      olWalss.push(JSON.parse(eg.responseText));
-		if(olWalss.length==olWals.length){
-		resolve(olWalss);
-		}
-	  });    
-      }   
-		      
-	     }).then(function(e){
-	       getObjectStore('data', 'readwrite').put(JSON.stringify(e), 'bits-oldwallets-'+localStorage.getItem('bits-user-name'));
-
-	      
-	      });
-	   
-          // end loading old wallets
+		    recoverOldWallets(olWals);
         starting();
    }); 
 		    
@@ -140,9 +119,9 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+e.bu
 getObjectStore('data', 'readwrite').put(eg.responseText, 'bits-wallets-'+ef.buid);
 		    
    getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+ef.buid);
-		    
+		
+		    recoverOldWallets(olWals);    
         starting();
-		    recoverOldWallets(olWals);
 	    }
 		  });
          
@@ -205,6 +184,7 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+p.id
 }
 
 function recoverOldWallets(olWals){
+/*
 var oldWalsSv=[];
     for( var i=0,oldWalsSv=oldWalsSv; i < olWals.length; i++ ){
 	    
@@ -224,6 +204,36 @@ Materialize.toast('Error loading old wallets', 10000);
               }
                 });    
     } 
+	*/
+	console.log(olWals);
+	             // start loading old wallets
+	 var olWalss=[];
+    for( var ii=0, olWalss= olWalss; ii < olWals.length; ii++ ){	
+	      new Promise(function(resolve, reject) {
+	  
+		
+	console.log('Loading old wallet: ',olWals[ii]);
+	downloadFile(olWals[ii], function(eg){
+		console.log('recovered = ',eg);
+           
+		 resolve(JSON.parse(eg.responseText));     
+  	      
+	  });    
+       
+		      
+	     }).then(function(e){
+		      
+	console.log('Loaded old wallet: ',e);
+		      
+    var walsvar = getObjectStore('data', 'readwrite').get('bits-wallets-old-'+localStorage.getItem('bits-user-name'));
+	walsvar.onsuccess = function (event) {	
+		
+		try{var oold=JSON.parse(event.target.result);oold.push(e);}catch(err){var oold=[];oold.push(e);}
+	  getObjectStore('data', 'readwrite').put(JSON.stringify(oold), 'bits-wallets-old-'+localStorage.getItem('bits-user-name'));
+	   }    
+	      });
+	    } 
+          // end loading old wallets
 
 }
 
@@ -1028,3 +1038,21 @@ function changedConfCode(t){
 
 }
 addMobiVeri();
+
+
+//move to functions
+window.addEventListener("offline", function(e) {
+ // alert("offline");
+    //showNotices('Offline!');
+   // doNotification('You are Offline!', 'transactions will be saved after you reconnect', 0, '../bitsAssets/images/icon-offline.png');
+    //sequence.goTo(2, 1);
+    // $('.info2').css('background-image',"url('../images/bitsoko.png')");
+    
+}, false);
+
+window.addEventListener("online", function(e) {
+  //loadWallet();
+ 
+     //$('.info2').css('background-image',"url('../images/bitsoko-off.png')");
+}, false);
+
