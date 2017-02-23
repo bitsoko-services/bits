@@ -205,6 +205,7 @@ Materialize.toast('Error loading old wallets', 10000);
                 });    
     } 
 	*/
+	console.log(olWals);
 		             // start loading old wallets
 	      new Promise(function(resolve, reject) {
 	   var olWalss=[];
