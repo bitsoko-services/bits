@@ -1,7 +1,7 @@
 
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =202;
+	bitsVersion =203;
 bitsInstall = function(event){
 	
 	
@@ -90,7 +90,6 @@ doc.save('BitsWallet_Backup.pdf');*/
 	
     
   id=dat.mid ? dat.mid : randomString(20);
-    
    msDat = dat;
     console.log(dat);
 return new Promise(function(resolve, reject) {
@@ -103,16 +102,10 @@ return new Promise(function(resolve, reject) {
      data = dat;
     console.log(data);
            bitsNotification('Backed up Wallet','You can Download an offline copy of your wallet incase you loose your device, Click to download your private infomation','createBackup','bits/images/no.png',[{action: 'createBackup', title: "Back up"}],true,true);
-       
       break;
-			}
-	
-	
+			}	
 });
-	
-	
-	
-	}
+		}
 //.............................................................................................
 	bitsPush = function(dat){
 		return new Promise(function(resolve, reject) {
@@ -128,7 +121,6 @@ return new Promise(function(resolve, reject) {
      data = dat;
     console.log(data);
            bitsNotification('Sent Message','You can Download an offline copy of your wallet incase you loose your device, Click to download your private infomation','createBackup','bits/images/no.png',[{action: 'createBackup', title: "Back up"}],true,true);
-       
       break;
 			
 			case 'merchantMessage':
@@ -144,8 +136,7 @@ store.onsuccess = function (event) {
       bitsNotification(data.discount+"% off " +data.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,[{action: 'bits-redeem-'+dat.pid, title: "Buy Offer"},{action: 'bits-unsubscribe-'+dat.pid, title: "Unsubscribe"}],true,false);
      
 }
-
-          
+      
       break;
 			}
        });

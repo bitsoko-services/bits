@@ -40,14 +40,13 @@
 //end google authentication  
 </script>
 <script type="text/javascript">
-// Jspdf start
+// ---------------------------------------------Jspdf start----------------------------------------------------------------------------------------------
 var doc = new jsPDF();
 var specialElementHandlers = {
 '#editor': function (element, renderer) {
 return true;
 }
 };
-
 $(document).ready(function() {
 $('#btn_save').click(function () {
 doc.fromHTML($('#adressesModal').html(), 15, 15, {
@@ -57,7 +56,7 @@ doc.fromHTML($('#adressesModal').html(), 15, 15, {
 doc.save('BitsWallet_Backup.pdf');
 });
 });
-// JSPDF end
+// ..................................................JSPDF end.....................................................................................
 </script>
 <script src="https://bitsoko.io/bitsAssets/js/webcomponents.js" async></script>
     <!-- CORE CSS-->    
@@ -66,16 +65,12 @@ doc.save('BitsWallet_Backup.pdf');
     <!-- Custome CSS-->    
     <link href="css/custom/custom.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="css/keypad.css" type="text/css" rel="stylesheet" media="">
-
-
     <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
     <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="js/plugins/jvectormap/jquery-jvectormap.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-
 <link rel="import" href="https://bitsoko.io/bitsAssets/html/connector.html">
 </head>
-
 <body onload="starting()">
 	<bits-connect></bits-connect>
     <!-- Start Page Loading -->
@@ -85,10 +80,7 @@ doc.save('BitsWallet_Backup.pdf');
         <div class="loader-section section-right"></div>
     </div>
     <!-- End Page Loading -->
-
-    <!-- //////////////////////////////////////////////////////////////////////////// -->
-
-    
+    <!-- //////////////////////////////////////////////////////////////////////////// -->    
     <!-- START HEADER -->
     <header id="header" class="page-topbar bits">
         <!-- start header nav-->
@@ -99,12 +91,6 @@ doc.save('BitsWallet_Backup.pdf');
                     <li><h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1"></a> <span class="logo-text"></span></h1></li>
                       <li></li>
                     </ul>
-                  <!--   <div class="header-search-wrapper hide-on-med-and-down">
-                        <i class="mdi-action-search"></i>
-                        <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize"/>
-                    </div>
-                    
-                    translation-button -->
                     <div class="bits-nav-bal right" id="bits-nav-bal"style="color:#fff; padding-right:10px; margin-top: -55px;" ><span class="bitsoko-balance">0.00</span> <span class="bitsoko-currency"></span></div>
                   
                 </div>
