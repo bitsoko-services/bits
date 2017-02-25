@@ -242,15 +242,23 @@ return response.clone().text().then(function(d){
  	
 var respJ = JSON.parse(d);
   console.log(respJ);
-	if(respJ.a=='3'&&respJ.s=='3'){
+	if(respJ.a=='0'&&respJ.s=='3'){
 //This is a sokopos Default url so redirect to homepage
-url = location.origin+'/merch/';
+url = location.origin+'/soko/';
 var trResp=Response.redirect(url);
 
 return trResp;	   
-	   }else{
+	   }else if(respJ.s=='3'){
+ 
+url = location.origin+'/bits/?s='+respJ.a+'&p='+respJ.p;
+var trResp=Response.redirect(url);
+cache.put(event.request.clone(), trResp.clone());
 
-url = location.origin+'/bits/?s='+respJ.s+'&a='+respJ.a+'&p='+respJ.p;
+return trResp;
+	   
+	   }else{
+ 
+url = location.origin+'/bits/?s='+respJ.s+'&p='+respJ.p;
 var trResp=Response.redirect(url);
 cache.put(event.request.clone(), trResp.clone());
 
