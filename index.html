@@ -1011,7 +1011,14 @@ $( document ).ready(
 function showlogintoast(){
 if(checkanon()==false){Materialize.toast('<span class="toastlogin">You are using the app anonymously.</span><a onclick="showLogin()" class="btn-flat toastlogin yellow-text">Login<a>', 10000);}
 else{
-	//Materialize.toast('<span class="toastlogin">You are logged in as:<span class="username-label"></span>', 10000);
+	var gtname=getObjectStore('data', 'readwrite').get('user-profile-'+localStorage.getItem('bits-user-name'));
+	gtname.onsuccess = function (event) {
+  try{  
+    var nam = JSON.parse(event.target.result); 
+    console.log(nam.name)
+	Materialize.toast('<span class="toastlogin">You are logged in as: '+ nam.name, 10000);
+  }catch(err){}    
+  };
 	}
 });
 //------------------end function -------------------------------------------------------------------------------------
