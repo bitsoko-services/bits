@@ -6,7 +6,7 @@
 		<meta name="og:title" content="#{name}" />
         <meta name="og:url" content="https://bitsoko.io/app" />
         <meta name="og:image" content="#{img}" />
-        <!-- Origin Trial Token, feature = Web Share, origin = https://bitsoko.io, expires = 2017-01-12 -->
+<!-- Origin Trial Token, feature = Web Share, origin = https://bitsoko.io, expires = 2017-01-12 -->
 <!-- Origin Trial Token, feature = Web Share, origin = https://bitsoko.io, expires = 2017-03-31 -->
 <meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2017-03-31" content="AmhVefTF40eyTfFt5ZHxLSoKVazcEs/9vGgan3XHC/BIk1f2i3FEkF0VdA/oxRRA0jQvIBD+431GPVLADBVaGAoAAABfeyJvcmlnaW4iOiJodHRwczovL2JpdHNva28uaW86NDQzIiwiZmVhdHVyZSI6IldlYlNoYXJlIiwiZXhwaXJ5IjoxNDkwOTczMDU4LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
 <!------<meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2017-01-03" content="AvwH05WjeD812bDpeWTWGEc3d81qoKI1Z4YsUtPVo4poXAr61FSAZ/Rp3zd3tqCkOqw8Ay+/aSYvxYG4oJtDqgMAAABReyJvcmlnaW4iOiAiaHR0cHM6Ly9iaXRzb2tvLmlvOjQ0MyIsICJmZWF0dXJlIjogIldlYlNoYXJlIiwgImV4cGlyeSI6IDE0ODQyMzkxMzZ9"> -->
@@ -1011,6 +1011,12 @@ $( document ).ready(
 function showlogintoast(){
 if(checkanon()==false){Materialize.toast('<span class="toastlogin">You are using the app anonymously.</span><a onclick="showLogin()" class="btn-flat toastlogin yellow-text">Login<a>', 10000);}
 else{
+//showuser()
+	}
+});
+//-----------------------------------------------------------------------------------------------------------------------------------------
+$( document ).ready(function showuser(){
+if(checkanon()==true){
 	var gtname=getObjectStore('data', 'readwrite').get('user-profile-'+localStorage.getItem('bits-user-name'));
 	gtname.onsuccess = function (event) {
   try{  
@@ -1019,8 +1025,11 @@ else{
 	Materialize.toast('<span class="toastlogin">You are logged in as: '+ nam.name, 10000);
   }catch(err){}    
   };
+  else{
+//showlogintoast()
 	}
-});
+}});
+
 //------------------end function -------------------------------------------------------------------------------------
 //------------------function to pop up login toast--------------------------------------------------------------------
 $( document ).ready(
