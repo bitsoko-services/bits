@@ -1,7 +1,7 @@
 
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =198;
+	bitsVersion =208;
 bitsInstall = function(event){
 	
 	
@@ -18,7 +18,7 @@ bitsNotificationClick = function(dat){
 	
 // 	      event.notification.close();
 //      event.waitUntil(
-        
+   console.log(dat);     
     clients.matchAll({ 
 includeUncontrolled: true, 	
       type: "all"  
@@ -90,7 +90,6 @@ doc.save('BitsWallet_Backup.pdf');*/
 	
     
   id=dat.mid ? dat.mid : randomString(20);
-    
    msDat = dat;
     console.log(dat);
 return new Promise(function(resolve, reject) {
@@ -103,16 +102,10 @@ return new Promise(function(resolve, reject) {
      data = dat;
     console.log(data);
            bitsNotification('Backed up Wallet','You can Download an offline copy of your wallet incase you loose your device, Click to download your private infomation','createBackup','bits/images/no.png',[{action: 'createBackup', title: "Back up"}],true,true);
-       
       break;
-			}
-	
-	
+			}	
 });
-	
-	
-	
-	}
+		}
 //.............................................................................................
 	bitsPush = function(dat){
 		return new Promise(function(resolve, reject) {
@@ -123,19 +116,11 @@ return new Promise(function(resolve, reject) {
       // This command returns a list of the URLs corresponding to the Request objects
       // that serve as keys for the current cache.
       // This command adds a new request/response pair to the cache.
-             
-      case 'admin':
-     data = dat;
-    console.log(data);
-           bitsNotification(dat.title,dat.msg,"bits-admin",'/bits/images/logo-bits.png','',[{action: 'update', title: "Update"}],true,true);
-   
-      break;
-	     
+              
       case 'sent':
      data = dat;
     console.log(data);
            bitsNotification('Sent Message','You can Download an offline copy of your wallet incase you loose your device, Click to download your private infomation','createBackup','bits/images/no.png',[{action: 'createBackup', title: "Back up"}],true,true);
-       
       break;
 			
 			case 'merchantMessage':
@@ -148,11 +133,10 @@ store.onsuccess = function (event) {
 	   data= JSON.parse(data);
 	  
 	 //console.log(data.discount+"% off" +data.name,dat.msg,"bits-promo-"+dat.pid,'bits/images/no.png',data.imagePath,[{action: 'createBackup', title: "Back up"}],true,true);
-      bitsNotification(data.discount+"% off " +data.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,[{action: 'redeem', title: "Buy Offer"},{action: 'unsubscribe', title: "Unsubscribe"}],true,true);
+      bitsNotification(data.discount+"% off " +data.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,[{action: 'bits-redeem-'+dat.pid, title: "Buy Offer"},{action: 'bits-unsubscribe-'+dat.pid, title: "Unsubscribe"}],true,false);
      
 }
-
-          
+      
       break;
 			}
        });
@@ -258,15 +242,23 @@ return response.clone().text().then(function(d){
  	
 var respJ = JSON.parse(d);
   console.log(respJ);
-	if(respJ.a=='3'&&respJ.s=='3'){
+	if(respJ.a=='0'&&respJ.s=='3'){
 //This is a sokopos Default url so redirect to homepage
-url = location.origin+'/merch/';
+url = location.origin+'/soko/';
 var trResp=Response.redirect(url);
 
 return trResp;	   
-	   }else{
+	   }else if(respJ.s=='3'){
+ 
+url = location.origin+'/bits/?s='+respJ.a+'&p='+respJ.p;
+var trResp=Response.redirect(url);
+cache.put(event.request.clone(), trResp.clone());
 
-url = location.origin+'/bits/?s='+respJ.s+'&a='+respJ.a+'&p='+respJ.p;
+return trResp;
+	   
+	   }else{
+ 
+url = location.origin+'/bits/?s='+respJ.s+'&p='+respJ.p;
 var trResp=Response.redirect(url);
 cache.put(event.request.clone(), trResp.clone());
 

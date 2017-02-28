@@ -17,7 +17,11 @@ aside>ul{
       margin-top: -399px;
   left: -250px !important;
   }*/
+/*--------------------------------custom toast------------------------------------------------------------------------   */
+.toastlogin {
+    word-break:normal !important;
 
+}
 /* ---------------------------------------------------sticky css-------------------------------------------------------- */
 #one { position: sticky; top: 10px; }* {
   box-sizing: border-box;
@@ -121,7 +125,7 @@ dd + dd {
   .promo-collection{  
  background-color: white !important; 
     height: 100%; 
-    overflow: overlay; 
+    overflow: auto; 
     width: 96%!important; 
     padding-bottom: 20px; 
     margin: 2%; 

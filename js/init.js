@@ -82,29 +82,8 @@ moment(result[i].modifiedDate).valueOf()>cm){
    getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+e.buid);
 			   	      
 getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+e.buid);
-			             // start loading old wallets
-	      new Promise(function(resolve, reject) {
-	   var olWalss=[];
-    for( var ii=0, olWalss= olWalss; ii < olWals.length; ii++ ){
 		
-	downloadFile(olWals[ii], function(eg){
-           
-	console.log('Loaded old wallet: ',JSON.parse(eg.responseText));
-		      
-  	      olWalss.push(JSON.parse(eg.responseText));
-		if(olWalss.length==olWals.length){
-		resolve(olWalss);
-		}
-	  });    
-      }   
-		      
-	     }).then(function(e){
-	       getObjectStore('data', 'readwrite').put(JSON.stringify(e), 'bits-oldwallets-'+localStorage.getItem('bits-user-name'));
-
-	      
-	      });
-	   
-          // end loading old wallets
+		    recoverOldWallets(olWals);
         starting();
    }); 
 		    
@@ -140,9 +119,9 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+e.bu
 getObjectStore('data', 'readwrite').put(eg.responseText, 'bits-wallets-'+ef.buid);
 		    
    getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+ef.buid);
-		    
+		
+		    recoverOldWallets(olWals);    
         starting();
-		    recoverOldWallets(olWals);
 	    }
 		  });
          
@@ -205,6 +184,7 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(ee), 'bits-wallets-'+p.id
 }
 
 function recoverOldWallets(olWals){
+/*
 var oldWalsSv=[];
     for( var i=0,oldWalsSv=oldWalsSv; i < olWals.length; i++ ){
 	    
@@ -224,6 +204,36 @@ Materialize.toast('Error loading old wallets', 10000);
               }
                 });    
     } 
+	*/
+	console.log(olWals);
+	             // start loading old wallets
+	 var olWalss=[];
+    for( var ii=0, olWalss= olWalss; ii < olWals.length; ii++ ){	
+	      new Promise(function(resolve, reject) {
+	  
+		
+	console.log('Loading old wallet: ',olWals[ii]);
+	downloadFile(olWals[ii], function(eg){
+		console.log('recovered = ',eg);
+           
+		 resolve(JSON.parse(eg.responseText));     
+  	      
+	  });    
+       
+		      
+	     }).then(function(e){
+		      
+	console.log('Loaded old wallet: ',e);
+		      
+    var walsvar = getObjectStore('data', 'readwrite').get('bits-wallets-old-'+localStorage.getItem('bits-user-name'));
+	walsvar.onsuccess = function (event) {	
+		
+		try{var oold=JSON.parse(event.target.result);oold.push(e);}catch(err){var oold=[];oold.push(e);}
+	  getObjectStore('data', 'readwrite').put(JSON.stringify(oold), 'bits-wallets-old-'+localStorage.getItem('bits-user-name'));
+	   }    
+	      });
+	    } 
+          // end loading old wallets
 
 }
 
@@ -1028,3 +1038,601 @@ function changedConfCode(t){
 
 }
 addMobiVeri();
+
+
+//move to functions
+window.addEventListener("offline", function(e) {
+ // alert("offline");
+    //showNotices('Offline!');
+   // doNotification('You are Offline!', 'transactions will be saved after you reconnect', 0, '../bitsAssets/images/icon-offline.png');
+    //sequence.goTo(2, 1);
+    // $('.info2').css('background-image',"url('../images/bitsoko.png')");
+    
+}, false);
+
+window.addEventListener("online", function(e) {
+  //loadWallet();
+ 
+     //$('.info2').css('background-image',"url('../images/bitsoko-off.png')");
+}, false);
+
+// move to init
+$( document ).on( "pageinit", function( event ) {
+     
+	$.mobile.page.prototype.options.keepNative = "select, input";
+$(".js-push-button-notification").bind( "touchstart click", function(event, ui) {
+
+     if (!flag) {
+    flag = true;
+    setTimeout(function(){ flag = false; }, 100);
+        if (isPushEnabled) {  
+      unsubscribe();  
+    } else {  
+      subscribe();  
+    }
+     }
+
+});
+    
+    $(".js-loc-button-notification").bind( "touchstart click", function(event, ui) {
+
+     if (!flag) {
+    flag = true;
+    setTimeout(function(){ flag = false; }, 100);
+  
+  var locButtonTitle = document.querySelector('.js-loc-button-notification-title');
+  var locButtonTitleText = document.querySelector('.js-loc-button-notification-title-text');
+        
+         var locButton = document.querySelector('.js-loc-button-notification'); 
+         
+         if(locButton.checked == false){
+         
+    
+	  
+	var store = getObjectStore('data', 'readwrite');
+var req = store.put('default', 'country');
+       
+        req.onsuccess = function(event) {
+    //		var store = getObjectStore('images', 'readwrite');
+
+    localStorage.setItem('bitsoko-settings-country','default');
+             fetchRates().then(function(e){
+                
+                 //updateWallpaper();
+            //setWallpaper();
+    });
+            
+              
+          locButtonTitle.textContent = 'Location Off';  
+             
+          locButtonTitleText.textContent = 'unknown';  
+            locButton.checked = false;
+		};    
+             
+         }else{
+             
+           reqLoc();   
+         }
+    
+         
+     }
+
+});
+	
+	$(".keypad").bind( "touchstart click", function(event, ui) {
+     
+});
+   
+    
+ $(".confinp").bind( "touchstart click", function(event, ui) {
+     if (!flag) {
+    flag = true;
+    setTimeout(function(){ flag = false; }, 100);
+   var keyelm=$(this);
+         $(".confinp").removeClass('inpactive');
+         keyelm.addClass('inpactive');
+         
+         if(keyelm.attr('id')=='confpass'){
+         viewModel.payEntry('pass');
+         currPass('');
+         }else{
+         viewModel.payEntry('amount');
+         currAmt('');
+         }
+         
+     }
+});
+     
+    });
+
+
+$(".servsearch").bind('touchstart click', function(e){
+    //console.log($( this ).attr('id'));
+  if (!flag) {
+    flag = true;
+    setTimeout(function(){ flag = false; }, 100);
+    $('.meta').focus(); 
+  }
+
+});
+
+
+$("#doDelete").bind('touchstart click', function(e){
+    //console.log($( this ).attr('id'));
+  if (!flag) {
+    flag = true;
+    setTimeout(function(){ flag = false; }, 100);
+      
+     
+if (confirm('Delete Wallet?')) {
+     localStorage.setItem('bitsoko-wallets','[]');
+    localStorage.setItem('bitsoko-settings-verified','false');
+        window.location.reload();
+      
+    } else {
+      // Manifest didn't changed. Nothing new to server.
+    }
+  }
+
+});
+
+
+$("#payer").bind('touchstart click', function(e){
+    //console.log($( this ).attr('id'));
+  if (!flag) {
+    flag = true;
+    setTimeout(function(){ flag = false; }, 1000);
+      
+      if (currAmt() > 0){
+      signTran(this);
+      } else {
+      
+      showNotices('Enter amount First');
+          
+      }
+      //var action = $( payEl ).attr("soko-recp");
+      
+    // do something
+  }
+
+});
+
+
+$("#recover-panel-but").bind('touchstart click', function(e){
+    //console.log($( this ).attr('id'));
+  if (!flag) {
+    flag = true;
+    setTimeout(function(){ flag = false; }, 100);
+      
+      $( "#recover-panel" ).panel( "open" ).trigger( "updatelayout" );
+      $( "#rec-user" ).focus();
+      
+  }
+
+  return false
+});
+
+
+$("#create-panel-but").bind('touchstart click', function(e){
+    //console.log($( this ).attr('id'));
+  if (!flag) {
+    flag = true;
+    setTimeout(function(){ flag = false; }, 100);
+      
+      $( "#create-panel" ).panel( "open" ).trigger( "updatelayout" );
+      $( "#user" ).focus();
+      
+  }
+
+  return false
+});
+
+$("#rec-panel-bk").bind('touchstart click', function(e){
+    //console.log($( this ).attr('id'));
+  if (!flag) {
+    flag = true;
+    setTimeout(function(){ flag = false; }, 100);
+      
+   $("#rec-panel-loader-msg").html('');
+    $("#rec-panel-loader").css('display','none');
+      $( "#recover-panel" ).panel( "close" );
+      //$( "#rec-user" ).focus();
+  }
+
+  return false
+});
+
+$("#serv-type-ui-panel-inner").bind('scroll', function(e){
+    //console.log();
+  //notSigned();
+  //  setTimeout(function(){ signed() }, 2500);
+  
+      //$( "#rec-user" ).focus();
+  
+});
+
+$("core-icon-button").bind('touchstart click', function(e){
+    //console.log($( this ).attr('id'));
+  if (!flag) {
+    flag = true;
+    setTimeout(function(){ flag = false; }, 100);
+      if($( this ).attr('action')=="open-panel"){
+$( $( this ).attr('href') ).panel( "open" );
+      }else if($( this ).attr('action')=="open-menu"){
+      menu("open")
+      }
+  }
+
+  return false
+});
+
+$("#rec-panel-fwa").bind('touchstart click', function(e){
+    //console.log($( this ).attr('id'));
+  if (!flag) {
+    flag = true;
+    setTimeout(function(){ flag = false; }, 400);
+      $( "#rec-panel-loader" ).css('display','block');
+      recoverWallet();
+      //$( "#rec-user" ).focus();
+  }
+
+  return false
+});
+
+$(".curr-toggle").bind('touchstart click', function(e){
+    //console.log($( this ).attr('id'));
+  e.preventDefault();
+});
+
+$(".notify-cancel").bind('touchstart click', function(e){
+    document.getElementById('notify').close();
+});
+
+$( "#recover-panel" ).on( "panelopen", function( event, ui ) {
+    
+    //var data=data.replace("%3A", ":");
+   $('#rec-user').focus();
+//console.log('focused');
+});
+
+
+$( "#about-panel" ).on( "panelopen", function( event, ui ) {
+   
+    $( "#helptel" ).attr('href','tel:'+$.parseJSON(localStorage.getItem('bitsoko-settings-global')).helptel);
+                         
+    $( "#helpmail" ).attr('href','mailto:'+$.parseJSON(localStorage.getItem('bitsoko-settings-global')).helpmail);
+                         
+     
+});
+
+
+$( "#serv-opts-panel" ).on( "panelclose", function( event, ui ) {
+    manServSearch('[]');
+
+});
+
+$( "#curr-panel" ).on( "panelclose", function( event, ui ) {
+   
+   document.getElementById("menuPanel-inner").style.display = "block";
+   //  window.location.hash = window.location.hash.slice(0,-9)
+        window.history.back();
+    
+
+});
+
+
+
+//$( "#choose-panel" ).on( "panelclose", function( event, ui ) {
+    
+ //   $('#setpass').prop('disabled', true).parent().removeClass('ui-state-enabled').addClass('ui-state-disabled');
+
+//});
+
+$( "#serv-panel" ).on( "panelopen", function( event, ui ) {
+//console.log('closed..');
+  
+var url='#p='+sequence.currentFrameID+"&s="+viewModel.activeServ().id;
+    document.querySelector("active-services").style.display = 'none';
+    $(".wrap").removeClass("fix-search");
+
+    
+
+if (viewModel.activeServ().id=='3'){
+createElmRootAM(shadowRootAM,contTemp,shadowRootAMcon,document);
+ 
+}
+
+if (getBitsWinOpt('a')!=undefined){
+    url=url+"&a="+getBitsWinOpt('a'); 
+    doFetch({ action: 'servDet', user: localStorage.getItem('bits-user-name'), data: getBitsWinOpt('a'), service: getBitsWinOpt('s'), origin: 'service' }).then(function(e){
+console.log(e);
+ if(e.data.length>0){
+
+        shadowRootAM.innerHTML = '';
+        
+        shadowRootAM.appendChild(document.importNode( shadowRootAMcon, true)); 
+                for(var i = 0; i < e.data.length; ++i) {
+       f=e.data[i];
+        f.ctype='address';
+          f.corigin='server';
+          if(getBitsWinOpt('s')=='3'){
+          addMerchant(f,contTemp,document);
+          }else{
+         //addMerchant(f,template,thatDoc);
+              
+          }        
+          }
+      }else{
+          
+           
+        }
+	//servDetUser(JSON.stringify(e))
+     });      //elmSTOne.querySelector('.servid-'+parseInt(getBitsWinOpt('s'))).setAttribute("filter", getBitsWinOpt('a'));
+
+}
+
+
+});
+
+
+$( "#serv-panel" ).on( "panelclose", function( event, ui ) {
+//console.log('closed..');
+    
+    currPayMeta('');
+    try{document.getElementById('payPop').close();}catch(err){}
+    $(".wrap").removeClass("fix-search").scrollTop();
+    document.querySelector("active-services").style.display = 'block';
+viewModel.servInfoName('');
+    
+          viewModel.servInfoImg('');
+         viewModel.servInfoAddr('');
+    viewModel.currCharge('');
+
+    viewModel.servInfoVeri('');
+    $( "#payer" ).attr( "soko-serv", "" );
+  $( "#serv-name" ).html("");
+   $( "#servid" ).attr( "soko-serv", "" ).attr( "soko-name", "" ).attr( "soko-recp", "" ); 
+   // $( "#servInfoImg" ).css("width","60px").css("height","60px");
+    $( "#serv-rates" ).html("");
+    $( "#serv-desc" ).html("");
+    $( "#serv-panel" ).trigger( "updatelayout" );
+    
+    viewModel.itemList.removeAll();
+    $( "#serv-panel-content" ).css("display","none");
+$( "#serv-panel-prev" ).css("display","block").addClass("empty");
+    
+    //elmSTOne.querySelector('main').innerHTML = '';
+
+window.location.hash='#p='+getBitsWinOpt('p');
+} );
+//end of move to init.js//
+//
+
+var visProp = getHiddenProp();
+
+
+ // move to functions           //
+        
+function getHiddenProp(){
+    var prefixes = ['webkit','moz','ms','o'];
+    
+    // if 'hidden' is natively supported just return it
+    if ('hidden' in document) return 'hidden';
+    
+    // otherwise loop over all the known prefixes until we find one
+    for (var i = 0; i < prefixes.length; i++){
+        if ((prefixes[i] + 'Hidden') in document) 
+            return prefixes[i] + 'Hidden';
+    }
+
+    // otherwise it's not supported
+    return null;
+}
+// to functions
+function isHidden() {
+    var prop = getHiddenProp();
+    if (!prop) return false;
+    
+    return document[prop];
+}
+// to init.js
+
+function processContacts(){
+   var numbs=[];
+    var conts=JSON.parse(localStorage.getItem('bitsoko-user-contacts'));
+    for(var i = 0; i < conts.length; ++i) {
+        
+        
+   //for(var ii = 0; ii < conts[i].Numb.length; ++ii) {
+       numbs.push(conts[i].number);  
+   //}
+      
+        
+    }
+    //alert(numbs);
+    
+doFetch({action:'procontacts',
+        user:localStorage.getItem('bits-user-name'),
+        data:JSON.stringify(numbs)
+              }).then(function(data){
+   //localStorage.setItem('bitsoko-all-trns',data);
+      
+         var data = JSON.parse(data);
+      //alert(data[0].name);
+    
+     var conts=JSON.parse(localStorage.getItem('bitsoko-user-contacts'));
+    
+    for(var i = 0; i < data.length; ++i) {
+        
+    for(var ii = 0; ii < conts.length; ++ii) {
+       
+        if (data[i].number==conts[ii].number){
+        //alert('found match' +data[i].number+' & '+ conts[ii].number);
+            conts[ii].name=data[i].name;
+            conts[ii].address=data[i].address;
+        }
+        //numbs.push(conts[i].Numb[ii]);  
+       //conts.splice(ii-1, 1, wallets[i]);
+   }
+    }
+    
+    localStorage.setItem('bitsoko-user-contacts', JSON.stringify(conts));
+    
+});
+    
+return;
+
+}
+
+
+//function visChange() {
+   //var txtFld = document.getElementById('visChangeText');
+
+   //if (txtFld) {
+     
+  // }
+//}
+    ///}, false);
+
+/*
+	function updateServTrans(){
+	 //var e=$( "#servid" ).attr( "soko-serv" );
+
+$.ajax({
+  type: "GET",
+  //dataType: 'jsonp',
+        data: {action:'updServTran',
+        user:localStorage.getItem('bitsoko-user-name'),
+              },
+        url: bsoko.settings.datapath,
+        //url: 'trans.json',
+         })
+  .done(function( data ) {
+      localStorage.setItem('bitsoko-trns-meta',data);
+      //console.log(data);
+      
+    
+  })
+ .error(function() {
+  
+     
+  })
+.always(function() {
+    updateTransactions(); 
+  }); 	
+	}
+*/
+// to functions
+function addDigit(data){
+    
+    if (viewModel.payEntry()=='pass'){
+    currPass( currPass()+data);
+   // console.log(currPass());
+    }else{
+    currAmt( currAmt()+data);
+   // console.log(currAmt());
+    }
+    
+}
+// to functions
+function validateEmail(email) {
+    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    return re.test(email);
+    }
+//to functions
+function updateContacts(){
+
+       $.ajax({
+        url: "https://www.google.com/m8/feeds/contacts/default/thin?access_token=" + localStorage.getItem('bits-token-google') + "&max-results=700&alt=json",
+        dataType: "jsonp",
+        success:function(data) {
+            var e= data.feed.entry
+            allconts=[];
+            var contUpd=[];
+            
+      try{
+            shadowRootAC.innerHTML = '';   
+      }catch(e){} //{"action":"servDet","status":"ok","name":"allan","img":"https://lh4.googleusercontent.com/-ut5M1KdkFOU/AAAAAAAAAAI/AAAAAAAAAGM/BkNl4_WfakY/photo.jpg","type":"person","address":"14S72nokLmCugo2k29BN7dth8gUsFWJU3d","code":"14S72nokLmCugo2k29BN7dth8gUsFWJU3d","id":"00000000002"}
+              
+        for(var i = 0, m = null, all; i < e.length; ++i) {
+     
+    console.log(e[i]);
+        //template.querySelector('img').src = e[i].link[0].href;
+var cont = {};
+            try {
+         cont.code = e[i].gd$email[0].address;
+         cont.name = e[i].gd$email[0].address.split("@")[0];
+         contUpd.push(cont.code);       
+         cont.ctype = 'email';
+         }catch(err){
+         try {
+         cont.code = e[i].gd$phoneNumber[0].uri;
+         cont.name = e[i].title.$t;
+         cont.ctype = 'phone';
+         }catch(e){
+         continue;
+         }
+         }
+         cont.img = '/app/images/services/contacts.png';
+          
+         cont.contact = cont.code;
+            allconts.push(cont);
+           
+            
+ };
+    
+           
+doFetch({action : 'updContDet', data: contUpd},allconts).then(function(e){
+  allconts = e.setMeta;
+  var matches = e.data;
+   for(var i = 0, matches = matches; i < allconts.length; ++ i) {
+   var co = allconts[i];
+       
+   for(var j = 0, allconts = allconts, i=i; j < matches.length; ++ j) {
+    if (allconts[i].code == matches[j].email){
+      allconts[i].code = matches[j].address; 
+       allconts[i].img = matches[j].img; 
+       allconts[i].ctype = 'address';
+        allconts[i].name = matches[j].name;
+        allconts[i].uid = matches[j].uid;
+   }  
+   }
+       
+   }
+    
+    
+getObjectStore('data', 'readwrite').put(JSON.stringify(allconts), 'bits-contacts-'+localStorage.getItem('bits-user-name'));
+
+elmSTOne.querySelector("all-contacts").setAttribute("build", Date.now());
+    
+})
+
+        }
+    });
+}
+// to init
+function updateMerchants(){
+
+
+    
+   doFetch({ action: 'getMerchs', user: localStorage.getItem('bits-user-name') }).then(function(e){
+       
+       if(e.status=='ok'){
+       
+    
+getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchants').onsuccess = function (event) {
+       
+        // cont.code = e[i].id;
+        // cont.name = e[i].name;
+        // cont.ctype = 'merchid';
+        // cont.img = '/app/images/services/merchants.png';
+elmSTOne.querySelector("all-merchants").setAttribute("build", Date.now());    
+           
+       }
+
+}
+   });
+         
+}
+
+
