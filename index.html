@@ -267,7 +267,8 @@ doc.save('BitsWallet_Backup.pdf');
 <!------------------------------------------------------------------------------------------------------------>
 <!----------------------list holder  collections start ------------------------------------------------------->
             <div class="col s12 m8 l9" id="">
-                <ul  class="serviceListHolder collection popup-gallery" style="display:none;"></ul>
+                <ul  class="serviceListHolder collection popup-gallery" style="display:none;">
+               </ul>
                  <ul id="card-widgets" class="promoHolder collection"style="width: 90%;margin-left: 5%;"></ul>
                   <ul id="card-widgets" class="promoHolder-home collection"  style=""></ul>
               </div> 
@@ -990,56 +991,8 @@ e=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits
  console.log(e);
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------------
-//---------------function to check if wallet is anon----------------------------------------------------------------------------------------------------
-function checkanon() {
-if(localStorage.getItem('bits-user-name')==null){	
-return false;
-}
-else{
-	return true;
-}
-}
-//--------------------------------------end if popup login----------------------------------------------------------------------------------------- 
-//----------------------------------------------if ststements for popup login modal if user is on anon mode----------------------------------------
-//----------------------------------------------function to pop up login modal---------------------------------------------------------------------
-function showLogin(){
-if(checkanon()==false){$('#loginModal').openModal()}
-}
-//------------------end function -------------------------------------------------------------------------------------
-//------------------function to pop up login toast--------------------------------------------------------------------
-$( document ).ready(
-function showlogintoast(){
-if(checkanon()==false){Materialize.toast('<span class="toastlogin">You are using the app anonymously.</span><a onclick="showLogin()" class="btn-flat toastlogin yellow-text">Login<a>', 10000);}
-else{
-//showuser()
-	}
-});
-//-----------------------------------------------------------------------------------------------------------------------------------------
-$( document ).ready(function showuser(){
-if(checkanon()==true){
-	var gtname=getObjectStore('data', 'readwrite').get('user-profile-'+localStorage.getItem('bits-user-name'));
-	gtname.onsuccess = function (event) {
-  try{  
-    var nam = JSON.parse(event.target.result); 
-    console.log(nam.name)
-	Materialize.toast('<span class="toastlogin">You are logged in as: '+ nam.name, 10000);
-  }catch(err){}    
-  };
-  else{
-//showlogintoast()
-	}
-}});
 
-//------------------end function -------------------------------------------------------------------------------------
-//------------------function to pop up login toast--------------------------------------------------------------------
-$( document ).ready(
-function togglebuttons(){
-if(checkanon()==false){ $("#useAnon").addClass("displayNone");}
-else{ $("#useLogin").addClass("displayNone");}
-});
-//------------------end function -------------------------------------------------------------------------------------
-</script>
-<script>
+
  //web Share start
 document.querySelector("#share").addEventListener('click', function(event) {
     navigator.share({

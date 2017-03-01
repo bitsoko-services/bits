@@ -240,6 +240,10 @@ Materialize.toast('Error loading old wallets', 10000);
 function starting(){
 	$('#loginModal').closeModal()
 	startGoogle(); 
+	checkanon();
+	togglebuttons();
+	showuser();
+	showlogintoast();
 startUser(localStorage.getItem('bits-user-name')).then(function(e){
 
 	
