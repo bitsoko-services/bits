@@ -605,7 +605,8 @@ servicePageLoader();
 //---------------------------------------- subscription function--------------------------------------------------------------------------	    
 function doSubscribe(){	
 	$(".promoSubButton").bind( "touchstart click", function(event, ui) {
-	checkanon()
+	checkanon();
+	showLogin();
      event.preventDefault();
 	var pid = $(this).attr('pid');
 	var dr = $(this).attr('dailyR');
