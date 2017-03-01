@@ -108,3 +108,51 @@ function loadProfData(){
 }
 //------------------------------load name and image of user profile---------------------------------------------------------------------
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//------------------function to pop up login toast--------------------------------------------------------------------
+function togglebuttons(){
+if(checkanon()==false){ $("#useAnon").addClass("displayNone");}
+else{ $("#useLogin").addClass("displayNone");}
+}
+//------------------end function -------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------
+function showuser(){
+if(checkanon()==true){
+	var gtname=getObjectStore('data', 'readwrite').get('user-profile-'+localStorage.getItem('bits-user-name'));
+	gtname.onsuccess = function (event) {
+  try{  
+    var nam = JSON.parse(event.target.result); 
+    console.log(nam.name)
+	Materialize.toast('<span class="toastlogin">You are logged in as: '+ nam.name, 10000);
+  }catch(err){}    
+  };
+}
+  else{
+//showlogintoast()
+	}
+}
+
+//------------------end function -------------------------------------------------------------------------------------
+//---------------function to check if wallet is anon----------------------------------------------------------------------------------------------------
+function checkanon() {
+if(localStorage.getItem('bits-user-name')==null){	
+return false;
+}
+else{
+	return true;
+}
+}
+//--------------------------------------end if popup login----------------------------------------------------------------------------------------- 
+//----------------------------------------------if ststements for popup login modal if user is on anon mode----------------------------------------
+//----------------------------------------------function to pop up login modal---------------------------------------------------------------------
+function showLogin(){
+if(checkanon()==false){$('#loginModal').openModal()}
+}
+//------------------end function -------------------------------------------------------------------------------------
+//------------------function to pop up login toast--------------------------------------------------------------------
+function showlogintoast(){
+if(checkanon()==false){Materialize.toast('<span class="toastlogin">You are using the app anonymously.</span><a onclick="showLogin()" class="btn-flat toastlogin yellow-text">Login<a>', 10000);}
+else{
+//showuser()
+	}
+}
+
