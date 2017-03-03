@@ -51,12 +51,7 @@ contact();
 	 
  	$(".serviceListHolder").show();
  	$(".serviceListCard").show();
- $(".promoHolder").hide();	 
-  if(getBitsWinOpt('a') == undefined ){ 
-
-	    return;
-}  
-	 
+ $(".promoHolder").hide();
 	 
  	 doFetch({ action: 'serviceProfile', id: servID, service: getBitsWinOpt('s')}).then(function(e){
            if (e.status=="ok"){
