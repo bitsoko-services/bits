@@ -424,7 +424,7 @@ doc.save('BitsWallet_Backup.pdf');
    <div class="modal-content">
       <div class="row">
         <h5>Log In</h5>
-     <p> We have noticed you are using the wallet in Anonymous mode please signin to enjoy more of our app <p>
+     <p> Hello,you are using the wallet in Anonymous mode please signin to enjoy more of our app <p>
       <div id="customBtn" class="customGPlusSignIn"> 
       <span class="icon"></span> 
       <span class="buttonText">Google signin</span> 
@@ -559,19 +559,7 @@ doc.save('BitsWallet_Backup.pdf');
  }     
 }   
 }
-//---------------------------------------function gets the totals of all items on a list----------------------------------------------------------------------------
-	function tabulateTotals(){
-	console.log(this);
-	var addproducts = document.querySelectorAll(".bitsInputQty");
-	var totals = 0;
-	for(var i = 0; i< addproducts.length; ++i){
-	try{
-	var itVal=$(addproducts[i]).val() ? $(addproducts[i]).val() : 0;
-	totals = totals+(parseInt($(addproducts[i]).attr("price"))*parseInt(itVal));
-	$(".totals").html(totals);
-	}catch(err){}
-	}
-	}
+
 //-----------------------------------------updating service list function-------------------------------------------------------------------------------------------
 function updateServicelist(){ 
 activeService=$('#serviceModal').attr('service');

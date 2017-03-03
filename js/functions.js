@@ -151,3 +151,16 @@ else{
 	}
 }
 
+//---------------------------------------function gets the totals of all items on a list----------------------------------------------------------------------------
+	function tabulateTotals(){
+	console.log(this);
+	var addproducts = document.querySelectorAll(".bitsInputQty");
+	var totals = 0;
+	for(var i = 0; i< addproducts.length; ++i){
+	try{
+	var itVal=$(addproducts[i]).val() ? $(addproducts[i]).val() : 0;
+	totals = totals+(parseInt($(addproducts[i]).attr("price"))*parseInt(itVal));
+	$(".totals").html(totals);
+	}catch(err){}
+	}
+	}
