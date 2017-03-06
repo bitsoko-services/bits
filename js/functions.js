@@ -117,7 +117,7 @@ if(checkanon()==true){
   try{  
     var nam = JSON.parse(event.target.result); 
     console.log(nam.name)
-	Materialize.toast('<span class="toastlogin">You are logged in as: '+ nam.name, 10000);
+	Materialize.toast('<span class="toastlogin">You are Signed in as: '+ nam.name, 10000);
   }catch(err){}    
   };
 }
