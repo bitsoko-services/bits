@@ -52,3 +52,8 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
   -moz-animation-delay: 0.2s;
   animation-delay: 0.2s;
 }
+.promo-collection>img {
+    width: 100%;
+    padding: 2%;
+    height: 140px;
+}
