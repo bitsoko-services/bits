@@ -25,38 +25,19 @@
 <script type="text/javascript" src="jspdf.js"></script>
   <script type="text/javascript">
   // start function google authentication
-    function onLoad() {
-      gapi.load('auth2', function() {
-        gapi.auth2.init();
-      });
-    }
+//     function onLoad() {
+//       gapi.load('auth2', function() {
+//         gapi.auth2.init();
+//       });
+//     }
  
-  function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-    });
-  }
+//   function signOut() {
+//     var auth2 = gapi.auth2.getAuthInstance();
+//     auth2.signOut().then(function () {
+//       console.log('User signed out.');
+//     });
+//   }
 //end google authentication  
-</script>
-<script type="text/javascript">
-// ---------------------------------------------Jspdf start----------------------------------------------------------------------------------------------
-var doc = new jsPDF();
-var specialElementHandlers = {
-'#editor': function (element, renderer) {
-return true;
-}
-};
-$(document).ready(function() {
-$('#btn_save').click(function () {
-doc.fromHTML($('#adressesModal').html(), 15, 15, {
-'width': 170,
-'elementHandlers': specialElementHandlers
-});
-doc.save('BitsWallet_Backup.pdf');
-});
-});
-// ..................................................JSPDF end.....................................................................................
 </script>
 <script src="https://bitsoko.io/bitsAssets/js/webcomponents.js" async></script>
     <!-- CORE CSS-->    
@@ -381,7 +362,7 @@ doc.save('BitsWallet_Backup.pdf');
     <li class="collection-item">
       <span class="title"><a href="#!" id="share" class="secondary-content right"><i class="mdi-social-share"></i></a></span>
       <span class ="username-addr" style="font-size: 12px;"></span>
-     
+      <span class ="username-addr-old" style="font-size: 12px;"></span>
     </li>
   </ul>
 </span>
