@@ -108,8 +108,8 @@ function loadProfData(){
 	ol.onsuccess = function (event) {
   try{
   
-       var olData = JSON.parse(event.target.result); 
-  $('.username-addr-old').html(olData.user);
+       var upData = JSON.parse(event.target.result); 
+  $('.username-addr-old').append('<span class="title"><a href="#!" id="share" class="secondary-content right"><i class="mdi-social-share"></i></a></span><span class ="" style="font-size: 12px;">'+upData.user+'</span>');
  
   
   }catch(err){
