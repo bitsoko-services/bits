@@ -56,6 +56,7 @@ contact();
  	 doFetch({ action: 'serviceProfile', id: servID, service: getBitsWinOpt('s')}).then(function(e){
            if (e.status=="ok"){
            	      localStorage.setItem('bits-merchant-id-'+e.data.id, JSON.stringify(e.data));
+			    getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-'+e.data.id);
            	      populateService(e.data.id);
 	                }else{
                 $(".serviceListHolder").hide();

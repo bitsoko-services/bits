@@ -1,7 +1,7 @@
 
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =221;
+	bitsVersion =223;
 bitsInstall = function(event){
 	
 	
@@ -132,8 +132,23 @@ store.onsuccess = function (event) {
 	   var data = event.target.result;
 	   data= JSON.parse(data);
 	  
+     getObjectStore('data', 'readwrite').get('bits-merchant-id-'+e.data.id).onsuccess = function (event) {
+	   var data = event.target.result;
+	   data= JSON.parse(data);
+	   butArr=[];
+
+	   if(p){
+
+	   	butArr.push({action: 'bits-redeem-'+dat.pid, title: "Buy Offer"});
+	   }
+	   	butArr.push({action: 'bits-unsubscribe-'+dat.pid, title: "Unsubscribe"});
+	  
 	 //console.log(data.discount+"% off" +data.name,dat.msg,"bits-promo-"+dat.pid,'bits/images/no.png',data.imagePath,[{action: 'createBackup', title: "Back up"}],true,true);
-      bitsNotification(data.discount+"% off " +data.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,[{action: 'bits-redeem-'+dat.pid, title: "Buy Offer"},{action: 'bits-unsubscribe-'+dat.pid, title: "Unsubscribe"}],true,false);
+      bitsNotification(data.discount+"% off " +data.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,butArr,true,false);
+     
+}
+	 //console.log(data.discount+"% off" +data.name,dat.msg,"bits-promo-"+dat.pid,'bits/images/no.png',data.imagePath,[{action: 'createBackup', title: "Back up"}],true,true);
+      //bitsNotification(data.discount+"% off " +data.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,[{action: 'bits-redeem-'+dat.pid, title: "Buy Offer"},{action: 'bits-unsubscribe-'+dat.pid, title: "Unsubscribe"}],true,false);
      
 }
       
