@@ -103,7 +103,7 @@ function loadProfData(){
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //------------------------------load old wallets of user---------------------------------------------------------------------
-function loadProfData(){
+function loadoldwalletData(){
 	 var ol=getObjectStore('data', 'readwrite').get('bits-wallets-old-'+localStorage.getItem('bits-user-name'));
 	ol.onsuccess = function (event) {
   try{
