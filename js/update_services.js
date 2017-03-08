@@ -210,20 +210,4 @@ for(var l=0, el=el; l < el.length; ++l){
              };
      }
 //--------------------------function to hide and display nav-bar balance div  ----------------------------------------------------------------------------   
-                 $(window).scroll(function(){
-   var scroll = $(window).scrollTop();
-   if (scroll > 100) {
-      $("#bits-nav-bal").css({"display":"initial"});
-    } else {
-      $("#bits-nav-bal").css({"display":"none"});
-    } 
-    })
-		$(window).scroll(function() {     
-    var scroll = $(window).scrollTop();
-    if (scroll > 150) {
-        $("#bits-header").addClass("active");
-    }
-    else {
-        $("#bits-header").removeClass("active");
-    }
-});
+         
