@@ -220,15 +220,11 @@ function startPay(name,recp,amount,action,ref){
  console.log(name,recp,amount,action,ref);
  return
 if (amount <=0 || amount == "undefined" || amount === undefined || amount === null){
-
    currentTransaction.amount=0;
  //$( "#conf-iamt" ).focus();   
-}
-   
+} 
                 
-      if (action=='send'){
-    
-    
+      if (action=='send'){   
            if (navigator.vibrate) {
     // vibration API supported
     navigator.vibrate([200,200,200]);
