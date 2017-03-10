@@ -130,6 +130,7 @@ $(".resDisplay").html( mDet.name);
 			 };
 		 }
 		}; 
+		callMerchant()
 	 doSubscribe();
 	 checkPayments();
  for(var ii = 0; ii < mDet.list.length; ++ii) {
