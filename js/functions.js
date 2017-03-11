@@ -10,6 +10,7 @@ else{
 	 $("#paymentBTN").addClass("displayNone")
 }
 } 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function callMerchant(){
 	//get phone number
 	var p=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits-active-service'))).phone;

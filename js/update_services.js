@@ -114,6 +114,7 @@ $(".resDisplay").html( mDet.name);
 	 }else{
 	  $('#manage-store').css("display","none");
 	 }
+	 	callMerchant()
 		 for(var ii = 0,subs=subs; ii < mDet.promotions.length; ++ii) { 			 
 		 var dailyCost=(parseInt(mDet.promotions[ii].discount)/100)*mDet.promotions[ii].promoPrice;
 		 $('.serviceListHolder').prepend('<li class="avatar bits-max promo-collection">'+
@@ -130,7 +131,7 @@ $(".resDisplay").html( mDet.name);
 			 };
 		 }
 		}; 
-		callMerchant()
+	
 	 doSubscribe();
 	 checkPayments();
  for(var ii = 0; ii < mDet.list.length; ++ii) {
