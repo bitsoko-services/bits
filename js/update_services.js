@@ -122,7 +122,7 @@ $(".resDisplay").html( mDet.name);
 						 '<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+mDet.promotions[ii].promoName+' </span></span>'+
 						 '<p class="serviceListFirstline"> <span class="bits-badge bits left" style="margin-left: 20px;">'+Math.ceil(dailyCost)+' <span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>'+
 						 '<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-'+mDet.promotions[ii].id+'">Not Subscribed</span> <label><input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+mDet.promotions[ii].id+'" class="promoSubButton promoSubButton-'+mDet.promotions[ii].id+'" style="background: rgb(128, 210, 147);"> <span style="margin-top:2px;" class="lever right"></span></label></div></li>'); 
-       	 subs=JSON.parse(mDet.promotions[ii].promoSubs);
+       	 subs=mDet.promotions[ii].promoSubs;
 		 for(var iii = 0,subs=subs,mDet=mDet; iii < subs.length; ++iii) { 
 			 if(subs[iii]==localStorage.getItem('bitsoko-owner-id')){
 			 console.log('im subscribed to ',mDet.promotions[ii]);
