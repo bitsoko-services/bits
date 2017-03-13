@@ -8,6 +8,8 @@ if (JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bi
 else{
 	console.log("payments off")
 	 $("#paymentBTN").addClass("displayNone")
+ 	 $("#promoprice").addClass("displayNone")
+	 
 }
 } 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
