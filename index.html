@@ -620,11 +620,11 @@ $(".promoHolder").hide();
 startPay(actvServ().storeAddress,'servID-'+getBitsWinOpt('s')+'-'+getBitsWinOpt('a'),currentTransaction.amount,currentTransaction.action,'qwerty').then(function(result) {
   console.log(result);
    // "Stuff worked!"
-   materialize.toast('<span class="toastlogin">Payments sent ', 3000);
+   Materialize.toast(result, 3000);
 }, function(err) {
   console.log(err);
    // Error: "It broke"
-    materialize.toast('<span class="toastlogin">Payments sent ', 3000);
+   Materialize.toast(err, 3000);
 });
     }else{
     

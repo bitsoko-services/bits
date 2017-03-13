@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =245;
+	bitsVersion =246;
 bitsInstall = function(event){
 	
 	
@@ -75,6 +75,21 @@ doc.save('BitsWallet_Backup.pdf');*/
         case 'gotMoney':
     
            bitsNotification('You have recevied '+dat.amt,'sam has sent you  '+dat.amt+' Click to view your balance','AnonMsg','bits/images/no.png',[{action: '', title: "Backed up"}],true,true);
+       
+      break;
+       case 'buyoffer':
+       startPay(actvServ().storeAddress,'servID-'+getBitsWinOpt('s')+'-'+getBitsWinOpt('a'),currentTransaction.amount,currentTransaction.action,'qwerty').then(function(result) {
+  console.log(result);
+   // "Stuff worked!"
+     bitsNotification('Sent',result,'','bits/images/icon-ok.png',[{action: '', title: "Sent"}],true,true);
+}, function(err) {
+  console.log(err);
+   // Error: "It broke"
+    bitsNotification('Not Sent',err,'','bits/images/icon-bad.png',[{action: '', title: "Not Sent"}],true,true);
+});
+    
+     
+    
        
       break;
 			}
