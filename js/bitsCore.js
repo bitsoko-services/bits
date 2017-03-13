@@ -217,11 +217,14 @@ function hideNotices(tm) {
 
 // stay
 function startPay(name,recp,amount,action,ref){
- console.log(name,recp,amount,action,ref);
- return
+
+ 
+     return new Promise(function (resolve, reject) {
+	      console.log(name,recp,amount,action,ref);
 if (amount <=0 || amount == "undefined" || amount === undefined || amount === null){
    currentTransaction.amount=0;
  //$( "#conf-iamt" ).focus();   
+	reject('enter correct amount');
 } 
                 
       if (action=='send'){   
@@ -235,9 +238,10 @@ if (amount <=0 || amount == "undefined" || amount === undefined || amount === nu
     // vibration API supported
     navigator.vibrate(600);
 }
-    }                                                    
+    }     
+	     resolve('payment completing');
    
-
+ });
 }
 
 
