@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =246;
+	bitsVersion =247;
 bitsInstall = function(event){
 	
 	
@@ -72,11 +72,7 @@ doc.save('BitsWallet_Backup.pdf');*/
            bitsNotification('Wallet Backed Up','Thank you for backing up your wallet you are one step closer to saving the world','','bits/images/no.png',[{action: '', title: "Backed up"}],true,true);
        
       break;
-        case 'gotMoney':
-    
-           bitsNotification('You have recevied '+dat.amt,'sam has sent you  '+dat.amt+' Click to view your balance','AnonMsg','bits/images/no.png',[{action: '', title: "Backed up"}],true,true);
        
-      break;
        case 'buyoffer':
        startPay(actvServ().storeAddress,'servID-'+getBitsWinOpt('s')+'-'+getBitsWinOpt('a'),currentTransaction.amount,currentTransaction.action,'qwerty').then(function(result) {
   console.log(result);
@@ -131,10 +127,10 @@ return new Promise(function(resolve, reject) {
       // that serve as keys for the current cache.
       // This command adds a new request/response pair to the cache.
               
-      case 'sent':
-     data = dat;
-    console.log(data);
-           bitsNotification('Sent Message','You can Download an offline copy of your wallet incase you loose your device, Click to download your private infomation','createBackup','bits/images/no.png',[{action: 'createBackup', title: "Back up"}],true,true);
+       case 'gotMoney':
+    
+           bitsNotification('You have recevied '+dat.amt,'sam has sent you  '+dat.amt+' Click to view your balance','AnonMsg','bits/images/no.png',[{action: '', title: "Backed up"}],true,true);
+       
       break;
 			
 			case 'merchantMessage':
