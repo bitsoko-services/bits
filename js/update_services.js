@@ -109,7 +109,7 @@ $(".resDisplay").html( mDet.name);
 		document.querySelector('.serviceDescription').innerHTML = mDet.description;
 		 $('.serviceListHolder').html("");
 //-----------------------------------------------incase the user is the owner of this shop, then show POS button------------------------------------------------------------------------------------------------
-	 if(mDet.owner==parseInt(localStorage.getItem('bits-user-name'))){
+	 if(mDet.owner==parseInt(localStorage.getItem('bitsoko-owner-id'))){
 	 $('#manage-store').css("display","block");
 	 }else{
 	  $('#manage-store').css("display","none");
@@ -131,7 +131,7 @@ $(".resDisplay").html( mDet.name);
 						 '<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-'+mDet.promotions[ii].id+'">Not Subscribed</span> <label><input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+mDet.promotions[ii].id+'" class="promoSubButton promoSubButton-'+mDet.promotions[ii].id+'" style="background: rgb(128, 210, 147);"> <span style="margin-top:2px;" class="lever right"></span></label></div></li>'); 
        	 subs=mDet.promotions[ii].promoSubs;
 		 for(var iii = 0,subs=subs,mDet=mDet; iii < subs.length; ++iii) { 
-			 if(subs[iii]==localStorage.getItem('bits-user-name')){
+			 if(subs[iii]==localStorage.getItem('bitsoko-owner-id')){
 			 //console.log('im subscribed to ',mDet.promotions[ii]);
 				  //START-TODO-remove support for individually listed promos in db, moved to "bits-mypromos-USERID"
 			    getObjectStore('data', 'readwrite').put(JSON.stringify(mDet.promotions[ii]), 'bits-promo-'+mDet.promotions[ii].id);
@@ -146,8 +146,13 @@ $(".resDisplay").html( mDet.name);
 	
 	 doSubscribe();
 	 checkPayments();
- for(var ii = 0; ii < mDet.list.length; ++ii) {
 // -------------------------------------------------loads the shops product lists --------------------------------------------------------------------------------------------------------------------------
+ if(mDet.list.length == 0){
+ 	 console.log("no promos") 
+		 $('.serviceListHolder').prepend('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>No products found</strong></p><p class="collections-content"></p></div></li></ul>');        
+ }
+ else{
+ 	for(var ii = 0; ii < mDet.list.length; ++ii) {
  $('.serviceListHolder').append('<li class="collection-item avatar bits-max "><img src="https://bitsoko.io'+mDet.list[ii].imagePath+'" data-caption="'+mDet.list[ii].description+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"><span class="conf-curr"></span> </span>'+mDet.list[ii].metric+' </span></p><span class="secondary-content"><p class="col s4" style="display: none;"> <input class="number bitsInputQty" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'> '+mDet.list[ii].metric+' (s)<label for='+mDet.list[ii].name+'></label></p></span></li>');};
  $('.materialboxed').materialbox();
 var addproducts = document.querySelectorAll(".bitsInputQty");
@@ -156,7 +161,7 @@ for(var i = 0; i< addproducts.length; ++i){
  }
  $( "body" ).scrollTop( 156 );        
  }
-
+ }
 //---------------------------------------------------end populateService function------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------  function handleModal---------------------------------------------------------------------------------------------------------------------------------------
 function handleModal(){
