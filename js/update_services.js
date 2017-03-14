@@ -131,7 +131,7 @@ $(".resDisplay").html( mDet.name);
 		
 	
 	
-	for(var iii = 0,subs=subs,mDet=mDet; iii < subs.length; ++iii) { 
+	for(var iii = 0,subs=subs,nnew=nnew,mDet=mDet; iii < subs.length; ++iii) { 
 			 if(subs[iii]==localStorage.getItem('bits-user-name')){
 			 //console.log('im subscribed to ',mDet.promotions[ii]);
 			   nnew.push(mDet.promotions[ii]);
