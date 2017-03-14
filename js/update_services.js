@@ -106,7 +106,7 @@ $(".resDisplay").html( mDet.name);
 		document.querySelector('.serviceDescription').innerHTML = mDet.description;
 		 $('.serviceListHolder').html("");
 //-----------------------------------------------incase the user is the owner of this shop, then show POS button------------------------------------------------------------------------------------------------
-	 if(mDet.owner==parseInt(localStorage.getItem('bitsoko-owner-id'))){
+	 if(mDet.owner==parseInt(localStorage.getItem('bits-user-name'))){
 	 $('#manage-store').css("display","block");
 	 }else{
 	  $('#manage-store').css("display","none");
