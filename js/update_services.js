@@ -63,15 +63,12 @@ function doSubscribe(){
 		
 //---------------------------------------send promo data to db-----------------------------------------------------------------------------
 		   if(action=='subscribe'){
-			   //START-TODO-remove support for individually listed promos in db, moved to "bits-mypromos-USERID"
-			    getObjectStore('data', 'readwrite').put(JSON.stringify(e.prom), 'bits-promo-'+pid);
-			   //END-TODO
-			         
-    var walsvar = getObjectStore('data', 'readwrite').get('bits-mypromos-'+localStorage.getItem('bits-user-name'));
+			   
+    var walsvar = getObjectStore('data', 'readwrite').get('bits-mypromos');
 	walsvar.onsuccess = function (event) {	
 		
 		try{var oold=JSON.parse(event.target.result);oold.push(e.prom);}catch(err){var oold=[];oold.push(e.prom);}
-	  getObjectStore('data', 'readwrite').put(JSON.stringify(oold), 'bits-mypromos-'+localStorage.getItem('bits-user-name'));
+	  getObjectStore('data', 'readwrite').put(JSON.stringify(oold), 'bits-mypromos');
 		
 		   $( ".promoSubButton-"+pid ).prop( "checked",true);
 			   $(".promoSubState-"+pid).html("Subscribed");
