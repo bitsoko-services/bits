@@ -111,7 +111,8 @@ $(".resDisplay").html( mDet.name);
 	 }else{
 	  $('#manage-store').css("display","none");
 	 }
-	 	callMerchant()
+	 	callMerchant();
+	 console.log(mDet.promotions);
 	 	if(mDet.promotions.length == 0){
 	 		 console.log("no promos") 
 		 $('.serviceListHolder').prepend('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>No Promotions found</strong></p><p class="collections-content"></p></div></li></ul>');
