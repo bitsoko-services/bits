@@ -115,6 +115,7 @@ $(".resDisplay").html( mDet.name);
 	  $('#manage-store').css("display","none");
 	 }
 	 	callMerchant()
+	 	if(mDet.promotions.length == 0){
 		 for(var ii = 0,subs=subs; ii < mDet.promotions.length; ++ii) { 			 
 		 var dailyCost=(parseInt(mDet.promotions[ii].discount)/100)*mDet.promotions[ii].promoPrice;
 		 $('.serviceListHolder').prepend('<li class="avatar bits-max promo-collection">'+
@@ -134,7 +135,12 @@ $(".resDisplay").html( mDet.name);
 				 $(".promoSubState-"+mDet.promotions[ii].id).html("Subscribed");
 			 };
 		 }
-		}; 
+		};
+	 	} 
+		else{
+			 $('.serviceListHolder').prepend('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>No Promotions found</strong></p><p class="collections-content"></p></div></li></ul>');
+           
+		}
 	
 	 doSubscribe();
 	 checkPayments();
