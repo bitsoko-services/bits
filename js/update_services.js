@@ -149,7 +149,7 @@ $(".resDisplay").html( mDet.name);
 // -------------------------------------------------loads the shops product lists --------------------------------------------------------------------------------------------------------------------------
  if(mDet.list.length == 0){
  	 console.log("no promos") 
-		 $('.serviceListHolder').prepend('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>No products found</strong></p><p class="collections-content"></p></div></li></ul>');        
+		 $('.serviceListHolder').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>No products found</strong></p><p class="collections-content"></p></div></li></ul>');        
  }
  else{
  	for(var ii = 0; ii < mDet.list.length; ++ii) {
