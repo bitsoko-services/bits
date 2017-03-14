@@ -117,9 +117,7 @@ $(".resDisplay").html( mDet.name);
 	 		 console.log("no promos") 
 		 $('.serviceListHolder').prepend('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>No Promotions found</strong></p><p class="collections-content"></p></div></li></ul>');
           
-	 	} 
-		else{
-			console.log("no promos")
+	 	} else{
            for(var ii = 0,subs=subs; ii < mDet.promotions.length; ++ii) { 			 
 		 var dailyCost=(parseInt(mDet.promotions[ii].discount)/100)*mDet.promotions[ii].promoPrice;
 		 $('.serviceListHolder').prepend('<li class="avatar bits-max promo-collection">'+
@@ -134,7 +132,7 @@ $(".resDisplay").html( mDet.name);
 	
 	
 	for(var iii = 0,subs=subs,mDet=mDet; iii < subs.length; ++iii) { 
-			 if(subs[iii]==localStorage.getItem('bitsoko-owner-id')){
+			 if(subs[iii]==localStorage.getItem('bits-user-name')){
 			 //console.log('im subscribed to ',mDet.promotions[ii]);
 			   nnew.push(mDet.promotions[ii]);
 				 $( ".promoSubButton-"+mDet.promotions[ii].id ).prop( "checked", true );
