@@ -135,19 +135,21 @@ $(".resDisplay").html( mDet.name);
 	for(var iii = 0,subs=subs,mDet=mDet; iii < subs.length; ++iii) { 
 			 if(subs[iii]==localStorage.getItem('bitsoko-owner-id')){
 			 //console.log('im subscribed to ',mDet.promotions[ii]);
-			   oold.push(mDet.promotions[ii]);
+			   nnew.push(mDet.promotions[ii]);
 				 $( ".promoSubButton-"+mDet.promotions[ii].id ).prop( "checked", true );
 				 $(".promoSubState-"+mDet.promotions[ii].id).html("Subscribed");
 			 };
 		 }
 		   
-	 
+	 if(nnew.length>0){
 		   getObjectStore('data', 'readwrite').get('bits-mypromos').onsuccess = function (event) {	
 		
-		try{var oold=JSON.parse(event.target.result);oold.push(nnew);}catch(err){var oold=[];oold.push(nnew);}
-	  getObjectStore('data', 'readwrite').put(JSON.stringify(oold), 'bits-mypromos');
+		try{var oold=JSON.parse(event.target.result);oold.concat(nnew);}catch(err){var oold=[];oold.concat(nnew);}
+		 
+	  getObjectStore('data', 'readwrite').put(JSON.stringify(squash(oold)), 'bits-mypromos');
 		
-	   } 	   
+	   } 	
+		   }
 		   
 		}; 
 			
