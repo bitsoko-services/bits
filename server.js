@@ -137,10 +137,10 @@ return new Promise(function(resolve, reject) {
         new Promise(function(resolve, reject) {
               //reject(event.data.error);
           
-				    var walsvar = getObjectStore('data', 'readwrite').get('bits-mypromos');
-	walsvar.onsuccess = function (event) {	
+		getObjectStore('data', 'readwrite').get('bits-mypromos').onsuccess = function (event) {	
 		
 	  resolve(JSON.parse(event.target.result));
+		}
           
         }).then(function(pdata) {
 		
