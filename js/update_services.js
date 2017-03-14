@@ -127,18 +127,30 @@ $(".resDisplay").html( mDet.name);
 						 '<p class="serviceListFirstline"> <span class="bits-badge bits left" style="margin-left: 20px;">'+Math.ceil(dailyCost)+' <span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>'+
 						 '<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-'+mDet.promotions[ii].id+'">Not Subscribed</span> <label><input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+mDet.promotions[ii].id+'" class="promoSubButton promoSubButton-'+mDet.promotions[ii].id+'" style="background: rgb(128, 210, 147);"> <span style="margin-top:2px;" class="lever right"></span></label></div></li>'); 
        	 subs=mDet.promotions[ii].promoSubs;
-		 for(var iii = 0,subs=subs,mDet=mDet; iii < subs.length; ++iii) { 
+		   var nnew=[];
+		  
+		
+	
+	
+	for(var iii = 0,subs=subs,mDet=mDet; iii < subs.length; ++iii) { 
 			 if(subs[iii]==localStorage.getItem('bitsoko-owner-id')){
 			 //console.log('im subscribed to ',mDet.promotions[ii]);
-				  //START-TODO-remove support for individually listed promos in db, moved to "bits-mypromos-USERID"
-			    getObjectStore('data', 'readwrite').put(JSON.stringify(mDet.promotions[ii]), 'bits-promo-'+mDet.promotions[ii].id);
-			   //END-TODO
-			   
+			   oold.push(mDet.promotions[ii]);
 				 $( ".promoSubButton-"+mDet.promotions[ii].id ).prop( "checked", true );
 				 $(".promoSubState-"+mDet.promotions[ii].id).html("Subscribed");
 			 };
 		 }
+		   
+	 
+		   getObjectStore('data', 'readwrite').get('bits-mypromos').onsuccess = function (event) {	
+		
+		try{var oold=JSON.parse(event.target.result);oold.push(nnew);}catch(err){var oold=[];oold.push(nnew);}
+	  getObjectStore('data', 'readwrite').put(JSON.stringify(oold), 'bits-mypromos');
+		
+	   } 	   
+		   
 		}; 
+			
 		}
 	
 	 doSubscribe();
