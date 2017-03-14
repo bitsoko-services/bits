@@ -134,6 +134,7 @@ return new Promise(function(resolve, reject) {
       break;
 			
 			case 'merchantMessage':
+			   
         new Promise(function(resolve, reject) {
               //reject(event.data.error);
           
@@ -143,7 +144,7 @@ return new Promise(function(resolve, reject) {
 		}
           
         }).then(function(pdata) {
-		
+		console.log(dat);
 	
       for (var i = 0,dat=dat,data=data; i < pdata.length; i++) { 
 	 if(parseInt(dat.pid)==parseInt(pdata[i].id)){
