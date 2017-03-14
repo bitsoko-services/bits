@@ -68,9 +68,11 @@ contact();
 			    getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-'+e.data.id);
            	      populateService(e.data.id);
 	                }else{
-                $(".serviceListHolder").hide();
-                $(".serviceListCard").hide();
- $(".promoHolder").show();
+	                	$('.serviceListHolder').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>No Promotions found</strong></p><p class="collections-content"></p></div></li></ul>');
+  
+//                 $(".serviceListHolder").hide();
+//                 $(".serviceListCard").hide();
+ //$(".promoHolder").show();
            }
         })
          .catch(function(){

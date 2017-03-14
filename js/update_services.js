@@ -98,7 +98,17 @@ function doSubscribe(){
 });
 
 }
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// function promoService(id){
+// 	var mDat = JSON.parse(localStorage.getItem('bits-merchant-id-'+id));
+// 	var ii = 0,subs=subs; ii < mDet.promotions.length; ++ii
+// 	if  (mDat.promotions.length == 0){
+// 		console.log("no promo")
+// 	}
+// 	else{
+// 		console.log(" promo found")
+// 	}
+// }
 //----------------------------------------------populateService function----------------------------------------------------------------------------------------------------------------------------------------
  function populateService(id){
  	var mDet = JSON.parse(localStorage.getItem('bits-merchant-id-'+id));
