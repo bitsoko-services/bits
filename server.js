@@ -146,7 +146,7 @@ return new Promise(function(resolve, reject) {
 		
 	
       for (var i = 0,dat=dat,data=data; i < pdata.length; i++) { 
-	 if(parseInt(dat.pid)==parseInt(pdata[i].owner)){
+	 if(parseInt(dat.pid)==parseInt(pdata[i].id)){
 	 
 	 
 	  
