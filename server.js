@@ -134,12 +134,12 @@ return new Promise(function(resolve, reject) {
       break;
 			
 			case 'merchantMessage':
-			   
+		 console.log(dat);	   
         new Promise(function(resolve, reject) {
               //reject(event.data.error);
-          
+          console.log(dat);
 		getObjectStore('data', 'readwrite').get('bits-mypromos').onsuccess = function (event) {	
-		
+	 console.log(dat);	
 	  resolve(JSON.parse(event.target.result));
 		}
           
