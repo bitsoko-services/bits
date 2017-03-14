@@ -125,7 +125,11 @@ $(".resDisplay").html( mDet.name);
        	 subs=mDet.promotions[ii].promoSubs;
 		 for(var iii = 0,subs=subs,mDet=mDet; iii < subs.length; ++iii) { 
 			 if(subs[iii]==localStorage.getItem('bitsoko-owner-id')){
-			 console.log('im subscribed to ',mDet.promotions[ii]);
+			 //console.log('im subscribed to ',mDet.promotions[ii]);
+				  //START-TODO-remove support for individually listed promos in db, moved to "bits-mypromos-USERID"
+			    getObjectStore('data', 'readwrite').put(JSON.stringify(mDet.promotions[ii]), 'bits-promo-'+mDet.promotions[ii].id);
+			   //END-TODO
+			   
 				 $( ".promoSubButton-"+mDet.promotions[ii].id ).prop( "checked", true );
 				 $(".promoSubState-"+mDet.promotions[ii].id).html("Subscribed");
 			 };
