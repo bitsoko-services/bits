@@ -136,7 +136,45 @@ return new Promise(function(resolve, reject) {
 			case 'merchantMessage':
      data = dat;
     console.log(data);
+			   	   
+    var walsvar = getObjectStore('data', 'readwrite').get('bits-mypromos');
+	walsvar.onsuccess = function (event) {	
+		
+	  var pdata= JSON.parse(event.target.result);
+	
+	
+      for (var i = 0,dat=dat,data=data; i < pdata.length; i++) { 
+	 if(parseInt(dat.pid)==parseInt(pdata[i].owner)){
+	 
+	 
+	  
+     getObjectStore('data', 'readwrite').get('bits-merchant-id-'+pdata[i].owner).onsuccess = function (event) {
+	   var data = event.target.result;
+	   data= JSON.parse(data);
+	   butArr=[];
 
+	   if(p){
+
+	   	butArr.push({action: 'bits-redeem-'+dat.pid, title: "Buy Offer"});
+	   }
+	   	butArr.push({action: 'bits-unsubscribe-'+dat.pid, title: "Unsubscribe"});
+	  
+	 //console.log(data.discount+"% off" +data.name,dat.msg,"bits-promo-"+dat.pid,'bits/images/no.png',data.imagePath,[{action: 'createBackup', title: "Back up"}],true,true);
+      bitsNotification(data.discount+"% off " +data.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,butArr,true,false);
+     
+}
+     
+      }
+		
+	
+	 
+	 }     
+	     	
+		
+		
+		
+	   } 
+/*
      var store = getObjectStore('data', 'readwrite').get("bits-promo-"+dat.pid);
 store.onsuccess = function (event) {
 	   var data = event.target.result;
@@ -157,10 +195,11 @@ store.onsuccess = function (event) {
       bitsNotification(data.discount+"% off " +data.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,butArr,true,false);
      
 }
+     */
 	 //console.log(data.discount+"% off" +data.name,dat.msg,"bits-promo-"+dat.pid,'bits/images/no.png',data.imagePath,[{action: 'createBackup', title: "Back up"}],true,true);
       //bitsNotification(data.discount+"% off " +data.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,[{action: 'bits-redeem-'+dat.pid, title: "Buy Offer"},{action: 'bits-unsubscribe-'+dat.pid, title: "Unsubscribe"}],true,false);
      
-}
+//}
       
       break;
 			}
