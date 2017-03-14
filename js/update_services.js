@@ -99,16 +99,21 @@ function doSubscribe(){
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// function promoService(id){
-// 	var mDat = JSON.parse(localStorage.getItem('bits-merchant-id-'+id));
-// 	var ii = 0,subs=subs; ii < mDet.promotions.length; ++ii
-// 	if  (mDat.promotions.length == 0){
-// 		console.log("no promo")
-// 	}
-// 	else{
-// 		console.log(" promo found")
-// 	}
-// }
+function promoService(id){
+	 doFetch({ action: 'serviceProfile', id: servID, service: getBitsWinOpt('s')}).then(function(e){
+           if (e.status=="ok"){}
+           else{}
+	 });
+
+	var mDat = JSON.parse(localStorage.getItem('bits-merchant-id-'+id));
+	var ii = 0,subs=subs; ii < mDet.promotions.length; ++ii
+	if  (mDat.promotions.length == 0){
+		console.log("no promo")
+	}
+	else{
+		console.log(" promo found")
+	}
+}
 //----------------------------------------------populateService function----------------------------------------------------------------------------------------------------------------------------------------
  function populateService(id){
  	var mDet = JSON.parse(localStorage.getItem('bits-merchant-id-'+id));
@@ -141,7 +146,12 @@ $(".resDisplay").html( mDet.name);
 			 };
 		 }
 		}; 
-	
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		 for(var ii = 0,subs=subs; ii > mDet.promotions.length; ++ii) { 			 
+		 var dailyCost=(parseInt(mDet.promotions[ii].discount)/100)*mDet.promotions[ii].promoPrice;
+		 $('.serviceListHolder').prepend('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>No Promotions found</strong></p><p class="collections-content"></p></div></li></ul>');
+		 };
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	 doSubscribe();
 	 checkPayments();
  for(var ii = 0; ii < mDet.list.length; ++ii) {
