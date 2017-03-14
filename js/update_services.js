@@ -109,7 +109,7 @@ $(".resDisplay").html( mDet.name);
 		document.querySelector('.serviceDescription').innerHTML = mDet.description;
 		 $('.serviceListHolder').html("");
 //-----------------------------------------------incase the user is the owner of this shop, then show POS button------------------------------------------------------------------------------------------------
-	 if(mDet.owner==parseInt(localStorage.getItem('bitsoko-owner-id'))){
+	 if(mDet.owner==parseInt(localStorage.getItem('bits-user-name'))){
 	 $('#manage-store').css("display","block");
 	 }else{
 	  $('#manage-store').css("display","none");
@@ -125,7 +125,7 @@ $(".resDisplay").html( mDet.name);
 						 '<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-'+mDet.promotions[ii].id+'">Not Subscribed</span> <label><input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+mDet.promotions[ii].id+'" class="promoSubButton promoSubButton-'+mDet.promotions[ii].id+'" style="background: rgb(128, 210, 147);"> <span style="margin-top:2px;" class="lever right"></span></label></div></li>'); 
        	 subs=mDet.promotions[ii].promoSubs;
 		 for(var iii = 0,subs=subs,mDet=mDet; iii < subs.length; ++iii) { 
-			 if(subs[iii]==localStorage.getItem('bitsoko-owner-id')){
+			 if(subs[iii]==localStorage.getItem('bits-user-name')){
 			 //console.log('im subscribed to ',mDet.promotions[ii]);
 				  //START-TODO-remove support for individually listed promos in db, moved to "bits-mypromos-USERID"
 			    getObjectStore('data', 'readwrite').put(JSON.stringify(mDet.promotions[ii]), 'bits-promo-'+mDet.promotions[ii].id);
