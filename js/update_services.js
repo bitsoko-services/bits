@@ -143,7 +143,7 @@ $(".resDisplay").html( mDet.name);
 	 if(nnew.length>0){
 		   getObjectStore('data', 'readwrite').get('bits-mypromos').onsuccess = function (event) {	
 		
-		try{var oold=JSON.parse(event.target.result);oold.concat(nnew);}catch(err){var oold=[];oold.concat(nnew);}
+		try{var oold=JSON.parse(event.target.result);var oold=oold.concat(nnew);}catch(err){var oold=[];var oold=oold.concat(nnew);}
 		 
 	  getObjectStore('data', 'readwrite').put(JSON.stringify(squash(oold)), 'bits-mypromos');
 		
