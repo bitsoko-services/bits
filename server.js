@@ -134,14 +134,16 @@ return new Promise(function(resolve, reject) {
       break;
 			
 			case 'merchantMessage':
-     data = dat;
-    console.log(data);
-			   	   
-    var walsvar = getObjectStore('data', 'readwrite').get('bits-mypromos');
+        new Promise(function(resolve, reject) {
+              //reject(event.data.error);
+          
+				    var walsvar = getObjectStore('data', 'readwrite').get('bits-mypromos');
 	walsvar.onsuccess = function (event) {	
 		
-	  var pdata= JSON.parse(event.target.result);
-	
+	  resolve(JSON.parse(event.target.result));
+          
+        }).then(function(pdata) {
+		
 	
       for (var i = 0,dat=dat,data=data; i < pdata.length; i++) { 
 	 if(parseInt(dat.pid)==parseInt(pdata[i].owner)){
@@ -170,10 +172,10 @@ return new Promise(function(resolve, reject) {
 	 
 	 }     
 	     	
-		
-		
-		
-	   } 
+	
+        });
+			   	   
+
 /*
      var store = getObjectStore('data', 'readwrite').get("bits-promo-"+dat.pid);
 store.onsuccess = function (event) {
