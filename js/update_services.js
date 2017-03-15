@@ -145,7 +145,7 @@ $(".resDisplay").html( mDet.name);
 		
 		try{var oold=JSON.parse(event.target.result);var oold=oold.concat(nnew);}catch(err){var oold=[];var oold=oold.concat(nnew);}
 		 
-	  getObjectStore('data', 'readwrite').put(JSON.stringify(squash(oold)), 'bits-mypromos');
+	  getObjectStore('data', 'readwrite').put(JSON.stringify(squashById(oold)), 'bits-mypromos');
 		
 	   } 	
 		   }
