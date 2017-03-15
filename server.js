@@ -143,9 +143,9 @@ return new Promise(function(resolve, reject) {
 		}
           
         }).then(function(pd) {
-		console.log(dat);
 	var pdata=pd.myp;
       var dat=pd.d;
+		console.log(dat);
       for (var i = 0,dat=dat,data=data; i < pdata.length; i++) { 
 	 if(parseInt(dat.pid)==parseInt(pdata[i].id)){
 	 
