@@ -132,7 +132,7 @@ $(".resDisplay").html( mDet.name);
 	
 	
 	for(var iii = 0,subs=subs,nnew=nnew,mDet=mDet; iii < subs.length; ++iii) { 
-			 if(subs[iii]==localStorage.getItem('bits-user-name')){
+			 if(parseInt(subs[iii].id)==parseInt(localStorage.getItem('bits-user-name'))){
 			 //console.log('im subscribed to ',mDet.promotions[ii]);
 			   nnew.push(mDet.promotions[ii]);
 				 $( ".promoSubButton-"+mDet.promotions[ii].id ).prop( "checked", true );
