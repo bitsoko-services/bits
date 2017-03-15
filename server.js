@@ -139,12 +139,13 @@ return new Promise(function(resolve, reject) {
             console.log(dat);
 		getObjectStore('data', 'readwrite').get('bits-mypromos').onsuccess = function (event) {	
 		  console.log(dat);
-	  resolve(JSON.parse(event.target.result));
+	  resolve({myp:JSON.parse(event.target.result),d:dat});
 		}
           
-        }).then(function(pdata) {
+        }).then(function(pd) {
 		console.log(dat);
-	
+	var pdata=pd.myp;
+      var dat=pd.d;
       for (var i = 0,dat=dat,data=data; i < pdata.length; i++) { 
 	 if(parseInt(dat.pid)==parseInt(pdata[i].id)){
 	 
