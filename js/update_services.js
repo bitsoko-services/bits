@@ -63,15 +63,12 @@ function doSubscribe(){
 		
 //---------------------------------------send promo data to db-----------------------------------------------------------------------------
 		   if(action=='subscribe'){
-			   //START-TODO-remove support for individually listed promos in db, moved to "bits-mypromos-USERID"
-			    getObjectStore('data', 'readwrite').put(JSON.stringify(e.prom), 'bits-promo-'+pid);
-			   //END-TODO
-			         
-    var walsvar = getObjectStore('data', 'readwrite').get('bits-mypromos-'+localStorage.getItem('bits-user-name'));
+			   
+    var walsvar = getObjectStore('data', 'readwrite').get('bits-mypromos');
 	walsvar.onsuccess = function (event) {	
 		
 		try{var oold=JSON.parse(event.target.result);oold.push(e.prom);}catch(err){var oold=[];oold.push(e.prom);}
-	  getObjectStore('data', 'readwrite').put(JSON.stringify(oold), 'bits-mypromos-'+localStorage.getItem('bits-user-name'));
+	  getObjectStore('data', 'readwrite').put(JSON.stringify(oold), 'bits-mypromos');
 		
 		   $( ".promoSubButton-"+pid ).prop( "checked",true);
 			   $(".promoSubState-"+pid).html("Subscribed");
@@ -107,21 +104,20 @@ $(".resDisplay").html( mDet.name);
         document.querySelector('.cardimage').src = 'https://bitsoko.io'+mDet.bannerPath;
          document.querySelector('.cardLogo').src = mDet.icon;
 		document.querySelector('.serviceDescription').innerHTML = mDet.description;
-		// $('.serviceListHolder').html("");
+		 $('.serviceListHolder').html("");
 //-----------------------------------------------incase the user is the owner of this shop, then show POS button------------------------------------------------------------------------------------------------
-	 if(mDet.owner==parseInt(localStorage.getItem('bitsoko-owner-id'))){
+	 if(mDet.owner==parseInt(localStorage.getItem('bits-user-name'))){
 	 $('#manage-store').css("display","block");
 	 }else{
 	  $('#manage-store').css("display","none");
 	 }
-	 	callMerchant()
+	 	callMerchant();
+	 console.log(mDet.promotions);
 	 	if(mDet.promotions.length == 0){
 	 		 console.log("no promos") 
 		 $('.serviceListHolder').prepend('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>No Promotions found</strong></p><p class="collections-content"></p></div></li></ul>');
           
-	 	} 
-		else{
-			console.log("no promos")
+	 	} else{
            for(var ii = 0,subs=subs; ii < mDet.promotions.length; ++ii) { 			 
 		 var dailyCost=(parseInt(mDet.promotions[ii].discount)/100)*mDet.promotions[ii].promoPrice;
 		 $('.serviceListHolder').prepend('<li class="avatar bits-max promo-collection">'+
@@ -130,18 +126,32 @@ $(".resDisplay").html( mDet.name);
 						 '<p class="serviceListFirstline"> <span class="bits-badge bits left" style="margin-left: 20px;">'+Math.ceil(dailyCost)+' <span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>'+
 						 '<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-'+mDet.promotions[ii].id+'">Not Subscribed</span> <label><input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+mDet.promotions[ii].id+'" class="promoSubButton promoSubButton-'+mDet.promotions[ii].id+'" style="background: rgb(128, 210, 147);"> <span style="margin-top:2px;" class="lever right"></span></label></div></li>'); 
        	 subs=mDet.promotions[ii].promoSubs;
-		 for(var iii = 0,subs=subs,mDet=mDet; iii < subs.length; ++iii) { 
-			 if(subs[iii]==localStorage.getItem('bitsoko-owner-id')){
+		   var nnew=[];
+		  
+		
+	
+	
+	for(var iii = 0,subs=subs,nnew=nnew,mDet=mDet; iii < subs.length; ++iii) { 
+			 if(subs[iii]==localStorage.getItem('bits-user-name')){
 			 //console.log('im subscribed to ',mDet.promotions[ii]);
-				  //START-TODO-remove support for individually listed promos in db, moved to "bits-mypromos-USERID"
-			    getObjectStore('data', 'readwrite').put(JSON.stringify(mDet.promotions[ii]), 'bits-promo-'+mDet.promotions[ii].id);
-			   //END-TODO
-			   
+			   nnew.push(mDet.promotions[ii]);
 				 $( ".promoSubButton-"+mDet.promotions[ii].id ).prop( "checked", true );
 				 $(".promoSubState-"+mDet.promotions[ii].id).html("Subscribed");
 			 };
 		 }
+		   
+	 if(nnew.length>0){
+		   getObjectStore('data', 'readwrite').get('bits-mypromos').onsuccess = function (event) {	
+		
+		try{var oold=JSON.parse(event.target.result);var oold=oold.concat(nnew);}catch(err){var oold=[];var oold=oold.concat(nnew);}
+		 
+	  getObjectStore('data', 'readwrite').put(JSON.stringify(squash(oold)), 'bits-mypromos');
+		
+	   } 	
+		   }
+		   
 		}; 
+			
 		}
 	
 	 doSubscribe();
