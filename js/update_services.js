@@ -118,7 +118,8 @@ $(".resDisplay").html( mDet.name);
 		 $('.serviceListHolder').prepend('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>No Promotions found</strong></p><p class="collections-content"></p></div></li></ul>');
           
 	 	} else{
-           for(var ii = 0,subs=subs; ii < mDet.promotions.length; ++ii) { 			 
+           var nnew=[];
+           for(var ii = 0,nnew=nnew,subs=subs; ii < mDet.promotions.length; ++ii) { 			 
 		 var dailyCost=(parseInt(mDet.promotions[ii].discount)/100)*mDet.promotions[ii].promoPrice;
 		 $('.serviceListHolder').prepend('<li class="avatar bits-max promo-collection">'+
 						 '<img src="https://bitsoko.io'+mDet.promotions[ii].promoBanner+'" data-caption="'+mDet.promotions[ii].promoName+'" alt="'+mDet.promotions[ii].promoDesc+'" class="materialboxed">'+
@@ -126,7 +127,7 @@ $(".resDisplay").html( mDet.name);
 						 '<p class="serviceListFirstline"> <span class="bits-badge bits left" style="margin-left: 20px;">'+Math.ceil(dailyCost)+' <span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>'+
 						 '<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-'+mDet.promotions[ii].id+'">Not Subscribed</span> <label><input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+mDet.promotions[ii].id+'" class="promoSubButton promoSubButton-'+mDet.promotions[ii].id+'" style="background: rgb(128, 210, 147);"> <span style="margin-top:2px;" class="lever right"></span></label></div></li>'); 
        	 subs=mDet.promotions[ii].promoSubs;
-		   var nnew=[];
+		  
 		  
 		
 	
@@ -140,17 +141,18 @@ $(".resDisplay").html( mDet.name);
 			 };
 		 }
 		   
+		   
+		}; 
+	
 	 if(nnew.length>0){
 		   getObjectStore('data', 'readwrite').get('bits-mypromos').onsuccess = function (event) {	
 		
 		try{var oold=JSON.parse(event.target.result);var oold=oold.concat(nnew);}catch(err){var oold=[];var oold=oold.concat(nnew);}
 		 
-	  getObjectStore('data', 'readwrite').put(JSON.stringify(squashById(oold)), 'bits-mypromos');
+	  getObjectStore('data', 'readwrite').put(JSON.stringify(squash(oold)), 'bits-mypromos');
 		
 	   } 	
-		   }
-		   
-		}; 
+		   }	
 			
 		}
 	
