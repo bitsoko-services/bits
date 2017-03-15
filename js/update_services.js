@@ -63,12 +63,15 @@ function doSubscribe(){
 		
 //---------------------------------------send promo data to db-----------------------------------------------------------------------------
 		   if(action=='subscribe'){
-			   
-    var walsvar = getObjectStore('data', 'readwrite').get('bits-mypromos');
+			   //START-TODO-remove support for individually listed promos in db, moved to "bits-mypromos-USERID"
+			    getObjectStore('data', 'readwrite').put(JSON.stringify(e.prom), 'bits-promo-'+pid);
+			   //END-TODO
+			         
+    var walsvar = getObjectStore('data', 'readwrite').get('bits-mypromos-'+localStorage.getItem('bits-user-name'));
 	walsvar.onsuccess = function (event) {	
 		
 		try{var oold=JSON.parse(event.target.result);oold.push(e.prom);}catch(err){var oold=[];oold.push(e.prom);}
-	  getObjectStore('data', 'readwrite').put(JSON.stringify(oold), 'bits-mypromos');
+	  getObjectStore('data', 'readwrite').put(JSON.stringify(oold), 'bits-mypromos-'+localStorage.getItem('bits-user-name'));
 		
 		   $( ".promoSubButton-"+pid ).prop( "checked",true);
 			   $(".promoSubState-"+pid).html("Subscribed");
@@ -104,20 +107,21 @@ $(".resDisplay").html( mDet.name);
         document.querySelector('.cardimage').src = 'https://bitsoko.io'+mDet.bannerPath;
          document.querySelector('.cardLogo').src = mDet.icon;
 		document.querySelector('.serviceDescription').innerHTML = mDet.description;
-		 $('.serviceListHolder').html("");
+		// $('.serviceListHolder').html("");
 //-----------------------------------------------incase the user is the owner of this shop, then show POS button------------------------------------------------------------------------------------------------
-	 if(mDet.owner==parseInt(localStorage.getItem('bits-user-name'))){
+	 if(mDet.owner==parseInt(localStorage.getItem('bitsoko-owner-id'))){
 	 $('#manage-store').css("display","block");
 	 }else{
 	  $('#manage-store').css("display","none");
 	 }
-	 	callMerchant();
-	 console.log(mDet.promotions);
+	 	callMerchant()
 	 	if(mDet.promotions.length == 0){
 	 		 console.log("no promos") 
 		 $('.serviceListHolder').prepend('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>No Promotions found</strong></p><p class="collections-content"></p></div></li></ul>');
           
-	 	} else{
+	 	} 
+		else{
+			console.log("no promos")
            for(var ii = 0,subs=subs; ii < mDet.promotions.length; ++ii) { 			 
 		 var dailyCost=(parseInt(mDet.promotions[ii].discount)/100)*mDet.promotions[ii].promoPrice;
 		 $('.serviceListHolder').prepend('<li class="avatar bits-max promo-collection">'+
@@ -126,32 +130,18 @@ $(".resDisplay").html( mDet.name);
 						 '<p class="serviceListFirstline"> <span class="bits-badge bits left" style="margin-left: 20px;">'+Math.ceil(dailyCost)+' <span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>'+
 						 '<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-'+mDet.promotions[ii].id+'">Not Subscribed</span> <label><input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+mDet.promotions[ii].id+'" class="promoSubButton promoSubButton-'+mDet.promotions[ii].id+'" style="background: rgb(128, 210, 147);"> <span style="margin-top:2px;" class="lever right"></span></label></div></li>'); 
        	 subs=mDet.promotions[ii].promoSubs;
-		   var nnew=[];
-		  
-		
-	
-	
-	for(var iii = 0,subs=subs,nnew=nnew,mDet=mDet; iii < subs.length; ++iii) { 
-			 if(subs[iii]==localStorage.getItem('bits-user-name')){
+		 for(var iii = 0,subs=subs,mDet=mDet; iii < subs.length; ++iii) { 
+			 if(subs[iii]==localStorage.getItem('bitsoko-owner-id')){
 			 //console.log('im subscribed to ',mDet.promotions[ii]);
-			   nnew.push(mDet.promotions[ii]);
+				  //START-TODO-remove support for individually listed promos in db, moved to "bits-mypromos-USERID"
+			    getObjectStore('data', 'readwrite').put(JSON.stringify(mDet.promotions[ii]), 'bits-promo-'+mDet.promotions[ii].id);
+			   //END-TODO
+			   
 				 $( ".promoSubButton-"+mDet.promotions[ii].id ).prop( "checked", true );
 				 $(".promoSubState-"+mDet.promotions[ii].id).html("Subscribed");
 			 };
 		 }
-		   
-	 if(nnew.length>0){
-		   getObjectStore('data', 'readwrite').get('bits-mypromos').onsuccess = function (event) {	
-		
-		try{var oold=JSON.parse(event.target.result);var oold=oold.concat(nnew);}catch(err){var oold=[];var oold=oold.concat(nnew);}
-		 
-	  getObjectStore('data', 'readwrite').put(JSON.stringify(squash(oold)), 'bits-mypromos');
-		
-	   } 	
-		   }
-		   
 		}; 
-			
 		}
 	
 	 doSubscribe();
@@ -238,43 +228,3 @@ for(var l=0, el=el; l < el.length; ++l){
         document.querySelector('.btnname').innerHTML = activeService.name;    
              };
      }
-//--------------------------function to hide and display nav-bar balance div  ----------------------------------------------------------------------------   
-// bits_contacts handles the contacts process and has other functions that depend on it
-// sam@bitsoko.io
-//----------------------------------- function getContacts-------------------------------------------------------------------------------------
-function contact(){	
- var ctFunc = getObjectStore('data', 'readwrite').get('bits-contacts-'+localStorage.getItem('bits-user-name'));
-  ctFunc.onerror = function (event) {
-   reqContacts();  
-  }
- ctFunc.onsuccess = function (event) {
-        try{
-//------------------------------------contacts found--------------------------------------------------------------------------------------------
-        document.querySelector('.serviceName').innerHTML = "Contacts";
-        document.querySelector('.cardimage').src = "https://bitsoko.io/app/images/contactsBanner.png";
-         document.querySelector('.cardLogo').src = "https://bitsoko.io/app/images/services/contacts.png";
-		document.querySelector('.serviceDescription').innerHTML = "All your contacts";
-    var allContacts = JSON.parse(event.target.result);
-  	for(var iii = 0 ;  iii < allContacts.length; ++iii) { 
-		console.log("contacts")	 
-			//var dailyCost=(parseInt(mDet.promotions[ii].discount)/100)*mDet.promotions[ii].promoPrice;
-			var id = allContacts[iii].uid ? allContacts[iii].uid : 'undefined';
-		 $('.serviceListHolder').append('<li onclick="selectContact('+id+')" class="collection-item waves-effect avatar" style="background-color: inherit; width: 100%;"><span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+allContacts[iii].name+' </span><img src="https://bitsoko.io/'+allContacts[iii].img+'" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle"></span></span><p class="serviceListFirstline">'+allContacts[iii].contact+' <br class="servicelistSeccondline"> </li>');   
-            } 
-	}
-catch(e) {  	console.log("no contacts")	 
-       $('.serviceListHolder').append('<li onclick="reqContacts()" class="collection-item waves-effect avatar"  style="background-color: inherit; width: 100%;"><img src="" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle">Empty</span></span><p class="serviceListFirstline"> Click to update your  list <br class="servicelistSeccondline">  </p><a href="#!" class="secondary-content"></a></li>');
-       // $('.serviceListHolder').append('<li onclick="contacts()" class="collection-item waves-effect avatar"  style="background-color: inherit; width: 100%;"><img src="'+activeService.cardLogo+'.png" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle">Empty</span></span><p class="serviceListFirstline"> Click to update your '+activeService.name+' list <br class="servicelistSeccondline">  </p><a href="#!" class="secondary-content"></a></li>');
-//----------------------------------------- no contacts------------------------------------------------------------------------------------------
-           reqContacts();     
-            }
-	}
-}
-//------------------------------------------cliked contact-----------------------------------------------------------------------------------------
-
-function selectContact(id){
-	console.log("you just clicked on a contact")
-	history.pushState({page: 1}, "", "?s=2&a="+id)
-
-}
-//-----------------------------------------------------------------------------------------------------------------------------------------------         

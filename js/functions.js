@@ -118,8 +118,8 @@ function loadoldwalletData(){
 	ol.onsuccess = function (event) {
   try{
   
-       var upData = JSON.parse(event.target.result); 
-  $('.username-addr-old').append('<span class="title"><a href="#!" id="share" class="secondary-content right"><i class="mdi-social-share"></i></a></span><span class ="" style="font-size: 12px;">'+upData.user+'</span>');
+       var upDat = JSON.parse(event.target.result); 
+  $('.username-addr-old').append('<span class="title"><a href="#!" id="share" class="secondary-content right"><i class="mdi-social-share"></i></a></span><span class ="" style="font-size: 12px;">'+upDat.user+'</span>');
  
   
   }catch(err){

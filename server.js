@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =258;
+	bitsVersion =260;
 bitsInstall = function(event){
 	
 	
@@ -134,50 +134,9 @@ return new Promise(function(resolve, reject) {
       break;
 			
 			case 'merchantMessage':
-		 console.log(dat);	   
-        new Promise(function(resolve, reject) {
-              //reject(event.data.error);
-          console.log(dat);
-		getObjectStore('data', 'readwrite').get('bits-mypromos').onsuccess = function (event) {	
-	 console.log(dat);	
-	  resolve(JSON.parse(event.target.result));
-		}
-          
-        }).then(function(pdata) {
-		console.log(dat);
-	
-      for (var i = 0,dat=dat,data=data; i < pdata.length; i++) { 
-	 if(parseInt(dat.pid)==parseInt(pdata[i].id)){
-	 
-	 
-	  
-     getObjectStore('data', 'readwrite').get('bits-merchant-id-'+pdata[i].owner).onsuccess = function (event) {
-	   var data = event.target.result;
-	   data= JSON.parse(data);
-	   butArr=[];
+     data = dat;
+    console.log(data);
 
-	   if(p){
-
-	   	butArr.push({action: 'bits-redeem-'+dat.pid, title: "Buy Offer"});
-	   }
-	   	butArr.push({action: 'bits-unsubscribe-'+dat.pid, title: "Unsubscribe"});
-	  
-	 //console.log(data.discount+"% off" +data.name,dat.msg,"bits-promo-"+dat.pid,'bits/images/no.png',data.imagePath,[{action: 'createBackup', title: "Back up"}],true,true);
-      bitsNotification(data.discount+"% off " +data.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,butArr,true,false);
-     
-}
-     
-      }
-		
-	
-	 
-	 }     
-	     	
-	
-        });
-			   	   
-
-/*
      var store = getObjectStore('data', 'readwrite').get("bits-promo-"+dat.pid);
 store.onsuccess = function (event) {
 	   var data = event.target.result;
@@ -198,11 +157,10 @@ store.onsuccess = function (event) {
       bitsNotification(data.discount+"% off " +data.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,butArr,true,false);
      
 }
-     */
 	 //console.log(data.discount+"% off" +data.name,dat.msg,"bits-promo-"+dat.pid,'bits/images/no.png',data.imagePath,[{action: 'createBackup', title: "Back up"}],true,true);
       //bitsNotification(data.discount+"% off " +data.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,[{action: 'bits-redeem-'+dat.pid, title: "Buy Offer"},{action: 'bits-unsubscribe-'+dat.pid, title: "Unsubscribe"}],true,false);
      
-//}
+}
       
       break;
 			}
