@@ -104,7 +104,7 @@ $(".resDisplay").html( mDet.name);
         document.querySelector('.cardimage').src = 'https://bitsoko.io'+mDet.bannerPath;
          document.querySelector('.cardLogo').src = mDet.icon;
 		document.querySelector('.serviceDescription').innerHTML = mDet.description;
-		 $('.serviceListHolder').html("");
+		 //$('.serviceListHolder').html("");
 //-----------------------------------------------incase the user is the owner of this shop, then show POS button------------------------------------------------------------------------------------------------
 	 if(mDet.owner==parseInt(localStorage.getItem('bits-user-name'))){
 	 $('#manage-store').css("display","block");
