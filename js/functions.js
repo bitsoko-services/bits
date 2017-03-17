@@ -9,6 +9,7 @@ else{
 	console.log("payments off")
 	 $("#paymentBTN").addClass("displayNone")
  	 $("#promopriced").addClass("displayNone")
+ 	 $("#bitsPrice").addClass("displayNone")
 	 
 }
 } 
