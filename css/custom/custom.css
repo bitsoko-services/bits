@@ -59,3 +59,29 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 }
 .promoHolder-home.collection{border: 0px solid #f9f9f9; !important}
 .serviceListHolder.collection.popup-gallery{border: 0px solid #f9f9f9; !important}
+.card .card-reveal {
+    padding: 20px;
+    position: absolute;
+    background-color: rgba(243, 243, 243, 0.73) !important;
+    width: 100%;
+    overflow-y: auto;
+    top: 100%;
+    height: 100%;
+    z-index: 1;
+    display: none;
+}
+.btn:hover, .btn-large:hover {
+    background-color: #0f5f76 !important;
+}
+.collapsible-body p {
+    margin: 0;
+    padding: 2px !important;
+}
+.collapsible {
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    margin: 0.5rem 0 1rem 0;
+    width: 98% !important;
+    text-align: -webkit-auto !important;
+}

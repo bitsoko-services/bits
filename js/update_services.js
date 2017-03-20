@@ -114,16 +114,17 @@ $(".resDisplay").html( mDet.name);
 	 	callMerchant();
 	 console.log(mDet.promotions);
 	 	if(mDet.promotions.length == 0){
-	 		 console.log("no promos") 
-		 $('.serviceListHolder').prepend('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>No Promotions found</strong></p><p class="collections-content"></p></div></li></ul>');
+	 		 console.log("no promos")
+	 		 $(".merchantsPromotions").removeClass("displayNone") 
+		 $('.merchPromo').append('<li id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>No Promotions found</strong></p><p class="collections-content"></p></div></li></li>');
           
 	 	} else{
-
+$(".merchantsPromotions").removeClass("displayNone")
            var nnew=[];
            for(var ii = 0,nnew=nnew,subs=subs; ii < mDet.promotions.length; ++ii) { 
            checkPayments();			 
 		 var dailyCost=(parseInt(mDet.promotions[ii].discount)/100)*mDet.promotions[ii].promoPrice;
-		 $('.serviceListHolder').prepend('<li class="avatar bits-max promo-collection">'+
+		 $('.merchPromo').append('<li class="avatar bits-max promo-collection">'+
 						 '<img src="https://bitsoko.io'+mDet.promotions[ii].promoBanner+'" data-caption="'+mDet.promotions[ii].promoName+'" alt="'+mDet.promotions[ii].promoDesc+'" class="materialboxed">'+
 						 '<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+mDet.promotions[ii].promoName+' </span></span>'+
 						 '<p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left" style="margin-left: 20px;">'+Math.ceil(dailyCost)+' <span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>'+
