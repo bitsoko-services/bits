@@ -68,7 +68,7 @@ function doSubscribe(){
 	walsvar.onsuccess = function (event) {	
 		
 		try{var oold=JSON.parse(event.target.result);oold.push(e.prom);}catch(err){var oold=[];oold.push(e.prom);}
-	  getObjectStore('data', 'readwrite').put(JSON.stringify(oold), 'bits-mypromos');
+	  getObjectStore('data', 'readwrite').put(JSON.stringify(squashById(oold)), 'bits-mypromos');
 		
 		   $( ".promoSubButton-"+pid ).prop( "checked",true);
 			   $(".promoSubState-"+pid).html("Subscribed");
