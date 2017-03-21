@@ -37,6 +37,8 @@
 		<link href="js/plugins/jvectormap/jquery-jvectormap.css" type="text/css" rel="stylesheet" media="screen,projection">
 		<link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 		<link rel="import" href="https://bitsoko.io/bitsAssets/html/connector.html">
+		<script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"></script>
+	<script src="js/jquery.star.rating.js"></script>
 </head>
 <body onload="starting()">
 	<bits-connect></bits-connect>
@@ -219,8 +221,16 @@
 <!--------------------------------------------------------- ratings----------------------------------------------------------------------------------------------- -->
 <div class="card-reveal">
                                         <span class="card-title grey-text text-darken-4">Ratings <i class="mdi-navigation-close right"></i></span>
-                                       
-                                    </div>
+                                       <center><div class="rating"></div></center>
+										<div class="input-field col s12" style="color:#000 !important;">
+										  	<textarea id="textarea2" class="materialize-textarea" length="120"></textarea>
+										  	<label for="textarea1" class="">Write a revew</label>
+											<span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+											<button class="btn waves-effect waves-light " type="submit" name="action">Send
+											<i class="mdi-content-send right"></i>
+										    </button>
+										    </div>
+										</div>
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------       
 ----------------------------------------------------------- commented send / recive buttons  --------------------------------------------------------------------------------------------------------------------------- 
 
@@ -425,7 +435,7 @@
  <script type="text/javascript" src="js/functions.js"></script> 
  <script type="text/javascript" src="js/bits_jspdf.js"></script>
  <script type="text/javascript" src="js/bits_auth.js"></script>
- 
+ 	
  <script type="text/javascript" src="js/update_services.js"></script>
 <script src="https://bitsoko.io/bitsAssets/js/google.js"async defer></script>    
     <!-- jQuery Library -->
@@ -458,6 +468,7 @@
 <!--=============================================================================================================================================================== -->
     <script>
     //--------------------------function to hide and display nav-bar balance div  ----------------------------------------------------------------------------   
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------------------------------
@@ -681,6 +692,73 @@ function navMenu(sId){
 //navigate to the sId service page
 contact();
  }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////star rating //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 		$(document).ready(function(){
+			$(".rating").addRating({
+				fieldId:"ratingId"
+			});
+			
+		})
+	(function ( $ ) {
+	$.fn.addRating = function(options) {
+		var obj = this;
+		var settings = $.extend({
+			max : 5,
+			half : true,
+			fieldName : 'rating',
+			fieldId : 'rating',
+			fieldClass: 'rating',
+			icon : 'star'
+
+		}, options );
+		this.settings = settings;
+		$(this).data('settings',settings)
+
+		// create the stars
+		for(var i = 1 ; i <= settings.max ; i++)
+		{
+			var star = $('<i/>').addClass('material-icons').html(this.settings.icon+'_border').data('rating', i).appendTo(this).click(
+				function(){
+					obj.setRating($(this).data('rating'));
+				}
+			).hover(
+				function(e){
+					obj.showRating($(this).data('rating'), false);
+				}, function(){
+					obj.showRating(0,false);
+				}
+			);
+		}
+		$(this).append('<input type="hidden" name="'+settings.fieldName+'" id="'+settings.fieldId+'" class="'+settings.fieldClass+'"/>');
+		return this
+	};
+
+	$.fn.setRating = function(numRating) {
+		var obj = this;
+		$('#'+obj.settings.fieldId).val(numRating);
+		obj.showRating(numRating, true);
+	};
+
+	$.fn.showRating = function(numRating, force) {
+		var obj = this;
+		if($('#'+obj.settings.fieldId).val() == '' || force)
+		{
+			$(obj).find('i').each(function(){
+				var icon = obj.settings.icon+'_border';
+				if($(this).data('rating') <= numRating)
+				{
+					icon = obj.settings.icon;
+				}
+				$(this).html(icon);
+			})
+		}
+	}
+
+}( jQuery ));
+//------------------------------------------------------------------------------------ ratings end -------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  </script>
 <!-- -------------------------------------------------------------------------google analytics code ----------------------------------------------------------------------------------------------------------------------------------------- -->
 <script>
