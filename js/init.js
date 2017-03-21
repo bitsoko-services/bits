@@ -171,7 +171,17 @@ Materialize.toast('Error loading old wallets', 10000);
 	console.log(olWals);
 	             // start loading old wallets
 	 var olWalss=[];
-    for( var ii=0, olWalss= olWalss; ii < olWals.length; ii++ ){  
+	
+    for( var ii=0, olWalss= olWalss; ii < olWals.length; ii++ ){ 
+	    
+	    function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
+}
+	    wait(ii*1000);
 		
 	console.log('Loading old wallet: ',olWals[ii]);
 	downloadFile(olWals[ii]).then(function(e){
