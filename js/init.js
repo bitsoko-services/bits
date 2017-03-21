@@ -187,7 +187,7 @@ Materialize.toast('Error loading old wallets', 10000);
 			      
     getObjectStore('data', 'readwrite').get('bits-wallets-old-'+localStorage.getItem('bits-user-name')).onsuccess = function (event) {	
 		
-		try{var oold=JSON.parse(event.target.result);oold.concat(oldWalss);}catch(err){var oold=[];oold.concat(oldWalss);}
+		try{var oold=JSON.parse(event.target.result);oold.concat(olWalss);}catch(err){var oold=[];oold.concat(olWalss);}
 	  getObjectStore('data', 'readwrite').put(JSON.stringify(oold), 'bits-wallets-old-'+localStorage.getItem('bits-user-name'));
 	   } 
           // end loading old wallets
