@@ -178,7 +178,7 @@ Materialize.toast('Error loading old wallets', 10000);
 	
 	      
 	console.log('Loaded old wallet: ',e);
-		oldWalss.push(e);
+		olWalss.push(e);
 
 	
 	});    
