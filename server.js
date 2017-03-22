@@ -156,7 +156,7 @@ return new Promise(function(resolve, reject) {
 	   data= JSON.parse(data);
 	   butArr=[];
 
-	   if(p){
+	   if(data.payments=="true"){
 
 	   	butArr.push({action: 'bits-redeem-'+dat.pid, title: "Buy Offer"});
 	   }
