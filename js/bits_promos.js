@@ -46,8 +46,9 @@ function noPromoMerchants(){
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------- function get my promos-------------------------------------------------------------------------------------
-function subscribedPromos(){	
- var spromo = getObjectStore('data', 'readwrite').get('bits-mypromos');
+function subscribedPromos(){
+
+   var spromo = getObjectStore('data', 'readwrite').get('bits-mypromos');
   spromo.onerror = function (event) {
   
   }
@@ -57,15 +58,19 @@ function subscribedPromos(){
        
     var subpromos = JSON.parse(event.target.result);
   	for(var iii = 0 ;  iii < subpromos.length; ++iii) { 
-		console.log("subscribed Promos found")	 
+		console.log("subscribed Promos found")
+		 
 			var id = subpromos[iii].uid ? subpromos[iii].uid : 'undefined';
+			 var dailyCost=(parseInt(subpromos[iii].discount)/100)*subpromos[iii].promoPrice;	
 			$('.promoHolder-home').html('')
-		 $('.promoHolder-home').append('<li class="promoHome col s12 m6 l4 avatar bits-max promo-collection">'+'<img src="https://bitsoko.io'+subpromos[iii].promoBanner+'" data-caption="'+subpromos[iii].promoDesc+'" alt="'+subpromos[iii].promoDesc+'" class="materialboxed promoHome"><div class="product-card">'+'<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+subpromos[iii].promoDesc+' </span></span>'+'<p class="serviceListFirstline"><span class="bits-badge bits left" style="margin-left: 20px;"><span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>'+'<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-'+subpromos[iii].id+'"> Not Subscribed</span> <label> <input type="checkbox" dailyR="" pid="" class="promoSubButton promoSubButton-'+subpromos[iii].id+'" style="background: rgb(128, 210, 147);"><span style="margin-top:2px;" class="lever right"></span></label></div></li>');   
+		 $('.promoHolder-home').append('<li class="promoHome col s12 m6 l4 avatar bits-max promo-collection">'+'<img src="https://bitsoko.io'+subpromos[iii].promoBanner+'" data-caption="'+subpromos[iii].promoDesc+'" alt="'+subpromos[iii].promoDesc+'" class="materialboxed promoHome"><div class="product-card">'+'<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+subpromos[iii].promoDesc+' </span></span>'+'<p class="serviceListFirstline"><span class="bits-badge bits left" style="margin-left: 20px;">'+Math.ceil(dailyCost)+' <span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>'+'<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-'+subpromos[iii].id+'"> Not Subscribed</span> <label> <input type="checkbox" dailyR="" pid="" class="promoSubButton promoSubButton-'+subpromos[iii].id+'" style="background: rgb(128, 210, 147);"><span style="margin-top:2px;" class="lever right"></span></label></div></li>');   
             } 
 	}
 catch(e) {  	console.log("no Promos subscribed")	 
        $('.promoHolder-home').append('<li onclick="" class="collection-item waves-effect avatar"  style="background-color: inherit; width: 100%;"><img src="" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle">Empty</span></span><p class="serviceListFirstline"> no Promos subscribed <br class="servicelistSeccondline">  </p><a href="#!" class="secondary-content"></a></li>');
       }
 	}
+	return true 
 }
+
 //------------------------------------------my promos end-----------------------------------------------------------------------------------------

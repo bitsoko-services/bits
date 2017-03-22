@@ -127,7 +127,7 @@ dd + dd {
     height: 100%; 
 /*     overflow: auto;  */
     width: 96%!important; 
-    padding-bottom: 20px; 
+    padding-bottom: 30px; 
     margin: 2%; 
     border: 1px solid rgba(0,0,0,0.1); 
 } 

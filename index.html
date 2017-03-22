@@ -94,7 +94,7 @@
 		</div></center>
 		<ul> 
 			<li  class="bits-ellipsis col s6 m8 l9 displayNone" style="margin-left: 15px;"><span class="username-addr " style=""></span></li>
-            <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>My Offers</a></li>
+            <li class="bold"><a href="?#mysubscriptions"  class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>My Offers</a></li>
 			<li class="bold displayNone"><a href="?" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>Nearby Offers</a></li>
 			<li class=""><a href="#" id="shareQR"> <i class="mdi-social-share bits-color"></i><span class="bits-13"  style=""></span> <span href id="">Share Wallet</span>  </a>  
         	<li class="bold"><a href="#" id="useAnon" onclick="signOut();"class="waves-effect waves-cyan"><i class="mdi-communication-live-help"></i>Use app anonymously</a></li>
@@ -165,11 +165,11 @@
             
            
         </ul>
-        <ul id="store-dropdown" class="dropdown-content drop-down-content-bits" style="">
+<!--         <ul id="store-dropdown" class="dropdown-content drop-down-content-bits" style="">
                         <li>
                         </li>
                                 <li>
-                    </ul>
+                    </ul> -->
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only bits"><i class="mdi-navigation-menu"></i></a>
         </aside>
 <!-------------------------------------------- END LEFT SIDEBAR NAV -------------------------------------------------------------------------------------->
@@ -428,6 +428,7 @@
                             
     </div>
     </div>
+    <div id="#mysubscriptions"></div>
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- ================================================Scripts================================================-->
 <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js" async defer></script>
@@ -435,6 +436,7 @@
  <script type="text/javascript" src="js/functions.js"></script> 
  <script type="text/javascript" src="js/bits_jspdf.js"></script>
  <script type="text/javascript" src="js/bits_auth.js"></script>
+ <script type="text/javascript" src="js/bits_promos.js"></script>
  	
  <script type="text/javascript" src="js/update_services.js"></script>
 <script src="https://bitsoko.io/bitsAssets/js/google.js"async defer></script>    
@@ -469,6 +471,10 @@
     <script>
     //--------------------------function to hide and display nav-bar balance div  ----------------------------------------------------------------------------   
 
+	 if (window.location.hash === '#mysubscriptions') {
+    console.log("my subscriptions")
+     subscribedPromos();
+	  }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------------------------------
@@ -695,68 +701,68 @@ contact();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////star rating //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- 		$(document).ready(function(){
-			$(".rating").addRating({
-				fieldId:"ratingId"
-			});
-			
-		})
-	(function ( $ ) {
-	$.fn.addRating = function(options) {
-		var obj = this;
-		var settings = $.extend({
-			max : 5,
-			half : true,
-			fieldName : 'rating',
-			fieldId : 'rating',
-			fieldClass: 'rating',
-			icon : 'star'
-
-		}, options );
-		this.settings = settings;
-		$(this).data('settings',settings)
-
-		// create the stars
-		for(var i = 1 ; i <= settings.max ; i++)
-		{
-			var star = $('<i/>').addClass('material-icons').html(this.settings.icon+'_border').data('rating', i).appendTo(this).click(
-				function(){
-					obj.setRating($(this).data('rating'));
-				}
-			).hover(
-				function(e){
-					obj.showRating($(this).data('rating'), false);
-				}, function(){
-					obj.showRating(0,false);
-				}
-			);
-		}
-		$(this).append('<input type="hidden" name="'+settings.fieldName+'" id="'+settings.fieldId+'" class="'+settings.fieldClass+'"/>');
-		return this
-	};
-
-	$.fn.setRating = function(numRating) {
-		var obj = this;
-		$('#'+obj.settings.fieldId).val(numRating);
-		obj.showRating(numRating, true);
-	};
-
-	$.fn.showRating = function(numRating, force) {
-		var obj = this;
-		if($('#'+obj.settings.fieldId).val() == '' || force)
-		{
-			$(obj).find('i').each(function(){
-				var icon = obj.settings.icon+'_border';
-				if($(this).data('rating') <= numRating)
-				{
-					icon = obj.settings.icon;
-				}
-				$(this).html(icon);
-			})
-		}
-	}
-
-}( jQuery ));
+    $(document).ready(function(){ 
+      $(".rating").addRating({ 
+        fieldId:"ratingId" 
+      }); 
+       
+    }) 
+  (function ( $ ) { 
+  $.fn.addRating = function(options) { 
+    var obj = this; 
+    var settings = $.extend({ 
+      max : 5, 
+      half : true, 
+      fieldName : 'rating', 
+      fieldId : 'rating', 
+      fieldClass: 'rating', 
+      icon : 'star' 
+ 
+    }, options ); 
+    this.settings = settings; 
+    $(this).data('settings',settings) 
+ 
+    // create the stars 
+    for(var i = 1 ; i <= settings.max ; i++) 
+    { 
+      var star = $('<i/>').addClass('material-icons').html(this.settings.icon+'_border').data('rating', i).appendTo(this).click( 
+        function(){ 
+          obj.setRating($(this).data('rating')); 
+        } 
+      ).hover( 
+        function(e){ 
+          obj.showRating($(this).data('rating'), false); 
+        }, function(){ 
+          obj.showRating(0,false); 
+        } 
+      ); 
+    } 
+    $(this).append('<input type="hidden" name="'+settings.fieldName+'" id="'+settings.fieldId+'" class="'+settings.fieldClass+'"/>'); 
+    return this 
+  }; 
+ 
+  $.fn.setRating = function(numRating) { 
+    var obj = this; 
+    $('#'+obj.settings.fieldId).val(numRating); 
+    obj.showRating(numRating, true); 
+  }; 
+ 
+  $.fn.showRating = function(numRating, force) { 
+    var obj = this; 
+    if($('#'+obj.settings.fieldId).val() == '' || force) 
+    { 
+      $(obj).find('i').each(function(){ 
+        var icon = obj.settings.icon+'_border'; 
+        if($(this).data('rating') <= numRating) 
+        { 
+          icon = obj.settings.icon; 
+        } 
+        $(this).html(icon); 
+      }) 
+    } 
+  } 
+ 
+}( jQuery )); 
 //------------------------------------------------------------------------------------ ratings end -------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  </script>
