@@ -163,7 +163,7 @@ return new Promise(function(resolve, reject) {
 	   	butArr.push({action: 'bits-unsubscribe-'+dat.pid, title: "Unsubscribe"});
 	  
 	 //console.log(data.discount+"% off" +data.name,dat.msg,"bits-promo-"+dat.pid,'bits/images/no.png',data.imagePath,[{action: 'createBackup', title: "Back up"}],true,true);
-      bitsNotification(data.discount+"% off " +data.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,butArr,true,false);
+      bitsNotification(pdata[i].discount+"% off " +pdata[i].name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,butArr,true,false);
      
 }
      
