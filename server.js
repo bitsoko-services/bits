@@ -151,7 +151,7 @@ return new Promise(function(resolve, reject) {
 	 
 	 
 	  
-     getObjectStore('data', 'readwrite').get('bits-merchant-id-'+pdata[i].owner).onsuccess = function (event) {
+     getObjectStore('data', 'readwrite').get('bits-merchant-id-'+pdata[i].promoOwner).onsuccess = function (event) {
 	   var data = event.target.result;
 	   data= JSON.parse(data);
 	   butArr=[];
