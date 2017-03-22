@@ -149,7 +149,7 @@ return new Promise(function(resolve, reject) {
       for (var i = 0,dat=dat,data=data; i < pdata.length; i++) { 
 	 if(parseInt(dat.pid)==parseInt(pdata[i].id)){
 	 
-	 
+	 ddat=pdata[i];
 	  
      getObjectStore('data', 'readwrite').get('bits-merchant-id-'+pdata[i].promoOwner).onsuccess = function (event) {
 	   var data = event.target.result;
@@ -163,7 +163,7 @@ return new Promise(function(resolve, reject) {
 	   	butArr.push({action: 'bits-unsubscribe-'+dat.pid, title: "Unsubscribe"});
 	  
 	 //console.log(data.discount+"% off" +data.name,dat.msg,"bits-promo-"+dat.pid,'bits/images/no.png',data.imagePath,[{action: 'createBackup', title: "Back up"}],true,true);
-      bitsNotification(pdata[i].discount+"% off " +pdata[i].name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,butArr,true,false);
+      bitsNotification(ddat.discount+"% off " +ddat.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,butArr,true,false);
      
 }
      
