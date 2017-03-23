@@ -161,9 +161,11 @@ return new Promise(function(resolve, reject) {
 	   	butArr.push({action: 'bits-redeem-'+dat.pid, title: "Buy Offer"});
 	   }
 	   	butArr.push({action: 'bits-unsubscribe-'+dat.pid, title: "Unsubscribe"});
+	     
+	     if(ddat.discount==null || ddat.discount=='null'){var disc=''}else{var disc=ddat.discount+"% off "}
 	  
 	 //console.log(data.discount+"% off" +data.name,dat.msg,"bits-promo-"+dat.pid,'bits/images/no.png',data.imagePath,[{action: 'createBackup', title: "Back up"}],true,true);
-      bitsNotification(ddat.discount+"% off " +ddat.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,butArr,true,false);
+      bitsNotification(disc +ddat.promoName+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,butArr,true,false);
      
 }
      
