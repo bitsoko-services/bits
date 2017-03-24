@@ -18,7 +18,12 @@ function contact(){
 		console.log("contacts")	 
 			//var dailyCost=(parseInt(mDet.promotions[ii].discount)/100)*mDet.promotions[ii].promoPrice;
 			var id = allContacts[iii].uid ? allContacts[iii].uid : 'undefined';
-		 $('.serviceListHolder').append('<li onclick="selectContact('+id+')" class="collection-item waves-effect avatar" style="background-color: inherit; width: 100%;"><span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+allContacts[iii].name+' </span><img src="https://bitsoko.io/'+allContacts[iii].img+'" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle"></span></span><p class="serviceListFirstline">'+allContacts[iii].contact+' <br class="servicelistSeccondline"> </li>');   
+			if(allContacts[iii].img.includes('https://')){
+		    var final_url=allContacts[iii].img
+			//$('#contactsImg').removeClass("bits-dis-image");
+		    }
+		    else{ var final_url='https://bitsoko.io/'+allContacts[iii].img;}
+		 $('.serviceListHolder').append('<li onclick="selectContact('+id+')" class="collection-item waves-effect avatar" style="background-color: inherit; width: 100%;"><span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+allContacts[iii].name+' </span><img src="'+final_url+'" alt="" id="contactsImg" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle"></span></span><p class="serviceListFirstline">'+allContacts[iii].contact+' <br class="servicelistSeccondline"> </li>');   
             } 
 	}
 catch(e) {  	console.log("no contacts")	 
