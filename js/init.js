@@ -242,27 +242,27 @@ console.log(user);
     var address = JSON.parse(event.target.result).publicAddress;
     
            if (navigator.serviceWorker.controller) {
-              // If .controller is set, then this page is being actively controlled by the Service Worker.
-              // Show the interface for sending messages to the service worker.
-              
-                 sendMessage({
-            data: {req:'anonyMode',switch:'on',app:'bits'},
-          }).then(function() {
-            // If the promise resolves, just display a success message.
-            console.log('Added to cache.');
-              
-          }).catch(console.log('wallet cache error'));
-        //console.log('ServiceWorker registration Active');
+
+                   sendMessage({
+            data: {app:'bits',req:'appVersion'},
+          }).then(function(version) {
+            // If the promise resolves, show the version number.
+            console.log(version);
+          })
             } else {
-              // If .controller isn't set, then prompt the user to reload the page so that the Service Worker can take
-              // control. Until that happens, the Service Worker's message handler won't be used.
-              console.log('Page not conneced to SW')
+              
             }
-	}catch(err){
-	
-    //var address = '';	
-		reject('no wallet');
+	}catch(err){	
+		reject(err);
 	}
+
+
+
+
+
+
+
+
 console.log(address);   
         
 if (!address || address == "" || address == "undefined" || address == "null" || address == null) {

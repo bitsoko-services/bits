@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =274;
+	bitsVersion =275;
 bitsInstall = function(event){
 	
 	
@@ -107,11 +107,11 @@ return new Promise(function(resolve, reject) {
       // that serve as keys for the current cache.
       // This command adds a new request/response pair to the cache.
              
-      case 'anonyMode':
+      case 'appVersion':
      data = dat;
     console.log(data);
-           bitsNotification('Backed up Wallet','You can Download an offline copy of your wallet incase you loose your device, Click to download your private infomation','createBackup','bits/images/no.png',[{action: 'createBackup', title: "Back up"}],true,true);
-      break;
+           resolve (bitsVersion)
+           break;
 			}	
 });
 		}
