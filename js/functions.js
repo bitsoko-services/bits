@@ -20,25 +20,7 @@ function callMerchant(){
 	//console.log(p)
 $('.callbtn').append('<button  id="share" value="Share" class="btn-floating btn-large btn-price" style="float: left !important;opacity: 0.7;/* right: 0%; */ margin-top: -240px;"><i class="mdi-action-grade activator"></i></button><button  id="share" value="Share" class="btn-floating btn-large btn-price" style="float: right !important;opacity: 0.7;/* right: 0%; */ margin-top: -240px;"><i class="mdi-social-share"></i></button> <a href="tel:'+p+'"  id="" value="" class="btn-floating btn-large btn-price" style="float: right !important;opacity: 0.7; margin-right: 15%;/* right: 0%; */ margin-top: -240px;"><i class="mdi-communication-call"></i></a>');      
 }
-//checkPayments end ...................................................................................................................
-//url check sees the url and determines which content to show ....................................
-//  $(document).ready(function urlCheck(){
-//  	var u;
-//  	u=window.location.href
-// 	if(
-// u=="https://bitsoko.io/bits/"||"https://bitsoko.io/bits/#"
-// )
-// {
-// /* some code to load */
-// console.log("Home Page")
-//  $(".promoHome").removeClass("displayNone");
-//   $(".fixed-a").removeClass("displayNone");
 
-// }else{
-
-// }
-
-// });
 //...........................URL check end//.................................................................................................................................................
 //function service Page loader..........
 function servicePageLoader(){
