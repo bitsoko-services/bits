@@ -40,7 +40,7 @@
 		<script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"></script>
 	<script src="js/jquery.star.rating.js"></script>
 </head>
-<body onload="starting()" onpointerup="pointerup()">
+<body onload="starting()" onpointermove="pointerup()">
 	<bits-connect></bits-connect>
     <!--Start Page Loading -->
 	<div id="loader-wrapper">
@@ -94,7 +94,7 @@
 		</div></center>
 		<ul> 
 			<li  class="bits-ellipsis col s6 m8 l9 displayNone" style="margin-left: 15px;"><span class="username-addr " style=""></span></li>
-            <li class="bold"><a href=""  class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>My Offers</a></li>
+            <li class="bold"><a href="?"  class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>My Offers</a></li>
 			<li class="bold displayNone"><a href="?" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>Nearby Offers</a></li>
 			<li class=""><a href="#" id="shareQR"> <i class="mdi-social-share bits-color"></i><span class="bits-13"  style=""></span> <span href id="">Share Wallet</span>  </a>  
         	<li class="bold"><a href="#" id="useAnon" onclick="signOut();"class="waves-effect waves-cyan"><i class="mdi-communication-live-help"></i>Use app anonymously</a></li>
@@ -457,13 +457,17 @@
 
 function pointerup (){
 	console.log("pointer up")
-	Materialize.toast('I am a toast! you clicked or scrolled', 500) // 4000 is the duration of the toast
+	//Materialize.toast('I am a toast! you clicked or scrolled', 500) // 4000 is the duration of the toast
+   var scroll = $(window).scrollTop();
+   if (scroll < 255) {
+     $( "body" ).scrollTop( 156 );
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------------------------------
         $(window).scroll(function(){
-   var scroll = $(window).scrollTop();
+
    if (scroll > 135) {
       $("#bits-nav-bal").css({"display":"initial"});
     } else {

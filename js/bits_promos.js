@@ -67,7 +67,7 @@ function subscribedPromos(){
             } 
 	}
 catch(e) {  	console.log("no Promos subscribed")	 
-       $('.promoHolder-home').append('<li onclick="" class="collection-item waves-effect avatar"  style="background-color: inherit; width: 100%;"><img src="" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle">Empty</span></span><p class="serviceListFirstline"> no Promos subscribed <br class="servicelistSeccondline">  </p><a href="#!" class="secondary-content"></a></li>');
+       $('.promoHolder-home').append('<li onclick="" class="collection-item waves-effect avatar"  style="background-color: inherit; width: 100%;"><img src="images/no.png" alt="" class="circle"><span class="title"><span class="serviceListTitle">No Promotions</span></span><p class="serviceListFirstline"> You have not subscribed to any promotions <br class="servicelistSeccondline">  </p><a href="#!" class="secondary-content"></a></li>');
       }
 	}
 	return true 
