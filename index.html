@@ -40,14 +40,14 @@
 		<script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"></script>
 	<script src="js/jquery.star.rating.js"></script>
 </head>
-<body onload="starting()">
+<body onload="starting()" onpointerup="pointerup()">
 	<bits-connect></bits-connect>
     <!--Start Page Loading -->
-	<!--<div id="loader-wrapper">
+	<div id="loader-wrapper">
         <div id="loader"></div>        
         <div class="loader-section section-left"></div>
         <div class="loader-section section-right"></div>
-    </div> -->
+    </div>
     <!-- End Page Loading -->
     <!-- //////////////////////////////////////////////////////////////////////////// -->    
     <!-- START HEADER -->
@@ -94,7 +94,7 @@
 		</div></center>
 		<ul> 
 			<li  class="bits-ellipsis col s6 m8 l9 displayNone" style="margin-left: 15px;"><span class="username-addr " style=""></span></li>
-            <li class="bold"><a href="?#mysubscriptions"  class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>My Offers</a></li>
+            <li class="bold"><a href=""  class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>My Offers</a></li>
 			<li class="bold displayNone"><a href="?" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>Nearby Offers</a></li>
 			<li class=""><a href="#" id="shareQR"> <i class="mdi-social-share bits-color"></i><span class="bits-13"  style=""></span> <span href id="">Share Wallet</span>  </a>  
         	<li class="bold"><a href="#" id="useAnon" onclick="signOut();"class="waves-effect waves-cyan"><i class="mdi-communication-live-help"></i>Use app anonymously</a></li>
@@ -455,16 +455,16 @@
     <script>
     //--------------------------function to hide and display nav-bar balance div  ----------------------------------------------------------------------------   
 
-	 if (window.location.hash === '#mysubscriptions') {
-    console.log("my subscriptions")
-     subscribedPromos();
-	  }
+function pointerup (){
+	console.log("pointer up")
+	Materialize.toast('I am a toast! you clicked or scrolled', 500) // 4000 is the duration of the toast
+}
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------------------------------
         $(window).scroll(function(){
    var scroll = $(window).scrollTop();
-   if (scroll > 100) {
+   if (scroll > 135) {
       $("#bits-nav-bal").css({"display":"initial"});
     } else {
       $("#bits-nav-bal").css({"display":"none"});
@@ -537,7 +537,7 @@ $('.promoHolder-home').append(' <li class="promoHome displayNone col s12 m6 l4 a
              
         console.log(e);
            }else{
-         $('.promoHolder-home').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>No Promotions found</strong></p><p class="collections-content"></p></div></li></ul>');
+         $('.promoHolder-home').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong>No Promotions found</strong></p><p class="collections-content"></p></div></li></ul>');
             
            }
         });
@@ -579,10 +579,11 @@ $(function(){
      
     
     */
-     $(document).ready(function(){
-     	$('.card-bit').pushpin({ top: $('.card-bit').offset().top });
+//      $(document).ready(function(){
+//      	$('.card-bit').pushpin({ top: $('.card-bit').offset().top });
+
      	 
-  });
+//   });
       
 </script>
 <script type="text/javascript">
@@ -652,7 +653,7 @@ e=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits
 
   }
   function showPositionError(e) {
-      $('.promoHolder').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>Switch on your Location </strong></p><p class="collections-content"></p></div></li></ul>');
+      $('.promoHolder').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong>Switch on your Location </strong></p><p class="collections-content"></p></div></li></ul>');
             
  console.log(e);
 }

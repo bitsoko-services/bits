@@ -60,9 +60,9 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 .promoHolder-home.collection{border: 0px solid #f9f9f9; !important}
 .serviceListHolder.collection.popup-gallery{border: 0px solid #f9f9f9; !important}
 .card .card-reveal {
-    padding: 20px;
+       padding: 20px;
     position: absolute;
-    background-color: rgba(243, 243, 243, 0.73) !important;
+    background-color: rgba(243, 243, 243, 0.88) !important;
     width: 100%;
     overflow-y: auto;
     top: 100%;

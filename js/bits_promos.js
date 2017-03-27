@@ -33,7 +33,7 @@ $(function(){
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //--------------------------------------------------- no promotions on home page -------------------------------------------------------------------------
 function noPromoHome(){
- $('.promoHolder-home').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>No Promotions found</strong></p><p class="collections-content">'+e.msg+'</p></div></li></ul>');
+ $('.promoHolder-home').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong>No Promotions found</strong></p><p class="collections-content">'+e.msg+'</p></div></li></ul>');
           
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------------------

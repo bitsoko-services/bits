@@ -567,9 +567,9 @@ li.home:before {
 #loader-wrapper .loader-section {
   position: fixed;
   top: 0;
-  width: 51%;
-  height: 100%;
-  background: #eceff1;
+    width: 50%;
+    height: 100%;
+    background: rgba(209, 209, 209, 0.8);
   z-index: 1000;
   -webkit-transform: translateX(0);
   -ms-transform: translateX(0);

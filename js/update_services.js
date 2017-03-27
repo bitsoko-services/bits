@@ -25,6 +25,7 @@ servicePageLoader();
               $(".promoHome").removeClass("displayNone");
   $(".fixed-a").removeClass("displayNone");
 	 updatePromos();
+	 subscribedPromos();
 	 } 
   }  
 //------------------------------------------end save--------------------------------------------------------------------------------------
@@ -116,7 +117,7 @@ $(".resDisplay").html( mDet.name);
 	 	if(mDet.promotions.length == 0){
 	 		 console.log("no promos")
 	 		 $(".merchantsPromotions").removeClass("displayNone") 
-		 $('.merchPromo').append('<li id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>No Promotions found</strong></p><p class="collections-content"></p></div></li></li>');
+		 $('.merchPromo').append('<li id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong><center>No Promotions found</center></strong></p><p class="collections-content"></p></div></li></li>');
           
 	 	} else{
 $(".merchantsPromotions").removeClass("displayNone")
@@ -164,7 +165,7 @@ $(".merchantsPromotions").removeClass("displayNone")
 // -------------------------------------------------loads the shops product lists --------------------------------------------------------------------------------------------------------------------------
  if(mDet.list.length == 0){
  	 console.log("no promos") 
-		 $('.merchproducts').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><i class="mdi-action-receipt grey circle"></i><div class="row"><p class="collections-title"><strong>No products found</strong></p><p class="collections-content"></p></div></li></ul>');        
+		 $('.merchproducts').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong><center>No products found</center></strong></p><p class="collections-content"></p></div></li></ul>');        
  }
  else{
  	for(var ii = 0; ii < mDet.list.length; ++ii) {
