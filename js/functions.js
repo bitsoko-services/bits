@@ -18,7 +18,7 @@ function callMerchant(){
 	//get phone number
 	var p=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits-active-service'))).phone;
 	//console.log(p)
-$('.callbtn').append('<button  id="share" value="Share" class="btn-floating btn-large btn-price" style="float: left !important;opacity: 0.7;/* right: 0%; */ margin-top: -240px;"><i class="mdi-action-grade activator"></i></button><button  id="share" value="Share" class="btn-floating btn-large btn-price" style="float: right !important;opacity: 0.7;/* right: 0%; */ margin-top: -240px;"><i class="mdi-social-share"></i></button> <a href="tel:'+p+'"  id="" value="" class="btn-floating btn-large btn-price" style="float: right !important;opacity: 0.7; margin-right: 15%;/* right: 0%; */ margin-top: -240px;"><i class="mdi-communication-call"></i></a>');      
+$('.callbtn').append('<button  id="star" value="rating" class="btn-large btn-price" style="float: left !important;/* right: 0%; */ margin-top: ;"><i class="mdi-action-grade activator"></i></button><button  id="share" value="Share" class=" btn-large btn-price" style="float: right !important;/* right: 0%; */ margin-top: ;"><i class="mdi-social-share"></i></button> <a href="tel:'+p+'"  id="" value="" class=" btn-large btn-price" style="float: right !important; margin-right: ;/* right: 0%; */ margin-top: ;"><i class="mdi-communication-call"></i></a>');      
 }
 
 //...........................URL check end//.................................................................................................................................................
