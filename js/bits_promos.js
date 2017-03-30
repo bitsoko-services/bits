@@ -2,6 +2,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //----------------------------------------------updating promotions ---------------------------------------------------------------------------------
 function updatePromos(){
+	bitsTheme()
   	     navigator.permissions.query({name:'geolocation'}).then(function(p)
 {  
     doFetch({ action: 'nearbyPromos', loc: 
@@ -47,7 +48,7 @@ function noPromoMerchants(){
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------- function get my promos-------------------------------------------------------------------------------------
 function subscribedPromos(){
-
+bitsTheme()
    var spromo = getObjectStore('data', 'readwrite').get('bits-mypromos');
   spromo.onerror = function (event) {
   

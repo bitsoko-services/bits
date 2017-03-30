@@ -99,6 +99,7 @@ function doSubscribe(){
 
 //----------------------------------------------populateService function----------------------------------------------------------------------------------------------------------------------------------------
  function populateService(id){
+ 	
  	var mDet = JSON.parse(localStorage.getItem('bits-merchant-id-'+id));
 $(".resDisplay").html( mDet.name);
         document.querySelector('.serviceName').innerHTML = mDet.name;
@@ -123,7 +124,7 @@ $(".resDisplay").html( mDet.name);
 $(".merchantsPromotions").removeClass("displayNone")
            var nnew=[];
            for(var ii = 0,nnew=nnew,subs=subs; ii < mDet.promotions.length; ++ii) { 
-           checkPayments();			 
+           checkPayments();	bitsTheme();		 
 		 var dailyCost=(parseInt(mDet.promotions[ii].discount)/100)*mDet.promotions[ii].promoPrice;
 		 $('.merchPromo').append('<li class="avatar bits-max promo-collection">'+
 						 '<img src="https://bitsoko.io'+mDet.promotions[ii].promoBanner+'" data-caption="'+mDet.promotions[ii].promoName+'" alt="'+mDet.promotions[ii].promoDesc+'" class="materialboxed">'+

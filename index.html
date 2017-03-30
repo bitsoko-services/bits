@@ -40,7 +40,7 @@
 		<script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"></script>
 	<script src="js/jquery.star.rating.js"></script>
 </head>
-<body onload="starting()" onpointermove="pointerup()">
+<body onload="starting()">
 	<bits-connect></bits-connect>
     <!--Start Page Loading -->
 <!-- 	<div id="loader-wrapper">
@@ -164,7 +164,7 @@
 <div id="index-banner" class="waves-effect">
     <div class=" no-pad-bot">
       <div class="container">
-       <div class="row center bal"><p style="line-height: 1.9;">
+       <div class="row center"><p style="line-height: 1.9;">
           <span class="header col s12 light" style="color:#fff; font-size:16px;">Balance</span>        
           <span  id="download-button" class="" style="font-size:18px; color:#fff !important;"><span class="bitsoko-balance" style="font-size:16px;">0.00</span> <span class="bitsoko-balance-currency" style="font-size:16px;"> btc</span></span>  
           <span  id="balance-coins" class="header col s12 light" style="color:#fff;">0 btc</span></p>
@@ -421,7 +421,7 @@
  <script type="text/javascript" src="js/bits_jspdf.js"></script>
  <script type="text/javascript" src="js/bits_auth.js"></script>
  <script type="text/javascript" src="js/bits_promos.js"></script>
- 	
+ <script type="text/javascript" src="js/bits-theme.js"></script>	
  	<script type="text/javascript" src="js/google-fcm.js"></script>
  <script type="text/javascript" src="js/update_services.js"></script>
 <script src="https://bitsoko.io/bitsAssets/js/google.js"async defer></script>    
@@ -518,7 +518,7 @@ function pointerup (){
 
 //----------------------------------------------updating promotions----------------------------------------------------------------------------------
   function updatePromos(){
-  	//checkPayments();
+  	bitsTheme()
   	     navigator.permissions.query({name:'geolocation'}).then(function(p)
 {  
     doFetch({ action: 'nearbyPromos', loc: 

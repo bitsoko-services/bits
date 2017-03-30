@@ -199,6 +199,7 @@ Materialize.toast('Error loading old wallets', 10000);
 
 function starting(){
 	$('#loginModal').closeModal()
+	
 	startGoogle(); 
 	checkanon();
 	togglebuttons();
