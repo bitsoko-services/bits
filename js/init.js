@@ -171,28 +171,27 @@ Materialize.toast('Error loading old wallets', 10000);
 	console.log(olWals);
 	             // start loading old wallets
 	 var olWalss=[];
+	 var allPs=[];
 	
-    for( var ii=0, olWalss= olWalss; ii < olWals.length; ii++ ){ 
+    for( var ii=0, allPs= allPs; ii < olWals.length; ii++ ){ 
 	    
-	  
-		
-	console.log('Loading old wallet: ',olWals[ii]);
-	downloadFile(olWals[ii]).then(function(e){
+	  allPs.push(new Promise((resolve, reject) => {
+ downloadFile(olWals[ii]).then(function(e){resolve(e)});
+}));
 	
-	      
-	console.log('Loaded old wallet: ',e);
-		olWalss.push(e);
-
-	
-	});    
-       
 	    }
-			      
+	
+
+Promise.all(allPs).then(olWalss => { 
+ // [3, 1337, "foo"] 
+		      
     getObjectStore('data', 'readwrite').get('bits-wallets-old-'+localStorage.getItem('bits-user-name')).onsuccess = function (event) {	
 		
 		try{var oold=JSON.parse(event.target.result);oold.concat(olWalss);}catch(err){var oold=[];oold.concat(olWalss);}
 	  getObjectStore('data', 'readwrite').put(JSON.stringify(oold), 'bits-wallets-old-'+localStorage.getItem('bits-user-name'));
 	   } 
+});
+		
           // end loading old wallets
 
 }
