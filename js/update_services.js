@@ -99,7 +99,7 @@ function doSubscribe(){
 
 //----------------------------------------------populateService function----------------------------------------------------------------------------------------------------------------------------------------
  function populateService(id){
- 	
+ 		bitsTheme();
  	var mDet = JSON.parse(localStorage.getItem('bits-merchant-id-'+id));
 $(".resDisplay").html( mDet.name);
         document.querySelector('.serviceName').innerHTML = mDet.name;
@@ -113,7 +113,7 @@ $(".resDisplay").html( mDet.name);
 	 }else{
 	  $('#manage-store').css("display","none");
 	 }
-	 	callMerchant();
+	 	callMerchant();//	bitsTheme();
 	 console.log(mDet.promotions);
 	 	if(mDet.promotions.length == 0){
 	 		 console.log("no promos")
@@ -130,7 +130,7 @@ $(".merchantsPromotions").removeClass("displayNone")
 						 '<img src="https://bitsoko.io'+mDet.promotions[ii].promoBanner+'" data-caption="'+mDet.promotions[ii].promoName+'" alt="'+mDet.promotions[ii].promoDesc+'" class="materialboxed">'+
 						 '<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+mDet.promotions[ii].promoName+' </span></span>'+
 						 '<p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left" style="margin-left: 20px;">'+Math.ceil(dailyCost)+' <span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>'+
-						 '<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-'+mDet.promotions[ii].id+'">Not Subscribed</span> <label><input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+mDet.promotions[ii].id+'" class="promoSubButton promoSubButton-'+mDet.promotions[ii].id+'" style="background: rgb(128, 210, 147);"> <span style="margin-top:2px;" class="lever right"></span></label></div><br><center><p style=" bottom: 0px;text-align: center;width: 70%;" class="serviceListseccondline "><i style="float: left;" class="serviceListseccondline promo-state-icon mdi-notification-sync"> 0 shares</i><i class="promo-state-icon mdi-action-favorite"> 0 likes </i><i style="float: right;" class="promo-state-icon mdi-action-receipt"> 0 sales </i></p></center></li>'); 
+						 '<div class="switch " style="width: 190px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-'+mDet.promotions[ii].id+'">Not Subscribed</span> <label><input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+mDet.promotions[ii].id+'" class="promoSubButton bits promoSubButton-'+mDet.promotions[ii].id+'" style=""> <span style="margin-top:2px;" class="lever bits right"></span></label></div><br><center><p style=" bottom: 0px;text-align: center;width: 70%;" class="serviceListseccondline "><i style="float: left;" class="serviceListseccondline promo-state-icon mdi-notification-sync"> 0 shares</i><i class="promo-state-icon mdi-action-favorite"> 0 likes </i><i style="float: right;" class="promo-state-icon mdi-action-receipt"> 0 sales </i></p></center></li>'); 
        	 subs=mDet.promotions[ii].promoSubs;
 		  
 		  
@@ -169,7 +169,7 @@ $(".merchantsPromotions").removeClass("displayNone")
 		 $('.merchproducts').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong><center>No products found</center></strong></p><p class="collections-content"></p></div></li></ul>');        
  }
  else{
- 	for(var ii = 0; ii < mDet.list.length; ++ii) {
+ 	for(var ii = 0; ii < mDet.list.length; ++ii) {bitsTheme();
  $('.merchproducts').append('<li class="collection-item avatar bits-max "><img src="https://bitsoko.io'+mDet.list[ii].imagePath+'" data-caption="'+mDet.list[ii].description+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"><span class="conf-curr"></span> </span>'+mDet.list[ii].metric+' </span></p><span class="secondary-content"><p class="col s4" style="display: none;"> <input class="number bitsInputQty" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'> '+mDet.list[ii].metric+' (s)<label for='+mDet.list[ii].name+'></label></p></span></li>');};
  $('.materialboxed').materialbox();
 var addproducts = document.querySelectorAll(".bitsInputQty");
