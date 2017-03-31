@@ -18,6 +18,7 @@ function callMerchant(){
 	//get phone number
 	var p=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits-active-service'))).phone;
 	//console.log(p)
+	$('.callbtn').html('') 
 $('.callbtn').append('<button  id="star" value="rating" class="btn-large btn-price" style="float: left !important;/* right: 0%; */ margin-top: ;"><i class="mdi-action-grade activator"></i></button><button  id="share" value="Share" class=" btn-large btn-price" style="float: right !important;/* right: 0%; */ margin-top: ;"><i class="mdi-social-share"></i></button> <a href="tel:'+p+'"  id="" value="" class=" btn-large btn-price" style="float: right !important; margin-right: ;/* right: 0%; */ margin-top: ;"><i class="mdi-communication-call"></i></a>');      
 }
 
