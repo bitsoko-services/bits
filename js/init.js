@@ -248,6 +248,7 @@ console.log(user);
           }).then(function(version) {
             // If the promise resolves, show the version number.
             console.log(version);
+             $("#bv").html(version);
           })
             } else {
               

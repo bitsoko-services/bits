@@ -48,7 +48,7 @@ function noPromoMerchants(){
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------- function get my promos-------------------------------------------------------------------------------------
 function subscribedPromos(){
-bitsTheme()
+//bitsTheme()
    var spromo = getObjectStore('data', 'readwrite').get('bits-mypromos');
   spromo.onerror = function (event) {
   

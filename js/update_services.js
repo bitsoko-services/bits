@@ -169,8 +169,9 @@ $(".merchantsPromotions").removeClass("displayNone")
 		 $('.merchproducts').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong><center>No products found</center></strong></p><p class="collections-content"></p></div></li></ul>');        
  }
  else{
- 	for(var ii = 0; ii < mDet.list.length; ++ii) {bitsTheme();
- $('.merchproducts').append('<li class="collection-item avatar bits-max "><img src="https://bitsoko.io'+mDet.list[ii].imagePath+'" data-caption="'+mDet.list[ii].description+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"><span class="conf-curr"></span> </span>'+mDet.list[ii].metric+' </span></p><span class="secondary-content"><p class="col s4" style="display: none;"> <input class="number bitsInputQty" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'> '+mDet.list[ii].metric+' (s)<label for='+mDet.list[ii].name+'></label></p></span></li>');};
+ 	for(var ii = 0; ii < mDet.list.length; ++ii) {
+ $('.merchproducts').append('<li class="collection-item avatar bits-max "><img src="https://bitsoko.io'+mDet.list[ii].imagePath+'" data-caption="'+mDet.list[ii].description+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"><span class="conf-curr"></span> </span>'+mDet.list[ii].metric+' </span></p><span class="secondary-content"><p class="col s4" style="display: none;"> <input class="number bitsInputQty" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'> '+mDet.list[ii].metric+' (s)<label for='+mDet.list[ii].name+'></label></p></span></li>');
+ };bitsTheme();
  $('.materialboxed').materialbox();
 var addproducts = document.querySelectorAll(".bitsInputQty");
 for(var i = 0; i< addproducts.length; ++i){
