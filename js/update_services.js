@@ -34,7 +34,6 @@ function doSubscribe(){
 	$(".promoSubButton").bind( "touchstart click", function(event, ui) {
 	checkanon();
 	showLogin();
-	starting();
      event.preventDefault();
 	var pid = $(this).attr('pid');
 	var dr = $(this).attr('dailyR');
