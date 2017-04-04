@@ -181,7 +181,9 @@ else{
 	try{
 	var itVal=$(addproducts[i]).val() ? $(addproducts[i]).val() : 0;
 	totals = totals+(parseInt($(addproducts[i]).attr("price"))*parseInt(itVal));
-	$(".totals").html(totals);
+	console.log(totals);
+	//Materialize.toast('your total is'+ totals, 1000);
+	$(".totals").html("Your total is: "+totals);
 	}catch(err){}
 	}
 	}
