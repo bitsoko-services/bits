@@ -400,7 +400,14 @@ select {
 }
 
 #sidenav-overlay {
-  background-color: transparent;
+      position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120vh;
+    background-color: rgba(15, 95, 118, 0.61);
+    z-index: 998;
+    will-change: opacity;
 }
 
 .container {
@@ -743,7 +750,7 @@ header .brand-logo img {
     font-size: 36px;
   }
   ul.side-nav.leftside-navigation {
-    top: 56px !important;
+    top: 0px !important;
   }
 }
 
