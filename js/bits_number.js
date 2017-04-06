@@ -1,85 +1,109 @@
-/* ========================================================================
- * 
- * ========================================================================
- *
- *
- * ========================================================================
- * 
- * ========================================================================
+/**
+ * handle counter
  */
+;(function () {
+    'use strict';
+    $.fn.handleCounter = function (options) {
+        var $input,
+            $btnMinus,
+            $btnPlugs,
+            minimum,
+            maximize,
+            writable,
+            onChange,
+            onMinimum,
+            onMaximize;
+        var $handleCounter = this
+        $btnMinus = $handleCounter.find('.counter-minus')
+        $input = $handleCounter.find('input')
+        $btnPlugs = $handleCounter.find('.counter-plus')
+        var defaultOpts = {
+            writable: true,
+            minimum: 1,
+            maximize: null,
+            onChange: function(){},
+            onMinimum: function(){},
+            onMaximize: function(){}
+        }
+        var settings = $.extend({}, defaultOpts, options)
+        minimum = settings.minimum
+        maximize = settings.maximize
+        writable = settings.writable
+        onChange = settings.onChange
+        onMinimum = settings.onMinimum
+        onMaximize = settings.onMaximize
+        if (!$.isNumeric(minimum)) {
+            minimum = defaultOpts.minimum
+        }
+        if (!$.isNumeric(maximize)) {
+            maximize = defaultOpts.maximize
+        }
+        var inputVal = $input.val()
+        if (isNaN(parseInt(inputVal))) {
+            inputVal = $input.val(0).val()
+        }
+        if (!writable) {
+            $input.prop('disabled', true)
+        }
 
-(function ($) {
-
-    $.fn.bitsNumber = function (options) {
-
-        var settings = $.extend({
-            upClass: 'default',
-            downClass: 'default',
-            center: true
-        }, options);
-
-        return this.each(function (e) {
-            var self = $(this);
-            var clone = self.clone();
-
-            var min = self.attr('min');
-            var max = self.attr('max');
-
-            function setText(n) {
-                if ((min && n < min) || (max && n > max)) {
-                    return false;
-                }
-
-                clone.focus().val(n);
-                return true;
+        changeVal(inputVal)
+        $input.val(inputVal)
+        $btnMinus.click(function () {
+            var num = parseInt($input.val())
+            if (num > minimum) {
+                $input.val(num - 1)
+                changeVal(num - 1)
             }
-
-            var group = $("<div class='input-group'></div>");
-            var down = $("<button type='button'>-</button>").attr('class', 'btn btn-' + settings.downClass).click(function () {
-                setText(parseInt(clone.val()) - 1);
-            });
-            var up = $("<button type='button'>+</button>").attr('class', 'btn btn-' + settings.upClass).click(function () {
-                setText(parseInt(clone.val()) + 1);
-            });
-            $("<span class='input-group-btn'></span>").append(down).appendTo(group);
-            clone.appendTo(group);
-            if (clone) {
-                clone.css('text-align', 'center');
+        })
+        $btnPlugs.click(function () {
+            var num = parseInt($input.val())
+            if (maximize==null||num < maximize) {
+                $input.val(num + 1)
+                changeVal(num + 1)
             }
-            $("<span class='input-group-btn'></span>").append(up).appendTo(group);
-
-            // remove spins from original
-            clone.prop('type', 'text').keydown(function (e) {
-                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
-					(e.keyCode == 65 && e.ctrlKey === true) ||
-					(e.keyCode >= 35 && e.keyCode <= 39)) {
-                    return;
+        })
+        var keyUpTime
+        $input.keyup(function () {
+            clearTimeout(keyUpTime)
+            keyUpTime = setTimeout(function() {
+                var num = $input.val()
+                if (num == ''){
+                    num = minimum
+                    $input.val(minimum)
                 }
-                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-                    e.preventDefault();
+                var reg = new RegExp("^[\\d]*$")
+                if (isNaN(parseInt(num)) || !reg.test(num)) {
+                    $input.val($input.data('num'))
+                    changeVal($input.data('num'))
+                } else if (num < minimum) {
+                    $input.val(minimum)
+                    changeVal(minimum)
+                }else if (maximize!=null&&num > maximize) {
+                    $input.val(maximize)
+                    changeVal(maximize)
+                } else {
+                    changeVal(num)
                 }
+            },300)
+        })
+        $input.focus(function () {
+            var num = $input.val()
+            if (num == 0) $input.select()
+        })
 
-                var c = String.fromCharCode(e.which);
-                var n = parseInt(clone.val() + c);
-
-                //if ((min && n < min) || (max && n > max)) {
-                //    e.preventDefault();
-                //}
-            });
-
-            clone.prop('type', 'text').blur(function (e) {
-                var c = String.fromCharCode(e.which);
-                var n = parseInt(clone.val() + c);
-                if ((min && n < min)) {
-                    setText(min);
-                }
-                else if (max && n > max) {
-                    setText(max);
-                }
-            });
-
-
-            self.replaceWith(group);
-        });
+        function changeVal(num) {
+            $input.data('num', num)
+            $btnMinus.prop('disabled', false)
+            $btnPlugs.prop('disabled', false)
+            if (num <= minimum) {
+                $btnMinus.prop('disabled', true)
+                onMinimum.call(this, num)
+            } else if (maximize!=null&&num >= maximize) {
+                $btnPlugs.prop('disabled', true)
+                onMaximize.call(this, num)
+            }
+            onChange.call(this, num)
+        }
+        return $handleCounter
     };
-}(jQuery));
+})(jQuery)
