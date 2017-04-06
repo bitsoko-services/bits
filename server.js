@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =298;
+	bitsVersion =299;
 bitsInstall = function(event){
 	
 	
