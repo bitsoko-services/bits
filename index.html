@@ -79,9 +79,8 @@
            <!-- START LEFT SIDEBAR NAV-->
       <aside id="left-sidebar-nav">
         <ul id="slide-out" class="side-nav fixed leftside-navigation ">
-         <li class="user-details bits"  style="background-color:#{theme};" href="#">
-  	       
-		      <div class="row" id="content" style="text-align:center;">
+         <li class="user-details bits"  style=" background: url(../images/bitsoko.png) no-repeat center center; background-size: cover; padding: 0px 0 0 0px;" href="#">  	       
+		      <div class="row" id="content" style="background-color:#{theme}; padding: 15px 0 0 15px; text-align:center;">
                 <img src="images/contacts.png" alt="" class="bits-profile userProfImg circle responsive-img valign profile-image"style="background-color: white;">
                  <a class="btn-flat waves-effect waves-light white-text profile-btn username-label dropdown-button" href="#" id="name">Anonymous</a>
                   <center><span class="bitsoko-xrate user-roal store-desc white-text" style="text-align:left; "> 1 BTC = 0 KSH</span></center>
@@ -419,12 +418,15 @@
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- ================================================Scripts================================================-->
 <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js" async defer></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js" ></script>
 <script type="text/javascript" src="js/bits_contacts.js"></script>
  <script type="text/javascript" src="js/functions.js"></script> 
  <script type="text/javascript" src="js/bits_jspdf.js"></script>
  <script type="text/javascript" src="js/bits_auth.js"></script>
  <script type="text/javascript" src="js/bits_promos.js"></script>
- <script type="text/javascript" src="js/bits-theme.js"></script>	
+ <script type="text/javascript" src="js/bits-theme.js"></script>
+ <script type="text/javascript"src="js/bits_number.js" ></script>
+ 	
  	<script type="text/javascript" src="js/google-fcm.js"></script>
  <script type="text/javascript" src="js/update_services.js"></script>
 <script src="https://bitsoko.io/bitsAssets/js/google.js"async defer></script>    
@@ -467,7 +469,7 @@ function pointerup (){
      $( "body" ).scrollTop( 156 );
     }
 }
-
+ $('.sinpt').bitsNumber();
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------------------------------
         $(window).scroll(function(){

@@ -1,4 +1,84 @@
+(function ($) {
+
+    $.fn.bitsNumber = function (options) {
+
+        var settings = $.extend({
+            upClass: 'default',
+            downClass: 'default',
+            center: true
+        }, options);
+
+        return this.each(function (e) {
+            var self = $(this);
+            var clone = self.clone();
+
+            var min = self.attr('min');
+            var max = self.attr('max');
+
+            function setText(n) {
+                if ((min && n < min) || (max && n > max)) {
+                    return false;
+                }
+
+                clone.focus().val(n);
+                return true;
+            }
+
+            var group = $("<div class='input-group'></div>");
+            var down = $("<button type='button'>-</button>").attr('class', 'btn btn-' + settings.downClass).click(function () {
+                setText(parseInt(clone.val()) - 1);
+            });
+            var up = $("<button type='button'>+</button>").attr('class', 'btn btn-' + settings.upClass).click(function () {
+                setText(parseInt(clone.val()) + 1);
+            });
+            $("<span class='input-group-btn'></span>").append(down).appendTo(group);
+            clone.appendTo(group);
+            if (clone) {
+                clone.css('text-align', 'center');
+            }
+            $("<span class='input-group-btn'></span>").append(up).appendTo(group);
+
+            // remove spins from original
+            clone.prop('type', 'text').keydown(function (e) {
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+					(e.keyCode == 65 && e.ctrlKey === true) ||
+					(e.keyCode >= 35 && e.keyCode <= 39)) {
+                    return;
+                }
+                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                    e.preventDefault();
+                }
+
+                var c = String.fromCharCode(e.which);
+                var n = parseInt(clone.val() + c);
+
+                //if ((min && n < min) || (max && n > max)) {
+                //    e.preventDefault();
+                //}
+            });
+
+            clone.prop('type', 'text').blur(function (e) {
+                var c = String.fromCharCode(e.which);
+                var n = parseInt(clone.val() + c);
+                if ((min && n < min)) {
+                    setText(min);
+                }
+                else if (max && n > max) {
+                    setText(max);
+                }
+            });
+
+
+            self.replaceWith(group);
+        });
+    };
+}(jQuery));
+
+
 //-----------------------------------------updating service list function-------------------------------------------------------------------------------------------
+
+
+
 function updateServicelist(){ 
 activeService=$('#serviceModal').attr('service');
 	doFetch({ action: 'serviceList', data: activeService, user: localStorage.getItem("bits-user-name")}).then(
@@ -168,9 +248,11 @@ $(".merchantsPromotions").removeClass("displayNone")
 		 $('.merchproducts').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong><center>No products found</center></strong></p><p class="collections-content"></p></div></li></ul>');        
  }
  else{
+
  	for(var ii = 0; ii < mDet.list.length; ++ii) {
- $('.merchproducts').append('<li class="collection-item avatar bits-max "><img src="https://bitsoko.io'+mDet.list[ii].imagePath+'" data-caption="'+mDet.list[ii].description+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"><span class="conf-curr"></span> </span>'+mDet.list[ii].metric+' </span></p><span class="secondary-content"><p class="col s4" style=""> <input class="number bitsInputQty" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'> '+mDet.list[ii].metric+' (s)<label for='+mDet.list[ii].name+'></label></p></span></li>');
+ $('.merchproducts').append('<li class="collection-item avatar bits-max "><img src="https://bitsoko.io'+mDet.list[ii].imagePath+'" data-caption="'+mDet.list[ii].description+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"><span class="conf-curr"></span> </span>'+mDet.list[ii].metric+' </span></p><span class="secondary-content"><p class="col s4" style=""> <input class="number bitsInputQty sinpt" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'><label for='+mDet.list[ii].name+'></label></p></span></li>');
  };bitsTheme();
+// 
  $('.materialboxed').materialbox();
 var addproducts = document.querySelectorAll(".bitsInputQty");
 for(var i = 0; i< addproducts.length; ++i){
