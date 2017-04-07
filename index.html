@@ -8,7 +8,7 @@
         <meta name="og:image" content="#{img}" />
 		<!-- Origin Trial Token, feature = Web Share, origin = https://bitsoko.io, expires = 2017-01-12 -->
 		<!-- Origin Trial Token, feature = Web Share, origin = https://bitsoko.io, expires = 2017-03-31 -->
-		<meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2017-03-31" content="AmhVefTF40eyTfFt5ZHxLSoKVazcEs/9vGgan3XHC/BIk1f2i3FEkF0VdA/oxRRA0jQvIBD+431GPVLADBVaGAoAAABfeyJvcmlnaW4iOiJodHRwczovL2JpdHNva28uaW86NDQzIiwiZmVhdHVyZSI6IldlYlNoYXJlIiwiZXhwaXJ5IjoxNDkwOTczMDU4LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
+		<meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2017-03-31"content="AmhVefTF40eyTfFt5ZHxLSoKVazcEs/9vGgan3XHC/BIk1f2i3FEkF0VdA/oxRRA0jQvIBD+431GPVLADBVaGAoAAABfeyJvcmlnaW4iOiJodHRwczovL2JpdHNva28uaW86NDQzIiwiZmVhdHVyZSI6IldlYlNoYXJlIiwiZXhwaXJ5IjoxNDkwOTczMDU4LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
 		<!------<meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2017-01-03" content="AvwH05WjeD812bDpeWTWGEc3d81qoKI1Z4YsUtPVo4poXAr61FSAZ/Rp3zd3tqCkOqw8Ay+/aSYvxYG4oJtDqgMAAABReyJvcmlnaW4iOiAiaHR0cHM6Ly9iaXRzb2tvLmlvOjQ0MyIsICJmZWF0dXJlIjogIldlYlNoYXJlIiwgImV4cGlyeSI6IDE0ODQyMzkxMzZ9"> -->
 		<meta name="og:description" content="#{desc}" />
 		<meta name="description" content="#{desc}" />
@@ -79,8 +79,8 @@
 
            <!-- START LEFT SIDEBAR NAV-->
       <aside id="left-sidebar-nav">
-        <ul id="slide-out" class="side-nav fixed leftside-navigation ">
-         <li class="user-details bits"  style=" background: url(../bits/images/bitsoko.png) no-repeat center center; background-size: cover; padding: 0px 0 0 0px;" href="#">  	       
+        <ul id="slide-out" class="side-nav fixed leftside-navigation " >
+         <li class="user-details bits"  style=" background: url(images/3.png) no-repeat center center; background-size: cover; padding: 0px 0 0 0px;" href="#">  	       
 		      <div class="row" id="content" style="background-color:#{theme}; padding: 15px 0 0 15px; text-align:center;">
                 <img src="images/contacts.png" alt="" class="bits-profile userProfImg circle responsive-img valign profile-image"style="background-color: white;">
                  <a class="btn-flat waves-effect waves-light white-text profile-btn username-label dropdown-button" href="#" id="name">Anonymous</a>
@@ -156,7 +156,7 @@
                         </li>
                                 <li>
                     </ul> -->
-        <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only bits"><i class="mdi-navigation-menu"></i></a>
+        <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only bits" style=" box-shadow: none;"><i class="mdi-navigation-menu"></i></a>
         </aside>
 <!-------------------------------------------- END LEFT SIDEBAR NAV -------------------------------------------------------------------------------------->
 <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -230,8 +230,21 @@
 <!------------------------------------------------------------------------------------------------------------>
 <!----------------------list holder  collections start ------------------------------------------------------->
             <div class="col s12 m8 l9" id="">
-               <center><ul class="collapsible collapsible-accordion merchantsPromotions displayNone" data-collapsible="accordion"><li class="active"><div class="collapsible-header active">Promotions</div><div class="collapsible-body merchPromo" style="display: none;"></div></li></ul></center>
-               <center><ul class="collapsible collapsible-accordion merchantsPromotions displayNone" data-collapsible="accordion"><li class=""><div class="collapsible-header">Products <div  class="totals" style="float: right; "></div></div><div class="collapsible-body merchproducts collection popup-gallery" style="display: none;"></div></li></ul></center>
+            <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
+            <li>
+               <center>
+                <ul class="collapsible  merchantsPromotions displayNone" >
+              	 <li class="active">
+               		<div class="collapsible-header active">Promotions</div>
+               			<div class="collapsible-body merchPromo" style="display: none;"></div>
+               	</li>
+               </ul>
+              </center>
+            </li>
+            <li>
+               <center><ul class="collapsible merchantsPromotions displayNone" ><li class=""><div class="collapsible-header">Products <div  class="totals" style="float: right; "></div></div><div class="collapsible-body merchproducts collection popup-gallery" style="display: none;"></div></li></ul></center>
+             </li>
+             </ul>
                <ul class="serviceListHolder collection popup-gallery" style="display:none;"></ul>
                <ul id="card-widgets" class="promoHolder collection"style="width: 90%;margin-left: 5%;"></ul>
                <ul id="card-widgets" class="promoHolder-home collection"  style=""></ul>
