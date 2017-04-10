@@ -181,8 +181,12 @@ else{//showuser()
 	var itVal=$(addproducts[i]).val() ? $(addproducts[i]).val() : 0;
 	totals = totals+(parseInt($(addproducts[i]).attr("price"))*parseInt(itVal));
 	console.log(totals);
+	$(".recipt").html("");
+$('.recipt').append(' <p><span class="username-label" href="#" id="name">You</span> Purchased new equipments for zonal office.</p>');      
+
 	//Materialize.toast('your total is'+ totals, 1000);
-	$(".totals").html("Your total is: "+totals);
+	 $(".floatingPrice").removeClass("displayNone");
+	$(".totals").html(totals);
 	}catch(err){}
 	}
 	}

@@ -19,7 +19,7 @@
         $btnPlugs = $handleCounter.find('.counter-plus')
         var defaultOpts = {
             writable: true,
-            minimum: 1,
+            minimum: 0,
             maximize: null,
             onChange: function(){},
             onMinimum: function(){},
@@ -64,6 +64,7 @@
         })
         var keyUpTime
         $input.keyup(function () {
+                 
             clearTimeout(keyUpTime)
             keyUpTime = setTimeout(function() {
                 var num = $input.val()
@@ -92,6 +93,7 @@
         })
 
         function changeVal(num) {
+               
             $input.data('num', num)
             $btnMinus.prop('disabled', false)
             $btnPlugs.prop('disabled', false)
@@ -101,6 +103,8 @@
             } else if (maximize!=null&&num >= maximize) {
                 $btnPlugs.prop('disabled', true)
                 onMaximize.call(this, num)
+            }else{
+                    tabulateTotals();
             }
             onChange.call(this, num)
         }

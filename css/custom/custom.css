@@ -138,3 +138,7 @@ i { cursor : pointer; }
     width: 100%;
     height: 55px;
 }
+nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
+    display: -webkit-inline-box !important;
+    font-size: 25px !important;
+}

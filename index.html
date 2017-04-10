@@ -55,16 +55,24 @@
     <header id="header" class="page-topbar bits">
         <!-- start header nav-->
         <div class="navbar-fixed">
-            <div  id="bits-header" class="navbar-color bits">
-                <div class="nav-wrapper">
+        <nav class="">
+        <div class="nav-wrapper">
+            <div  id="bits-header" class="navbar-color bits">                
                     <ul class="center">                      
                     <li><h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1"></a> <span class="logo-text"></span></h1></li>
                       <li></li>
+                       
                     </ul>
-                    <div class="bits-nav-bal right" id="bits-nav-bal"style="color:#fff; padding-right:10px; margin-top: -55px;" ><span class="bitsoko-balance">0.00</span> <span class="bitsoko-currency"></span></div>
-                  
+<!--                     <div class="bits-nav-bal right" id="bits-nav-bal"style="color:#fff; padding-right:10px; margin-top: -55px;" ><span class="bitsoko-balance">0.00</span> <span class="bitsoko-currency"></span></div> -->
+                 
                 </div>
+                <ul class="right ">
+<li><a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse"><i class="mdi-communication-chat"></i></a>
+                        </li>
+                    </ul>
             </div>
+
+            </nav>
         </div>
         <!-- end header nav-->
     </header>
@@ -79,12 +87,15 @@
 
            <!-- START LEFT SIDEBAR NAV-->
       <aside id="left-sidebar-nav">
+
         <ul id="slide-out" class="side-nav fixed leftside-navigation " >
          <li class="user-details bits"  style=" background: url(images/3.png) no-repeat center center; background-size: cover; padding: 0px 0 0 0px;" href="#">  	       
 		      <div class="row" id="content" style="background-color:#{theme}; padding: 15px 0 0 15px; text-align:center;">
                 <img src="images/contacts.png" alt="" class="bits-profile userProfImg circle responsive-img valign profile-image"style="background-color: white;">
                  <a class="btn-flat waves-effect waves-light white-text profile-btn username-label dropdown-button" href="#" id="name">Anonymous</a>
-                  <center><span class="bitsoko-xrate user-roal store-desc white-text" style="text-align:left; "> 1 BTC = 0 KSH</span></center>
+                  <center> <span  id="download-button" class="white-text profile-btn " style="font-size:;  !important;"><span class="bitsoko-balance" style="font-size:16px;">0.00</span> <span class="bitsoko-balance-currency" style="font-size:16px;"> btc</span></span>  
+          <span  id="balance-coins" class="header col s12 light white-text profile-btn" style="">0 btc</span></p>
+         <span class="bitsoko-xrate user-roal store-desc " style="text-align:left; "> 1 BTC = 0 KSH</span></center>
                </div>
              </li>
             
@@ -160,22 +171,48 @@
         </aside>
 <!-------------------------------------------- END LEFT SIDEBAR NAV -------------------------------------------------------------------------------------->
 <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+ <!--------------------------------------------START RIGHT SIDEBAR NAV---------------------------------------------------------------------------------------------->
+            <aside id="right-sidebar-nav">
+                <ul id="chat-out" class="side-nav rightside-navigation">
+                    <li class="li-hover">
+                    <a href="#" data-activates="chat-out" class="chat-close-collapse right"><i class="mdi-navigation-close"></i></a>
+                    </li>
+                    <li class="li-hover">
+                        <ul class="chat-collapsible" data-collapsible="expandable">
+                        <li>
+                            <div class="collapsible-header bits white-text active"><i class="mdi-action-shopping-cart"></i>Shopping Activity</div>
+                            <div class="collapsible-body recent-activity">
+                                <div class="recent-activity-list chat-out-list row">
+                                    <div class="col s3 recent-activity-list-icon"><i class="mdi-action-add-shopping-cart"></i>
+                                    </div>
+                                    <div class="col s9 recent-activity-list-text recipt">
+                                       </div>
+                                </div>
+                                
+                                </div>
+                            </div>
+                        </li>
+                        
+                        
+                        </ul>
+                    </li>
+                </ul>
+            </aside>
+            <!-- LEFT RIGHT SIDEBAR NAV-->
 <!-------------------------------------------- START CONTENT --------------------------------------------------------------------------------------------->
               <div id="content" style="margin-bottom: 300px;">
 <!-------------------------------------------- start container ------------------------------------------------------------------------------------------->
-                <div class="bal bits nav-wrapper center"  style="padding-bottom:20px;">
+   <!--              <div class="bal bits nav-wrapper center"  style="padding-bottom:20px;">
 <div id="index-banner" class="waves-effect">
     <div class=" no-pad-bot">
       <div class="container">
        <div class="row center"><p style="line-height: 1.9;">
           <span class="header col s12 light" style="color:#fff; font-size:16px;">Balance</span>        
-          <span  id="download-button" class="" style="font-size:18px; color:#fff !important;"><span class="bitsoko-balance" style="font-size:16px;">0.00</span> <span class="bitsoko-balance-currency" style="font-size:16px;"> btc</span></span>  
-          <span  id="balance-coins" class="header col s12 light" style="color:#fff;">0 btc</span></p>
          </div>     
       </div>
     </div></div>
     </div>
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <div class="">
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <div class="card-container-bits " id="" >
@@ -242,7 +279,7 @@
               </center>
             </li>
             <li>
-               <center><ul class="collapsible merchantsPromotions displayNone" ><li class=""><div class="collapsible-header">Products <div  class="totals" style="float: right; "></div></div><div class="collapsible-body merchproducts collection popup-gallery" style="display: none;"></div></li></ul></center>
+               <center><ul class="collapsible merchantsPromotions displayNone" ><li class=""><div class="collapsible-header">Products <div  class="" style="float: right; "></div></div><div class="collapsible-body merchproducts collection popup-gallery" style="display: none;"></div></li></ul></center>
              </li>
              </ul>
                <ul class="serviceListHolder collection popup-gallery" style="display:none;"></ul>
@@ -261,6 +298,10 @@
                          
                         </ul>
                     </div>
+<!-- ---------------------------------- Floating Action Button homepage End --------------------------------------------------------->
+<!-- ---------------------  Floating Action Button Home page sends you to contact or merchants page ------------------ -->
+                   <div class="">
+                   <div class="fixed-action-btn displayNone floatingPrice" style="bottom: 50px; right: 19px;"><a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse btn-floating btn-large"><span class="totals"></span></a></div> </div>
 <!-- ---------------------------------- Floating Action Button homepage End --------------------------------------------------------->
 <!----------Floating Action Button Merchants and contacts pages. opens modal for key in amount and send or recive cash--------------->
                     <div class="fixed-action-btn fixed-b displayNone"style="right: 15px; bottom: 1px;" id="paymentBTN">
@@ -472,34 +513,34 @@
     <script>
     //--------------------------function to hide and display nav-bar balance div  ----------------------------------------------------------------------------   
 
-function pointerup (){
-	console.log("pointer up")
-	//Materialize.toast('I am a toast! you clicked or scrolled', 500) // 4000 is the duration of the toast
-   var scroll = $(window).scrollTop();
-   if (scroll < 255) {
-     $( "body" ).scrollTop( 156 );
-    }
-}
-// $('.sinpt').bitsNumber();
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------------------------------------------------
-        $(window).scroll(function(){
+// function pointerup (){
+// 	console.log("pointer up")
+// 	//Materialize.toast('I am a toast! you clicked or scrolled', 500) // 4000 is the duration of the toast
+//    var scroll = $(window).scrollTop();
+//    if (scroll < 255) {
+//      $( "body" ).scrollTop( 156 );
+//     }
+// }
+// // $('.sinpt').bitsNumber();
+// //----------------------------------------------------------------------------------------------------------------------------------------------------
+// //--------------------------------------------------------------------------------------------------------------------------------------------
+//         $(window).scroll(function(){
 
-   if (scroll > 135) {
-      $("#bits-nav-bal").css({"display":"initial"});
-    } else {
-      $("#bits-nav-bal").css({"display":"none"});
-    } 
-    })
-		$(window).scroll(function() {     
-    var scroll = $(window).scrollTop();
-    if (scroll > 150) {
-        $("#bits-header").addClass("active");
-    }
-    else {
-        $("#bits-header").removeClass("active");
-    }
-});
+//    if (scroll > 135) {
+//       $("#bits-nav-bal").css({"display":"initial"});
+//     } else {
+//       $("#bits-nav-bal").css({"display":"none"});
+//     } 
+//     })
+// 		$(window).scroll(function() {     
+//     var scroll = $(window).scrollTop();
+//     if (scroll > 150) {
+//         $("#bits-header").addClass("active");
+//     }
+//     else {
+//         $("#bits-header").removeClass("active");
+//     }
+// });
 
 //----------------------------------------------floating button change  --------------------------------------------------------------------
 	if ((!location.port || location.port == "80") && location.protocol != 'https:') {}       
