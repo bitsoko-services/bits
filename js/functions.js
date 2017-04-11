@@ -184,7 +184,8 @@ else{//showuser()
 	$(".recipt").html("");
 $('.recipt').append(' <p><span class="username-label" href="#" id="name">You</span> Purchased new equipments for zonal office.</p>');      
 
-	//Materialize.toast('your total is'+ totals, 1000);
+	//Materialize.toast('your total is'+ totals, 1000);delivery
+	 $(".delivery").removeClass("displayNone");
 	 $(".floatingPrice").removeClass("displayNone");
 	$(".totals").html(totals);
 	}catch(err){}
