@@ -171,18 +171,32 @@ else{//showuser()
 	}
 }
 
+orderArray=[];
 //---------------------------------------function gets the totals of all items on a list----------------------------------------------------------------------------
 	function tabulateTotals(){
 	console.log(this);
 	var addproducts = document.querySelectorAll(".bitsInputQty");
 	var totals = 0;
+orderArray=[];
+
+
+
 	for(var i = 0; i< addproducts.length; ++i){
 	try{
 	var itVal=$(addproducts[i]).val() ? $(addproducts[i]).val() : 0;
+
+if(itVal>0){
+
+	orderArray.push({pid:addproducts[i].id,count:itVal});
+$('.recipt').append('');
+
+}
+
+
 	totals = totals+(parseInt($(addproducts[i]).attr("price"))*parseInt(itVal));
 	console.log(totals);
 	$(".recipt").html("");
-$('.recipt').append(' <p><span class="username-label" href="#" id="name">You</span> Purchased new equipments for zonal office.</p>');      
+      
 
 	//Materialize.toast('your total is'+ totals, 1000);delivery
 	 $(".delivery").removeClass("displayNone");
@@ -190,4 +204,24 @@ $('.recipt').append(' <p><span class="username-label" href="#" id="name">You</sp
 	$(".totals").html(totals);
 	}catch(err){}
 	}
+	
+
+	}
+
+	function makeOrder(){
+		Materialize.toast('your order has been sent ', 1000);
+
+		doFetch({ action: 'makeOrder', data: orderArray, user: localStorage.getItem("bits-user-name")}).then(
+	function(f){
+    if (e.status=="ok"){  
+
+		Materialize.toast('your order has been sent ', 1000);
+             
+
+           }else{
+           	Materialize.toast('your order is not sent ', 1000);
+           }
+                 
+           
+        });
 	}

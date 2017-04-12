@@ -142,13 +142,42 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
     display: -webkit-inline-box !important;
     font-size: 25px !important;
 }
-delivery{
+.delivery{
 	    height: 52px !important;
     font-size: 16px !important;
     position: fixed;
-    right: 63px !important;
+    right: 33px !important;
     bottom: 53px !important;
     padding-top: 10px !important;
     /* margin-bottom: 0; */
     z-index: 998;
+        width: 180px;
+}
+.burst-12 {
+/*     background: red; */
+    width: 80px;
+    height: 80px;
+    position: relative;
+    text-align: center;
+}
+.burst-12:before, #burst-12:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 80px;
+    width: 80px;
+/*     background: red; */
+}
+.burst-12:before {
+    -webkit-transform: rotate(30deg);
+       -moz-transform: rotate(30deg);
+        -ms-transform: rotate(30deg);
+         -o-transform: rotate(30deg);
+}
+.burst-12:after {
+    -webkit-transform: rotate(60deg);
+       -moz-transform: rotate(60deg);
+        -ms-transform: rotate(60deg);
+         -o-transform: rotate(60deg);
 }
