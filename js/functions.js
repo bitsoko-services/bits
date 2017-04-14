@@ -209,9 +209,8 @@ $('.recipt').append('');
 	}
 
 	function makeOrder(){
-		Materialize.toast('your order has been sent ', 1000);
-
-		doFetch({ action: 'makeOrder', data: orderArray, user: localStorage.getItem("bits-user-name")}).then(
+		
+		doFetch({ action: 'makeOrder', data: orderArray, user: localStorage.getItem("bits-user-name"), service: actvServ().id}).then(
 	function(f){
     if (e.status=="ok"){  
 
