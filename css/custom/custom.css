@@ -143,15 +143,14 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
     font-size: 25px !important;
 }
 .delivery{
-	    height: 55px !important;
+height: 35px !important;
     font-size: 16px !important;
     position: fixed;
     right: 33px !important;
     bottom: 50px !important;
-    padding-top: 10px !important;
-    /* margin-bottom: 0; */
+    margin-bottom: 10px;
     z-index: 998;
-        width: 180px;
+    width: 180px;
 }
 .burst-12 {
 /*     background: red; */
