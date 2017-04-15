@@ -223,4 +223,11 @@ $('.recipt').append('');
                  
            
         });
+}
+else{
+	console.log("payments off")
+	Materialize.toast('deliveries for this shop not available', 1000);
+	 
+}
+	
 	}
