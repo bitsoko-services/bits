@@ -210,6 +210,10 @@ $('.recipt').append('');
 
 	function makeOrder(){
 		
+if (JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits-active-service'))).payments =="false"){
+		Materialize.toast('deliveries for this shop not available', 1000);
+}
+		
 		doFetch({ action: 'makeOrder', data: orderArray, user: localStorage.getItem("bits-user-name"), service: actvServ().id}).then(
 	function(f){
     if (e.status=="ok"){  
@@ -224,10 +228,10 @@ $('.recipt').append('');
            
         });
 }
-else{
-	console.log("payments off")
-	Materialize.toast('deliveries for this shop not available', 1000);
+// else{
+// 	console.log("payments off")
+// 	
 	 
-}
+// }
 	
-	}
+//	}
