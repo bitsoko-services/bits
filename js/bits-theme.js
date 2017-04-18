@@ -1,11 +1,16 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function bitsTheme(){
 	//get theme
-	var p=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits-active-service'))).theme;
+	var stDat=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits-active-service')));
+	var p=stDat.theme;
+	
 	console.log(p)
 	if (p == "") {
-   localStorage.setItem('bits-merchant-id-'+localStorage.getItem('bits-active-service').theme, "#0f5f76");
+		console.log('e');
+   stDat.theme="#0f5f76";
+   localStorage.setItem('bits-merchant-id-'+localStorage.getItem('bits-active-service'), JSON.stringify(stDat));
 }
+
 	//replace default eith theme 
     var bits_theme = $('.bits').css('background-color');
     $('.bits').css('background-color', p);
