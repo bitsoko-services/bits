@@ -1,7 +1,6 @@
 .handle-counter { overflow: hidden;
     float: right;
     margin-top: -16px;
-    width: 150px;
  }
 
 .handle-counter .counter-minus,  .handle-counter .counter-plus,  .handle-counter input {

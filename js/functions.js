@@ -212,7 +212,6 @@ $('.recipt').append('');
 		
 if (JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits-active-service'))).payments =="false"){
 		Materialize.toast('deliveries for this shop not available', 1000);
-	return;
 }
 		
 		doFetch({ action: 'makeOrder', data: orderArray, user: localStorage.getItem("bits-user-name"), service: actvServ().id}).then(
