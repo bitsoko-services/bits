@@ -235,7 +235,7 @@
 		<div id="" class="card-bit serviceListCard">
 		 <div class="card small maincard bits"  style="border-radius: 0px; position: sticky;/* width: 100%; */ z-index: 100;     box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0) !important;">
            <div  class="card-image waves-effect waves-block waves-light">
-             <img  src="images/merchantsBanner.png" alt="blog-img" class="bitsimg cardimage service-banner"style="border-radius: 0px;"> 
+             <img  src="images/merchantsBanner.png" alt="blog-img" class="cardimage service-banner"style="border-radius: 0px;"> 
 				<div style="margin-top: -240px;" class="btn-bar">
 				<a id="manage-store" style="display:none; background: none; float:left; !important; margin-top: ;" href="../soko/" class=" btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>
                     <span class="callbtn"></span></div>
@@ -255,6 +255,9 @@
                    </div>
                    <div class="row "style="  margin-bottom: -9px !important;  width: 98%; float: left;">
                       <p id="serviceDescription" class="serviceDescription "style="min-height:45px; margin-left: 11px;">Loading....</p>
+                      <span class="followbtn right" style="margin-top: -70px;">
+                       
+                      </span>
                    </div> 
                  </div>
             </div>
@@ -318,8 +321,8 @@
 <!-- ---------------------  Floating Action Button Home page sends you to contact or merchants page ------------------ -->
                    <div class="">       
                   <div class="row">
-                  <div class="chip delivery displayNone bits white-text" style="  background-color: #{theme} !important; pointer-events:none;" onclick="makeOrder();">
-    					Request Delivery <i class="mdi-maps-local-grocery-store right" style="font-size: 24px;"></i>
+                  <div class="chip delivery displayNone bits white-text" style="  background-color: #{theme} !important; " onclick="makeOrder();">
+    					 <span style="pointer-events:none;">deliver</span> <i class="mdi-maps-local-grocery-store right" style="font-size: 24px;"></i>
 						</div>
                    <div class="fixed-action-btn displayNone floatingPrice " style="bottom: 10px; right: 50px;">
                     <a href="#" data-activates="chat-out" class="bitswaves-effect waves-block waves-light chat-collapse btn-floating btn-large "style="background-color:#{theme};"><span class="totals"></span></a>
@@ -474,6 +477,7 @@
                                         </div>
                                       <div class="row">
                                         <p class="serviceDescription">Loading....</p>
+                                        
                                     </div>
                                 </div>
                                 </div>			
@@ -500,6 +504,8 @@
  <script type="text/javascript" src="js/bits_promos.js"></script>
  <script type="text/javascript" src="js/bits-theme.js"></script>
  <script type="text/javascript"src="js/bits_number.js" ></script>
+
+ <script type="text/javascript"src="js/bits-follow.js" ></script>
  	
  	<script type="text/javascript" src="js/google-fcm.js"></script>
  <script type="text/javascript" src="js/update_services.js"></script>

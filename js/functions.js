@@ -187,7 +187,7 @@ orderArray=[];
 
 if(itVal>0){
 
-	orderArray.push({pid:addproducts[i].id,count:itVal});
+	orderArray.push({pid:$(addproducts[i]).attr('pid'),count:itVal});
 $('.recipt').append('');
 
 }
