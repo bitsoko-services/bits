@@ -523,10 +523,13 @@
 	    <script src="https://bitsoko.io/bitsAssets/js/moment.js" async></script>
 	    <script src="https://bitsoko.io/bitsAssets/js/storeManager.js"></script>	    
 	    <script src="https://bitsoko.io/bitsAssets/js/locationManager.js"></script>
+	    <script src="https://bitsoko.io/bitsAssets/js/globalVariables.js" async></script>
 	    <script src="https://bitsoko.io/bitsAssets/js/globalServices.js" async></script>
 	  <!--  <script src="https://bitsoko.io/bitsAssets/js/pushManager.js" async></script> -->
 	    <script src="https://bitsoko.io/bitsAssets/js/pushManager-fcm.js" async></script>
    		<script src="https://bitsoko.io/bitsAssets/js/md5.min.js" async defer></script>
+
+    <script src="https://bitsoko.io/bitsAssets/js/browserDetect.js"></script>
 		<script src="js/bitcore-ecies.min.js" ></script> 
 		<script src="js/bitcore.min.js"></script>  
     	<script type="text/javascript" src="js/bitsCore.js"></script>
@@ -567,6 +570,13 @@
 //         $("#bits-header").removeClass("active");
 //     }
 // });
+	    
+	     if (bDet.browser.version>=minVersionSup && bDet.browser.name=='Chrome' && bDet.os.name=='Android'){
+       console.log('compatible');
+     
+ }else{
+ alert('update browser');
+ }
 
 //----------------------------------------------floating button change  --------------------------------------------------------------------
 	if ((!location.port || location.port == "80") && location.protocol != 'https:') {}       
