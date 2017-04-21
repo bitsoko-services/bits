@@ -575,17 +575,17 @@
 //     else {
 //         $("#bits-header").removeClass("active");
 //     }
-// });
-  if (bDet.browser.version>=minVersionSup && bDet.browser.name=='Chrome' && bDet.os.name=='Android'){ 
+// });&& bDet.os.name=='Android'
+  if (bDet.browser.version>=minVersionSup && bDet.browser.name=='Chrome'){ 
        console.log('compatible'); 
       
  }else{ 
-// alert('update browser'); 
-//   if (confirm("Please update browser") == true) {
-//         x = location.reload();
-//     } else {
-//         x = location.reload();
-//     }
+alert('update browser'); 
+  if (confirm("Please update browser") == true) {
+        x = location.reload();
+    } else {
+        x = location.reload();
+    }
     
  } 
 //----------------------------------------------floating button change  --------------------------------------------------------------------
