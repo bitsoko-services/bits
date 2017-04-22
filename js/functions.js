@@ -13,7 +13,7 @@ else{
  	 //removes the button
  	 $(".floatingPrice").html("")
  	 //adds class with no side panel activatr
- 	  $(".floatingPrice").append('<a href="#" class="bitswaves-effect waves-block waves-light chat-collapse btn-floating btn-large "style="background-color:#{theme};"><span class="totals"></span></a>')
+ 	  $(".floatingPrice").append('<a href="#" class="bitswaves-effect waves-block waves-light chat-collapse btn-floating btn-large "style="pointer-events: none; background-color:#{theme};"><span class="totals"></span></a>')
 	 
 }
 } 
