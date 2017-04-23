@@ -13,7 +13,7 @@ else{
  	 //removes the button
  	 $(".floatingPrice").html("")
  	 //adds class with no side panel activatr
- 	  $(".floatingPrice").append('<a href="#" class="bitswaves-effect waves-block waves-light chat-collapse btn-floating btn-large "style="pointer-events: none; background-color:#{theme};"><span class="totals"></span></a>')
+ 	  $(".floatingPrice").append('<a href="#" class="bitswaves-effect waves-block waves-light chat-collapse btn-floating btn-large "style="pointer-events: none; background-color:#{theme};"><span id="totals" class="totals"></span></a>')
 	 
 }
 } 
@@ -213,7 +213,10 @@ $('.recipt').append('');
 	}
 
 	function makeOrder(){
-		
+		var p = document.getElementById('totals').innerHTML;
+		console.log(p)
+		if(p<=500){Materialize.toast('your order is less than 500KSH ', 1000);}else{Materialize.toast('your order is more than 500KSH ', 1000);}
+
 if (JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits-active-service'))).payments =="false"){
 		Materialize.toast('deliveries for this shop not available', 1000);
 }
@@ -232,10 +235,4 @@ if (JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bi
            
         });
 }
-// else{
-// 	console.log("payments off")
-// 	
-	 
-// }
-	
-//	}
+	}
