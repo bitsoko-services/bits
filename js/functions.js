@@ -215,10 +215,11 @@ $('.recipt').append('');
 	function makeOrder(){
 		var p = document.getElementById('totals').innerHTML;
 		console.log(p)
-		if(p<=500){Materialize.toast('your order is less than 500KSH ', 1000);}else{Materialize.toast('your order is more than 500KSH ', 1000);}
+		if(p<=499){Materialize.toast('deliveries available for orders above 500KSH ', 2000 );return;}//else{Materialize.toast('your order is more than 500KSH ', 1000);}
 
 if (JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits-active-service'))).payments =="false"){
-		Materialize.toast('deliveries for this shop not available', 1000);
+		Materialize.toast('deliveries for this shop not available', 2000);
+		return;
 }
 		
 		doFetch({ action: 'makeOrder', data: orderArray, user: localStorage.getItem("bits-user-name"), service: actvServ().id}).then(
@@ -235,4 +236,4 @@ if (JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bi
            
         });
 }
-	}
+	
