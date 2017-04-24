@@ -87,4 +87,3 @@ function changedConfCode(t){
 	  });
 
 }
-addMobiVeri();
