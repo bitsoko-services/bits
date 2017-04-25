@@ -1,17 +1,18 @@
 .handle-counter { overflow: hidden;
     float: right;
     margin-top: -16px;
+    width: 122px;
  }
 
 .handle-counter .counter-minus,  .handle-counter .counter-plus,  .handle-counter input {
-  float: left;
+/*   float: left; */
   text-align: center;
 }
 
 .handle-counter .counter-minus,  .handle-counter .counter-plus { text-align: center; }
 
 .handle-counter input {
-  width: 50px;
+  width:25px;
   border-width: 1px;
   border-left: none;
   border-right: none;

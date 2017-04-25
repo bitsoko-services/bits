@@ -12,6 +12,7 @@ else{
  	 $("#bitsPrice").addClass("displayNone")
  	 //removes the button
  	 $(".floatingPrice").html("")
+ 	 $(".floatingPrice").addClass("pointerNone")
  	 //adds class with no side panel activatr
  	  $(".floatingPrice").append('<a href="#" class="bitswaves-effect waves-block waves-light chat-collapse btn-floating btn-large "style="pointer-events: none; background-color:#{theme};"><span id="totals" class="totals"></span></a>')
 	 
@@ -223,7 +224,7 @@ if (JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bi
 }
 		
 		doFetch({ action: 'makeOrder', data: orderArray, user: localStorage.getItem("bits-user-name"), service: actvServ().id}).then(
-	function(f){
+	function(e){
     if (e.status=="ok"){  
 
 		Materialize.toast('your order has been sent ', 1000);
@@ -236,4 +237,18 @@ if (JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bi
            
         });
 }
-	
+function mobiVerification(){
+	doFetch({ action: 'userSettings',  user: localStorage.getItem("bits-user-name")}).then(
+	function(v){
+    if (v.status=="ok"){  
+		 localStorage.setItem('bits-user-'+localStorage.getItem("bits-user-name")+'-mobileVerification', v.data.verified);
+
+           }else{
+           
+           }
+                 
+           
+        }
+
+	);
+}
