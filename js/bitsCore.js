@@ -674,7 +674,7 @@ var options = {
     prf: "hmac-sha256"
   }
 };
-
+var password = 'abcd';
 // asynchronous
 keythereum.dump(password, dk.privateKey, dk.salt, dk.iv, options, function (keyObject) {
   // do stuff!
