@@ -595,10 +595,17 @@ if (addsub=='1'){
 //stays
 function createWallet(user){
 	return new Promise(function(resolve, reject) {
-	
+	/*
     createBTC(user).then(function(e){
 		resolve(e);
 		});	
+	});
+	*/
+    createETH(user).then(function(e){
+		resolve(e);
+		}).catch(function(err){
+    		reject(err);
+    });	
 	});
 }
 //stays
@@ -632,6 +639,125 @@ Materialize.toast('failed to create wallet, please try again', 3000);
 		}           
                
         });
+    	
+	})
+	
+}
+
+//stays
+function createETH(user){
+		return new Promise(function(resolve, reject) {
+	
+   var privateKey = new bitcore.PrivateKey();
+var publicAddress =privateKey.toAddress().toString(); 
+
+			// optional private key and initialization vector sizes in bytes
+// (if params is not passed to create, keythereum.constants is used by default)
+var params = { keyBytes: 32, ivBytes: 16 };
+
+// asynchronous
+keythereum.create(params, function (dk) {
+    // do stuff!
+	/*
+	// dk:
+{
+    privateKey: <Buffer ...>,
+    iv: <Buffer ...>,
+    salt: <Buffer ...>
+}
+    */
+	
+	// Note: if options is unspecified, the values in keythereum.constants are used.
+var options = {
+  kdf: "pbkdf2",
+  cipher: "aes-128-ctr",
+  kdfparams: {
+    c: 262144,
+    dklen: 32,
+    prf: "hmac-sha256"
+  }
+};
+
+// synchronous
+var keyObject = keythereum.dump(password, dk.privateKey, dk.salt, dk.iv, options);
+// keyObject:
+{
+  address: "008aeeda4d805471df9b2a5b0f38a0c3bcba786b",
+  Crypto: {
+    cipher: "aes-128-ctr",
+    ciphertext: "5318b4d5bcd28de64ee5559e671353e16f075ecae9f99c7a79a38af5f869aa46",
+    cipherparams: {
+      iv: "6087dab2f9fdbbfaddc31a909735c1e6"
+    },
+    mac: "517ead924a9d0dc3124507e3393d175ce3ff7c1e96529c6c555ce9e51205e9b2",
+    kdf: "pbkdf2",
+    kdfparams: {
+      c: 262144,
+      dklen: 32,
+      prf: "hmac-sha256",
+      salt: "ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd"
+    }
+  },
+  id: "e13b209c-3b2f-4327-bab0-3bef2e51630d",
+  version: 3
+}
+
+// asynchronous
+keythereum.dump(password, dk.privateKey, dk.salt, dk.iv, options, function (keyObject) {
+  // do stuff!
+	/*
+	
+	// keyObject:
+{
+  address: "008aeeda4d805471df9b2a5b0f38a0c3bcba786b",
+  Crypto: {
+    cipher: "aes-128-ctr",
+    ciphertext: "5318b4d5bcd28de64ee5559e671353e16f075ecae9f99c7a79a38af5f869aa46",
+    cipherparams: {
+      iv: "6087dab2f9fdbbfaddc31a909735c1e6"
+    },
+    mac: "517ead924a9d0dc3124507e3393d175ce3ff7c1e96529c6c555ce9e51205e9b2",
+    kdf: "pbkdf2",
+    kdfparams: {
+      c: 262144,
+      dklen: 32,
+      prf: "hmac-sha256",
+      salt: "ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd"
+    }
+  },
+  id: "e13b209c-3b2f-4327-bab0-3bef2e51630d",
+  version: 3
+}
+
+*/
+	
+	
+       var created = moment().valueOf();
+   var walData={publicAddress:keyObject.address, walletData:JSON.stringify(keyObject), created:created, coin:'eth'};
+	var wd=walData;
+	delete wd.walletData;
+
+        doFetch({action:'saveUserWallet', data: JSON.stringify(wd), user:user }).then(function(e){
+            if (e.status=="ok"){
+   
+          
+var walSaving = getObjectStore('data', 'readwrite').put(JSON.stringify(walData), 'bits-wallets-'+user);
+	walSaving.onsuccess = function (event) {
+	localStorage.setItem("bits-user-wallet", publicAddress);   
+resolve(walData);
+Materialize.toast('created new Ethereum wallet', 3000);
+	
+	}
+                } else{
+		reject('failed to create wallet, please try again');
+Materialize.toast('failed to create wallet, please try again', 3000);
+		
+		}           
+               
+        });
+	
+});
+});
     	
 	})
 	
