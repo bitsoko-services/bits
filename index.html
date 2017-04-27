@@ -410,11 +410,32 @@
 </span>
 </div>
 </div>
-           
-    
-    <div class="modal-footer blue-grey lighten-5">
+ <div class="modal-footer blue-grey lighten-5">
          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
           <a href="#!" id="btn_save" class="waves-effect waves-green btn-flat">Back up</a>
+    </div>
+</div>
+           
+    <!------------------------------------ modal enter phone number end ----------------------------------------------------------------------->
+<!--------------------------------------------- modal check adresses start ---------------------------------------------------------------->
+<!----------------------------------------------modal will contain all the user adresses and qr codes ------------------------------------->
+
+ <div id="updateBrowsermodal" class="modal modal-fixed-footer bottom-sheet" >
+   <div class="modal-content">
+      <div class="row">
+       <h4 class="">Update Your Browser</h4>
+       <br>
+		               
+<span>Please update to latest version of chrome browser to have the best experience with bits wallet</span>
+</div>
+</div>
+
+    <!------------------------------------ modal enter phone number end ----------------------------------------------------------------------->
+<!--------------------------------------------- modal check adresses start ---------------------------------------------------------------->
+<!----------------------------------------------modal will contain all the user adresses and qr codes ------------------------------------->
+    <div class="modal-footer blue-grey lighten-5">
+         <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" onclick="reload()">Close</a>
+          <a href="https://www.google.com/chrome/browser/mobile/index.html" target="_blank" id="btn_save" class="waves-effect waves-green btn-flat">Update</a>
     </div>
 </div>
 <!--modal login-->
@@ -551,14 +572,19 @@
        console.log('compatible'); 
       
  }else{ 
-alert('update browser'); 
-  if (confirm("Please update browser") == true) {
-        x = location.reload();
-    } else {
-        x = location.reload();
-    }
+ $('#updateBrowsermodal').openModal();
+
+// alert('update browser'); 
+//   if (confirm("Please update browser") == true) {
+//         x = location.reload();
+//     } else {
+//         x = location.reload();
+//     }
     
  } 
+  function reload(){
+ 	location.reload();
+ }
 //----------------------------------------------floating button change  --------------------------------------------------------------------
 	if ((!location.port || location.port == "80") && location.protocol != 'https:') {}       
  	if ("onhashchange" in window) {
