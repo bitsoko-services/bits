@@ -71,7 +71,7 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     display: none;
 }
 .btn:hover, .btn-large:hover {
-    background-color: #0f5f76 !important;
+/*     background-color: #0f5f76 !important; */
 }
 .collapsible-body p {
     margin: 0;
@@ -131,10 +131,10 @@ i { cursor : pointer; }
 }
 .btn-bar{
 	    display: block;
-    float: left;
+/*     float: left; */
    
     right: -59px;
-    margin-top: -65% !important;
+/*     margin-top: -65% !important; */
     width: 100%;
     height: 55px;
 }
@@ -185,3 +185,18 @@ height: 40px !important;
 .pointerNone{
 	pointer-events:none;
 }
+
+.noshadow{
+	    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0) !important;
+}
+
+
+.progress {
+    position: relative;
+    height: 4px;
+    display: block;
+    width: 100%;
+    background-color: white;
+    border-radius: 2px;
+    margin: 0rem 0rem 0 !important;
+    overflow: hidden;

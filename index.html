@@ -44,7 +44,7 @@
 .switch label input[type=checkbox]:checked + .lever:after {
     background-color: #{theme} !important;
 }
-.bitb {
+.bitb,.progress {
     background-color: #{theme} !important;
 }
 	</style>
@@ -114,8 +114,8 @@
 			<li  class="bits-ellipsis col s6 m8 l9 displayNone" style="margin-left: 15px;"><span class="username-addr " style=""></span></li>
             <li class="bold"><a href="?"  class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>My Offers</a></li>
 			<li class="bold displayNone"><a href="?" class="waves-effect waves-cyan"><i class="mdi-action-redeem"></i>Nearby Offers</a></li>
-			<li class=""><a href="#" id="shareQR"> <i class="mdi-social-share bits-color"></i><span class="bits-13"  style=""></span> <span href id="">Share Wallet</span>  </a>  
-        	<li class="bold"><a href="#" id="useAnon" onclick="signOut();"class="waves-effect waves-cyan"><i class="mdi-communication-live-help"></i>Use app anonymously</a></li>
+			<li class="displayNone"><a href="#" id="shareQR"> <i class="mdi-social-share bits-color"></i><span class="bits-13"  style=""></span> <span href id="">Share Wallet</span>  </a>  
+        	
         	<li class="bold"><a href="#" id="useLogin" onclick="showLogin();"class="waves-effect waves-cyan"><i class="mdi-action-lock-open"></i>Login</a></li>
         	<li class="li-hover"></li>
         	</ul></div>
@@ -163,8 +163,9 @@
                              </ul>
                         </div>
                     </li>
-                    <li class="li-hover" style="position: absolute;bottom:0px;opacity: 0.4;"><p class="ultra-small margin more-text">Bits V:<span id="bv" class="ultra-small margin more-text"> </span></p></li>
-            
+                    <li class="li-hover" style="position: absolute;bottom:40px;opacity: 0.4;"><p class="ultra-small margin more-text">Bits V:<span id="bv" class="ultra-small margin more-text"> </span></p></li>
+         
+            <li class="bold" style="position: absolute;bottom:5px;opacity: 0.4; width: 100%;    border-top: solid 1px #d5d5d5;"><a href="#" id="useAnon" onclick="signOut();"class="waves-effect waves-cyan"><i class="mdi-action-lock"></i>Sign Out</a></li>
                     </ul>
             
            
@@ -260,16 +261,22 @@
     </div></div>
     </div>
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<div class="">
+ <div class="progress preload bits bitb">
+      <div class="indeterminate"></div>
+  </div>
+<div class="maincont displayNone">
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<div class="card-container-bits " id="" >
+<div class="card-container-bits displayNone" id="" >
+
 		<div id="" class="card-bit serviceListCard">
 		 <div class="card small maincard bits"  style="border-radius: 0px; position: sticky;/* width: 100%; */ z-index: 100;     box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0) !important;">
+          <div style="margin-top:0px;" class="btn-bar bits">
+				<a id="manage-store" style="display:none; background: none; float:left; !important; margin-top: ;" href="../soko/" class="noshadow btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>
+                    <span class="callbtn"></span>
+                    </div>
            <div  class="card-image waves-effect waves-block waves-light">
              <img  src="" alt="" class="cardimage service-banner"style="border-radius: 0px; height: 250px;"> 
-				<div style="margin-top: -240px;" class="btn-bar">
-				<a id="manage-store" style="display:none; background: none; float:left; !important; margin-top: ;" href="../soko/" class=" btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>
-                    <span class="callbtn"></span></div>
+				
            </div>
            <div class="min-card">
              <ul class="card-action-buttons left">
@@ -333,8 +340,8 @@
              </li>
              </ul>
                <ul class="serviceListHolder collection popup-gallery" style="display:none;"></ul>
-               <ul id="card-widgets" class="promoHolder collection"style="width: 90%;margin-left: 5%;"></ul>
-               <ul id="card-widgets" class="promoHolder-home collection"  style=""></ul>
+               <ul id="card-widgets" class="promoHolder displayNone collection"style="width: 90%;margin-left: 5%;"></ul>
+               <ul id="card-widgets" class="promoHolder-home collection displayNone"  style=""></ul>
             </div> 
 <!--list holder  end-->
 <!-- ----------------------------------------------------------------------------------------------------------------- -->
@@ -356,7 +363,7 @@
     					 <span style="">deliver</span> <i class="mdi-maps-local-grocery-store right" style="font-size: 24px;"></i>
 						</div>
                    <div class="fixed-action-btn displayNone floatingPrice " style="bottom: 10px; right: 50px;">
-                    <a href="#" data-activates="chat-out" class="bitswaves-effect waves-block waves-light chat-collapse btn-floating btn-large "style="background-color:#{theme};"><span id="totals" class="totals"></span></a>
+                    <a href="#" data-activates="chat-out" class="bitswaves-effect waves-block waves-light chat-collapse btn-floating btn-large "style="background-color:#{theme} !important;"><span id="totals" class="totals"></span></a>
                    		
 					</div>
 				 </div>
@@ -434,8 +441,7 @@
 <!--------------------------------------------- modal check adresses start ---------------------------------------------------------------->
 <!----------------------------------------------modal will contain all the user adresses and qr codes ------------------------------------->
     <div class="modal-footer blue-grey lighten-5">
-         <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" onclick="reload()">Close</a>
-          <a href="https://www.google.com/chrome/browser/mobile/index.html" target="_blank" id="btn_save" class="waves-effect waves-green btn-flat">Update</a>
+          <a href="https://play.google.com/store/apps/details?id=com.android.chrome" target="_blank" id="btn_save" class="waves-effect waves-green btn-flat">Update</a>
     </div>
 </div>
 <!--modal login-->

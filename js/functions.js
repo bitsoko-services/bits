@@ -14,7 +14,7 @@ else{
  	 $(".floatingPrice").html("")
  	 $(".floatingPrice").addClass("pointerNone")
  	 //adds class with no side panel activatr
- 	  $(".floatingPrice").append('<a href="#" class="bitswaves-effect waves-block waves-light chat-collapse btn-floating btn-large "style="pointer-events: none; background-color:#{theme};"><span id="totals" class="totals"></span></a>')
+ 	  $(".floatingPrice").append('<a href="#" class="bitswaves-effect waves-block bits bitb waves-light chat-collapse btn-floating btn-large "style="pointer-events: none; background-color:#{theme} !important;"><span id="totals" class="totals"></span></a>')
 	 
 }
 } 
@@ -24,7 +24,7 @@ function callMerchant(){
 	var p=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits-active-service'))).phone;
 	//console.log(p)
 	$('.callbtn').html('') 
-$('.callbtn').append('<button  id="star" value="rating" class="btn-large btn-price" style="float: left !important;/* right: 0%; */ margin-top: ;"><i class="mdi-action-grade activator"></i></button><button  id="share" value="Share" class=" btn-large btn-price" style="float: right !important;/* right: 0%; */ margin-top: ;"><i class="mdi-social-share"></i></button> <a href="tel:'+p+'"  id="" value="" class=" btn-large btn-price" style="float: right !important; margin-right: ;/* right: 0%; */ margin-top: ;"><i class="mdi-communication-call"></i></a>');      
+$('.callbtn').append('<button  id="star" value="rating" class="btn-large btn-price bits noshadow bitb" style="float: left !important;/* right: 0%; */ margin-top: ;"><i class="mdi-action-grade activator"></i></button><button  id="share" value="Share" class="bitb displayNone btn-large btn-price bits noshadow" style="float: right !important;/* right: 0%; */ margin-top: ;"><i class="mdi-social-share"></i></button> <a href="tel:'+p+'"  id="" value="" class=" btn-large btn-price bits noshadow bitb" style="float: right !important; margin-right: ;/* right: 0%; */ margin-top: ;"><i class="mdi-communication-call"></i></a>');      
 }
 
 //...........................URL check end//.................................................................................................................................................
