@@ -716,7 +716,7 @@ keythereum.dump(password, dk.privateKey, dk.salt, dk.iv, options, function (keyO
           
 var walSaving = getObjectStore('data', 'readwrite').put(JSON.stringify(walData), 'bits-wallets-'+user);
 	walSaving.onsuccess = function (event) {
-	localStorage.setItem("bits-user-wallet", publicAddress);   
+	localStorage.setItem("bits-user-wallet", keyObject.address);   
 resolve(walData);
 Materialize.toast('created new Ethereum wallet', 3000);
 	
