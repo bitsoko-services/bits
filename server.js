@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =340;
+	bitsVersion =341;
 bitsInstall = function(event){
 	
 	
@@ -53,21 +53,7 @@ client.postMessage('notification clicked');
       // This command adds a new request/response pair to the cache.
              
       case 'createBackup':
-    //do backup
-/*importScripts('bits/js/jspdf.js');
-var doc = new jsPDF();
-var specialElementHandlers = {
-'#editor': function (element, renderer) {
-return true;
-}
-};
-doc.fromHTML($('#content').html(), 15, 15, {
-'width': 170,
-'elementHandlers': specialElementHandlers
-});
-doc.save('BitsWallet_Backup.pdf');*/
-
-    
+    //do backup  
            bitsNotification('Wallet Backed Up','Thank you for backing up your wallet you are one step closer to saving the world','','bits/images/no.png',[{action: '', title: "Backed up"}],true,true);
        
       break;
@@ -131,6 +117,15 @@ return new Promise(function(resolve, reject) {
            bitsNotification('You have recevied '+dat.amt,'sam has sent you  '+dat.amt+' Click to view your balance','AnonMsg','bits/images/no.png',[{action: '', title: "Backed up"}],true,true);
        
       break;
+// get notifications when you request for services eg delivery
+ case 'userOrder':
+    
+           bitsNotification('You have requested for this service ','userOrder','bits/images/yes.png',[{action: '', title: "Request"}],true,true);
+       
+      break;
+      
+
+//end of get notifications when you request for services eg delivery
 			
 			case 'merchantMessage':
 			   console.log(dat);
