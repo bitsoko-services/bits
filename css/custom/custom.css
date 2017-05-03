@@ -185,7 +185,6 @@ height: 40px !important;
 .pointerNone{
 	pointer-events:none;
 }
-
 .noshadow{
 	    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0) !important;
 }
@@ -200,3 +199,15 @@ height: 40px !important;
     border-radius: 2px;
     margin: 0rem 0rem 0 !important;
     overflow: hidden;
+}
+.btn:hover, .btn-large:hover {
+    background-color: #0f5f76 !important;
+}
+ul.side-nav.leftside-navigation li.active > a {
+  color: #0f5f76 !important;
+}
+}
+materialize.css:3455
+.progress .indeterminate {
+    background-color: #ffffff !important;
+}

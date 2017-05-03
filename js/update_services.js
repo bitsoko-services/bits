@@ -108,6 +108,9 @@ $(".resDisplay").html( mDet.name);
 		 $('.maincont').removeClass("displayNone");
 		 $('.preload').addClass("displayNone");
 		 $('.card-container-bits').removeClass("displayNone");
+		
+		
+
 //-----------------------------------------------incase the user is the owner of this shop, then show POS button------------------------------------------------------------------------------------------------
 	 if(mDet.owner==parseInt(localStorage.getItem('bits-user-name'))){
 	 $('#manage-store').css("display","block");
@@ -190,7 +193,8 @@ var addproducts = document.querySelectorAll(".bitsInputQty");
 for(var i = 0; i< addproducts.length; ++i){
 	addproducts[i].addEventListener("change",tabulateTotals,false);
  }
- //$( "body" ).scrollTop( 156 );        
+ //$( "body" ).scrollTop( 156 );    
+ // setTimeout( $('.delivery').addClass('animated jello'), 7000);    
  }
  }
 //---------------------------------------------------end populateService function------------------------------------------------------------------------------------------------------------------------

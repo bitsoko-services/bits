@@ -186,8 +186,7 @@ body.stop-scrolling {
       box-shadow: 0 0 2px rgba(128, 179, 235, 0.5), inset 0 0 0 1px rgba(0, 0, 0, 0.05); }
     .sweet-alert button:hover {
       background-color: #7ecff4; }
-    .sweet-alert button:active {
-      background-color: #5dc2f1; }
+    .sweet-alert button:active { }
     .sweet-alert button.cancel {
       background-color: #C1C1C1; }
       .sweet-alert button.cancel:hover {

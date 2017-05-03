@@ -214,7 +214,7 @@ $('.recipt').append('');
 	}
 
 	function makeOrder(){
-		var p = document.getElementById('totals').innerHTML;
+		 $('.delivery').addClass('animated jello');
 		console.log(p)
 		if(p<=499){Materialize.toast('deliveries available for orders above 500KSH ', 2000 );return;}//else{Materialize.toast('your order is more than 500KSH ', 1000);}
 
@@ -227,11 +227,12 @@ if (JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bi
 	function(e){
     if (e.status=="ok"){  
 
-		Materialize.toast('your order has been sent ', 1000);
+		swal("success!", "your order has been sent!", "success")
              
 
            }else{
-           	Materialize.toast('your order is not sent ', 1000);
+           	 swal("Cancelled", "your order is not sent", "error");
+        
            }
                  
            

@@ -56,11 +56,14 @@
             }
         })
         $btnPlugs.click(function () {
+                $('.delivery').addClass('animated jello');
+               
             var num = parseInt($input.val())
             if (maximize==null||num < maximize) {
                 $input.val(num + 1)
                 changeVal(num + 1)
             }
+          //setTimeout($('.delivery').removeClass('animated jello'), 3000);
         })
         var keyUpTime
         $input.keyup(function () {
