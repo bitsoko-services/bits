@@ -30,6 +30,8 @@
 		<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
 		<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
 		<!-- Custome CSS-->    
+<link href="js/plugins/animate-css/animate.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="js/plugins/sweetalert/dist/sweetalert.css" type="text/css" rel="stylesheet" media="screen,projection">
 		<link href="css/custom/custom.css" type="text/css" rel="stylesheet" media="screen,projection">
 		<link href="css/keypad.css" type="text/css" rel="stylesheet" media="">
 		<link href="css/handleCounter.css" type="text/css" rel="stylesheet" media="">
@@ -44,7 +46,7 @@
 .switch label input[type=checkbox]:checked + .lever:after {
     background-color: #{theme} !important;
 }
-.bitb,.progress {
+.bitb,.progress,.sweet-alert button {
     background-color: #{theme} !important;
 }
 	</style>
@@ -270,7 +272,7 @@
 
 		<div id="" class="card-bit serviceListCard">
 		 <div class="card small maincard bits"  style="border-radius: 0px; position: sticky;/* width: 100%; */ z-index: 100;     box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0) !important;">
-          <div style="margin-top:0px;" class="btn-bar bits">
+          <div style="margin-top:0px;" class="btn-bar bits bitb">
 				<a id="manage-store" style="display:none; background: none; float:left; !important; margin-top: ;" href="../soko/" class="noshadow btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>
                     <span class="callbtn"></span>
                     </div>
@@ -406,13 +408,14 @@
 	                <ul class="collection">
     <li class="collection-item">
       <span class="title"><a href="#!" id="share" class="secondary-content right"></a></span>
+      <span class ="" style="font-size: 12px;">Currency: BTC</span>
       <span class ="username-addr" style="font-size: 12px;"></span>
       
-    </li>
+<!--     </li>
         <li class="collection-item username-addr-old">
      
       
-    </li>
+    </li> -->
   </ul>
 </span>
 </div>
@@ -533,12 +536,14 @@
 	      <script src="https://bitsoko.io/bitsAssets/js/browserDetect.js"></script> 
 	   <script src="js/bits-addMobiVeri.js"></script> 
 	    <script src="https://bitsoko.io/bitsAssets/js/pushManager-fcm.js" async></script>
-	    <script src="https://bitsoko.io/bitsAssets/js/eth-lightwallet/lightwallet.js" async></script>
+	    <script src="https://bitsoko.io/bitsAssets/js/keythereum/keythereum.min.js" async></script>
    		<script src="https://bitsoko.io/bitsAssets/js/md5.min.js" async defer></script>
 		<script src="js/bitcore-ecies.min.js" ></script> 
 		<script src="js/bitcore.min.js"></script>  
     	<script type="text/javascript" src="js/bitsCore.js"></script>
-    	<script type="text/javascript" src="js/init.js" defer></script>    
+    	<script type="text/javascript" src="js/init.js" defer></script>  
+    	 <!--sweetalert -->
+    <script type="text/javascript" src="js/plugins/sweetalert/dist/sweetalert.min.js"></script>   
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="js/plugins.js"></script>
     <!--custom-script.js - Add your own theme custom JS-->
@@ -710,6 +715,8 @@ $(document).ready(function() {
 $(".serviceListCard").hide();
 $(".promoHolder").hide();
 
+$('.delivery').addClass('animated jello');
+
 	
 
     $(".saleButton").click(function() {
@@ -867,7 +874,7 @@ contact();
  
 }( jQuery )); 
 //------------------------------------------------------------------------------------ ratings end -------------------------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------makeOrder--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  </script>
 <!-- -------------------------------------------------------------------------google analytics code ----------------------------------------------------------------------------------------------------------------------------------------- -->
 <script>
