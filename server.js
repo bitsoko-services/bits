@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =344;
+	bitsVersion =345;
 bitsInstall = function(event){
 	
 	
@@ -273,7 +273,7 @@ store.onsuccess = function (event) {
 		//var orReq=event.request.clone();
 
 		var url = new URL(event.request.clone().url);
-		
+/*		
 if (url.pathname.substring(0, 2) == '/p' && url.hostname == location.hostname) {
 	
 		console.log('physical web url!!');
@@ -347,7 +347,9 @@ return Response.redirect('https://bitsoko.io/bits/index.html?s=3&a=404');
 
 } 
 else if (url.pathname.substring(0, 2) == '/w' && url.hostname == location.hostname) {
-	
+	*/
+	if (url.pathname.substring(0, 2) == '/w' && url.hostname == location.hostname) { 
+   
 		console.log('wallet web url!!');
 		var bid=url.pathname.substring(2, 5);
 			//resolve(Response.redirect('http://bitsoko.io/bits/#m='+bid));
