@@ -214,6 +214,7 @@ $('.recipt').append('');
 	}
 
 	function makeOrder(){
+		 var p = document.getElementById('totals').innerHTML; 
 		 $('.delivery').addClass('animated jello');
 		console.log(p)
 		if(p<=499){Materialize.toast('deliveries available for orders above 500KSH ', 2000 );return;}//else{Materialize.toast('your order is more than 500KSH ', 1000);}

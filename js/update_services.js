@@ -117,6 +117,15 @@ $(".resDisplay").html( mDet.name);
 	 }else{
 	  $('#manage-store').css("display","none");
 	 }
+//------------------------------------------ checking if the user is a manager -------------------------------------------------------------------------------------------------------------------------------------
+ if(mDet.managers==parseInt(localStorage.getItem('bits-user-name'))){
+	 $('#manage-store').css("display","block");
+	 }else{
+	  $('#manage-store').css("display","none");
+	 }
+
+
+//------------------------------------------ checking if the user is a manager -------------------------------------------------------------------------------------------------------------------------------------
 	 	callMerchant();//	bitsTheme();
 	 console.log(mDet.promotions);
 	 	if(mDet.promotions.length == 0){
@@ -177,7 +186,7 @@ $(".merchantsPromotions").removeClass("displayNone")
  			// console.log("no metrics set") 
  			mDet.list[ii].metric="piece"; 
  		}
- $('.merchproducts').append('<li class="collection-item avatar bits-max "><img src="https://bitsoko.io'+mDet.list[ii].imagePath+'" data-caption="'+mDet.list[ii].description+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"><span class="conf-curr"></span> </span>per '+mDet.list[ii].metric+' </span></p><div class="handle-counter" id="prod-'+mDet.list[ii].id+'-counter"><button class="counter-minus bits btn btn-primary btn-floating btn-f"  style="line-height: 5px;">-</button><input class="bitsInputQty" price="'+mDet.list[ii].price+'" pid="'+mDet.list[ii].id+'" type="text" value="0" min="" style="border-bottom: none;"><span> '+mDet.list[ii].metric+' </span><button class="counter-plus bits btn btn-primary btn-floating btn-f" style="line-height: 5px; float:right; margin-top: 7px;" >+</button>'
+ $('.merchproducts').append('<li class="collection-item avatar bits-max "><img src="https://bitsoko.io'+mDet.list[ii].imagePath+'" data-caption="'+mDet.list[ii].description+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"><span class="conf-curr"></span> </span>per '+mDet.list[ii].metric+' </span></p><div class="handle-counter" id="prod-'+mDet.list[ii].id+'-counter"><button class="counter-minus bits btn btn-primary btn-floating btn-f"  style="line-height: 5px;">-</button><input class="bitsInputQty" price="'+mDet.list[ii].price+'" pid="'+mDet.list[ii].id+'" type="text" value="0" min="" style="border-bottom: none;"><span> '+mDet.list[ii].metric+' </span><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f" style="line-height: 5px; float:right; margin-top: 7px;" >+</button>'
 			   // +'</div><p class="col s4" style=""> <input class="number bitsInputQty sinpt" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'><label for='+mDet.list[ii].name+'></label></p>'+
 			    +'</li>');
 		 $('#prod-'+mDet.list[ii].id+'-counter').handleCounter()

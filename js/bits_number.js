@@ -56,14 +56,14 @@
             }
         })
         $btnPlugs.click(function () {
-                $('.delivery').addClass('animated jello');
+              
                
             var num = parseInt($input.val())
             if (maximize==null||num < maximize) {
                 $input.val(num + 1)
                 changeVal(num + 1)
             }
-          //setTimeout($('.delivery').removeClass('animated jello'), 3000);
+          //setTimeout(, 3000);
         })
         var keyUpTime
         $input.keyup(function () {
@@ -96,8 +96,7 @@
         })
 
         function changeVal(num) {
-               
-            $input.data('num', num)
+                          $input.data('num', num)
             $btnMinus.prop('disabled', false)
             $btnPlugs.prop('disabled', false)
             if (num <= minimum) {
