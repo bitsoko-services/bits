@@ -120,7 +120,9 @@ $(".resDisplay").html( mDet.name);
 	  $('#manage-store').css("display","none");
 	 }
 //------------------------------------------ checking if the user is a manager -------------------------------------------------------------------------------------------------------------------------------------
- if(mDet.managers.length == 0){
+try{
+
+if(mDet.managers.length == 0){
 	 		 console.log("no managers for this shop")
  }else{
  	 console.log("this shop has managers")
@@ -136,6 +138,10 @@ $(".resDisplay").html( mDet.name);
 			  $('#manage-store').css("display","none");
 			 }
 				   }
+}catch(err){
+console.log("unable to validate managers")
+} 
+
 //------------------------------------------ checking if the user is a manager -------------------------------------------------------------------------------------------------------------------------------------
 	 	callMerchant();//	bitsTheme();
 	 console.log(mDet.promotions);

@@ -2,11 +2,11 @@
 function bitsTheme(){
 	//get theme
 	var stDat=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits-active-service')));
-	var p=stDat.theme;
-	
+	try{var p=stDat.theme;}
+	catch(err)	{ console.log("cant find theme colour")}
 	console.log(p)
 	if (p == "") {
-		console.log('e');
+		//console.log('e');
    stDat.theme="#0f5f76";
    localStorage.setItem('bits-merchant-id-'+localStorage.getItem('bits-active-service'), JSON.stringify(stDat));
 }
