@@ -50,7 +50,7 @@ contact();
  	$(".serviceListHolder").show();
  	$(".serviceListCard").show();
  $(".promoHolder").hide();
-	 
+	 populateService(getBitsWinOpt('s'));
  	 doFetch({ action: 'serviceProfile', id: servID, service: getBitsWinOpt('s')}).then(function(e){
            if (e.status=="ok"){
            	      localStorage.setItem('bits-merchant-id-'+e.data.id, JSON.stringify(e.data));
@@ -252,5 +252,21 @@ function mobiVerification(){
            
         }
 
+	);
+}
+function sendratings(){
+	doFetch({ action: 'shopRatings',  data: Ratings, user:localStorage.getItem("bits-user-name"), service: actvServ().id}).then(
+function(s){
+    if (s.status=="ok"){  
+		swal("success!", "Ratings and Reviews have been sent!", "success")
+             
+
+           }else{
+            	 swal("Cancelled", "Ratings and Reviews have not sent", "error");
+        
+           }
+                 
+           
+        }
 	);
 }

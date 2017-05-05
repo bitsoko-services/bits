@@ -161,7 +161,8 @@
                                 </li>
                                 <li><a href="#MobileModal"class="modal-trigger"> <i class="mdi-communication-phone"></i><span class="bits-13" style=""></span> <span href id="btn">Mobile Number</span> </a>
                                 </li>
-                                
+                                <li><a href="#KYCModal"class="modal-trigger"> <i class="mdi-action-grade"></i><span class="bits-13" style=""></span> <span href id="btn">Your details</span> </a>
+                                </li>
                              </ul>
                         </div>
                     </li>
@@ -273,8 +274,8 @@
 		<div id="" class="card-bit serviceListCard">
 		 <div class="card small maincard bits"  style="border-radius: 0px; position: sticky;/* width: 100%; */ z-index: 100;     box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0) !important;">
           <div style="margin-top:0px;" class="btn-bar bits bitb">
-				<a id="manage-store" style="display:none; background: none; float:left; !important; margin-top: ;" href="../soko/" class="noshadow btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>
-                    <span class="callbtn"></span>
+				<div id="manage-store" class="manage-store"></div>
+				    <span class="callbtn"></span>
                     </div>
            <div  class="card-image waves-effect waves-block waves-light">
              <img  src="" alt="" class="cardimage service-banner"style="border-radius: 0px; height: 250px;"> 
@@ -309,7 +310,7 @@
 										  	<textarea id="textarea2" class="materialize-textarea" length="120"></textarea>
 										  	<label for="textarea1" class="">Write a revew</label>
 											<span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
-											<button class="btn bits waves-effect waves-light " type="submit" name="action">Send
+											<button class="btn bits waves-effect waves-light " type="submit" name="action" onclick="sendratings();">Send
 											<i class="mdi-content-send right"></i>
 										    </button>
 										    </div>
@@ -331,7 +332,7 @@
                <center>
                 <ul class="collapsible  merchantsPromotions displayNone" >
               	 <li class="active">
-               		<div class="collapsible-header active">Promotions</div>
+               		<div class="collapsible-header ">Promotions</div>
                			<div class="collapsible-body merchPromo" style="display: none;"></div>
                	</li>
                </ul>
@@ -503,6 +504,43 @@
     </div>
     <div id="#mysubscriptions"></div>
 <!-- //////////////////////////////////////////////////////////////////////////// -->
+<!-- ================================================KYC Modal ================================================-->
+<div id="KYCModal" class="modal" style="width: 98% !important;">
+                  <div class="modal-content">
+                    <h5>Your Details</h5>
+                    <ul class="collection">
+                      <li class="collection-item avatar">
+                        <img src="" alt="" class="bits-profile userProfImg circle responsive-img valign profile-image">
+                        <span class="title">Personal Details</span>
+                        <p> <span class="title username-label">First Line</span>
+                          <br> <span>ID Number:</span>
+                        </p>
+                        <a href="#!" class="secondary-content"><i class="mdi-editor-mode-edit"></i></a>
+                      </li>
+                      <li class="collection-item avatar">
+                        <i class="mdi-communication-message circle bits"></i>
+                        <span class="title">Contact Details</span>
+                        <p><span>Phone Number:</span>
+                          <br> <span>email:</span>
+                        </p>
+                        <a href="#!" class="secondary-content"><i class="mdi-editor-mode-edit"></i></a>
+                        </li>
+                      <li class="collection-item avatar">
+                        <i class="mdi-communication-location-on circle bits"></i>
+                        <span class="title">Location Details</span>
+                        <p><span>Home address:</span>
+                          <br> <span>Work address:</span>
+                         
+                        </p>
+                        <a href="#!" class="secondary-content"><i class="mdi-editor-mode-edit"></i></a>
+                      </li>
+                     
+                    </ul>
+                  </div>
+                </div>
+
+<!-- ================================================KYC Modal end ================================================-->    
+<!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- ================================================Scripts================================================-->
 <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js" async defer></script>
 <script type="text/javascript" src="js/bits_contacts.js"></script>
@@ -536,7 +574,7 @@
 	      <script src="https://bitsoko.io/bitsAssets/js/browserDetect.js"></script> 
 	   <script src="js/bits-addMobiVeri.js"></script> 
 	    <script src="https://bitsoko.io/bitsAssets/js/pushManager-fcm.js" async></script>
-	      <script src="https://bitsoko.io/bitsAssets/js/eth-lightwallet/lightwallet.js" async></script> 
+	      <script src="https://bitsoko.io/bitsAssets/js/eth-lightwallet/lightwallet.js" async defer></script> 
    		<script src="https://bitsoko.io/bitsAssets/js/md5.min.js" async defer></script>
 		<script src="js/bitcore-ecies.min.js" ></script> 
 		<script src="js/bitcore.min.js"></script>  
@@ -811,12 +849,7 @@ contact();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////star rating //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    $(document).ready(function(){ 
-      $(".rating").addRating({ 
-        fieldId:"ratingId" 
-      }); 
-       
-    }) 
+    $(document).ready(function(){$(".rating").addRating({fieldId:"ratingId"});})
   (function ( $ ) { 
   $.fn.addRating = function(options) { 
     var obj = this; 

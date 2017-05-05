@@ -114,17 +114,28 @@ $(".resDisplay").html( mDet.name);
 //-----------------------------------------------incase the user is the owner of this shop, then show POS button------------------------------------------------------------------------------------------------
 	 if(mDet.owner==parseInt(localStorage.getItem('bits-user-name'))){
 	 $('#manage-store').css("display","block");
+	  $('.manage-store').html("")
+	 $('.manage-store').append('<a  style="background: none; float:left; !important; margin-top: ;" href="../soko/#s='+actvServ().id+'" class="noshadow btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>'); 
 	 }else{
 	  $('#manage-store').css("display","none");
 	 }
 //------------------------------------------ checking if the user is a manager -------------------------------------------------------------------------------------------------------------------------------------
- if(mDet.managers==parseInt(localStorage.getItem('bits-user-name'))){
-	 $('#manage-store').css("display","block");
-	 }else{
-	  $('#manage-store').css("display","none");
-	 }
-
-
+ if(mDet.managers.length == 0){
+	 		 console.log("no managers for this shop")
+ }else{
+ 	 console.log("this shop has managers")
+ }
+ var x=JSON.parse(mDet.managers);
+           for(var iii in x) {
+           if(parseInt(x[iii])==parseInt(localStorage.getItem('bits-user-name')))
+           {
+           $('#manage-store').css("display","block");
+            $('.manage-store').html("")
+           $('.manage-store').append('<a  style=" background: none; float:left; !important; margin-top: ;" href="../soko/#s='+actvServ().id+'" class="noshadow btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>'); 
+			 }else{
+			  $('#manage-store').css("display","none");
+			 }
+				   }
 //------------------------------------------ checking if the user is a manager -------------------------------------------------------------------------------------------------------------------------------------
 	 	callMerchant();//	bitsTheme();
 	 console.log(mDet.promotions);
