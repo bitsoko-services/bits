@@ -50,7 +50,13 @@ contact();
  	$(".serviceListHolder").show();
  	$(".serviceListCard").show();
  $(".promoHolder").hide();
+	  try
+ {
+ 	
 	 populateService(getBitsWinOpt('s'));
+ }catch(err){
+console.log("unable to load data from local DB")
+ }
  	 doFetch({ action: 'serviceProfile', id: servID, service: getBitsWinOpt('s')}).then(function(e){
            if (e.status=="ok"){
            	      localStorage.setItem('bits-merchant-id-'+e.data.id, JSON.stringify(e.data));
