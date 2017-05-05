@@ -218,7 +218,7 @@ $(".merchantsPromotions").removeClass("displayNone")
  $('.materialboxed').materialbox();
 var addproducts = document.querySelectorAll(".bitsInputQty");
 for(var i = 0; i< addproducts.length; ++i){
-	addproducts[i].removeEventListener("change",function(){});
+	
 	addproducts[i].addEventListener("change",tabulateTotals,false);
  }
  //$( "body" ).scrollTop( 156 );    
