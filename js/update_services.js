@@ -151,8 +151,10 @@ console.log("unable to validate managers")
 		 $('.merchPromo').append('<li id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong><center>No Promotions found</center></strong></p><p class="collections-content"></p></div></li></li>');
           
 	 	} else{
+	 		 $('.merchPromo').html("");
 $(".merchantsPromotions").removeClass("displayNone")
            var nnew=[];
+          
            for(var ii = 0,nnew=nnew,subs=subs; ii < mDet.promotions.length; ++ii) { 
            checkPayments();	bitsTheme();	 
 		 var dailyCost=(parseInt(mDet.promotions[ii].discount)/100)*mDet.promotions[ii].promoPrice;
@@ -196,14 +198,14 @@ $(".merchantsPromotions").removeClass("displayNone")
 		 $('.merchproducts').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong><center>No products found</center></strong></p><p class="collections-content"></p></div></li></ul>');        
  }
  else{
-
+$('.merchproducts').html("");
  	for(var ii = 0; ii < mDet.list.length; ++ii) {
  		
  		if(mDet.list[ii].metric==null ){
  			// console.log("no metrics set") 
  			mDet.list[ii].metric="piece"; 
  		}
- 		  $('.merchproducts').html("")
+ 		  
  $('.merchproducts').append('<li class="collection-item avatar bits-max "><img src="https://bitsoko.io'+mDet.list[ii].imagePath+'" data-caption="'+mDet.list[ii].description+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"><span class="conf-curr"></span> </span>per '+mDet.list[ii].metric+' </span></p><div class="handle-counter" id="prod-'+mDet.list[ii].id+'-counter"><button class="counter-minus bits btn btn-primary btn-floating btn-f"  style="line-height: 5px;">-</button><input class="bitsInputQty" price="'+mDet.list[ii].price+'" pid="'+mDet.list[ii].id+'" type="text" value="0" min="" style="border-bottom: none;"><span> '+mDet.list[ii].metric+' </span><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f" style="line-height: 5px; float:right; margin-top: 7px;" >+</button>'
 			   // +'</div><p class="col s4" style=""> <input class="number bitsInputQty sinpt" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'><label for='+mDet.list[ii].name+'></label></p>'+
 			    +'</li>');
