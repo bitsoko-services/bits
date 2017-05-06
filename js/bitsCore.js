@@ -250,7 +250,7 @@ function loadWallet(primWalA){
   primWalA=primWalA ? primWalA : '';
 
   localStorage.setItem('bitsoko-enable-autoreload','true');
-        doFetch({action:'addVisit', data: primWalA}).then(function(e){
+        doFetch({action:'addVisit', vid: getBitsOpt('vid'), service: getBitsWinOpt('s'), user: localStorage.getItem('bits-user-name')}).then(function(e){
       console.log(e); 
        
    });
