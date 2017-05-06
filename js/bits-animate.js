@@ -1,13 +1,5 @@
  function bitsAnim(x) {
-    $('.delivery').removeClass().addClass(x + ' animated jello'), function(){
-      $(this).removeClass();
-    }
+    $('.delivery').addClass(' animated jello'), setTimeout(function(){$('.delivery').removeClass(' animated jello')},1000);
   };
 
-  $(document).ready(function(){
-    $('.js--triggerAnimation').click(function(e){
-      e.preventDefault();
-      var anim = $('.js--animations').val();
-      bitsAnim(anim);
-    });
-  });
+ 

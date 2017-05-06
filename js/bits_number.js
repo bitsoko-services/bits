@@ -56,7 +56,7 @@
             }
         })
         $btnPlugs.click(function () {
-              
+             
                
             var num = parseInt($input.val())
             if (maximize==null||num < maximize) {
