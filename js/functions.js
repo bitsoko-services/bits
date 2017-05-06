@@ -191,7 +191,7 @@ orderArray=[];
 orderArray=[];
 
 
-
+$('.delivery,.floatingPrice').addClass('animated shake'),setTimeout(function(){$('.delivery,.floatingPrice').removeClass('animated shake')},1000)
 	for(var i = 0; i< addproducts.length; ++i){
 	try{
 	var itVal=$(addproducts[i]).val() ? $(addproducts[i]).val() : 0;
