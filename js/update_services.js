@@ -134,8 +134,6 @@ if(mDet.managers.length == 0){
            $('#manage-store').css("display","block");
             $('.manage-store').html("")
            $('.manage-store').append('<a  style=" background: none; float:left; !important; margin-top: ;" href="../soko/#s='+actvServ().id+'" class="noshadow btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>'); 
-			 }else{
-			  $('#manage-store').css("display","none");
 			 }
 				   }
 }catch(err){
