@@ -287,10 +287,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
     /* box-shadow: 0 0 10px #000; */
   }
   .bits-badge{
-    min-width: 3rem;
-    padding: 0 6px;
+   min-width: 3rem;
+    padding: 0 4px;
     text-align: center;
-    font-size: 1rem;
+    font-size: 11px;
     line-height: inherit;
     color: #fafafa;
     position: absolute;
@@ -298,6 +298,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
   }
   .bits-max{
     width: 100%;
