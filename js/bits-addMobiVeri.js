@@ -53,7 +53,7 @@ function changedPhnNum(t){
 	console.log($(t.target).val());
 	var val = $(t.target).val();
 	
-	  doFetch({action: 'doMobiVeri', address : localStorage.getItem('bits-user-wallet')
+	  doFetch({action: 'doMobiVeri', user : localStorage.getItem('bits-user-name')
 		   ,val: val}).then(function (e){
       if(e.status=='ok'){
          $('#inp-phone').prop('disabled', true);
@@ -73,7 +73,7 @@ function changedConfCode(t){
 	console.log($(t.target).val());
 	var val = $(t.target).val();
 	
-	  doFetch({action: 'doMobiVeriCode', address : localStorage.getItem('bits-user-wallet')
+	  doFetch({action: 'doMobiVeriCode', user : localStorage.getItem('bits-user-name')
 		   ,val: val}).then(function (e){
       if(e.status=='ok'){
          

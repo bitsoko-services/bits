@@ -159,6 +159,27 @@ if(checkanon()==true){
 }
 
 //------------------end function -------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------
+function showuserNumber(){
+if(checkanon()){
+	var gtno=getObjectStore('data', 'readwrite').get('user-profile-'+localStorage.getItem('bits-user-name'));
+	gtno.onsuccess = function (event) {
+  try{  
+    var no = JSON.parse(event.target.result); 
+    console.log(no.tel)
+// 	Materialize.toast('<span class="toastlogin">You are Signed in as: '+ nam.name, 10000);
+if (no.tel== null){$('#MobileModal').openModal()}
+  }catch(err){}    
+  };
+}
+  else{
+  	
+showLogin();
+  	return false;
+	}
+}
+
+//------------------end function -------------------------------------------------------------------------------------
 //---------------function to check if wallet is anon----------------------------------------------------------------------------------------------------
 function checkanon() {
 if(localStorage.getItem('bits-user-name')==null){	
@@ -173,6 +194,7 @@ else{
 //----------------------------------------------function to pop up login modal---------------------------------------------------------------------
 function showLogin(){
 if(checkanon()==false){$('#loginModal').openModal()}
+return;
 }
 //------------------end function -------------------------------------------------------------------------------------
 //------------------function to pop up login toast--------------------------------------------------------------------
@@ -219,6 +241,11 @@ $('.recipt').append('');
 	}
 
 	function makeOrder(){
+		checkanon();
+		showLogin();
+		if(!showuserNumber()){
+			return;
+		}
 		 var p = document.getElementById('totals').innerHTML; 
 		 $('.delivery').addClass('animated jello');
 		console.log(p)

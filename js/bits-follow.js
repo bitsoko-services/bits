@@ -1,5 +1,6 @@
 //---------------------------------------- subscription function--------------------------------------------------------------------------	    
-function dofollow(){	
+function dofollow(){
+	checkanon();	
 $('.followbtn').append('<div class="switch shopFollowButton " style="width: 190px;float: right;  margin-top: 0px;"><label><input type="checkbox" class="promoSubButton bits"><span style="margin-top: 2px;" class="lever bits right"></span></label></div><br><div style="float: right; margin-top: 0px; margin-right: 10px;"> <i class="mdi-action-thumb-up"></i> <span style="" class="followState">Follow</span></div>')
 	
 	$(".shopFollowButton").click( "touchstart click", function(event, ui) {
