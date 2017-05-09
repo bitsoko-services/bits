@@ -102,14 +102,19 @@ function doSubscribe(){
  	var mDet = JSON.parse(localStorage.getItem('bits-merchant-id-'+id));
 $(".resDisplay").html( mDet.name);
         document.querySelector('.serviceName').innerHTML = mDet.name;
+         document.querySelector('.serviceName2').innerHTML = mDet.name;
         document.querySelector('.cardimage').src = 'https://bitsoko.io'+mDet.bannerPath;
          document.querySelector('.cardLogo').src = mDet.icon;
+          document.querySelector('.bitsWcover').src = mDet.icon;
+          document.querySelector('.serviceDescription2').innerHTML = mDet.description;
 		document.querySelector('.serviceDescription').innerHTML = mDet.description;
 		 $('.maincont').removeClass("displayNone");
 		 $('.preload').addClass("displayNone");
 		 $('.card-container-bits').removeClass("displayNone");
 		
-		
+		//loadvisit();
+		setTimeout(function(){loadvisit();},1050);
+
 
 //-----------------------------------------------incase the user is the owner of this shop, then show POS button------------------------------------------------------------------------------------------------
 	 if(mDet.owner==parseInt(localStorage.getItem('bits-user-name'))){

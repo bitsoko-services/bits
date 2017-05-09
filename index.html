@@ -28,6 +28,7 @@
 		<script src="https://bitsoko.io/bitsAssets/js/webcomponents.js" async></script>
 		<!-- CORE CSS-->    
 		<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+		<link href="css/materialize-css.css" type="text/css" rel="stylesheet" media="screen,projection">
 		<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
 		<!-- Custome CSS-->    
 <link href="js/plugins/animate-css/animate.css" type="text/css" rel="stylesheet" media="screen,projection">
@@ -362,11 +363,11 @@
 <!-- ---------------------  Floating Action Button Home page sends you to contact or merchants page ------------------ -->
                    <div class="">       
                   <div class="row">
-                  <div class="chip delivery displayNone bits white-text" style="  background-color: #{theme} !important; " onclick="makeOrder();">
+                  <div class="chip delivery  bits white-text" id="" style="  background-color: #{theme} !important; " onclick="makeOrder();">
     					 <span style="">deliver</span> <i class="mdi-maps-local-grocery-store right" style="font-size: 24px;"></i>
 						</div>
-                   <div class="fixed-action-btn displayNone floatingPrice " style="bottom: 10px; right: 50px;">
-                    <a href="#" data-activates="chat-out" class="bitswaves-effect waves-block waves-light chat-collapse btn-floating btn-large "style="background-color:#{theme} !important;"><span id="totals" class="totals"></span></a>
+                   <div class="fixed-action-btn  floatingPrice " id="bits-prices" style="bottom: 10px; right: 50px;">
+                    <a href="#" data-activates="chat-out" class="bitswaves-effect waves-block waves-light chat-collapse btn-floating btn-large "style="background-color:#{theme} !important;"><span id="totals" class="totals">0</span></a>
                    		
 					</div>
 				 </div>
@@ -516,14 +517,16 @@
   <!-- //////////////////////////////////////////////////////////////////////////// -->
           <!-- Modal Structure -->
  <!-- //////////////////////////////////////////////////////////////////////////// -->
-  <div id="modalwelcome" class="modal">
-    <div class="modal-content ">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
+  <div id="modalwelcome" class="modal bits" style="width: 98% !important;">
+    <div class="modal-content " style="padding: 4px; !important">
+    <div class="row">
+    <div class="col s4"><img class="bitsWcover circle" style="margin-top: 15px;" src=""></div>
+    <div class="col s8 white-text"><h5>Welcome to:<br> <span class="serviceName2 title center"></span></h5><br><span class="serviceDescription2"></span></div> 
+       </div>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Take Tour</a>
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Skip Tour</a>
+     <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat skip" onclick="skipTour()">Maybe later</a>
+      <a href="#!" class="modal-action  waves-effect waves-green btn-flat take" onclick="tookTour();">Take Tour</a>
     </div>
   </div>
           
@@ -565,6 +568,16 @@
 
 <!-- ================================================KYC Modal end ================================================-->    
 <!-- //////////////////////////////////////////////////////////////////////////// -->
+<!-- Tap Target Structure -->
+  <div class="tap-target bits white-text" data-activates="bits-prices">
+    <div class="tap-target-content">
+      <h5 class="tap-target-title">Title</h5>
+      <p class="tap-target-text">A bunch of text</p><br>
+      <a href="#!" class="white-text tap-target-next" onclick="nextTapTarget">Next tip</a>
+    </div>
+  </div>
+
+
 <!-- ================================================Scripts================================================-->
 <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js" async defer></script>
 <script type="text/javascript" src="js/bits_contacts.js"></script>
@@ -574,7 +587,7 @@
  <script type="text/javascript" src="js/bits_promos.js"></script>
  <script type="text/javascript" src="js/bits-theme.js"></script>
  <script type="text/javascript"src="js/bits_number.js" ></script>
-
+ <script type="text/javascript"src="js/bits-FeatureDiscovery.js" ></script>
  <script type="text/javascript"src="js/bits-follow.js" ></script>
  <script type="text/javascript"src="js/bits-animate.js" ></script>
  	<script type="text/javascript" src="js/google-fcm.js"></script>
@@ -582,6 +595,7 @@
 <script src="https://bitsoko.io/bitsAssets/js/google.js"async defer></script>      
     <!--materialize js-->
     <script type="text/javascript" src="js/materialize.js"></script>
+    <script type="text/javascript" src="js/materialize-css.js"></script>
     <!--scrollbar-->
     <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>    
  <script src="https://bitsoko.io/bitsAssets/js/bitcore-ecies.min.js"></script> 

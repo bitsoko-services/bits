@@ -77,6 +77,12 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     margin: 0;
     padding: 2px !important;
 }
+.collapsible-body {
+    display: none;
+    border-bottom: 1px solid #ddd;
+    box-sizing: border-box;
+    padding: 0rem !important;
+}
 .collapsible {
     border-top: 0px solid #ddd;
     border-right: 1px solid #ddd;
@@ -90,6 +96,7 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 }
 .collapsible-body.merchproducts.collection.popup-gallery{
 	    border-bottom: 1px solid rgb(221, 221, 221) !important;
+	    padding: 0rem !important;
 }
 @font-face {
   font-family: 'Material Icons';
@@ -209,4 +216,28 @@ ul.side-nav.leftside-navigation li.active > a {
 
 .progress .indeterminate {
     background-color: #ffffff !important;
+}
+.btn-floating {
+    display: inline-block;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    background-color: #0f5f76 !important;
+    border-radius: 50%;
+    transition: .3s;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.tap-target-origin {
+    top: 35% !important;
+    left: 43% !important;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 10002;
+    position: absolute !important;
 }
