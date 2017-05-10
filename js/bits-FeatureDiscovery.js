@@ -27,14 +27,27 @@ function skipTour(){
 }
 function tookTour(){
     console.log("took Tour");
-    $('.tap-target').tapTarget('open');
+//     $('.tap-target').attr('data-activates','prod-5-counter');
+    $('.first-tt').tapTarget('open');
+     document.getElementsByClassName("first-ol")[0].addEventListener("click", function(){
+   nextTapTarget();
+});
     localStorage.setItem('bits-vst-'+actvServ().id+'',"");
      localStorage.setItem('bits-vst-'+actvServ().id+'',"Took tour");
      $('#modalwelcome').closeModal();
      //starting the tour
+   
       $('.tap-target-title').html("");
-    $('.tap-target-title').append("Bits Price Button");
+    $('.tap-target-title').append("Choose items");
       $('.tap-target-text').html("");   
-     $('.tap-target-text').append("see how much you have spent on our price button");
+     $('.tap-target-text').append("Use this to add or remove products on shopping cart");
 }
-function nextTapTarget(){}
+function nextTapTarget(){
+      $('.first-tt').tapTarget('close');
+   $('.second-tt').tapTarget('open');
+    $('.tap-target-title').html("");
+    $('.tap-target-title').append("Deliveries");
+      $('.tap-target-text').html("");   
+     $('.tap-target-text').append("Click to request deliveries");
+   //setTimeout(function(){$('.tap-target').attr('data-activates','bits-prices').tapTarget('open')},800);
+}
