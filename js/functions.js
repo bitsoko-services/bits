@@ -243,9 +243,8 @@ $('.recipt').append('');
 	function makeOrder(){
 		checkanon();
 		showLogin();
-		if(!showuserNumber()){
-			return;
-		}
+		checkmobiveri();
+		
 		 var p = document.getElementById('totals').innerHTML; 
 		 $('.delivery').addClass('animated jello');
 		console.log(p)
@@ -301,4 +300,18 @@ function(s){
            
         }
 	);
+}
+function checkmobiveri (){
+	doFetch({action:'userVerified', uid:localStorage.getItem("bits-user-name")}).then(function(e){
+           if (e.status=="ok"){
+if (e.data=="false"){
+	$('#MobileModal').openModal();
+	return;
+}else{console.log("mobile phone verified")}
+if (e.data==null){
+	$('#MobileModal').openModal();
+	return;
+}else{console.log("mobile phone verified")}
+           }
+	})
 }
