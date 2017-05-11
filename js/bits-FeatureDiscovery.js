@@ -29,9 +29,13 @@ function tookTour(){
     console.log("took Tour");
 //     $('.tap-target').attr('data-activates','prod-5-counter');
     $('.first-tt').tapTarget('open');
-     document.getElementsByClassName("first-ol")[0].addEventListener("click", function(){
+     document.getElementsByClassName("first-ol")[0].addEventListener("touchstart", function(){
    nextTapTarget();
 });
+//  document.getElementsByClassName("first-ol")[0].addEventListener("",function(){
+//          nextTapTarget();
+//            });
+ /////////////////////////////////////////////////////////////////////////////////////////
     localStorage.setItem('bits-vst-'+actvServ().id+'',"");
      localStorage.setItem('bits-vst-'+actvServ().id+'',"Took tour");
      $('#modalwelcome').closeModal();
