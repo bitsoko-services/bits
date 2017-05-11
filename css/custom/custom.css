@@ -288,3 +288,9 @@ nav {
   height: 56px;
   line-height: 56px;
 }
+.tap-target-wrapper.open{
+	position:fixed !important;
+}
+.tap-target-wrapper{
+	position:fixed !important;
+}
