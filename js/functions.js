@@ -1,7 +1,8 @@
 ///.........................................checks if the payments option for the merchant is on or off ........................................................./////
 function checkPayments(){
-
-if (JSON.parse(localStorage.getItem('bits-merchant-id-'+parseInt(getBitsWinOpt('s')))).payments =="true"){
+actvServ().then(function(p){
+	var p=p.payments
+if (p){
 	console.log("payments on")
 	 $("#paymentBTN").removeClass("displayNone")
 }
@@ -17,6 +18,7 @@ else{
  	  $(".floatingPrice").append('<a href="#" class="bitswaves-effect waves-block bits bitb waves-light chat-collapse btn-floating btn-large "style="pointer-events: none; background-color:#{theme} !important;"><span id="totals" class="totals"></span></a>')
 	 
 }
+})
 } 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function callMerchant(){
