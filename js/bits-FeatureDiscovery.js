@@ -29,7 +29,11 @@ function tookTour(){
     console.log("took Tour");
 //     $('.tap-target').attr('data-activates','prod-5-counter');
     $('.first-tt').tapTarget('open');
-     document.getElementsByClassName("first-ol")[0].addEventListener("touchstart", function(){
+     document.getElementsByClassName("first-ol")[0].addEventListener("pointerdown", function(){
+   nextTapTarget();
+});
+ $('.first-tt').tapTarget('open');
+     document.getElementsByClassName("first-ol")[0].addEventListener("click", function(){
    nextTapTarget();
 });
 //  document.getElementsByClassName("first-ol")[0].addEventListener("",function(){
