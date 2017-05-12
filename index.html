@@ -865,7 +865,9 @@ e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.get
 e.onsuccess = function (event) {
 	console.log(e)
  		try{resolve(JSON.parse(event.target.result));}
- 		catch{console.log("No shop saved in the database")}
+ 		catch(err){
+ 			console.log("No shop saved in the database");
+ 			}
 
   }     
 
