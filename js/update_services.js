@@ -100,7 +100,7 @@ function doSubscribe(){
  function populateService(id){
  		bitsTheme();
  	var mDet = JSON.parse(localStorage.getItem('bits-merchant-id-'+id));
-$(".resDisplay").html( mDet.name);
+// $(".resDisplay").html( mDet.name);
         document.querySelector('.serviceName').innerHTML = mDet.name;
          document.querySelector('.serviceName2').innerHTML = mDet.name;
         document.querySelector('.cardimage').src = 'https://bitsoko.io'+mDet.bannerPath;
