@@ -95,18 +95,40 @@ function doSubscribe(){
 });
 
 }
+//-----------------------------------------------------------------------------------------------------------------------------------------
+// function getData(){
+// if(checkanon()==true){
+// 	var gtname=getObjectStore('data', 'readwrite').get('user-profile-'+localStorage.getItem('bits-user-name'));
+// 	gtname.onsuccess = function (event) {
+//   try{  
+//     var nam = JSON.parse(event.target.result); 
+//     console.log(nam.name)
+// 	Materialize.toast('<span class="toastlogin">You are Signed in as: '+ nam.name, 10000);
+//   }catch(err){}    
+//   };
+// }
+//   else{
+// //showlogintoast()
+// 	}
+// }
+
+//------------------end function -------------------------------------------------------------------------------------
 
 //----------------------------------------------populateService function----------------------------------------------------------------------------------------------------------------------------------------
- function populateService(id){
+//var mDet = JSON.parse(getObjectStore('data', 'readwrite').get('bits-merchant-id-'+actvServ().id));
+ 	 function populateService(id){
+ 	 	var qq = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+actvServ().id);
+ 	qq.onsuccess = function (event) {
+ 		var mDet = JSON.parse(event.target.result);
+ 		console.log(mDet);
  		bitsTheme();
- 	var mDet = JSON.parse(localStorage.getItem('bits-merchant-id-'+id));
-// $(".resDisplay").html( mDet.name);
+ 		$(".resDisplay").html( mDet.name);
         document.querySelector('.serviceName').innerHTML = mDet.name;
-         document.querySelector('.serviceName2').innerHTML = mDet.name;
+        document.querySelector('.serviceName2').innerHTML = mDet.name;
         document.querySelector('.cardimage').src = 'https://bitsoko.io'+mDet.bannerPath;
-         document.querySelector('.cardLogo').src = mDet.icon;
-          document.querySelector('.bitsWcover').src = mDet.icon;
-          document.querySelector('.serviceDescription2').innerHTML = mDet.description;
+        document.querySelector('.cardLogo').src = mDet.icon;
+        document.querySelector('.bitsWcover').src = mDet.icon;
+        document.querySelector('.serviceDescription2').innerHTML = mDet.description;
 		document.querySelector('.serviceDescription').innerHTML = mDet.description;
 		 $('.maincont').removeClass("displayNone");
 		 $('.preload').addClass("displayNone");
@@ -233,6 +255,7 @@ for(var i = 0; i< addproducts.length; ++i){
  // setTimeout( $('.delivery').addClass('animated jello'), 7000);    
  }
  }
+ 	 }
 //---------------------------------------------------end populateService function------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------  function handleModal---------------------------------------------------------------------------------------------------------------------------------------
 function handleModal(){
