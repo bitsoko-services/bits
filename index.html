@@ -363,7 +363,7 @@
 <!-- ---------------------  Floating Action Button Home page sends you to contact or merchants page ------------------ -->
                    <div class="">       
                   <div class="row">
-                  <div class="chip delivery  bits white-text" id="" style="  background-color: #{theme} !important; " onclick="makeOrder();">
+                  <div class="chip delivery white-text" id="" style="  background-color: #{theme} !important; " onclick="makeOrder();">
     					 <span style="">deliver</span> <i class="mdi-maps-local-grocery-store right" style="font-size: 24px;"></i>
 						</div>
                    <div class="fixed-action-btn  floatingPrice " id="bits-prices" style="bottom: 10px; right: 50px;">
@@ -864,12 +864,17 @@ return new Promise(function(resolve, reject) {
 e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
 e.onsuccess = function (event) {
 	console.log(e)
- 		try{resolve(JSON.parse(event.target.result));}
- 		catch(err){
- 			console.log("No shop saved in the database");
+ 		try{
+ 			var e=JSON.parse(event.target.result);
+ 			resolve(e);
+ 		}catch(err){
+ 			 servicePageLoader()
  			}
 
   }     
+  e.onerror = function (e) {
+reject(e);
+  }
 
         });
 

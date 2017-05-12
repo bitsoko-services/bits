@@ -95,34 +95,10 @@ function doSubscribe(){
 });
 
 }
-//-----------------------------------------------------------------------------------------------------------------------------------------
-// function getData(){
-// if(checkanon()==true){
-// 	var gtname=getObjectStore('data', 'readwrite').get('user-profile-'+localStorage.getItem('bits-user-name'));
-// 	gtname.onsuccess = function (event) {
-//   try{  
-//     var nam = JSON.parse(event.target.result); 
-//     console.log(nam.name)
-// 	Materialize.toast('<span class="toastlogin">You are Signed in as: '+ nam.name, 10000);
-//   }catch(err){}    
-//   };
-// }
-//   else{
-// //showlogintoast()
-// 	}
-// }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//------------------end function -------------------------------------------------------------------------------------
-
-//----------------------------------------------populateService function----------------------------------------------------------------------------------------------------------------------------------------
-//var mDet = JSON.parse(getObjectStore('data', 'readwrite').get('bits-merchant-id-'+actvServ().id));
- 	 function populateService(id){
-
-actvServ().then(function(mDet){
-
+function populateService(mDet){
 	console.log(mDet.id)
-
- 		var mDet = JSON.parse(event.target.result);
  		console.log(mDet);
  		bitsTheme();
  		$(".resDisplay").html( mDet.name);
@@ -136,11 +112,7 @@ actvServ().then(function(mDet){
 		 $('.maincont').removeClass("displayNone");
 		 $('.preload').addClass("displayNone");
 		 $('.card-container-bits').removeClass("displayNone");
-		
-		//loadvisit();
 		setTimeout(function(){loadvisit();},1050);
-
-
 //-----------------------------------------------incase the user is the owner of this shop, then show POS button------------------------------------------------------------------------------------------------
 	 if(mDet.owner==parseInt(localStorage.getItem('bits-user-name'))){
 	 $('#manage-store').css("display","block");
@@ -150,14 +122,13 @@ actvServ().then(function(mDet){
 	  $('#manage-store').css("display","none");
 	 }
 //------------------------------------------ checking if the user is a manager -------------------------------------------------------------------------------------------------------------------------------------
-try{
-
-if(mDet.managers.length == 0){
+	try{
+	if(mDet.managers.length == 0){
 	 		 console.log("no managers for this shop")
- }else{
+ 	}else{
  	 console.log("this shop has managers")
- }
- var x=JSON.parse(mDet.managers);
+ 	}
+ 	var x=JSON.parse(mDet.managers);
            for(var iii in x) {
            if(parseInt(x[iii])==parseInt(localStorage.getItem('bits-user-name')))
            {
@@ -166,12 +137,12 @@ if(mDet.managers.length == 0){
            $('.manage-store').append('<a  style=" background: none; float:left; !important; margin-top: ;" href="../soko/#s='+actvServ().id+'" class="noshadow btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>'); 
 			 }
 				   }
-}catch(err){
-console.log("unable to validate managers")
-} 
+	}catch(err){
+	console.log("unable to validate managers")
+	} 
 
 //------------------------------------------ checking if the user is a manager -------------------------------------------------------------------------------------------------------------------------------------
-	 	callMerchant();//	bitsTheme();
+	 callMerchant();
 	 console.log(mDet.promotions);
 	 	if(mDet.promotions.length == 0){
 	 		 console.log("no promos")
@@ -180,7 +151,7 @@ console.log("unable to validate managers")
           
 	 	} else{
 	 		 $('.merchPromo').html("");
-$(".merchantsPromotions").removeClass("displayNone")
+	$(".merchantsPromotions").removeClass("displayNone")
            var nnew=[];
           
            for(var ii = 0,nnew=nnew,subs=subs; ii < mDet.promotions.length; ++ii) { 
@@ -221,12 +192,12 @@ $(".merchantsPromotions").removeClass("displayNone")
 	 doSubscribe();
 	 checkPayments();
 // -------------------------------------------------loads the shops product lists --------------------------------------------------------------------------------------------------------------------------
- if(mDet.list.length == 0){
+ 	if(mDet.list.length == 0){
  	 console.log("no promos") 
 		 $('.merchproducts').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong><center>No products found</center></strong></p><p class="collections-content"></p></div></li></ul>');        
- }
- else{
-$('.merchproducts').html("");
+ 		}
+ 	else{
+	$('.merchproducts').html("");
  	for(var ii = 0; ii < mDet.list.length; ++ii) {
  		
  		if(mDet.list[ii].metric==null ){
@@ -237,29 +208,20 @@ $('.merchproducts').html("");
  			$('.first-tt').attr('data-activates','prod-'+mDet.list[ii].id+'-counter');
  		}
  		  
- $('.merchproducts').append('<li class="collection-item avatar bits-max "><img src="https://bitsoko.io'+mDet.list[ii].imagePath+'" data-caption="'+mDet.list[ii].description+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"><span class="conf-curr"></span> </span>per '+mDet.list[ii].metric+' </span></p><div class="handle-counter" id="prod-'+mDet.list[ii].id+'-counter"><button class="counter-minus bits btn btn-primary btn-floating btn-f"  style="line-height: 5px;">-</button><input class="bitsInputQty" price="'+mDet.list[ii].price+'" pid="'+mDet.list[ii].id+'" type="text" value="0" min="" style="border-bottom: none;"><span> '+mDet.list[ii].metric+' </span><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f" style="line-height: 5px; float:right; margin-top: 7px;" >+</button>'
+	 $('.merchproducts').append('<li class="collection-item avatar bits-max "><img src="https://bitsoko.io'+mDet.list[ii].imagePath+'" data-caption="'+mDet.list[ii].description+'" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> '+mDet.list[ii].name+' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">'+mDet.list[ii].price+' <span class="localCurr"><span class="conf-curr"></span> </span>per '+mDet.list[ii].metric+' </span></p><div class="handle-counter" id="prod-'+mDet.list[ii].id+'-counter"><button class="counter-minus bits btn btn-primary btn-floating btn-f"  style="line-height: 5px;">-</button><input class="bitsInputQty" price="'+mDet.list[ii].price+'" pid="'+mDet.list[ii].id+'" type="text" value="0" min="" style="border-bottom: none;"><span> '+mDet.list[ii].metric+' </span><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f" style="line-height: 5px; float:right; margin-top: 7px;" >+</button>'
 			   // +'</div><p class="col s4" style=""> <input class="number bitsInputQty sinpt" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'><label for='+mDet.list[ii].name+'></label></p>'+
 			    +'</li>');
 		 $('#prod-'+mDet.list[ii].id+'-counter').handleCounter()
 	
- };
+	 };
 	 bitsTheme();
-	 
-	 
-	 
-// 
- $('.materialboxed').materialbox();
-var addproducts = document.querySelectorAll(".bitsInputQty");
-for(var i = 0; i< addproducts.length; ++i){
-	
+	 $('.materialboxed').materialbox();
+	var addproducts = document.querySelectorAll(".bitsInputQty");
+	for(var i = 0; i< addproducts.length; ++i){	
 	addproducts[i].addEventListener("change",tabulateTotals,false);
- }
- //$( "body" ).scrollTop( 156 );    
- // setTimeout( $('.delivery').addClass('animated jello'), 7000);    
- }
- });
- }
- 	 
+ 	}
+ 	}
+  	} 	 
 //---------------------------------------------------end populateService function------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------  function handleModal---------------------------------------------------------------------------------------------------------------------------------------
 function handleModal(){

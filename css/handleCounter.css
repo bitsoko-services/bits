@@ -1,9 +1,9 @@
-.handle-counter { 
+.handle-counter {
     overflow: hidden;
     float: right;
     margin-top: -16px;
     width: 129px;
-    margin-right: -20px;
+    /* margin-right: -20px; */
  }
 
 .handle-counter .counter-minus,  .handle-counter .counter-plus,  .handle-counter input {

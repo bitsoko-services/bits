@@ -55,18 +55,15 @@ contact();
  	$(".serviceListHolder").show();
  	$(".serviceListCard").show();
  $(".promoHolder").hide();
-	  try
- {
- 	
-	 populateService(getBitsWinOpt('s'));
- }catch(err){
-console.log("unable to load data from local DB")
- }
+	    
+
+
+ 
  	 doFetch({ action: 'serviceProfile', id: servID, service: getBitsWinOpt('s')}).then(function(e){
            if (e.status=="ok"){
-//            	      localStorage.setItem('bits-merchant-id-'+e.data.id, JSON.stringify(e.data));
 			    getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-'+e.data.id);
-           	      populateService(e.data.id);
+           	      populateService(e.data);
+	
 	                }else{
                 $(".serviceListHolder").hide();
                 $(".serviceListCard").hide();
@@ -74,9 +71,21 @@ console.log("unable to load data from local DB")
            }
         })
          .catch(function(){
-         	populateService(servID);
+		    
+actvServ().then(function(e){
+	populateService(e);
+});
+         });
+	    
+// actvServ().then(function(e){
+// 	populateService(e);
+// }).catch(function(){
 
-        });
+// console.log("unable to load data from local DB")
+
+// });
+
+
 
 }
 // scroll function....................................................................................................................

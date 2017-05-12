@@ -1,22 +1,14 @@
 //first check if its first visit to app
 function loadvisit(){
- if(localStorage.getItem('bits-vst-'+parseInt(getBitsWinOpt('s'))) == null){
+ if(localStorage.getItem('bits-vst-'+parseInt(getBitsWinOpt('s'))) == null || localStorage.getItem('bits-vst-'+parseInt(getBitsWinOpt('s'))) == "Skipped tour"){
 console.log('new visit to '+parseInt(getBitsWinOpt('s')))
-$('#modalwelcome').closeModal();
-setTimeout(function(){$('#modalwelcome').openModal();},250);
+  $('#modalwelcome').modal({ready: function(){
+        
 document.getElementById("skip").onclick = function() {skipTour()};
 document.getElementById("take").onclick = function() {tookTour()};
+    }}).openModal();
+
 }
-
-
-if(localStorage.getItem('bits-vst-'+parseInt(getBitsWinOpt('s'))) == "Skipped tour"){
-console.log('new visit to '+parseInt(getBitsWinOpt('s')))
-$('#modalwelcome').closeModal();
-setTimeout(function(){$('#modalwelcome').openModal();},250);
-// document.getElementById("skip").onclick = function() {skipTour()};
-// document.getElementById("take").onclick = function() {tookTour()};
-}
-
 
 }
 function skipTour(){
@@ -29,11 +21,7 @@ function tookTour(){
     console.log("took Tour");
 //     $('.tap-target').attr('data-activates','prod-5-counter');
     $('.first-tt').tapTarget('open');
-     document.getElementsByClassName("first-ol")[0].addEventListener("pointerdown", function(){
-   nextTapTarget();
-});
- $('.first-tt').tapTarget('open');
-     document.getElementsByClassName("first-ol")[0].addEventListener("click", function(){
+     document.getElementsByClassName("first-ol")[0].addEventListener("pointerdown click", function(){
    nextTapTarget();
 });
 //  document.getElementsByClassName("first-ol")[0].addEventListener("",function(){
