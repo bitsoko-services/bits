@@ -117,8 +117,11 @@ function doSubscribe(){
 //----------------------------------------------populateService function----------------------------------------------------------------------------------------------------------------------------------------
 //var mDet = JSON.parse(getObjectStore('data', 'readwrite').get('bits-merchant-id-'+actvServ().id));
  	 function populateService(id){
- 	 	var qq = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+actvServ().id);
- 	qq.onsuccess = function (event) {
+
+actvServ().then(function(mDet){
+
+	console.log(mDet.id)
+
  		var mDet = JSON.parse(event.target.result);
  		console.log(mDet);
  		bitsTheme();
@@ -254,8 +257,9 @@ for(var i = 0; i< addproducts.length; ++i){
  //$( "body" ).scrollTop( 156 );    
  // setTimeout( $('.delivery').addClass('animated jello'), 7000);    
  }
+ });
  }
- 	 }
+ 	 
 //---------------------------------------------------end populateService function------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------  function handleModal---------------------------------------------------------------------------------------------------------------------------------------
 function handleModal(){

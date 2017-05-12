@@ -859,15 +859,23 @@ startPay(actvServ().storeAddress,'servID-'+getBitsWinOpt('s')+'-'+getBitsWinOpt(
 
 
   function actvServ(){
-e=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits-active-service')));
-	return e;
+return new Promise(function(resolve, reject) {
+    
+e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
+e.onsuccess = function (event) {
+	console.log(e)
+ 		resolve(JSON.parse(event.target.result));
 
+  }     
+
+        });
+
+
+
+  	
+  //return e;
+ 
   }
-  function showPositionError(e) {
-      $('.promoHolder').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong>Switch on your Location </strong></p><p class="collections-content"></p></div></li></ul>');
-            
- console.log(e);
-}
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 

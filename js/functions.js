@@ -255,7 +255,7 @@ if (JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bi
 		return;
 }
 		
-		doFetch({ action: 'makeOrder', data: orderArray, user: localStorage.getItem("bits-user-name"), service: actvServ().id}).then(
+		doFetch({ action: 'makeOrder', data: orderArray, user: localStorage.getItem("bits-user-name"), service: parseInt(getBitsWinOpt('s'))}).then(
 	function(e){
     if (e.status=="ok"){  
 
@@ -286,7 +286,7 @@ function mobiVerification(){
 	);
 }
 function sendratings(){
-	doFetch({ action: 'shopRatings',  data: Ratings, user:localStorage.getItem("bits-user-name"), service: actvServ().id}).then(
+	doFetch({ action: 'shopRatings',  data: Ratings, user:localStorage.getItem("bits-user-name"), service: parseInt(getBitsWinOpt('s'))}).then(
 function(s){
     if (s.status=="ok"){  
 		swal("success!", "Ratings and Reviews have been sent!", "success")
