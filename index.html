@@ -864,7 +864,8 @@ return new Promise(function(resolve, reject) {
 e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
 e.onsuccess = function (event) {
 	console.log(e)
- 		resolve(JSON.parse(event.target.result));
+ 		try{resolve(JSON.parse(event.target.result));}
+ 		catch{console.log("No shop saved in the database")}
 
   }     
 
@@ -872,7 +873,7 @@ e.onsuccess = function (event) {
 
 
 
-  	
+
   //return e;
  
   }
