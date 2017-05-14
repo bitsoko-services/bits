@@ -262,27 +262,31 @@ $('.recipt').append('');
 		 var p = document.getElementById('totals').innerHTML; 
 		 $('.delivery').addClass('animated jello');
 		console.log(p)
-		if(p<=499){Materialize.toast('deliveries available for orders above 500KSH ', 2000 );return;}//else{Materialize.toast('your order is more than 500KSH ', 1000);}
-
-if (JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits-active-service'))).payments =="false"){
-		Materialize.toast('deliveries for this shop not available', 2000);
+		if(p<=499){ swal("Sorry", "Deliveries available for orders above 500KSH ", "error");return;}//else{Materialize.toast('your order is more than 500KSH ', 1000);}
+actvServ().then(function(p){
+	var p=p.payments
+if (p){console.log("payments are on")}else{
+	swal("Sorry", "Deliveries for this shop not available", "error");
 		return;
 }
-		
-		doFetch({ action: 'makeOrder', data: orderArray, user: localStorage.getItem("bits-user-name"), service: parseInt(getBitsWinOpt('s'))}).then(
-	function(e){
-    if (e.status=="ok"){  
 
-		swal("success!", "your order has been sent!", "success")
-             
-
-           }else{
-           	 swal("Cancelled", "your order is not sent", "error");
-        
-           }
-                 
-           
-        });
+		swal({   title: "Confirm delivery request",   
+                         text: "Submit to confirm delivery request",   
+                         type: "info",   showCancelButton: true,   
+                         closeOnConfirm: false,   
+                         showLoaderOnConfirm: true, },
+function(isConfirm){   
+   if (isConfirm) { 
+	doFetch({ action: 'makeOrder', data: orderArray, user: localStorage.getItem("bits-user-name"), service: parseInt(getBitsWinOpt('s'))}).then(
+		function(e){
+    		if (e.status=="ok"){  
+			swal("success!", "your order has been sent!", "success")          
+            }else{
+           	swal("Cancelled", "your order is not sent", "error");        
+            }
+        })
+        };
+})})
 }
 function mobiVerification(){
 	doFetch({ action: 'userSettings',  user: localStorage.getItem("bits-user-name")}).then(
