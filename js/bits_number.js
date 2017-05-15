@@ -58,6 +58,7 @@
         $btnPlugs.click(function () {
              $(".delivery ").addClass("bits");
                $(".bits-main-price").removeClass("grey");
+              $(".localCurr").removeClass("displayNone");
                 $(".bits-main-price ").addClass("bits");
             var num = parseInt($input.val())
             if (maximize==null||num < maximize) {
