@@ -56,7 +56,7 @@
             }
         })
         $btnPlugs.click(function () {
-             $(".delivery ").addClass("bits");
+             $(".delivery ").addClass("bitsb");
                $(".bits-main-price").removeClass("grey");
             var num = parseInt($input.val())
             if (maximize==null||num < maximize) {

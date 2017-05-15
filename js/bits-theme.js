@@ -1,22 +1,28 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function bitsTheme(){
 	//get theme
-	var stDat=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits-active-service')));
+	var stDat=	actvServ().then(function(p){var p=p.theme
+if (p){
+	console.log(p)
 	try{var p=stDat.theme;}
 	catch(err)	{ console.log("cant find theme colour")}
 	console.log(p)
 	if (p == "") {
 		//console.log('e');
    stDat.theme="#0f5f76";
-   localStorage.setItem('bits-merchant-id-'+localStorage.getItem('bits-active-service'), JSON.stringify(stDat));
-}
+   localStorage.setItem('bits-merchant-id-'+localStorage.getItem('bits-active-service'), JSON.stringify(stDat))
 
-	//replace default eith theme 
+   	//replace default eith theme 
     var bits_theme = $('.bits').css('background-color');
     $('.bits').css('background-color', p);
       //gradient fade
   var bits_theme_min = $('.min-card').css('background');
      $('.min-card').css('background', '-webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(15,95,118,0.13) 12%,rgba(15,95,118,0.24) 22%,'+p+' 93%)');
+
+}}
+	
+});
+
 }
 	function convertHex(hex,opacity){
 		var p=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits-active-service'))).theme;
