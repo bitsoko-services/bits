@@ -117,7 +117,7 @@ function populateService(mDet){
 	 if(mDet.owner==parseInt(localStorage.getItem('bits-user-name'))){
 	 $('#manage-store').css("display","block");
 	  $('.manage-store').html("")
-	 $('.manage-store').append('<a  style="background: none; float:left; !important; margin-top: ;" href="../soko/#s='+actvServ().id+'" class="noshadow btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>'); 
+	 $('.manage-store').append('<a  style="background: none; float:left; !important; margin-top: ;" href="../soko/#s='+parseInt(getBitsWinOpt('s'))+'" class="noshadow btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>'); 
 	 }else{
 	  $('#manage-store').css("display","none");
 	 }
@@ -134,7 +134,7 @@ function populateService(mDet){
            {
            $('#manage-store').css("display","block");
             $('.manage-store').html("")
-           $('.manage-store').append('<a  style=" background: none; float:left; !important; margin-top: ;" href="../soko/#s='+actvServ().id+'" class="noshadow btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>'); 
+           $('.manage-store').append('<a  style=" background: none; float:left; !important; margin-top: ;" href="../soko/#s='+parseInt(getBitsWinOpt('s'))+'" class="noshadow btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>'); 
 			 }
 				   }
 	}catch(err){
