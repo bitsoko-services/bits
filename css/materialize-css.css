@@ -4453,8 +4453,8 @@ html {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 400;
-  line-height: 1.1;
+  /* font-weight: 400; */
+  /* line-height: 1.1; */
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -4468,9 +4468,9 @@ h1 {
 }
 
 h2 {
-  font-size: 3.56rem;
-  line-height: 110%;
-  margin: 1.78rem 0 1.424rem 0;
+  /* font-size: 3.56rem; */
+  /* line-height: 110%; */
+  /* margin: 1.78rem 0 1.424rem 0; */
 }
 
 h3 {

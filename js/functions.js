@@ -255,6 +255,7 @@ $('.recipt').append('');
 	}
 
 	function makeOrder(){
+		Materialize.toast('creating your order', 1000);
 		checkanon();
 		showLogin();
 		checkmobiveri();
@@ -263,31 +264,56 @@ $('.recipt').append('');
 		 $('.delivery').addClass('animated jello');
 		console.log(p)
 		if(p<=499){ swal("Sorry", "Deliveries available for orders above 500KSH ", "error");return;}//else{Materialize.toast('your order is more than 500KSH ', 1000);}
+
 actvServ().then(function(p){
 	var p=p.payments
 if (p){console.log("payments are on")}else{
 	swal("Sorry", "Deliveries for this shop not available", "error");
 		return;
 }
+	
+//$('.confirm').addClass("disabled");
 
-		swal({   title: "Confirm delivery request",   
-                         text: "Submit to confirm delivery request",   
-                         type: "info",   showCancelButton: true,   
+getLoc().then(function showPosition(e){
+
+	getCoordDet(e.coords.latitude+','+e.coords.longitude).then(function(mapData){
+
+	swal({   		
+// 						 title: ,   
+                         title:'Confirm delivery location', 
+                         text: '<img class="mapdata" src="" style="width:100%" /><span class="mapText"></span>',   
+                         showCancelButton: true,   
                          closeOnConfirm: false,   
-                         showLoaderOnConfirm: true, },
-function(isConfirm){   
+                         showLoaderOnConfirm: true,   
+             			 html: true 
+			 },
+
+function (isConfirm){   
    if (isConfirm) { 
-	doFetch({ action: 'makeOrder', data: orderArray, user: localStorage.getItem("bits-user-name"), service: parseInt(getBitsWinOpt('s'))}).then(
+	doFetch({ action: 'makeOrder', data: orderArray, loc:e.coords.latitude+','+e.coords.longitude, user: localStorage.getItem("bits-user-name"), service: parseInt(getBitsWinOpt('s'))}).then(
 		function(e){
     		if (e.status=="ok"){  
-			swal("success!", "your order has been sent!", "success")          
+			swal("success!", "your order has been sent!", "success");          
             }else{
            	swal("Cancelled", "your order is not sent", "error");        
             }
         })
-        };
-})})
+        
 }
+});
+
+
+		$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address);
+
+
+ });
+
+ });
+//function showPosition(e){getCoordDet(e.coords.latitude+','+e.coords.longitude).then(function(mapData){$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address); })}getLoc()
+
+})
+}
+
 function mobiVerification(){
 	doFetch({ action: 'userSettings',  user: localStorage.getItem("bits-user-name")}).then(
 	function(v){

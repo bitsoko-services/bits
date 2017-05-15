@@ -20,17 +20,18 @@ body.stop-scrolling {
   background-color: white;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   width: 478px;
-  padding: 17px;
+  padding: 7px;
   border-radius: 5px;
   text-align: center;
   position: fixed;
   left: 50%;
   top: 50%;
   margin-left: -256px;
-  margin-top: -200px;
+  /*   margin-top: -200px; */
   overflow: hidden;
   display: none;
-  z-index: 99999; }
+  z-index: 99999;
+  }
   @media all and (max-width: 540px) {
     .sweet-alert {
       width: auto;
@@ -39,16 +40,17 @@ body.stop-scrolling {
       left: 15px;
       right: 15px; } }
   .sweet-alert h2 {
-    color: #575757;
-    font-size: 30px;
-    text-align: center;
-    font-weight: 600;
-    text-transform: none;
-    position: relative;
-    margin: 25px 0;
-    padding: 0;
-    line-height: 40px;
-    display: block; }
+    /* color: #575757; */
+    /* font-size: 30px; */
+    /* text-align: center; */
+    /* font-weight: 600; */
+    /* text-transform: none; */
+    /* position: relative; */
+    /* margin: 25px 0; */
+    /* padding: 10px; */
+    /* line-height: 40px; */
+    /* display: block; */
+    }
   .sweet-alert p {
     color: #797979;
     font-size: 16px;
@@ -58,8 +60,9 @@ body.stop-scrolling {
     text-align: inherit;
     float: none;
     margin: 0;
-    padding: 0;
-    line-height: normal; }
+    padding: -10;
+    line-height: normal;
+    }
   .sweet-alert fieldset {
     border: none;
     position: relative; }

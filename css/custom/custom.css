@@ -294,3 +294,7 @@ nav {
 .tap-target-wrapper{
 	position:fixed !important;
 }
+.sweet-alert{
+	margin-top: -270px !important;
+	padding:7 !important;
+}
