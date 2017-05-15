@@ -208,7 +208,7 @@ height: 40px !important;
     overflow: hidden;
 }
 .btn:hover, .btn-large:hover {
-    background-color: #0f5f76 !important;
+/*     background-color: #0f5f76 !important; */
 }
 ul.side-nav.leftside-navigation li.active > a {
   color: #0f5f76 !important;
