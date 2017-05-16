@@ -57,6 +57,7 @@
         })
         $btnPlugs.click(function () {
              $(".delivery ").addClass("bits");
+             $(".delivery").removeClass("pointer-events");
                $(".bits-main-price").removeClass("grey");
               $(".localCurr").removeClass("displayNone");
                 $(".bits-main-price ").addClass("bits");
