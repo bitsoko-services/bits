@@ -15,7 +15,7 @@ function skipTour(){
     console.log("Skipped Tour");
     localStorage.setItem('bits-vst-'+parseInt(getBitsWinOpt('s')),"");
      localStorage.setItem('bits-vst-'+parseInt(getBitsWinOpt('s')),"Skipped tour");
-
+return;
 }
 function tookTour(){
     console.log("took Tour");

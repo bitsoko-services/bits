@@ -8,6 +8,7 @@ if (p){
 }
 else{
 	console.log("payments off")
+	$(".chat-outs").addClass("displayNone")
 	 $("#paymentBTN").addClass("displayNone")
  	 $("#promopriced").addClass("displayNone")
  	 $("#bitsPrice").addClass("displayNone")
@@ -256,8 +257,9 @@ $('.recipt').append('');
 
 	function makeOrder(){
 		Materialize.toast('creating your order', 1000);
-		checkanon();
-		showLogin();
+		//checkanon();
+		if(checkanon()==false){$('#loginModal').openModal(); return;}
+
 		checkmobiveri();
 		
 		 var p = document.getElementById('totals').innerHTML; 
