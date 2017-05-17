@@ -25,7 +25,7 @@ function tookTour(){
     $('.tap-target-title').append("Choose items");
       $('.tap-target-text').html("");   
      $('.tap-target-text').append("Use this to add or remove products on shopping cart ");
-    setTimeout(nextTapTarget(), 3000);
+    setTimeout(function(){ nextTapTarget()}, 5000);
    
 
 //  document.getElementsByClassName("first-ol")[0].addEventListener("",function(){
