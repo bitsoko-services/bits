@@ -222,6 +222,7 @@ else{//showuser()
 orderArray=[];
 //---------------------------------------function gets the totals of all items on a list----------------------------------------------------------------------------
 	function tabulateTotals(){
+		
 	console.log(this);
 	var addproducts = document.querySelectorAll(".bitsInputQty");
 	var totals = 0;
@@ -243,16 +244,27 @@ $('.recipt').append('');
 	totals = totals+(parseInt($(addproducts[i]).attr("price"))*parseInt(itVal));
 	console.log(totals);
 	$(".recipt").html("");
-      
 
 	//Materialize.toast('your total is'+ totals, 1000);delivery
-	 $(".delivery").removeClass("displayNone");
-	 $(".floatingPrice").removeClass("displayNone");
+// 	 $(".delivery").removeClass("displayNone");
+// 	 $(".floatingPrice").removeClass("displayNone");
 	$(".totals").html(totals);
+	localStorage.setItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')),totals);
 	}catch(err){}
 	}
 	
 
+	}
+
+	function finalCost (){
+		//delRate();
+		var y =parseInt(localStorage.getItem('bits-merchant-delivery-rate-'+parseInt(getBitsWinOpt('s'))))
+		console.log(y);
+		 //add delivery rate to totals 
+		 var divObj = document.getElementById("totals");    
+		var totalCost = parseInt(divObj.innerHTML) + y 
+		console.log(totalCost);
+		localStorage.setItem('bits-merchant'+parseInt(getBitsWinOpt('s'))+'-Total cost',totalCost);
 	}
 
 	function makeOrder(){
@@ -282,8 +294,10 @@ getLoc().then(function showPosition(e){
 
 	swal({   		
 // 						 title: ,   
-                         title:'Confirm delivery location', 
-                         text: '<img class="mapdata" src="" style="width:100%" /><span class="mapText"></span>',   
+                         
+                         text: '<img class="mapdata" src="" style="width:100%; height: ;" /><div class="deldata"><span class="mapTitle">Confirm delivery location</span><br><span class="mapText"></span><br><span class="">Your total is: </span><span class="totals"></span><br><span class="">The delivery charge is: </span><span class="del"></span><br><span class="">Your total plus delivery is: </span><span class="confirmText"></span></div>', 
+						 title:'<span class="mapTitle">Confirm delivery location</span>',  
+						 content: '',
                          showCancelButton: true,   
                          closeOnConfirm: false,   
                          showLoaderOnConfirm: true,   
@@ -303,8 +317,11 @@ function (isConfirm){
         
 }
 });
-
-
+finalCost ();
+$(".confirmText").append('<span>'+localStorage.getItem('bits-merchant'+parseInt(getBitsWinOpt('s'))+'-Total cost')+'<span class="localCurr"><span class="conf-curr"></span> </span></span')
+$(".totals").html("")
+$(".totals").append(parseInt(localStorage.getItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')))))
+$(".del").append(parseInt(localStorage.getItem('bits-merchant-delivery-rate-'+parseInt(getBitsWinOpt('s')))))
 		$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address);
 
 

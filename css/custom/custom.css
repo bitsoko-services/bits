@@ -295,6 +295,26 @@ nav {
 	position:fixed !important;
 }
 .sweet-alert{
-	margin-top: -270px !important;
+	margin-top: -290px !important;
+	/* text-align: left; */
+	/* height: 500px; */
 	padding:7 !important;
+}
+.mapTitle{
+	text-transform: uppercase;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: underline;
+}
+.deldata{
+	/* text-align: left !important; */
+	padding: 10px !important;
+	margin-left: 10px;
+}
+.sweet-alert + p + .deldata{
+	
+}
+.sa-button-container{
+	margin-top: -35px;
+	padding-bottom: 10px;
 }

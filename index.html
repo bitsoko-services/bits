@@ -361,7 +361,7 @@
     					 <span style="">deliver</span> <i class="mdi-maps-local-grocery-store right" style="font-size: 24px;"></i>
 						</div>
                    <div class="fixed-action-btn  floatingPrice " id="bits-prices" style="bottom: 10px; right: 50px; pointer-events: none;">
-                    <a href="#" class="bits-main-price bitswaves-effect waves-block grey waves-light btn-floating btn-large "style="pointer-events: none;"><span id="totals" class="totals">00</span><div style="margin-top: -19px;" class="localCurr displayNone">KES<span></span></div></a>
+                    <a href="#" class="bits-main-price bitswaves-effect waves-block grey waves-light btn-floating btn-large "style="pointer-events: none;"><span id="totals" class="totals" style="font-size: 18px !important;">0</span><div style="margin-top: -19px; font-size: 10px !important;" class=""><span class="localCurr"><span class="conf-curr"></span> </span></div></a>
                    		
 					</div>
 				 </div>
@@ -566,15 +566,15 @@
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- Tap Target Structure -->
 <div class="bits-tap-target">
-  <div class="tap-target bitsb white-text first-tt first-ol" data-activates=""style="">
-    <div class="tap-target-content first-btt " style="">
+  <div class="tap-target bitb white-text first-tt first-ol" data-activates=""style="">
+    <div class="tap-target-content first-btt bits" style="">
       <h5 class="tap-target-title">Title</h5>
       <p class="tap-target-text" >A bunch of text</p><br>
-  <a href="#!" class="btn white-text tap-target-next  first-ol" onclick="nextTapTarget" style=" pointer-events: all;" >Next tip</a> 
+<!--   <a href="#!" class="btn white-text tap-target-next  first-ol" onclick="nextTapTarget" style=" pointer-events: all;" >Next tip</a>  -->
     </div>
 <!--     <div class="lean-overlay first-ol displayNone" id="materialize-lean-overlay-2" style="z-index: 990; display: block; opacity: 0.5; top: -300px !important;"></div> -->
   </div>
-  <div class="tap-target bitsb white-text second-tt" data-activates="bits-prices"style="">
+  <div class="tap-target bitb white-text second-tt" data-activates="bits-prices"style="">
     <div class="tap-target-content" style="z-index: 1000;">
       <h5 class="tap-target-title">Title</h5>
       <p class="tap-target-text" >A bunch of text</p><br>
@@ -590,6 +590,7 @@
  <script type="text/javascript" src="js/functions.js"></script> 
  <script type="text/javascript" src="js/bits_jspdf.js"></script>
  <script type="text/javascript" src="js/bits_auth.js"></script>
+  <script type="text/javascript" src="js/delRate.js"></script>
  <script type="text/javascript" src="js/bits_promos.js"></script>
  <script type="text/javascript" src="js/bits-theme.js"></script>
  <script type="text/javascript"src="js/bits_number.js" ></script>

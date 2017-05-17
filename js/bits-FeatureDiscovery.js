@@ -21,9 +21,13 @@ function tookTour(){
     console.log("took Tour");
 //     $('.tap-target').attr('data-activates','prod-5-counter');
     $('.first-tt').tapTarget('open');
-     document.getElementsByClassName("first-ol")[0].addEventListener("pointerdown click", function(){
-   nextTapTarget();
-});
+       $('.tap-target-title').html("");
+    $('.tap-target-title').append("Choose items");
+      $('.tap-target-text').html("");   
+     $('.tap-target-text').append("Use this to add or remove products on shopping cart ");
+    setTimeout(nextTapTarget(), 3000);
+   
+
 //  document.getElementsByClassName("first-ol")[0].addEventListener("",function(){
 //          nextTapTarget();
 //            });
@@ -33,10 +37,7 @@ function tookTour(){
      $('#modalwelcome').closeModal();
      //starting the tour
    
-      $('.tap-target-title').html("");
-    $('.tap-target-title').append("Choose items");
-      $('.tap-target-text').html("");   
-     $('.tap-target-text').append("Use this to add or remove products on shopping cart");
+   
 }
 function nextTapTarget(){
       $('.first-tt').tapTarget('close');

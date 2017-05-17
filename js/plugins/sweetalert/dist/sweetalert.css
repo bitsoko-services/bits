@@ -18,9 +18,9 @@ body.stop-scrolling {
 
 .sweet-alert {
   background-color: white;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  /* font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
   width: 478px;
-  padding: 7px;
+  /* padding: 7px; */
   border-radius: 5px;
   text-align: center;
   position: fixed;
@@ -38,12 +38,13 @@ body.stop-scrolling {
       margin-left: 0;
       margin-right: 0;
       left: 15px;
-      right: 15px; } }
+      right: 15px;
+      } }
   .sweet-alert h2 {
     /* color: #575757; */
-    /* font-size: 30px; */
-    /* text-align: center; */
-    /* font-weight: 600; */
+    font-size: 0px !important;
+    text-align: center;
+    font-weight: 600;
     /* text-transform: none; */
     /* position: relative; */
     /* margin: 25px 0; */
@@ -52,16 +53,16 @@ body.stop-scrolling {
     /* display: block; */
     }
   .sweet-alert p {
-    color: #797979;
-    font-size: 16px;
-    text-align: center;
-    font-weight: 300;
+    color: #302d2d;
+    font-size: 14px;
+    /* text-align: left; */
+    /* font-weight: 300; */
     position: relative;
-    text-align: inherit;
+    /* text-align: inherit; */
     float: none;
     margin: 0;
-    padding: -10;
-    line-height: normal;
+    padding: px;
+    /* line-height: normal; */
     }
   .sweet-alert fieldset {
     border: none;
@@ -71,10 +72,11 @@ body.stop-scrolling {
     margin-left: -17px;
     margin-right: -17px;
     overflow: hidden;
-    padding: 0 10px;
+    /* padding: 0 10px; */
     max-height: 0;
     webkit-transition: padding 0.15s, max-height 0.15s;
-    transition: padding 0.15s, max-height 0.15s; }
+    transition: padding 0.15s, max-height 0.15s;
+    }
     .sweet-alert .sa-error-container.show {
       padding: 10px 0;
       max-height: 100px;
@@ -163,7 +165,8 @@ body.stop-scrolling {
     display: block; }
   .sweet-alert .sa-confirm-button-container {
     display: inline-block;
-    position: relative; }
+    /* position: relative; */
+    }
   .sweet-alert .la-ball-fall {
     position: absolute;
     left: 50%;
