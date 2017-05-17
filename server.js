@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =392;
+	bitsVersion =393;
 bitsInstall = function(event){
 	
 	
@@ -120,8 +120,25 @@ return new Promise(function(resolve, reject) {
 // get notifications when you request for services eg delivery
  case 'userOrder':
     
-           bitsNotification('You have requested for this service ','userOrder','bits/images/yes.png',[{action: '', title: "Request"}],true,true);
-       
+      var state='pending';
+		 if(state='pending')
+		 { bitsNotification('userOrder','You have requested for this service ','userOrder','bits/images/yes.png','bits/images/yes.png',[{action: '', title: "Request"}],true,true);
+		   }
+	  
+		else if(state='Cancelled')
+		{ bitsNotification('userOrder','Your order has been cancelled ','userOrder','bits/images/yes.png','bits/images/yes.png',[{action: '', title: "Request"}],true,true);
+		   }
+	 
+		else if(state='Delivered')
+		{ bitsNotification('userOrder','Your order has been Delivered','userOrder','bits/images/yes.png','bits/images/yes.png',[{action: '', title: "Request"}],true,true);
+		   }
+	 
+		else(state='Complete')
+		{ bitsNotification('userOrder','Your order is Complete','userOrder','bits/images/yes.png','bits/images/yes.png',[{action: '', title: "Request"}],true,true);
+		   }
+	 break;
+
+
       break;
       
 

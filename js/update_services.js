@@ -112,7 +112,7 @@ function populateService(mDet){
 		 $('.maincont').removeClass("displayNone");
 		 $('.preload').addClass("displayNone");
 		 $('.card-container-bits').removeClass("displayNone");
-		 convertHex( mDet.theme,opacity)
+		 //convertHex( mDet.theme,opacity)
 		setTimeout(function(){loadvisit();},1050);
 //-----------------------------------------------incase the user is the owner of this shop, then show POS button------------------------------------------------------------------------------------------------
 	 if(mDet.owner==parseInt(localStorage.getItem('bits-user-name'))){

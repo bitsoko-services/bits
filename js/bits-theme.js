@@ -1,25 +1,24 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function bitsTheme(){
 	//get theme
-	var stDat=	actvServ().then(function(p){var p=p.theme
-if (p){
-	console.log(p)
-	try{var p=stDat.theme;}
-	catch(err)	{ console.log("cant find theme colour")}
-	console.log(p)
-	if (p == "") {
-		//console.log('e');
-   stDat.theme="#0f5f76";
-   localStorage.setItem('bits-merchant-id-'+localStorage.getItem('bits-active-service'), JSON.stringify(stDat))
+	actvServ().then(function(p){
 
-   	//replace default eith theme 
-    var bits_theme = $('.bits').css('background-color');
+		var p=p.theme
+
+
+	if (p=="" && p==undefined){
+		 console.log("cant find theme colour");
+		p="#0f5f76";
+	}
+
+
+ var bits_theme = $('.bits').css('background-color');
     $('.bits').css('background-color', p);
       //gradient fade
   var bits_theme_min = $('.min-card').css('background');
      $('.min-card').css('background', '-webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(15,95,118,0.13) 12%,rgba(15,95,118,0.24) 22%,'+p+' 93%)');
 
-}}
+
 	
 });
 
