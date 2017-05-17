@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =393;
+	bitsVersion =394;
 bitsInstall = function(event){
 	
 	
@@ -139,7 +139,7 @@ return new Promise(function(resolve, reject) {
 	 break;
 
 
-      break;
+     
       
 
 //end of get notifications when you request for services eg delivery
