@@ -257,6 +257,7 @@ $('.recipt').append('');
 	}
 
 	function finalCost (){
+		//get the rates
 		delRate();
 		var y =parseInt(localStorage.getItem('bits-merchant-delivery-rate-'+parseInt(getBitsWinOpt('s'))))
 		console.log(y);
