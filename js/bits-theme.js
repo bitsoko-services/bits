@@ -25,7 +25,7 @@ if (p){
 
 }
 	function convertHex(hex,opacity){
-		var p=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits-active-service'))).theme;
+		//var p=JSON.parse(localStorage.getItem('bits-merchant-id-'+localStorage.getItem('bits-active-service'))).theme;
     hex = hex.replace('#','');
     r = parseInt(hex.substring(0,2), 16);
     g = parseInt(hex.substring(2,4), 16);
@@ -33,7 +33,7 @@ if (p){
 
     result = 'rgba('+r+','+g+','+b+','+opacity/100+')';
     return result;
-    $('body').html(convertHex(p,0.5));
+    $('body').html(convertHex(hex,0.5));
 }
 
 
