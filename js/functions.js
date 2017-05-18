@@ -164,7 +164,7 @@ if(checkanon()==true){
   try{  
     var nam = JSON.parse(event.target.result); 
     console.log(nam.name)
-	Materialize.toast('<span class="toastlogin">You are Signed in as: '+ nam.name, 10000);
+	Materialize.toast('<span class="toastlogin">You are Signed in as: '+ nam.name, 1000);
   }catch(err){}    
   };
 }
@@ -268,7 +268,7 @@ $('.recipt').append('');
 	}
 
 	function makeOrder(){
-		Materialize.toast('creating your order', 1000);
+		Materialize.toast('creating your order', 3000);
 		//checkanon();
 		if(checkanon()==false){$('#loginModal').openModal(); return;}
 

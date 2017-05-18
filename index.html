@@ -50,6 +50,7 @@
 .bitb,.bits,.progress,.sweet-alert button {
     background-color: #{theme} !important;
 }
+#burst-12:before, #burst-12:after {  background-color: #{theme} !important;}
 	</style>
 </head>
 <body onload="starting()">
@@ -633,36 +634,16 @@
     <script type="text/javascript" src="js/custom-script.js"></script>
 <!--=============================================================================================================================================================== -->
     <script>
-    //--------------------------function to hide and display nav-bar balance div  ----------------------------------------------------------------------------   
+////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
+  if (bDet.os.name!='Android'){ 
+       console.log('uncompatible');      
+               window.location="https://bitsoko.io/soko/"; 
+ }else{ 
+ };
 
-// function pointerup (){
-// 	console.log("pointer up")
-// 	//Materialize.toast('I am a toast! you clicked or scrolled', 500) // 4000 is the duration of the toast
-//    var scroll = $(window).scrollTop();
-//    if (scroll < 255) {
-//      $( "body" ).scrollTop( 156 );
-//     }
-// }
-// // $('.sinpt').bitsNumber();
-// //----------------------------------------------------------------------------------------------------------------------------------------------------
-// //--------------------------------------------------------------------------------------------------------------------------------------------
-//         $(window).scroll(function(){
+////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
 
-//    if (scroll > 135) {
-//       $("#bits-nav-bal").css({"display":"initial"});
-//     } else {
-//       $("#bits-nav-bal").css({"display":"none"});
-//     } 
-//     })
-// 		$(window).scroll(function() {     
-//     var scroll = $(window).scrollTop();
-//     if (scroll > 150) {
-//         $("#bits-header").addClass("active");
-//     }
-//     else {
-//         $("#bits-header").removeClass("active");
-//     }
-// });&& bDet.os.name=='Android'
+
   if (bDet.browser.version>=minVersionSup && bDet.browser.name=='Chrome'){ 
        console.log('compatible'); 
       

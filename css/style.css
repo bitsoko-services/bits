@@ -122,14 +122,14 @@ dd + dd {
     width: 95%;
     margin-left: 2.5%;
     }
-  .promo-collection{  
- background-color: white !important; 
-    height: 100%; 
-/*     overflow: auto;  */
-    width: 96%!important; 
-    padding-bottom: 30px; 
-    margin: 2%; 
-    border: 1px solid rgba(0,0,0,0.1); 
+  .promo-collection{
+ background-color: white !important;
+ height: 100%;
+ /* overflow: auto; */
+ width: 96%!important;
+ padding-bottom: 30px;
+ margin: 2%;
+ border: 1px solid rgba(0,0,0,0.1);
 } 
   .bits-red{
    background-color:#760F0F;
