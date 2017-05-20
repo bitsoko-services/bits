@@ -273,9 +273,10 @@
 				<div id="manage-store" class="manage-store"></div>
 				    <span class="callbtn"></span>
                     </div>
-           <div  class="card-image waves-effect waves-block waves-light">
-             <img  src="" alt="" class="cardimage service-banner"style="border-radius: 0px; height: 250px;"> 
-				
+           <div  class="card-image  carousel carousel-slider">
+            <a class="carousel-item" href="#one!"> <img  src="" alt="" class="cardimage service-banner "style="border-radius: 0px; height: 250px;"> </a>
+				 <a class="carousel-item" href="#two!"> <img  src="" alt="" class="cardimage service-banner "style="border-radius: 0px; height: 250px;"> </a>
+			
            </div>
            <div class="min-card">
              <ul class="card-action-buttons left">
@@ -635,11 +636,11 @@
 <!--=============================================================================================================================================================== -->
     <script>
 ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
-  if (bDet.os.name!='Android'){ 
-       console.log('uncompatible');      
-               window.location="https://bitsoko.io/soko/"; 
- }else{ 
- };
+//   if (bDet.os.name!='Android'){ 
+//        console.log('uncompatible');      
+//                window.location="https://bitsoko.io/soko/"; 
+//  }else{ 
+//  };
 
 ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
 
@@ -777,6 +778,8 @@ $(function(){
 $(document).ready(function() {
 //$(".serviceListHolder").hide();
 $(".serviceListCard").hide();
+// $('.carousel').carousel();
+ $('.carousel.carousel-slider').carousel({fullWidth: true});
 $(".promoHolder").hide();
 
 //$('.delivery').addClass('animated jello');
