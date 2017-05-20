@@ -4486,7 +4486,7 @@ h4 {
 }
 
 h5 {
-  font-size: 1.64rem;
+  font-size: 1.4rem;
   line-height: 110%;
   margin: 0.82rem 0 0.656rem 0;
 }
@@ -5464,11 +5464,11 @@ button.btn-floating {
   position: relative;
   cursor: pointer;
   display: inline-block;
-  overflow: hidden;
+  /* overflow: hidden; */
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   -webkit-tap-highlight-color: transparent;
   vertical-align: middle;
   z-index: 1;

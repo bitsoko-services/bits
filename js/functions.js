@@ -279,7 +279,9 @@ $('.recipt').append('');
 		console.log(p)
 		if(p<=499){ swal("Sorry", "Deliveries available for orders above 500KSH ", "error");return;}//else{Materialize.toast('your order is more than 500KSH ', 1000);}
 
+	
 actvServ().then(function(p){
+	//var p=p.deliveries
 	var p=p.payments
 if (p){console.log("payments are on")}else{
 	swal("Sorry", "Deliveries for this shop not available", "error");
@@ -377,4 +379,14 @@ if (e.data==null){
 }else{console.log("mobile phone verified")}
            }
 	})
+}
+function checkDeliveries (){
+		actvServ().then(function(p){
+	var p=p.deliveries
+	//var p=p.payments
+if (p){console.log("Deliveries for this shop not available")}else{
+	//swal("Sorry", "Deliveries for this shop not available", "error");
+	$(".delivery").addClass("displayNone")
+		return;
+}})
 }
