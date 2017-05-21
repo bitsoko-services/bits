@@ -1,7 +1,8 @@
+var exports = module.exports = {};
+
+exports.incomingOrder = function(req, res) {
 	
-webHookService.post('/hook', function (req, res) {
-    
-   console.log('AI bot request!! ',req.body);
+   console.log('AI bot request!! ',req);
 	
     try {
         var speech = 'empty speech';
@@ -43,4 +44,4 @@ res.setHeader('content-type', 'application/json');
     }
 	
         
-  });
+  };
