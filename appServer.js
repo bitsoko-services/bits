@@ -1,22 +1,8 @@
 var exports = module.exports = {};
 
-exports.Wallet = function(socket) {
+exports.incomingOrder = function(req,res) {
     
- bitsoko.manageSocket(socket);
+   console.log('AI bot request!! ',req.body);
 	
-    
-    socket.on('getRecList', function (data) {
-    consol.info('attempting recovery ' + data.data);
-      
-bsConn.mysql.query('SELECT * FROM wallets',
-        function(err, results) {
-       
-        if(results){
-          
-            socket.emit(data.action, { action : data.action, "status" : "ok", data : results }); 
-            
-    }
-
-});
         
   });
