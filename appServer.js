@@ -25,7 +25,8 @@ exports.incomingOrder = function(req,res) {
         }
 
         console.log('result: ', speech);
-
+res.setHeader('content-type', 'application/json'); 
+ 
         return res.json({
             speech: speech,
             displayText: speech,
