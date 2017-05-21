@@ -43,4 +43,4 @@ res.setHeader('content-type', 'application/json');
     }
 	
         
-  };
+  });
