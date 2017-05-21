@@ -23,7 +23,9 @@ if (getBitsWinOpt('s') != undefined )
 servicePageLoader();
          }else{
               $(".promoHome").removeClass("displayNone");
-  $(".fixed-a").removeClass("displayNone");
+ // $(".fixed-a").removeClass("displayNone");
+ $(".delrow").addClass("displayNone");
+ //delrow
 	 updatePromos();
 	 subscribedPromos();
 	 } 
