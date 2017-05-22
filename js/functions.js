@@ -75,6 +75,9 @@ contact();
 		    
 actvServ().then(function(e){
 	populateService(e);
+	setTimeout(function(){
+servicePageLoader();
+	},6000);
 });
          });
 	    

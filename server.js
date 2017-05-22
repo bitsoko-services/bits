@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =401;
+	bitsVersion =402;
 bitsInstall = function(event){
 	
 	
@@ -122,7 +122,7 @@ return new Promise(function(resolve, reject) {
     
       var state='pending';
 		 if(state='pending')
-		 { bitsNotification('Order pending','You have requested for this service ','userOrderPending','bits/images/yes.png','bits/images/yes.png',[{action: '', title: "Request"}],true,true);
+		 { bitsNotification('Order pending','You have requested for this service ','userOrderPending','bits/images/pending.png','bits/images/pending.png',[{action: '', title: "Request"}],true,true);
 		   }
 	  
 		else if(state='Cancelled')
@@ -130,7 +130,7 @@ return new Promise(function(resolve, reject) {
 		   }
 	 
 		else if(state='Delivered')
-		{ bitsNotification('Order Delivered','Your order has been Delivered','userOrderDelivered','bits/images/yes.png','bits/images/yes.png',[{action: '', title: "Request"}],true,true);
+		{ bitsNotification('Order Delivered','Your order has been Delivered','userOrderDelivered','bits/images/Delivered.png','bits/images/Delivered.png',[{action: '', title: "Request"}],true,true);
 		   }
 	 
 		else(state='Complete')
