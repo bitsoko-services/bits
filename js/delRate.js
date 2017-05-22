@@ -25,9 +25,12 @@ console.log(distance);
 //--rates
 var rates = d*distance;
 console.log("The shops delivery rates are "+rates);
+//set del rates
  localStorage.setItem('bits-merchant-delivery-rate-'+parseInt(getBitsWinOpt('s')),rates);
 })
+
 })
+
 }
     
     

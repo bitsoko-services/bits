@@ -265,6 +265,7 @@ $('.recipt').append('');
 		var totalCost = parseInt(divObj.innerHTML) + y 
 		console.log(totalCost);
 		localStorage.setItem('bits-merchant'+parseInt(getBitsWinOpt('s'))+'-Total cost',totalCost);
+		
 	}
 
 	function makeOrder(){
@@ -320,6 +321,8 @@ function (isConfirm){
 }
 });
 finalCost ();
+$(".confirmText").html("")
+
 $(".confirmText").append('<span>'+localStorage.getItem('bits-merchant'+parseInt(getBitsWinOpt('s'))+'-Total cost')+'<span class="localCurr"><span class="conf-curr"></span> </span></span')
 $(".totals").html("")
 $(".totals").append(parseInt(localStorage.getItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')))))
