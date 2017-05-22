@@ -2372,9 +2372,9 @@ select,
 textarea {
   color: inherit;
   /* 1 */
-  font: inherit;
+  /* font: inherit; */
   /* 2 */
-  margin: 0;
+  /* margin: 0; */
   /* 3 */
 }
 
@@ -2382,7 +2382,7 @@ textarea {
  * Address `overflow` set to `hidden` in IE 8/9/10/11.
  */
 button {
-  overflow: visible;
+  /* overflow: visible; */
 }
 
 /**
@@ -2393,7 +2393,7 @@ button {
  */
 button,
 select {
-  text-transform: none;
+  /* text-transform: none; */
 }
 
 /**
@@ -2407,9 +2407,9 @@ button,
 html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-  -webkit-appearance: button;
+  /* -webkit-appearance: button; */
   /* 2 */
-  cursor: pointer;
+  /* cursor: pointer; */
   /* 3 */
 }
 
@@ -2539,7 +2539,7 @@ html {
 }
 
 *, *:before, *:after {
-  box-sizing: inherit;
+  /* box-sizing: inherit; */
 }
 
 ul:not(.browser-default) {
@@ -4836,7 +4836,7 @@ small {
   position: relative;
   background-color: inherit;
   border-top: 1px solid rgba(160, 160, 160, 0.2);
-  padding: 16px 24px;
+  padding: 10px 1px;
 }
 
 .card .card-action:last-child {

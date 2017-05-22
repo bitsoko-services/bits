@@ -2646,9 +2646,9 @@ select,
 textarea {
   color: inherit;
   /* 1 */
-  font: inherit;
+  /* font: inherit; */
   /* 2 */
-  margin: 0;
+  /* margin: 0; */
   /* 3 */
 }
 
@@ -2656,7 +2656,7 @@ textarea {
  * Address `overflow` set to `hidden` in IE 8/9/10/11.
  */
 button {
-  overflow: visible;
+  /* overflow: visible; */
 }
 
 /**
@@ -2667,7 +2667,7 @@ button {
  */
 button,
 select {
-  text-transform: none;
+  /* text-transform: none; */
 }
 
 /**
@@ -2682,9 +2682,9 @@ html input[type="button"],
 button,
 input[type="reset"],
 input[type="submit"] {
-  -webkit-appearance: button;
+  /* -webkit-appearance: button; */
   /* 2 */
-  cursor: pointer;
+  /* cursor: pointer; */
   /* 3 */
 }
 
@@ -7896,7 +7896,7 @@ nav .input-field label.active {
 
 .card .card-action {
   border-top: 1px solid rgba(160, 160, 160, 0.2);
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {

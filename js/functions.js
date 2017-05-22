@@ -36,7 +36,7 @@ $('.callbtn').append('<button  id="star" value="rating" class="btn-large btn-pri
 //...........................URL check end//.................................................................................................................................................
 //function service Page loader..........
 function servicePageLoader(){
-
+$(".delrow").removeClass("displayNone");
 if(parseInt(getBitsWinOpt('s')) >5){
 var servID=getBitsWinOpt('s');
 }else{

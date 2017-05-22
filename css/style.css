@@ -24,7 +24,7 @@ aside>ul{
 }
 /* ---------------------------------------------------sticky css-------------------------------------------------------- */
 #one { position: sticky; top: 10px; }* {
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 dl > div {

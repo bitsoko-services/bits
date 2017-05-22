@@ -22,9 +22,13 @@ if (getBitsWinOpt('s') != undefined )
  {	 
 servicePageLoader();
          }else{
-              $(".promoHome").removeClass("displayNone");
- // $(".fixed-a").removeClass("displayNone");
- $(".delrow").addClass("displayNone");
+         	//restore theme to default 
+         	//document.getElementByClass("bits").style.backgroundColor  = "#0f5f76";
+         	$('.bits').css("background-color", "");
+         	$('.bits').css("background-color", "#0f5f76");
+ $(".promoHome").removeClass("displayNone");
+ //$(".card-welcome").removeClass("displayNone");
+ 
  //delrow
 	 updatePromos();
 	 subscribedPromos();
