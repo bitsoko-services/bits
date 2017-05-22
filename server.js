@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =399;
+	bitsVersion =400;
 bitsInstall = function(event){
 	
 	
@@ -122,19 +122,19 @@ return new Promise(function(resolve, reject) {
     
       var state='pending';
 		 if(state='pending')
-		 { bitsNotification('userOrder pending','You have requested for this service ','userOrderPending','bits/images/yes.png','bits/images/yes.png',[{action: '', title: "Request"}],true,true);
+		 { bitsNotification('Order pending','You have requested for this service ','userOrderPending','bits/images/yes.png','bits/images/yes.png',[{action: '', title: "Request"}],true,true);
 		   }
 	  
 		else if(state='Cancelled')
-		{ bitsNotification('userOrder Cancelled','Your order has been cancelled ','userOrderCancelled','bits/images/no.png','bits/images/no.png',[{action: '', title: "Request"}],true,true);
+		{ bitsNotification('Order Cancelled','Your order has been cancelled ','userOrderCancelled','bits/images/no.png','bits/images/no.png',[{action: '', title: "Request"}],true,true);
 		   }
 	 
 		else if(state='Delivered')
-		{ bitsNotification('userOrder Delivered','Your order has been Delivered','userOrderDelivered','bits/images/yes.png','bits/images/yes.png',[{action: '', title: "Request"}],true,true);
+		{ bitsNotification('Order Delivered','Your order has been Delivered','userOrderDelivered','bits/images/yes.png','bits/images/yes.png',[{action: '', title: "Request"}],true,true);
 		   }
 	 
 		else(state='Complete')
-		{ bitsNotification('userOrder Complete','Your order is Complete','userOrderComplete','bits/images/yes.png','bits/images/yes.png',[{action: '', title: "Request"}],true,true);
+		{ bitsNotification('Order Complete','Your order is Complete','userOrderComplete','bits/images/yes.png','bits/images/yes.png',[{action: '', title: "Request"}],true,true);
 		   }
 	 break;
 

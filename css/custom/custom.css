@@ -270,15 +270,15 @@ ul.side-nav.leftside-navigation li.active > a {
     transition: transform 0.3s cubic-bezier(0.42, 0, 0.58, 1), opacity 0.3s cubic-bezier(0.42, 0, 0.58, 1), -webkit-transform 0.3s cubic-bezier(0.42, 0, 0.58, 1);
 }
 .first-btt{
-	width: 450px !important;
- height: 300px;
-     z-index: 10000;
-top: -10px !important;
-right: 0px;
-bottom: 0px;
-left: 0px;
-padding: 100px !important;
-vertical-align: bottom;
+	/* width: 450px !important; */
+	/* height: 300px; */
+	/* z-index: 10000; */
+	/* top: -10px !important; */
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	padding: 100px !important;
+	vertical-align: bottom;
 }
 .first-tt + .tap-target-wave{
 	top: 213px !important;
