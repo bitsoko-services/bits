@@ -153,6 +153,15 @@ checkDeliveries();
 //------------------------------------------ checking if the user is a manager -------------------------------------------------------------------------------------------------------------------------------------
 	 callMerchant();
 	 console.log(mDet.promotions);
+	  localStorage.setItem('bits-merchant-'+parseInt(getBitsWinOpt('s'))+'-promotions',mDet.promotions);
+	  console.log(mDet.list);
+	   localStorage.setItem('bits-merchant-'+parseInt(getBitsWinOpt('s'))+'-products',mDet.list);
+	    
+	for(var x = localStorage.getItem('bits-merchant-'+parseInt(getBitsWinOpt('s'))+'-promotions'),mDet=mDet; iii < x.length; ++iii) {
+
+console.log(localStorage.getItem('bits-merchant-'+parseInt(getBitsWinOpt('s'))+'-promotions'))
+		 
+		 }
 	 	if(mDet.promotions.length == 0){
 	 		 console.log("no promos")
 	 		 $(".merchantsPromotions").removeClass("displayNone") 
@@ -164,6 +173,7 @@ checkDeliveries();
            var nnew=[];
           
            for(var ii = 0,nnew=nnew,subs=subs; ii < mDet.promotions.length; ++ii) { 
+
            checkPayments();	bitsTheme();	 
 		 var dailyCost=(parseInt(mDet.promotions[ii].discount)/100)*mDet.promotions[ii].promoPrice;
 		 $('.merchPromo').append('<li class="avatar bits-max promo-collection">'+
@@ -223,6 +233,13 @@ checkDeliveries();
 		 $('#prod-'+mDet.list[ii].id+'-counter').handleCounter()
 	
 	 };
+// 	 for(var ii = 0; ii < mDet.list.length; ++ii) { 		
+//  	 	console.log(mDet.promotions[ii].promoName)
+//  	 	console.log(mDet.list[ii].name)	
+ 		  
+	
+	
+// 	 };
 	 bitsTheme();
 	 $('.materialboxed').materialbox();
 	var addproducts = document.querySelectorAll(".bitsInputQty");
