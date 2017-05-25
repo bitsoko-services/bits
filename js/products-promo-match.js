@@ -1,11 +1,10 @@
  function matchPromos(){
-//     var x = localStorage.getItem('bits-merchant-11-promotions');
-// 	 for(var ii = 0; ii < x.list.length; ++ii) { 		
-//  	 	console.log
- 		  
-	
-	
-// 	 };
+//    
 	
  	}
- 
+ function dropStar(){
+ 	$('.star').removeClass('displayNone');
+ 	  $('.star').addClass(' animated fadeInDown'), setTimeout(function(){$('.star').removeClass(' animated fadeInDown')},1000);
+ //setTimeout(function(){ $(".star").fadeOut();$(".star").fadeIn();},1000);
+ setTimeout(function(){ $('.star').addClass('displayNone');},1000);
+ }

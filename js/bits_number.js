@@ -61,6 +61,7 @@
                $(".bits-main-price").removeClass("grey");
               $(".localCurr").removeClass("displayNone");
                 $(".bits-main-price ").addClass("bits");
+                dropStar();
             var num = parseInt($input.val())
             if (maximize==null||num < maximize) {
                 $input.val(num + 1)

@@ -10,6 +10,15 @@ NOTE:
 PLACE HERE YOUR OWN CSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
 WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
 .material-placeholder{/* margin-top: -50px; */}
+.star{
+    width: 100px;
+    height: 100px;
+    background: #ddbb06;
+    margin-top: -1115px;
+    position: fixed;
+    z-index: 100;
+    z-index: 120 px;
+}
 .number {
 	width: 40px !important;
     height: 40px !important;
@@ -163,13 +172,13 @@ height: 40px !important;
     width: 170px;
 }
 #burst-12 {
-    /* background: red; */
+    background: red;
     width: 40px;
     height: 40px;
-    position: relative;
+    /* position: relative; */
     text-align: center;
     overflow: inherit;
-    /* background-color: rgb(0, 201, 247); */
+    background-color: rgb(0, 201, 247);
     margin-left: 12px;
     margin-top: 10px;
 }
@@ -194,6 +203,40 @@ height: 40px !important;
         -ms-transform: rotate(60deg);
          -o-transform: rotate(60deg);
 }
+
+#burst-11 {
+    background: #ffd700;
+    width: 40px;
+    height: 40px;
+    /* position: relative; */
+    text-align: center;
+    overflow: inherit;
+    /* background-color: rgb(0, 201, 247); */
+    margin-left: 12px;
+    /* margin-top: 10px; */
+}
+#burst-11:before, #burst-11:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 40px;
+    background: #ffd700;
+}
+#burst-11:before {
+    -webkit-transform: rotate(30deg);
+       -moz-transform: rotate(30deg);
+        -ms-transform: rotate(30deg);
+         -o-transform: rotate(30deg);
+}
+#burst-11:after {
+    -webkit-transform: rotate(60deg);
+       -moz-transform: rotate(60deg);
+        -ms-transform: rotate(60deg);
+         -o-transform: rotate(60deg);
+}
+
 .pointerNone{
 	pointer-events:none;
 }
