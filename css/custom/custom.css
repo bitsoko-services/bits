@@ -127,14 +127,17 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
   word-wrap: normal;
   -moz-font-feature-settings: 'liga';
   -moz-osx-font-smoothing: grayscale;
-  text-shadow: 0px 0.5px 0px rgba(150, 150, 150, 1);
-  color:#0f5f76;
+  text-shadow: 0px 0px 19px rgb(255, 255, 255);
+  color: gold;
+  /* -webkit-box-shadow: 0px 0px 0px 1px rgba(255,255,255,1); */
+  -moz-box-shadow: 0px 0px 0px 1px rgba(255,255,255,1);
+  /* box-shadow: 0px 0px 0px 1px rgba(255,255,255,1); */
 }
 
-i { cursor : pointer; }
+i {cursor : pointer;/* -webkit-box-shadow: 0px 0px 0px 1px rgba(255,255,255,1); */-moz-box-shadow: 0px 0px 0px 1px rgba(255,255,255,1);/* box-shadow: 0px 0px 0px 1px rgba(255,255,255,1); */}
 
 .input-field label {
-    color: #000000 !important;
+    /* color: #000000 !important; */
     position: absolute;
     top: 0.8rem;
     left: 0.75rem;
@@ -158,6 +161,12 @@ i { cursor : pointer; }
 nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
     display: -webkit-inline-box !important;
     font-size: 25px !important;
+}
+.mapdata{
+	margin-top: 278px !important;
+	width: 100% !important;
+	margin-left: -50% !important;
+	position: absolute !important;
 }
 .delivery{
 height: 40px !important;
@@ -345,7 +354,7 @@ nav {
 .sweet-alert{
 	margin-top: -290px !important;
 	/* text-align: left; */
-	/* height: 500px; */
+	/* height: 95%; */
 	padding:7 !important;
 }
 .mapTitle{
@@ -357,12 +366,17 @@ nav {
 .deldata{
 	/* text-align: left !important; */
 	padding: 10px !important;
-	margin-left: 10px;
+	margin-left: 0px;
+	height: 500px;
+	font-size: 12px !important;
+	/* margin-top: -300px; */
 }
 .sweet-alert + p + .deldata{
 	
 }
 .sa-button-container{
-	margin-top: -35px;
+	/* margin-top: -65px; */
 	padding-bottom: 10px;
+	position: relative;
+	opacity: 0.9;
 }

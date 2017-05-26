@@ -317,18 +317,9 @@
                    </div> 
                  </div>
             </div>
-<!--------------------------------------------------------- ratings----------------------------------------------------------------------------------------------- -->
+<!--------------------------------------------------------- ratings----------------------------------------------------------------------------------------------- --
 <div class="card-reveal">
-                                        <span class="card-title grey-text text-darken-4">Ratings <i class="mdi-navigation-close right"></i></span>
-                                       <center><div class="rating"></div></center>
-										<div class="input-field col s12" style="color:#000 !important;">
-										  	<textarea id="textarea2" class="materialize-textarea" length="120"></textarea>
-										  	<label for="textarea1" class="">Write a revew</label>
-											<span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
-											<button class="btn bits waves-effect waves-light " type="submit" name="action" onclick="sendratings();">Send
-											<i class="mdi-content-send right"></i>
-										    </button>
-										    </div>
+                                       
 										</div>
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------       
 ----------------------------------------------------------- commented send / recive buttons  --------------------------------------------------------------------------------------------------------------------------- 
@@ -457,12 +448,29 @@
 </div>
 
     <!------------------------------------ modal enter phone number end ----------------------------------------------------------------------->
+
 <!--------------------------------------------- modal check adresses start ---------------------------------------------------------------->
 <!----------------------------------------------modal will contain all the user adresses and qr codes ------------------------------------->
     <div class="modal-footer blue-grey lighten-5">
           <a href="https://play.google.com/store/apps/details?id=com.android.chrome" target="_blank" id="btn_save" class="waves-effect waves-green btn-flat">Update</a>
     </div>
 </div>
+<!--modal rate-->
+ <div id="RateModal" class="modal bits" >
+   <div class="modal-content white-text">
+ <span class=""><h4>Ratings </h4></span>
+                                       <center><div class="rating"></div></center>
+										<div class="input-field col s12" style="color:#000 !important;">
+										  	<textarea id="textareaRating" class="materialize-textarea white-text" length="120"></textarea>
+										  	<label for="textarea1" class="white-text">Write a review</label>
+											<span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+ 										
+										    </div>
+										        </div>
+										         <div class="modal-footer blue-grey lighten-5">  <a href="#!" onclick="sendratings()" class="modal-action modal-close waves-effect waves-green btn-flat ">Send</a>
+    </div>
+          
+  </div>
 <!--modal login-->
  <div id="loginModal" class="modal modal-fixed-footer bottom-sheet" >
    <div class="modal-content">
@@ -859,7 +867,12 @@ startPay(actvServ().storeAddress,'servID-'+getBitsWinOpt('s')+'-'+getBitsWinOpt(
   });
   });
 
-
+// e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
+// e.onsuccess = function (event) {
+// 	console.log(e.result)
+ 	
+//   }     
+ 
   function actvServ(){
 return new Promise(function(resolve, reject) {
     

@@ -27,10 +27,13 @@ function callMerchant(){
 	var p=x.phone
 	console.log(p)
 	$('.callbtn').html('') 
-$('.callbtn').append('<button  id="star" value="rating" class="btn-large btn-price bits noshadow bitb" style="float: left !important;/* right: 0%; */ margin-top: ;"><i class="mdi-action-grade activator"></i></button><button  id="share" value="Share" class="bitb displayNone btn-large btn-price bits noshadow" style="float: right !important;/* right: 0%; */ margin-top: ;"><i class="mdi-social-share"></i></button> <a href="tel:'+p+'"  id="" value="" class=" btn-large btn-price bits noshadow bitb" style="float: right !important; margin-right: ;/* right: 0%; */ margin-top: ;"><i class="mdi-communication-call"></i></a>');      
+$('.callbtn').append('<a  onclick="rate()" id="star" value="rating" class="btn-large btn-price bits noshadow bitb" style="float: left !important;/* right: 0%; */ margin-top: ;"><i class="mdi-action-grade activator"></i></a><button  id="share" value="Share" class="bitb displayNone btn-large btn-price bits noshadow" style="float: right !important;/* right: 0%; */ margin-top: ;"><i class="mdi-social-share"></i></button> <a href="tel:'+p+'"  id="" value="" class=" btn-large btn-price bits noshadow bitb" style="float: right !important; margin-right: ;/* right: 0%; */ margin-top: ;"><i class="mdi-communication-call"></i></a>');      
 
 
 	});
+}
+function rate(){
+	$('#RateModal').openModal();
 }
 
 //...........................URL check end//.................................................................................................................................................
@@ -239,10 +242,10 @@ $('.floatingPrice').addClass('animated shake'),setTimeout(function(){$('.floatin
 if(itVal>0){
 
 	orderArray.push({pid:$(addproducts[i]).attr('pid'),count:itVal});
+	//console.log(pid);
 $('.recipt').append('');
 
 }
-
 
 	totals = totals+(parseInt($(addproducts[i]).attr("price"))*parseInt(itVal));
 	console.log(totals);
@@ -292,7 +295,13 @@ if (p){console.log("payments are on")}else{
 		return;
 }
 	
-//$('.confirm').addClass("disabled");
+// var t=document.querySelectorAll(".bitsInputQty");
+// for(var i = 0; i< t.length; ++i){
+// 	try{
+
+// 	}
+// 	catch (err) {}
+// }
 
 getLoc().then(function showPosition(e){
 
@@ -301,7 +310,7 @@ getLoc().then(function showPosition(e){
 	swal({   		
 // 						 title: ,   
                          
-                         text: '<img class="mapdata" src="" style="width:100%; height: ;" /><div class="deldata"><span class="mapTitle">Confirm delivery location</span><br><span class="mapText"></span><br><span class="">Your total is: </span><span class="totals"></span><br><span class="">The delivery charge is: </span><span class="del"></span><br><span class="">Your total plus delivery is: </span><span class="confirmText"></span></div>', 
+                         text: '<img class="mapdata" src="" style="width:100%; height: ;" /><div class="deldata"><span class="mapTitle">Confirm delivery location</span><br><span class="mapText"></span><br><span class="">Your total is: </span><span class="totals"></span><br><span class="">The delivery charge is: </span><span class="del"></span><br><span class="">Your total plus delivery is: </span><span class="confirmText"></span><br><span id="products"></span></div>', 
 						 title:'<span class="mapTitle">Confirm delivery location</span>',  
 						 content: '',
                          showCancelButton: true,   
@@ -323,6 +332,10 @@ function (isConfirm){
         
 }
 });
+//var t=document.querySelectorAll(".bitsInputQty");
+
+
+
 finalCost ();
 $(".confirmText").html("")
 
@@ -356,10 +369,44 @@ function mobiVerification(){
 
 	);
 }
+
+function checkRewards(t){
+  // a convenient wrapper.
+        new Promise(function(resolve, reject) {
+          
+	
+		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
+e.onsuccess = function (event) { 		
+ 			var x=JSON.parse(event.target.result);
+
+	console.log(JSON.parse(event.target.result),t);
+ resolve({promotions:x.promotions,t: t});
+}
+
+	
+		 
+        }).then(function(r){
+		var pds=r.promotions;
+		var t=r.t;
+	console.log(pds,t)
+for(var i = 0,t=t; i < pds.length; ++i){
+if(parseInt(pds[i].id)==parseInt(t)){
+	console.log('found!!!!!!!!',pds[i]);
+
+
+	 dropStar();
+}
+}
+
+
+});
+}
 function sendratings(){
-	doFetch({ action: 'shopRatings',  data: Ratings, user:localStorage.getItem("bits-user-name"), service: parseInt(getBitsWinOpt('s'))}).then(
+	doFetch({ action: 'shopRatings',  stars: $('#ratingId').val(), review:$('#textareaRating').val(), user:localStorage.getItem("bits-user-name"), service: parseInt(getBitsWinOpt('s'))}).then(
 function(s){
-    if (s.status=="ok"){  
+    if (s.status=="ok"){ 
+   // $('#ratingId').val("");
+     $('#textareaRating').val("");
 		swal("success!", "Ratings and Reviews have been sent!", "success")
              
 

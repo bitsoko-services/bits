@@ -1,6 +1,13 @@
  function matchPromos(){
 //    
-	
+e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
+e.onsuccess = function (event) {
+	console.log(JSON.parse(event.target.result)) 		
+ 			var x=JSON.parse(event.target.result);
+ 			console.log(x.pid)
+ 		
+
+  }	
  	}
  function dropStar(){
  	$('.star').removeClass('displayNone');
