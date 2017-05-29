@@ -14,9 +14,10 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     width: 100px;
     height: 100px;
     background: #ddbb06;
-    margin-top: -1115px;
+    /* margin-top: -115px; */
     position: fixed;
     z-index: 100;
+    top: 80px;
     z-index: 120 px;
 }
 .number {
@@ -215,8 +216,8 @@ height: 40px !important;
 
 #burst-11 {
     background: #ffd700;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     /* position: relative; */
     text-align: center;
     overflow: inherit;
@@ -229,8 +230,8 @@ height: 40px !important;
     position: absolute;
     top: 0;
     left: 0;
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     background: #ffd700;
 }
 #burst-11:before {

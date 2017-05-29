@@ -374,28 +374,71 @@ function checkRewards(t){
   // a convenient wrapper.
         new Promise(function(resolve, reject) {
           
-	
+	console.log(t)
 		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
+		t=t;
 e.onsuccess = function (event) { 		
- 			var x=JSON.parse(event.target.result);
+var x=JSON.parse(event.target.result);
 
-	console.log(JSON.parse(event.target.result),t);
- resolve({promotions:x.promotions,t: t});
+resolve({promotions:x.promotions,t: t});
+
+
 }
-
-	
-		 
-        }).then(function(r){
+}).then(function(r){
 		var pds=r.promotions;
 		var t=r.t;
 	console.log(pds,t)
-for(var i = 0,t=t; i < pds.length; ++i){
-if(parseInt(pds[i].id)==parseInt(t)){
-	console.log('found!!!!!!!!',pds[i]);
+
+
+var allItms=[];
+var inpt = document.getElementById("bitsInputQty"+t).value;
+for(var iiii = 0,t=t; iiii < pds.length; ++iiii){
+
+console.log(JSON.parse(pds[iiii].promoItems),t,inpt)
+var zx = JSON.parse(pds[iiii].promoItems)
+//zx.sort();
+  var current = null;
+    var cnt = 0;
+    var pts = 0
+    for (var i = 0,t=t, pts=pts; i < zx.length; i++) {
+        if (zx[i] != current) {
+            if (cnt > 0) {
+               console.log(current + ' comes --> ' + cnt + ' times clicked '+inpt+' times');
+ 			if(cnt >= inpt){ 
+ 			console.log("pass reward point")
+if(parseInt(zx[i])==parseInt(t)){
+	console.log('found!!!!!!!!',zx[i]);
 
 
 	 dropStar();
 }
+ 			}else{ console.log("dont pass reward point")
+
+ 			}
+
+            
+ 			//console.log")
+            }
+            current = zx[i];
+            cnt = 1;
+        } else {
+            cnt++;
+        }
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+for(var i = 0,t=t; i < pds.length; ++i){
+
 }
 
 

@@ -4,8 +4,8 @@ function loadvisit(){
 console.log('new visit to '+parseInt(getBitsWinOpt('s')))
   $('#modalwelcome').modal({ready: function(){
         
-document.getElementById("skip").onclick = function() {skipTour()};
-document.getElementById("take").onclick = function() {tookTour(); $("#materialize-lean-overlay-1").addClass("displayNone")};
+document.getElementById("skip").onclick = function() {skipTour(); $(".lean-overlay").addClass("displayNone")};
+document.getElementById("take").onclick = function() {tookTour(); $(".lean-overlay").addClass("displayNone")};
     }}).openModal();
 
 }
