@@ -51,6 +51,7 @@
     background-color: #{theme} !important;
 }
 #burst-12:before, #burst-12:after {  background-color: #{theme} !important;}
+#burst-12:before, #burst-12:after{border: 6px solid  #{theme} !important;}
 	</style>
 </head>
 <body onload="starting()">
@@ -104,8 +105,8 @@
 		      <div class="row" id="content" style=" padding: 15px 0 0 15px; text-align:center;">
                 <img src="images/contacts.png" alt="" class="bits-profile userProfImg circle responsive-img valign profile-image"style="background-color: white;">
                  <a class="btn-flat waves-effect waves-light white-text profile-btn username-label dropdown-button" href="#" id="name">Anonymous</a>
-                  <center> <span  id="download-button" class="white-text profile-btn " style="font-size:;  !important;"><span class="bitsoko-balance" style="font-size:16px;">0.00</span> <span class="bitsoko-balance-currency" style="font-size:16px;"> ETH</span></span>  
-          <span  id="balance-coins" class="header col s12 light white-text profile-btn" style="">0 ETH</span></p>
+                  <center> <span  id="download-button" class="white-text profile-btn " style="font-size:;  !important;"><span class="bitsoko-balance" style="font-size:16px;">0.00</span> <span class="localCurr" style="font-size:16px;"> </span></span>  
+          <span  id="balance-coins" class="header col s12 light white-text profile-btn" style="">0 BTC</span></p>
          <span class="bitsoko-xrate user-roal store-desc " style="text-align:left; "> 1 ETH = 0 KSH</span></center>
                </div>
              </li>
@@ -613,7 +614,7 @@
   </div>
 </div>
 <!-- //////////////////////////////////////////////////////////////////////////// -->
-<div class="star displayNone"id="burst-11"></div>
+<div class="star displayNone"id="burst-11">1</div>
 <!-- ================================================Scripts================================================-->
 <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js" async defer></script>
 <script type="text/javascript" src="js/bits_contacts.js"></script>
@@ -790,17 +791,7 @@ $(function(){
           navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
         });
       }
-    /*  function profileLoaded(id){
-    
-     
-    
-    */
-//      $(document).ready(function(){
-//      	$('.card-bit').pushpin({ top: $('.card-bit').offset().top });
 
-     	 
-//   });
-      
 </script>
 <script type="text/javascript">
 
