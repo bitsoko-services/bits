@@ -185,7 +185,7 @@ checkDeliveries();
 						 '<div class="switch " style="width: 190px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-'+mDet.promotions[ii].id+'">Not Subscribed</span> <label><input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+mDet.promotions[ii].id+'" class="promoSubButton bits promoSubButton-'+mDet.promotions[ii].id+'" style=""> <span style="margin-top:2px;" class="lever bits right"></span></label></div><br><center><p style=" bottom: 0px;text-align: center;width: 70%;" class="displayNone serviceListseccondline "><i style="float: left;" class="serviceListseccondline promo-state-icon mdi-notification-sync"> 0 shares</i><i class="promo-state-icon mdi-action-favorite"> 0 likes </i><i style="float: right;" class="promo-state-icon mdi-action-receipt"> 0 sales </i></p></center></li>'); 
        	 subs=mDet.promotions[ii].promoSubs;
        	 console.log(mDet.promotions[ii].discount)
-       	// if( mDet.promotions[ii].discount == 0 || mDet.promotions[ii].discount == "null"){ $(".burst-12").addClass("");}
+       	 if(mDet.promotions[ii].discount == null){ $(".burst-12").addClass("displayNone");}
    for(var iii = 0,subs=subs,nnew=nnew,mDet=mDet; iii < subs.length; ++iii) { 
 			 if(parseInt(subs[iii].id)==parseInt(localStorage.getItem('bits-user-name'))){
 			 //console.log('im subscribed to ',mDet.promotions[ii]);

@@ -21,7 +21,7 @@
 		<meta name="google-signin-client_id" content="476194103258-98t0j7p1lrela49ispgj3jfokl2r3ils.apps.googleusercontent.com">
 		<link rel="manifest" href="web-manifest.json">
 		<script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>
-		<script src="https://apis.google.com/js/client:platform.js" async defer></script>
+		<script src="https://apis.google.com/js/client:platform.js?onload=startGoogle" gapi_processed="true" async="" defer=""></script>
 		<script type="text/javascript" src="jspdf.js"></script>
 		<script type="text/javascript"> 
 		</script>
@@ -42,7 +42,7 @@
 		<link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 		<link rel="import" href="https://bitsoko.io/bitsAssets/html/connector.html">
 	<!--	<script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"></script>-->
-	<script src="js/jquery.star.rating.js"></script>
+	 <script src="https://bitsoko.io/bitsAssets/js/storeManager.js"></script>
 	<style>
 .switch label input[type=checkbox]:checked + .lever:after {
     background-color: #{theme} !important;
@@ -54,7 +54,7 @@
 #burst-12:before, #burst-12:after{border: 6px solid  #{theme} !important;}
 	</style>
 </head>
-<body onload="starting()">
+<body onload="">
 	<bits-connect></bits-connect>
     <!--Start Page Loading -->
 <!-- 	<div id="loader-wrapper">
@@ -643,8 +643,7 @@
 	    <script src="https://bitsoko.io/bitsAssets/js/raphQR.js" async></script>
 	    <script src="https://bitsoko.io/bitsAssets/js/qrcodesvg.js" async></script>
 	    <script src="https://bitsoko.io/bitsAssets/js/broadcastChannel.js" async></script>
-	    <script src="https://bitsoko.io/bitsAssets/js/moment.js" async></script>
-	    <script src="https://bitsoko.io/bitsAssets/js/storeManager.js"></script>	    
+	    <script src="https://bitsoko.io/bitsAssets/js/moment.js" async></script>	    
 	    <script src="https://bitsoko.io/bitsAssets/js/locationManager.js"></script> 
 	         <script src="https://bitsoko.io/bitsAssets/js/globalVariables.js"></script> 
       <script src="https://bitsoko.io/bitsAssets/js/globalServices.js"></script>  
@@ -661,7 +660,8 @@
     <script type="text/javascript" src="js/plugins/sweetalert/dist/sweetalert.min.js"></script>   
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="js/plugins.js"></script>
-    <!--custom-script.js - Add your own theme custom JS-->
+    <script src="js/jquery.star.rating.js"></script>
+	 <!--custom-script.js - Add your own theme custom JS-->
     <script type="text/javascript" src="js/custom-script.js"></script>
 <!--=============================================================================================================================================================== -->
     <script>
@@ -796,6 +796,7 @@ $(function(){
 <script type="text/javascript">
 
 $(document).ready(function() {
+	starting();
 //$(".serviceListHolder").hide();
 $(".serviceListCard").hide();
 // $('.carousel').carousel();
