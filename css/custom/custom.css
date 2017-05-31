@@ -379,17 +379,26 @@ nav {
 }
 .mapTitle{
 	text-transform: uppercase;
-	font-weight: bold;
+	/* font-weight: bold; */
+	text-align: center !important;
+	/* text-decoration: underline; */
+	background: rgba(0, 0, 0, 0.1);
+	color: #fff;
+	position: relative;
+	/* font-size: 1.28rem; */
+	/* line-height: 1.6em; */
 	text-align: center;
-	text-decoration: underline;
+	padding: 5px;
 }
 .deldata{
 	/* text-align: left !important; */
 	padding: 10px !important;
 	margin-left: 0px;
 	height: 500px;
-	font-size: 12px !important;
-	/* margin-top: -300px; */
+	text-align: left;
+	font-size: 20px !important;
+	margin-top: -37px;
+	color: #fff;
 }
 .sweet-alert + p + .deldata{
 	
@@ -399,4 +408,12 @@ nav {
 	padding-bottom: 10px;
 	position: relative;
 	opacity: 0.9;
+}
+.mapText{
+	margin-top: -70%;
+	position: absolute;
+	font-size: 15px !important;
+	width: 100%;
+	opacity: 0.6;
+	color: white;
 }
