@@ -392,13 +392,14 @@ nav {
 }
 .deldata{
 	/* text-align: left !important; */
-	padding: 10px !important;
+	padding: 10px;
 	margin-left: 0px;
 	height: 500px;
 	text-align: left;
 	font-size: 20px !important;
 	margin-top: -37px;
 	color: #fff;
+	padding-top: 50px;
 }
 .sweet-alert + p + .deldata{
 	
@@ -416,4 +417,19 @@ nav {
 	width: 100%;
 	opacity: 0.6;
 	color: white;
+}
+.confirmText{
+	font-size: 38px;
+}
+.totalp{
+	    border: 1px solid #ffffff;
+	    width: 120px;
+	    height: 120px;
+	    padding: 10px;
+	    background: rgba(0, 0, 0, 0.1);
+	    padding-top: 25px;
+	    /* margin-left: 30%; */
+	    margin: auto;
+	    margin-top: 30%;
+}
 }

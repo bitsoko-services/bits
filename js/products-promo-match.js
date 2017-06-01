@@ -10,6 +10,7 @@ e.onsuccess = function (event) {
   }	
  	}
  function dropStar(){
+ 	window.navigator.vibrate(200); // vibrate for 200ms
  	$('.star').removeClass('displayNone');
  	$('.star').removeClass('animated');
  	$('.star').removeClass('bounceOutUp');
