@@ -411,7 +411,7 @@ nav {
 	opacity: 0.9;
 }
 .mapText{
-	margin-top: -205px;
+	margin-top: 245px;
 	position: absolute;
 	font-size: 15px !important;
 	width: 100%;
@@ -419,18 +419,22 @@ nav {
 	color: white;
 }
 .confirmText{
-	font-size: 18px;
+	font-size: 20px;
+	padding: 7px;
 }
 .totalp{
-	    border: 1px solid #ffffff;
-	    width: 130px;
-	    height: 130px;
-	    padding: 25px;
-	    background: rgba(0, 0, 0, 0.1);
-	    padding-top: 5px;
+	    /* border: 1px solid #ffffff; */
+	    width: 100%;
+	    /* height: 25px; */
+	    /* padding: 15px; */
+	    background: rgba(0, 0, 0, 0);
+	    /* padding-top: 5px; */
+	    /* padding-bottom: 5px; */
+	    text-align: left;
 	    /* margin-left: 30%; */
-	    margin: auto;
-	    margin-top: 120px;
+	    position: absolute;
+	    /* margin: auto; */
+	    margin-top: 205px;
 	    color: #ffffff !important;
 }
 }

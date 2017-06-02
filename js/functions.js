@@ -265,7 +265,7 @@ $('.recipt').append('');
 	function finalCost (){
 		delRate();
 		var y =parseInt(localStorage.getItem('bits-merchant-delivery-rate-'+parseInt(getBitsWinOpt('s'))))
-		console.log(y);
+		//console.log(y);
 		 //add delivery rate to totals 
 		 var divObj = document.getElementById("totals");    
 		var totalCost = parseInt(divObj.innerHTML) + y 
@@ -310,7 +310,7 @@ getLoc().then(function showPosition(e){
 	swal({   		
 // 						 title: ,   
                          
-                         text: '<img class="mapdata" src="" style="width:100%; height: ;" /><div class="mapTitle">Confirm Order</div><div class="deldata " style=" background-color: rgba(240, 237, 229, 0.27)!important;"><div class="circle totalp bits"><div class="chip"style="color: #ffffff !important; background: none;"><i class="mdi-action-add-shopping-cart">: </i> <span class="totals"></span></div><div class="chip"style="color: #ffffff !important; background: none;"><i class="mdi-maps-local-shipping"> :</i> <span class="del"></span></div><sup>kes</sup><span class="confirmText "></span></div><div id="products"></div></div><div class="mapText bits"></div>', 
+                         text: '<img class="mapdata" src="" style="width:100%; height: ;" /><div class="mapTitle">Confirm Order</div><div class=" totalp bits"><div class="chip"style="color: #ffffff !important; background: none; font-size: 20px;"><i class="mdi-action-add-shopping-cart">: </i> <span class="totals"></span></div><div class="chip"style="color: #ffffff !important; background: none;     font-size: 20px;"><i class="mdi-maps-local-shipping"> : </i> <span class="del"></span></div><span class="confirmText right"></span></div></div><div class="mapText bits"></div><div class="deldata " style=" background-color:#f0ede5 !important;"><div id="products"></div>', 
 						 title:'<span class="mapTitle">Confirm delivery location</span>',  
 						 content: '',
                          showCancelButton: true,   
@@ -335,7 +335,7 @@ function (isConfirm){
 //var t=document.querySelectorAll(".bitsInputQty");
 
 
-
+getProdss()
 finalCost ();
 $(".confirmText").html("")
 
@@ -374,7 +374,7 @@ function checkRewards(t){
   // a convenient wrapper.
         new Promise(function(resolve, reject) {
           
-	console.log(t)
+	//console.log(t)
 		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
 		t=t;
 e.onsuccess = function (event) { 		
@@ -387,14 +387,14 @@ resolve({promotions:x.promotions,t: t});
 }).then(function(r){
 		var pds=r.promotions;
 		var t=r.t;
-	console.log(pds,t)
+	//console.log(pds,t)
 
 
 var allItms=[];
 var inpt = document.getElementById("bitsInputQty"+t).value;
 for(var iiii = 0,t=t; iiii < pds.length; ++iiii){
 
-console.log(JSON.parse(pds[iiii].promoItems),t,inpt)
+//console.log(JSON.parse(pds[iiii].promoItems),t,inpt)
 var zx = JSON.parse(pds[iiii].promoItems)
 //zx.sort();
   var current = null;
@@ -403,11 +403,11 @@ var zx = JSON.parse(pds[iiii].promoItems)
     for (var i = 0,t=t, pts=pts; i < zx.length; i++) {
         if (zx[i] != current) {
             if (cnt > 0) {
-               console.log(current + ' comes --> ' + cnt + ' times clicked '+inpt+' times');
+               //console.log(current + ' comes --> ' + cnt + ' times clicked '+inpt+' times');
  			if(cnt >= inpt){ 
- 			console.log("pass reward point")
+ 			//console.log("pass reward point")
 if(parseInt(zx[i])==parseInt(t)){
-	console.log('found!!!!!!!!',zx[i]);
+	//console.log('found!!!!!!!!',zx[i]);
 
 
 	 dropStar();
@@ -485,4 +485,58 @@ if (p){console.log("Deliveries for this shop not available")}else{
 	$(".delivery").addClass("displayNone")
 		return;
 }})
+}
+function createOrder (){
+	 for (var o = 0; o < orderArray.length; o++) {
+	 	console.log (orderArray[o].pid);
+	
+	 e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));	
+e.onsuccess = function (event) {
+console.log (orderArray[o].pid);
+}
+e.onerror = function (e) {
+
+}
+	 }
+}
+
+function getProdss(w){
+	       new Promise(function(resolve, reject) {
+          
+		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
+	
+e.onsuccess = function (event) { 		
+var x=JSON.parse(event.target.result);
+resolve(x.list);
+
+}
+}).then(function(r){
+
+
+
+console.log(r);
+ for (var o in r) {
+ for (var oo in orderArray) {
+
+//console.log(r[o].id,orderArray[oo].pid)
+ 	if(r[o].id==orderArray[oo].pid){
+
+console.log("match")
+//products
+$("#products").append('<div class="chip">'+ 
+   '<img src="'+r[o].imagePath+'" alt="Contact Person">'+r[o].name+  
+    '</div>')
+
+
+ 	}
+ }
+
+
+ }
+
+
+
+
+
+})
 }
