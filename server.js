@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =416;
+	bitsVersion =418;
 bitsInstall = function(event){
 	
 	
@@ -119,8 +119,8 @@ return new Promise(function(resolve, reject) {
       break;
 
         case 'deliverOrder':
-    
-           bitsNotification('Deliver Order',+dat.msg,'Delivery','bits/images/yes.png','bits/images/Delivered.png',[{action: '', title: "Backed up"}],true,true);
+    bitsNotification('Deliver Order',dat.msg,'Delivery','bits/images/yes.png','bits/images/Delivered.png',[{action: '', title: "Backed up"}],true,true);
+          // bitsNotification('Deliver Order',+dat.msg,'Delivery','bits/images/yes.png','bits/images/Delivered.png',[{action: '', title: "Backed up"}],true,true);
        
       break;
 // get notifications when you request for services eg delivery
