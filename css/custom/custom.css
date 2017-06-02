@@ -411,7 +411,7 @@ nav {
 	opacity: 0.9;
 }
 .mapText{
-	margin-top: -215px;
+	margin-top: -205px;
 	position: absolute;
 	font-size: 15px !important;
 	width: 100%;
@@ -419,17 +419,18 @@ nav {
 	color: white;
 }
 .confirmText{
-	font-size: 38px;
+	font-size: 18px;
 }
 .totalp{
 	    border: 1px solid #ffffff;
-	    width: 120px;
-	    height: 120px;
-	    padding: 10px;
+	    width: 130px;
+	    height: 130px;
+	    padding: 25px;
 	    background: rgba(0, 0, 0, 0.1);
-	    padding-top: 25px;
+	    padding-top: 5px;
 	    /* margin-left: 30%; */
 	    margin: auto;
-	    margin-top: 105px;
+	    margin-top: 120px;
+	    color: #ffffff !important;
 }
 }
