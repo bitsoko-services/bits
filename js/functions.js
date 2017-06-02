@@ -310,7 +310,7 @@ getLoc().then(function showPosition(e){
 	swal({   		
 // 						 title: ,   
                          
-                         text: '<img class="mapdata" src="" style="width:100%; height: ;" /><div class="mapTitle">Confirm Order</div><div class="deldata bits" style=" background-color: #{theme} !important;"><div class="chip"><i class="mdi-action-add-shopping-cart">: </i><span class="totals"></span></div><div class="chip"><i class="mdi-maps-local-shipping"></i><span class="del"></span></div><div class="circle totalp"><sup>kes</sup><span class="confirmText "></span></div><div id="products"></div></div><div class="mapText bits"></div>', 
+                         text: '<img class="mapdata" src="" style="width:100%; height: ;" /><div class="mapTitle">Confirm Order</div><div class="deldata bits" style=" background-color: #{theme} !important;"><div class="chip"><i class="mdi-action-add-shopping-cart">: </i> <span class="totals"></span></div><div class="chip"><i class="mdi-maps-local-shipping"> :</i> <span class="del"></span></div><div class="circle totalp"><sup>kes</sup><span class="confirmText "></span></div><div id="products"></div></div><div class="mapText bits"></div>', 
 						 title:'<span class="mapTitle">Confirm delivery location</span>',  
 						 content: '',
                          showCancelButton: true,   

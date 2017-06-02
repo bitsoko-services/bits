@@ -411,7 +411,7 @@ nav {
 	opacity: 0.9;
 }
 .mapText{
-	margin-top: -70%;
+	margin-top: -215px;
 	position: absolute;
 	font-size: 15px !important;
 	width: 100%;
@@ -430,6 +430,6 @@ nav {
 	    padding-top: 25px;
 	    /* margin-left: 30%; */
 	    margin: auto;
-	    margin-top: 30%;
+	    margin-top: 105px;
 }
 }
