@@ -156,9 +156,6 @@ var randomSeed=eg.responseText;
 
 	
         var password = prompt(infoString, 'Password');
-		
-	
-        var password = prompt(infoString, 'Password');
 		var randomSeed=eg.responseText;
         lightwallet.keystore.deriveKeyFromPassword(password, function(err, pwDerivedKey) {
 
