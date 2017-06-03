@@ -1389,10 +1389,6 @@ returns.symbol='usd';
         })
       }
 
-      function newWallet() {
-      
-      }
-
       function showSeed() {
         var password = prompt('Enter password to show your seed. Do not let anyone else see your seed.', 'Password');
 
