@@ -306,21 +306,9 @@ if (p){console.log("payments are on")}else{
 getLoc().then(function showPosition(e){
 
 	getCoordDet(e.coords.latitude+','+e.coords.longitude).then(function(mapData){
-
-	swal({   		
-// 						 title: ,   
-                         
-                         text: '<img class="mapdata" src="" style="width:100%; height: ;" /><div class="mapTitle">Confirm Order</div><div class=" totalp bits"><div class="chip"style="color: #ffffff !important; background: none; font-size: 20px;"><i class="mdi-action-add-shopping-cart">: </i> <span class="totals"></span></div><div class="chip"style="color: #ffffff !important; background: none;     font-size: 20px;"><i class="mdi-maps-local-shipping"> : </i> <span class="del"></span></div><span class="confirmText right"></span></div></div><div class="mapText bits"></div><div class="deldata " style=" background-color:#f0ede5 !important;"><div id="products"></div>', 
-						 title:'<span class="mapTitle">Confirm delivery location</span>',  
-						 content: '',
-                         showCancelButton: true,   
-                         closeOnConfirm: false,   
-                         showLoaderOnConfirm: true,   
-             			 html: true 
-			 },
-
-function (isConfirm){   
-   if (isConfirm) { 
+$('#modalconfirm').openModal();
+document.getElementById("Confirm").addEventListener("click", function(){ 
+   
 	doFetch({ action: 'makeOrder', data: orderArray, loc:e.coords.latitude+','+e.coords.longitude, user: localStorage.getItem("bits-user-name"), service: parseInt(getBitsWinOpt('s'))}).then(
 		function(e){
     		if (e.status=="ok"){  
@@ -330,8 +318,33 @@ function (isConfirm){
             }
         })
         
-}
+
 });
+// 	swal({   		
+// // 						 title: ,   
+                         
+//                          text: '<img class="mapdata" src="" style="width:100%; height: ;" /><div class="mapTitle">Confirm Order</div><div class=" totalp bits"><div class="chip"style="color: #ffffff !important; background: none; font-size: 20px;"><i class="mdi-action-add-shopping-cart">: </i> <span class="totals"></span></div><div class="chip"style="color: #ffffff !important; background: none;     font-size: 20px;"><i class="mdi-maps-local-shipping"> : </i> <span class="del"></span></div><span class="confirmText right"></span></div></div><div class="mapText bits"></div><div class="deldata " style=" background-color:#f0ede5 !important;"><div id="products"></div>', 
+// 						 title:'<span class="mapTitle">Confirm delivery location</span>',  
+// 						 content: '',
+//                          showCancelButton: true,   
+//                          closeOnConfirm: false,   
+//                          showLoaderOnConfirm: true,   
+//              			 html: true 
+// 			 },
+
+// function (isConfirm){   
+//    if (isConfirm) { 
+// 	doFetch({ action: 'makeOrder', data: orderArray, loc:e.coords.latitude+','+e.coords.longitude, user: localStorage.getItem("bits-user-name"), service: parseInt(getBitsWinOpt('s'))}).then(
+// 		function(e){
+//     		if (e.status=="ok"){  
+// 			swal("success!", "your order has been sent!", "success");          
+//             }else{
+//            	swal("Cancelled", "your order is not sent", "error");        
+//             }
+//         })
+        
+// }
+// });
 //var t=document.querySelectorAll(".bitsInputQty");
 
 
@@ -342,6 +355,7 @@ $(".confirmText").html("")
 $(".confirmText").append('<span>'+localStorage.getItem('bits-merchant'+parseInt(getBitsWinOpt('s'))+'-Total cost')+'<span class="localCurr">Kes</span></span>')
 $(".totals").html("")
 $(".totals").append(parseInt(localStorage.getItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')))))
+$(".del").html("")
 $(".del").append(parseInt(localStorage.getItem('bits-merchant-delivery-rate-'+parseInt(getBitsWinOpt('s')))))
 		$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address);
 
@@ -449,7 +463,7 @@ function sendratings(){
 function(s){
     if (s.status=="ok"){ 
    // $('#ratingId').val("");
-     $('#textareaRating').val("");
+     //$('#textareaRating').val("");
 		swal("success!", "Ratings and Reviews have been sent!", "success")
              
 
@@ -523,6 +537,7 @@ console.log(r);
 
 console.log("match")
 //products
+//$("#products").html("")
 $("#products").append('<div class="chip">'+ 
    '<img src="'+r[o].imagePath+'" alt="Contact Person">'+r[o].name+  
     '</div>')

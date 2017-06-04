@@ -5244,7 +5244,7 @@ button.btn-floating {
   bottom: 23px;
   padding-top: 15px;
   margin-bottom: 0;
-  z-index: 998;
+  z-index: 996;
 }
 
 .fixed-action-btn.active ul {
@@ -5648,7 +5648,7 @@ button.btn-floating {
 }
 
 .modal.modal-fixed-footer .modal-footer {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  /* border-top: 1px solid rgba(0, 0, 0, 0.1); */
   position: absolute;
   bottom: 0;
 }
