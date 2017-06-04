@@ -463,8 +463,8 @@ currentTransaction = {name:"",recp:"",amount:"",ref:""}
 var contTemp;
 var isPushEnabled = false;
     var newService;
-  var bitcore = require('bitcore');
-   var ECIES = require('bitcore-ecies');
+//  var bitcore = require('bitcore');
+//   var ECIES = require('bitcore-ecies');
 prscnin = false;
 flag=false;
 // The view model is an abstract description of the state of the UI, but without any knowledge of the UI technology (HTML)
