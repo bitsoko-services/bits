@@ -691,7 +691,7 @@ function createETH(user){
           
 var walSaving = getObjectStore('data', 'readwrite').put(JSON.stringify(walData), 'bits-wallets-'+user);
 	walSaving.onsuccess = function (event) {
-	localStorage.setItem("bits-user-wallet", publicAddress);   
+	//localStorage.setItem("bits-user-wallet", publicAddress);   
 resolve(walData);
 Materialize.toast('created new Ethereum wallet', 3000);
 	
