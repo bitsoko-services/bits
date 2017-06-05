@@ -57,7 +57,6 @@ moment(result[i].modifiedDate).valueOf()>cm){
         
          
           if(allWals==0){
-              //createWallet(id);
 		  
 //Materialize.toast('need to create new wallet', 3000);
             //      console.log(cm+" creating..");
@@ -285,20 +284,35 @@ function starting(){
 startUser(localStorage.getItem('bits-user-name')).then(function(e){
 
 	
-   // loadWallet(createWallet('anon'));
 	
    loadWallet(e);
 }).catch(function(err){
 	var user=localStorage.getItem('bits-user-name');
 	if (user == "" || user == "undefined" || user == "null" || user == null) {
 	//startGoogle();
+	/*
 createWallet('anon').then(function(e){
 
 loadWallet(e.publicAddress);
                 requestID();
 });	
-		
+	*/	
+
+
+
+
+
+
+
+
+
+
+	
 	}
+
+
+
+
 });
 
     
@@ -464,7 +478,7 @@ var contTemp;
 var isPushEnabled = false;
     var newService;
 //  var bitcore = require('bitcore');
-//   var ECIES = require('bitcore-ecies');
+ //  var ECIES = require('bitcore-ecies');
 prscnin = false;
 flag=false;
 // The view model is an abstract description of the state of the UI, but without any knowledge of the UI technology (HTML)
