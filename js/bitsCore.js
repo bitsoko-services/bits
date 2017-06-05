@@ -645,68 +645,43 @@ Materialize.toast('failed to create wallet, please try again', 3000);
 }
 
 //stays
+
 function createETH(user){
+	
+
+	
 		return new Promise(function(resolve, reject) {
-	
-  		// optional private key and initialization vector sizes in bytes
-// (if params is not passed to create, keythereum.constants is used by default)
-var params = { keyBytes: 32, ivBytes: 16 };
+  var extraEntropy = prompt('Extra Seed', 'extra seed');
+        var randomSeed = lightwallet.keystore.generateRandomSeed(extraEntropy);
 
-// asynchronous
-keythereum.create(params, function (dk) {
-    // do stuff!
-	/*
-	// dk:
-{
-    privateKey: <Buffer ...>,
-    iv: <Buffer ...>,
-    salt: <Buffer ...>
-}
-    */
+        var infoString = 'Your new wallet seed is: "' + randomSeed + 
+          '". Please write it down on paper or in a password manager, you will need it to access your wallet. Do not let anyone see this seed or they can take your Ether. ' +
+          'Please enter a password to encrypt your seed while in the browser.'
 	
-	// Note: if options is unspecified, the values in keythereum.constants are used.
-var options = {
-  kdf: "pbkdf2",
-  cipher: "aes-128-ctr",
-  kdfparams: {
-    c: 262144,
-    dklen: 32,
-    prf: "hmac-sha256"
-  }
-};
-var password = 'abcd';
-// asynchronous
-keythereum.dump(password, dk.privateKey, dk.salt, dk.iv, options, function (keyObject) {
-  // do stuff!
-	/*
 	
-	// keyObject:
-{
-  address: "008aeeda4d805471df9b2a5b0f38a0c3bcba786b",
-  Crypto: {
-    cipher: "aes-128-ctr",
-    ciphertext: "5318b4d5bcd28de64ee5559e671353e16f075ecae9f99c7a79a38af5f869aa46",
-    cipherparams: {
-      iv: "6087dab2f9fdbbfaddc31a909735c1e6"
-    },
-    mac: "517ead924a9d0dc3124507e3393d175ce3ff7c1e96529c6c555ce9e51205e9b2",
-    kdf: "pbkdf2",
-    kdfparams: {
-      c: 262144,
-      dklen: 32,
-      prf: "hmac-sha256",
-      salt: "ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd"
-    }
-  },
-  id: "e13b209c-3b2f-4327-bab0-3bef2e51630d",
-  version: 3
-}
+	
+        var password = prompt(infoString, 'Password');
 
-*/
+        lightwallet.keystore.deriveKeyFromPassword(password, function(err, pwDerivedKey) {
+
+        global_keystore = new lightwallet.keystore(
+          randomSeed,
+          pwDerivedKey);
 	
-	
-       var created = moment().valueOf();
-   var walData={publicAddress:keyObject.address, walletData:JSON.stringify(keyObject), created:created, coin:'eth'};
+		
+        if (password == '') {
+          password = prompt('Enter password to retrieve addresses', 'Password');
+        }
+
+        var numAddr = 5;
+
+        lightwallet.keystore.deriveKeyFromPassword(password, function(err, pwDerivedKey) {
+
+        global_keystore.generateNewAddress(pwDerivedKey, numAddr);
+
+        var addresses = global_keystore.getAddresses();
+
+   var walData={publicAddress:JSON.stringify(addresses), walletData:randomSeed, created:moment().valueOf(), coin:'eth'};
 	var wd=walData;
 	delete wd.walletData;
 
@@ -729,8 +704,19 @@ Materialize.toast('failed to create wallet, please try again', 3000);
                
         });
 	
-});
-});
+	
+
+        getBalances();
+      });
+		
+		
+		
+		
+        setWeb3Provider(global_keystore);
+        getBalances();
+        })
+ 
+
     	
 	})
 	
@@ -1352,3 +1338,95 @@ returns.symbol='usd';
 });
 }
 
+
+      var web3 = new Web3();
+      var global_keystore;
+
+      function setWeb3Provider(keystore) {
+        var web3Provider = new HookedWeb3Provider({
+          host: "http://localhost:8545",
+          transaction_signer: keystore
+        });
+
+        web3.setProvider(web3Provider);
+      }
+
+      function newAddresses(password) {
+        
+      }
+
+      function getBalances() {
+        
+        var addresses = global_keystore.getAddresses();
+       // document.getElementById('addr').innerHTML = 'Retrieving addresses...'
+
+        async.map(addresses, web3.eth.getBalance, function(err, balances) {
+          async.map(addresses, web3.eth.getTransactionCount, function(err, nonces) {
+           
+            for (var i=0; i<addresses.length; ++i) {
+             console.log( addresses[i] + ' (Bal: ' + (balances[i] / 1.0e18) + ' ETH, Nonce: ' + nonces[i] + ')' );
+            }
+          })
+        })
+
+      }
+
+      function setSeed() {
+        var password = prompt('Enter Password to encrypt your seed', 'Password');
+                                              
+        lightwallet.keystore.deriveKeyFromPassword(password, function(err, pwDerivedKey) {
+
+        global_keystore = new lightwallet.keystore(
+          document.getElementById('seed').value, 
+          pwDerivedKey);
+
+        document.getElementById('seed').value = ''
+        
+        newAddresses(password);
+        setWeb3Provider(global_keystore);
+        
+        getBalances();
+        })
+      }
+
+      function showSeed() {
+        var password = prompt('Enter password to show your seed. Do not let anyone else see your seed.', 'Password');
+
+        lightwallet.keystore.deriveKeyFromPassword(password, function(err, pwDerivedKey) {
+        var seed = global_keystore.getSeed(pwDerivedKey);
+        alert('Your seed is: "' + seed + '". Please write it down.')
+        })
+      }
+
+      function sendEth() {
+        var fromAddr = document.getElementById('sendFrom').value
+        var toAddr = document.getElementById('sendTo').value
+        var valueEth = document.getElementById('sendValueAmount').value
+        var value = parseFloat(valueEth)*1.0e18
+        var gasPrice = 50000000000
+        var gas = 50000
+        web3.eth.sendTransaction({from: fromAddr, to: toAddr, value: value, gasPrice: gasPrice, gas: gas}, function (err, txhash) {
+          console.log('error: ' + err)
+          console.log('txhash: ' + txhash)
+        })
+      }
+
+      function functionCall() {
+        var fromAddr = document.getElementById('functionCaller').value
+        var contractAddr = document.getElementById('contractAddr').value
+        var abi = JSON.parse(document.getElementById('contractAbi').value)
+        var contract = web3.eth.contract(abi).at(contractAddr)
+        var functionName = document.getElementById('functionName').value
+        var args = JSON.parse('[' + document.getElementById('functionArgs').value + ']')
+        var valueEth = document.getElementById('sendValueAmount').value
+        var value = parseFloat(valueEth)*1.0e18
+        var gasPrice = 50000000000
+        var gas = 3141592
+        args.push({from: fromAddr, value: value, gasPrice: gasPrice, gas: gas})
+        var callback = function(err, txhash) {
+          console.log('error: ' + err)
+          console.log('txhash: ' + txhash)
+        }
+        args.push(callback)
+        contract[functionName].apply(this, args)
+      }
