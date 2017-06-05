@@ -130,6 +130,8 @@
             <li class="li-hover displayNone"><div class="divider"></div></li>  
    <li><a href=""class=" displayNone"> <i class="mdi-action-grade"></i><span class="bits-13" style=""></span> <span href id="btn">Your details</span> </a>
                                 </li>
+                                 <li><a href="?s=2"class=""> <i class="mdi-action-grade"></i><span class="bits-13" style=""></span> <span href id="btn">Contacts</span> </a>
+                                </li>
             <ul class="collapsible collapsible-accordion">
           
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-settings"></i>Settings</a>
@@ -395,7 +397,7 @@
     </div>
     <!-- END MAIN -->
       <!-- Modal Structure -->
-  <div id="modalconfirm" class="modal modal-fixed-footer bits" style="height: 83%;    max-height: 800px !important;">
+  <div id="modalconfirm" class="modal modal-fixed-footer bits" style="height:500px;    max-height: 800px !important;">
     <div class="bits" style="padding: 0px;position: fixed;width: 100%;">
          <div class="">
         <div class="">
@@ -433,6 +435,7 @@
       <a href="#!" id="Confirm" class="white-text modal-action modal-close waves-effect waves-green btn-flat" onclick="Confirm();" style="margin-left: 25px; margin: 0.5px 0;margin-top: -5px;">Confirm</a>
        <a href="#!" class="white-text modal-action modal-close waves-effect waves-green btn-flat" style="margin-left: 25px; margin: 0.5px 0;margin-top: -5px;">Cancel</a>
     </div>
+  </div>
   </div>
 <!------------------------------------- Modal keypad start---------------------------------------------------------------------------------->
 <div id="keypadModal" class="modal keypadinp" >
@@ -685,11 +688,11 @@
 	    <script src="https://bitsoko.io/bitsAssets/js/qrcodesvg.js" async></script>
 	    <script src="https://bitsoko.io/bitsAssets/js/broadcastChannel.js" async></script>
 <!-- 	    <script src="https://bitsoko.io/bitsAssets/js/moment.js" async></script> -->
-	      <script src="https://bitsoko.io/bitsAssets/js/moment.js" async></script> <!--
+	      <script src="https://bitsoko.io/bitsAssets/js/moment.js" async></script> 
  <script src="https://bitsoko.io/bitsAssets/js/lightwallet/lightwallet.min.js"></script> 
-    <script type="text/javascript" src="https://bitsoko.io/bitsAssets/js/web3/web3.js"></script> 
+    <script type="text/javascript" src="https://bitsoko.io/bitsAssets/js/web3/dist/web3.js"></script> 
     <script type="text/javascript" src="https://bitsoko.io/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js"></script> 
-    <script type="text/javascript" src="https://bitsoko.io/bitsAssets/js/async/lib/async.js"></script> 	-->    
+    <script type="text/javascript" src="https://bitsoko.io/bitsAssets/js/async/lib/async.js"></script> 	    
 	    <script src="https://bitsoko.io/bitsAssets/js/locationManager.js"></script> 
 	         <script src="https://bitsoko.io/bitsAssets/js/globalVariables.js"></script> 
       <script src="https://bitsoko.io/bitsAssets/js/globalServices.js"></script>  
@@ -748,7 +751,7 @@ requestPersist();
  	if ("onhashchange" in window) {
      function locationHashChanged(e) {
        console.log(e);
-       serviceOpener()         
+       //serviceOpener()         
 }
         window.addEventListener("hashchange", locationHashChanged, false);
 }  
@@ -939,7 +942,8 @@ reject(e);
   }
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
+document.getElementById("useLogin").addEventListener("click", startGoogle());
+document.getElementById("useAnon").addEventListener("click", startGoogle());
  //web Share start
 document.querySelector("#share").addEventListener('click', function(event) {
     navigator.share({

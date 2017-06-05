@@ -8479,7 +8479,7 @@ a.waves-effect .waves-ripple {
 }
 
 .modal {
-  display: none;
+  /* display: none; */
   position: fixed;
   left: 0;
   right: 0;
@@ -8558,7 +8558,7 @@ a.waves-effect .waves-ripple {
 }
 
 .modal.bottom-sheet {
-  top: auto;
+  /* top: auto; */
   bottom: -100%;
   margin: 0;
   width: 100%;

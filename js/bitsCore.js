@@ -1337,7 +1337,7 @@ returns.symbol='usd';
    // updateSettings();
 });
 }
-/*
+
 
       var web3 = new Web3();
       var global_keystore;
@@ -1351,7 +1351,7 @@ returns.symbol='usd';
         web3.setProvider(web3Provider);
       }
 
-*/
+
       function getBalances() {
         
         var addresses = global_keystore.getAddresses();

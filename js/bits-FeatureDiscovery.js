@@ -2,7 +2,7 @@
 function loadvisit(){
  if(localStorage.getItem('bits-vst-'+parseInt(getBitsWinOpt('s'))) == null || localStorage.getItem('bits-vst-'+parseInt(getBitsWinOpt('s'))) == "Skipped tour"){
 console.log('new visit to '+parseInt(getBitsWinOpt('s')))
-$('#modalwelcome').closeModal();
+//$('#modalwelcome').closeModal();
   $('#modalwelcome').modal({ready: function(){
         
 document.getElementById("skip").onclick = function() {skipTour(); $(".lean-overlay").addClass("displayNone")};
