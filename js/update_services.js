@@ -18,24 +18,28 @@ activeService=$('#serviceModal').attr('service');
 }
 //-----------------------------------------------save to local storage------------------------------------------------------------------
 function serviceOpener(){
-if (getBitsWinOpt('s') != undefined ) 
- {	 
-servicePageLoader();
-         }else{
-         	//restore theme to default 
-         	//document.getElementByClass("bits").style.backgroundColor  = "#0f5f76";
-         	$('.bits').css("background-color", "");
-         	$('.bits').css("background-color", "#0f5f76");
- $(".promoHome").removeClass("displayNone");
- //$(".card-welcome").removeClass("displayNone");
- 
- //delrow
-	 updatePromos();
-	 subscribedPromos();
-	 } 
-// 	 if (getBitsWinOpt('o') ==  ) {
-	 	
-	// }
+
+// if (getBitsWinOpt('s') == undefined ) 
+//  {	 
+// servicePageLoader();
+//          }else{
+//          	//restore theme to default 
+//          	//document.getElementByClass("bits").style.backgroundColor  = "#0f5f76";
+//          	$('.bits').css("background-color", "");
+//          	$('.bits').css("background-color", "#0f5f76");
+//  $(".promoHome").removeClass("displayNone");
+// 	 updatePromos();
+// 	 subscribedPromos();
+// 	 } 
+if (getBitsWinOpt('o') == undefined ) {	 }
+else{
+	 	doFetch({ action: 'storesBO',  id:parseInt(getBitsWinOpt('o'))  }).then(
+function(s){
+    if (s.status=="ok"){ 
+		console.log("shops")
+           }else{ swal("error", "somthing bad happened, we are fixing it", "error");}
+                    });
+ }
   }  
 //------------------------------------------end save--------------------------------------------------------------------------------------
 //---------------------------------------- subscription function--------------------------------------------------------------------------	    
