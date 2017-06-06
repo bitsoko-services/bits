@@ -651,8 +651,7 @@ function createETH(user){
 
 	
 		return new Promise(function(resolve, reject) {
-  var extraEntropy = prompt('Extra Seed', 'extra seed');
-        var randomSeed = lightwallet.keystore.generateRandomSeed(extraEntropy);
+     var randomSeed = lightwallet.keystore.generateRandomSeed(randomString(300));
 
         var infoString = 'Your new wallet seed is: "' + randomSeed + 
           '". Please write it down on paper or in a password manager, you will need it to access your wallet. Do not let anyone see this seed or they can take your Ether. ' +
