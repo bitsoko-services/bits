@@ -653,9 +653,7 @@ function createETH(user){
 		return new Promise(function(resolve, reject) {
      var randomSeed = lightwallet.keystore.generateRandomSeed(randomString(300));
 
-        var infoString = 'Your new wallet seed is: "' + randomSeed + 
-          '". Please write it down on paper or in a password manager, you will need it to access your wallet. Do not let anyone see this seed or they can take your Ether. ' +
-          'Please enter a password to encrypt your seed while in the browser.'
+        var infoString = 'Enter a passcode to secure your wallet. You will be required to enter it each time you restore your wallet to a new device, so dont forget it!'
 	
 	
 	
