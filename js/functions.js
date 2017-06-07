@@ -39,6 +39,7 @@ function rate(){
 //...........................URL check end//.................................................................................................................................................
 //function service Page loader..........
 function servicePageLoader(){
+	
 $(".delrow").removeClass("displayNone");
 if(parseInt(getBitsWinOpt('s')) >5){
 var servID=getBitsWinOpt('s');
@@ -212,6 +213,7 @@ else{
 //----------------------------------------------if ststements for popup login modal if user is on anon mode----------------------------------------
 //----------------------------------------------function to pop up login modal---------------------------------------------------------------------
 function showLogin(){
+	startGoogle();
 if(checkanon()==false){$('#loginModal').openModal()}
 return;
 }

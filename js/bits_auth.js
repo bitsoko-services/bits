@@ -8,6 +8,7 @@
     }
  
   function signOut() {
+    startGoogle()
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
       console.log('User signed out.');
@@ -19,6 +20,7 @@
 
 //-----------------------------------------------signOut---------------------------------------------------
 function signOut() {
+  startGoogle()
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
     	getObjectStore('data', 'readwrite').put('', 'bits-wallets-'+localStorage.getItem('bits-user-name'));
