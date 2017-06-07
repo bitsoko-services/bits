@@ -19,18 +19,18 @@ activeService=$('#serviceModal').attr('service');
 //-----------------------------------------------save to local storage------------------------------------------------------------------
 function serviceOpener(){
 
-// if (getBitsWinOpt('s') == undefined ) 
-//  {	 
-// servicePageLoader();
-//          }else{
-//          	//restore theme to default 
-//          	//document.getElementByClass("bits").style.backgroundColor  = "#0f5f76";
-//          	$('.bits').css("background-color", "");
-//          	$('.bits').css("background-color", "#0f5f76");
-//  $(".promoHome").removeClass("displayNone");
-// 	 updatePromos();
-// 	 subscribedPromos();
-// 	 } 
+if (getBitsWinOpt('s') != undefined ) 
+ {	 
+servicePageLoader();
+         }else{
+         	//restore theme to default 
+         	//document.getElementByClass("bits").style.backgroundColor  = "#0f5f76";
+         	$('.bits').css("background-color", "");
+         	$('.bits').css("background-color", "#0f5f76");
+ $(".promoHome").removeClass("displayNone");
+	 updatePromos();
+	 subscribedPromos();
+	 } 
 if (getBitsWinOpt('o') == undefined ) {	 }
 else{
 	 	doFetch({ action: 'storesBO',  id:parseInt(getBitsWinOpt('o'))  }).then(
