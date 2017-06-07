@@ -1,10 +1,10 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =428;
-	importScripts('https://bitsoko.io/bitsAssets/js/lightwallet/lightwallet.min.js');
-	importScripts('https://bitsoko.io/bitsAssets/js/web3/web3.js');
-	importScripts('https://bitsoko.io/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js');
-	importScripts('https://bitsoko.io/bitsAssets/js/async/lib/async.js');
+	bitsVersion =429;
+// 	importScripts('https://bitsoko.io/bitsAssets/js/lightwallet/lightwallet.min.js');
+// 	importScripts('https://bitsoko.io/bitsAssets/js/web3/web3.js');
+// 	importScripts('https://bitsoko.io/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js');
+// 	importScripts('https://bitsoko.io/bitsAssets/js/async/lib/async.js');//
 
 
 bitsInstall = function(event){
