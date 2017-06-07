@@ -31,16 +31,69 @@ servicePageLoader();
 	 updatePromos();
 	 subscribedPromos();
 	 } 
-if (getBitsWinOpt('o') == undefined ) {	 }
-else{
+if (getBitsWinOpt('o') != undefined ) {
+
+	/*
 	 	doFetch({ action: 'storesBO',  id:parseInt(getBitsWinOpt('o'))  }).then(
 function(s){
     if (s.status=="ok"){ 
+
 		console.log("shops")
            }else{ swal("error", "somthing bad happened, we are fixing it", "error");}
                     });
- }
+                    */
+shops=[];
+e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
+	
+e.onsuccess = function (event) { 		
+var x=JSON.parse(event.target.result);
+shops.push(x);
+shops.push(x);
+shops.push(x);
+console.log(shops)
+var shortest = 0;
+var nearest;
+var disCal=0;
+	 for (var o = 0,nearest=nearest,disCal=disCal,shortest=shortest; o < shops.length; o++) {
+	 	console.log (shops[o].lonlat);
+	 	var p= shops[o].lonlat
+	 	var str = p;
+	 x = str.split(",")[0];
+	console.log("x=" + x)
+     y = str.split(",")[1];
+    console.log("y=" + y);
+
+console.log(nearest)
+
+console.log(o)
+if(o==0){
+nearest=shops[o];
+}
+ getLoc().then(function showPosition(e){
+disCal++;
+ 	var distance =getDistanceFromLatLonInKm(e.coords.latitude,e.coords.longitude,x,y);
+console.log(distance);
+
+console.log(o)
+if(o==0){shortest = distance;
+
+}
+if(distance<shortest){
+	nearest=shops[o];
+}
+console.log(disCal,shops.length)
+if(disCal==shops.length){
+console.log(nearest.id);
+window.location = location.origin + "/?s="+nearest.id
+}
+
+ })
+     }
+
+    
+}
   }  
+}
 //------------------------------------------end save--------------------------------------------------------------------------------------
 //---------------------------------------- subscription function--------------------------------------------------------------------------	    
 function doSubscribe(){	
@@ -323,3 +376,4 @@ for(var l=0, el=el; l < el.length; ++l){
         document.querySelector('.btnname').innerHTML = activeService.name;    
              };
      }
+
