@@ -39,6 +39,8 @@ function rate(){
 //...........................URL check end//.................................................................................................................................................
 //function service Page loader..........
 function servicePageLoader(){
+	document.getElementById("useLogin").addEventListener("click", startGoogle());
+document.getElementById("useAnon").addEventListener("click", startGoogle());
 $(".delrow").removeClass("displayNone");
 if(parseInt(getBitsWinOpt('s')) >5){
 var servID=getBitsWinOpt('s');
