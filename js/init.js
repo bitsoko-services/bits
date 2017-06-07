@@ -69,8 +69,11 @@ moment(result[i].modifiedDate).valueOf()>cm){
             if (e.status=="ok"){
               p.bitsokoUserID=e.buid;
 		   // localStorage.setItem('bitsoko-owner-id',e.buid)
-		     
-		   saveFiles('wallets.json',JSON.stringify(ee),function(r){
+		  
+	var walAll=[];
+			 
+	walAll.push(JSON.stringify(ee));
+		   saveFiles('wallets.json',walAll,function(r){
        
        console.log(r);
 		  
