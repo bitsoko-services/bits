@@ -143,18 +143,14 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'bits-wallets
             downloadFile(rMax).then(function(eg){
 		    try{               
   		  
-		 // console.log('Loaded wallet: ',JSON.parse(eg.responseText));
+		  console.log('Loaded wallets: ',JSON.parse(eg.responseText).publicAddress);
 		  
-	
-var randomSeed=eg.responseText;
-
-        var infoString = 'Your new wallet seed is: "' + randomSeed + 
-          '". Please write it down on paper or in a password manager, you will need it to access your wallet. Do not let anyone see this seed or they can take your Ether. ' +
-          'Please enter a password to encrypt your seed while in the browser.'
+        var infoString = 'Loaded Wallets: "' + JSON.parse(eg.responseText).publicAddress + 
+          '"Enter your passcode to unlock your wallets.'
 
 	
         var password = prompt(infoString, 'Password');
-		var randomSeed=eg.responseText;
+		var randomSeed=JSON.parse(eg.responseText).walletdata;
         lightwallet.keystore.deriveKeyFromPassword(password, function(err, pwDerivedKey) {
 
         global_keystore = new lightwallet.keystore(
