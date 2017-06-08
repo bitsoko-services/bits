@@ -307,8 +307,9 @@ getLoc().then(function showPosition(e){
 
 	getCoordDet(e.coords.latitude+','+e.coords.longitude).then(function(mapData){
 $('#modalconfirm').openModal();
-document.getElementById("Confirm").addEventListener("click", function(){ 
-   
+document.getElementById("CancelO").addEventListener("click", function(){   $("#products").html("")});
+document.getElementById("ConfirmO").addEventListener("click", function(){ 
+   $("#products").html("")
 	doFetch({ action: 'makeOrder', data: orderArray, loc:e.coords.latitude+','+e.coords.longitude, user: localStorage.getItem("bits-user-name"), service: parseInt(getBitsWinOpt('s'))}).then(
 		function(e){
     		if (e.status=="ok"){  
