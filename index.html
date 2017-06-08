@@ -54,7 +54,7 @@
 #burst-12:before, #burst-12:after{border: 6px solid  #{theme} !important;}
 	</style>
 </head>
-<body onload="">
+<body onload="starting()">
 	<bits-connect></bits-connect>
     <!--Start Page Loading -->
 <!-- 	<div id="loader-wrapper">
@@ -130,7 +130,7 @@
             <li class="li-hover displayNone"><div class="divider"></div></li>  
    <li><a href=""class=" displayNone"> <i class="mdi-action-grade"></i><span class="bits-13" style=""></span> <span href id="btn">Your details</span> </a>
                                 </li>
-                                 <li><a href="?s=2"class=""> <i class="mdi-action-grade"></i><span class="bits-13" style=""></span> <span href id="btn">Contacts</span> </a>
+                                 <li><a href="?s=2"class="call "> <i class="mdi-communication-call"></i><span class="bits-13" style=""></span> <span href id="btn">Contacts</span> </a>
                                 </li>
             <ul class="collapsible collapsible-accordion">
           
@@ -751,7 +751,7 @@ requestPersist();
  	if ("onhashchange" in window) {
      function locationHashChanged(e) {
        console.log(e);
-       //serviceOpener()         
+     // serviceOpener()         
 }
         window.addEventListener("hashchange", locationHashChanged, false);
 }  
@@ -846,7 +846,7 @@ $(function(){
 <script type="text/javascript">
 
 $(document).ready(function() {
-starting();
+//starting();
 //$(".serviceListHolder").hide();
 $(".serviceListCard").hide();
 // $('.carousel').carousel();
@@ -917,7 +917,7 @@ startPay(actvServ().storeAddress,'servID-'+getBitsWinOpt('s')+'-'+getBitsWinOpt(
  
   function actvServ(){
 return new Promise(function(resolve, reject) {
-    
+  //  serviceOpener()
 e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
 e.onsuccess = function (event) {
 	console.log(e)
