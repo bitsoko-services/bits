@@ -73,6 +73,7 @@ moment(result[i].modifiedDate).valueOf()>cm){
 	var walAll=[];
 			 
 	walAll.push(JSON.stringify(ee));
+	console.log(JSON.stringify(ee));
 		   saveFiles('wallets.json',walAll,function(r){
        
        console.log(r);
@@ -144,6 +145,7 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'bits-wallets
 		    try{               
   		  
 		  console.log('Loaded wallets: ',JSON.parse(eg.responseText).publicAddress);
+		  console.log('Loaded wallets: ',JSON.parse(eg.responseText));
 		  
         var infoString = 'Loaded Wallets: "' + JSON.parse(eg.responseText).publicAddress + 
           '"Enter your passcode to unlock your wallets.'
@@ -152,6 +154,14 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'bits-wallets
         var password = prompt(infoString, 'Password');
 		var randomSeed=JSON.parse(eg.responseText).walletdata;
         lightwallet.keystore.deriveKeyFromPassword(password, function(err, pwDerivedKey) {
+
+
+        	if(err){
+        		console.log("wrong password")
+		var p = getObjectStore('data', 'readwrite').put(JSON.stringify(profile), 'user-profile-'+localStorage.getItem("bits-user-name"));	  
+        profileLoaded(p);
+        return;
+        	}
 
         global_keystore = new lightwallet.keystore(
           randomSeed,
@@ -162,11 +172,11 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'bits-wallets
           password = prompt('Enter password to retrieve addresses', 'Password');
         }
 
-        var numAddr = 5;
+       // var numAddr = 5;
 
         lightwallet.keystore.deriveKeyFromPassword(password, function(err, pwDerivedKey) {
 
-        global_keystore.generateNewAddress(pwDerivedKey, numAddr);
+        //global_keystore.generateNewAddress(pwDerivedKey, numAddr);
 
         var addresses = global_keystore.getAddresses();
 

@@ -652,12 +652,13 @@ function createETH(user){
 	
 		return new Promise(function(resolve, reject) {
      var randomSeed = lightwallet.keystore.generateRandomSeed(randomString(300));
-
+console.log("your random seed is: " +randomSeed);
         var infoString = 'Enter a passcode to secure your wallet. You will be required to enter it each time you restore your wallet to a new device, so dont forget it!'
 	
 	
 	
         var password = prompt(infoString, 'Password');
+       // var password = prompt(infoString, 'seed');
 
         lightwallet.keystore.deriveKeyFromPassword(password, function(err, pwDerivedKey) {
 
@@ -670,7 +671,7 @@ function createETH(user){
           password = prompt('Enter password to retrieve addresses', 'Password');
         }
 
-        var numAddr = 5;
+        var numAddr = 100;
 
         lightwallet.keystore.deriveKeyFromPassword(password, function(err, pwDerivedKey) {
 
@@ -678,17 +679,20 @@ function createETH(user){
 
         var addresses = global_keystore.getAddresses();
 
-   var walData={publicAddress:JSON.stringify(addresses), walletData:randomSeed, created:moment().valueOf(), coin:'eth'};
+   var walData={publicAddress:JSON.stringify(addresses), created:moment().valueOf(), coin:'eth'};
+   
+       // console.log("your random seed is: " +JSON.stringify(walData));
 	var wd=walData;
-	delete wd.walletData;
-
+	//delete wd.walletData;
+console.log("your random seed is: " +JSON.stringify(walData));
         doFetch({action:'saveUserWallet', data: JSON.stringify(wd), user:user }).then(function(e){
             if (e.status=="ok"){
-   
-          
+   walData.walletData=randomSeed;
+      //    console.log("your wallet is: " +JSON.stringify(walData));
 var walSaving = getObjectStore('data', 'readwrite').put(JSON.stringify(walData), 'bits-wallets-'+user);
 	walSaving.onsuccess = function (event) {
-	//localStorage.setItem("bits-user-wallet", publicAddress);   
+	//localStorage.setItem("bits-user-wallet", publicAddress); 
+	 
 resolve(walData);
 Materialize.toast('created new Ethereum wallet', 3000);
 	
