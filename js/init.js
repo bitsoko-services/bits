@@ -1,20 +1,5 @@
 function profileLoaded(p){
-    /*
-      doFetch({ action: 'recWal', name: id}).then(function(e){
-           if (e.status=="ok"){
-        recoverwal(e.wallets);
-           }else{
-                if($('#setpass').val().length > 3){
-          
-              createBTC(id,$('#setpass').val()); 
-          
-                }else{
-              $('#setpass').focus();      
-                }  
-           }
-        });
-    
-    */
+
     
 Materialize.toast('loading wallets', 3000);
       var retrievePageOfFiles = function(request, result) {
