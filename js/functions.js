@@ -157,8 +157,8 @@ catch(err){
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //----------------------------------------function to pop up login toast--------------------------------------------------------------------
 function togglebuttons(){
-if(checkanon()==false){ $("#useAnon").addClass("displayNone");}
-else{ $("#useLogin").addClass("displayNone");}
+if(checkanon()==false){ $("#useAnon").addClass("displayNone"); $(".call").addClass("displayNone");}
+else{ $("#useLogin").addClass("displayNone");  $(".call").removeClass("displayNone");}
 }
 //------------------end function -------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------------
@@ -307,8 +307,9 @@ getLoc().then(function showPosition(e){
 
 	getCoordDet(e.coords.latitude+','+e.coords.longitude).then(function(mapData){
 $('#modalconfirm').openModal();
-document.getElementById("Confirm").addEventListener("click", function(){ 
-   
+document.getElementById("CancelO").addEventListener("click", function(){   $("#products").html("")});
+document.getElementById("ConfirmO").addEventListener("click", function(){ 
+   $("#products").html("")
 	doFetch({ action: 'makeOrder', data: orderArray, loc:e.coords.latitude+','+e.coords.longitude, user: localStorage.getItem("bits-user-name"), service: parseInt(getBitsWinOpt('s'))}).then(
 		function(e){
     		if (e.status=="ok"){  

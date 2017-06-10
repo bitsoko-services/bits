@@ -1,10 +1,10 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =427;
-	importScripts('https://bitsoko.io/bitsAssets/js/lightwallet/lightwallet.min.js');
-	importScripts('https://bitsoko.io/bitsAssets/js/web3/web3.js');
-	importScripts('https://bitsoko.io/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js');
-	importScripts('https://bitsoko.io/bitsAssets/js/async/lib/async.js');
+	bitsVersion =434;
+// 	importScripts('https://bitsoko.io/bitsAssets/js/lightwallet/lightwallet.min.js');
+// 	importScripts('https://bitsoko.io/bitsAssets/js/web3/web3.js');
+// 	importScripts('https://bitsoko.io/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js');
+// 	importScripts('https://bitsoko.io/bitsAssets/js/async/lib/async.js');//
 
 
 bitsInstall = function(event){
@@ -137,15 +137,15 @@ return new Promise(function(resolve, reject) {
 		 { bitsNotification('Order pending','You have requested for this service ','userOrderPending','bits/images/pending.png','bits/images/pending.png',[{action: '', title: "Request"}],true,true);
 		   }
 	  
-		else if(state='Cancelled')
+		else if(state='cancelled')
 		{ bitsNotification('Order Cancelled','Your order has been cancelled ','userOrderCancelled','bits/images/no.png','bits/images/no.png',[{action: '', title: "Request"}],true,true);
 		   }
 	 
-		else if(state='Delivered')
+		else if(state='delivering')
 		{ bitsNotification('Order Delivered','Your order has been Delivered','userOrderDelivered','bits/images/Delivered.png','bits/images/Delivered.png',[{action: '', title: "Request"}],true,true);
 		   }
 	 
-		else(state='Complete')
+		else(state='complete')
 		{ bitsNotification('Order Complete','Your order is Complete','userOrderComplete','bits/images/yes.png','bits/images/yes.png',[{action: '', title: "Request"}],true,true);
 		   }
 	 break;

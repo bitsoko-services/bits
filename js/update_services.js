@@ -22,6 +22,12 @@ function serviceOpener(){
 if (getBitsWinOpt('s') != undefined ) 
  {	 
 servicePageLoader();
+	   if(getBitsOpt('vid')!=undefined){
+  	 doFetch({action:'addVisit', vid: getBitsOpt('vid').replace('!',''), service: getBitsWinOpt('s'), user: localStorage.getItem('bits-user-name')}).then(function(e){
+      console.log(e); 
+       
+   });
+  }
          }else{
          	//restore theme to default 
          	//document.getElementByClass("bits").style.backgroundColor  = "#0f5f76";
