@@ -23,7 +23,7 @@ if (getBitsWinOpt('s') != undefined )
  {	 
 servicePageLoader();
 	   if(getBitsOpt('vid')!=undefined){
-  	 doFetch({action:'addVisit', vid: getBitsOpt('vid'), service: getBitsWinOpt('s'), user: localStorage.getItem('bits-user-name')}).then(function(e){
+  	 doFetch({action:'addVisit', vid: getBitsOpt('vid').replace('!',''), service: getBitsWinOpt('s'), user: localStorage.getItem('bits-user-name')}).then(function(e){
       console.log(e); 
        
    });
