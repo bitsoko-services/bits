@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =437;
+	bitsVersion =440;
 // 	importScripts('https://bitsoko.io/bitsAssets/js/lightwallet/lightwallet.min.js');
 // 	importScripts('https://bitsoko.io/bitsAssets/js/web3/web3.js');
 // 	importScripts('https://bitsoko.io/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js');
@@ -134,7 +134,7 @@ return new Promise(function(resolve, reject) {
     
       var state='pending';
 		 if(state='pending')
-		 { bitsNotification('Order pending','You have requested for this service ','userOrderPending','bits/images/pending.png','bits/images/pending.png',[{action: '', title: "Request"}],true,true);
+		 { bitsNotification('Order pending','You have requested for this service ','userOrderPending','bits/images/pending.png',dat.orderImg,[{action: '', title: "Request"}],true,true);
 		   }
 	  
 		else if(state='cancelled')
