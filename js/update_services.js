@@ -90,7 +90,7 @@ if(distance<shortest){
 console.log(disCal,shops.length)
 if(disCal==shops.length){
 console.log(nearest.id);
-window.location = location.origin + "/?s="+nearest.id
+window.location = location.origin + "/bits/?s="+nearest.id
 }
 
  })

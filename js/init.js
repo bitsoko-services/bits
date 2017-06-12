@@ -115,10 +115,10 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'bits-wallets
         starting();
    }); 
 		    
-// profileLoaded(profile.id);
+// // profileLoaded(profile.id);
                 
-          //$('#signin-button').css('pointer-events','none');
-          //$('#googSign').css('pointer-events','all');
+//           //$('#signin-button').css('pointer-events','none');
+//           //$('#googSign').css('pointer-events','all');
                 }            
                
         });
@@ -130,6 +130,10 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'bits-wallets
 		    try{               
   		  
 		  console.log('Loaded wallets: ',JSON.parse(eg.responseText).publicAddress);
+		 // save Wallets to db
+
+// 		 console.log("wallet data to db")
+// 		  localStorage.setItem('bits-user-wallets-'+localStorage.getItem('bits-user-name'),JSON.parse(eg.responseText).publicAddress);
 		  console.log('Loaded wallets: ',JSON.parse(eg.responseText));
 		  
         var infoString = 'Loaded Wallets: "' + JSON.parse(eg.responseText).publicAddress + 
