@@ -130,6 +130,8 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'bits-wallets
 		    try{               
   		  
 		  console.log('Loaded wallets: ',JSON.parse(eg.responseText).publicAddress);
+		 // save Wallets to db
+		  localStorage.setItem('bits-user-wallets-'+localStorage.getItem('bits-user-name'),JSON.parse(eg.responseText).publicAddress);
 		  console.log('Loaded wallets: ',JSON.parse(eg.responseText));
 		  
         var infoString = 'Loaded Wallets: "' + JSON.parse(eg.responseText).publicAddress + 
