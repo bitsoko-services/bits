@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =441;
+	bitsVersion =443;
 // 	importScripts('https://bitsoko.io/bitsAssets/js/lightwallet/lightwallet.min.js');
 // 	importScripts('https://bitsoko.io/bitsAssets/js/web3/web3.js');
 // 	importScripts('https://bitsoko.io/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js');
@@ -146,7 +146,7 @@ return new Promise(function(resolve, reject) {
 		   }
 	 
 		else(state='complete')
-		{ bitsNotification('Order Complete','Your order is Complete','userOrderComplete','bits/images/yes.png','bits/images/yes.png',[{action: 'ok', title: "OK"}],true,true);
+		{ bitsNotification('Order Complete','Your order is Complete','userOrderComplete','bits/images/yes.png','bits/images/yes.png',[{action: 'complete', title: "Complete"}],true,true);
 		   }
 	 break;
 
