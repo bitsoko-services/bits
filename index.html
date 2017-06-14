@@ -40,7 +40,7 @@
 		<link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
 		<link href="js/plugins/jvectormap/jquery-jvectormap.css" type="text/css" rel="stylesheet" media="screen,projection">
 		<link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-		<link rel="import" href="https://bitsoko.io/bitsAssets/html/connector.html">
+		<link rel="import" href="https://bitsoko.io/bitsAssets/html/connect.html">
 	<!--	<script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"></script>-->
 	 <script src="https://bitsoko.io/bitsAssets/js/storeManager.js"></script>
 	<style>
@@ -456,20 +456,34 @@
    <div class="modal-content">
       <div class="row">
 		 
-<span style="">Your Wallet Address</span>
-	                <ul class="collection">
+<span style=""><span class="badge totalamts chip" style="right: 20% !important;">0 ETH</span> Your Wallet Address</span><br><br>
+<ul class="collapsible collapsible-accordion" style="border-top: 1px solid #ddd;" data-collapsible="accordion">
+  <li>
+    <div class="collapsible-header "><span class="badge totalethpri chip" style="right: 20% !important;">0 ETH</span> Private Wallet</div>
+    <div class="collapsible-body Private"></div>
+  </li>
+  <li>
+    <div class="collapsible-header"><span class="badge totalethpub chip" style="right: 20% !important;">0 ETH</span> Public Wallet</div>
+    <div class="collapsible-body Public"></div>
+  </li>
+  <li>
+    <div class="collapsible-header "><span class="badge totaleths chip" style="right: 20% !important;">0 ETH</span> Service Wallet</div>
+    <div class="collapsible-body Service"></div>
+  </li>
+</ul>
+<!--  	                <ul class="collection">
     <li class="collection-item">
       <span class="title"><a href="#!" id="share" class="secondary-content right"></a></span>
       <span class ="" style="font-size: 12px;">Currency: ETH</span>
       <span class ="username-addr" style="font-size: 12px;"></span>
       
-<!--     </li>
+   </li>
         <li class="collection-item username-addr-old">
      
       
-    </li> -->
-  </ul>
-</span>
+    </li>
+  </ul> -->
+
 </div>
 </div>
  <div class="modal-footer blue-grey lighten-5">
@@ -669,6 +683,7 @@
   <script type="text/javascript" src="js/delRate.js"></script>
  <script type="text/javascript" src="js/bits_promos.js"></script>
  <script type="text/javascript" src="js/bits-theme.js"></script>
+ <script type="text/javascript" src="js/bits-wallets-sort.js"></script>
  <script type="text/javascript"src="js/bits_number.js" ></script>
  <script type="text/javascript"src="js/bits-FeatureDiscovery.js" ></script>
  <script type="text/javascript"src="js/bits-follow.js" ></script>
