@@ -39,23 +39,18 @@ servicePageLoader();
 	 } 
 if (getBitsWinOpt('o') != undefined ) {
 
-	/*
+
 	 	doFetch({ action: 'storesBO',  id:parseInt(getBitsWinOpt('o'))  }).then(
 function(s){
     if (s.status=="ok"){ 
-
-		console.log("shops")
-           }else{ swal("error", "somthing bad happened, we are fixing it", "error");}
-                    });
-                    */
-shops=[];
-e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
+shops=[{id:localStorage.getItem('bits-active-service'),lonlat:'-12.3121,-1.23123'},{id:localStorage.getItem('bits-active-service'),lonlat:'-12.3121,-1.23123'}];
+// e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
 	
-e.onsuccess = function (event) { 		
-var x=JSON.parse(event.target.result);
-shops.push(x);
-shops.push(x);
-shops.push(x);
+// e.onsuccess = function (event) { 		
+// var x=JSON.parse(event.target.result);
+// shops.push(x);
+// shops.push(x);
+// shops.push(x);
 console.log(shops)
 var shortest = 0;
 var nearest;
@@ -95,11 +90,16 @@ window.location = location.origin + "/bits/?s="+nearest.id
 
  })
      }
+		console.log("shops")
+           }else{ swal("error", "somthing bad happened, we are fixing it", "error");}
+                    });
+                  
+
 
     
 }
   }  
-}
+
 //------------------------------------------end save--------------------------------------------------------------------------------------
 //---------------------------------------- subscription function--------------------------------------------------------------------------	    
 function doSubscribe(){	

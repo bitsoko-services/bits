@@ -1,7 +1,24 @@
 var exports = module.exports = {};
 
+// Initialize WebHooks module. 
+var WebHooks = require('node-webhooks')
+ 
+ 
+var webHooks = new WebHooks({
+    db: './webHooksDB.json', // json file that store webhook URLs 
+})
+ 
+// sync instantation - add a new webhook called 'shortname1' 
+webHooks.add('deliverhook', 'https://bitsoko.io/autobot/hook/put.php').then(function(){
+    // done 
+	console.log('hook hooked')
+}).catch(function(err){
+    console.log(err)
+})
+
 exports.incomingOrder = function(req, res) {
-	
+	 
+
    console.log('AI bot request!! ',req);
 	
     try {
