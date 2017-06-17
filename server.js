@@ -141,11 +141,11 @@ return new Promise(function(resolve, reject) {
 // 		{ bitsNotification('Order Cancelled','Your order has been cancelled ','userOrderCancelled','bits/images/no.png','bits/images/no.png',[{action: '', title: "Request"}],true,true);
 // 		   }
 	 
-		else if(state='delivering')
+		else if(state=='delivering')
 		{ bitsNotification('Order Delivered','Your order has been Delivered','userOrderDelivered','bits/images/Delivered.png','bits/images/Delivered.png',[{action: 'ok', title: "OK"}],true,true);
 		   }
 	 
-		else(state='complete')
+		else(state=='complete')
 		{ bitsNotification('Order Complete','Your order is Complete','userOrderComplete','bits/images/yes.png','bits/images/yes.png',[{action: 'complete', title: "Complete"}],true,true);
 		   }
 	 break;
