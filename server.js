@@ -145,7 +145,7 @@ return new Promise(function(resolve, reject) {
 		{ bitsNotification('Order Delivered','Your order has been Delivered','userOrderDelivered','bits/images/Delivered.png','bits/images/Delivered.png',[{action: 'ok', title: "OK"}],true,true);
 		   }
 	 
-		else(state='complete')
+		else if(state='complete')
 		{ bitsNotification('Order Complete','Your order is Complete','userOrderComplete','bits/images/yes.png','bits/images/yes.png',[{action: 'complete', title: "Complete"}],true,true);
 		   }
 	 break;
