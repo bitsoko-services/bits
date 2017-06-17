@@ -133,7 +133,7 @@ return new Promise(function(resolve, reject) {
  case 'userOrder':
     
       var state='pending';
-		 if(state='pending')
+		 if(state=='pending')
 		 { bitsNotification('Order pending','You have requested for this service ','userOrderPending','bits/images/pending.png',dat.orderImg,[{action: 'cancel', title: "Cancel"}],true,true);
 		   }
 	  
