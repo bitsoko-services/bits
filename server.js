@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =446;
+	bitsVersion =447;
 // 	importScripts('https://bitsoko.io/bitsAssets/js/lightwallet/lightwallet.min.js');
 // 	importScripts('https://bitsoko.io/bitsAssets/js/web3/web3.js');
 // 	importScripts('https://bitsoko.io/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js');
