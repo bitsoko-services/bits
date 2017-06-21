@@ -362,6 +362,9 @@ $(".del").append(parseInt(localStorage.getItem('bits-merchant-delivery-rate-'+pa
 		$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address);
 
 
+ }).catch(function(){
+ 	//toast location error
+ 	Materialize.toast('<span class="toastlogin">Turn on your location', 3000);
  });
 
  });
