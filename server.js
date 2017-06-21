@@ -143,9 +143,7 @@ return new Promise(function(resolve, reject) {
 	 
 		else if(state=='delivering')
 		{ bitsNotification('Order Delivered','Your order has been Delivered','userOrderDelivered','bits/images/Delivered.png','bits/images/Delivered.png',[{action: 'ok', title: "OK"}],true,true);
-		   }
-	 
-		else(state=='complete')
+		   }else(state=='complete')
 		{ bitsNotification('Order Complete','Your order is Complete','userOrderComplete','bits/images/yes.png','bits/images/yes.png',[{action: 'complete', title: "Complete"}],true,true);
 		   }
 	 break;
