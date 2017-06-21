@@ -29,7 +29,15 @@ function callMerchant(){
 	$('.callbtn').html('') 
 $('.callbtn').append('<a  onclick="rate()" id="star" value="rating" class="btn-large btn-price bits noshadow bitb" style="float: left !important;/* right: 0%; */ margin-top: ;"><i class="mdi-action-grade activator"></i></a><button  id="share" value="Share" class="bitb displayNone btn-large btn-price bits noshadow" style="float: right !important;/* right: 0%; */ margin-top: ;"><i class="mdi-social-share"></i></button> <a href="tel:'+p+'"  id="" value="" class=" btn-large btn-price bits noshadow bitb" style="float: right !important; margin-right: ;/* right: 0%; */ margin-top: ;"><i class="mdi-communication-call"></i></a>');      
 
-
+ //web Share start
+document.querySelector("#share").addEventListener('click', function(event) {
+    navigator.share({
+    title: actvServ().name,
+    text:actvServ().desription ,
+    url: window.location.href
+}).then(() => console.log('Successful share'))
+.catch(error => console.log('Error sharing:', error));
+            });
 	});
 }
 function rate(){

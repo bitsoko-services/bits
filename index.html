@@ -395,6 +395,7 @@
         </div>
         <!-- END WRAPPER -->
     </div>
+    
     <!-- END MAIN -->
       <!-- Modal Structure -->
   <div id="modalconfirm" class="modal modal-fixed-footer bits" style="height:500px;    max-height: 800px !important;">
@@ -967,25 +968,17 @@ reject(e);
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
- //web Share start
-document.querySelector("#share").addEventListener('click', function(event) {
-    navigator.share({
-    title: actvServ().name,
-    text:actvServ().desription ,
-    url: window.location.href
-}).then(() => console.log('Successful share'))
-.catch(error => console.log('Error sharing:', error));
-            });
+
 //web Share end location.hash=location.hash+"&i="+
 //web ShareQR start
-document.querySelector("#shareQR").addEventListener('click', function(event) {
-    navigator.share({
-    title: "Bitcoin Address",
-    text: localStorage.getItem('bits-user-wallet')
-// url: window.location.href
-}).then(() => console.log('Successful shareQR'))
-.catch(error => console.log('Error sharingQR:', error));
-            });
+// document.querySelector("#shareQR").addEventListener('click', function(event) {
+//     navigator.share({
+//     title: "Bitcoin Address",
+//     text: localStorage.getItem('bits-user-wallet')
+// // url: window.location.href
+// }).then(() => console.log('Successful shareQR'))
+// .catch(error => console.log('Error sharingQR:', error));
+//             });
 function navMenu(sId){
 //navigate to the sId service page
 contact();
