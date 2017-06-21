@@ -812,10 +812,7 @@ function setupDC1() {
    // Check if a new cache is available on page load.
   
 window.addEventListener('load', function(e) {
-	
-	//messaging start
-startmessage();
- // messaging end
+
      bc.addEventListener('message', function(e) {
   
         var dt =e.data;
