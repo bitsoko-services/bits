@@ -861,9 +861,8 @@ $(function(){
 
 </script>
 <script type="text/javascript">
-
-$(document).ready(function() {
-//
+window.onload = function() {
+ //
 var dReady = Promise.resolve('ok');
 
 Promise.all([dReady,indexDbReady]).then(values => { 
@@ -931,7 +930,8 @@ startPay(actvServ().storeAddress,'servID-'+getBitsWinOpt('s')+'-'+getBitsWinOpt(
     
        
   });
-  });
+};
+
 
 // e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
 // e.onsuccess = function (event) {
