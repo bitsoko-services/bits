@@ -37,21 +37,13 @@ servicePageLoader();
 	 updatePromos();
 	 subscribedPromos();
 	 } 
+///.////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 if (getBitsWinOpt('o') != undefined ) {
-
-
-	 	doFetch({ action: 'storesBO',  id:parseInt(getBitsWinOpt('o'))  }).then(
+doFetch({ action: 'storesBO',  id:parseInt(getBitsWinOpt('o'))  }).then(
 function(s){
-    if (s.status=="ok"){ 
+if (s.status=="ok"){ 
 shops=[{id:localStorage.getItem('bits-active-service'),lonlat:'-12.3121,-1.23123'},{id:localStorage.getItem('bits-active-service'),lonlat:'-12.3121,-1.23123'}];
-// e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
-	
-// e.onsuccess = function (event) { 		
-// var x=JSON.parse(event.target.result);
-// shops.push(x);
-// shops.push(x);
-// shops.push(x);
-console.log(shops)
+//console.log(shops)
 var shortest = 0;
 var nearest;
 var disCal=0;
@@ -85,7 +77,7 @@ if(distance<shortest){
 console.log(disCal,shops.length)
 if(disCal==shops.length){
 console.log(nearest.id);
-window.location = location.origin + "/bits/?s="+nearest.id
+window.location = location.origin + location.pathname + "?s="+nearest.id
 }
 
  })

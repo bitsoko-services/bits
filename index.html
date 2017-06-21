@@ -42,7 +42,7 @@
 		<link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 		<link rel="import" href="https://bitsoko.io/bitsAssets/html/connect.html">
 	<!--	<script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"></script>-->
-	 <script src="https://bitsoko.io/bitsAssets/js/storeManager.js"></script>
+
 	<style>
 .switch label input[type=checkbox]:checked + .lever:after {
     background-color: #{theme} !important;
@@ -54,7 +54,7 @@
 #burst-12:before, #burst-12:after{border: 6px solid  #{theme} !important;}
 	</style>
 </head>
-<body onload="starting()">
+<body >
 	<bits-connect></bits-connect>
     <!--Start Page Loading -->
 <!-- 	<div id="loader-wrapper">
@@ -395,6 +395,7 @@
         </div>
         <!-- END WRAPPER -->
     </div>
+    
     <!-- END MAIN -->
       <!-- Modal Structure -->
   <div id="modalconfirm" class="modal modal-fixed-footer bits" style="height:500px;    max-height: 800px !important;">
@@ -407,7 +408,7 @@
             <div class="card-content">
             <div class=" totalp bits">
             <div class="chip"style="color: #ffffff !important;margin-top: 4px; background: none; font-size: 15px;">
-            <i class="mdi-action-add-shopping-cart">: </i> <span class="totals"></span>
+            <i class="mdi-action-add-shopping-cart">: </i> <span class="totals2"></span>
             </div>
             <div class="chip"style="color: #ffffff !important; margin-top: 4px;background: none; font-size: 15px;">
             <i class="mdi-maps-local-shipping"> : </i> <span class="del"></span>
@@ -471,7 +472,7 @@
     <div class="collapsible-body Service"></div>
   </li>
 </ul>
-<!--  	                <ul class="collection">
+ 	                <ul class="collection displayNone">
     <li class="collection-item">
       <span class="title"><a href="#!" id="share" class="secondary-content right"></a></span>
       <span class ="" style="font-size: 12px;">Currency: ETH</span>
@@ -482,7 +483,7 @@
      
       
     </li>
-  </ul> -->
+  </ul> 
 
 </div>
 </div>
@@ -675,6 +676,7 @@
 <div class="star displayNone"id="burst-11">1</div>
 <!-- ================================================Scripts================================================-->
 <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js" async defer></script>
+	 <script src="https://bitsoko.io/bitsAssets/js/storeManager.js"></script>
 <script type="text/javascript" src="js/bits_contacts.js"></script>
  <script type="text/javascript" src="js/functions.js"></script> 
  <script type="text/javascript" src="js/bits_jspdf.js"></script>
@@ -730,11 +732,11 @@
 <!--=============================================================================================================================================================== -->
     <script>
 ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
-//   if (bDet.os.name!='Android'){ 
-//        console.log('uncompatible');      
-//                window.location="https://bitsoko.io/soko/"; 
-//  }else{ 
-//  };
+  if (bDet.os.name!='Android' && location.hostname!="localhost"){ 
+       console.log('uncompatible');      
+               window.location="https://bitsoko.io/soko/"; 
+ }else{ 
+ };
 
 ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
 
@@ -859,9 +861,15 @@ $(function(){
 
 </script>
 <script type="text/javascript">
+window.onload = function() {
+ //
+var dReady = Promise.resolve('ok');
 
-$(document).ready(function() {
-//starting();
+Promise.all([dReady,indexDbReady]).then(values => { 
+  console.log(values); 
+  starting(); 
+});
+
 //$(".serviceListHolder").hide();
 $(".serviceListCard").hide();
 // $('.carousel').carousel();
@@ -922,7 +930,8 @@ startPay(actvServ().storeAddress,'servID-'+getBitsWinOpt('s')+'-'+getBitsWinOpt(
     
        
   });
-  });
+};
+
 
 // e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
 // e.onsuccess = function (event) {
@@ -932,7 +941,7 @@ startPay(actvServ().storeAddress,'servID-'+getBitsWinOpt('s')+'-'+getBitsWinOpt(
  
   function actvServ(){
 return new Promise(function(resolve, reject) {
-  //  serviceOpener()
+    //serviceOpener()
 e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
 e.onsuccess = function (event) {
 	console.log(e)
@@ -959,25 +968,17 @@ reject(e);
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
- //web Share start
-document.querySelector("#share").addEventListener('click', function(event) {
-    navigator.share({
-    title: actvServ().name,
-    text:actvServ().desription ,
-    url: window.location.href
-}).then(() => console.log('Successful share'))
-.catch(error => console.log('Error sharing:', error));
-            });
+
 //web Share end location.hash=location.hash+"&i="+
 //web ShareQR start
-document.querySelector("#shareQR").addEventListener('click', function(event) {
-    navigator.share({
-    title: "Bitcoin Address",
-    text: localStorage.getItem('bits-user-wallet')
-// url: window.location.href
-}).then(() => console.log('Successful shareQR'))
-.catch(error => console.log('Error sharingQR:', error));
-            });
+// document.querySelector("#shareQR").addEventListener('click', function(event) {
+//     navigator.share({
+//     title: "Bitcoin Address",
+//     text: localStorage.getItem('bits-user-wallet')
+// // url: window.location.href
+// }).then(() => console.log('Successful shareQR'))
+// .catch(error => console.log('Error sharingQR:', error));
+//             });
 function navMenu(sId){
 //navigate to the sId service page
 contact();

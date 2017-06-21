@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////--calculates the delivery rate of shop --////////////////////////////////////////////////
-function delRate(){
+function finalCost(){
   var x; var y; var c;
 //--geting the user location details---------------------------------------------------------------------------------------//
 
@@ -25,8 +25,21 @@ console.log(distance);
 //--rates
 var rates = d*distance;
 console.log("The shops delivery rates are "+rates);
-//set del rates
- localStorage.setItem('bits-merchant-delivery-rate-'+parseInt(getBitsWinOpt('s')),rates);
+
+		//console.log(y);
+		 //add delivery rate to totals 
+		 var divObj = document.getElementById("totals");    
+		var totalCost = parseInt(divObj.innerHTML) + rates
+		console.log(totalCost);
+		//localStorage.setItem('bits-merchant'+parseInt(getBitsWinOpt('s'))+'-Total cost',totalCost);
+$(".confirmText").html("")
+$(".confirmText").append(totalCost+'<span class="localCurr">Kes</span></span>')
+$(".totals2").html("")
+$(".totals2").append(parseInt(divObj.innerHTML))
+$(".del").html("")
+$(".del").append(rates)
+$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address);
+	
 })
 
 })

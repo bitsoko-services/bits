@@ -29,7 +29,15 @@ function callMerchant(){
 	$('.callbtn').html('') 
 $('.callbtn').append('<a  onclick="rate()" id="star" value="rating" class="btn-large btn-price bits noshadow bitb" style="float: left !important;/* right: 0%; */ margin-top: ;"><i class="mdi-action-grade activator"></i></a><button  id="share" value="Share" class="bitb displayNone btn-large btn-price bits noshadow" style="float: right !important;/* right: 0%; */ margin-top: ;"><i class="mdi-social-share"></i></button> <a href="tel:'+p+'"  id="" value="" class=" btn-large btn-price bits noshadow bitb" style="float: right !important; margin-right: ;/* right: 0%; */ margin-top: ;"><i class="mdi-communication-call"></i></a>');      
 
-
+ //web Share start
+document.querySelector("#share").addEventListener('click', function(event) {
+    navigator.share({
+    title: actvServ().name,
+    text:actvServ().desription ,
+    url: window.location.href
+}).then(() => console.log('Successful share'))
+.catch(error => console.log('Error sharing:', error));
+            });
 	});
 }
 function rate(){
@@ -54,25 +62,18 @@ contact();
 }  
   if(parseInt(getBitsWinOpt('s')) == 3){ 
 //merchants(); 
-}  
-
-	 
- 	$(".serviceListHolder").show();
- 	$(".serviceListCard").show();
+}  	 
+ $(".serviceListHolder").show();
+ $(".serviceListCard").show();
  $(".promoHolder").hide();
-	    
-
-
- 
  	 doFetch({ action: 'serviceProfile', id: servID, service: getBitsWinOpt('s')}).then(function(e){
            if (e.status=="ok"){
 			    getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-'+e.data.id);
-           	      populateService(e.data);
-	
+           	      populateService(e.data);	
 	                }else{
                 $(".serviceListHolder").hide();
                 $(".serviceListCard").hide();
- $(".promoHolder").show();
+ 				$(".promoHolder").show();
            }
         })
          .catch(function(){
@@ -278,9 +279,9 @@ $('.recipt').append('');
 		Materialize.toast('creating your order', 3000);
 		//checkanon();
 		if(checkanon()==false){$('#loginModal').openModal(); return;}
-
+console.log('1')
 		checkmobiveri();
-		
+		console.log('2')
 		 var p = document.getElementById('totals').innerHTML; 
 		 $('.delivery').addClass('animated jello');
 		console.log(p)
@@ -361,6 +362,9 @@ $(".del").append(parseInt(localStorage.getItem('bits-merchant-delivery-rate-'+pa
 		$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address);
 
 
+ }).catch(function(){
+ 	//toast location error
+ 	Materialize.toast('<span class="toastlogin">Turn on your location', 3000);
  });
 
  });
