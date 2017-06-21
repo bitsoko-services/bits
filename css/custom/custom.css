@@ -167,7 +167,7 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
     font-size: 25px !important;
 }
 .mapdata{
-	margin-top: 230px !important;
+	margin-top: 140px !important;
 	width: 100% !important;
 	/* margin-left: -50% !important; */
 	position: absolute !important;
@@ -394,6 +394,7 @@ nav {
 	color: #fff;
 	padding-top: 50px;
 	width: 100%;
+	z-index: 100;
 }
 .sweet-alert + p + .deldata{
 	

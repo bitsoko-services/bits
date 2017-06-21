@@ -279,9 +279,9 @@ $('.recipt').append('');
 		Materialize.toast('creating your order', 3000);
 		//checkanon();
 		if(checkanon()==false){$('#loginModal').openModal(); return;}
-
+console.log('1')
 		checkmobiveri();
-		
+		console.log('2')
 		 var p = document.getElementById('totals').innerHTML; 
 		 $('.delivery').addClass('animated jello');
 		console.log(p)
