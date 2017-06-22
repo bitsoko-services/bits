@@ -272,7 +272,7 @@ Promise.all(allPs).then(olWalss => {
 function starting(){
 	$('#loginModal').closeModal()
 	
-	//startGoogle(); 
+	startGoogle(); 
 	checkanon();
 	togglebuttons();
 	showuser();

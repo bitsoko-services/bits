@@ -167,7 +167,7 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
     font-size: 25px !important;
 }
 .mapdata{
-	margin-top: 140px !important;
+	margin-top: 168px !important;
 	width: 100% !important;
 	/* margin-left: -50% !important; */
 	position: absolute !important;
@@ -394,7 +394,8 @@ nav {
 	color: #fff;
 	padding-top: 50px;
 	width: 100%;
-	z-index: 100;
+	/* z-index: 10; */
+	/* position: absolute; */
 }
 .sweet-alert + p + .deldata{
 	
@@ -410,9 +411,10 @@ nav {
 	font-size: 14px !important;
 	width: 100%;
 	position: absolute;
-	opacity: 0.6;
+	opacity: 0.85;
 	text-align: -webkit-center;
 	color: white;
+	z-index: 1;
 }
 .confirmText{
 	font-size: 17px;
@@ -423,6 +425,7 @@ nav {
 	    width: 100%;
 	    /* height: 25px; */
 	    /* padding: 15px; */
+	    opacity: 0.9;
 	    background: rgba(0, 0, 0, 0);
 	    /* padding-top: 5px; */
 	    /* padding-bottom: 5px; */
@@ -430,6 +433,7 @@ nav {
 	    /* margin-left: 30%; */
 	    position: absolute;
 	    /* margin: auto; */
+	    z-index: 1;
 	    margin-top: 205px;
 	    color: #ffffff !important;
 }

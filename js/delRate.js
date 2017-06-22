@@ -38,7 +38,6 @@ $(".totals2").html("")
 $(".totals2").append(parseInt(divObj.innerHTML))
 $(".del").html("")
 $(".del").append(rates)
-$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address);
 	
 })
 
