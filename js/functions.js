@@ -537,14 +537,14 @@ console.log(r);
  for (var o in r) {
  for (var oo in orderArray) {
 
-//console.log(r[o].id,orderArray[oo].pid)
+console.log(r[o].id,orderArray[oo].count)
  	if(r[o].id==orderArray[oo].pid){
 
 console.log("match")
 //products
 //$("#products").html("")
 $("#products").append('<div class="chip">'+ 
-   '<img src="'+r[o].imagePath+'" alt="Contact Person">'+r[o].name+  
+   '<img src="'+r[o].imagePath+'" alt="Contact Person">'+orderArray[oo].count + ' '+ r[o].name+  
     '</div>')
 
 

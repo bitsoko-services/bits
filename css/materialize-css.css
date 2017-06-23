@@ -4801,6 +4801,7 @@ small {
   top: 0;
   bottom: 0;
   /* width: 100%; */
+  z-index: 0;
 }
 
 .card .card-image .card-title {
@@ -5763,7 +5764,7 @@ button.btn-floating {
   line-height: 32px;
   padding: 0 12px;
   border-radius: 16px;
-  background-color: #e4e4e4;
+  background-color: #dedcdc;
   margin-bottom: 5px;
   margin-right: 5px;
 }
