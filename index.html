@@ -732,21 +732,19 @@
 <!--=============================================================================================================================================================== -->
     <script>
 ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
-  if (bDet.os.name!='Android' && location.hostname!="localhost"){ 
+  if (bDet.os.name!='Android' && location.hostname=="bitsoko.io"){ 
        console.log('uncompatible');      
                window.location="https://bitsoko.io/soko/"; 
- }else{ 
- };
+ }
 
 ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
 
-
-  if (bDet.browser.version>=minVersionSup && bDet.browser.name=='Chrome'){ 
+if (bDet.browser.version>=minVersionSup && bDet.browser.name=='Chrome'){ 
        console.log('compatible'); 
       
  }else{ 
- $('#updateBrowsermodal').openModal(
- {
+	 
+ $('#updateBrowsermodal').openModal({
  	 dismissible:false
  });
  	
