@@ -732,11 +732,7 @@
 <!--=============================================================================================================================================================== -->
     <script>
 ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
-  if (bDet.os.name!='Android' && location.hostname=="bitsoko.io"){ 
-       console.log('uncompatible');      
-               window.location="https://bitsoko.io/soko/"; 
- }
-
+  if (bDet.os.name=='Android' && location.hostname=="bitsoko.io"){ 
 ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
 
 if (bDet.browser.version>=minVersionSup && bDet.browser.name=='Chrome'){ 
@@ -747,16 +743,19 @@ if (bDet.browser.version>=minVersionSup && bDet.browser.name=='Chrome'){
  $('#updateBrowsermodal').openModal({
  	 dismissible:false
  });
- 	
-requestPersist();
-// alert('update browser'); 
-//   if (confirm("Please update browser") == true) {
-//         x = location.reload();
-//     } else {
-//         x = location.reload();
-//     }
     
  } 
+	  
+ }else{
+ 
+	  
+       console.log('uncompatible');      
+               window.location="https://bitsoko.io/soko/"; 
+ }
+
+	    
+requestPersist();
+	    
   function reload(){
  	location.reload();
  		
