@@ -359,6 +359,7 @@ $(".totals").html("")
 $(".totals").append(parseInt(localStorage.getItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')))))
 $(".del").html("")
 $(".del").append(parseInt(localStorage.getItem('bits-merchant-delivery-rate-'+parseInt(getBitsWinOpt('s')))))
+$(".mapText").html("")
 		$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address);
 
 
