@@ -183,26 +183,17 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'bits-wallets
         var addresses = global_keystore.getAddresses();
 
 
-        
-		  
-		  doFetch({action:'saveUserDet', user: p.id , data: JSON.stringify(p)}).then(function(ef){
-            if (ef.status=="ok"){
-              p.bitsokoUserID=ef.buid;
-		  //loadWallet(adrr);
 		  //localStorage.setItem("bits-user-wallet", adrr);
-		   console.log(eg.responseText, 'bits-wallets-'+ef.buid);
-		   console.log(JSON.stringify(p), 'user-profile-'+ef.buid);
+		   console.log(eg.responseText, 'bits-wallets-'+p.bitsokoUserID);
+		   console.log(JSON.stringify(p), 'user-profile-'+p.bitsokoUserID);
 		 
-			 localStorage.setItem('bits-user-name',ef.buid);
+			 localStorage.setItem('bits-user-name',p.bitsokoUserID);
 		  	   	      
-getObjectStore('data', 'readwrite').put(addresses, 'bits-wallets-'+ef.buid);
+getObjectStore('data', 'readwrite').put(addresses, 'bits-wallets-'+p.bitsokoUserID);
 		    
-   getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'user-profile-'+ef.buid);
+   getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'user-profile-'+p.bitsokoUserID);
 		
-		    recoverOldWallets(olWals);    
-        
-	    }
-		  });
+		    recoverOldWallets(olWals); 
 
         });
         });
