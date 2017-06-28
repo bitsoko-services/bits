@@ -1,5 +1,29 @@
 function profileLoaded(p){
 
+//save user info
+
+
+		  
+		  doFetch({action:'saveUserDet', user: p.id , data: JSON.stringify(p)}).then(function(e){
+            if (e.status=="ok"){
+              p.bitsokoUserID=e.buid;
+              starting();
+               saveWalletInfo(p);
+
+
+         }            
+               
+        });
+
+
+
+
+
+}
+
+function saveWalletInfo(p){
+//save wallet info
+
     
 Materialize.toast('loading wallets', 3000);
       var retrievePageOfFiles = function(request, result) {
@@ -49,12 +73,6 @@ moment(result[i].modifiedDate).valueOf()>cm){
 	createWallet(p.id).then(function(ee){
 	
 		  
-		  
-		  doFetch({action:'saveUserDet', user: p.id , data: JSON.stringify(p)}).then(function(e){
-            if (e.status=="ok"){
-              p.bitsokoUserID=e.buid;
-		   // localStorage.setItem('bitsoko-owner-id',e.buid)
-		  
 	var walAll=[];
 			 
 	walAll.push(JSON.stringify(ee));
@@ -63,8 +81,8 @@ moment(result[i].modifiedDate).valueOf()>cm){
        
        console.log(r);
 		  
-			 localStorage.setItem('bits-user-name',e.buid);  
-   getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+e.buid);
+			 localStorage.setItem('bits-user-name',p.bitsokoUserID);  
+   getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-'+p.bitsokoUserID);
 			   	
 
 
@@ -98,7 +116,7 @@ var randomSeed=ee;
 		  localStorage.setItem("bits-user-wallet", addresses);
 		  
 			   	      
-getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'bits-wallets-'+e.buid);
+getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'bits-wallets-'+p.bitsokoUserID);
 
         });
 
@@ -112,16 +130,9 @@ getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'bits-wallets
 
 
 		    recoverOldWallets(olWals);
-        starting();
+    
    }); 
-		    
-// // profileLoaded(profile.id);
-                
-//           //$('#signin-button').css('pointer-events','none');
-//           //$('#googSign').css('pointer-events','all');
-                }            
-               
-        });
+		
 	});	  
 		  
 		  
@@ -189,7 +200,7 @@ getObjectStore('data', 'readwrite').put(addresses, 'bits-wallets-'+ef.buid);
    getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'user-profile-'+ef.buid);
 		
 		    recoverOldWallets(olWals);    
-        starting();
+        
 	    }
 		  });
 
