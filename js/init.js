@@ -8,7 +8,7 @@ function profileLoaded(p){
             if (e.status=="ok"){
               p.bitsokoUserID=e.buid;
               starting();
-               saveWalletInfo(p);
+               walletFunctions(p);
 
 
          }            
@@ -21,7 +21,7 @@ function profileLoaded(p){
 
 }
 
-function saveWalletInfo(p){
+function walletFunctions(p){
 //save wallet info
 
     
