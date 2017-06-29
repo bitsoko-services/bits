@@ -8,7 +8,7 @@ function profileLoaded(p){
             if (e.status=="ok"){
               p.bitsokoUserID=e.buid;
               starting();
-               walletFunctions(p);
+              // walletFunctions(p);
 
 
          }            
