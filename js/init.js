@@ -81,6 +81,7 @@ function starting(){
 	togglebuttons();
 	showuser();
 	showlogintoast();
+	 loadProfData();
 startUser(localStorage.getItem('bits-user-name')).then(function(e){
 
 	
