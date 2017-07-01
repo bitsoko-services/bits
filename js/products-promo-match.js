@@ -13,8 +13,8 @@ e.onsuccess = function (event) {
  	window.navigator.vibrate(200); // vibrate for 200ms
  	$('.star').removeClass('displayNone');
  	$('.star').removeClass('animated');
- 	$('.star').removeClass('bounceOutUp');
- 	  $('.star').addClass(' animated bounceInDown'), setTimeout(function(){$('.star').removeClass(' animated fadeInDown')},1000);
+ 	$('.star').removeClass('bounceOutLeft');
+ 	  $('.star').addClass(' animated bounceInLeft'), setTimeout(function(){$('.star').removeClass(' animated fadeInDown')},1000);
  //setTimeout(function(){ $(".star").fadeOut();$(".star").fadeIn();},1000);
- setTimeout(function(){ $('.star').addClass('animated bounceOutUp');},1000);
+ setTimeout(function(){ $('.star').addClass('animated bounceOutLeft');},1500);
  }
