@@ -1342,7 +1342,7 @@ returns.symbol='usd';
 
       function setWeb3Provider(keystore) {
         var web3Provider = new HookedWeb3Provider({
-          host: "http://localhost:8545",
+          host: "http://104.199.153.171:8545/",
           transaction_signer: keystore
         });
 
