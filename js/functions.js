@@ -47,7 +47,7 @@ function rate(){
 //...........................URL check end//.................................................................................................................................................
 //function service Page loader..........
 function servicePageLoader(){
-	
+	console.log('servicePageLoader()..');
 $(".delrow").removeClass("displayNone");
 if(parseInt(getBitsWinOpt('s')) >5){
 var servID=getBitsWinOpt('s');
