@@ -132,7 +132,7 @@
                                 </li>
                                  <li><a href="?s=2"class="call "> <i class="mdi-communication-call"></i><span class="bits-13" style=""></span> <span href id="btn">Contacts</span> </a>
                                 </li>
-                                 <li class="bold"><a class="" onclick=" walletFunctions()"><i class="mdi-action-payment"></i>Wallets</a>
+                                 <li class="bold"><a href="#adressesModal" class="modal-trigger" class="" onclick=""><i class="mdi-action-payment"></i>Wallets</a>
             <ul class="collapsible collapsible-accordion">
           
                     <li class="li-hover center" style="position: absolute;bottom:85px;opacity: 0.4;"><p class="ultra-small margin more-text">Bits V:<span id="bv" class="ultra-small margin more-text"> </span></p></li>
@@ -166,8 +166,8 @@
                     </div>
               </a>
               </li>
-                                <li><a href="#adressesModal" class="modal-trigger"> <i class="mdi-action-assignment"></i><span class="bits-13" style=""></span> <span href id="btn">Addresses</span>  </a>  
-                                </li>
+<!--                            walletFunctions()      <li><a href="" class="modal-trigger"> <i class="mdi-action-assignment"></i><span class="bits-13" style=""></span> <span href id="btn">Addresses</span>  </a>  
+                                </li> -->
                                 <li><a href="#MobileModal"class="modal-trigger"> <i class="mdi-communication-phone"></i><span class="bits-13" style=""></span> <span href id="btn">Mobile Number</span> </a>
                                 </li>
                                 <li><a href="#KYCModal"class="modal-trigger displayNone"> <i class="mdi-action-grade"></i><span class="bits-13" style=""></span> <span href id="btn">Your details</span> </a>
@@ -492,7 +492,7 @@
 </div>
  <div class="modal-footer blue-grey lighten-5">
          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-          <a href="#!" id="btn_save" class="waves-effect waves-green btn-flat">Back up</a>
+<!--           <a href="#!" id="btn_save" class="waves-effect waves-green btn-flat">Back up</a> -->
     </div>
 </div>
            
@@ -978,7 +978,7 @@ e.onsuccess = function (event) {
  			var e=JSON.parse(event.target.result);
  			resolve(e);
  		}catch(err){
- 			 reject('no such service');
+ 			 servicePageLoader()
  			}
 
   }     
