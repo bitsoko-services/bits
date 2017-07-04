@@ -470,9 +470,13 @@ if (e.data==null){
 }
 function checkDeliveries (d){
 		console.log(d);
-if (d == 'false'){console.log("Deliveries for this shop not available")}else{
-		$(".delivery").addClass("displayNone")
-		return;
+if (d == 'false'){
+	console.log("Deliveries for this shop not available");
+	
+$(".delivery").addClass("displayNone");
+}else{
+		
+		$(".delivery").removeClass("displayNone");
 }
        
 
