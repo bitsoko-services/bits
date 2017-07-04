@@ -68,8 +68,9 @@ contact();
  $(".promoHolder").hide();
  	 doFetch({ action: 'serviceProfile', id: servID, service: getBitsWinOpt('s')}).then(function(e){
            if (e.status=="ok"){
+		   populateService(e.data);
 			    getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-'+e.data.id);
-           	      populateService(e.data);	
+           	      	
 	                }else{
                 $(".serviceListHolder").hide();
                 $(".serviceListCard").hide();
