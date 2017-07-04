@@ -375,7 +375,7 @@
 <!-- ---------------------  Floating Action Button Home page sends you to contact or merchants page ------------------ -->
                    <div class="">       
                   <div class="row delrow displayNone">
-                  <div class="chip delivery white-text pointer-events" id="" style="   " onclick="makeOrder();">
+                  <div class="chip delivery white-text pointer-events" id="" style="   " onclick="makeOrder(orderArray);">
     					 <span style="">deliver</span> <i class="mdi-maps-local-grocery-store right" style="font-size: 24px;"></i>
 						</div>
                    <div class="fixed-action-btn  floatingPrice " id="bits-prices" style="bottom: 10px; right: 50px; pointer-events: none;">
@@ -752,26 +752,35 @@
 <!--=============================================================================================================================================================== -->
     <script>
 ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
-//   if (bDet.os.name=='Android' && location.hostname=="bitsoko.io"){ 
-// ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
+  if (bDet.os.name=='Android' && location.hostname=="bitsoko.io"){ 
+////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
 
-// if (bDet.browser.version>=minVersionSup && bDet.browser.name=='Chrome'){ 
-//        console.log('compatible'); 
+if (bDet.browser.version>=minVersionSup && bDet.browser.name=='Chrome'){ 
+       console.log('compatible'); 
       
-//  }else{ 
+ }else{ 
 	 
-//  $('#updateBrowsermodal').openModal({
-//  	 dismissible:false
-//  });
+ $('#updateBrowsermodal').openModal({
+ 	 dismissible:false
+ });
     
-//  } 
+ } 
 	  
-//  }else{
+ }else if (bDet.os.name=='Android'){
  
 	  
-//        console.log('uncompatible');      
-//                window.location="https://bitsoko.io/soko/"; 
-//  }
+       console.log('uncompatible');      
+               window.location="https://bitsoko.io/soko/"; 
+ }else{
+ 
+	  
+ console.log('uncompatible');	 
+       
+ $('#updateBrowsermodal').openModal({
+ 	 dismissible:false
+ });
+  
+ }
 
 	    
 requestPersist();
