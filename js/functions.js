@@ -468,27 +468,13 @@ if (e.data==null){
            }
 	})
 }
-function checkDeliveries (){
-// 		actvServ().then(function(p){
-// 	var p=p.deliveries
-// 	//var p=p.payments
-// if (p){console.log("Deliveries for this shop not available")}else{
-// 	//swal("Sorry", "Deliveries for this shop not available", "error");
-// 	$(".delivery").addClass("displayNone")
-// 		return;
-// }})
-	               
-		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));	
-		e.onsuccess = function (event) { 		
-		var x=JSON.parse(event.target.result);
-		console.log(x.deliveries);
-if (x.deliveries == false){console.log("Deliveries for this shop not available")}else{
+function checkDeliveries (d){
+		console.log(d);
+if (d == 'false'){console.log("Deliveries for this shop not available")}else{
 		$(".delivery").addClass("displayNone")
 		return;
 }
-         
-}
-         
+       
 
 }
 function createOrder (){
