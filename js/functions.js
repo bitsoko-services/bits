@@ -487,6 +487,8 @@ if (x.deliveries == false){console.log("Deliveries for this shop not available")
 		return;
 }
          
+}
+         
 
 }
 function createOrder (){
