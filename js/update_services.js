@@ -181,7 +181,7 @@ function populateService(mDet){
 		 //convertHex( mDet.theme,opacity)
 		setTimeout(function(){loadvisit();},1050);
 //-----------------------------------------------Check if deliveries are on -----------------------------------------------------------------------------------
-checkDeliveries();
+checkDeliveries(mDet.deliveries);
 //-----------------------------------------------incase the user is the owner of this shop, then show POS button------------------------------------------------------------------------------------------------
 	 if(mDet.owner==parseInt(localStorage.getItem('bits-user-name'))){
 	 $('#manage-store').css("display","block");
