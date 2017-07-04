@@ -18,7 +18,7 @@ activeService=$('#serviceModal').attr('service');
 }
 //-----------------------------------------------save to local storage------------------------------------------------------------------
 function serviceOpener(){
-
+console.log('serviceOpener()..');
 if (getBitsWinOpt('s') != undefined ) 
  {	 
 servicePageLoader();
