@@ -78,11 +78,7 @@ contact();
            }
         })
          .catch(function(){
-		    
-actvServ().then(function(e){
-	populateService(e);
-	
-});
+	console.log('trying to populate from sever null');
          });
 	    
 // actvServ().then(function(e){
