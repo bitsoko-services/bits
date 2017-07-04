@@ -6,7 +6,7 @@ function bitsTheme(){
 		var p=p.theme
 
 
-	if (p=="" && p==undefined){
+	if (p=="" || p==undefined){
 		 console.log("cant find theme colour");
 		p="#0f5f76";
 	}
