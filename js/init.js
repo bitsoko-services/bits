@@ -78,10 +78,12 @@ function starting(){
 	
 	startGoogle(); 
 	checkanon();
+
 	togglebuttons();
 	showuser();
 	showlogintoast();
 	 loadProfData();
+	  getUserOders();
 startUser(localStorage.getItem('bits-user-name')).then(function(e){
 
 	
@@ -163,11 +165,9 @@ if (!address || address == "" || address == "undefined" || address == "null" || 
 	reject('no wallet');
       localStorage.setItem('bitsoko-wallets','none');
 	   localStorage.setItem('bitsoko-settings-country','default');
-	  
-      getObjectStore('data', 'readwrite').put('[]', 'services');
+	   getObjectStore('data', 'readwrite').put('[]', 'services');
       getObjectStore('data', 'readwrite').put('[]', 'transactions');
-        //return;
-      
+        //return;    
 
   return;
   } else{

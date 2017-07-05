@@ -132,7 +132,7 @@
                                 </li>
                                  <li><a href="?s=2"class="call "> <i class="mdi-communication-call"></i><span class="bits-13" style=""></span> <span href id="btn">Contacts</span> </a>
                                 </li>
-                                 <li class="bold"><a class="" onclick=" walletFunctions()"><i class="mdi-action-payment"></i>Wallets</a>
+                                 <li class="bold"><a href="#adressesModal" class="modal-trigger" class="" onclick=""><i class="mdi-action-payment"></i>Wallets</a>
             <ul class="collapsible collapsible-accordion">
           
                     <li class="li-hover center" style="position: absolute;bottom:85px;opacity: 0.4;"><p class="ultra-small margin more-text">Bits V:<span id="bv" class="ultra-small margin more-text"> </span></p></li>
@@ -166,8 +166,8 @@
                     </div>
               </a>
               </li>
-                                <li><a href="#adressesModal" class="modal-trigger"> <i class="mdi-action-assignment"></i><span class="bits-13" style=""></span> <span href id="btn">Addresses</span>  </a>  
-                                </li>
+<!--                            walletFunctions()      <li><a href="" class="modal-trigger"> <i class="mdi-action-assignment"></i><span class="bits-13" style=""></span> <span href id="btn">Addresses</span>  </a>  
+                                </li> -->
                                 <li><a href="#MobileModal"class="modal-trigger"> <i class="mdi-communication-phone"></i><span class="bits-13" style=""></span> <span href id="btn">Mobile Number</span> </a>
                                 </li>
                                 <li><a href="#KYCModal"class="modal-trigger displayNone"> <i class="mdi-action-grade"></i><span class="bits-13" style=""></span> <span href id="btn">Your details</span> </a>
@@ -375,7 +375,7 @@
 <!-- ---------------------  Floating Action Button Home page sends you to contact or merchants page ------------------ -->
                    <div class="">       
                   <div class="row delrow displayNone">
-                  <div class="chip delivery white-text pointer-events" id="" style="   " onclick="makeOrder();">
+                  <div class="chip delivery white-text pointer-events" id="" style="   " onclick="makeOrder(orderArray);">
     					 <span style="">deliver</span> <i class="mdi-maps-local-grocery-store right" style="font-size: 24px;"></i>
 						</div>
                    <div class="fixed-action-btn  floatingPrice " id="bits-prices" style="bottom: 10px; right: 50px; pointer-events: none;">
@@ -492,7 +492,7 @@
 </div>
  <div class="modal-footer blue-grey lighten-5">
          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-          <a href="#!" id="btn_save" class="waves-effect waves-green btn-flat">Back up</a>
+<!--           <a href="#!" id="btn_save" class="waves-effect waves-green btn-flat">Back up</a> -->
     </div>
 </div>
            
@@ -752,26 +752,35 @@
 <!--=============================================================================================================================================================== -->
     <script>
 ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
-//   if (bDet.os.name=='Android' && location.hostname=="bitsoko.io"){ 
-// ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
+  if (bDet.os.name=='Android' && location.hostname=="bitsoko.io"){ 
+////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
 
-// if (bDet.browser.version>=minVersionSup && bDet.browser.name=='Chrome'){ 
-//        console.log('compatible'); 
+if (bDet.browser.version>=minVersionSup && bDet.browser.name=='Chrome'){ 
+       console.log('compatible'); 
       
-//  }else{ 
+ }else{ 
 	 
-//  $('#updateBrowsermodal').openModal({
-//  	 dismissible:false
-//  });
+ $('#updateBrowsermodal').openModal({
+ 	 dismissible:false
+ });
     
-//  } 
+ } 
 	  
-//  }else{
+ }else if (bDet.os.name=='Android'){
  
 	  
-//        console.log('uncompatible');      
-//                window.location="https://bitsoko.io/soko/"; 
-//  }
+       console.log('uncompatible');      
+               window.location="https://bitsoko.io/soko/"; 
+ }else{
+ 
+	  
+ console.log('uncompatible');	 
+       
+ $('#updateBrowsermodal').openModal({
+ 	 dismissible:false
+ });
+  
+ }
 
 	    
 requestPersist();
@@ -969,7 +978,7 @@ e.onsuccess = function (event) {
  			var e=JSON.parse(event.target.result);
  			resolve(e);
  		}catch(err){
- 			 servicePageLoader()
+ 			console.log('this service is not in the indexdb!!!!');
  			}
 
   }     

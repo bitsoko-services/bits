@@ -1,12 +1,11 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function bitsTheme(){
+function bitsTheme(thm){
 	//get theme
-	actvServ().then(function(p){
+	
+		var p=thm;
+console.log(thm);
 
-		var p=p.theme
-
-
-	if (p=="" && p==undefined){
+	if (p=="" || p==undefined){
 		 console.log("cant find theme colour");
 		p="#0f5f76";
 	}
@@ -22,8 +21,6 @@ function bitsTheme(){
      $('.min-card').css('background', '-webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,'+q+' 5%,'+w+'15%,'+p+' 93%)');
 
 
-	
-});
 
 }
 	function convertHex(hex,opacity){

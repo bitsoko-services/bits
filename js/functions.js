@@ -47,7 +47,7 @@ function rate(){
 //...........................URL check end//.................................................................................................................................................
 //function service Page loader..........
 function servicePageLoader(){
-	
+	console.log('servicePageLoader()..');
 $(".delrow").removeClass("displayNone");
 if(parseInt(getBitsWinOpt('s')) >5){
 var servID=getBitsWinOpt('s');
@@ -68,8 +68,9 @@ contact();
  $(".promoHolder").hide();
  	 doFetch({ action: 'serviceProfile', id: servID, service: getBitsWinOpt('s')}).then(function(e){
            if (e.status=="ok"){
+		   populateService(e.data);
 			    getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-'+e.data.id);
-           	      populateService(e.data);	
+           	      	
 	                }else{
                 $(".serviceListHolder").hide();
                 $(".serviceListCard").hide();
@@ -77,11 +78,7 @@ contact();
            }
         })
          .catch(function(){
-		    
-actvServ().then(function(e){
-	populateService(e);
-	
-});
+	console.log('trying to populate from sever null');
          });
 	    
 // actvServ().then(function(e){
@@ -256,37 +253,24 @@ $('.recipt').append('');
 // 	 $(".delivery").removeClass("displayNone");
 // 	 $(".floatingPrice").removeClass("displayNone");
 	$(".totals").html(totals);
-	localStorage.setItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')),totals);
+	//localStorage.setItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')),totals);
 	}catch(err){}
 	}
 	
 
 	}
 
-	function finalCost (){
-		delRate();
-		var y =parseInt(localStorage.getItem('bits-merchant-delivery-rate-'+parseInt(getBitsWinOpt('s'))))
-		//console.log(y);
-		 //add delivery rate to totals 
-		 var divObj = document.getElementById("totals");    
-		var totalCost = parseInt(divObj.innerHTML) + y 
-		console.log(totalCost);
-		localStorage.setItem('bits-merchant'+parseInt(getBitsWinOpt('s'))+'-Total cost',totalCost);
-		
-	}
 
-	function makeOrder(){
+
+	function makeOrder(orderArrayy){
+		 $('.delivery').addClass('animated jello');
 		Materialize.toast('creating your order', 3000);
 		//checkanon();
 		if(checkanon()==false){$('#loginModal').openModal(); return;}
 console.log('1')
 		checkmobiveri();
 		console.log('2')
-		 var p = document.getElementById('totals').innerHTML; 
-		 $('.delivery').addClass('animated jello');
-		console.log(p)
-		if(p<=499){ swal("Sorry", "Deliveries available for orders above 500KSH ", "error");return;}//else{Materialize.toast('your order is more than 500KSH ', 1000);}
-
+		
 	
 actvServ().then(function(p){
 	//var p=p.deliveries
@@ -307,11 +291,25 @@ if (p){console.log("payments are on")}else{
 getLoc().then(function showPosition(e){
 
 	getCoordDet(e.coords.latitude+','+e.coords.longitude).then(function(mapData){
+
+
+
+
+getProdss(orderArrayy)
+
+$(".confirmText").html("")
+
+$(".confirmText").append()
+
+$(".del").html("")
+$(".del").append()
+$(".mapText").html("")
+$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address);
 $('#modalconfirm').openModal();
 document.getElementById("CancelO").addEventListener("click", function(){   $("#products").html("")});
 document.getElementById("ConfirmO").addEventListener("click", function(){ 
    $("#products").html("")
-	doFetch({ action: 'makeOrder', data: orderArray, loc:e.coords.latitude+','+e.coords.longitude, user: localStorage.getItem("bits-user-name"), service: parseInt(getBitsWinOpt('s'))}).then(
+	doFetch({ action: 'makeOrder', data: orderArrayy, loc:e.coords.latitude+','+e.coords.longitude, user: localStorage.getItem("bits-user-name"), service: parseInt(getBitsWinOpt('s'))}).then(
 		function(e){
     		if (e.status=="ok"){  
 			swal("success!", "your order has been sent!", "success");          
@@ -322,46 +320,6 @@ document.getElementById("ConfirmO").addEventListener("click", function(){
         
 
 });
-// 	swal({   		
-// // 						 title: ,   
-                         
-//                          text: '<img class="mapdata" src="" style="width:100%; height: ;" /><div class="mapTitle">Confirm Order</div><div class=" totalp bits"><div class="chip"style="color: #ffffff !important; background: none; font-size: 20px;"><i class="mdi-action-add-shopping-cart">: </i> <span class="totals"></span></div><div class="chip"style="color: #ffffff !important; background: none;     font-size: 20px;"><i class="mdi-maps-local-shipping"> : </i> <span class="del"></span></div><span class="confirmText right"></span></div></div><div class="mapText bits"></div><div class="deldata " style=" background-color:#f0ede5 !important;"><div id="products"></div>', 
-// 						 title:'<span class="mapTitle">Confirm delivery location</span>',  
-// 						 content: '',
-//                          showCancelButton: true,   
-//                          closeOnConfirm: false,   
-//                          showLoaderOnConfirm: true,   
-//              			 html: true 
-// 			 },
-
-// function (isConfirm){   
-//    if (isConfirm) { 
-// 	doFetch({ action: 'makeOrder', data: orderArray, loc:e.coords.latitude+','+e.coords.longitude, user: localStorage.getItem("bits-user-name"), service: parseInt(getBitsWinOpt('s'))}).then(
-// 		function(e){
-//     		if (e.status=="ok"){  
-// 			swal("success!", "your order has been sent!", "success");          
-//             }else{
-//            	swal("Cancelled", "your order is not sent", "error");        
-//             }
-//         })
-        
-// }
-// });
-//var t=document.querySelectorAll(".bitsInputQty");
-
-
-getProdss()
-finalCost ();
-$(".confirmText").html("")
-
-$(".confirmText").append('<span>'+localStorage.getItem('bits-merchant'+parseInt(getBitsWinOpt('s'))+'-Total cost')+'<span class="localCurr">Kes</span></span>')
-$(".totals").html("")
-$(".totals").append(parseInt(localStorage.getItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')))))
-$(".del").html("")
-$(".del").append(parseInt(localStorage.getItem('bits-merchant-delivery-rate-'+parseInt(getBitsWinOpt('s')))))
-$(".mapText").html("")
-		$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address);
-
 
  }).catch(function(){
  	//toast location error
@@ -496,15 +454,18 @@ if (e.data==null){
            }
 	})
 }
-function checkDeliveries (){
-		actvServ().then(function(p){
-	var p=p.deliveries
-	//var p=p.payments
-if (p){console.log("Deliveries for this shop not available")}else{
-	//swal("Sorry", "Deliveries for this shop not available", "error");
-	$(".delivery").addClass("displayNone")
-		return;
-}})
+function checkDeliveries (d){
+		console.log(d);
+if (d == 'false'){
+	console.log("Deliveries for this shop not available");
+	
+$(".delivery").addClass("displayNone");
+}else{
+		
+		$(".delivery").removeClass("displayNone");
+}
+       
+
 }
 function createOrder (){
 	 for (var o = 0; o < orderArray.length; o++) {
@@ -520,7 +481,7 @@ e.onerror = function (e) {
 	 }
 }
 
-function getProdss(w){
+function getProdss(orderArrayx){
 	       new Promise(function(resolve, reject) {
           
 		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
@@ -533,19 +494,19 @@ resolve(x.list);
 }).then(function(r){
 
 
-
+var costofItems = 0;
 console.log(r);
  for (var o in r) {
- for (var oo in orderArray) {
+ for (var oo in orderArrayx) {
 
-console.log(r[o].id,orderArray[oo].count)
- 	if(r[o].id==orderArray[oo].pid){
-
+console.log(r[o].id,orderArrayx[oo].count)
+ 	if(r[o].id==orderArrayx[oo].pid){
+costofItems=costofItems+(orderArrayx[oo].count*r[o].price);
 console.log("match")
 //products
 //$("#products").html("")
 $("#products").append('<div class="chip">'+ 
-   '<img src="'+r[o].imagePath+'" alt="Contact Person">'+orderArray[oo].count + ' '+ r[o].name+  
+   '<img src="'+r[o].imagePath+'" alt="Contact Person">'+orderArrayx[oo].count + ' '+ r[o].name+  
     '</div>')
 
 
@@ -555,9 +516,12 @@ $("#products").append('<div class="chip">'+
 
  }
 
+ console.log('testing',costofItems);
+$(".totals").html("")
+$(".totals").append(JSON.parse(costofItems))
 
 
-
+finalCost (costofItems);
 
 })
 }

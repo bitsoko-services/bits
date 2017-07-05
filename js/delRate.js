@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////--calculates the delivery rate of shop --////////////////////////////////////////////////
-function finalCost(){
+function finalCost(costofItems){
   var x; var y; var c;
 //--geting the user location details---------------------------------------------------------------------------------------//
 
@@ -23,14 +23,20 @@ console.log("calculating rates")
 var distance =getDistanceFromLatLonInKm(e.coords.latitude,e.coords.longitude,x,y);
 console.log(distance);
 //--rates
-var rates = d*distance;
+var rates = Math.ceil(d*distance);
+ 
 console.log("The shops delivery rates are "+rates);
 
 		//console.log(y);
 		 //add delivery rate to totals 
 		 var divObj = document.getElementById("totals");    
 		var totalCost = parseInt(divObj.innerHTML) + rates
-		console.log(totalCost);
+		
+		 
+		
+	
+		if(totalCost<=299){ swal("Sorry", "Deliveries available for orders above 300KSH ", "error");return;}//else{Materialize.toast('your order is more than 500KSH ', 1000);}
+
 		//localStorage.setItem('bits-merchant'+parseInt(getBitsWinOpt('s'))+'-Total cost',totalCost);
 $(".confirmText").html("")
 $(".confirmText").append(totalCost+'<span class="localCurr">Kes</span></span>')
