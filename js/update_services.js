@@ -41,10 +41,12 @@ servicePageLoader();
 oid(); 
 ///.////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 if (getBitsWinOpt('o') != undefined ) {
+	
 doFetch({ action: 'storesBO',  id:parseInt(getBitsWinOpt('o'))  }).then(
 function(s){
 if (s.status=="ok"){ 
-shops=[{id:localStorage.getItem('bits-active-service'),lonlat:'-12.3121,-1.23123'},{id:localStorage.getItem('bits-active-service'),lonlat:'-12.3121,-1.23123'}];
+shops = s.data
+//[{id:localStorage.getItem('bits-active-service'),lonlat:'-12.3121,-1.23123'},{id:localStorage.getItem('bits-active-service'),lonlat:'-12.3121,-1.23123'}];
 //console.log(shops)
 var shortest = 0;
 var nearest;
@@ -166,7 +168,7 @@ function doSubscribe(){
 function populateService(mDet){
 	console.log(mDet.id)
  		console.log(mDet);
- 		bitsTheme();
+ 		bitsTheme(mDet.theme);
  		$(".resDisplay").html( mDet.name);
         document.querySelector('.serviceName').innerHTML = mDet.name;
         document.querySelector('.serviceName2').innerHTML = mDet.name;
@@ -236,7 +238,7 @@ checkDeliveries(mDet.deliveries);
           
            for(var ii = 0,nnew=nnew,subs=subs; ii < mDet.promotions.length; ++ii) { 
 
-           checkPayments();	bitsTheme();	 
+           checkPayments();	bitsTheme(mDet.theme);	 
 		 var dailyCost=(parseInt(mDet.promotions[ii].discount)/100)*mDet.promotions[ii].promoPrice;
 		 $('.merchPromo').append('<li class="avatar bits-max promo-collection">'+
 						 '<a href="#" id="burst-12" class=" waves-effect waves-light  bits accent-2"><span style="font-size: 17px;">'+mDet.promotions[ii].discount+'</span>% <br/> off</a><img src="https://bitsoko.io'+mDet.promotions[ii].promoBanner+'" style="margin-top:-50px ;" data-caption="'+mDet.promotions[ii].promoName+'" alt="'+mDet.promotions[ii].promoDesc+'" class="materialboxed">'+
@@ -302,7 +304,7 @@ checkDeliveries(mDet.deliveries);
 	
 	
 // 	 };
-	 bitsTheme();
+	 bitsTheme(mDet.theme);
 	 $('.materialboxed').materialbox();
 	var addproducts = document.querySelectorAll(".bitsInputQty");
 	for(var i = 0; i< addproducts.length; ++i){	

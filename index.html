@@ -978,7 +978,7 @@ e.onsuccess = function (event) {
  			var e=JSON.parse(event.target.result);
  			resolve(e);
  		}catch(err){
- 			 servicePageLoader()
+ 			console.log('this service is not in the indexdb!!!!');
  			}
 
   }     

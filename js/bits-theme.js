@@ -1,10 +1,9 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function bitsTheme(){
+function bitsTheme(thm){
 	//get theme
-	actvServ().then(function(p){
-
-		var p=p.theme
-
+	
+		var p=thm;
+console.log(thm);
 
 	if (p=="" || p==undefined){
 		 console.log("cant find theme colour");
@@ -22,8 +21,6 @@ function bitsTheme(){
      $('.min-card').css('background', '-webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,'+q+' 5%,'+w+'15%,'+p+' 93%)');
 
 
-	
-});
 
 }
 	function convertHex(hex,opacity){

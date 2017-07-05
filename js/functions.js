@@ -253,24 +253,14 @@ $('.recipt').append('');
 // 	 $(".delivery").removeClass("displayNone");
 // 	 $(".floatingPrice").removeClass("displayNone");
 	$(".totals").html(totals);
-	localStorage.setItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')),totals);
+	//localStorage.setItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')),totals);
 	}catch(err){}
 	}
 	
 
 	}
 
-	function finalCost (){
-		delRate();
-		var y =parseInt(localStorage.getItem('bits-merchant-delivery-rate-'+parseInt(getBitsWinOpt('s'))))
-		//console.log(y);
-		 //add delivery rate to totals 
-		 var divObj = document.getElementById("totals");    
-		var totalCost = parseInt(divObj.innerHTML) + y 
-		console.log(totalCost);
-		localStorage.setItem('bits-merchant'+parseInt(getBitsWinOpt('s'))+'-Total cost',totalCost);
-		
-	}
+
 
 	function makeOrder(orderArrayy){
 		 $('.delivery').addClass('animated jello');
@@ -309,13 +299,12 @@ getProdss(orderArrayy)
 
 $(".confirmText").html("")
 
-$(".confirmText").append('<span>'+localStorage.getItem('bits-merchant'+parseInt(getBitsWinOpt('s'))+'-Total cost')+'<span class="localCurr">Kes</span></span>')
-$(".totals").html("")
-$(".totals").append(parseInt(localStorage.getItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')))))
+$(".confirmText").append()
+
 $(".del").html("")
-$(".del").append(parseInt(localStorage.getItem('bits-merchant-delivery-rate-'+parseInt(getBitsWinOpt('s')))))
+$(".del").append()
 $(".mapText").html("")
-		$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address);
+$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address);
 $('#modalconfirm').openModal();
 document.getElementById("CancelO").addEventListener("click", function(){   $("#products").html("")});
 document.getElementById("ConfirmO").addEventListener("click", function(){ 
@@ -505,14 +494,14 @@ resolve(x.list);
 }).then(function(r){
 
 
-
+var costofItems = 0;
 console.log(r);
  for (var o in r) {
  for (var oo in orderArrayx) {
 
 console.log(r[o].id,orderArrayx[oo].count)
  	if(r[o].id==orderArrayx[oo].pid){
-
+costofItems=costofItems+(orderArrayx[oo].count*r[o].price);
 console.log("match")
 //products
 //$("#products").html("")
@@ -527,9 +516,12 @@ $("#products").append('<div class="chip">'+
 
  }
 
+ console.log('testing',costofItems);
+$(".totals").html("")
+$(".totals").append(JSON.parse(costofItems))
 
 
-finalCost ();
+finalCost (costofItems);
 
 })
 }

@@ -8151,7 +8151,7 @@ nav .input-field label.active {
 .btn, .btn-large {
   text-decoration: none;
   color: #fff;
-  background-color: #0f5f76;
+  /* background-color: #0f5f76; */
   text-align: center;
   letter-spacing: .5px;
   -webkit-transition: 0.2s ease-out;
