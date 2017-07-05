@@ -41,11 +41,7 @@ servicePageLoader();
 oid(); 
 ///.////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 if (getBitsWinOpt('o') != undefined ) {
-	
-doFetch({ action: 'storesBO',  id:parseInt(getBitsWinOpt('o'))  }).then(
-function(s){
-if (s.status=="ok"){ 
-shops = s.data
+shops = JSON.parse(document.querySelector("#oid-res").getAttribute('iodresd'));
 //[{id:localStorage.getItem('bits-active-service'),lonlat:'-12.3121,-1.23123'},{id:localStorage.getItem('bits-active-service'),lonlat:'-12.3121,-1.23123'}];
 //console.log(shops)
 var shortest = 0;
@@ -86,9 +82,7 @@ window.location = location.origin + location.pathname + "?s="+nearest.id
 
  })
      }
-		console.log("shops")
-           }else{ swal("error", "somthing bad happened, we are fixing it", "error");}
-                    });
+	
                   
 
 
