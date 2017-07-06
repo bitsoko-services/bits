@@ -758,9 +758,10 @@
 var directionsService = new google.maps.DirectionsService();
 
 var request = {
-  origin      : 'Melbourne VIC', // a city, full address, landmark etc
-  destination : 'Sydney NSW',
-  travelMode  : google.maps.DirectionsTravelMode.DRIVING
+  origin      : '-1.3120223,36.7542266', // a city, full address, landmark etc
+  destination : '-1.3248293,36.7591138',
+  travelMode  : google.maps.DirectionsTravelMode.DRIVING,
+	key:'AIzaSyBEpLoOInTvRSrkLpTHSu8EE3jiFD1Vk7E'
 };
 
 directionsService.route(request, function(response, status) {
