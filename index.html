@@ -765,7 +765,7 @@ var request = {
 
 directionsService.route(request, function(response, status) {console.log(response, status)
   if ( status == google.maps.DirectionsStatus.OK ) {
-    alert( response.routes[0].legs[0].distance.value ); // the distance in metres
+    console.log( response.routes[0].legs[0].distance.value ); // the distance in metres
   }
   else {
     // oops, there's no route between these two locations
