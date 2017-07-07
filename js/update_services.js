@@ -62,22 +62,21 @@ console.log(o)
 if(o==0){
 nearest=shops[o];
 }
- getLoc().then(function showPosition(e){
+		 
+ getLoc({shops:shops,o:o}).then(function showPosition(e){
 disCal++;
-	 
-console.log(shops,o);
- getDistanceFromLatLonInKm(e.coords.latitude,e.coords.longitude,shops[o].lonlat.split(",")[0],shops[o].lonlat.split(",")[1]).then(function(distance){
+	 console.log(e.ret.shops,e.ret.o);
+ getDistanceFromLatLonInKm(e.coords.latitude,e.coords.longitude,e.ret.shops[e.ret.o].lonlat.split(",")[0],e.ret.shops[e.ret.o].lonlat.split(",")[1]).then(function(distance){
 	
 
-console.log(o)
-if(o==0){shortest = distance;
+if(e.ret.o==0){shortest = distance;
 
 }
 if(distance<shortest){
-	nearest=shops[o];
+	nearest=e.ret.shops[e.ret.o];
 }
-console.log(disCal,shops.length)
-if(disCal==shops.length){
+console.log(disCal,e.ret.shops.length)
+if(disCal==e.ret.shops.length){
 console.log(nearest.id);
 window.location = location.origin + location.pathname + "?s="+nearest.id
 }
