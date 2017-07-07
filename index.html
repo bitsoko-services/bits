@@ -754,29 +754,6 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBEpLoOInTvRSrkLpTHSu8EE3jiFD1Vk7E"></script>
 
-    <script type="text/javascript" >
-
-var directionsService = new google.maps.DirectionsService();
-
-var request = {
-  origin      : '-1.3120223,36.7542266', // a city, full address, landmark etc
-  destination : '-1.3248293,36.7591138',
-  travelMode  : google.maps.DirectionsTravelMode.DRIVING
-};
-
-directionsService.route(request, function(response, status) {console.log(response, status)
-  if ( status == google.maps.DirectionsStatus.OK ) {
-    console.log( response.routes[0].legs[0].distance.value ); // the distance in metres
-  }
-  else {
-    // oops, there's no route between these two locations
-    // every time this happens, a kitten dies
-    // so please, ensure your address is formatted properly
-  }
-});
-
-
-</script>
 
     <script type="text/javascript" src="js/custom-script.js"></script>
 <!--=============================================================================================================================================================== -->
