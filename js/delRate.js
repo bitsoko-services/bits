@@ -20,7 +20,8 @@ function(p){
 //--geting the shop delivery Rates---------------------------------------------------------------------------------------//
 console.log("calculating rates")
 //var distance =getDistanceFromLatLonInKm(from-lat,from-long,to-lat,from-long);
-var distance =getDistanceFromLatLonInKm(e.coords.latitude,e.coords.longitude,x,y);
+getDistanceFromLatLonInKm(e.coords.latitude,e.coords.longitude,x,y).then(function(distance){
+
 console.log(distance);
 //--rates
 var rates = Math.ceil(d*distance);
@@ -44,6 +45,10 @@ $(".totals2").html("")
 $(".totals2").append(parseInt(divObj.innerHTML))
 $(".del").html("")
 $(".del").append(rates)
+
+
+
+});
 	
 })
 
