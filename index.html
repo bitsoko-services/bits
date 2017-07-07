@@ -107,9 +107,9 @@
 		      <div class="row" id="content" style=" padding: 15px 0 0 15px; text-align:center;">
                 <img src="images/contacts.png" alt="" class="bits-profile userProfImg circle responsive-img valign profile-image"style="background-color: white;">
                  <a class="btn-flat waves-effect waves-light white-text profile-btn username-label dropdown-button" href="#" id="name"></a>
-                  <center> <span  id="download-button" class="white-text profile-btn " style="font-size:;  !important;"><span class="bitsoko-balance" style="font-size:16px;"></span> <span class="localCurr" style="font-size:16px;"> </span></span>  
-         <span  id="balance-coins" class="header col s12 light white-text profile-btn" style=""></span></p> 
-         <span class="bitsoko-xrate user-roal store-desc " style="text-align:left; "> 1 ETH = 0 KSH</span></center>
+<!--                   <center> <span  id="download-button" class="white-text profile-btn " style="font-size:;  !important;"><span class="bitsoko-balance" style="font-size:16px;"></span> <span class="localCurr" style="font-size:16px;"> </span></span>   -->
+         <span  id="balance-coins" class="header col s12 light white-text profile-btn" style="">00.00 kes</span></p> 
+         <span class="bitsoko-xrate user-roal store-desc " style="text-align:left; "> </span></center>
                </div>
              </li>
             
@@ -460,9 +460,10 @@
 <!----------------------------------------------modal will contain all the user adresses and qr codes ------------------------------------->
  <div id="adressesModal" class="modal modal-fixed-footer bottom-sheet" >
    <div class="modal-content">
-      <div class="row">
+   <div class=" wallbtn displayNone">  <button value="" onclick="switchOnWallet();" class="btn ">click to load wallets</button></div>
+      <div class="row walls ">
 		 
-<span style=""><span class="badge totalamts chip" style="right: 20% !important;">0 ETH</span> Your Wallet Address</span><br><br>
+<span style=""><span  class="badge chip" style="right: 20% !important;"> <span id="totalamts" class="totalamts">0.001</span><span>ETH</span></span> Your Wallet Address</span><br><br>
 <ul class="collapsible collapsible-accordion" style="border-top: 1px solid #ddd;" data-collapsible="accordion">
   <li>
     <div class="collapsible-header "><span class="badge totalethpri chip" style="right: 20% !important;">0 ETH</span> Private Wallet</div>
@@ -707,7 +708,7 @@
  <script type="text/javascript"src="js/bits_number.js" ></script>
  <script type="text/javascript"src="js/bits-FeatureDiscovery.js" ></script>
  <script type="text/javascript"src="js/bits-follow.js" ></script>
- 
+  <script type="text/javascript"src="js/bits-wallet-on.js" ></script>
   <script type="text/javascript"src="js/bits-wallet-functions.js" ></script>
  <script type="text/javascript"src="js/bits-oder-functions.js" ></script>
 
