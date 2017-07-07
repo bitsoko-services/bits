@@ -64,7 +64,8 @@ nearest=shops[o];
 }
  getLoc().then(function showPosition(e){
 disCal++;
- 	var distance =getDistanceFromLatLonInKm(e.coords.latitude,e.coords.longitude,x,y);
+ getDistanceFromLatLonInKm(e.coords.latitude,e.coords.longitude,x,y).then(function(distance){
+	
 console.log(distance);
 
 console.log(o)
@@ -79,6 +80,8 @@ if(disCal==shops.length){
 console.log(nearest.id);
 window.location = location.origin + location.pathname + "?s="+nearest.id
 }
+	
+	});
 
  })
      }
