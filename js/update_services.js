@@ -63,7 +63,7 @@ if(o==0){
 nearest=shops[o];
 }
 		 
- getLoc({shops:shops,o:o}).then(function showPosition(e){
+ getLoc({shops:shops,o:o}).then(function(e){
 disCal++;
 	 console.log(e.ret.shops,e.ret.o);
  getDistanceFromLatLonInKm(e.coords.latitude,e.coords.longitude,e.ret.shops[e.ret.o].lonlat.split(",")[0],e.ret.shops[e.ret.o].lonlat.split(",")[1]).then(function(distance){
