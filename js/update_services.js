@@ -47,7 +47,7 @@ shops = JSON.parse(document.querySelector("#oid-res").getAttribute('iodresd'));
 var shortest = 0;
 var nearest;
 var disCal=0;
-	 for (var o = 0,nearest=nearest,disCal=disCal,shortest=shortest; o < shops.length; o++) {
+	 for (o = 0,nearest=nearest,disCal=disCal,shortest=shortest; o < shops.length; o++) {
 	 	console.log (shops[o].lonlat);
 	 	var p= shops[o].lonlat
 	 	var str = p;
@@ -64,9 +64,10 @@ nearest=shops[o];
 }
  getLoc().then(function showPosition(e){
 disCal++;
+	 
+console.log(shops,o);
  getDistanceFromLatLonInKm(e.coords.latitude,e.coords.longitude,shops[o].lonlat.split(",")[0],shops[o].lonlat.split(",")[1]).then(function(distance){
 	
-console.log(distance);
 
 console.log(o)
 if(o==0){shortest = distance;
