@@ -79,7 +79,7 @@ function starting(){
 	startGoogle(); 
 	checkanon();
 localConverter();
-checkwallet();
+
 	togglebuttons();
 	showuser();
 	showlogintoast();
