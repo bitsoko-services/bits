@@ -19,8 +19,8 @@ function checkwallet(){
         }) 	
  }
  else{
-     console.log("no wallets");
-    switchOnWallet ();
+     //console.log("no wallets");
+    //switchOnWallet ();
  }
    
 }
