@@ -19,15 +19,15 @@ function checkwallet(){
         }) 	
  }
  else{
-     //console.log("no wallets");
-    //switchOnWallet ();
+ 	   $( ".wallbtn" ).addClass("displayNone");
+      $( ".walls" ).removeClass("displayNone");
+     
+    walletFunctions();
  }
    
 }
 function switchOnWallet (){
-     $( ".wallbtn" ).addClass("displayNone");
-      $( ".walls" ).removeClass("displayNone");
-       checkwallet();
-     walletFunctions();
+  
+    
    
 }
