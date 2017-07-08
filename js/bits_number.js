@@ -105,9 +105,11 @@
             $btnMinus.prop('disabled', false)
             $btnPlugs.prop('disabled', false)
             if (num <= minimum) {
+                tabulateTotals();
                 $btnMinus.prop('disabled', true)
                 onMinimum.call(this, num)
             } else if (maximize!=null&&num >= maximize) {
+                tabulateTotals();
                 $btnPlugs.prop('disabled', true)
                 onMaximize.call(this, num)
             }else{
