@@ -71,7 +71,7 @@ disCal++;
   var dLon = deg2rad(e.ret.shops[e.ret.o].lonlat.split(",")[1]-e.coords.longitude); 
   var a = 
     Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+    Math.cos(deg2rad(e.coords.latitude)) * Math.cos(deg2rad(e.ret.shops[e.ret.o].lonlat.split(",")[0])) * 
     Math.sin(dLon/2) * Math.sin(dLon/2)
     ; 
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
