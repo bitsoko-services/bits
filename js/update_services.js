@@ -47,7 +47,7 @@ shops = JSON.parse(document.querySelector("#oid-res").getAttribute('iodresd'));
 var shortest = 0;
 var nearest;
 var disCal=0;
-	 for (var o = 0,nearest=nearest,disCal=disCal,shortest=shortest; o < shops.length; o++) {
+	 for (o = 0,nearest=nearest,disCal=disCal,shortest=shortest; o < shops.length; o++) {
 	 	console.log (shops[o].lonlat);
 	 	var p= shops[o].lonlat
 	 	var str = p;
@@ -62,23 +62,26 @@ console.log(o)
 if(o==0){
 nearest=shops[o];
 }
- getLoc().then(function showPosition(e){
+		 
+ getLoc({shops:shops,o:o}).then(function(e){
 disCal++;
- 	var distance =getDistanceFromLatLonInKm(e.coords.latitude,e.coords.longitude,x,y);
-console.log(distance);
+	 console.log(e.ret.shops,e.ret.o);
+ getDistanceFromLatLonInKm(e.coords.latitude,e.coords.longitude,e.ret.shops[e.ret.o].lonlat.split(",")[0],e.ret.shops[e.ret.o].lonlat.split(",")[1]).then(function(distance){
+	
 
-console.log(o)
-if(o==0){shortest = distance;
+if(e.ret.o==0){shortest = distance;
 
 }
 if(distance<shortest){
-	nearest=shops[o];
+	nearest=e.ret.shops[e.ret.o];
 }
-console.log(disCal,shops.length)
-if(disCal==shops.length){
+console.log(disCal,e.ret.shops.length)
+if(disCal==e.ret.shops.length){
 console.log(nearest.id);
 window.location = location.origin + location.pathname + "?s="+nearest.id
 }
+	
+	});
 
  })
      }

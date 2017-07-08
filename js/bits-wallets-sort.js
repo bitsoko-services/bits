@@ -33,8 +33,11 @@ function(s){
   $(".Private").append(myPrivate);
 console.log("adresses  have been sent!")
 getObjectStore('data', 'readwrite').put(myPrivate, 'bits-private-wallets-'+localStorage.getItem('bits-user-name'));
+ localStorage.setItem('bits-private-wallets-'+localStorage.getItem('bits-user-name'),"set");
 getObjectStore('data', 'readwrite').put(myPublic, 'bits-public-wallets-'+localStorage.getItem('bits-user-name'));
-getObjectStore('data', 'readwrite').put(myService, 'bits-service-wallets-'+localStorage.getItem('bits-user-name'));  
+ localStorage.setItem('bits-public-wallets-'+localStorage.getItem('bits-user-name'),"set");
+getObjectStore('data', 'readwrite').put(myService, 'bits-service-wallets-'+localStorage.getItem('bits-user-name')); 
+  localStorage.setItem('bits-all-wallets-'+localStorage.getItem('bits-user-name'),"set");
 
            }else{
             	 swal("Cancelled", "adresses have not sent", "error");

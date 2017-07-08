@@ -78,6 +78,7 @@ function starting(){
 	
 	startGoogle(); 
 	checkanon();
+localConverter();
 
 	togglebuttons();
 	showuser();
