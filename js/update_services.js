@@ -65,10 +65,18 @@ nearest=shops[o];
 		 
  getLoc({shops:shops,o:o}).then(function(e){
 disCal++;
-	 console.log(e.ret.shops,e.ret.o);
- getDistanceFromLatLonInKm(e.coords.latitude,e.coords.longitude,e.ret.shops[e.ret.o].lonlat.split(",")[0],e.ret.shops[e.ret.o].lonlat.split(",")[1]).then(function(distance){
-	
-
+	// console.log(e.ret.shops,e.ret.o);
+	   var R = 6371; // Radius of the earth in km
+  var dLat = deg2rad(e.ret.shops[e.ret.o].lonlat.split(",")[0]-e.coords.latitude);  // deg2rad below
+  var dLon = deg2rad(e.ret.shops[e.ret.o].lonlat.split(",")[1]-e.coords.longitude); 
+  var a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2)
+    ; 
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  var distance = R * c; // Distance in km
+ 
 if(e.ret.o==0){shortest = distance;
 
 }
@@ -81,7 +89,7 @@ console.log(nearest.id);
 window.location = location.origin + location.pathname + "?s="+nearest.id
 }
 	
-	});
+	
 
  })
      }
