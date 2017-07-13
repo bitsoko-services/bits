@@ -3,7 +3,7 @@ function bitsTheme(thm){
 	//get theme
 	
 		var p=thm;
-console.log(thm);
+//console.log(thm);
 
 	if (p=="" || p==undefined){
 		 console.log("cant find theme colour");
