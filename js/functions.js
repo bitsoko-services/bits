@@ -265,14 +265,14 @@ $('.recipt').append('');
 
 
 
-	function makeOrder(orderArrayy){
+	function makeOrder(orderArrayy,orderLoc){
 		 $('.delivery').addClass('animated jello');
 		Materialize.toast('creating your order', 3000);
 		//checkanon();
 		if(checkanon()==false){$('#loginModal').openModal(); return;}
-console.log('1')
+console.log('1');
 		checkmobiveri();
-		console.log('2')
+		console.log('2');
 		
 	
 actvServ().then(function(p){
@@ -292,9 +292,11 @@ if (p){console.log("payments are on")}else{
 // }
 
 getLoc().then(function showPosition(e){
+	
+	
+console.log(orderLoc,e);
 
 	getCoordDet(e.coords.latitude+','+e.coords.longitude).then(function(mapData){
-
 
 
 
