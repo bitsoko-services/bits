@@ -30,7 +30,7 @@ var shop = getBitsWinOpt('s')
 					// match oid to url id
 					var urloid = getBitsOpt("oid")
 					if (urloid == xid){ console.log("match")
-							makeOrder(JSON.parse(xx))
+							makeOrder(JSON.parse(xx),xx.location)
 							
 					}
 					else{ console.log("no match")}
