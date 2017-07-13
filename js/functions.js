@@ -294,9 +294,10 @@ if (p){console.log("payments are on")}else{
 getLoc().then(function showPosition(e){
 	
 	
-console.log(orderLoc,e);
+	var mapLocc=orderLoc ? orderLoc: e.coords.latitude+','+e.coords.longitude;
 
-	getCoordDet(e.coords.latitude+','+e.coords.longitude).then(function(mapData){
+console.log(orderLoc,e,mapLocc);
+	getCoordDet(mapLocc).then(function(mapData){
 
 
 
