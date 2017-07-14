@@ -414,8 +414,12 @@ nav {
 	position: absolute;
 	opacity: 0.85;
 	text-align: -webkit-center;
-	color: white;
+	color: #7e7d7d;
 	z-index: 1;
+	/* border-bottom: 2px solid #ffffff; */
+	-webkit-box-shadow: 0px 2px 12px 2px rgba(125,125,125,1);
+	-moz-box-shadow: 0px 2px 12px 2px rgba(125,125,125,1);
+	box-shadow: 0px 1px 2px 0px rgba(125, 125, 125, 0.43);
 }
 .confirmText{
 	font-size: 17px;
@@ -434,8 +438,10 @@ nav {
 	    /* margin-left: 30%; */
 	    position: absolute;
 	    /* margin: auto; */
+	    /* filter: blur(5px); */ */
 	    z-index: 1;
 	    margin-top: 205px;
-	    color: #ffffff !important;
+	    color: #757575 !important;
+	    z-index: 100;
 }
 }
