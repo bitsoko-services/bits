@@ -5586,7 +5586,8 @@ button.btn-floating {
   width: 55%;
   margin: auto;
   overflow-y: auto;
-  border-radius: 2px;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2), 0 1px 5px rgba(0,0,0,0.2), 0 0 0 9px rgba(255,255,255,0.4);
   will-change: top, opacity;
 }
 

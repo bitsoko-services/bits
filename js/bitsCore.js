@@ -710,7 +710,7 @@ Materialize.toast('failed to create wallet, please try again', 3000);
 		
 		
 		
-        setWeb3Provider(global_keystore);
+       setWeb3Provider(global_keystore);
         getBalances();
         })
  
@@ -1336,7 +1336,13 @@ returns.symbol='usd';
 });
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+if(typeof web3 == 'undefined')
+{
+console.log("web3 is undefined");
 
+importScripts('https://bitsoko.io/bitsAssets/js/web3/web3.js');
+importScripts('https://bitsoko.io/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js');
       var web3 = new Web3();
       var global_keystore;
 
@@ -1350,6 +1356,13 @@ returns.symbol='usd';
       }
 
 
+}
+else
+{
+console.log("web3 is defined");
+// window.web3 = new Web3(web3.currentProvider);
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       function getBalances() {
         
         var addresses = global_keystore.getAddresses();

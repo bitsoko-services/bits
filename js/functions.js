@@ -68,9 +68,11 @@ contact();
  $(".promoHolder").hide();
  	 doFetch({ action: 'serviceProfile', id: servID, service: getBitsWinOpt('s')}).then(function(e){
            if (e.status=="ok"){
-		   populateService(e.data);
-			    getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-'+e.data.id);
-           	      	
+			   var svReq= getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-'+e.data.id);
+           	      	svReq.onsuccess = function() {
+   getObjectStore('data', 'readwrite').get('bits-merchant-id-'+getBitsWinOpt('s')).onsuccess = function (event) { try{populateService(JSON.parse(event.target.result))}catch(err){console.log('service not found in db. perhaps try loading from server AGAIN!!')}}
+      
+  };
 	                }else{
                 $(".serviceListHolder").hide();
                 $(".serviceListCard").hide();
@@ -265,14 +267,14 @@ $('.recipt').append('');
 
 
 
-	function makeOrder(orderArrayy){
+	function makeOrder(orderArrayy,orderLoc){
 		 $('.delivery').addClass('animated jello');
 		Materialize.toast('creating your order', 3000);
 		//checkanon();
 		if(checkanon()==false){$('#loginModal').openModal(); return;}
-console.log('1')
+console.log('1');
 		checkmobiveri();
-		console.log('2')
+		console.log('2');
 		
 	
 actvServ().then(function(p){
@@ -292,9 +294,12 @@ if (p){console.log("payments are on")}else{
 // }
 
 getLoc().then(function showPosition(e){
+	
+	
+	var mapLocc=orderLoc ? orderLoc: e.coords.latitude+','+e.coords.longitude;
 
-	getCoordDet(e.coords.latitude+','+e.coords.longitude).then(function(mapData){
-
+console.log(orderLoc,e,mapLocc);
+	getCoordDet(mapLocc).then(function(mapData){
 
 
 
