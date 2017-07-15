@@ -68,9 +68,11 @@ contact();
  $(".promoHolder").hide();
  	 doFetch({ action: 'serviceProfile', id: servID, service: getBitsWinOpt('s')}).then(function(e){
            if (e.status=="ok"){
-		   populateService(e.data);
-			    getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-'+e.data.id);
-           	      	
+			   var svReq= getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-'+e.data.id);
+           	      	svReq.onsuccess = function() {
+   getObjectStore('data', 'readwrite').get('bits-merchant-id-'+getBitsWinOpt('s')).onsuccess = function (event) { try{populateService(JSON.parse(event.target.result))}catch(err){console.log('service not found in db. perhaps try loading from server')}}
+      
+  };
 	                }else{
                 $(".serviceListHolder").hide();
                 $(".serviceListCard").hide();
