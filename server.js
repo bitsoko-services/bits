@@ -125,7 +125,8 @@ return new Promise(function(resolve, reject) {
       break;
 
         case 'deliverOrder':
-    bitsNotification('Deliver Order',dat.msg,'Delivery','bits/images/yes.png','bits/images/Delivered.png',[{action: '', title: "Backed up"}],true,true);
+			   var tg="soko-order-"+dat.oid+"-"+dat.store;
+    bitsNotification('Deliver Order',dat.msg,tg,'bits/images/yes.png','bits/images/Delivered.png',[{action: '', title: "Backed up"}],true,true);
           // bitsNotification('Deliver Order',+dat.msg,'Delivery','bits/images/yes.png','bits/images/Delivered.png',[{action: '', title: "Backed up"}],true,true);
        
       break;
