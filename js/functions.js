@@ -70,7 +70,7 @@ contact();
            if (e.status=="ok"){
 			   var svReq= getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-'+e.data.id);
            	      	svReq.onsuccess = function() {
-   getObjectStore('data', 'readwrite').get('bits-merchant-id-'+getBitsWinOpt('s')).onsuccess = function (event) { try{populateService(JSON.parse(event.target.result))}catch(err){console.log('service not found in db. perhaps try loading from server')}}
+   getObjectStore('data', 'readwrite').get('bits-merchant-id-'+getBitsWinOpt('s')).onsuccess = function (event) { try{populateService(JSON.parse(event.target.result))}catch(err){console.log('service not found in db. perhaps try loading from server AGAIN!!')}}
       
   };
 	                }else{
