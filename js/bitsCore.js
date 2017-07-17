@@ -1340,8 +1340,8 @@ returns.symbol='usd';
 if(typeof web3 == 'undefined')
 {
 console.log("web3 is undefined");
-
-importScripts('https://bitsoko.io/bitsAssets/js/web3/web3.js');
+ try{
+  importScripts('https://bitsoko.io/bitsAssets/js/web3/web3.js');
 importScripts('https://bitsoko.io/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js');
       var web3 = new Web3();
       var global_keystore;
@@ -1354,6 +1354,11 @@ importScripts('https://bitsoko.io/bitsAssets/js/hooked-web3-provider/build/hooke
 
         web3.setProvider(web3Provider);
       }
+
+  }catch(err){
+  	console.log("unable to get web3")
+  }
+
 
 
 }
