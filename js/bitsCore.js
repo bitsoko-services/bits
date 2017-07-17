@@ -1339,8 +1339,11 @@ returns.symbol='usd';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 if (typeof web3 == 'undefined') {
 	console.log("web3 is undefined");
-	$.getScript("https://bitsoko.io/bitsAssets/js/web3/web3.js,https://bitsoko.io/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js", function() {
-		$.getScript("https://bitsoko.io/bitsAssets/js/web3/web3.js", function() {
+	$.getScript("https://bitsoko.io/bitsAssets/js/web3/web3.js", function() {
+		$.getScript("https://bitsoko.io/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js", function() {
+			try{
+
+
 			var web3 = new Web3();
 			var global_keystore;
 
@@ -1351,10 +1354,17 @@ if (typeof web3 == 'undefined') {
 				});
 				web3.setProvider(web3Provider);
 			}
+			getnewbal();
+				
+			}catch(err){
+
+				console.log('failed loading web3 lib ',err)
+			}
 		});
 	});
 } else {
 	console.log("web3 is defined");
+
 	// window.web3 = new Web3(web3.currentProvider);
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
