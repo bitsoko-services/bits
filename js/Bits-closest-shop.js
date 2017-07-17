@@ -3,6 +3,7 @@
 
 function closestShop (){
 if (getBitsWinOpt('o') != undefined ) {
+	$('#relodeModal').openModal();
 shops = JSON.parse(document.querySelector("#oid-res").getAttribute('iodresd'));
 //[{id:localStorage.getItem('bits-active-service'),lonlat:'-12.3121,-1.23123'},{id:localStorage.getItem('bits-active-service'),lonlat:'-12.3121,-1.23123'}];
 //console.log(shops)
@@ -51,7 +52,7 @@ console.log(nearest.id);
 window.location = location.origin + location.pathname + "?s="+nearest.id
 }
 	
-	
+	$('#relodeModal').closeModal();
 
  })
      }
