@@ -1337,35 +1337,35 @@ returns.symbol='usd';
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-if(typeof web3 == 'undefined')
-{
-console.log("web3 is undefined");
- try{
-  importScripts('https://bitsoko.io/bitsAssets/js/web3/web3.js');
-importScripts('https://bitsoko.io/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js');
-      var web3 = new Web3();
-      var global_keystore;
-
-      function setWeb3Provider(keystore) {
-        var web3Provider = new HookedWeb3Provider({
-          host: "http://104.199.153.171:8545/",
-          transaction_signer: keystore
-        });
-
-        web3.setProvider(web3Provider);
-      }
-
-  }catch(err){
-  	console.log("unable to get web3")
-  }
+if (typeof web3 == 'undefined') {
+	console.log("web3 is undefined");
+	$.getScript("https://bitsoko.io/bitsAssets/js/web3/web3.js", function() {
+		$.getScript("https://bitsoko.io/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js", function() {
+			try{
 
 
+			var web3 = new Web3();
+			var global_keystore;
 
-}
-else
-{
-console.log("web3 is defined");
-// window.web3 = new Web3(web3.currentProvider);
+			function setWeb3Provider(keystore) {
+				var web3Provider = new HookedWeb3Provider({
+					host: "http://104.199.153.171:8545/",
+					transaction_signer: keystore
+				});
+				web3.setProvider(web3Provider);
+			}
+			getnewbal();
+				
+			}catch(err){
+
+				console.log('failed loading web3 lib ',err)
+			}
+		});
+	});
+} else {
+	console.log("web3 is defined");
+
+	// window.web3 = new Web3(web3.currentProvider);
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       function getBalances() {
