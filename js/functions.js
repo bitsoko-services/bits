@@ -73,14 +73,29 @@ contact();
    getObjectStore('data', 'readwrite').get('bits-merchant-id-'+getBitsWinOpt('s')).onsuccess = function (event) { try{populateService(JSON.parse(event.target.result))}catch(err){console.log('service not found in db. perhaps try loading from server AGAIN!!')}}
       
   };
+  svReq.onerror = function(){
+  	setTimeout(function(){
+
+		 servicePageLoader();
+	},3000);
+  }
 	                }else{
+
                 $(".serviceListHolder").hide();
                 $(".serviceListCard").hide();
  				$(".promoHolder").show();
+
+ 				setTimeout(function(){
+
+		 servicePageLoader();
+	},3000);
+	
            }
         })
          .catch(function(){
 	console.log('trying to populate from sever null');
+
+	
 		 
 	 getObjectStore('data', 'readwrite').get('bits-merchant-id-'+getBitsWinOpt('s')).onsuccess = function (event) { try{populateService(JSON.parse(event.target.result))}catch(err){console.log('service not found in db. perhaps try loading from server')}}
            	   
