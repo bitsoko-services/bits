@@ -33,5 +33,5 @@ html(⚡='')
       | title
    amp-carousel.all-stores(layout='responsive', height='400', width='500', type='slides')
     for store in stores
-     +list(store,store)
+     +list(store.image,store.name)
    amp-iframe(width='200', height='100', sandbox='allow-scripts allow-same-origin', layout='responsive', frameborder='0', src='/amp-iframe.html')
