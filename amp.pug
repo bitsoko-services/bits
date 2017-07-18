@@ -34,8 +34,8 @@ html(⚡='')
      .caption
       | desc
    amp-img(src=img, layout='fill', alt='')
-    #content
-     | name
+   #content
+    | name
    amp-carousel.all-stores(layout='responsive', height='400', width='500', type='slides')
     for store in stores
      +list(store.banner,store.name,store.desc)
