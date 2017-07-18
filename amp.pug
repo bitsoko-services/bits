@@ -28,6 +28,9 @@ html(⚡='')
     script(async='', custom-element='amp-selector', src='https://cdn.ampproject.org/v0/amp-selector-0.1.js')
     script(async='', custom-element='amp-bind', src='https://cdn.ampproject.org/v0/amp-bind-0.1.js')
   body
+  amp-img(src=img, layout='fill', alt='')
+  #content
+   | #{name}
    mixin list(item,title,desc)
     .slide
      amp-img(src=item, layout='fill', alt=title)
