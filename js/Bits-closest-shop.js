@@ -4,7 +4,7 @@
 function closestShop (){
 if (getBitsWinOpt('o') != undefined ) {
 	$('#relodeModal').openModal();
-shops = JSON.parse(document.querySelector("#oid-res").getAttribute('iodresd'));
+shops=JSON.parse(document.getElementById("oid-res").innerHTML.replace(new RegExp('&quot;', 'g'),'"'))
 //[{id:localStorage.getItem('bits-active-service'),lonlat:'-12.3121,-1.23123'},{id:localStorage.getItem('bits-active-service'),lonlat:'-12.3121,-1.23123'}];
 //console.log(shops)
 var shortest = 0;
