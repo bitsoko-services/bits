@@ -26,12 +26,12 @@ html(⚡='')
     script(async='', custom-element='amp-selector', src='https://cdn.ampproject.org/v0/amp-selector-0.1.js')
     script(async='', custom-element='amp-bind', src='https://cdn.ampproject.org/v0/amp-bind-0.1.js')
   body
-   mixin list(item,title)
+   mixin list(item,title,desc)
     .slide
      amp-img(src=item, layout='fill', alt=title)
      .caption
-      | title
+      | desc
    amp-carousel.all-stores(layout='responsive', height='400', width='500', type='slides')
     for store in stores
-     +list(store.banner,store.name)
+     +list(store.banner,store.name,store.description)
    amp-iframe(width='200', height='100', sandbox='allow-scripts', layout='responsive', frameborder='0', src='/amp-iframe.html')
