@@ -42,13 +42,13 @@ html(⚡='')
                 | #{desc}
                 br
                 br
-            a.btn(href="https://bitsoko.io/bits/?s="#{id}) open
+            a.btn(href="https://bitsoko.io/bits/?s="+id) open
    
       .row
         .center.s12.m12
           amp-img.circle(src=img, height='150', width='150', alt='')
         #content.center
-          | name
+          | #{name}
      
       .row.s12.m12
         amp-carousel.carousel2(layout='responsive', height='500', width='500', type='slides')
