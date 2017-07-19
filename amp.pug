@@ -6,9 +6,9 @@ html(⚡='')
     meta(name='viewport', content='width=device-width,minimum-scale=1,initial-scale=1')
     meta(name='description', content='')
     meta(name='author', content='')
-    title
-    link(rel='shortcut icon', href='undefined')
-    link(rel='icon', type='image/png', sizes='228x228', href='undefined')
+    title #{name}
+    link(rel='shortcut icon', href='#{img}')
+    link(rel='icon', type='image/png', sizes='228x228', href='#{img}')
     meta(name='description', content='merchant service provider')
     meta(name='keywords', content='bitcoin mobilemoney cash africa blockchain decentralized payment processing gateway merchant services account')
     meta(name='theme-color', content='#0f5f76')
@@ -36,13 +36,13 @@ html(⚡='')
             amp-img(src=item, width='400', height='200', layout='responsive', alt=title)
             amp-fit-text.caption.center(layout='responsive', width='500', height='250')
               br
-              span(class='shpNm') title
+              span(class='shpNm') #{title}
               br
               span(class='shpDesc')
-                | desc
+                | #{desc}
                 br
                 br
-            a.btn(href='https://bitsoko.io/bits/?s=') open
+            a.btn(href="https://bitsoko.io/bits/?s="#{id}) open
    
       .row
         .center.s12.m12
