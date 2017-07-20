@@ -8853,7 +8853,7 @@ input[type=tel]:focus:not([readonly]),
 input[type=number]:focus:not([readonly]),
 input[type=search]:focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #0f5f76;
+  /* border-bottom: 1px solid #0f5f76; */
   box-shadow: 0 1px 0 0 #0f5f76;
 }
 
