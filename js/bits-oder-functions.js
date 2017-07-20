@@ -54,7 +54,10 @@ var shop = getBitsWinOpt('s')
 function getUserOders(){
 	  	doFetch ({action:'getAllOrders', uid: localStorage.getItem("bits-user-name")}).then(
 	function(e){
-    if (e.status=="ok"){  		
+    if (e.status=="ok"){ 
+    ///////////////////////////////////------------------- OID check -----------------------------------------//////////////////////////////////////////////////
+	oid();
+	///.////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	console.log(e.data)   
  	xx = e.data; 
  	getObjectStore('data', 'readwrite').put(JSON.stringify(xx), 'bits-user-orders-'+localStorage.getItem("bits-user-name"));	            
