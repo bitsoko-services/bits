@@ -55,12 +55,13 @@ function getUserOders(){
 	  	doFetch ({action:'getAllOrders', uid: localStorage.getItem("bits-user-name")}).then(
 	function(e){
     if (e.status=="ok"){ 
-    ///////////////////////////////////------------------- OID check -----------------------------------------//////////////////////////////////////////////////
-	oid();
-	///.////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	console.log(e.data)   
+   console.log(e.data)   
  	xx = e.data; 
- 	getObjectStore('data', 'readwrite').put(JSON.stringify(xx), 'bits-user-orders-'+localStorage.getItem("bits-user-name"));	            
+ 	var setdb = getObjectStore('data', 'readwrite').put(JSON.stringify(xx), 'bits-user-orders-'+localStorage.getItem("bits-user-name"));
+ 		      setdb.onsuccess = function (){
+ 		      	 
+	oid();
+ 		      }      
             }else{
            	swal("Cancelled", "an error occcured", "error");        
             }})
