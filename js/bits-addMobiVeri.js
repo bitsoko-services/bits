@@ -19,7 +19,7 @@ function addMobiVeri(){
      ' <div class="row">'+
                    ' <div class="input-field col s8">'+
                     '  <i class="mdi-action-lock-outline prefix"></i>'+
-                     ' <input id="inp-code" type="number" class="validate" disabled>'+
+                     ' <input id="inp-code" type="number" class="validate" >'+
                     '  <label for="inp-code" class="">confirmation code</label>'+
                    ' </div>'+
                    ' <div class="input-field col s4">'+

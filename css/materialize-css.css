@@ -5593,7 +5593,7 @@ button.btn-floating {
 
 @media only screen and (max-width: 992px) {
   .modal {
-    width: 80%;
+    width: 90%;
   }
 }
 
@@ -6024,8 +6024,8 @@ input[type=tel]:focus:not([readonly]),
 input[type=number]:focus:not([readonly]),
 input[type=search]:focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #26a69a;
-  box-shadow: 0 1px 0 0 #26a69a;
+  /* border-bottom: 1px solid #26a69a; */
+  /* box-shadow: 0 1px 0 0 #26a69a; */
 }
 
 input:not([type]):focus:not([readonly]) + label,
