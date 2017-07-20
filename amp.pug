@@ -26,6 +26,7 @@ html(⚡='')
       .circle {  border-radius: 50%;}.container {  margin: 0 auto;  max-width: 1280px;  width: 90%;}
       .caption {bottom: 0;    border: solid 1px rgba(14, 14, 14, 0.42);     border-bottom: 0px;  left: 0; right: 0; padding: 8px; background:rgba(0, 0, 0, 0.08); color: #8a8888; font-size: smaller; max-height: 30%;}
       .btn{text-decoration: none; color: #fff; background-color:rgba(0, 0, 0, 0.08);       border: solid 1px rgba(14, 14, 14, 0.42); text-align: center; letter-spacing: .5px;border-radius: 2px;display: inline-block; height: 36px;        line-height: 36px; padding: 0 2rem; text-transform: uppercase; width:100%;}.ml{margin-left: 30%;}
+      .slides{width: 90%;}
     script(async='', custom-element='amp-iframe', src='https://cdn.ampproject.org/v0/amp-iframe-0.1.js')
     script(async='', custom-element='amp-carousel', src='https://cdn.ampproject.org/v0/amp-carousel-0.1.js')
     script(async='', custom-element='amp-fit-text', src='https://cdn.ampproject.org/v0/amp-fit-text-0.1.js')
@@ -33,7 +34,7 @@ html(⚡='')
     script(async='', custom-element='amp-bind', src='https://cdn.ampproject.org/v0/amp-bind-0.1.js')
   body
     mixin list(item,title,desc,id)
-          .slide
+          .slide.slides
             amp-img(src=item, width='400', height='200', layout='responsive', alt=title)
             amp-fit-text.caption.center(layout='responsive', width='500', height='250')
               br
