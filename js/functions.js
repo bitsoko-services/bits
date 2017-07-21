@@ -70,7 +70,7 @@ contact();
            if (e.status=="ok"){
 			   var svReq= getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-'+e.data.id);
            	      	svReq.onsuccess = function() {
-   getObjectStore('data', 'readwrite').get('bits-merchant-id-'+getBitsWinOpt('s')).onsuccess = function (event) { try{populateService(JSON.parse(event.target.result))}catch(err){console.log('service not found in db. perhaps try loading from server AGAIN!!')}}
+try{populateService(e.data)}catch(err){console.log('service not found in db. perhaps try loading from server AGAIN!!')}
       
   };
   svReq.onerror = function(){
@@ -92,13 +92,9 @@ contact();
 	
            }
         })
-         .catch(function(){
-	console.log('trying to populate from sever null');
-
-	
-		 
-	 getObjectStore('data', 'readwrite').get('bits-merchant-id-'+getBitsWinOpt('s')).onsuccess = function (event) { try{populateService(JSON.parse(event.target.result))}catch(err){console.log('service not found in db. perhaps try loading from server')}}
-           	   
+         .catch(function(err){
+	console.log('error trying to populate from sever ',err);
+   	   
          });
 	    
 // actvServ().then(function(e){
