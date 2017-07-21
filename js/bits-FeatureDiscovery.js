@@ -15,7 +15,7 @@ document.getElementById("take").onclick = function() {tookTour(); $(".lean-overl
 function skipTour(){
     console.log("Skipped Tour");
     localStorage.setItem('bits-vst-'+parseInt(getBitsWinOpt('s')),"");
-     localStorage.setItem('bits-vst-'+parseInt(getBitsWinOpt('s')),"Skipped tour");
+     localStorage.setItem('bits-vst-'+parseInt(getBitsWinOpt('s')),"Took tour");
 return;
 }
 function tookTour(){

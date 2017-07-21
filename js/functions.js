@@ -381,35 +381,55 @@ function checkRewards(t){
 e.onsuccess = function (event) { 		
 var x=JSON.parse(event.target.result);
 
-resolve({promotions:x.promotions,t: t});
+resolve({promotions:x.promotions,list:x.list,t: t});
 
 
 }
 }).then(function(r){
 		var pds=r.promotions;
+		var itms=r.list
 		var t=r.t;
-	//console.log(pds,t)
+	//console.log(pds,t,itms)
 
 
 var allItms=[];
 var inpt = document.getElementById("bitsInputQty"+t).value;
 for(var iiii = 0,t=t; iiii < pds.length; ++iiii){
-
+//console.log(pds,t,itms)
 //console.log(JSON.parse(pds[iiii].promoItems),t,inpt)
 var zx = JSON.parse(pds[iiii].promoItems)
+var wx = JSON.parse(pds[iiii].discount)
+//console.log("promo discount =" +wx);
+
 //zx.sort();
   var current = null;
     var cnt = 0;
     var pts = 0
-    for (var i = 0,t=t, pts=pts; i < zx.length; i++) {
+    for (var i = 0,t=t,wx=wx, pts=pts; i < zx.length; i++) {
         if (zx[i] != current) {
             if (cnt > 0) {
                //console.log(current + ' comes --> ' + cnt + ' times clicked '+inpt+' times');
  			if(cnt >= inpt){ 
  			//console.log("pass reward point")
+ 			
+ 			
+
 if(parseInt(zx[i])==parseInt(t)){
 	//console.log('found!!!!!!!!',zx[i]);
-
+var prodID=zx[i]
+// get promotino discount
+ 			 for (var io = 0; io < itms.length; io++) {
+ 			 	//loop products for pri
+ 			 	if(parseInt(itms[io].id)==parseInt(zx[i])){
+ 			 		console.log("match id")
+ 			 		var discount = wx
+ 			 		
+ 			 		var prce = itms[io].price
+ 			 		var ptsed = discount/100 * prce
+ 			 		console.log(ptsed)
+ 			 		$('.star').html(ptsed)
+ 			 	}
+ 			 }
 
 	 dropStar();
 }

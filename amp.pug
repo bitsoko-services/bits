@@ -56,6 +56,8 @@ html(⚡='')
         amp-carousel.carousel2(layout='responsive', height='500', width='500', type='slides', autoplay='', delay='4000')
          for store in stores
           +list(store.banner,store.name,store.desc,store.id)
+         for promo in promos
+          +list(promo.banner,promo.name,promo.desc,promo.id)
      
       div
         amp-iframe.ml(width='200', height='10', sandbox='allow-scripts', layout='responsive', frameborder='0', src='/amp-iframe.html')
