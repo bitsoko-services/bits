@@ -119,8 +119,8 @@ loadWallet(e.publicAddress);
 
 });
 
-    
-    	serviceOpener();
+     setTimeout(function(){ serviceOpener(); }, 850);
+    	
 
 }
 
