@@ -54,11 +54,11 @@ html(⚡='')
      
       .row.s12.m12
         amp-carousel.carousel2(layout='responsive', height='500', width='500', type='slides', autoplay='', delay='4000')
-         for store in stores
-          +list(store.banner,store.name,store.desc,store.id)
          for promo in promos
           +list(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoStore)
-     
+         for store in stores
+          +list(store.banner,store.name,store.desc,store.id)
+         
       div
         amp-iframe.ml(width='200', height='10', sandbox='allow-scripts', layout='responsive', frameborder='0', src='/amp-iframe.html')
     amp-install-serviceworker(src='https://bitsoko.io/sw.js', data-iframe-src='https://bitsoko.io/connect.html', layout='nodisplay')
