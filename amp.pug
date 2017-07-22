@@ -57,7 +57,7 @@ html(⚡='')
          for store in stores
           +list(store.banner,store.name,store.desc,store.id)
          for promo in promos
-          +list(promo.banner,promo.name,promo.desc,promo.id)
+          +list(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoStore)
      
       div
         amp-iframe.ml(width='200', height='10', sandbox='allow-scripts', layout='responsive', frameborder='0', src='/amp-iframe.html')
