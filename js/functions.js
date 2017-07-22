@@ -68,7 +68,7 @@ contact();
  $(".promoHolder").hide();
 	
 	populated=false;
-			   var svReq= getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-'+e.data.id);
+			   var svReq= getObjectStore('data', 'readwrite').get('bits-merchant-id-'+getBitsWinOpt('s'));
            	      	svReq.onsuccess = function(event) {
 try{populated=true;populateService(JSON.parse(event.target.result))}catch(err){console.log('service not found in db. perhaps try loading from server AGAIN!!')}
       
