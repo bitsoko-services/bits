@@ -77,6 +77,7 @@ function starting(){
 	$('#loginModal').closeModal()
 	
 	startGoogle(); 
+	serviceOpener();
 	checkanon();
 localConverter();
 
@@ -119,7 +120,7 @@ loadWallet(e.publicAddress);
 
 });
 
-     setTimeout(function(){ serviceOpener(); }, 850);
+     setTimeout(function(){  }, 850);
     	
 
 }
