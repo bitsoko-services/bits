@@ -70,7 +70,7 @@ contact();
 	populated=false;
 			   var svReq= getObjectStore('data', 'readwrite').get('bits-merchant-id-'+getBitsWinOpt('s'));
            	      	svReq.onsuccess = function(event) {
-try{populated=true;populateService(JSON.parse(event.target.result))}catch(err){console.log('service not found in db. perhaps try loading from server AGAIN!!')}
+try{populateService(JSON.parse(event.target.result));populated=true;}catch(err){console.log('service not found in db. perhaps try loading from server AGAIN!!')}
       
   };
   svReq.onerror = function(){
@@ -444,7 +444,6 @@ var prodID=zx[i]
  			 		var discount = wx
  			 		
  			 		var prce = itms[io].price
-console.log(discount+' discount and price '+prce)
  			 		var ptsed = discount/100 * prce
  			 		console.log(ptsed)
  			 		$('.star').html(ptsed)
