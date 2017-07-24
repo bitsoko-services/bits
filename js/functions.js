@@ -444,6 +444,7 @@ var prodID=zx[i]
  			 		var discount = wx
  			 		
  			 		var prce = itms[io].price
+console.log(discount+' discount and price '+prce)
  			 		var ptsed = discount/100 * prce
  			 		console.log(ptsed)
  			 		$('.star').html(ptsed)
