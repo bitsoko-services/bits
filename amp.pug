@@ -47,10 +47,9 @@ html(⚡='')
             a.btn(href="https://bitsoko.io/bits/?s="+id) open
    
     mixin liststore(item,title,desc,id)
-          .mtop
           .lst
-              amp-img(src=item, width='70', height='70', alt=title)
-              a(href=href="https://bitsoko.io/bits/?s="+id)  #{title}
+            amp-img(src=item, width='70', height='70', alt=title)
+            a(href=href="https://bitsoko.io/bits/?s="+id)  #{title}
             
    
       .row.container
@@ -64,7 +63,8 @@ html(⚡='')
         amp-carousel.carousel2(layout='responsive', height='500', width='500', type='slides', autoplay='', delay='4000')
          for promo in promos
           +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner)
-        amp-list.m1(width='200', height='100', layout='responsive', src='https://ampbyexample.com/json/examples.json')
+        .mtop
+          amp-list.m1(width='200', height='100', layout='responsive', src='https://ampbyexample.com/json/examples.json')
         
          for store in stores
           +liststore(store.banner,store.name,store.desc,store.id)
