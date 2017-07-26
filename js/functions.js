@@ -88,7 +88,7 @@ try{populateService(JSON.parse(event.target.result));populated=true;}catch(err){
 			   var svReq= getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-'+e.data.id);
            	      	svReq.onsuccess = function() {
 try{
-	if(populated){
+	if(!populated){
 		populateService(e.data)
 	}
    }catch(err){
