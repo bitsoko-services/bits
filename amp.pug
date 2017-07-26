@@ -63,10 +63,10 @@ html(⚡='')
         
      
       .row.s12.m12.container
-        amp-carousel.z.carousel2(layout='responsive', height='500', width='500', type='slides', autoplay='', delay='4000')
-         unless promos
-          for promo in promos
-           +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner)
+       unless promos
+          amp-carousel.z.carousel2(layout='responsive', height='500', width='500', type='slides', autoplay='', delay='4000')
+           for promo in promos
+            +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner)
         .mtop
         h3.center All Shops
           amp-list.m1(width='200', height='100', layout='responsive', src='https://ampbyexample.com/json/examples.json')
