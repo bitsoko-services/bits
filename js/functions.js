@@ -69,7 +69,19 @@ contact();
 	
 	populated=false;
 	
+		 		   var svReq= getObjectStore('data', 'readwrite').get('bits-merchant-id-'+getBitsWinOpt('s'));
+           	      	svReq.onsuccess = function(event) {
+try{populateService(JSON.parse(event.target.result));populated=true;}catch(err){console.log('service not found in db. perhaps try loading from server AGAIN!!')}
+      
+  };
+  svReq.onerror = function(){
+  	setTimeout(function(){
+
+		 servicePageLoader();
+	},3000);
+  }
 	
+		
  	 doFetch({ action: 'serviceProfile', id: servID, service: getBitsWinOpt('s')}).then(function(e){
            if (e.status=="ok"){
 			   var svReq= getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-'+e.data.id);
