@@ -68,19 +68,6 @@ contact();
  $(".promoHolder").hide();
 	
 	populated=false;
-			   var svReq= getObjectStore('data', 'readwrite').get('bits-merchant-id-'+getBitsWinOpt('s'));
-           	      	svReq.onsuccess = function(event) {
-try{populateService(JSON.parse(event.target.result));populated=true;}catch(err){console.log('service not found in db. perhaps try loading from server AGAIN!!')}
-      
-  };
-  svReq.onerror = function(){
-  	setTimeout(function(){
-
-		 servicePageLoader();
-	},3000);
-  }
-	
-	
 	
 	
  	 doFetch({ action: 'serviceProfile', id: servID, service: getBitsWinOpt('s')}).then(function(e){
@@ -117,6 +104,20 @@ try{
         })
          .catch(function(err){
 	console.log('error trying to populate from sever ',err);
+		 		   var svReq= getObjectStore('data', 'readwrite').get('bits-merchant-id-'+getBitsWinOpt('s'));
+           	      	svReq.onsuccess = function(event) {
+try{populateService(JSON.parse(event.target.result));populated=true;}catch(err){console.log('service not found in db. perhaps try loading from server AGAIN!!')}
+      
+  };
+  svReq.onerror = function(){
+  	setTimeout(function(){
+
+		 servicePageLoader();
+	},3000);
+  }
+	
+	
+	
    	   
          });
 	    
