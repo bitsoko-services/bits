@@ -472,7 +472,8 @@ var prodID=zx[i]
  			 		var prce = itms[io].price
  			 		var ptsed = discount/100 * prce
  			 		console.log(ptsed)
- 			 		$('.star').html(ptsed)
+ 			 		$('.star').html('')
+ 			 		$('.star').append('<div style="position: relative;font-size: 15px;z-index: 1;">'+ptsed+'<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">kes</span></div>')
  			 	}
  			 }
 
