@@ -326,11 +326,11 @@ console.log('1');
 	
 actvServ().then(function(p){
 	//var p=p.deliveries
-	var p=p.payments
-if (p){console.log("payments are on")}else{
-	swal("Sorry", "Deliveries for this shop not available", "error");
-		return;
-}
+// 	var p=p.payments
+// if (p){console.log("payments are on")}else{
+// 	swal("Sorry", "payments for this shop not available", "error");
+// 		return;
+// }
 	
 // var t=document.querySelectorAll(".bitsInputQty");
 // for(var i = 0; i< t.length; ++i){
