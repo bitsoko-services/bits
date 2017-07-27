@@ -132,7 +132,7 @@
             <li class="li-hover displayNone"><div class="divider"></div></li>  
    <li><a href=""class=" displayNone"> <i class="mdi-action-grade"></i><span class="bits-13" style=""></span> <span href id="btn">Your details</span> </a>
                                 </li>
-                                 <li><a href="?s=2"class="call "> <i class="mdi-communication-call"></i><span class="bits-13" style=""></span> <span href id="btn">Contacts</span> </a>
+                                 <li><a href="?s=2"class="call "> <i class="displayNone mdi-communication-call"></i><span class="bits-13" style=""></span> <span href id="btn">Contacts</span> </a>
                                 </li>
                                  <li class="bold"><a href="#adressesModal" class="modal-trigger" class="" onclick=""><i class="mdi-action-payment"></i>Wallets</a>
             <ul class="collapsible collapsible-accordion">
@@ -613,6 +613,28 @@
           
   </div>
 <!--modal login-->
+	<div class="modal " id="loginModal" style="margin-top:30%;height:50%; overflow:initial; height:260px;">
+		<div style="height:100px;width:100px;border-radius:50%;background:#FAFAFA; display: block; margin-left:auto; margin-right: auto; margin-top:-50px;">
+			<svg id="Capa_1" style="enable-background:new 0 0 428.974 428.975;width: 100px;height: 100px;padding: 0px 15px 15px 15px;" version="1.1" viewbox="0 0 428.974 428.975" x="0px" xmlns="http://www.w3.org/2000/svg" y="0px">
+			<g>
+				<path d="M414.101,373.866l-106.246-56.188l-4.907-15.332c-1.469-5.137-3.794-10.273-8.576-11.623 c-1.519-0.428-3.441-3.201-3.689-5.137l-2.836-29.813c-0.156-2.553,0.868-4.844,2.216-6.453 c8.14-9.754,12.577-21.051,14.454-33.967c0.944-6.494,4.323-12.483,6.059-18.879l6.812-35.649 c0.711-4.681,0.573-8.289-4.659-10.103c-1.443-0.503-2.699-2.894-2.699-6.479l0.069-67.264 c-1.111-16.28-9.731-28.869-21.957-37.631c-23.354-16.739-65.175-8.977-51.526-36.281c0.806-1.607,0.549-4.399-5.062-2.335 c-20.936,7.703-76.701,28.057-90.71,38.616c-12.538,9.449-20.844,21.351-21.957,37.631l0.069,67.264c0,2.96-1.255,5.976-2.7,6.479 c-5.233,1.813-5.37,5.422-4.659,10.103l6.814,35.649c1.732,6.396,5.113,12.386,6.058,18.879 c1.875,12.916,6.315,24.213,14.453,33.967c1.347,1.609,2.372,3.9,2.216,6.453l-2.836,29.813c-0.249,1.936-2.174,4.709-3.69,5.137 c-4.783,1.35-7.109,6.486-8.577,11.623l-4.909,15.332l-106.25,56.188c-2.742,1.449-4.457,4.297-4.457,7.397v39.343 c0,4.621,3.748,8.368,8.37,8.368h391.4c4.622,0,8.37-3.747,8.37-8.368v-39.343C418.557,378.163,416.842,375.315,414.101,373.866z" fill="#256D82"></path>
+			</g>
+			</svg>
+		</div>
+		<div class="modal-content" style="background-image: url('images/bitsoko.png'); background-size: 120px; background-repeat: no-repeat; background-position: center 10%; padding-top: 70px;">
+			<div style="height:30px;width:100%;display: inline-block;margin-bottom:5px;text-align: center;">
+			   
+     <p> Hello,you are using the wallet in Anonymous mode please signin to enjoy more of our app <p>
+			</div>
+			<div id="qrcode" style="height:200px;width:200px;display:none;"></div>
+		</div>
+		<div class="modal-footer">
+			<div class="customGPlusSignIn" id="customBtn" style="text-align:center;">
+				 <span class="buttonText"><button class="loginBtn loginBtn--google"><span class="buttonText">Google Sign in</span></button></span>
+			</div>
+		</div>
+	</div>
+<!--modal login
  <div id="loginModal" class="modal " >
    <div class="modal-content">
       <div class="row">
@@ -624,7 +646,7 @@
     </div> 
     </div>
   </div>
-<!-------------------------------------------------------  <div id="name"></div><script>startApp();</script> ------------------------->
+<!-------------------------------------------------------  <div id="name"></div><script>startApp();</script> -------------------------
 
     <div class="modal-footer blue-grey lighten-5">
     <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Not now</a>
@@ -767,7 +789,9 @@
   </div>
 </div>
 <!-- //////////////////////////////////////////////////////////////////////////// -->
-<div class="star displayNone"id="burst-11">1</div>
+<div class="star displayNone"id="burst-11">
+
+</div>
 <!-- ================================================Scripts================================================-->
 <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js" async defer></script>
 	 <script src="https://bitsoko.io/bitsAssets/js/storeManager.js"></script>

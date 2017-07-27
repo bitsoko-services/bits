@@ -68,9 +68,10 @@ contact();
  $(".promoHolder").hide();
 	
 	populated=false;
-			   var svReq= getObjectStore('data', 'readwrite').get('bits-merchant-id-'+getBitsWinOpt('s'));
+	
+		 		   var svReq= getObjectStore('data', 'readwrite').get('bits-merchant-id-'+getBitsWinOpt('s'));
            	      	svReq.onsuccess = function(event) {
-try{populated=true;populateService(JSON.parse(event.target.result))}catch(err){console.log('service not found in db. perhaps try loading from server AGAIN!!')}
+try{populateService(JSON.parse(event.target.result));populated=true;}catch(err){console.log('service not found in db. perhaps try loading from server AGAIN!!')}
       
   };
   svReq.onerror = function(){
@@ -80,15 +81,13 @@ try{populated=true;populateService(JSON.parse(event.target.result))}catch(err){c
 	},3000);
   }
 	
-	
-	
-	
+		
  	 doFetch({ action: 'serviceProfile', id: servID, service: getBitsWinOpt('s')}).then(function(e){
            if (e.status=="ok"){
 			   var svReq= getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-'+e.data.id);
            	      	svReq.onsuccess = function() {
 try{
-	if(populated){
+	if(!populated){
 		populateService(e.data)
 	}
    }catch(err){
@@ -117,6 +116,33 @@ try{
         })
          .catch(function(err){
 	console.log('error trying to populate from sever ',err);
+		 		   var svReq= getObjectStore('data', 'readwrite').get('bits-merchant-id-'+getBitsWinOpt('s'));
+           	      	svReq.onsuccess = function(event) {
+try{
+	populateService(JSON.parse(event.target.result));
+	populated=true;
+}catch(err){
+	console.log('service not found in db. perhaps trying loading from server AGAIN!!..');
+	setTimeout(function(){
+if(!populated){
+		 servicePageLoader();
+	}
+		
+	},1500);
+}
+      
+  };
+  svReq.onerror = function(){
+  	setTimeout(function(){
+if(!populated){
+		 servicePageLoader();
+	}
+		
+	},1500);
+  }
+	
+	
+	
    	   
          });
 	    
@@ -313,11 +339,11 @@ console.log('1');
 	
 actvServ().then(function(p){
 	//var p=p.deliveries
-	var p=p.payments
-if (p){console.log("payments are on")}else{
-	swal("Sorry", "Deliveries for this shop not available", "error");
-		return;
-}
+// 	var p=p.payments
+// if (p){console.log("payments are on")}else{
+// 	swal("Sorry", "payments for this shop not available", "error");
+// 		return;
+// }
 	
 // var t=document.querySelectorAll(".bitsInputQty");
 // for(var i = 0; i< t.length; ++i){
@@ -446,7 +472,8 @@ var prodID=zx[i]
  			 		var prce = itms[io].price
  			 		var ptsed = discount/100 * prce
  			 		console.log(ptsed)
- 			 		$('.star').html(ptsed)
+ 			 		$('.star').html('')
+ 			 		$('.star').append('<div style="position: relative;font-size: 15px;z-index: 1;">'+ptsed+'<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">kes</span></div>')
  			 	}
  			 }
 
