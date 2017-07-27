@@ -123,9 +123,11 @@ try{populateService(JSON.parse(event.target.result));populated=true;}catch(err){
   };
   svReq.onerror = function(){
   	setTimeout(function(){
-
+if(!populated){
 		 servicePageLoader();
-	},3000);
+	}
+		
+	},1500);
   }
 	
 	
