@@ -11,7 +11,7 @@ else{
 	$(".chat-outs").addClass("displayNone")
 	 $("#paymentBTN").addClass("displayNone")
  	 $("#promopriced").addClass("displayNone")
- 	 $("#bitsPrice").addClass("displayNone")
+ 	// $("#bitsPrice").addClass("displayNone")
  	 //removes the button
  	 $(".floatingPrice").html("")
  	 $(".floatingPrice").addClass("pointerNone")
