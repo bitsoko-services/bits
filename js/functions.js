@@ -400,26 +400,26 @@ function checkRewards(t) {
 			for (var i = 0, t = t, wx = wx, pts = pts; i < zx.length; i++) {
 				// 				if (zx[i] != current) {
 				// 				 if (cnt > 0) {
-				console.log("cnt vs inpt " + cnt, inpt);
+				//console.log("cnt vs inpt " + cnt, inpt);
 				//console.log(current + ' comes --> ' + cnt + ' times clicked ' + inpt + ' times');
 				if (cnt >= inpt) {
 					//console.log("pass reward point")
-					console.log(i, zx.length, zx[i])
+					//console.log(i, zx.length, zx[i])
 					if (parseInt(zx[i]) == parseInt(t)) {
-						console.log(parseInt(t), zx[i]);
-						console.log('found!!!!!!!!', zx[i]);
+// 						console.log(parseInt(t), zx[i]);
+// 						console.log('found!!!!!!!!', zx[i]);
 						var prodID = zx[i]
 							// get promotino discount
 						for (var io = 0; io < itms.length; io++) {
 							//loop products for pri
 							if (parseInt(itms[io].id) == parseInt(zx[i])) {
-								console.log("match id")
+								//console.log("match id")
 								var discount = wx
 								var prce = itms[io].price
 								var ptsed = discount / 100 * prce
-								console.log(ptsed)
+								//console.log(ptsed)
 								$('.star').html('')
-								$('.star').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + ptsed + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">kes</span></div>')
+								$('.star').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(ptsed) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">kes</span></div>')
 							}
 						}
 						dropStar();
