@@ -1,24 +1,24 @@
 ///.........................................checks if the payments option for the merchant is on or off ........................................................./////
-function checkPayments() {
-	actvServ().then(function(p) {
-		var p = p.payments
-		if (p) {
-			console.log("payments on")
-			$("#paymentBTN").removeClass("displayNone")
-		} else {
-			console.log("payments off")
-			$(".chat-outs").addClass("displayNone")
-			$("#paymentBTN").addClass("displayNone")
-			$("#promopriced").addClass("displayNone")
-			$("#bitsPrice").addClass("displayNone")
-				//removes the button
-			$(".floatingPrice").html("")
-			$(".floatingPrice").addClass("pointerNone")
-				//adds class with no side panel activatr
-			$(".floatingPrice").append('<a href="#" class="bitswaves-effect waves-block bits bitb waves-light chat-collapse btn-floating btn-large "style="pointer-events: none; background-color:#{theme} !important;"><span id="totals" class="totals"></span></a>')
-		}
-	})
+function checkPayments(){
+actvServ().then(function(p){
+	var p=p.payments
+if (p){
+	console.log("payments on")
+	 $("#paymentBTN").removeClass("displayNone")
 }
+else{
+	console.log("payments off")
+	$(".chat-outs").addClass("displayNone")
+	 $("#paymentBTN").addClass("displayNone")
+ 	 $("#promopriced").addClass("displayNone")
+ 	// $("#bitsPrice").addClass("displayNone")
+ 	 //removes the button
+ 	 $(".floatingPrice").html("")
+ 	 $(".floatingPrice").addClass("pointerNone")
+ 	 //adds class with no side panel activatr
+ 	  $(".floatingPrice").append('<a href="#" class="bitswaves-effect waves-block bits bitb waves-light chat-collapse btn-floating btn-large "style="pointer-events: none; background-color:#{theme} !important;"><span id="totals" class="totals"></span></a>')
+	 
+}})}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function callMerchant() {
 	actvServ().then(function(x) {
