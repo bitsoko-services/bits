@@ -334,6 +334,7 @@ function makeOrder(orderArrayy, orderLoc) {
 					doFetch({
 						action: 'makeOrder',
 						data: orderArrayy,
+						pointsEarned: totalPoints,
 						loc: e.coords.latitude + ',' + e.coords.longitude,
 						user: localStorage.getItem("bits-user-name"),
 						service: parseInt(getBitsWinOpt('s'))
@@ -364,8 +365,9 @@ function mobiVerification() {
 		} else {}
 	});
 }
-
+totalPoints = 0
 function checkRewards(t) {
+	
 	// a convenient wrapper.
 	new Promise(function(resolve, reject) {
 		console.log("this is var t" + t)
@@ -417,7 +419,9 @@ function checkRewards(t) {
 								var discount = wx
 								var prce = itms[io].price
 								var ptsed = discount / 100 * prce
-								//console.log(ptsed)
+								var kshToPoints = Math.floor(ptsed) / 2
+								 totalPoints = totalPoints + kshToPoints
+								console.log(totalPoints);
 								$('.star').html('')
 								$('.star').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(ptsed) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">kes</span></div>')
 							}
