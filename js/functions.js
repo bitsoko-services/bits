@@ -297,10 +297,11 @@ function makeOrder(orderArrayy, orderLoc) {
 		$('#loginModal').openModal();
 		return;
 	}
-	console.log('1');
+	console.log('1 checking mobile verifications');
 	checkmobiveri();
-	console.log('2');
+	console.log('2 done checking mobile verifications');
 	actvServ().then(function(p) {
+		console.log('3');
 		//var p=p.deliveries
 		// 	var p=p.payments
 		// if (p){console.log("payments are on")}else{
@@ -314,6 +315,7 @@ function makeOrder(orderArrayy, orderLoc) {
 		// 	catch (err) {}
 		// }
 		getLoc().then(function showPosition(e) {
+			console.log('4');
 			var mapLocc = orderLoc ? orderLoc : e.coords.latitude + ',' + e.coords.longitude;
 			console.log(orderLoc, e, mapLocc);
 			getCoordDet(mapLocc).then(function(mapData) {
@@ -340,6 +342,7 @@ function makeOrder(orderArrayy, orderLoc) {
 						service: parseInt(getBitsWinOpt('s'))
 					}).then(function(e) {
 						if (e.status == "ok") {
+							console.log('5');
 							swal("success!", "your order has been sent!", "success");
 						} else {
 							swal("Cancelled", "your order is not sent", "error");
@@ -355,16 +358,27 @@ function makeOrder(orderArrayy, orderLoc) {
 	})
 }
 
-function mobiVerification() {
-	doFetch({
-		action: 'userSettings',
-		user: localStorage.getItem("bits-user-name")
-	}).then(function(v) {
-		if (v.status == "ok") {
-			localStorage.setItem('bits-user-' + localStorage.getItem("bits-user-name") + '-mobileVerification', v.data.verified);
-		} else {}
-	});
-}
+// function mobiVerification() {
+// 	doFetch({
+// 		action: 'userVerified',
+// 		uid: localStorage.getItem("bits-user-name")
+// 	}).then(function(e) {
+// 		if (e.status == "ok") {
+// 			if (e.data == "false") {
+// 				$('#MobileModal').openModal();
+// 				return;
+// 			} else {
+// 				console.log("mobile phone verified")
+// 			}
+// 			if (e.data == null) {
+// 				$('#MobileModal').openModal();
+// 				return;
+// 			} else {
+// 				console.log("mobile phone verified")
+// 			}
+// 		}
+// 	})
+// }
 totalPoints = 0
 function checkRewards(t) {
 	
