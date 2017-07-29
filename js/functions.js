@@ -297,9 +297,9 @@ function makeOrder(orderArrayy, orderLoc) {
 		$('#loginModal').openModal();
 		return;
 	}
-	console.log('1');
+	//console.log('1');
 	checkmobiveri();
-	console.log('2');
+	//console.log('2');
 	actvServ().then(function(p) {
 		//var p=p.deliveries
 		// 	var p=p.payments
@@ -357,13 +357,24 @@ function makeOrder(orderArrayy, orderLoc) {
 
 function mobiVerification() {
 	doFetch({
-		action: 'userSettings',
-		user: localStorage.getItem("bits-user-name")
-	}).then(function(v) {
-		if (v.status == "ok") {
-			localStorage.setItem('bits-user-' + localStorage.getItem("bits-user-name") + '-mobileVerification', v.data.verified);
-		} else {}
-	});
+		action: 'userVerified',
+		uid: localStorage.getItem("bits-user-name")
+	}).then(function(e) {
+		if (e.status == "ok") {
+			if (e.data == "false") {
+				$('#MobileModal').openModal();
+				return;
+			} else {
+				console.log("mobile phone verified")
+			}
+			if (e.data == null) {
+				$('#MobileModal').openModal();
+				return;
+			} else {
+				console.log("mobile phone verified")
+			}
+		}
+	})
 }
 totalPoints = 0
 function checkRewards(t) {
