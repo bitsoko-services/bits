@@ -18,7 +18,7 @@ else{
  	 //adds class with no side panel activatr
  	  $(".floatingPrice").append('<a href="#" class="bitswaves-effect waves-block bits bitb waves-light chat-collapse btn-floating btn-large "style="pointer-events: none; background-color:#{theme} !important;"><span id="totals" class="totals"></span></a>')
 	 
-}}
+}})}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function callMerchant() {
 	actvServ().then(function(x) {
