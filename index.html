@@ -990,7 +990,7 @@ $(function(){
           navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
         });
       }
-
+(navigator.share !== undefined)
 </script>
 <script type="text/javascript">
 // $('#loginModal').modal({ready: function(){
@@ -1121,7 +1121,9 @@ contact();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////star rating //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    $(document).ready(function(){$(".rating").addRating({fieldId:"ratingId"});})
+  (function ($) {
+$(document).ready(function(){$(".rating").addRating({fieldId:"ratingId"});})
+})(jQuery);  
   (function ( $ ) { 
   $.fn.addRating = function(options) { 
     var obj = this; 
