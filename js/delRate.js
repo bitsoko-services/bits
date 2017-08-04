@@ -36,7 +36,7 @@ console.log("The shops delivery rates are "+rates);
 		 
 		
 	
-		//if(totalCost<=299){ swal("Sorry", "Deliveries available for orders above 300KSH ", "error");return;}
+		if(totalCost<=199){ swal("Sorry", "Deliveries available for orders above 200 ", "error");return;}
 		//else{Materialize.toast('your order is more than 500KSH ', 1000);}
 
 		//localStorage.setItem('bits-merchant'+parseInt(getBitsWinOpt('s'))+'-Total cost',totalCost);

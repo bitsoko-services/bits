@@ -3,7 +3,7 @@ function checkPayments(){
 actvServ().then(function(p){
 	var p=p.payments
 if (p){
-	console.log("payments on")
+	//console.log("payments on")
 	 $("#paymentBTN").removeClass("displayNone")
 }
 else{
@@ -23,7 +23,7 @@ else{
 function callMerchant() {
 	actvServ().then(function(x) {
 		var p = x.phone
-		console.log(p)
+		//console.log(p)
 		$('.callbtn').html('')
 		$('.callbtn').append('<a  onclick="rate()" id="star" value="rating" class="displayNone btn-large btn-price bits noshadow bitb" style="float: left !important;/* right: 0%; */ margin-top: ;"><i class="mdi-action-grade activator"></i></a><button  id="share" value="Share" class="bitb displayNone btn-large btn-price bits noshadow" style="float: right !important;/* right: 0%; */ margin-top: ;"><i class="mdi-social-share"></i></button> <a href="tel:' + p + '"  id="" value="" class=" btn-large btn-price bits noshadow bitb" style="float: right !important; margin-right: ;/* right: 0%; */ margin-top: ;"><i class="mdi-communication-call"></i></a>');
 		//web Share start
@@ -43,7 +43,7 @@ function rate() {
 //...........................URL check end//.................................................................................................................................................
 //function service Page loader..........
 function servicePageLoader() {
-	console.log('servicePageLoader()..');
+	//console.log('servicePageLoader()..');
 	$(".delrow").removeClass("displayNone");
 	if (parseInt(getBitsWinOpt('s')) > 5) {
 		var servID = getBitsWinOpt('s');
@@ -201,7 +201,7 @@ function showuser() {
 		gtname.onsuccess = function(event) {
 			try {
 				var nam = JSON.parse(event.target.result);
-				console.log(nam.name)
+				//console.log(nam.name)
 				Materialize.toast('<span class="toastlogin">You are Signed in as: ' + nam.name, 1000);
 			} catch (err) {}
 		};
@@ -259,7 +259,7 @@ function showlogintoast() {
 orderArray = [];
 //---------------------------------------function gets the totals of all items on a list----------------------------------------------------------------------------
 function tabulateTotals() {
-	console.log(this);
+	//console.log(this);
 	var addproducts = document.querySelectorAll(".bitsInputQty");
 	var totals = 0;
 	orderArray = [];
@@ -278,7 +278,7 @@ function tabulateTotals() {
 				$('.recipt').append('');
 			}
 			totals = totals + (parseInt($(addproducts[i]).attr("price")) * parseInt(itVal));
-			console.log(totals);
+			//console.log(totals);
 			$(".recipt").html("");
 			//Materialize.toast('your total is'+ totals, 1000);delivery
 			// 	 $(".delivery").removeClass("displayNone");
@@ -484,9 +484,11 @@ function checkmobiveri() {
 		if (e.status == "ok") {
 			if (e.data == "false") {
 				$('#MobileModal').openModal();
+				Materialize.toast('Please verifiy your mobile number', 2000);
 				return;
 			} else {
 				console.log("mobile phone verified")
+				
 			}
 			if (e.data == null) {
 				$('#MobileModal').openModal();
@@ -499,7 +501,7 @@ function checkmobiveri() {
 }
 
 function checkDeliveries(d) {
-	console.log(d);
+	//console.log(d);
 	if (d == 'false') {
 		console.log("Deliveries for this shop not available");
 		$(".delivery").addClass("displayNone");
