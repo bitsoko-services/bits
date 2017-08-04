@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =545;
+	bitsVersion =546;
 // 	importScripts('https://bitsoko.io/bitsAssets/js/lightwallet/lightwallet.min.js');
 // 	importScripts('https://bitsoko.io/bitsAssets/js/web3/web3.js');
 // 	importScripts('https://bitsoko.io/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js');
@@ -123,6 +123,7 @@ return new Promise(function(resolve, reject) {
            bitsNotification('You have recevied '+dat.amt,'sam has sent you  '+dat.amt+' Click to view your balance','AnonMsg','bits/images/no.png',[{action: '', title: "Backed up"}],true,true);
        
       break;
+      
 
         case 'deliverOrder':
 			   var tg="soko-order-"+dat.oid+"-"+dat.store;
@@ -142,7 +143,11 @@ return new Promise(function(resolve, reject) {
 		   }
 	 break;
 
-
+  case 'gotPoints':
+    
+           bitsNotification('You have points ','Click to view your balance','PointsMsg','bits/images/yes.png','bits/images/Delivered.png',[{action: '', title: "Points"}],true,true);
+       
+      break;
      
       
 
