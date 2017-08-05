@@ -1261,13 +1261,13 @@ function validateEmail(email) {
     }
 //to functions
 function updateContacts(){
-allconts=[];
+
        $.ajax({
         url: "https://www.google.com/m8/feeds/contacts/default/thin?access_token=" + localStorage.getItem('bits-token-google') + "&max-results=700&alt=json",
         dataType: "jsonp",
         success:function(data) {
             var e= data.feed.entry
-            
+            allconts=[];
             var contUpd=[];
             
       try{
