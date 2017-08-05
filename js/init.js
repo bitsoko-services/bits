@@ -1303,7 +1303,7 @@ var cont = {};
     
            
 doFetch({action : 'updContDet', data: contUpd},allconts).then(function(e){
-  allconts = e.setMeta;
+  //allconts = e.setMeta;
   var matches = e.data;
    for(var i = 0, matches = matches; i < allconts.length; ++ i) {
    var co = allconts[i];
