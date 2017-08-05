@@ -1302,8 +1302,9 @@ var cont = {};
  };
     
            
-doFetch({action : 'updContDet', data: contUpd}).then(function(e){
+doFetch({action : 'updContDet', data: contUpd}, allconts).then(function(e){
   //allconts = e.setMeta;
+	var allconts=e.connectRet;
   var matches = e.data;
    for(var i = 0, matches = matches; i < allconts.length; ++ i) {
    var co = allconts[i];
