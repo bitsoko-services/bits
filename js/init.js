@@ -1261,20 +1261,20 @@ function validateEmail(email) {
     }
 //to functions
 function updateContacts(){
-
+allconts=[];
        $.ajax({
         url: "https://www.google.com/m8/feeds/contacts/default/thin?access_token=" + localStorage.getItem('bits-token-google') + "&max-results=700&alt=json",
         dataType: "jsonp",
         success:function(data) {
             var e= data.feed.entry
-            allconts=[];
+            
             var contUpd=[];
             
       try{
             shadowRootAC.innerHTML = '';   
       }catch(e){} //{"action":"servDet","status":"ok","name":"allan","img":"https://lh4.googleusercontent.com/-ut5M1KdkFOU/AAAAAAAAAAI/AAAAAAAAAGM/BkNl4_WfakY/photo.jpg","type":"person","address":"14S72nokLmCugo2k29BN7dth8gUsFWJU3d","code":"14S72nokLmCugo2k29BN7dth8gUsFWJU3d","id":"00000000002"}
               
-        for(var i = 0, m = null, all; i < e.length; ++i) {
+        for(var i = 0, m = null, allconts=allconts; i < e.length; ++i) {
      
     console.log(e[i]);
         //template.querySelector('img').src = e[i].link[0].href;
@@ -1302,7 +1302,7 @@ var cont = {};
  };
     
            
-doFetch({action : 'updContDet', data: contUpd},allconts).then(function(e){
+doFetch({action : 'updContDet', data: contUpd}).then(function(e){
   //allconts = e.setMeta;
   var matches = e.data;
    for(var i = 0, matches = matches; i < allconts.length; ++ i) {
