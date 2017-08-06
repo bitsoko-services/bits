@@ -56,8 +56,8 @@ function servicePageLoader() {
 		contact();
 	}
 	if (parseInt(getBitsWinOpt('s')) == 3) {
-		//merchants(); 
-	}
+		//merchants options start; 
+	
 	$(".serviceListHolder").show();
 	$(".serviceListCard").show();
 	$(".promoHolder").hide();
@@ -129,11 +129,8 @@ function servicePageLoader() {
 			}, 1500);
 		}
 	});
-	// actvServ().then(function(e){
-	// 	populateService(e);
-	// }).catch(function(){
-	// console.log("unable to load data from local DB")
-	// });
+		//merchants options end; 
+	}
 }
 // scroll function....................................................................................................................
 // $(window).scroll(function scroll (){
