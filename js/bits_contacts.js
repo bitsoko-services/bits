@@ -17,10 +17,12 @@ function contact(){
 	var contPage = {};	
 	var contPageUser = {};	
 	contPage.name='Contacts';
-	contPage.desc='send and recieve tokens';
+	contPage.description='send or recieve tokens';
 	contPageUser.deliveries='false';
 	contPage.deliveries='false';
 	contPageUser.payments='true';
+		contPage.icon="https://bitsoko.io/bits/images/icon.png";
+		contPage.bannerPath="https://bitsoko.io/bits/images/contactsBanner.png";
 		contPageUser.theme="#147930";
 		contPageUser.id="2";
 		contPage.id="2";
@@ -45,6 +47,8 @@ function contact(){
 		contPageUser.id=parseInt(allContacts[iii].uid);
 		contPageUser.bannerPath=parseInt(final_url);
 		contPageUser.name=parseInt(allContacts[iii].name);
+			
+	contPageUser.description='send or recieve';
 			
 		}
 		
