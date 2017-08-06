@@ -16,6 +16,10 @@ function contact(){
     var allContacts = JSON.parse(event.target.result);
 	var contPage = {};	
 	var contPageUser = {};	
+	contPage.name='Contacts';
+	contPage.desc='send and recieve tokens';
+	contPageUser.deliveries='false';
+	contPage.deliveries='false';
 	contPageUser.payments='true';
 		contPageUser.theme="#147930";
 		contPageUser.id="2";
