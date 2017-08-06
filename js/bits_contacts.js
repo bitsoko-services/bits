@@ -18,8 +18,13 @@ function contact(){
 	var contPageUser = {};	
 	contPageUser.payments='true';
 		contPageUser.theme="#147930";
+		contPageUser.id="2";
 		contPage.id="2";
 		contPage.theme="#147930";
+		contPage.promotions=[];
+		contPage.managers=[];
+		contPageUser.promotions=[];
+		contPageUser.managers=[];
 		
   	for(var iii = 0, contPage=contPage, contPageUser=contPageUser;  iii < allContacts.length; ++iii) { 
 		console.log("contacts");
