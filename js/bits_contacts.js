@@ -9,11 +9,7 @@ function contact(){
  ctFunc.onsuccess = function (event) {
         try{
 //------------------------------------contacts found--------------------------------------------------------------------------------------------
-        document.querySelector('.serviceName').innerHTML = "Contacts";
-        document.querySelector('.cardimage').src = "https://bitsoko.io/app/images/contactsBanner.png";
-         document.querySelector('.cardLogo').src = "https://bitsoko.io/app/images/services/contacts.png";
-		document.querySelector('.serviceDescription').innerHTML = "All your contacts";
-    var allContacts = JSON.parse(event.target.result);
+   var allContacts = JSON.parse(event.target.result);
 	var contPage = {};	
 	var contPageUser = {};	
 	contPage.name='Contacts';
@@ -21,7 +17,7 @@ function contact(){
 	contPageUser.deliveries='false';
 	contPage.deliveries='false';
 	contPageUser.payments='true';
-		contPage.icon="https://bitsoko.io/bits/images/icon.png";
+		contPage.icon="https://bitsoko.io/app/images/services/contacts.png";
 		contPage.bannerPath="https://bitsoko.io/bits/images/contactsBanner.png";
 		contPageUser.theme="#147930";
 		contPageUser.id="2";
@@ -33,19 +29,20 @@ function contact(){
 		contPageUser.managers=[];
 		
   	for(var iii = 0, contPage=contPage, contPageUser=contPageUser;  iii < allContacts.length; ++iii) { 
-		console.log("contacts");
+		
+		
+		if(parseInt(getBitsWinOpt('a'))==parseInt(allContacts[iii].uid)){
+		contPageUser.id=parseInt(allContacts[iii].uid);
+			console.log("contacts");
 			
-			var id = allContacts[iii].uid ? allContacts[iii].uid : 'undefined';
 			if(allContacts[iii].img.includes('https://')){
 		    var final_url=allContacts[iii].img
 			//$('#contactsImg').removeClass("bits-dis-image");
 		    }else{ 
-			    var final_url='https://bitsoko.io/'+allContacts[iii].img;
+			    var final_url='https://bitsoko.io/app/images/services/contacts.png';
 		    }
-		
-		if(parseInt(getBitsWinOpt('a'))==parseInt(allContacts[iii].uid)){
-		contPageUser.id=parseInt(allContacts[iii].uid);
-		contPageUser.bannerPath=parseInt(final_url);
+		contPageUser.icon="https://bitsoko.io/app/images/services/contacts.png";
+		contPageUser.bannerPath=final_url;
 		contPageUser.name=parseInt(allContacts[iii].name);
 			
 	contPageUser.description='send or recieve';
