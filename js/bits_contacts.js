@@ -18,6 +18,8 @@ function contact(){
 	var contPageUser = {};	
 	contPageUser.payments='true';
 		contPageUser.theme="#147930";
+		contPage.id="2";
+		contPage.theme="#147930";
 		
   	for(var iii = 0, contPage=contPage, contPageUser=contPageUser;  iii < allContacts.length; ++iii) { 
 		console.log("contacts");
@@ -32,7 +34,7 @@ function contact(){
 		
 		if(parseInt(getBitsWinOpt('a'))==parseInt(allContacts[iii].uid)){
 		contPageUser.id=parseInt(allContacts[iii].uid);
-		contPageUser.bannerPath=parseInt(allContacts[iii].img);
+		contPageUser.bannerPath=parseInt(final_url);
 		contPageUser.name=parseInt(allContacts[iii].name);
 			
 		}
@@ -54,7 +56,7 @@ function contact(){
 		
 	
 	}
-catch(e) {  	console.log("no contacts")	 
+catch(e) {  	console.log("err: no contacts! - ",e)	 
        $('.serviceListHolder').append('<li onclick="reqContacts()" class="collection-item waves-effect avatar"  style="background-color: inherit; width: 100%;"><img src="" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle">Empty</span></span><p class="serviceListFirstline"> Click to update your  list <br class="servicelistSeccondline">  </p><a href="#!" class="secondary-content"></a></li>');
        // $('.serviceListHolder').append('<li onclick="contacts()" class="collection-item waves-effect avatar"  style="background-color: inherit; width: 100%;"><img src="'+activeService.cardLogo+'.png" alt="" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle">Empty</span></span><p class="serviceListFirstline"> Click to update your '+activeService.name+' list <br class="servicelistSeccondline">  </p><a href="#!" class="secondary-content"></a></li>');
 //----------------------------------------- no contacts------------------------------------------------------------------------------------------
