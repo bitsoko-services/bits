@@ -17,8 +17,8 @@ function contact(){
 	contPageUser.deliveries='false';
 	contPage.deliveries='false';
 	contPageUser.payments='true';
-		contPage.icon="https://bitsoko.io/app/images/services/contacts.png";
-		contPage.bannerPath="https://bitsoko.io/bits/images/contactsBanner.png";
+		contPage.icon="/bits/images/services/contacts.png";
+		contPage.bannerPath="/bits/images/contactsBanner.png";
 		contPageUser.theme="#147930";
 		contPageUser.id="2";
 		contPage.id="2";
@@ -39,9 +39,9 @@ function contact(){
 		    var final_url=allContacts[iii].img
 			//$('#contactsImg').removeClass("bits-dis-image");
 		    }else{ 
-			    var final_url='https://bitsoko.io/app/images/services/contacts.png';
+			    var final_url='/bits/images/services/contacts.png';
 		    }
-		contPageUser.icon="https://bitsoko.io/app/images/services/contacts.png";
+		contPageUser.icon="/bits/images/services/contacts.png";
 		contPageUser.bannerPath=final_url;
 		contPageUser.name=parseInt(allContacts[iii].name);
 			
