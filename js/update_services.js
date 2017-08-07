@@ -215,7 +215,40 @@ function populateService(mDet) {
 		//$('.merchproducts').addClass('displayNone')
 		//$('.merchproducts').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong><center>No products found</center></strong></p><p class="collections-content"></p></div></li></ul>');        
 	} else {
-		$('.merchantsProducts').removeClass('displayNone');
+		
+		if (mDet.name == "Contacts" ){
+			//console.log("check if contact "  +mDet.name)
+		$('.userContacts').removeClass('displayNone');
+		$('.floatingPrice').addClass('displayNone');
+	$('.prod').append('<span class="new badge bits" data-badge-caption="">'+ mDet.list.length +'</span>');
+		$('.userCont').html("");
+		for (var ii = 0; ii < mDet.list.length; ++ii) {
+			if (mDet.list[ii].metric == null) {
+				// console.log("no metrics set") 
+				mDet.list[ii].metric = "piece";
+			}
+			if (ii == 0) {
+				$('.first-tt').attr('data-activates', 'prod-' + mDet.list[ii].id + '-counter');
+			}
+
+			$('.userCont').append('<li class="collection-item avatar bits-max "style="  height: 65px !important;   min-height: 39px; "><img src="https://bitsoko.io' + mDet.list[ii].imagePath + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> ' + mDet.list[ii].name + ' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class=" left">' + mDet.list[ii].contact + '</p><div class="handle-counter" id="prod-' + mDet.list[ii].id + '-counter">'
+				// +'</div><p class="col s4" style=""> <input class="number bitsInputQty sinpt" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'><label for='+mDet.list[ii].name+'></label></p>'+
+				+ '</li>');
+			$('#prod-' + mDet.list[ii].id + '-counter').handleCounter()
+		};
+		// 	 for(var ii = 0; ii < mDet.list.length; ++ii) { 		
+		//  	 	console.log(mDet.promotions[ii].promoName)
+		//  	 	console.log(mDet.list[ii].name)	
+		// 	 };
+		bitsTheme(mDet.theme);
+		$('.materialboxed').materialbox();
+		var addproducts = document.querySelectorAll(".bitsInputQty");
+		for (var i = 0; i < addproducts.length; ++i) {
+			addproducts[i].addEventListener("change", tabulateTotals, false);
+		}
+		}
+		else{
+					$('.merchantsProducts').removeClass('displayNone');
 	$('.prod').append('<span class="new badge bits" data-badge-caption="">'+ mDet.list.length +'</span>');
 		$('.merchproducts').html("");
 		for (var ii = 0; ii < mDet.list.length; ++ii) {
@@ -242,6 +275,8 @@ function populateService(mDet) {
 		for (var i = 0; i < addproducts.length; ++i) {
 			addproducts[i].addEventListener("change", tabulateTotals, false);
 		}
+		}
+
 	}
 }
 //---------------------------------------------------end populateService function------------------------------------------------------------------------------------------------------------------------
