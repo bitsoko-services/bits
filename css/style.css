@@ -94,7 +94,7 @@ dd + dd {
     display:none !important;
   }
 .collection .collection-item.avatar {
-    min-height: 84px;
+    /* min-height: 84px; */
     /*padding-left: 55px !important;*/
     position: relative;
 }

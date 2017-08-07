@@ -1316,6 +1316,10 @@ doFetch({action : 'updContDet', data: contUpd}, allconts).then(function(e){
        allconts[i].ctype = 'address';
         allconts[i].name = matches[j].name;
         allconts[i].uid = matches[j].uid;
+          console.log("=====================")
+        console.log( allconts[i].uid)
+        console.log("=====================")
+        console.log( allconts[j].uid)
    }  
    }
        
