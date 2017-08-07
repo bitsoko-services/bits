@@ -55,7 +55,7 @@ function servicePageLoader() {
 	if (parseInt(getBitsWinOpt('s')) == 2) {
 		contact();
 	}
-	if (parseInt(getBitsWinOpt('s')) == 3) {
+	if (parseInt(getBitsWinOpt('s')) > 2) {
 		//merchants options start; 
 	
 	$(".serviceListHolder").show();
