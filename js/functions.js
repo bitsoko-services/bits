@@ -294,9 +294,9 @@ function makeOrder(orderArrayy, orderLoc) {
 		$('#loginModal').openModal();
 		return;
 	}
-	console.log('1 checking mobile verifications');
+	//console.log('1 checking mobile verifications');
 	checkmobiveri();
-	console.log('2 done checking mobile verifications');
+	//console.log('2 done checking mobile verifications');
 	actvServ().then(function(p) {
 		console.log('3');
 		//var p=p.deliveries
