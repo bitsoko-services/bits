@@ -33,7 +33,7 @@ html(⚡='')
     script(async='', custom-element='amp-selector', src='https://cdn.ampproject.org/v0/amp-selector-0.1.js')
     script(async='', custom-element='amp-bind', src='https://cdn.ampproject.org/v0/amp-bind-0.1.js')
     for store in stores
-     link(rel='preload', href="https://bitsoko.io/bits/?s="+store.id)
+     link(rel='preload', href="/bits/?s="+store.id)
   body
     mixin listpromo(item,title,desc,id)
           .slide.slides
@@ -46,12 +46,12 @@ html(⚡='')
                 | #{desc}
                 br
                 br
-            a.btn(href="https://bitsoko.io/bits/?s="+id) open
+            a.btn(href="/bits/?s="+id) open
    
     mixin liststore(item,title,desc,id)
           .lst
             amp-img.bxshadow.circle(src=item, width='70', height='70', alt=title)
-            a.btn2(href=href="https://bitsoko.io/bits/?s="+id)  #{title}
+            a.btn2(href=href="/bits/?s="+id)  #{title}
             span.sub(class='shpDesc')
                | #{desc}
    
@@ -76,5 +76,5 @@ html(⚡='')
          
       div
         amp-iframe.ml(width='200', height='10', sandbox='allow-scripts', layout='responsive', frameborder='0', src='/amp-iframe.html')
-    amp-install-serviceworker(src='https://bitsoko.io/sw.js', data-iframe-src='https://bitsoko.io/connect.html', layout='nodisplay')
+    amp-install-serviceworker(src='/sw.js', data-iframe-src='/connect.html', layout='nodisplay')
  
