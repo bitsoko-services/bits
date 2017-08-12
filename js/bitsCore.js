@@ -668,7 +668,7 @@ console.log("your random seed is: " +randomSeed);
           password = prompt('Enter password to retrieve addresses', 'Password');
         }
 
-        var numAddr = 100;
+        var numAddr = 1;
 
         lightwallet.keystore.deriveKeyFromPassword(password, function(err, pwDerivedKey) {
 

@@ -50,7 +50,7 @@ function servicePageLoader() {
 	} else {
 		var servID = getBitsWinOpt('a');
 	}
-	document.querySelector("link[rel='manifest']").href = "https://bitsoko.io/bits/web-manifest.json?s=" + servID;
+	document.querySelector("link[rel='manifest']").href = "https://bitsoko.co.ke/bits/web-manifest.json?s=" + servID;
 	localStorage.setItem('bits-active-service', servID);
 	if (parseInt(getBitsWinOpt('s')) == 2) {
 		contact();

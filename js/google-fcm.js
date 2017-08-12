@@ -3,7 +3,7 @@ function startmessage(){
 
   var config = {
     apiKey: "AAAAbt9hX9o:APA91bE-V876epaCGolDrXSsbb0gXlnLM46BqAU-3H9MudpCru6pbEXaNHW5OBiNgDvDbNShnQo3Q3PMRicmp2itH7tW0IYU83i3WNgPdW_5zZHjVrJlGy9RwhUA7aX-PAMYWhrqh7qP5yF9LRseM34ILObz9V4vYA",
-    authDomain: "bitsoko.io",
+    authDomain: "bitsoko.co.ke",
     messagingSenderId: "476194103258"
   };
   firebase.initializeApp(config);
