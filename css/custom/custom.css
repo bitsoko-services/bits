@@ -24,6 +24,12 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     top: 60px;
     z-index: 120 px;
 }
+.topdata{
+	    position: relative;
+    	font-size: 15px;
+    	z-index: 1;
+        font-weight: 200;
+}
 .number {
 	width: 40px !important;
     height: 40px !important;

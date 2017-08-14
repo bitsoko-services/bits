@@ -116,7 +116,7 @@ function populateService(mDet) {
 	$(".resDisplay").html(mDet.name);
 	document.querySelector('.serviceName').innerHTML = mDet.name;
 	document.querySelector('.serviceName2').innerHTML = mDet.name;
-	document.querySelector('.cardimage').src = 'https://bitsoko.io' + mDet.bannerPath;
+	document.querySelector('.cardimage').src = 'https://bitsoko.co.ke' + mDet.bannerPath;
 	document.querySelector('.cardLogo').src = mDet.icon;
 	document.querySelector('.bitsWcover').src = mDet.icon;
 	document.querySelector('.serviceDescription2').innerHTML = mDet.description;
@@ -179,7 +179,7 @@ function populateService(mDet) {
 			checkPayments();
 			bitsTheme(mDet.theme);
 			var dailyCost = (parseInt(mDet.promotions[ii].discount) / 100) * mDet.promotions[ii].promoPrice;
-			$('.merchPromo').append('<li class="avatar bits-max promo-collection">' + '<a href="#" id="burst-12" class=" waves-effect waves-light  bits accent-2"><span style="font-size: 17px;">' + mDet.promotions[ii].discount + '</span>% <br/> off</a><img src="https://bitsoko.io' + mDet.promotions[ii].promoBanner + '" style="margin-top:-50px ;" data-caption="' + mDet.promotions[ii].promoName + '" alt="' + mDet.promotions[ii].promoDesc + '" class="materialboxed">' + '<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> ' + mDet.promotions[ii].promoName + ' </span></span>' + '<p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge displayNone bits left" style="margin-left: 20px;">' + Math.ceil(dailyCost) + ' <span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>' + '<div class="switch " style="width: 190px;margin-top: -25px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-' + mDet.promotions[ii].id + '">Not Subscribed</span> <label><input type="checkbox" dailyR="' + Math.ceil(dailyCost) + '" pid="' + mDet.promotions[ii].id + '" class="promoSubButton bits promoSubButton-' + mDet.promotions[ii].id + '" style=""> <span style="margin-top:2px;" class="lever bits right"></span></label></div><br><center><p style=" bottom: 0px;text-align: center;width: 70%;" class="displayNone serviceListseccondline "><i style="float: left;" class="serviceListseccondline promo-state-icon mdi-notification-sync"> 0 shares</i><i class="promo-state-icon mdi-action-favorite"> 0 likes </i><i style="float: right;" class="promo-state-icon mdi-action-receipt"> 0 sales </i></p></center></li>');
+			$('.merchPromo').append('<li class="avatar bits-max promo-collection">' + '<a href="#" id="burst-12" class="waves-effect waves-light  bits accent-2"><span style="font-size: 17px;"class="topdata">' + mDet.promotions[ii].discount + ' % <br/> off</span></a><img src="https://bitsoko.co.ke' + mDet.promotions[ii].promoBanner + '" style="margin-top:-50px ;" data-caption="' + mDet.promotions[ii].promoName + '" alt="' + mDet.promotions[ii].promoDesc + '" class="materialboxed"><div class="serviceListTitle bits-ellipsis" style="margin-top: -29px;width: 100%;position: relative;text-align: center;background: rgba(255, 255, 255, 0.87);"> ' + mDet.promotions[ii].promoName + ' </div>' + '<span class="title"></span>' + '<p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge displayNone bits left" style="margin-left: 20px;">' + Math.ceil(dailyCost) + ' <span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>' + '<div class="switch " style="width: 190px;margin-top: -5px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-' + mDet.promotions[ii].id + '">Not Subscribed</span> <label><input type="checkbox" dailyR="' + Math.ceil(dailyCost) + '" pid="' + mDet.promotions[ii].id + '" class="promoSubButton bits promoSubButton-' + mDet.promotions[ii].id + '" style=""> <span style="margin-top:2px;" class="lever bits right"></span></label></div><br><center><p style=" bottom: 0px;text-align: center;width: 70%;" class="displayNone serviceListseccondline "><i style="float: left;" class="serviceListseccondline promo-state-icon mdi-notification-sync"> 0 shares</i><i class="promo-state-icon mdi-action-favorite"> 0 likes </i><i style="float: right;" class="promo-state-icon mdi-action-receipt"> 0 sales </i></p></center></li>');
 			subs = mDet.promotions[ii].promoSubs;
 			console.log(mDet.promotions[ii].discount)
 			if (mDet.promotions[ii].discount == null) {
@@ -215,9 +215,13 @@ function populateService(mDet) {
 		//$('.merchproducts').addClass('displayNone')
 		//$('.merchproducts').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong><center>No products found</center></strong></p><p class="collections-content"></p></div></li></ul>');        
 	} else {
-		$('.merchantsProducts').removeClass('displayNone');
+		
+		if (mDet.name == "Contacts" ){
+			//console.log("check if contact "  +mDet.name)
+		$('.userContacts').removeClass('displayNone');
+		$('.floatingPrice').addClass('displayNone');
 	$('.prod').append('<span class="new badge bits" data-badge-caption="">'+ mDet.list.length +'</span>');
-		$('.merchproducts').html("");
+		$('.userCont').html("");
 		for (var ii = 0; ii < mDet.list.length; ++ii) {
 			if (mDet.list[ii].metric == null) {
 				// console.log("no metrics set") 
@@ -227,7 +231,7 @@ function populateService(mDet) {
 				$('.first-tt').attr('data-activates', 'prod-' + mDet.list[ii].id + '-counter');
 			}
 
-			$('.merchproducts').append('<li class="collection-item avatar bits-max "><img src="https://bitsoko.io' + mDet.list[ii].imagePath + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> ' + mDet.list[ii].name + ' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + mDet.list[ii].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + mDet.list[ii].metric + ' </span></p><div class="handle-counter" id="prod-' + mDet.list[ii].id + '-counter"><button class="counter-minus bits btn btn-primary btn-floating btn-f"  style="line-height: 5px;">-</button><input id= "bitsInputQty' + mDet.list[ii].id + '" class="bitsInputQty" price="' + mDet.list[ii].price + '" pid="' + mDet.list[ii].id + '" type="text" value="0" min="" style="border-bottom: none;"><span> ' + mDet.list[ii].metric + ' </span><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f" style="line-height: 5px; float:right; margin-top: 7px;" >+</button>'
+			$('.userCont').append('<li class="collection-item avatar bits-max "style="  height: 65px !important;   min-height: 39px; "><img src="https://bitsoko.co.ke' + mDet.list[ii].imagePath + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> ' + mDet.list[ii].name + ' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class=" left">' + mDet.list[ii].contact + '</p><div class="handle-counter" id="prod-' + mDet.list[ii].id + '-counter">'
 				// +'</div><p class="col s4" style=""> <input class="number bitsInputQty sinpt" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'><label for='+mDet.list[ii].name+'></label></p>'+
 				+ '</li>');
 			$('#prod-' + mDet.list[ii].id + '-counter').handleCounter()
@@ -242,6 +246,37 @@ function populateService(mDet) {
 		for (var i = 0; i < addproducts.length; ++i) {
 			addproducts[i].addEventListener("change", tabulateTotals, false);
 		}
+		}
+		else{
+					$('.merchantsProducts').removeClass('displayNone');
+	$('.prod').append('<span class="new badge bits" data-badge-caption="">'+ mDet.list.length +'</span>');
+		$('.merchproducts').html("");
+		for (var ii = 0; ii < mDet.list.length; ++ii) {
+			if (mDet.list[ii].metric == null) {
+				// console.log("no metrics set") 
+				mDet.list[ii].metric = "piece";
+			}
+			if (ii == 0) {
+				$('.first-tt').attr('data-activates', 'prod-' + mDet.list[ii].id + '-counter');
+			}
+
+			$('.merchproducts').append('<li class="collection-item avatar bits-max "><img src="https://bitsoko.co.ke' + mDet.list[ii].imagePath + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> ' + mDet.list[ii].name + ' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + mDet.list[ii].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + mDet.list[ii].metric + ' </span></p><div class="handle-counter" id="prod-' + mDet.list[ii].id + '-counter"><button class="counter-minus bits btn btn-primary btn-floating btn-f"  style="line-height: 5px;">-</button><input id= "bitsInputQty' + mDet.list[ii].id + '" class="bitsInputQty" price="' + mDet.list[ii].price + '" pid="' + mDet.list[ii].id + '" type="text" value="0" min="" style="border-bottom: none;"><span> ' + mDet.list[ii].metric + ' </span><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f" style="line-height: 5px; float:right; margin-top: 7px;" >+</button>'
+				// +'</div><p class="col s4" style=""> <input class="number bitsInputQty sinpt" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'><label for='+mDet.list[ii].name+'></label></p>'+
+				+ '</li>');
+			$('#prod-' + mDet.list[ii].id + '-counter').handleCounter()
+		};
+		// 	 for(var ii = 0; ii < mDet.list.length; ++ii) { 		
+		//  	 	console.log(mDet.promotions[ii].promoName)
+		//  	 	console.log(mDet.list[ii].name)	
+		// 	 };
+		bitsTheme(mDet.theme);
+		$('.materialboxed').materialbox();
+		var addproducts = document.querySelectorAll(".bitsInputQty");
+		for (var i = 0; i < addproducts.length; ++i) {
+			addproducts[i].addEventListener("change", tabulateTotals, false);
+		}
+		}
+
 	}
 }
 //---------------------------------------------------end populateService function------------------------------------------------------------------------------------------------------------------------
@@ -293,8 +328,8 @@ function populateModal(x, y) {
 		$('.serviceListHolder').html("");
 	}
 	document.querySelector('.serviceName').innerHTML = activeService.name;
-	document.querySelector('.cardimage').src = "https://bitsoko.io" + activeService.cardimage + ".png";
-	document.querySelector('.cardLogo').src = "https://bitsoko.io" + activeService.cardLogo + ".png";
+	document.querySelector('.cardimage').src = "https://bitsoko.co.ke" + activeService.cardimage + ".png";
+	document.querySelector('.cardLogo').src = "https://bitsoko.co.ke" + activeService.cardLogo + ".png";
 	document.querySelector('.serviceDescription').innerHTML = activeService.desription;
 	//add button
 	updateServicelist();
@@ -310,9 +345,9 @@ function populateModal(x, y) {
 				activeService = serviceList[ii];
 			}
 			if (serviceList[ii].id == 1) {
-				document.querySelector('.service-banner').src = 'https://bitsoko.io/app/images/services/contacts.png';
+				document.querySelector('.service-banner').src = 'https://bitsoko.co.ke/app/images/services/contacts.png';
 			} else if (serviceList[ii].id == 2) {
-				document.querySelector('.service-banner').src = 'https://bitsoko.io/app/images/services/contacts.png';
+				document.querySelector('.service-banner').src = 'https://bitsoko.co.ke/app/images/services/contacts.png';
 			}
 		};
 		document.querySelector('.btnname').innerHTML = activeService.name;

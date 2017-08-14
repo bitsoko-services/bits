@@ -1,10 +1,10 @@
 // BITS Server-JavaScript Document
 try{
-	bitsVersion =540;
-// 	importScripts('https://bitsoko.io/bitsAssets/js/lightwallet/lightwallet.min.js');
-// 	importScripts('https://bitsoko.io/bitsAssets/js/web3/web3.js');
-// 	importScripts('https://bitsoko.io/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js');
-// 	importScripts('https://bitsoko.io/bitsAssets/js/async/lib/async.js');//
+	bitsVersion =550;
+// 	importScripts('https://bitsoko.co.ke/bitsAssets/js/lightwallet/lightwallet.min.js');
+// 	importScripts('https://bitsoko.co.ke/bitsAssets/js/web3/web3.js');
+// 	importScripts('https://bitsoko.co.ke/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js');
+// 	importScripts('https://bitsoko.co.ke/bitsAssets/js/async/lib/async.js');//
 
 
 bitsInstall = function(event){
@@ -123,6 +123,7 @@ return new Promise(function(resolve, reject) {
            bitsNotification('You have recevied '+dat.amt,'sam has sent you  '+dat.amt+' Click to view your balance','AnonMsg','bits/images/no.png',[{action: '', title: "Backed up"}],true,true);
        
       break;
+      
 
         case 'deliverOrder':
 			   var tg="soko-order-"+dat.oid+"-"+dat.store;
@@ -142,7 +143,11 @@ return new Promise(function(resolve, reject) {
 		   }
 	 break;
 
-
+  case 'gotPoints':
+    
+           bitsNotification('You have points ','Click to view your balance','PointsMsg','bits/images/yes.png','bits/images/Delivered.png',[{action: '', title: "Points"}],true,true);
+       
+      break;
      
       
 
@@ -299,8 +304,8 @@ if (url.pathname.substring(0, 2) == '/p' && url.hostname == location.hostname) {
 	
 		console.log('physical web url!!');
 		var bid=url.pathname.substring(2, 5);
-		//resolve(Response.redirect('http://bitsoko.io/bits/#m='+bid));
-//orReq.url='https://bitsoko.io/p'+bid+'?f=j';
+		//resolve(Response.redirect('http://bitsoko.co.ke/bits/#m='+bid));
+//orReq.url='https://bitsoko.co.ke/p'+bid+'?f=j';
 	 
 	 	      var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -311,10 +316,10 @@ if (url.pathname.substring(0, 2) == '/p' && url.hostname == location.hostname) {
   return cache.match(event.request.clone()).then(function (response) {
 	  
 console.log(response);
-	  var sendUrl='https://bitsoko.io/p'+bid+'?f=j&p='+text;
+	  var sendUrl='https://bitsoko.co.ke/p'+bid+'?f=j&p='+text;
 	  
  return response || fetch(sendUrl).then(function(response) {
-//response=Response.redirect('https://bitsoko.io/p='+bid+'?format=json');
+//response=Response.redirect('https://bitsoko.co.ke/p='+bid+'?format=json');
 
 console.log(response.clone().url);
 console.log(event.request.clone().url);
@@ -358,8 +363,8 @@ return trResp;
   }).catch(function(err){
 
   	
-//url = 'https://bitsoko.io/bits/index.html#s=3&a=404';
-return Response.redirect('https://bitsoko.io/bits/index.html?s=3&a=404');
+//url = 'https://bitsoko.co.ke/bits/index.html#s=3&a=404';
+return Response.redirect('https://bitsoko.co.ke/bits/index.html?s=3&a=404');
   });	
 //cache.put(orReq, response.clone());
 //  console.log(resp.clone());
@@ -373,17 +378,17 @@ else if (url.pathname.substring(0, 2) == '/w' && url.hostname == location.hostna
    
 		console.log('wallet web url!!');
 		var bid=url.pathname.substring(2, 5);
-			//resolve(Response.redirect('http://bitsoko.io/bits/#m='+bid));
-			//orReq.url='https://bitsoko.io/p'+bid+'?f=j';
+			//resolve(Response.redirect('http://bitsoko.co.ke/bits/#m='+bid));
+			//orReq.url='https://bitsoko.co.ke/p'+bid+'?f=j';
 
 			return cache.match(event.request.clone()).then(function (response) {
 	  
 				console.log(response);
-				return response || fetch('https://bitsoko.io/w'+bid+'?f=j').then(function(response) {
-				//response=Response.redirect('https://bitsoko.io/p='+bid+'?format=json');
+				return response || fetch('https://bitsoko.co.ke/w'+bid+'?f=j').then(function(response) {
+				//response=Response.redirect('https://bitsoko.co.ke/p='+bid+'?format=json');
 
 				//console.log(response);
-				if(response.clone().url=='https://bitsoko.io/w'+bid+'?f=j' && event.request.clone().url=='https://bitsoko.io/w'+bid){
+				if(response.clone().url=='https://bitsoko.co.ke/w'+bid+'?f=j' && event.request.clone().url=='https://bitsoko.co.ke/w'+bid){
 	
 					return response.clone().text().then(function(d){
  	

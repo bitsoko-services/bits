@@ -3018,7 +3018,7 @@ td, th {
 }
 
 .collection .collection-item.avatar {
-  min-height: 84px;
+  /* min-height: 84px; */
   padding-left: 72px;
   position: relative;
 }
@@ -5187,7 +5187,7 @@ small {
   height: 40px;
   line-height: 40px;
   padding: 0;
-  background-color: #26a69a;
+  /* background-color: #26a69a; */
   border-radius: 50%;
   transition: .3s;
   cursor: pointer;
