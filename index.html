@@ -941,7 +941,22 @@ requestPersist();
  }     
 }   
 }
-
+ // convert points to KOBO
+								 fetchRates().then(function(e) {
+										if (e.status == "ok") {
+											console.log(e.data);
+											coinList = e.data.data;
+											for (i = 0; i < coinList.length; i++) {
+												var rate = coinList[i].coinRate
+												console.log(rate);
+												localStorage.setItem('kobo-current-rates', rate);
+												//swal("success!", "your order has been sent!", "success");
+											}
+										} else {
+											//swal("Cancelled", "your order is not sent", "error");
+										}
+									});
+								 // end
 //----------------------------------------------updating promotions----------------------------------------------------------------------------------
   function updatePromos(){
   	bitsTheme()
