@@ -1306,7 +1306,7 @@ store.onsuccess = function (event) {
   // var dat=localStorage.getItem('bitsoko-settings-country').toLowerCase();
   var curropts=JSON.parse(event.target.result);
      $('.bitsoko-currency').html(curropts.curcode).css('text-transform','uppercase');
-         $('.bitsoko-xrate').html('').append('<span style="">1 ETH = </span><span style="text-transform:uppercase;">'+numberify(curropts.curpr*curropts.basex,0) +' '+curropts.curcode+'</span>');
+         $('.bitsoko-xrate').html('').append('<span style="">1 KOBO = </span><span style="text-transform:uppercase;">'+numberify(curropts.curpr*curropts.basex,0) +' '+curropts.curcode+'</span>');
     
 
          returns.xrate=curropts.curpr;
