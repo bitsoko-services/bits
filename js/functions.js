@@ -333,10 +333,10 @@ function makeOrder(orderArrayy, orderLoc) {
 					doFetch({
 						action: 'makeOrder',
 						data: orderArrayy,
-						pointsEarned: totalPoints,
-						EarnedKobo: totalKobo,
+						//EarnedKobo: totalKobo,
 						loc: e.coords.latitude + ',' + e.coords.longitude,
 						user: localStorage.getItem("bits-user-name"),
+						pointsEarned: {coin:'kobo',purchase:totalKobo},
 						service: parseInt(getBitsWinOpt('s'))
 					}).then(function(e) {
 						if (e.status == "ok") {
