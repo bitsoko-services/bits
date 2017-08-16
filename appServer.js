@@ -9,7 +9,7 @@ var webHooks = new WebHooks({
 })
  
 // sync instantation - add a new webhook called 'shortname1' 
-webHooks.add('deliverhook', 'https://bitsoko.io/autobot/hook/put.php').then(function(){
+webHooks.add('deliverhook', 'https://bitsoko.co.ke/autobot/hook/put.php').then(function(){
     // done 
 	console.log('hook hooked')
 }).catch(function(err){
