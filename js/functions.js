@@ -435,10 +435,10 @@ function checkRewards(t) {
 								var kshToPoints = Math.floor(ptsed) / 2
 								 totalPoints = totalPoints + kshToPoints
 								 var rate=JSON.parse(localStorage.getItem('kobo-current-rates'));
-								  console.log("===============================");
-								 console.log(rate);
+								 // console.log("===============================");
+								// console.log(rate);
 								 var kshToKobo = Math.floor(ptsed) / rate
-								 console.log(kshToKobo);
+								 //console.log(kshToKobo);
 								 totalKobo = totalKobo + kshToKobo
 								
 								//console.log(totalPoints);
