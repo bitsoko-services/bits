@@ -47,6 +47,26 @@ function oid() {
 }
 earnedPoints = 0
 function getUserOders() {
+	 // convert points to KOBO
+
+ fetchRates().then(function(e) {
+	if (e.status == "ok") {
+		coinList = e.data.data;
+		for (var i in coinList) {
+			var rate = coinList[i].coinRate;
+//if i have 1000 kobos
+//var koboBalance = 1000;
+	//		console.log((rate*e.data.baseEx*koboBalance).toFixed(2)+' KES');
+$('.bitsoko-xrate').html('').append('1 KOBO = '+Math.floor(rate*e.data.baseEx)+' KES')	
+var koboRate = 	Math.floor(rate*e.data.baseEx)	
+console.log('1 KOBO = '+rate*e.data.baseEx+' KES');
+localStorage.setItem('kobo-current-rates', koboRate);
+		}
+	} else {
+		console.log("error");
+	}
+});
+///////////////////////////////////////////////////////////////////////////////////////////////////
 	doFetch({
 		action: 'getAllOrders',
 		uid: localStorage.getItem("bits-user-name")
