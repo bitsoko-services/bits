@@ -333,9 +333,10 @@ function makeOrder(orderArrayy, orderLoc) {
 					doFetch({
 						action: 'makeOrder',
 						data: orderArrayy,
-						pointsEarned: totalPoints,
+						//EarnedKobo: totalKobo,
 						loc: e.coords.latitude + ',' + e.coords.longitude,
 						user: localStorage.getItem("bits-user-name"),
+						pointsEarned: {coin:'kobo',purchase:totalKobo},
 						service: parseInt(getBitsWinOpt('s'))
 					}).then(function(e) {
 						if (e.status == "ok") {
@@ -377,6 +378,7 @@ function makeOrder(orderArrayy, orderLoc) {
 // 	})
 // }
 totalPoints = 0
+totalKobo = 0
 function checkRewards(t) {
 	
 	// a convenient wrapper.
@@ -432,7 +434,14 @@ function checkRewards(t) {
 								var ptsed = discount / 100 * prce
 								var kshToPoints = Math.floor(ptsed) / 2
 								 totalPoints = totalPoints + kshToPoints
-								console.log(totalPoints);
+								 var rate=JSON.parse(localStorage.getItem('kobo-current-rates'));
+								 // console.log("===============================");
+								// console.log(rate);
+								 var kshToKobo = Math.floor(ptsed) / rate
+								 //console.log(kshToKobo);
+								 totalKobo = totalKobo + kshToKobo
+								
+								//console.log(totalPoints);
 								$('.star').html('')
 								$('.star').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(ptsed) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">kes</span></div>')
 							}

@@ -788,7 +788,8 @@ $(".js-push-button-notification").bind( "touchstart click", function(event, ui) 
         if (isPushEnabled) {  
       unsubscribe();  
     } else {  
-      subscribe();  
+      //subscribe();
+       startPushManager();  
     }
      }
 

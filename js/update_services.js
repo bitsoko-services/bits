@@ -77,6 +77,8 @@ function doSubscribe() {
 							Materialize.toast(action + 'd. Insufficient Funds', 6500);
 						} else {
 							Materialize.toast(action + 'd successfully', 5000);
+							$(".promoSubButton-" + pid).prop("checked", true);
+								$(".promoSubState-" + pid).html("Subscribed");
 						}
 						//---------------------------------------send promo data to db-----------------------------------------------------------------------------
 						if (action == 'subscribe') {
