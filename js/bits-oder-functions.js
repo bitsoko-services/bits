@@ -57,10 +57,12 @@ function getUserOders() {
 //if i have 1000 kobos
 //var koboBalance = 1000;
 	//		console.log((rate*e.data.baseEx*koboBalance).toFixed(2)+' KES');
-$('.bitsoko-xrate').html('').append('1 KOBO = '+Math.floor(rate*e.data.baseEx)+' KES')	
 var koboRate = 	Math.floor(rate*e.data.baseEx)	
-console.log('1 KOBO = '+rate*e.data.baseEx+' KES');
-localStorage.setItem('kobo-current-rates', koboRate);
+var qq = rate*e.data.baseEx
+var xx = qq.toFixed(2);
+console.log('1 KOBO = '+xx+' KES');
+$('.bitsoko-xrate').html('').append('1 KOBO = '+xx+' KES')	
+localStorage.setItem('kobo-current-rates', xx);
 		}
 	} else {
 		console.log("error");
@@ -86,9 +88,10 @@ var purchasePoints = JSON.parse(items).purchase;
 				 earnedPoints = earnedPoints + purchasePoints
 				// convert this to kenyan sh 
 				 var rate=JSON.parse(localStorage.getItem('kobo-current-rates'));
-				  var totalearnedPoints = Math.floor(earnedPoints) * rate
-				 console.log(totalearnedPoints); 
-				 $('#balance-coins').html('').append(totalearnedPoints+' KES')	
+				  var totalearnedPoints = earnedPoints * rate
+					var q = totalearnedPoints.toFixed(2);
+				 console.log(q); 
+				 $('#balance-coins').html('').append(q+' KES')	
 			};
 			var setdb = getObjectStore('data', 'readwrite').put(JSON.stringify(xx), 'bits-user-orders-' + localStorage.getItem("bits-user-name"));
 			setdb.onsuccess = function() {
