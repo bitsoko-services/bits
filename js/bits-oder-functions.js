@@ -89,6 +89,9 @@ var typeofCoin = JSON.parse(items).coin;
 							try{
 				
 var purchasePoints = JSON.parse(items).purchase;
+									if(purchasePoints==undefined){
+								var purchasePoints = 0;	
+								}
 				}catch(err){
 				console.log('this order does not have any purchase rewards');
 	
@@ -97,6 +100,9 @@ var purchasePoints = 0;
 							try{
 				
 var deliveryPoints = JSON.parse(items).delivery;
+								if(deliveryPoints==undefined){
+								var deliveryPoints = 0;	
+								}
 				}catch(err){
 				console.log('this order does not have any delivery rewards');
 	
