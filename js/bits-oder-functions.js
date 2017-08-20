@@ -78,7 +78,7 @@ localStorage.setItem('kobo-current-rates', xx);
 			xx = e.data;
 			
 var earnedPoints = 0;	
-			for (var ii = 0; ii < xx.length; ++ii) {
+			for (var ii in xx) {
 				var items = xx[ii].points;
 				try{
 var typeofCoin = JSON.parse(items).coin;
