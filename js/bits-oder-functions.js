@@ -103,6 +103,8 @@ var deliveryPoints = JSON.parse(items).delivery;
 var deliveryPoints = 0;	
 				}
 				
+				 console.log(earnedPoints,purchasePoints,deliveryPoints);
+				
 				 earnedPoints = earnedPoints + purchasePoints + deliveryPoints;
 
 			};
