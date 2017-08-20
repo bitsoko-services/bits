@@ -45,7 +45,7 @@ function oid() {
 		}
 	} else {}
 }
-earnedPoints = 0
+
 function getUserOders() {
 	 // convert points to KOBO
 
