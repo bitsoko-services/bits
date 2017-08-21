@@ -134,12 +134,12 @@ return new Promise(function(resolve, reject) {
 // get notifications when you request for services eg delivery
  case 'userOrder':
     var tg="bits-order-"+dat.oid+"-"+dat.store;
-      var state='pending';
+      var state=dat.state;
 		 if(state=='pending')
-		 { bitsNotification('Order pending','You have requested for this service ',tg,'bits/images/pending.png',dat.orderImg,[{action: 'cancel', title: "Cancel"}],true,true);
+		 { bitsNotification('Order Pending','You have requested for this service ',tg,'bits/images/pending.png',dat.orderImg,[{action: 'cancel', title: "Cancel"}],true,true);
 		   } 
 		else if(state=='delivering')
-		{ bitsNotification('Order Delivered','Your order has been Delivered',tg,'bits/images/Delivered.png','bits/images/Delivered.png',[{action: 'ok', title: "OK"}],true,true);
+		{ bitsNotification('Order Delivery','Your order is being delivered',tg,'bits/images/Delivered.png',dat.orderImg,[{action: 'cancel', title: "Cancel"},{action: 'pay', title: "Pay"}],true,true);
 		   }
 	 break;
 

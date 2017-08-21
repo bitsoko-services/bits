@@ -412,7 +412,7 @@ function checkRewards(t) {
 			var current = null;
 			var cnt = 1;
 			var pts = 0
-			for (var i = 0, t = t, wx = wx, pts = pts; i < zx.length; i++) {
+			for (var i in zx) {
 				// 				if (zx[i] != current) {
 				// 				 if (cnt > 0) {
 				//console.log("cnt vs inpt " + cnt, inpt);
@@ -425,7 +425,7 @@ function checkRewards(t) {
 // 						console.log('found!!!!!!!!', zx[i]);
 						var prodID = zx[i]
 							// get promotino discount
-						for (var io = 0; io < itms.length; io++) {
+						for (var io in itms) {
 							//loop products for pri
 							if (parseInt(itms[io].id) == parseInt(zx[i])) {
 								//console.log("match id")

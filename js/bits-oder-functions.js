@@ -45,7 +45,7 @@ function oid() {
 		}
 	} else {}
 }
-earnedPoints = 0
+
 function getUserOders() {
 	 // convert points to KOBO
 
@@ -76,23 +76,54 @@ localStorage.setItem('kobo-current-rates', xx);
 		if (e.status == "ok") {
 			console.log(e.data)
 			xx = e.data;
-			for (var ii = 0; ii < xx.length; ++ii) {
+			
+var earnedPoints = 0;	
+			for (var ii in xx) {
 				var items = xx[ii].points;
-				console.log(items);
-				console.log(JSON.parse(items).coin);
-				console.log(JSON.parse(items).purchase);
-				//console.log(JSON.parse(items).delivery);
+				try{
 var typeofCoin = JSON.parse(items).coin;
+				}catch(err){
+				console.log('this order does not have any rewards');
+				continue;	
+				}
+							try{
+				
 var purchasePoints = JSON.parse(items).purchase;
-//var deliveryPoints = JSON.parse(items).delivery;
-				 earnedPoints = earnedPoints + purchasePoints
+									if(purchasePoints==undefined){
+								var purchasePoints = 0;	
+								}
+				}catch(err){
+				console.log('this order does not have any purchase rewards');
+	
+var purchasePoints = 0;	
+				}
+							try{
+				
+var deliveryPoints = JSON.parse(items).delivery;
+								if(deliveryPoints==undefined){
+								var deliveryPoints = 0;	
+								}
+				}catch(err){
+				console.log('this order does not have any delivery rewards');
+	
+var deliveryPoints = 0;	
+				}
+				
+				 console.log(earnedPoints,purchasePoints,deliveryPoints);
+				
+				 earnedPoints = earnedPoints + purchasePoints + deliveryPoints;
+
+			};
+			
+			
+
 				// convert this to kenyan sh 
 				 var rate=JSON.parse(localStorage.getItem('kobo-current-rates'));
 				  var totalearnedPoints = earnedPoints * rate
 					var q = totalearnedPoints.toFixed(2);
 				 console.log(q); 
-				 $('#balance-coins').html('').append(q+' KES')	
-			};
+				 $('#balance-coins').html('').append(q+' KES');
+			
 			var setdb = getObjectStore('data', 'readwrite').put(JSON.stringify(xx), 'bits-user-orders-' + localStorage.getItem("bits-user-name"));
 			setdb.onsuccess = function() {
 				oid();
