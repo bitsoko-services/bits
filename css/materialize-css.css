@@ -5678,7 +5678,7 @@ button.btn-floating {
   min-height: 3rem;
   line-height: 3rem;
   padding: 0 1rem;
-  background-color: #fff;
+  /* background-color: #fff; */
   border-bottom: 1px solid #ddd;
 }
 
@@ -5712,7 +5712,7 @@ button.btn-floating {
 
 .side-nav .collapsible-header,
 .side-nav.fixed .collapsible-header {
-  background-color: transparent;
+  /* background-color: transparent; */
   border: none;
   line-height: inherit;
   height: inherit;
@@ -5721,7 +5721,7 @@ button.btn-floating {
 
 .side-nav .collapsible-header:hover,
 .side-nav.fixed .collapsible-header:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+  /* background-color: rgba(0, 0, 0, 0.05); */
 }
 
 .side-nav .collapsible-header i,
@@ -7166,7 +7166,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .side-nav li.active {
-  background-color: rgba(0, 0, 0, 0.05);
+  /* background-color: rgba(0, 0, 0, 0.05); */
 }
 
 .side-nav li > a {

@@ -1007,15 +1007,16 @@ ul.side-nav.leftside-navigation hr {
 }
 
 ul.side-nav.leftside-navigation li {
-  line-height: 44px;
+  /* line-height: 44px; */
+  px; */
 }
 
 ul.side-nav.leftside-navigation li:hover {
-  background-color: rgba(0, 0, 0, 0.04);
+  /* background-color: rgba(0, 0, 0, 0.04); */
 }
 
 ul.side-nav.leftside-navigation li.active {
-  background-color: rgba(0, 0, 0, 0.04);
+  /* background-color: rgba(0, 0, 0, 0.04); */
 }
 
 ul.side-nav.leftside-navigation li a {
