@@ -235,7 +235,7 @@ function populateService(mDet) {
 			
 			$('#user-' + mDet.list[ii].id + '-opener').html("Subscribed");
 			
-			
+			/*
 			
 			var addproducts = document.querySelectorAll('#user-' + mDet.list[ii].id + '-opener');
 			
@@ -247,7 +247,7 @@ function populateService(mDet) {
 			
 			}, false);
 		}
-			
+			*/
 			
 		};
 		// 	 for(var ii = 0; ii < mDet.list.length; ++ii) { 		
