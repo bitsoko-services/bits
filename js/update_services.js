@@ -212,11 +212,7 @@ function populateService(mDet) {
 	doSubscribe();
 	checkPayments();
 	// -------------------------------------------------loads the shops product lists --------------------------------------------------------------------------------------------------------------------------
-	if (mDet.list.length == 0) {
-		//  	 console.log("no promos") 
-		//$('.merchproducts').addClass('displayNone')
-		//$('.merchproducts').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong><center>No products found</center></strong></p><p class="collections-content"></p></div></li></ul>');        
-	} else {
+
 		
 		if (mDet.name == "Contacts" ){
 			//console.log("check if contact "  +mDet.name)
@@ -242,8 +238,11 @@ function populateService(mDet) {
 			
 			
 			var addproducts = document.querySelectorAll('#user-' + mDet.list[ii].id + '-opener');
-		for (var i = 0; i < addproducts.length; ++i) {
+			
+		for (var i in addproducts) {
+			
 			addproducts[i].addEventListener("touchstart", function(){
+				
 			history.pushState({page: 1}, "", "?s=2&a="+mDet.list[ii].id);
 			
 			}, false);
@@ -292,7 +291,7 @@ function populateService(mDet) {
 		}
 		}
 
-	}
+	
 }
 //---------------------------------------------------end populateService function------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------  function handleModal---------------------------------------------------------------------------------------------------------------------------------------
