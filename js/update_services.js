@@ -233,10 +233,23 @@ function populateService(mDet) {
 				$('.first-tt').attr('data-activates', 'prod-' + mDet.list[ii].id + '-counter');
 			}
 
-			$('.userCont').append('<li class="collection-item avatar bits-max "style="  height: 65px !important;   min-height: 39px; "><img src="https://bitsoko.co.ke' + mDet.list[ii].imagePath + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> ' + mDet.list[ii].name + ' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class=" left">' + mDet.list[ii].contact + '</p><div class="handle-counter" id="prod-' + mDet.list[ii].id + '-counter">'
-				// +'</div><p class="col s4" style=""> <input class="number bitsInputQty sinpt" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'><label for='+mDet.list[ii].name+'></label></p>'+
-				+ '</li>');
-			$('#prod-' + mDet.list[ii].id + '-counter').handleCounter()
+			$('.userCont').append('<li class="collection-item avatar bits-max "style="  height: 65px !important;   min-height: 39px; "><img src="https://bitsoko.co.ke' + mDet.list[ii].imagePath + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> ' + mDet.list[ii].name + ' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class=" left">' + mDet.list[ii].contact + '</p><div class="handle-counter" id="user-' + mDet.list[ii].id + '-opener">'
+				+'open'+
+				+ '</div></li>');
+			
+			$('#user-' + mDet.list[ii].id + '-opener').html("Subscribed");
+			
+			
+			
+			var addproducts = document.querySelectorAll('#user-' + mDet.list[ii].id + '-opener');
+		for (var i = 0; i < addproducts.length; ++i) {
+			addproducts[i].addEventListener("touchstart", function(){
+			history.pushState({page: 1}, "", "?s=2&a="+mDet.list[ii].id);
+			
+			}, false);
+		}
+			
+			
 		};
 		// 	 for(var ii = 0; ii < mDet.list.length; ++ii) { 		
 		//  	 	console.log(mDet.promotions[ii].promoName)
