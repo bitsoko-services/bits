@@ -214,7 +214,7 @@ function populateService(mDet) {
 	// -------------------------------------------------loads the shops product lists --------------------------------------------------------------------------------------------------------------------------
 
 		
-		if (mDet.name == "Contacts" ){
+		if (getBitsWinOpt('s') == "2" ){
 			//console.log("check if contact "  +mDet.name)
 		$('.userContacts').removeClass('displayNone');
 		$('.floatingPrice').addClass('displayNone');
