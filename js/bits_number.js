@@ -54,7 +54,7 @@
                 $input.val(num - 1)
                 changeVal(num - 1)
             }
-            if (num = minimum) {
+            if (num = 0) {
                     console.log("minimum value")
                  $(".delivery ").removeClass("bits");
              $(".delivery").addClass("pointer-events");
