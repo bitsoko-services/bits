@@ -18,6 +18,20 @@ aside>ul{
   left: -250px !important;
   }*/
 /*--------------------------------custom toast------------------------------------------------------------------------   */
+.permanentChng h6 {
+    text-align: center;
+    border-bottom: 1px solid red;
+    line-height: 0;
+    padding: 0;
+    /* margin-bottom: 25px; */
+    color: red;
+}
+
+.permanentChng h6 span {
+    background: white;
+    padding: 0 5px;
+}
+
 .toastlogin {
     word-break:normal !important;
 
@@ -319,9 +333,12 @@ margin-left: -5px;
     font-size: 13px;
   }
   .bits-ellipsis{
-overflow: hidden;
-/* text-overflow: ellipsis; */
-}
+
+overflow: hidden;
+
+/* text-overflow: ellipsis; */
+
+}
   .dropdown-bits {
 
   border-bottom: 0px solid #9e9e9e !important;

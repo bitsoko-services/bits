@@ -53,6 +53,8 @@ function getUserOders() {
 			coinList = e.data.data;
 			for (var i in coinList) {
 				var rate = coinList[i].coinRate;
+				var coinName = coinList[i].name;
+				$('.coinlist').html('').append('<span><div  class="coinImg" style=" position: absolute  margin-top: 5px;"><img src="/bitsAssets/images/currencies/'+coinName+'.png" alt="" style=" padding-left: 12px; height:30px;"></div><a href="" class="" class="" onclick=""><i style=" float: right; margin: 0; height: 30px; " class="mdi-action-credit-card"></i><span style=" padding-left: 42px;">'+coinName+'</span><span class="coinbal" style=" float:right;"></span></a></span>')
 				//if i have 1000 kobos
 				//var koboBalance = 1000;
 				//		console.log((rate*e.data.baseEx*koboBalance).toFixed(2)+' KES');
@@ -110,6 +112,7 @@ function getUserOders() {
 			var totalearnedPoints = earnedPoints * rate
 			var q = totalearnedPoints.toFixed(2);
 			console.log(q);
+			$('.coinbal').html('').append(totalearnedPoints);
 			$('#balance-coins').html('').append(q + ' KES');
 			var setdb = getObjectStore('data', 'readwrite').put(JSON.stringify(xx), 'bits-user-orders-' + localStorage.getItem("bits-user-name"));
 			setdb.onsuccess = function() {
