@@ -281,6 +281,14 @@ function tabulateTotals() {
 			// 	 $(".delivery").removeClass("displayNone");
 			// 	 $(".floatingPrice").removeClass("displayNone");
 			$(".totals").html(totals);
+			if (totals == 0) {
+				console.log("minimum value")
+				$(".delivery ").removeClass("bits");
+				$(".delivery").addClass("pointer-events");
+				$(".bits-main-price").addClass("grey");
+				$(".localCurr").addClass("displayNone");
+				$(".bits-main-price ").removeClass("bits");
+										} 
 			//localStorage.setItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')),totals);
 		} catch (err) {}
 	}
