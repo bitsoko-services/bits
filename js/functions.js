@@ -442,7 +442,7 @@ function checkRewards(t) {
 								 //console.log(kshToKobo);
 								 totalKobo = totalKobo + kshToKobo
 								 $('.star2').html('');
-								$('.star2').append('<div style="position: relative;font-size: 15px;z-index: 1;">'+totalKobo+'<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">pts</span></div>')
+								$('.star2').append('<div style="position: relative;font-size: 15px;z-index: 1;">'+Math.floor(totalKobo)+'<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">pts</span></div>')
 								//console.log(totalPoints);
 								$('.star').html('')
 								$('.star').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(ptsed) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">kes</span></div>')
