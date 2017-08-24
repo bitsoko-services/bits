@@ -55,6 +55,7 @@
                 changeVal(num - 1)
             }
             if (num = minimum) {
+                    console.log("minimum value")
                  $(".delivery ").removeClass("bits");
              $(".delivery").addClass("pointer-events");
                $(".bits-main-price").addClass("grey");
