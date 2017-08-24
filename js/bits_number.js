@@ -110,7 +110,17 @@
 // 			}
 			$btnMinus.prop('disabled', false)
 			$btnPlugs.prop('disabled', false)
-			else if (maximize != null && num >= maximize) {
+			if (num <= minimum) {
+// 				console.log("minimum value")
+// 				$(".delivery ").removeClass("bits");
+// 				$(".delivery").addClass("pointer-events");
+// 				$(".bits-main-price").addClass("grey");
+// 				$(".localCurr").addClass("displayNone");
+// 				$(".bits-main-price ").removeClass("bits");
+				tabulateTotals();
+				$btnMinus.prop('disabled', true)
+				onMinimum.call(this, num)
+			} else if (maximize != null && num >= maximize) {
 				tabulateTotals();
 				$btnPlugs.prop('disabled', true)
 				onMaximize.call(this, num)
