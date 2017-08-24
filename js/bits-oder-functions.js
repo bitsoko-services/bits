@@ -107,7 +107,7 @@ function getUserOders() {
 			for (var i in coinList) {
 				var rate = coinList[i].coinRate;
 				var coinName = coinList[i].name;
-				$('.coinlist').append('<span><div  class="coinImg" style=" position: absolute  ;margin-top: 5px;"><img src="/bitsAssets/images/currencies/'+coinName+'.png" alt="" style=" padding-left: 12px; height:30px;"></div><a href="" class="" class="" onclick=""><i style=" float: right; margin: 0; height: 30px; " class="mdi-action-credit-card"></i><span style=" padding-left: 42px; text-transform: capitalize; ">'+coinName+'</span><span class="coinbal" style=" float:right; line-height: 3.3;"></span></a></span>')
+				$('.coinlist').append('<span><div  class="coinImg" style=" position: absolute  ;margin-top: 5px;"><img src="/bitsAssets/images/currencies/'+coinName+'.png" alt="" style=" padding-left: 12px; height:30px;"></div><a href="" class="" class="" onclick=""><span style=" padding-left: 42px; text-transform: capitalize; ">'+coinName+'</span><span class="coinbal" style=" float:right; line-height: 3.3;"></span></a></span>')
 				$('.coinbal').html('').append(earnedPoints.toFixed(2));
 				//if i have 1000 kobos
 				//var koboBalance = 1000;
