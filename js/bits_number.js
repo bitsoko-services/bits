@@ -54,6 +54,13 @@
                 $input.val(num - 1)
                 changeVal(num - 1)
             }
+            if (num = minimum) {
+                 $(".delivery ").removeClass("bits");
+             $(".delivery").addClass("pointer-events");
+               $(".bits-main-price").addClass("grey");
+              $(".localCurr").addClass("displayNone");
+                $(".bits-main-price ").removeClass("bits");
+            }
         })
         $btnPlugs.click(function () {
              $(".delivery ").addClass("bits");
