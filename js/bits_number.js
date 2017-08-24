@@ -100,14 +100,14 @@
 
 		function changeVal(num) {
 			$input.data('num', num)
-			if (num = 0) {
-				console.log("minimum value")
-				$(".delivery ").removeClass("bits");
-				$(".delivery").addClass("pointer-events");
-				$(".bits-main-price").addClass("grey");
-				$(".localCurr").addClass("displayNone");
-				$(".bits-main-price ").removeClass("bits");
-			}
+// 			if (num = 0) {
+// 				console.log("minimum value")
+// 				$(".delivery ").removeClass("bits");
+// 				$(".delivery").addClass("pointer-events");
+// 				$(".bits-main-price").addClass("grey");
+// 				$(".localCurr").addClass("displayNone");
+// 				$(".bits-main-price ").removeClass("bits");
+// 			}
 			$btnMinus.prop('disabled', false)
 			$btnPlugs.prop('disabled', false)
 			if (num <= minimum) {
