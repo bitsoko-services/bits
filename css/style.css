@@ -18,6 +18,11 @@ aside>ul{
   left: -250px !important;
   }*/
 /*--------------------------------custom toast------------------------------------------------------------------------   */
+.carousel .carousel-item > img {
+    height: 400px;
+    margin-top: -50px;
+}
+
 .permanentChng h6 {
     text-align: center;
     border-bottom: 1px solid red;
