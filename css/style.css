@@ -19,8 +19,12 @@ aside>ul{
   }*/
 /*--------------------------------custom toast------------------------------------------------------------------------   */
 .carousel .carousel-item > img {
-    height: 400px;
-    margin-top: -50px;
+    height: auto !important;
+    margin-top: -150px;
+}
+
+.collapsible-header:after {
+   color: #ffffff !important;
 }
 
 .permanentChng h6 {
