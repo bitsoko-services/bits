@@ -281,7 +281,9 @@ function tabulateTotals() {
 			// 	 $(".delivery").removeClass("displayNone");
 			// 	 $(".floatingPrice").removeClass("displayNone");
 			$(".totals").html(totals);
-			if (totals == 0) {
+			var xt =document.getElementById("totals").innerHTML
+			
+			if (xt == 0) {
 				console.log("minimum value")
 				$(".delivery ").removeClass("bits");
 				$(".delivery").addClass("pointer-events");
