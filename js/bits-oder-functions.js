@@ -139,5 +139,5 @@ while (at[i]) {
 			 i++;
 			}
 			
-			$('#balance-coins').html('').append(tBal + ' '+curCurr);
+			$('#balance-coins').html('').append(tBal + ' '+f.baseCd);
 }
