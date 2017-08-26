@@ -89,7 +89,7 @@ localConverter();
 				///////////////////////////////////
 	fetchRates().then(function(e) {
 		if (e.status == "ok") {
-			 getUserOders();
+			 getUserOders(e);
 		} else {
 			console.log("error");
 		}
