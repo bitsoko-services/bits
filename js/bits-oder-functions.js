@@ -98,6 +98,7 @@ allTokens[ii].totalEarned=0;
 				}
 			
 			$('.coinlist').html('');
+			var tBal=0;
 			for (var i in allTokens) {
 				var rate = allTokens[i].coinRate;
 				var coinName = allTokens[i].name;
