@@ -45,7 +45,7 @@ function oid() {
 		}
 	} else {}
 }
-earnedPoints = 0
+
 function getUserOders() {
 	// convert points to KOBO
 		doFetch({
@@ -56,6 +56,12 @@ function getUserOders() {
 			console.log(e.data)
 			xx = e.data;
 			//var earnedPoints = 0;
+
+					
+
+			for (var ii in allTokens) {
+allTokens[ii].totalEarned=0;
+			}
 			for (var ii in xx) {
 				var items = xx[ii].points;
 				try {
@@ -82,12 +88,11 @@ function getUserOders() {
 					console.log('this order does not have any delivery rewards');
 					var deliveryPoints = 0;
 				}
-				console.log(earnedPoints, purchasePoints, deliveryPoints);
-				earnedPoints = earnedPoints + purchasePoints + deliveryPoints;
+				console.log(typeofCoin, allTokens[typeofCoin].totalEarned, purchasePoints, deliveryPoints);
+				allTokens[typeofCoin].totalEarned = allTokens[typeofCoin].totalEarned + purchasePoints + deliveryPoints;
 			};
 			// convert this to kenyan sh 
-			var rate = JSON.parse(localStorage.getItem('kobo-current-rates'));
-			var totalearnedPoints = earnedPoints * rate
+			var totalearnedPoints = earnedPoints * allTokens[typeofCoin].rate;
 			var q = totalearnedPoints.toFixed(2);
 			console.log(q);
 			
@@ -103,21 +108,26 @@ function getUserOders() {
 	///////////////////////////////////
 	fetchRates().then(function(e) {
 		if (e.status == "ok") {
+			curCurr=e.baseCd;
 			coinList = e.data.data;
+			$('.coinlist').html('')
 			for (var i in coinList) {
 				var rate = coinList[i].coinRate;
 				var coinName = coinList[i].name;
-				$('.coinlist').html('').append('<span><div  class="coinImg" style=" position: absolute  ;margin-top: 5px;"><img src="/bitsAssets/images/currencies/'+coinName+'.png" alt="" style=" padding-left: 12px; height:30px;"></div><a href="" class="" class="" onclick=""><span style=" padding-left: 42px; text-transform: capitalize; ">'+coinName+'</span><span class="coinbal" style=" float:right; line-height: 3.3;"></span></a></span>')
-				$('.coinbal').html('').append(earnedPoints.toFixed(2));
 				//if i have 1000 kobos
 				//var koboBalance = 1000;
 				//		console.log((rate*e.data.baseEx*koboBalance).toFixed(2)+' KES');
 				var koboRate = Math.floor(rate * e.data.baseEx)
 				var qq = rate * e.data.baseEx
 				var xx = qq.toFixed(2);
-				console.log('1 KOBO = ' + xx + ' KES');
-				$('.bitsoko-xrate').html('').append('1 KOBO = ' + xx + ' KES')
-				localStorage.setItem('kobo-current-rates', xx);
+				if(allTokens[coinName].totalEarned>0){
+				   //only display the coin if the user has a balance
+				$('.coinlist').append('<span><div  class="coinImg" style=" position: absolute  ;margin-top: 5px;"><img src="/bitsAssets/images/currencies/'+coinName+'.png" alt="" style=" padding-left: 12px; height:30px;"></div><a href="" class="" class="" onclick=""><span style=" padding-left: 42px; text-transform: capitalize; ">'+coinName+'</span><span class="coin-'+coinName+'-bal" style=" float:right; line-height: 3.3;"></span></a></span>')
+				$('coin-'+coinName+'-bal').html('').append(allTokens[coinName].totalEarned.toFixed(2));
+					
+				   }
+				$('.coin-'+coinName+'-xrate').html('').append('1 '+coinName+' = ' + xx + ' '+curCurr)
+				
 			}
 		} else {
 			console.log("error");
