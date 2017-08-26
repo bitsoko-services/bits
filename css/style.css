@@ -18,11 +18,6 @@ aside>ul{
   left: -250px !important;
   }*/
 /*--------------------------------custom toast------------------------------------------------------------------------   */
-.carousel .carousel-item > img {
-    height: auto !important;
-    margin-top: -150px;
-}
-
 .collapsible-header:after {
    color: #ffffff !important;
 }
