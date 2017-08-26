@@ -42,14 +42,14 @@
 	<link href="https://bitsoko.co.ke/bitsAssets/html/connect.html" rel="import"><!--    <script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"></script>-->
 
 	<style>
-	.switch label input[type=checkbox]:checked + .lever:after {
-	   background-color: #{theme} !important;
-	}
-	.bitb,.bits,.progress,.sweet-alert button {
-	   background-color: #{theme} !important;
-	}
-	#burst-12:before, #burst-12:after {  background-color: #{theme} !important;}
-	#burst-12:before, #burst-12:after{border: 6px solid  #{theme} !important;}
+	   .switch label input[type=checkbox]:checked + .lever:after {
+	      background-color: #{theme} !important;
+	   }
+	   .bitb,.bits,.progress,.sweet-alert button {
+	      background-color: #{theme} !important;
+	   }
+	   #burst-12:before, #burst-12:after {  background-color: #{theme} !important;}
+	   #burst-12:before, #burst-12:after{border: 6px solid  #{theme} !important;}
 	</style>
 </head>
 <body>
@@ -73,9 +73,7 @@
 							</li>
 							<li></li>
 						</ul>
-						<div class="manage-store" id="manage-store"></div>
-						<span class="callbtn"></span>
-						<!--                     <div class="bits-nav-bal right" id="bits-nav-bal"style="color:#fff; padding-right:10px; margin-top: -55px;" ><span class="bitsoko-balance">0.00</span> <span class="bitsoko-currency"></span></div> -->
+						<div class="manage-store" id="manage-store"></div><span class="callbtn"></span> <!--                     <div class="bits-nav-bal right" id="bits-nav-bal"style="color:#fff; padding-right:10px; margin-top: -55px;" ><span class="bitsoko-balance">0.00</span> <span class="bitsoko-currency"></span></div> -->
 					</div>
 					<ul class="right"></ul>
 				</div>
@@ -92,27 +90,32 @@
 				<ul class="side-nav fixed leftside-navigation" id="slide-out">
 					<li class="user-details bits" style=" background: url(images/3.png) no-repeat center center; background-size: cover; padding: 0px 0 0 0px;">
 						<div class="row" id="content" style=" text-align:center;">
-							<img alt="" class="bits-profile userProfImg circle responsive-img valign profile-image" src="images/contacts.png" style="padding-top: 5px; "> <a class="btn-flat waves-effect waves-light white-text profile-btn username-label dropdown-button" href="#" id="name"></a> <!--                   <center> <span  id="download-button" class="white-text profile-btn " style="font-size:;  !important;"><span class="bitsoko-balance" style="font-size:16px;"></span> <span class="localCurr" style="font-size:16px;"> </span></span>   -->
-							
-							<ul class="collapsible" data-collapsible="accordion" style=""> 
-								<li class=""><span class="" id="balance-coins" style=" position: absolute; margin-left: 35%; color: #fff;text-shadow: 1px 1px 1px #444;font-size: 15px;">00.00</span>
-									<div class="collapsible-header settingsIcon" style="">
-										<div>
-											
-											<i style=" float: right; margin: 0; height: 30px; color: #fff;text-shadow: 1px 1px 1px #444;" class="mdi-action-credit-card"></i>
-										</div>
-									</div>
-									<div class="collapsible-body ht" style="padding: 0px 0px 100vh; background: rgb(245, 245, 245); width: 100%;z-index: 10; position: absolute;    margin-bottom: 0px;overflow: hidden; display: none;">
-										<div class="permanentChng">
-                                        <div style="padding: 0px 15%;">
-                                            <h6 style="border-bottom: solid 1px #cccccc;margin-bottom: 5px; margin-top: 15px;color: #7c7c7c;"><span style="background: #f5f5f5;">Wallets</span></h6>
-                                        </div>
-										<div class="switch coinlist" style="margin-top:5px;">
-<!-- 											<span><div  class="coinImg" style=" position: absolute"><img src="https://bitsoko.co.ke/bitsAssets/images/currencies/kobo.png" alt="" style=" padding-left: 12px; height:30px;"></div><a href="" class="" class="" onclick=""><i style=" float: right; margin: 0; height: 30px; " class="mdi-action-credit-card"></i><span style=" padding-left: 42px;">KOBO</span></a></span> -->
-										</div>
-									</div>
-								</li>
-							</ul>
+							<img alt="" class="bits-profile userProfImg circle responsive-img valign profile-image" src="images/contacts.png" style="padding-top: 5px;"> <a class="btn-flat waves-effect waves-light white-text profile-btn username-label dropdown-button" href="#" id="name"></a>
+							<center>
+								<span class="white-text profile-btn" id="download-button" style="font-size:; !important;"><span class="" style="font-size:12px;"></span></span>
+								<div class="addressClass bits-ellipsis" style="font-size:12px;"></div>
+									<ul class="collapsible" data-collapsible="accordion" style="">
+										<li class="">
+											<span class="" id="balance-coins" style=" position: absolute; margin-left: 35%; color: #fff;text-shadow: 1px 1px 1px #444;font-size: 15px;">00.00</span>
+											<div class="collapsible-header settingsIcon" style="">
+												<div>
+													<i class="mdi-action-credit-card" style=" float: right; margin: 0; height: 30px; color: #fff;text-shadow: 1px 1px 1px #444;"></i>
+												</div>
+											</div>
+											<div class="collapsible-body ht" style="padding: 0px 0px 100vh; background: rgb(245, 245, 245); width: 100%;z-index: 10; position: absolute; margin-bottom: 0px;overflow: hidden; display: none;">
+												<div class="permanentChng">
+													<div style="padding: 0px 15%;">
+														<h6 style="border-bottom: solid 1px #cccccc;margin-bottom: 5px; margin-top: 15px;color: #7c7c7c;"><span style="background: #f5f5f5;">Wallets</span></h6>
+													</div>
+													<div class="switch coinlist" style="margin-top:5px;">
+														<!--                                            <span><div  class="coinImg" style=" position: absolute"><img src="https://bitsoko.co.ke/bitsAssets/images/currencies/kobo.png" alt="" style=" padding-left: 12px; height:30px;"></div><a href="" class="" class="" onclick=""><i style=" float: right; margin: 0; height: 30px; " class="mdi-action-credit-card"></i><span style=" padding-left: 42px;">KOBO</span></a></span> -->
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
+								
+							</center>
 						</div>
 					</li>
 					<li>
@@ -132,7 +135,7 @@
 									<li class="displayNone">
 										<a href="#" id="shareQR"><i class="mdi-social-share bits-color"></i><span class="bits-13" style=""></span> <span id="">Share Wallet</span></a>
 									</li>
-									<li class="bold">
+									<li class="bold" style="opacity: 0.8;position: absolute;bottom:32px; width: 100%; border-top: solid 1px #d5d5d5;">
 										<a class="waves-effect waves-cyan" href="#" id="useLogin" onclick="showLogin();"><i class="mdi-action-lock-open"></i>Login</a>
 									</li>
 									<li class="li-hover"></li>
@@ -190,7 +193,7 @@
                         </li>
                                 <li>
                     </ul> -->
-				<a class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only bits" data-activates="slide-out" href="#" style=" background-color: #{theme} !important;  box-shadow: none;"><i class="mdi-navigation-menu"></i></a>
+				<a class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only bits" data-activates="slide-out" href="#" style=" background-color: #{theme} !important; box-shadow: none;"><i class="mdi-navigation-menu"></i></a>
 			</aside><!--========================================== END LEFT SIDEBAR NAV ====================================================================================-->
 			<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 			<!--==========================================START RIGHT SIDEBAR NAV============================================================================================-->
@@ -293,9 +296,9 @@
 					<div class="card-container-bits displayNone" id="">
 						<div class="card-bit serviceListCard" id="">
 							<div class="card small maincard bits" style="border-radius: 0px; position: sticky;/* width: 100%; */ z-index: 100; box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0) !important;">
-<!-- 								<div class="btn-bar bits bitb" style="margin-top:0px;">
-									
-								</div> -->
+								<!--                                <div class="btn-bar bits bitb" style="margin-top:0px;">
+                                    
+                                </div> -->
 								<div class="card-image carousel carousel-slider">
 									<a class="carousel-item" href="#one!"><img alt="" class="cardimage service-banner" src="" style="border-radius: 0px; height: 200px;"></a> <!--                 <a class="carousel-item" href="#two!"> <img  src="" alt="" class="cardimage service-banner "style="border-radius: 0px; height: 250px;"> </a> -->
 								</div>
@@ -384,10 +387,8 @@
 				<!-- =====================  Floating Action Button Home page sends you to contact or merchants page ================== -->
 				<div class="">
 					<div class="row delrow displayNone">
-						<div class="chip doPayBut payment white-text pointer-events displayNone" id="" style="
-    width: 200px;
-">
-							<i class="mdi-maps-local-grocery-store left" style="font-size: 24px;"></i><span style="">send</span> <span style="" class="">recieve</span><i class="mdi-maps-local-grocery-store right" style="font-size: 24px;"></i>
+						<div class="chip doPayBut payment white-text pointer-events displayNone" id="" style=" width: 200px;">
+							<i class="mdi-maps-local-grocery-store left" style="font-size: 24px;"></i><span style="">send</span> <span class="" style="">recieve</span><i class="mdi-maps-local-grocery-store right" style="font-size: 24px;"></i>
 						</div>
 						<div class="chip delivery white-text pointer-events" id="" onclick="makeOrder(orderArray);" style="">
 							<span style="">deliver</span> <i class="mdi-maps-local-grocery-store right" style="font-size: 24px;"></i>
@@ -414,7 +415,8 @@
 			<div class="">
 				<div class="">
 					<div class="white-text" style="height:50px;border-bottom: 1px solid rgba(0, 0, 0, 0.1);padding: 16px; font-size: 20px;text-align: center;">
-						Order Delivery<div class="star2 " style=" float: right; position: relative;top: 60px;   z-index: 1;" id="burst-11"></div>
+						Order Delivery
+						<div class="star2" id="burst-11" style=" float: right; position: relative;top: 60px; z-index: 1;"></div>
 					</div>
 					<div class="card" style="height:450px; margin: 0rem 0 0rem 0;position:;border-radius: 0px;">
 						<div class="card-content">
@@ -436,7 +438,7 @@
 				</div>
 			</div>
 			<div class="modal-footer bits" style="opacity: 0.9; height:36px; margin-top: -35px;">
-				<a class="white-text modal-action modal-close waves-effect waves-green btn-flat"  id="ConfirmO" onclick="" style="margin-left: 25px;width:40%; margin: 0.5px 0;margin-top: -5px;">Confirm</a> <a class="white-text modal-action modal-close waves-effect waves-green btn-flat"  id="CancelO" style="margin-left: 25px; width:50%; margin: 0.5px 0;margin-top: -5px;">Cancel</a>
+				<a class="white-text modal-action modal-close waves-effect waves-green btn-flat" id="ConfirmO" onclick="" style="margin-left: 25px;width:40%; margin: 0.5px 0;margin-top: -5px;">Confirm</a> <a class="white-text modal-action modal-close waves-effect waves-green btn-flat" id="CancelO" style="margin-left: 25px; width:50%; margin: 0.5px 0;margin-top: -5px;">Cancel</a>
 			</div>
 		</div>
 	</div><!--=================================== Modal keypad start================================================================================-->
@@ -510,24 +512,24 @@
 				<button class="btn" onclick="switchOnWallet();" value="">click to load wallets</button>
 			</div>
 			<div class="row walls">
-				<span style=""><span class="badge chip" style="right: 20% !important;"><span class="totalamts" id="totalamts"><span class="bitsoko-xrate user-roal store-desc " style="text-align:left; "> </span></span><span></span></span> Your Wallet Address</span><br>
+				<span style=""><span class="badge chip" style="right: 20% !important;"><span class="totalamts" id="totalamts"><span class="bitsoko-xrate user-roal store-desc" style="text-align:left;"></span></span><span></span></span> Your Wallet Address</span><br>
 				<br>
 				<ul class="collapsible collapsible-accordion" data-collapsible="accordion" style="border-top: 1px solid #ddd;">
 					<li>
 						<div class="collapsible-header">
-							<span class="badge totalethpri chip" style="right: 20% !important;">0 </span> Private Wallet
+							<span class="badge totalethpri chip" style="right: 20% !important;">0</span> Private Wallet
 						</div>
 						<div class="collapsible-body Private"></div>
 					</li>
 					<li>
 						<div class="collapsible-header">
-							<span class="badge totalethpub chip" style="right: 20% !important;">0 </span> Public Wallet
+							<span class="badge totalethpub chip" style="right: 20% !important;">0</span> Public Wallet
 						</div>
 						<div class="collapsible-body Public"></div>
 					</li>
 					<li>
 						<div class="collapsible-header">
-							<span class="badge totaleths chip" style="right: 20% !important;">0 </span> Service Wallet
+							<span class="badge totaleths chip" style="right: 20% !important;">0</span> Service Wallet
 						</div>
 						<div class="collapsible-body Service"></div>
 					</li>
@@ -588,7 +590,7 @@
 		</div>
 		<div class="modal-footer">
 			<div class="customGPlusSignIn" id="customBtn" style="text-align:center;">
-				<span class="buttonText"><button class="loginBtn loginBtn--google"><span class="buttonText"><span class="buttonText">Google Sign in</span></span></button></span>
+				<span class="buttonText"><button class="loginBtn loginBtn--google"><span class="buttonText"><span class="buttonText"><span class="buttonText">Google Sign in</span></span></span></button></span>
 			</div>
 		</div>
 	</div><!--modal login
@@ -824,371 +826,372 @@
 	</script> <!--=============================================================================================================================================================== -->
 	 
 	<script>
-	////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
-	//   if (bDet.os.name=='Android' && location.hostname=="bitsoko.co.ke"){ 
-	// ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
+	   ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
+	   //   if (bDet.os.name=='Android' && location.hostname=="bitsoko.co.ke"){ 
+	   // ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
 
-	// if (bDet.browser.version>=minVersionSup && bDet.browser.name=='Chrome'){ 
-	//        console.log('compatible'); 
-	     
-	//  }else{ 
+	   // if (bDet.browser.version>=minVersionSup && bDet.browser.name=='Chrome'){ 
+	   //        console.log('compatible'); 
+	        
+	   //  }else{ 
+	       
+	   //  $('#updateBrowsermodal').openModal({
+	   //       dismissible:false
+	   //  });
+	      
+	   //  } 
+	        
+	   //  }else if (bDet.os.name=='Android'){
+
+	        
+	   //        console.log('uncompatible');      
+	   //                window.location="https://bitsoko.co.ke/soko/"; 
+	   //  }else{
+
+	        
+	   //  console.log('uncompatible');     
+	         
+	   //  $('#updateBrowsermodal').openModal({
+	   //       dismissible:false
+	   //  });
 	    
-	//  $('#updateBrowsermodal').openModal({
-	//       dismissible:false
-	//  });
-	   
-	//  } 
+	   //  }
+
+	          
+	   requestPersist();
+	          
+	    function reload(){
+	      location.reload();
+	          
+	   }
+	   //----------------------------------------------floating button change  --------------------------------------------------------------------
+	      if ((!location.port || location.port == "80") && location.protocol != 'https:') {}       
+	      if ("onhashchange" in window) {
+	       function locationHashChanged(e) {
+	         console.log(e);
+	       // serviceOpener()         
+	   }
+	          window.addEventListener("hashchange", locationHashChanged, false);
+	   }  
+	   //-----------------------------------------------------------------------------------------------------------------------------------  
+	         
+	   function getBitsOpt(aKey){      
+	   var pairs = window.location.hash.slice(1).split("&");       
+	   for(var i = 0, aKey=aKey; i < pairs.length; ++i) {
+	   var key=pairs[i].split("=")[0];
+	   var value=pairs[i].split("=")[1];
+	   if (key==aKey){
+	       return value;
+	    }  
+	   }
+	   }
+	   function getBitsWinOpt(aKey){     
+	   var pairs = window.location.search.slice(1).split("&");           
+	   for(var i = 0, aKey=aKey; i < pairs.length; ++i) {
+	   var key=pairs[i].split("=")[0];
+	   var value=pairs[i].split("=")[1];
+	   if (key==aKey){   
+	   return value;
+	   }     
+	   }   
+	   }
+
+	   //                               fetchRates().then(function(e) {
+	   //                                      if (e.status == "ok") {
+	   //                                          console.log(e.data);
+	   //                                          coinList = e.data.data;
+	   //                                          for (i = 0; i < coinList.length; i++) {
+	   //                                              var rate = coinList[i].coinRate
+	   //                                              console.log(rate);
+	   //                                              localStorage.setItem('kobo-current-rates', rate);
+	   //                                              //swal("success!", "your order has been sent!", "success");
+	   //                                          }
+	   //                                      } else {
+	   //                                          //swal("Cancelled", "your order is not sent", "error");
+	   //                                      }
+	   //                                  });
+	                                   // end
+	   //----------------------------------------------updating promotions----------------------------------------------------------------------------------
+	    function updatePromos(){
+	      bitsTheme()
+	           navigator.permissions.query({name:'geolocation'}).then(function(p)
+	   {  
+	      doFetch({ action: 'nearbyPromos', loc: 
+	      localStorage.getItem('bitsoko-settings-location')}).then(function(e){
+	             if (e.status=="ok"){
+	              
+	               for(var ii = 0; ii < e.promotions.length; ++ii) { var dailyCost=(parseInt(e.promotions[ii].discount)/100)*e.promotions[ii].promoPrice
+	   $('.promoHolder-home').append(' <li class="promoHome displayNone col s12 m6 l4 avatar bits-max promo-collection">'+'<img src="https://bitsoko.co.ke'+e.promotions[ii].promoBanner+'" data-caption="'+e.promotions[ii].promoDesc+'" alt="'+e.promotions[ii].promoDesc+'" class="materialboxed promoHome"><div class="product-card">'+'<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+e.promotions[ii].promoDesc+' <\/span><\/span>'+'<p id="promopriced" class="serviceListFirstline"><span id="bitsPrice" class="bits-badge bitsb left"  style="margin-left: 20px;">'+Math.ceil(dailyCost)+'<span class="localCurr">Ksh<\/span> daily<\/span><\/p><span class="secondary-content"><a class="waves-effect waves-light  btn"><i class="mdi-social-share left"><\/i> share<\/a><a class="waves-effect waves-light  btn"><i class="mdi-action-thumb-up left"><\/i>like<\/a><a class="waves-effect waves-light  btn"><i class="mdi-social-person-add right"><\/i>subscribers<\/a><\/span>'+'<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"><\/i> <span style="" class="promoSubState- '+e.promotions[ii].id+'"> Not Subscribed<\/span> <label> <input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+e.promotions[ii].id+'" class="promoSubButton promoSubButton-'+e.promotions[ii].id+'" style="background: rgb(128, 210, 147);"><span style="margin-top:2px;" class="lever right"><\/span><\/label><\/div><br><center><p style=" bottom: 0px;text-align: center;width: 70%;" class="serviceListseccondline "><i style="float: left;" class="serviceListseccondline promo-state-icon mdi-notification-sync"> 0 shares<\/i><i class="promo-state-icon mdi-action-favorite"> 0 likes <\/i><i style="float: right;" class="promo-state-icon mdi-action-receipt"> 0 sales <\/i><\/p><\/center><\/li>');
+	                  //               subs=JSON.parse(e.promotions[ii].promoSubs);
+	   //       for(var iii = 0,subs=subs,mDet=e; iii < subs.length; ++iii) { 
+	   //           if(subs[iii]==localStorage.getItem('bitsoko-owner-id')){
+	   //           console.log('im subscribed to ',e.promotions[ii]);
+	   //               $( ".promoSubButton-"+e.promotions[ii].id ).prop( "checked", true );
+	   //               $(".promoSubState-"+e.promotions[ii].id).html("Subscribed");
+	   //           };
+	   //       }
+	   //      }; 
+	   //   doSubscribe(); 
+	    
+	               };
+	               
+	          console.log(e);
+	             }else{
+	           $('.promoHolder-home').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong>No Promotions found<\/strong><\/p><p class="collections-content"><\/p><\/div><\/li><\/ul>');
+	              
+	             }
+	          });
+
+	   $(function(){
+	      $("#bits-nav-bal").hide();
 	     
-	//  }else if (bDet.os.name=='Android'){
+	   });
+	        
 
-	     
-	//        console.log('uncompatible');      
-	//                window.location="https://bitsoko.co.ke/soko/"; 
-	//  }else{
-
-	     
-	//  console.log('uncompatible');     
-	      
-	//  $('#updateBrowsermodal').openModal({
-	//       dismissible:false
-	//  });
-	 
-	//  }
-
-	       
-	requestPersist();
-	       
-	 function reload(){
-	   location.reload();
-	       
-	}
-	//----------------------------------------------floating button change  --------------------------------------------------------------------
-	   if ((!location.port || location.port == "80") && location.protocol != 'https:') {}       
-	   if ("onhashchange" in window) {
-	    function locationHashChanged(e) {
-	      console.log(e);
-	    // serviceOpener()         
-	}
-	       window.addEventListener("hashchange", locationHashChanged, false);
-	}  
-	//-----------------------------------------------------------------------------------------------------------------------------------  
-	      
-	function getBitsOpt(aKey){      
-	var pairs = window.location.hash.slice(1).split("&");       
-	for(var i = 0, aKey=aKey; i < pairs.length; ++i) {
-	var key=pairs[i].split("=")[0];
-	var value=pairs[i].split("=")[1];
-	if (key==aKey){
-	    return value;
-	 }  
-	}
-	}
-	function getBitsWinOpt(aKey){     
-	var pairs = window.location.search.slice(1).split("&");           
-	for(var i = 0, aKey=aKey; i < pairs.length; ++i) {
-	var key=pairs[i].split("=")[0];
-	var value=pairs[i].split("=")[1];
-	if (key==aKey){   
-	return value;
-	}     
-	}   
-	}
-
-	//                               fetchRates().then(function(e) {
-	//                                      if (e.status == "ok") {
-	//                                          console.log(e.data);
-	//                                          coinList = e.data.data;
-	//                                          for (i = 0; i < coinList.length; i++) {
-	//                                              var rate = coinList[i].coinRate
-	//                                              console.log(rate);
-	//                                              localStorage.setItem('kobo-current-rates', rate);
-	//                                              //swal("success!", "your order has been sent!", "success");
-	//                                          }
-	//                                      } else {
-	//                                          //swal("Cancelled", "your order is not sent", "error");
-	//                                      }
-	//                                  });
-	                                // end
-	//----------------------------------------------updating promotions----------------------------------------------------------------------------------
-	 function updatePromos(){
-	   bitsTheme()
-	        navigator.permissions.query({name:'geolocation'}).then(function(p)
-	{  
-	   doFetch({ action: 'nearbyPromos', loc: 
-	   localStorage.getItem('bitsoko-settings-location')}).then(function(e){
-	          if (e.status=="ok"){
-	           
-	            for(var ii = 0; ii < e.promotions.length; ++ii) { var dailyCost=(parseInt(e.promotions[ii].discount)/100)*e.promotions[ii].promoPrice
-	$('.promoHolder-home').append(' <li class="promoHome displayNone col s12 m6 l4 avatar bits-max promo-collection">'+'<img src="https://bitsoko.co.ke'+e.promotions[ii].promoBanner+'" data-caption="'+e.promotions[ii].promoDesc+'" alt="'+e.promotions[ii].promoDesc+'" class="materialboxed promoHome"><div class="product-card">'+'<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+e.promotions[ii].promoDesc+' <\/span><\/span>'+'<p id="promopriced" class="serviceListFirstline"><span id="bitsPrice" class="bits-badge bitsb left"  style="margin-left: 20px;">'+Math.ceil(dailyCost)+'<span class="localCurr">Ksh<\/span> daily<\/span><\/p><span class="secondary-content"><a class="waves-effect waves-light  btn"><i class="mdi-social-share left"><\/i> share<\/a><a class="waves-effect waves-light  btn"><i class="mdi-action-thumb-up left"><\/i>like<\/a><a class="waves-effect waves-light  btn"><i class="mdi-social-person-add right"><\/i>subscribers<\/a><\/span>'+'<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"><\/i> <span style="" class="promoSubState- '+e.promotions[ii].id+'"> Not Subscribed<\/span> <label> <input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+e.promotions[ii].id+'" class="promoSubButton promoSubButton-'+e.promotions[ii].id+'" style="background: rgb(128, 210, 147);"><span style="margin-top:2px;" class="lever right"><\/span><\/label><\/div><br><center><p style=" bottom: 0px;text-align: center;width: 70%;" class="serviceListseccondline "><i style="float: left;" class="serviceListseccondline promo-state-icon mdi-notification-sync"> 0 shares<\/i><i class="promo-state-icon mdi-action-favorite"> 0 likes <\/i><i style="float: right;" class="promo-state-icon mdi-action-receipt"> 0 sales <\/i><\/p><\/center><\/li>');
-	               //               subs=JSON.parse(e.promotions[ii].promoSubs);
-	//       for(var iii = 0,subs=subs,mDet=e; iii < subs.length; ++iii) { 
-	//           if(subs[iii]==localStorage.getItem('bitsoko-owner-id')){
-	//           console.log('im subscribed to ',e.promotions[ii]);
-	//               $( ".promoSubButton-"+e.promotions[ii].id ).prop( "checked", true );
-	//               $(".promoSubState-"+e.promotions[ii].id).html("Subscribed");
-	//           };
-	//       }
-	//      }; 
-	//   doSubscribe(); 
-	 
+	   }).catch(function(e){
+	      showPositionError()
+	   })
+	   }; 
+	            function sendMessage(message) {
+	          // This wraps the message posting/response in a promise, which will resolve if the response doesn't
+	          // contain an error, and reject with the error if it does. If you'd prefer, it's possible to call
+	          // controller.postMessage() and set up the onmessage handler independently of a promise, but this is
+	          // a convenient wrapper.
+	          return new Promise(function(resolve, reject) {
+	            var messageChannel = new MessageChannel();
+	            messageChannel.port1.onmessage = function(event) {
+	              if (event.data.error) {
+	                reject(event.data.error);
+	              } else {
+	                resolve(event.data);
+	              }
 	            };
-	            
-	       console.log(e);
-	          }else{
-	        $('.promoHolder-home').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong>No Promotions found<\/strong><\/p><p class="collections-content"><\/p><\/div><\/li><\/ul>');
-	           
-	          }
-	       });
 
-	$(function(){
-	   $("#bits-nav-bal").hide();
-	  
-	});
-	     
-
-	}).catch(function(e){
-	   showPositionError()
-	})
-	}; 
-	         function sendMessage(message) {
-	       // This wraps the message posting/response in a promise, which will resolve if the response doesn't
-	       // contain an error, and reject with the error if it does. If you'd prefer, it's possible to call
-	       // controller.postMessage() and set up the onmessage handler independently of a promise, but this is
-	       // a convenient wrapper.
-	       return new Promise(function(resolve, reject) {
-	         var messageChannel = new MessageChannel();
-	         messageChannel.port1.onmessage = function(event) {
-	           if (event.data.error) {
-	             reject(event.data.error);
-	           } else {
-	             resolve(event.data);
-	           }
-	         };
-
-	         // This sends the message data as well as transferring messageChannel.port2 to the service worker.
-	         // The service worker can then use the transferred port to reply via postMessage(), which
-	         // will in turn trigger the onmessage handler on messageChannel.port1.
-	         // See https://html.spec.whatwg.org/multipage/workers.html#dom-worker-postmessage
-	         navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
-	       });
-	     }
-	(navigator.share !== undefined)
+	            // This sends the message data as well as transferring messageChannel.port2 to the service worker.
+	            // The service worker can then use the transferred port to reply via postMessage(), which
+	            // will in turn trigger the onmessage handler on messageChannel.port1.
+	            // See https://html.spec.whatwg.org/multipage/workers.html#dom-worker-postmessage
+	            navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
+	          });
+	        }
+	   (navigator.share !== undefined)
 	</script> 
 	<script type="text/javascript">
-	// $('#loginModal').modal({ready: function(){
-	//  startGoogle();
-	// }});
-	window.onload = function() {
-	//
-	var dReady = Promise.resolve('ok');
+	   // $('#loginModal').modal({ready: function(){
+	   //  startGoogle();
+	   // }});
+	   window.onload = function() {
+	   //
+	   var dReady = Promise.resolve('ok');
 
-	Promise.all([dReady,indexDbReady]).then(values => { 
-	 console.log(values); 
-	 starting(); 
-	});
-
-	//$(".serviceListHolder").hide();
-	$(".serviceListCard").hide();
-	// $('.carousel').carousel();
-	$('.carousel.carousel-slider').carousel({fullWidth: true});
-	$(".promoHolder").hide();
-
-	//$('.delivery').addClass('animated jello');
-
-	   
-
-	   $(".saleButton").click(function() {
-	       if(checkanon()==false){$('#loginModal').openModal()}
-	       else{
-	           // $("#keypadModal").openModal();
-	 currentTransaction.action = $(this).attr('value');
-	       }
-	  
-	 
-	 });
-
-
-	 $(".KeypadButtonClose").click(function() {
-	   $(".amtDisplay").html("");
-	   currentTransaction.amount='';
-	   $("#keypadModal").closeModal();
-	 });
-	//keypad function 
-	$(".send-receive").click(function() {
-	   console.log($(this).attr('value'));
-	    $(".actionDisplay").html($(this).attr('value'))
-	   if($(this).attr('value')=='Send'){
-	$(".from-to-Display").html('to')
-	   }
-	   else{
-	       $(".from-to-Display").html('from')
-	   }
+	   Promise.all([dReady,indexDbReady]).then(values => { 
+	    console.log(values); 
+	    starting(); 
 	   });
 
-	   $(".keypadKey").click(function() {
-	   console.log($(this).attr('value'));
-	   if($(this).attr('value')=='ok'){
-	startPay(actvServ().storeAddress,'servID-'+getBitsWinOpt('s')+'-'+getBitsWinOpt('a'),currentTransaction.amount,currentTransaction.action,'qwerty').then(function(result) {
-	 console.log(result);
-	  // "Stuff worked!"
-	  Materialize.toast(result, 3000);
-	}, function(err) {
-	 console.log(err);
-	  // Error: "It broke"
-	  Materialize.toast(err, 3000);
-	});
-	   }else{
-	   
-	   currentTransaction.amount=currentTransaction.amount+$(this).attr('value');
-	   console.log(currentTransaction.amount);
-	   $(".amtDisplay").html(currentTransaction.amount)    
+	   //$(".serviceListHolder").hide();
+	   $(".serviceListCard").hide();
+	   // $('.carousel').carousel();
+	   $('.carousel.carousel-slider').carousel({fullWidth: true});
+	   $(".promoHolder").hide();
+
+	   //$('.delivery').addClass('animated jello');
+
+	      
+
+	      $(".saleButton").click(function() {
+	          if(checkanon()==false){$('#loginModal').openModal()}
+	          else{
+	              // $("#keypadModal").openModal();
+	    currentTransaction.action = $(this).attr('value');
+	          }
+	     
+	    
+	    });
+
+
+	    $(".KeypadButtonClose").click(function() {
+	      $(".amtDisplay").html("");
+	      currentTransaction.amount='';
+	      $("#keypadModal").closeModal();
+	    });
+	   //keypad function 
+	   $(".send-receive").click(function() {
+	      console.log($(this).attr('value'));
+	       $(".actionDisplay").html($(this).attr('value'))
+	      if($(this).attr('value')=='Send'){
+	   $(".from-to-Display").html('to')
+	      }
+	      else{
+	          $(".from-to-Display").html('from')
+	      }
+	      });
+
+	      $(".keypadKey").click(function() {
+	      console.log($(this).attr('value'));
+	      if($(this).attr('value')=='ok'){
+	   startPay(actvServ().storeAddress,'servID-'+getBitsWinOpt('s')+'-'+getBitsWinOpt('a'),currentTransaction.amount,currentTransaction.action,'qwerty').then(function(result) {
+	    console.log(result);
+	     // "Stuff worked!"
+	     Materialize.toast(result, 3000);
+	   }, function(err) {
+	    console.log(err);
+	     // Error: "It broke"
+	     Materialize.toast(err, 3000);
+	   });
+	      }else{
+	      
+	      currentTransaction.amount=currentTransaction.amount+$(this).attr('value');
+	      console.log(currentTransaction.amount);
+	      $(".amtDisplay").html(currentTransaction.amount)    
+	      }
+
+	      
+	         
+	    });
+	   };
+
+
+	   // e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
+	   // e.onsuccess = function (event) {
+	   //  console.log(e.result)
+	      
+	   //   }     
+
+	    function actvServ(){
+	   return new Promise(function(resolve, reject) {
+	      //serviceOpener()
+	   e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
+	   e.onsuccess = function (event) {
+	      console.log(e)
+	          try{
+	              var e=JSON.parse(event.target.result);
+	              resolve(e);
+	          }catch(err){
+	              console.log('this service is not in the indexdb!!!!');
+	              }
+
+	    }     
+	    e.onerror = function (e) {
+	   reject(e);
+	    }
+
+	          });
+
+
+
+
+	    //return e;
+
+	    }
+	   //------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+	   //web Share end location.hash=location.hash+"&i="+
+	   //web ShareQR start
+	   // document.querySelector("#shareQR").addEventListener('click', function(event) {
+	   //     navigator.share({
+	   //     title: "Bitcoin Address",
+	   //     text: localStorage.getItem('bits-user-wallet')
+	   // // url: window.location.href
+	   // }).then(() => console.log('Successful shareQR'))
+	   // .catch(error => console.log('Error sharingQR:', error));
+	   //             });
+	   function navMenu(sId){
+	   //navigate to the sId service page
+	   contact();
 	   }
 
-	   
-	      
-	 });
-	};
+	   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	   ////////////////////////////////////////////star rating //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	    (function ($) {
+	   $(document).ready(function(){$(".rating").addRating({fieldId:"ratingId"});})
+	   })(jQuery);  
+	    (function ( $ ) { 
+	    $.fn.addRating = function(options) { 
+	      var obj = this; 
+	      var settings = $.extend({ 
+	        max : 5, 
+	        half : true, 
+	        fieldName : 'rating', 
+	        fieldId : 'rating', 
+	        fieldClass: 'rating', 
+	        icon : 'star' 
+
+	      }, options ); 
+	      this.settings = settings; 
+	      $(this).data('settings',settings) 
+
+	      // create the stars 
+	      for(var i = 1 ; i <= settings.max ; i++) 
+	      { 
+	        var star = $('<i/>').addClass('material-icons').html(this.settings.icon+'_border').data('rating', i).appendTo(this).click( 
+	          function(){ 
+	            obj.setRating($(this).data('rating')); 
+	          } 
+	        ).hover( 
+	          function(e){ 
+	            obj.showRating($(this).data('rating'), false); 
+	          }, function(){ 
+	            obj.showRating(0,false); 
+	          } 
+	        ); 
+	      } 
+	      $(this).append('<input type="hidden" name="'+settings.fieldName+'" id="'+settings.fieldId+'" class="'+settings.fieldClass+'"/>'); 
+	      return this 
+	    }; 
+
+	    $.fn.setRating = function(numRating) { 
+	      var obj = this; 
+	      $('#'+obj.settings.fieldId).val(numRating); 
+	      obj.showRating(numRating, true); 
+	    }; 
+
+	    $.fn.showRating = function(numRating, force) { 
+	      var obj = this; 
+	      if($('#'+obj.settings.fieldId).val() == '' || force) 
+	      { 
+	        $(obj).find('i').each(function(){ 
+	          var icon = obj.settings.icon+'_border'; 
+	          if($(this).data('rating') <= numRating) 
+	          { 
+	            icon = obj.settings.icon; 
+	          } 
+	          $(this).html(icon); 
+	        }) 
+	      } 
+	    } 
+
+	   }( jQuery )); 
+	   //------------------------------------------------------------------------------------ ratings end -------------------------------------------------------------------------------------------------------------------
+	   //  $('#modalconfirm').modal({
+	   //       dismissible: true, // Modal can be dismissed by clicking outside of the modal
+	   //       opacity: .5, // Opacity of modal background
+	   //       inDuration: 300, // Transition in duration
+	   //       outDuration: 200, // Transition out duration
+	   //       startingTop: '4%', // Starting top style attribute
+	   //       endingTop: '10%', // Ending top style attribute
+	   //       ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+	   //        // alert("Ready");
+	   //        // console.log(modal, trigger);
+	   //       },
+	   //      // complete: function() { alert('Closed'); } // Callback for Modal close
+	   //     }
+	   //   );
 
 
-	// e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
-	// e.onsuccess = function (event) {
-	//  console.log(e.result)
-	   
-	//   }     
-
-	 function actvServ(){
-	return new Promise(function(resolve, reject) {
-	   //serviceOpener()
-	e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
-	e.onsuccess = function (event) {
-	   console.log(e)
-	       try{
-	           var e=JSON.parse(event.target.result);
-	           resolve(e);
-	       }catch(err){
-	           console.log('this service is not in the indexdb!!!!');
-	           }
-
-	 }     
-	 e.onerror = function (e) {
-	reject(e);
-	 }
-
-	       });
-
-
-
-
-	 //return e;
-
-	 }
-	//------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-	//web Share end location.hash=location.hash+"&i="+
-	//web ShareQR start
-	// document.querySelector("#shareQR").addEventListener('click', function(event) {
-	//     navigator.share({
-	//     title: "Bitcoin Address",
-	//     text: localStorage.getItem('bits-user-wallet')
-	// // url: window.location.href
-	// }).then(() => console.log('Successful shareQR'))
-	// .catch(error => console.log('Error sharingQR:', error));
-	//             });
-	function navMenu(sId){
-	//navigate to the sId service page
-	contact();
-	}
-
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	////////////////////////////////////////////star rating //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	 (function ($) {
-	$(document).ready(function(){$(".rating").addRating({fieldId:"ratingId"});})
-	})(jQuery);  
-	 (function ( $ ) { 
-	 $.fn.addRating = function(options) { 
-	   var obj = this; 
-	   var settings = $.extend({ 
-	     max : 5, 
-	     half : true, 
-	     fieldName : 'rating', 
-	     fieldId : 'rating', 
-	     fieldClass: 'rating', 
-	     icon : 'star' 
-
-	   }, options ); 
-	   this.settings = settings; 
-	   $(this).data('settings',settings) 
-
-	   // create the stars 
-	   for(var i = 1 ; i <= settings.max ; i++) 
-	   { 
-	     var star = $('<i/>').addClass('material-icons').html(this.settings.icon+'_border').data('rating', i).appendTo(this).click( 
-	       function(){ 
-	         obj.setRating($(this).data('rating')); 
-	       } 
-	     ).hover( 
-	       function(e){ 
-	         obj.showRating($(this).data('rating'), false); 
-	       }, function(){ 
-	         obj.showRating(0,false); 
-	       } 
-	     ); 
-	   } 
-	   $(this).append('<input type="hidden" name="'+settings.fieldName+'" id="'+settings.fieldId+'" class="'+settings.fieldClass+'"/>'); 
-	   return this 
-	 }; 
-
-	 $.fn.setRating = function(numRating) { 
-	   var obj = this; 
-	   $('#'+obj.settings.fieldId).val(numRating); 
-	   obj.showRating(numRating, true); 
-	 }; 
-
-	 $.fn.showRating = function(numRating, force) { 
-	   var obj = this; 
-	   if($('#'+obj.settings.fieldId).val() == '' || force) 
-	   { 
-	     $(obj).find('i').each(function(){ 
-	       var icon = obj.settings.icon+'_border'; 
-	       if($(this).data('rating') <= numRating) 
-	       { 
-	         icon = obj.settings.icon; 
-	       } 
-	       $(this).html(icon); 
-	     }) 
-	   } 
-	 } 
-
-	}( jQuery )); 
-	//------------------------------------------------------------------------------------ ratings end -------------------------------------------------------------------------------------------------------------------
-	//  $('#modalconfirm').modal({
-	//       dismissible: true, // Modal can be dismissed by clicking outside of the modal
-	//       opacity: .5, // Opacity of modal background
-	//       inDuration: 300, // Transition in duration
-	//       outDuration: 200, // Transition out duration
-	//       startingTop: '4%', // Starting top style attribute
-	//       endingTop: '10%', // Ending top style attribute
-	//       ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-	//        // alert("Ready");
-	//        // console.log(modal, trigger);
-	//       },
-	//      // complete: function() { alert('Closed'); } // Callback for Modal close
-	//     }
-	//   );
-
-
-	//------------------------------------------------makeOrder--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	   //------------------------------------------------makeOrder--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	</script> <!-- =========================================================================google analytics code ========================================================================================================================================= -->
+	 
 	<script>
-	 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-	 ga('create', 'UA-60165544-1', 'auto');
-	 ga('send', 'pageview');
+	    ga('create', 'UA-60165544-1', 'auto');
+	    ga('send', 'pageview');
 
 	</script>
 </body>

@@ -348,11 +348,8 @@ margin-left: -5px;
     font-size: 13px;
   }
   .bits-ellipsis{
-
-overflow: hidden;
-
-/* text-overflow: ellipsis; */
-
+overflow: hidden;
+text-overflow: ellipsis !important;
 }
   .dropdown-bits {
 

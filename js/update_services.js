@@ -152,7 +152,7 @@ function populateService(mDet) {
 			if (parseInt(x[iii].id) == parseInt(localStorage.getItem('bits-user-name'))) {
 				$('#manage-store').css("display", "block");
 				$('.manage-store').html("");
-				$('.manage-store').append('<a  style=" background: none; float:left; !important; margin-top: ;" href="../soko/#s=' + parseInt(getBitsWinOpt('s')) + '" class="noshadow btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>');
+				$('.manage-store').append('<a  style=" background: none; float:right; !important; margin-top: ;" href="../soko/#s=' + parseInt(getBitsWinOpt('s')) + '" class="noshadow btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>');
 			}
 		}
 	} catch (err) {

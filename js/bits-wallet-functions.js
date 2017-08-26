@@ -153,6 +153,8 @@ var global_keystore = new lightwallet.keystore(randomSeed, pwDerivedKey, hdPathS
 global_keystore.generateNewAddress(pwDerivedKey, 1);
 var addr = global_keystore.getAddresses();
 console.log(addr)
+
+$('.addressClass').append('0x'+addr);
 // Create a custom passwordProvider to prompt the user to enter their
 // password whenever the hooked web3 provider issues a sendTransaction
 // call.
