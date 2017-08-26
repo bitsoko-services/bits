@@ -91,25 +91,16 @@ allTokens[ii].totalEarned=0;
 				console.log(typeofCoin, allTokens[typeofCoin].totalEarned, purchasePoints, deliveryPoints);
 				allTokens[typeofCoin].totalEarned = allTokens[typeofCoin].totalEarned + purchasePoints + deliveryPoints;
 			};
-			// convert this to kenyan sh 
-			var totalearnedPoints = earnedPoints * allTokens[typeofCoin].rate;
-			var q = totalearnedPoints.toFixed(2);
-			console.log(q);
 			
-			$('#balance-coins').html('').append(q + ' KES');
 			var setdb = getObjectStore('data', 'readwrite').put(JSON.stringify(xx), 'bits-user-orders-' + localStorage.getItem("bits-user-name"));
 			setdb.onsuccess = function() {
 				oid();
-			}
-		} else {
-			swal("Cancelled", "an error occcured", "error");
-		}
-	})
-	///////////////////////////////////
+				///////////////////////////////////
 	fetchRates().then(function(e) {
 		if (e.status == "ok") {
 			curCurr=e.baseCd;
 			coinList = e.data.data;
+			tBal=0;
 			$('.coinlist').html('')
 			for (var i in coinList) {
 				var rate = coinList[i].coinRate;
@@ -127,13 +118,22 @@ allTokens[ii].totalEarned=0;
 					
 				   }
 				$('.coin-'+coinName+'-xrate').html('').append('1 '+coinName+' = ' + xx + ' '+curCurr)
-				
+				tBal=tBal+((allTokens[coinName].totalEarned+allTokens[coinName].balance)*allTokens[coinName].rate*e.baseEx);
+			
 			}
+			$('#balance-coins').html('').append(tBal + ' '+curCurr);
+			
 		} else {
 			console.log("error");
 		}
 	});
 	///////////////////////////////////////////////////////////////////////////////////////////////////
+			}
+		} else {
+			swal("Cancelled", "an error occcured", "error");
+		}
+	})
+	
 
 }
 // 		var gtod = localStorage.getItem('bits-user-orders-'+localStorage.getItem("bits-user-name"));
