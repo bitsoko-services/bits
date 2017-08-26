@@ -283,14 +283,14 @@ function tabulateTotals() {
 			$(".totals").html(totals);
 			var xt =document.getElementById("totals").innerHTML
 			
-			if (xt == 0) {
-				console.log("minimum value")
-				$(".delivery ").removeClass("bits");
-				$(".delivery").addClass("pointer-events");
-				$(".bits-main-price").addClass("grey");
-				$(".localCurr").addClass("displayNone");
-				$(".bits-main-price ").removeClass("bits");
-										} 
+// 			if (xt == 0) {
+// 				console.log("minimum value")
+// 				$(".delivery ").removeClass("bits");
+// 				$(".delivery").addClass("pointer-events");
+// 				$(".bits-main-price").addClass("grey");
+// 				$(".localCurr").addClass("displayNone");
+// 				$(".bits-main-price ").removeClass("bits");
+// 										} 
 			//localStorage.setItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')),totals);
 		} catch (err) {}
 	}
