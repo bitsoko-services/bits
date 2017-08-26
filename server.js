@@ -93,7 +93,7 @@ try {
 					break;
 				case 'deliverOrder':
 					var tg = "soko-order-" + dat.oid + "-" + dat.store;
-					bitsNotification('Deliver Order', dat.msg, tg, 'bits/images/yes.png', 'bits/images/Delivered.png', [{
+					bitsNotification('New Order', dat.msg, tg, 'bits/images/yes.png', 'bits/images/Delivered.png', [{
 						action: '',
 						title: "Backed up"
 					}], true, true);
@@ -105,7 +105,7 @@ try {
 					var state = dat.state;
 					if (state == 'pending') {
 						bitsNotification('Order Pending', 'You have requested for this service ', tg, 'bits/images/pending.png', dat.orderImg, [{
-							action: 'cancel',
+							action: 'rem-pend',
 							title: "Cancel"
 						}], true, true);
 					} else if (state == 'delivering') {
