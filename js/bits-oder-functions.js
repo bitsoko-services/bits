@@ -48,10 +48,12 @@ function oid() {
 
 function getUserOders(f) {
 	// convert points to KOBO
+	console.log(f);
 		doFetch({
 		action: 'getAllOrders',
 		uid: localStorage.getItem("bits-user-name")
 	}).then(function(e) {
+	console.log(f);
 		if (e.status == "ok") {
 			console.log(e.data)
 			xx = e.data;
@@ -107,7 +109,8 @@ allTokens[ii].totalEarned=0;
 // 		var gtod = localStorage.getItem('bits-user-orders-'+localStorage.getItem("bits-user-name"));
 //
 function updateEarnedTokens(f){
-
+console.log(f);
+	
 			
 			$('.coinlist').html('');
 			var at=allTokens['allTokens'];
