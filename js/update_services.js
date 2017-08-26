@@ -136,7 +136,7 @@ function populateService(mDet) {
 	if (mDet.owner == parseInt(localStorage.getItem('bits-user-name'))) {
 		$('#manage-store').css("display", "block");
 		$('.manage-store').html("")
-		$('.manage-store').append('<a  style="background: none; float:left; !important; margin-top: ;" href="../soko/#s=' + parseInt(getBitsWinOpt('s')) + '" class="noshadow btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>');
+		$('.manage-store').append('<a  style="background: none; float:right; !important; margin-top: ;" href="../soko/#s=' + parseInt(getBitsWinOpt('s')) + '" class="noshadow btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>');
 	} else {
 		$('#manage-store').css("display", "none");
 	}
@@ -152,7 +152,7 @@ function populateService(mDet) {
 			if (parseInt(x[iii].id) == parseInt(localStorage.getItem('bits-user-name'))) {
 				$('#manage-store').css("display", "block");
 				$('.manage-store').html("");
-				$('.manage-store').append('<a  style=" background: none; float:left; !important; margin-top: ;" href="../soko/#s=' + parseInt(getBitsWinOpt('s')) + '" class="noshadow btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>');
+				$('.manage-store').append('<a  style=" background: none; float:right; !important; margin-top: ;" href="../soko/#s=' + parseInt(getBitsWinOpt('s')) + '" class="noshadow btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>');
 			}
 		}
 	} catch (err) {
@@ -212,19 +212,21 @@ function populateService(mDet) {
 	doSubscribe();
 	checkPayments();
 	// -------------------------------------------------loads the shops product lists --------------------------------------------------------------------------------------------------------------------------
-	if (mDet.list.length == 0) {
-		//  	 console.log("no promos") 
-		//$('.merchproducts').addClass('displayNone')
-		//$('.merchproducts').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong><center>No products found</center></strong></p><p class="collections-content"></p></div></li></ul>');        
-	} else {
+
 		
-		if (mDet.name == "Contacts" ){
+		if (getBitsWinOpt('s') == "2" ){
 			//console.log("check if contact "  +mDet.name)
-		$('.userContacts').removeClass('displayNone');
 		$('.floatingPrice').addClass('displayNone');
+			if (getBitsWinOpt('a') != undefined ){
+				
+		$('.doPayBut').removeClass('displayNone');
+			}
+			$('.serviceListCard').css('display','block');
 	$('.prod').append('<span class="new badge bits" data-badge-caption="">'+ mDet.list.length +'</span>');
 		$('.userCont').html("");
 		for (var ii = 0; ii < mDet.list.length; ++ii) {
+			$('.userContacts').removeClass('displayNone');
+		
 			if (mDet.list[ii].metric == null) {
 				// console.log("no metrics set") 
 				mDet.list[ii].metric = "piece";
@@ -233,10 +235,26 @@ function populateService(mDet) {
 				$('.first-tt').attr('data-activates', 'prod-' + mDet.list[ii].id + '-counter');
 			}
 
-			$('.userCont').append('<li class="collection-item avatar bits-max "style="  height: 65px !important;   min-height: 39px; "><img src="https://bitsoko.co.ke' + mDet.list[ii].imagePath + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> ' + mDet.list[ii].name + ' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class=" left">' + mDet.list[ii].contact + '</p><div class="handle-counter" id="prod-' + mDet.list[ii].id + '-counter">'
-				// +'</div><p class="col s4" style=""> <input class="number bitsInputQty sinpt" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'><label for='+mDet.list[ii].name+'></label></p>'+
-				+ '</li>');
-			$('#prod-' + mDet.list[ii].id + '-counter').handleCounter()
+			$('.userCont').append('<li class="collection-item avatar bits-max "style="  height: 65px !important;   min-height: 39px; "><img src="https://bitsoko.co.ke' + mDet.list[ii].imagePath + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> ' + mDet.list[ii].name + ' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class=" left">' + mDet.list[ii].contact + '</p><div class="handle-counter" id="user-' + mDet.list[ii].id + '-opener">'
+				+'open'+
+				+ '</div></li>');
+			
+			$('#user-' + mDet.list[ii].id + '-opener').html("Subscribed");
+			
+			/*
+			
+			var addproducts = document.querySelectorAll('#user-' + mDet.list[ii].id + '-opener');
+			
+		for (var i in addproducts) {
+			
+			addproducts[i].addEventListener("touchstart", function(){
+				
+			history.pushState({page: 1}, "", "?s=2&a="+mDet.list[ii].id);
+			
+			}, false);
+		}
+			*/
+			
 		};
 		// 	 for(var ii = 0; ii < mDet.list.length; ++ii) { 		
 		//  	 	console.log(mDet.promotions[ii].promoName)
@@ -279,7 +297,7 @@ function populateService(mDet) {
 		}
 		}
 
-	}
+	
 }
 //---------------------------------------------------end populateService function------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------  function handleModal---------------------------------------------------------------------------------------------------------------------------------------

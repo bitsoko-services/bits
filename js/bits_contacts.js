@@ -43,7 +43,7 @@ function contact(){
 		    }
 		contPageUser.icon="/bits/images/services/contacts.png";
 		contPageUser.bannerPath=final_url;
-		contPageUser.name=parseInt(allContacts[iii].name);
+		contPageUser.name=allContacts[iii].name;
 			
 	contPageUser.description='send or recieve';
 			

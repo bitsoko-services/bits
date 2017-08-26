@@ -8,7 +8,7 @@ function profileLoaded(p){
             if (e.status=="ok"){
               p.bitsokoUserID=e.buid;
               starting();
-              // walletFunctions(p);
+              walletFunctions(p);
 
 
          }            
@@ -781,12 +781,13 @@ $( document ).on( "pageinit", function( event ) {
      
 	$.mobile.page.prototype.options.keepNative = "select, input";
 $(".js-push-button-notification").bind( "touchstart click", function(event, ui) {
-
-     if (!flag) {
+console.log(flag)
+     if (flag != true) {
     flag = true;
+console.log(flag)
     setTimeout(function(){ flag = false; }, 100);
         if (isPushEnabled) {  
-      unsubscribe();  
+      //unsubscribe();  
     } else {  
       //subscribe();
        startPushManager();  

@@ -45,85 +45,53 @@ function oid() {
 		}
 	} else {}
 }
-
+earnedPoints = 0
 function getUserOders() {
-	 // convert points to KOBO
-
- fetchRates().then(function(e) {
-	if (e.status == "ok") {
-		coinList = e.data.data;
-		for (var i in coinList) {
-			var rate = coinList[i].coinRate;
-//if i have 1000 kobos
-//var koboBalance = 1000;
-	//		console.log((rate*e.data.baseEx*koboBalance).toFixed(2)+' KES');
-var koboRate = 	Math.floor(rate*e.data.baseEx)	
-var qq = rate*e.data.baseEx
-var xx = qq.toFixed(2);
-console.log('1 KOBO = '+xx+' KES');
-$('.bitsoko-xrate').html('').append('1 KOBO = '+xx+' KES')	
-localStorage.setItem('kobo-current-rates', xx);
-		}
-	} else {
-		console.log("error");
-	}
-});
-///////////////////////////////////////////////////////////////////////////////////////////////////
-	doFetch({
+	// convert points to KOBO
+		doFetch({
 		action: 'getAllOrders',
 		uid: localStorage.getItem("bits-user-name")
 	}).then(function(e) {
 		if (e.status == "ok") {
 			console.log(e.data)
 			xx = e.data;
-			
-var earnedPoints = 0;	
+			//var earnedPoints = 0;
 			for (var ii in xx) {
 				var items = xx[ii].points;
-				try{
-var typeofCoin = JSON.parse(items).coin;
-				}catch(err){
-				console.log('this order does not have any rewards');
-				continue;	
+				try {
+					var typeofCoin = JSON.parse(items).coin;
+				} catch (err) {
+					console.log('this order does not have any rewards');
+					continue;
 				}
-							try{
-				
-var purchasePoints = JSON.parse(items).purchase;
-									if(purchasePoints==undefined){
-								var purchasePoints = 0;	
-								}
-				}catch(err){
-				console.log('this order does not have any purchase rewards');
-	
-var purchasePoints = 0;	
+				try {
+					var purchasePoints = JSON.parse(items).purchase;
+					if (purchasePoints == undefined) {
+						var purchasePoints = 0;
+					}
+				} catch (err) {
+					console.log('this order does not have any purchase rewards');
+					var purchasePoints = 0;
 				}
-							try{
-				
-var deliveryPoints = JSON.parse(items).delivery;
-								if(deliveryPoints==undefined){
-								var deliveryPoints = 0;	
-								}
-				}catch(err){
-				console.log('this order does not have any delivery rewards');
-	
-var deliveryPoints = 0;	
+				try {
+					var deliveryPoints = JSON.parse(items).delivery;
+					if (deliveryPoints == undefined) {
+						var deliveryPoints = 0;
+					}
+				} catch (err) {
+					console.log('this order does not have any delivery rewards');
+					var deliveryPoints = 0;
 				}
-				
-				 console.log(earnedPoints,purchasePoints,deliveryPoints);
-				
-				 earnedPoints = earnedPoints + purchasePoints + deliveryPoints;
-
+				console.log(earnedPoints, purchasePoints, deliveryPoints);
+				earnedPoints = earnedPoints + purchasePoints + deliveryPoints;
 			};
+			// convert this to kenyan sh 
+			var rate = JSON.parse(localStorage.getItem('kobo-current-rates'));
+			var totalearnedPoints = earnedPoints * rate
+			var q = totalearnedPoints.toFixed(2);
+			console.log(q);
 			
-			
-
-				// convert this to kenyan sh 
-				 var rate=JSON.parse(localStorage.getItem('kobo-current-rates'));
-				  var totalearnedPoints = earnedPoints * rate
-					var q = totalearnedPoints.toFixed(2);
-				 console.log(q); 
-				 $('#balance-coins').html('').append(q+' KES');
-			
+			$('#balance-coins').html('').append(q + ' KES');
 			var setdb = getObjectStore('data', 'readwrite').put(JSON.stringify(xx), 'bits-user-orders-' + localStorage.getItem("bits-user-name"));
 			setdb.onsuccess = function() {
 				oid();
@@ -132,6 +100,31 @@ var deliveryPoints = 0;
 			swal("Cancelled", "an error occcured", "error");
 		}
 	})
+	///////////////////////////////////
+	fetchRates().then(function(e) {
+		if (e.status == "ok") {
+			coinList = e.data.data;
+			for (var i in coinList) {
+				var rate = coinList[i].coinRate;
+				var coinName = coinList[i].name;
+				$('.coinlist').html('').append('<span><div  class="coinImg" style=" position: absolute  ;margin-top: 5px;"><img src="/bitsAssets/images/currencies/'+coinName+'.png" alt="" style=" padding-left: 12px; height:30px;"></div><a href="" class="" class="" onclick=""><span style=" padding-left: 42px; text-transform: capitalize; ">'+coinName+'</span><span class="coinbal" style=" float:right; line-height: 3.3;"></span></a></span>')
+				$('.coinbal').html('').append(earnedPoints.toFixed(2));
+				//if i have 1000 kobos
+				//var koboBalance = 1000;
+				//		console.log((rate*e.data.baseEx*koboBalance).toFixed(2)+' KES');
+				var koboRate = Math.floor(rate * e.data.baseEx)
+				var qq = rate * e.data.baseEx
+				var xx = qq.toFixed(2);
+				console.log('1 KOBO = ' + xx + ' KES');
+				$('.bitsoko-xrate').html('').append('1 KOBO = ' + xx + ' KES')
+				localStorage.setItem('kobo-current-rates', xx);
+			}
+		} else {
+			console.log("error");
+		}
+	});
+	///////////////////////////////////////////////////////////////////////////////////////////////////
+
 }
 // 		var gtod = localStorage.getItem('bits-user-orders-'+localStorage.getItem("bits-user-name"));
 //

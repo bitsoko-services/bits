@@ -649,43 +649,35 @@ function createETH(user){
 	
 		return new Promise(function(resolve, reject) {
      var randomSeed = lightwallet.keystore.generateRandomSeed(randomString(300));
-console.log("your random seed is: " +randomSeed);
-        var infoString = 'Enter a passcode to secure your wallet. You will be required to enter it each time you restore your wallet to a new device, so dont forget it!'
-	
-	
-	
-        var password = prompt(infoString, 'Password');
-       // var password = prompt(infoString, 'seed');
+var randomSalt = lightwallet.keystore.generateSalt();
 
-        lightwallet.keystore.deriveKeyFromPassword(password, function(err, pwDerivedKey) {
 
-        global_keystore = new lightwallet.keystore(
-          randomSeed,
-          pwDerivedKey);
-	
-		
-        if (password == '') {
-          password = prompt('Enter password to retrieve addresses', 'Password');
-        }
+  var password = prompt("Please enter password", "password");
 
-        var numAddr = 1;
 
-        lightwallet.keystore.deriveKeyFromPassword(password, function(err, pwDerivedKey) {
+     lightwallet.keystore.deriveKeyFromPassword(password, randomSalt, function (err, pwDerivedKey) {
 
-        global_keystore.generateNewAddress(pwDerivedKey, numAddr);
+// This is the default recommended hdPathString value.
+var hdPathString = "m/0'/0'/0'";
+// When specifying a salt, the hdPathString is required.
+global_keystore = new lightwallet.keystore(randomSeed, pwDerivedKey, hdPathString,randomSalt);
 
-        var addresses = global_keystore.getAddresses();
 
-   var walData={publicAddress:JSON.stringify(addresses), created:moment().valueOf(), coin:'eth'};
+// generate five new address/private key pairs
+// the corresponding private keys are also encrypted
+global_keystore.generateNewAddress(pwDerivedKey, 1);
+var addr = global_keystore.getAddresses();
+
+   var walData={publicAddress:JSON.stringify(addr), created:moment().valueOf(), coin:'eth'};
    
        // console.log("your random seed is: " +JSON.stringify(walData));
 	var wd=walData;
-	//delete wd.walletData;
-console.log("your random seed is: " +JSON.stringify(walData));
+	//delete wd.walletData;;
         doFetch({action:'saveUserWallet', data: JSON.stringify(wd), user:user }).then(function(e){
             if (e.status=="ok"){
-   walData.walletData=randomSeed;
-      //    console.log("your wallet is: " +JSON.stringify(walData));
+   walData.walletSeed=randomSeed;
+    walData.walletSalt=randomSalt;
+        console.log("your wallet is: " +JSON.stringify(walData),password);
 var walSaving = getObjectStore('data', 'readwrite').put(JSON.stringify(walData), 'bits-wallets-'+user);
 	walSaving.onsuccess = function (event) {
 	//localStorage.setItem("bits-user-wallet", publicAddress); 
@@ -705,14 +697,81 @@ Materialize.toast('failed to create wallet, please try again', 3000);
 	
 
         getBalances();
-      });
+// Create a custom passwordProvider to prompt the user to enter their
+// password whenever the hooked web3 provider issues a sendTransaction
+// call.
+global_keystore.passwordProvider = function (callback) {
+  var pw = prompt("Please enter password", "Password");
+  callback(null, pw);
+};
+
+// Now set ks as transaction_signer in the hooked web3 provider
+// and you can start using web3 using the keys/addresses in ks!
+});
+
+
+// console.log("your random seed is: " +randomSeed);
+//         var infoString = 'Enter a passcode to secure your wallet. You will be required to enter it each time you restore your wallet to a new device, so dont forget it!'
+	
+	
+	
+//         var password = prompt(infoString, 'Password');
+//        // var password = prompt(infoString, 'seed');
+
+//         lightwallet.keystore.deriveKeyFromPassword(password, function(err, pwDerivedKey) {
+
+//         global_keystore = new lightwallet.keystore(
+//           randomSeed,
+//           pwDerivedKey);
+	
+		
+//         if (password == '') {
+//           password = prompt('Enter password to retrieve addresses', 'Password');
+//         }
+
+//         var numAddr = 1;
+
+//         lightwallet.keystore.deriveKeyFromPassword(password, function(err, pwDerivedKey) {
+
+//         global_keystore.generateNewAddress(pwDerivedKey, numAddr);
+
+//         var addresses = global_keystore.getAddresses();
+
+//    var walData={publicAddress:JSON.stringify(addresses), created:moment().valueOf(), coin:'eth'};
+   
+//        // console.log("your random seed is: " +JSON.stringify(walData));
+// 	var wd=walData;
+// 	//delete wd.walletData;;
+//         doFetch({action:'saveUserWallet', data: JSON.stringify(wd), user:user }).then(function(e){
+//             if (e.status=="ok"){
+//    walData.walletData=randomSeed;
+//         console.log("your wallet is: " +JSON.stringify(walData),password);
+// var walSaving = getObjectStore('data', 'readwrite').put(JSON.stringify(walData), 'bits-wallets-'+user);
+// 	walSaving.onsuccess = function (event) {
+// 	//localStorage.setItem("bits-user-wallet", publicAddress); 
+	 
+// resolve(walData);
+// Materialize.toast('created new Ethereum wallet', 3000);
+	
+// 	}
+//                 } else{
+// 		reject('failed to create wallet, please try again');
+// Materialize.toast('failed to create wallet, please try again', 3000);
+		
+// 		}           
+               
+//         });
+	
+	
+
+//         getBalances();
+//       });
 		
 		
 		
 		
-       setWeb3Provider(global_keystore);
-        getBalances();
-        })
+//         getBalances();
+//         })
  
 
     	
@@ -1340,8 +1399,8 @@ returns.symbol='usd';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 if (typeof web3 == 'undefined') {
 	console.log("web3 is undefined");
-	$.getScript("https://bitsoko.io/bitsAssets/js/web3/web3.js", function() {
-		$.getScript("https://bitsoko.io/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js", function() {
+	$.getScript("/bitsAssets/js/web3/web3.js", function() {
+		$.getScript("/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js", function() {
 			try{
 
 
@@ -1350,12 +1409,13 @@ if (typeof web3 == 'undefined') {
 
 			function setWeb3Provider(keystore) {
 				var web3Provider = new HookedWeb3Provider({
-					host: "http://104.199.153.171:8545/",
-					transaction_signer: keystore
+					host: "http://127.0.0.1:8545/",
 				});
 				web3.setProvider(web3Provider);
 			}
 			getnewbal();
+
+       setWeb3Provider(global_keystore);
 				
 			}catch(err){
 
@@ -1366,7 +1426,7 @@ if (typeof web3 == 'undefined') {
 } else {
 	console.log("web3 is defined");
 
-	// window.web3 = new Web3(web3.currentProvider);
+	 window.web3 = new Web3(web3.currentProvider);
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       function getBalances() {
@@ -1397,7 +1457,6 @@ if (typeof web3 == 'undefined') {
         document.getElementById('seed').value = ''
         
         newAddresses(password);
-        setWeb3Provider(global_keystore);
         
         getBalances();
         })

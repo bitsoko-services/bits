@@ -8580,7 +8580,7 @@ a.waves-effect .waves-ripple {
   min-height: 3rem;
   line-height: 3rem;
   padding: 0 1rem;
-  background-color: #fff;
+  /* background-color: #fff; */
   border-bottom: 1px solid #ddd;
 }
 
@@ -8617,7 +8617,7 @@ a.waves-effect .waves-ripple {
 }
 
 .side-nav .collapsible-header {
-  background-color: transparent;
+  /* background-color: transparent; */
   border: none;
   line-height: inherit;
   height: inherit;
@@ -9927,7 +9927,7 @@ select {
 }
 
 .side-nav li:hover, .side-nav li.active {
-  background-color: #ddd;
+  /* background-color: #ddd; */
 }
 
 .side-nav a {

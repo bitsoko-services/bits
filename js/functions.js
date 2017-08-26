@@ -25,7 +25,7 @@ function callMerchant() {
 		var p = x.phone
 		//console.log(p)
 		$('.callbtn').html('')
-		$('.callbtn').append('<a  onclick="rate()" id="star" value="rating" class="displayNone btn-large btn-price bits noshadow bitb" style="float: left !important;/* right: 0%; */ margin-top: ;"><i class="mdi-action-grade activator"></i></a><button  id="share" value="Share" class="bitb displayNone btn-large btn-price bits noshadow" style="float: right !important;/* right: 0%; */ margin-top: ;"><i class="mdi-social-share"></i></button> <a href="tel:' + p + '"  id="" value="" class=" btn-large btn-price bits noshadow bitb" style="float: right !important; margin-right: ;/* right: 0%; */ margin-top: ;"><i class="mdi-communication-call"></i></a>');
+		$('.callbtn').append('<a  onclick="rate()" id="star" value="rating" class="displayNone btn-large btn-price bits noshadow bitb" style="float: right !important;/* right: 0%; */ margin-top: ;"><i class="mdi-action-grade activator"></i></a><button  id="share" value="Share" class="bitb displayNone btn-large btn-price bits noshadow" style="float: right !important;/* right: 0%; */ margin-top: ;"><i class="mdi-social-share"></i></button> <a href="tel:' + p + '"  id="" value="" class=" btn-large btn-price bits noshadow bitb" style="float: right !important; margin-right: ;/* right: 0%; */ margin-top: ;"><i class="mdi-communication-call"></i></a>');
 		//web Share start
 		document.querySelector("#share").addEventListener('click', function(event) {
 			navigator.share({
@@ -281,6 +281,16 @@ function tabulateTotals() {
 			// 	 $(".delivery").removeClass("displayNone");
 			// 	 $(".floatingPrice").removeClass("displayNone");
 			$(".totals").html(totals);
+			var xt =document.getElementById("totals").innerHTML
+			
+// 			if (xt == 0) {
+// 				console.log("minimum value")
+// 				$(".delivery ").removeClass("bits");
+// 				$(".delivery").addClass("pointer-events");
+// 				$(".bits-main-price").addClass("grey");
+// 				$(".localCurr").addClass("displayNone");
+// 				$(".bits-main-price ").removeClass("bits");
+// 										} 
 			//localStorage.setItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')),totals);
 		} catch (err) {}
 	}
@@ -336,7 +346,7 @@ function makeOrder(orderArrayy, orderLoc) {
 						//EarnedKobo: totalKobo,
 						loc: e.coords.latitude + ',' + e.coords.longitude,
 						user: localStorage.getItem("bits-user-name"),
-						pointsEarned: {coin:'kobo',purchase:totalKobo},
+						pointsEarned: {"coin":"kobo","purchase":totalKobo},
 						service: parseInt(getBitsWinOpt('s'))
 					}).then(function(e) {
 						if (e.status == "ok") {
@@ -379,6 +389,7 @@ function makeOrder(orderArrayy, orderLoc) {
 // }
 totalPoints = 0
 totalKobo = 0
+deliveriesPoints = 0
 function checkRewards(t) {
 	
 	// a convenient wrapper.
@@ -440,7 +451,8 @@ function checkRewards(t) {
 								 var kshToKobo = Math.floor(ptsed) / rate
 								 //console.log(kshToKobo);
 								 totalKobo = totalKobo + kshToKobo
-								
+								 $('.star2').html('');
+								$('.star2').append('<div style="position: relative;font-size: 15px;z-index: 1;">'+Math.floor(totalKobo)+'<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">pts</span></div>')
 								//console.log(totalPoints);
 								$('.star').html('')
 								$('.star').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(ptsed) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">kes</span></div>')
