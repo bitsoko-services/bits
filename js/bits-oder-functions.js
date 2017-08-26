@@ -116,8 +116,8 @@ console.log(f);
 			$('.coinlist').html('');
 			var at=allTokens['allTokens'];
 			for (var i in at) {
-				var rate = at[i].coinRate;
-				var coinName = at[i].name;
+				var rate = allTokens[at[i]].coinRate;
+				var coinName = at[i];
 				//if i have 1000 kobos
 				//var koboBalance = 1000;
 				//		console.log((rate*e.data.baseEx*koboBalance).toFixed(2)+' KES');
