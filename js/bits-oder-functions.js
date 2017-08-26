@@ -98,7 +98,8 @@ allTokens[ii].totalEarned=0;
 			setdb.onsuccess = function() {
 				oid();
 				}
-			 updateEarnedTokens(f);
+			setTimeout(function(){ updateEarnedTokens(f)}, 1500);
+			 
 		} else {
 			swal("Cancelled", "an error occcured", "error");
 		}
