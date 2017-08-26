@@ -115,8 +115,12 @@ console.log(f);
 			
 			$('.coinlist').html('');
 			var at=allTokens['allTokens'];
-			for (var i in at) {
-				var rate = allTokens[allTokens['allTokens'][at[i]]].rate;
+			
+var i = 0;
+while (at[i]) {
+   
+
+				var rate = allTokens[at[i]].rate;
 				var coinName = at[i];
 				//if i have 1000 kobos
 				//var koboBalance = 1000;
@@ -132,7 +136,7 @@ console.log(f);
 				   }
 				$('.coin-'+coinName+'-xrate').html('').append('1 '+coinName+' = ' + xx + ' '+f.baseCd)
 				tBal=tBal+((allTokens[coinName].totalEarned+allTokens[coinName].balance)*allTokens[coinName].rate*f.baseEx);
-			
+			 i++;
 			}
 			
 			$('#balance-coins').html('').append(tBal + ' '+curCurr);
