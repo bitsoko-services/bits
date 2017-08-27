@@ -146,8 +146,9 @@ console.log(user);
     var walsvar = getObjectStore('data', 'readwrite').get('bits-wallets-'+user);
 	walsvar.onsuccess = function (event) {
         try{
-        
-    var address = JSON.parse(event.target.result).publicAddress;
+		var pFl=JSON.parse(event.target.result);
+        walletFunctions(pFl);
+    var address = pFl.publicAddress;
     
            if (navigator.serviceWorker.controller) {
 
