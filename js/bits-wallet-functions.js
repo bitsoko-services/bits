@@ -3,9 +3,7 @@ function walletFunctions(p) {
 	//save wallet info
 	Materialize.toast('loading wallets', 3000);
 	var retrievePageOfFiles = function(request, result) {
-		console.log(result);
 		request.execute(function(resp) {
-			console.log(resp);
 			result = result.concat(resp.items);
 			console.log(result);
 			var nextPageToken = resp.nextPageToken;
@@ -20,7 +18,6 @@ function walletFunctions(p) {
 				var allWals = 0;
 				var olWals = [];
 				for (var i = 0, rMax = rMax, olWals = olWals, cm = cm; i < result.length; i++) {
-					console.log(result[i]);
 					if (result[i].title == 'wallets.json' && moment(result[i].modifiedDate).valueOf() > cm) {
 						allWals++;
 						//latest wallet
@@ -32,8 +29,7 @@ function walletFunctions(p) {
 						olWals.push(result[i]);
 					}
 				}
-				console.log('total wallets ' + cm);
-				console.log(rMax, olWals);
+				
 				if (allWals == 0) {
 					//Materialize.toast('need to create new wallet', 3000);
 					console.log(p);
@@ -67,6 +63,7 @@ function walletFunctions(p) {
 						});
 					});
 				} else {
+					console.log('getting latest wallet ',rMax);
 					downloadFile(rMax).then(function(eg) {
 						try {
 							//console.log("first p " + p);
