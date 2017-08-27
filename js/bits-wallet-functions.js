@@ -1,4 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+				var rMax;
 function walletFunctions(p) {
 	//save wallet info
 	Materialize.toast('loading wallets', 3000);
@@ -13,7 +15,6 @@ function walletFunctions(p) {
 				});
 				retrievePageOfFiles(request, result);
 			} else {
-				var rMax;
 				var cm = 0;
 				var allWals = 0;
 				var olWals = [];
@@ -121,7 +122,7 @@ console.log(addresses,p);
 						} catch (err) {
 							console.log("Error loading wallet: " + err + " fetching..");
 						}
-					});
+					}).catch(function(err){console.log(err)});
 				}
 			}
 		});
