@@ -150,7 +150,6 @@ var global_keystore = new lightwallet.keystore(randomSeed, pwDerivedKey, hdPathS
 
 // generate five new address/private key pairs
 // the corresponding private keys are also encrypted
-global_keystore.generateNewAddress(pwDerivedKey, 1);
 var addr = global_keystore.getAddresses();
 console.log(addr)
 
