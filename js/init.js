@@ -105,23 +105,7 @@ startUser(localStorage.getItem('bits-user-name')).then(function(e){
 }).catch(function(err){
 	var user=localStorage.getItem('bits-user-name');
 	if (user == "" || user == "undefined" || user == "null" || user == null) {
-	//startGoogle();
-	/*
-createWallet('anon').then(function(e){
-
-loadWallet(e.publicAddress);
-                requestID();
-});	
-	*/	
-
-
-
-
-
-
-
-
-
+	
 
 	
 	}
@@ -131,25 +115,8 @@ loadWallet(e.publicAddress);
 
 });
 
-     setTimeout(function(){  }, 850);
-    	
-
-}
-
-function startUser(user){
-     return new Promise(function(resolve, reject) {
-    if(user==undefined){
-    user=anon;
-    }    
-console.log(user);  
+     setTimeout(function(){ 
      
-    var walsvar = getObjectStore('data', 'readwrite').get('bits-wallets-'+user);
-	walsvar.onsuccess = function (event) {
-        try{
-		var pFl=JSON.parse(event.target.result);
-        walletFunctions(pFl);
-    var address = pFl.publicAddress;
-    
            if (navigator.serviceWorker.controller) {
 
                    sendMessage({
@@ -162,38 +129,35 @@ console.log(user);
             } else {
               
             }
+     }, 850);
+    	
+
+}
+
+function startUser(user){
+     return new Promise(function(resolve, reject) {
+    if(user==undefined){
+    user=anon;
+    }    
+console.log(user);  
+     
+    var walsvar = getObjectStore('data', 'readwrite').get('user-profile-'+user);
+	walsvar.onsuccess = function (event) {
+        try{
+		var pFl=JSON.parse(event.target.result);
+        walletFunctions(pFl);
+    
 	}catch(err){	
 		reject(err);
 	}
 
 
 
-
-
-
-
-
-console.log(address);   
-        
-if (!address || address == "" || address == "undefined" || address == "null" || address == null) {
-	reject('no wallet');
-      localStorage.setItem('bitsoko-wallets','none');
-	   localStorage.setItem('bitsoko-settings-country','default');
-	   getObjectStore('data', 'readwrite').put('[]', 'services');
-      getObjectStore('data', 'readwrite').put('[]', 'transactions');
-        //return;    
-
-  return;
-  } else{
-      
- resolve(address);
-    
-  }
     
 }   
     walsvar.onerror = function (event) {
         console.log('access error');
-	    reject('no wallet');
+	    reject('no wallet functions');
     }
 
 	     
