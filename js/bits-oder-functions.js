@@ -125,8 +125,8 @@ while (at[i]) {
 				//if i have 1000 kobos
 				//var koboBalance = 1000;
 				//		console.log((rate*e.data.baseEx*koboBalance).toFixed(2)+' KES');
-				var koboRate = Math.floor(rate * f.baseEx)
-				var qq = rate * f.baseEx
+				var koboRate = Math.floor(rate * f.data.baseEx)
+				var qq = rate * f.data.baseEx
 				var xx = qq.toFixed(2);
 				if(allTokens[coinName].totalEarned>0){
 				   //only display the coin if the user has a balance
@@ -134,11 +134,11 @@ while (at[i]) {
 				$('coin-'+coinName+'-bal').html('').append(allTokens[coinName].totalEarned.toFixed(2));
 					
 				   }
-				$('.coin-'+coinName+'-xrate').html('').append('1 '+coinName+' = ' + xx + ' '+f.baseCd)
-				tBal=tBal+((allTokens[coinName].totalEarned+allTokens[coinName].balance)*allTokens[coinName].rate*f.baseEx);
-				console.log(allTokens[coinName].rate*f.baseEx);
+				$('.coin-'+coinName+'-xrate').html('').append('1 '+coinName+' = ' + xx + ' '+f.data.baseCd)
+				tBal=tBal+((allTokens[coinName].totalEarned+allTokens[coinName].balance)*allTokens[coinName].rate*f.data.baseEx);
+				console.log(allTokens[coinName].rate*f.data.baseEx);
 			 i++;
 			}
 			
-			$('#balance-coins').html('').append(tBal + ' '+f.baseCd);
+			$('#balance-coins').html('').append(tBal + ' '+f.data.baseCd);
 }
