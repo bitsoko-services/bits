@@ -136,6 +136,7 @@ while (at[i]) {
 				   }
 				$('.coin-'+coinName+'-xrate').html('').append('1 '+coinName+' = ' + xx + ' '+f.baseCd)
 				tBal=tBal+((allTokens[coinName].totalEarned+allTokens[coinName].balance)*allTokens[coinName].rate*f.baseEx);
+				console.log(allTokens[coinName].rate*f.baseEx);
 			 i++;
 			}
 			
