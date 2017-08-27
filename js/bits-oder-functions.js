@@ -140,5 +140,5 @@ while (at[i]) {
 			 i++;
 			}
 			
-			$('#balance-coins').html('').append(tBal + ' '+f.data.baseCd);
+			$('#balance-coins').html('').append(tBal.toFixed(2) + ' '+f.data.baseCd);
 }
