@@ -390,6 +390,7 @@ function makeOrder(orderArrayy, orderLoc) {
 totalPoints = 0
 totalKobo = 0
 deliveriesPoints = 0
+function checkMinusRewards(t){}
 function checkRewards(t) {
 	
 	// a convenient wrapper.
@@ -409,13 +410,13 @@ function checkRewards(t) {
 		var pds = r.promotions;
 		var itms = r.list
 		var t = r.t;
-		// 	console.log("promos"+pds,+"T"+t,+"products"+itms)
+			//console.log("promos"+pds,+"T"+t,+"products"+itms)
 		var allItms = [];
 		var inpt = document.getElementById("bitsInputQty" + t).value;
-		// console.log(document.getElementById("bitsInputQty"+t).value)
+		 //console.log(document.getElementById("bitsInputQty"+t).value)
 		for (var iiii = 0, t = t; iiii < pds.length; ++iiii) {
-			// console.log("passed into loop 1"+pds,t,itms)
-			// console.log(JSON.parse(pds[iiii].promoItems),t,inpt)
+			//console.log("passed into loop 1"+pds,t,itms)
+			//console.log(JSON.parse(pds[iiii].promoItems),t,inpt)
 			var zx = JSON.parse(pds[iiii].promoItems)
 			var wx = JSON.parse(pds[iiii].discount)
 				//console.log("promo discount =" +wx);
@@ -432,8 +433,9 @@ function checkRewards(t) {
 					//console.log("pass reward point")
 					//console.log(i, zx.length, zx[i])
 					if (parseInt(zx[i]) == parseInt(t)) {
-// 						console.log(parseInt(t), zx[i]);
-// 						console.log('found!!!!!!!!', zx[i]);
+						//console.log(parseInt(t), zx[i]);
+						//console.log('found!!!!!!!!', zx[i]);
+						
 						var prodID = zx[i]
 							// get promotino discount
 						for (var io in itms) {

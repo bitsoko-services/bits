@@ -56,7 +56,18 @@
 			}
 		})
 		$btnPlugs.click(function() {
-			$(".delivery ").addClass("bits");
+
+if($(this).attr("rewarded") == "rewarded"){
+	console.log("Points already awarded");
+	var num = parseInt($input.val())
+			if (maximize == null || num < maximize) {
+				$input.val(num + 1)
+				changeVal(num + 1)
+			}
+}
+else{
+	$(this).attr("rewarded", "rewarded");
+	$(".delivery ").addClass("bits");
 			$(".delivery").removeClass("pointer-events");
 			$(".bits-main-price").removeClass("grey");
 			$(".localCurr").removeClass("displayNone");
@@ -67,6 +78,10 @@
 				$input.val(num + 1)
 				changeVal(num + 1)
 			}
+
+}
+
+			
 			//setTimeout(, 3000);
 		})
 		var keyUpTime
