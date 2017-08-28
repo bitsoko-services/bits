@@ -117,6 +117,7 @@ console.log(f);
 			var at=allTokens['allTokens'];
 			
 var i = 0;
+	var tCe = 0;
 while (at[i]) {
    
 
@@ -128,15 +129,15 @@ while (at[i]) {
 				var koboRate = Math.floor(rate * f.data.baseEx)
 				var qq = rate * f.data.baseEx
 				var xx = qq.toFixed(2);
-				if(allTokens[coinName].totalEarned>0){
+				var tA=allTokens[coinName].totalEarned+allTokens[coinName].balance;
+				if(tA>0){
 				   //only display the coin if the user has a balance
 				$('.coinlist').append('<span><div  class="coinImg" style=" position: absolute  ;margin-top: 5px;"><img src="/bitsAssets/images/currencies/'+coinName+'.png" alt="" style=" padding-left: 12px; height:30px;"></div><a href="" class="" class="" onclick=""><span style=" padding-left: 42px; text-transform: capitalize; ">'+coinName+'</span><span class="coin-'+coinName+'-bal" style=" float:right; line-height: 3.3;"></span></a></span>')
-				$('.coin-'+coinName+'-bal').html('').append(allTokens[coinName].totalEarned.toFixed(2));
+				$('.coin-'+coinName+'-bal').html('').append(tA.toFixed(2));
 					
 				   }
 				$('.coin-'+coinName+'-xrate').html('').append('1 '+coinName+' = ' + xx + ' '+f.data.baseCd)
-				tBal=tBal+((allTokens[coinName].totalEarned+allTokens[coinName].balance)*allTokens[coinName].rate*f.data.baseEx);
-				console.log(allTokens[coinName].rate*f.data.baseEx);
+				tBal=tBal+(tA*allTokens[coinName].rate*f.data.baseEx);console.log(allTokens[coinName].rate*f.data.baseEx);
 			 i++;
 			}
 			
