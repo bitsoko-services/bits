@@ -126,8 +126,8 @@ while (at[i]) {
 				//if i have 1000 kobos
 				//var koboBalance = 1000;
 				//		console.log((rate*e.data.baseEx*koboBalance).toFixed(2)+' KES');
-				var koboRate = Math.floor(rate * f.data.baseEx)
-				var qq = rate * f.data.baseEx
+				var koboRate = Math.floor(rate * f.data.baseEx);
+				var qq = rate * f.data.baseEx;
 				var xx = qq.toFixed(2);
 				var tA=allTokens[coinName].totalEarned+allTokens[coinName].balance;
 				if(tA>0){
@@ -136,8 +136,8 @@ while (at[i]) {
 				$('.coin-'+coinName+'-bal').html('').append(tA.toFixed(2));
 					
 				   }
-				$('.coin-'+coinName+'-xrate').html('').append('1 '+coinName+' = ' + xx + ' '+f.data.baseCd)
-				tBal=tBal+(tA*allTokens[coinName].rate*f.data.baseEx);console.log(allTokens[coinName].rate*f.data.baseEx);
+				$('.coin-'+coinName+'-xrate').html('').append('1 '+coinName+' = ' + xx + ' '+f.data.baseCd);
+				tBal=tBal+(tA*allTokens[coinName].rate*f.data.baseEx);
 			 i++;
 			}
 			
