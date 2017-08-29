@@ -433,8 +433,8 @@ function checkRewards(t) {
 					//console.log("pass reward point")
 					//console.log(i, zx.length, zx[i])
 					if (parseInt(zx[i]) == parseInt(t)) {
-						//console.log(parseInt(t), zx[i]);
-						//console.log('found!!!!!!!!', zx[i]);
+						console.log(parseInt(t), zx[i]);
+						console.log('found!!!!!!!!', zx[i]);
 						
 						var prodID = zx[i]
 							// get promotino discount
@@ -443,22 +443,29 @@ function checkRewards(t) {
 							if (parseInt(itms[io].id) == parseInt(zx[i])) {
 								//console.log("match id")
 								var discount = wx
+								console.log("discount",discount)
 								var prce = itms[io].price
+									console.log("prce",prce)
 								var ptsed = discount / 100 * prce
+									console.log("ptsed",ptsed)
 								var kshToPoints = Math.floor(ptsed) / 2
+									console.log("discount",kshToPoints)
 								 totalPoints = totalPoints + kshToPoints
 								 var rate=JSON.parse(localStorage.getItem('kobo-current-rates'));
-								 // console.log("===============================");
-								// console.log(rate);
+									 console.log("===============================");
+								 console.log("rate",rate);
 								 var kshToKobo = Math.floor(ptsed) / rate
-								 //console.log(kshToKobo);
+								 console.log("ksh to kobo",kshToKobo);
 								 totalKobo = totalKobo + kshToKobo
 								 $('.star2').html('');
-								$('.star2').append('<div style="position: relative;font-size: 15px;z-index: 1;">'+Math.floor(totalKobo)+'<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">pts</span></div>')
-								//console.log(totalPoints);
+								$('.star2').append('<div style="position: relative;font-size: 15px;z-index: 1;">'+Math.floor(kshToKobo)+'<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">pts</span></div>')
+								console.log("total points",totalPoints);
 								$('.star').html('')
-								$('.star').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(ptsed) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">kes</span></div>')
+								$('.star').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(kshToKobo) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">kes</span></div>')
+								$("#bitsInputQty"+t).attr("rewarded", "rewarded");
+								$("#bitsInputQty"+t).attr("apts",Math.floor(kshToKobo));
 							}
+
 						}
 						dropStar();
 					}
@@ -553,7 +560,7 @@ function getProdss(orderArrayx) {
 		console.log(r);
 		for (var o in r) {
 			for (var oo in orderArrayx) {
-				console.log(r[o].id, orderArrayx[oo].count)
+				//console.log(r[o].id, orderArrayx[oo].count)
 				if (r[o].id == orderArrayx[oo].pid) {
 					costofItems = costofItems + (orderArrayx[oo].count * r[o].price);
 					console.log("match")

@@ -126,6 +126,8 @@ else{
 			$btnMinus.prop('disabled', false)
 			$btnPlugs.prop('disabled', false)
 			if (num <= minimum) {
+				if($(this).attr("rewarded") == "rewarded"){
+	console.log("Remove Points awarded");}
 // 				console.log("minimum value")
 // 				$(".delivery ").removeClass("bits");
 // 				$(".delivery").addClass("pointer-events");

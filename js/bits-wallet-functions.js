@@ -67,13 +67,7 @@ function walletFunctions(p) {
 					console.log('getting latest wallet ',rMax);
 					downloadFile(rMax).then(function(eg) {
 						try {
-							//console.log("first p " + p);
-							//console.log('Loaded wallets: ', JSON.parse(eg.responseText).publicAddress);
-							var w = JSON.parse(eg.responseText).publicAddress
-							var all = JSON.parse(w)
-								// save Wallets to db
-							//console.log("wallet data to db")
-							localStorage.setItem('bits-user-address-' + localStorage.getItem('bits-user-name'), all);
+							
 							//sortad();
 							console.log('Loaded wallets: ', JSON.parse(eg.responseText));
 							var infoString = 'Loaded Wallets: "' + JSON.parse(eg.responseText).publicAddress + '"Enter your passcode to unlock your wallets.'
@@ -84,6 +78,14 @@ function walletFunctions(p) {
 			//console.log(password,randomSeed);				
 getUserAd(password,randomSeed,randomSalt).then(function(addresses){
 console.log(addresses,p);
+//console.log("first p " + p);
+							//console.log('Loaded wallets: ', JSON.parse(eg.responseText).publicAddress);
+							var w = addresses[0]
+							// toDo: add this line when getting multiple addresses
+							//var all = JSON.parse(w)
+								// save Wallets to db
+							//console.log("wallet data to db")
+							localStorage.setItem('bits-user-address-' + localStorage.getItem('bits-user-name'), w);
 
 									localStorage.setItem('bits-user-name', p.id);
 										getObjectStore('data', 'readwrite').put(addresses, 'bits-wallets-' + p.id);
@@ -148,6 +150,7 @@ var global_keystore = new lightwallet.keystore(randomSeed, pwDerivedKey, hdPathS
 
 // generate five new address/private key pairs
 // the corresponding private keys are also encrypted
+global_keystore.generateNewAddress(pwDerivedKey, 1);
 var addr = global_keystore.getAddresses();
 console.log(addr)
 
