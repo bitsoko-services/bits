@@ -152,7 +152,7 @@ var global_keystore = new lightwallet.keystore(randomSeed, pwDerivedKey, hdPathS
 // the corresponding private keys are also encrypted
 global_keystore.generateNewAddress(pwDerivedKey, 1);
 var addr = global_keystore.getAddresses();
-console.log(addr)
+	localStorage.setItem('bits-user-address-' + localStorage.getItem('bits-user-name'), addr[0]);								
 
 $('.addressClass').append('0x'+localStorage.getItem('bits-user-address-'+ localStorage.getItem('bits-user-name')));
 // Create a custom passwordProvider to prompt the user to enter their
