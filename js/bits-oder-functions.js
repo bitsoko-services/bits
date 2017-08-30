@@ -90,8 +90,14 @@ allTokens[ii].totalEarned=0;
 					console.log('this order does not have any delivery rewards');
 					var deliveryPoints = 0;
 				}
-				console.log(typeofCoin, allTokens[typeofCoin].totalEarned, purchasePoints, deliveryPoints);
-				allTokens[typeofCoin].totalEarned = allTokens[typeofCoin].totalEarned + purchasePoints + deliveryPoints;
+				//console.log(typeofCoin, allTokens[typeofCoin].totalEarned, purchasePoints, deliveryPoints);
+				try{
+					allTokens[typeofCoin].totalEarned = allTokens[typeofCoin].totalEarned + purchasePoints + deliveryPoints;
+			
+				}catch(err){
+				console.log('this coin had not been included in the rewards since its currently inactive',typeofCoin);
+				continue;
+				}
 			};
 			
 			var setdb = getObjectStore('data', 'readwrite').put(JSON.stringify(xx), 'bits-user-orders-' + localStorage.getItem("bits-user-name"));
