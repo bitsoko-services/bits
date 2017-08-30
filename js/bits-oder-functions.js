@@ -135,7 +135,7 @@ while (at[i]) {
 				var koboRate = Math.floor(rate * f.data.baseEx);
 				var qq = rate * f.data.baseEx;
 				var xx = qq.toFixed(2);
-				var tA=allTokens[coinName].totalEarned+allTokens[coinName].balance;
+				var tA=allTokens[coinName].totalEarned+(allTokens[coinName].balance/Math.pow(10,allTokens[coinName].decimals));
 	console.log(tA,allTokens[coinName].totalEarned,allTokens[coinName].balance);
 				if(tA>0){
 				   //only display the coin if the user has a balance
