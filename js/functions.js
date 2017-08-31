@@ -464,7 +464,7 @@ $('.star').html('0');
 								var kshToPoints = Math.floor(ptsed) / 2
 								console.log("discount", kshToPoints)
 								totalPoints = totalPoints + kshToPoints
-								var rate = JSON.parse(localStorage.getItem('kobo-current-rates'));
+								var rate = allTokens['kobo'].rate;
 								//var rate = 2;
 								console.log("===============================");
 								console.log("rate", rate);
