@@ -49,6 +49,8 @@
 		changeVal(inputVal)
 		$input.val(inputVal)
 		$btnMinus.click(function() {
+			//checkRewards($input.attr('pid'));
+			Rewards()
 			var num = parseInt($input.val())
 			if (num > minimum) {
 				$input.val(num - 1)
@@ -56,30 +58,32 @@
 			}
 		})
 		$btnPlugs.click(function() {
-
-if($(this).attr("rewarded") == "rewarded"){
-	console.log("Points already awarded");
-	var num = parseInt($input.val())
-			if (maximize == null || num < maximize) {
-				$input.val(num + 1)
-				changeVal(num + 1)
-			}
-}
-else{
-	$(this).attr("rewarded", "rewarded");
+			//$(this).attr("rewarded", "rewarded");
 	$(".delivery ").addClass("bits");
 			$(".delivery").removeClass("pointer-events");
 			$(".bits-main-price").removeClass("grey");
 			$(".localCurr").removeClass("displayNone");
 			$(".bits-main-price ").addClass("bits");
-			checkRewards($input.attr('pid'));
+			Rewards()
+			//checkRewards($input.attr('pid'));
 			var num = parseInt($input.val())
 			if (maximize == null || num < maximize) {
 				$input.val(num + 1)
 				changeVal(num + 1)
 			}
 
-}
+
+// if($(this).attr("rewarded") == "rewarded"){
+// 	console.log("Points already awarded");
+// 	var num = parseInt($input.val())
+// 			if (maximize == null || num < maximize) {
+// 				$input.val(num + 1)
+// 				changeVal(num + 1)
+// 			}
+// }
+// else{
+	
+// }
 
 			
 			//setTimeout(, 3000);

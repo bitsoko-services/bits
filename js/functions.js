@@ -1,29 +1,29 @@
 ///.........................................checks if the payments option for the merchant is on or off ........................................................./////
-function checkPayments(){
-actvServ().then(function(p){
-	var p=p.payments
-if (p){
-	//console.log("payments on")
-	 $("#paymentBTN").removeClass("displayNone")
+function checkPayments() {
+	actvServ().then(function(p) {
+		var p = p.payments
+		if (p) {
+			//console.log("payments on")
+			$("#paymentBTN").removeClass("displayNone")
+		} else {
+			console.log("payments off")
+			$(".chat-outs").addClass("displayNone")
+			$("#paymentBTN").addClass("displayNone")
+			$("#promopriced").addClass("displayNone")
+				// $("#bitsPrice").addClass("displayNone")
+				//removes the button
+			$(".floatingPrice").html("")
+			$(".floatingPrice").addClass("pointerNone")
+				//adds class with no side panel activatr
+			$(".floatingPrice").append('<a href="#" class="bitswaves-effect waves-block bits bitb waves-light chat-collapse btn-floating btn-large "style="pointer-events: none; background-color:#{theme} !important;"><span id="totals" class="totals"></span></a>')
+		}
+	})
 }
-else{
-	console.log("payments off")
-	$(".chat-outs").addClass("displayNone")
-	 $("#paymentBTN").addClass("displayNone")
- 	 $("#promopriced").addClass("displayNone")
- 	// $("#bitsPrice").addClass("displayNone")
- 	 //removes the button
- 	 $(".floatingPrice").html("")
- 	 $(".floatingPrice").addClass("pointerNone")
- 	 //adds class with no side panel activatr
- 	  $(".floatingPrice").append('<a href="#" class="bitswaves-effect waves-block bits bitb waves-light chat-collapse btn-floating btn-large "style="pointer-events: none; background-color:#{theme} !important;"><span id="totals" class="totals"></span></a>')
-	 
-}})}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function callMerchant() {
 	actvServ().then(function(x) {
 		var p = x.phone
-		//console.log(p)
+			//console.log(p)
 		$('.callbtn').html('')
 		$('.callbtn').append('<a  onclick="rate()" id="star" value="rating" class="displayNone btn-large btn-price bits noshadow bitb" style="float: right !important;/* right: 0%; */ margin-top: ;"><i class="mdi-action-grade activator"></i></a><button  id="share" value="Share" class="bitb displayNone btn-large btn-price bits noshadow" style="float: right !important;/* right: 0%; */ margin-top: ;"><i class="mdi-social-share"></i></button> <a href="tel:' + p + '"  id="" value="" class=" btn-large btn-price bits noshadow bitb" style="float: right !important; margin-right: ;/* right: 0%; */ margin-top: ;"><i class="mdi-communication-call"></i></a>');
 		//web Share start
@@ -57,78 +57,77 @@ function servicePageLoader() {
 	}
 	if (parseInt(getBitsWinOpt('s')) > 2) {
 		//merchants options start; 
-	
-	$(".serviceListHolder").show();
-	$(".serviceListCard").show();
-	$(".promoHolder").hide();
-	populated = false;
-	var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
-	svReq.onsuccess = function(event) {
-		try {
-			populateService(JSON.parse(event.target.result));
-			populated = true;
-		} catch (err) {
-			console.log('service not found in db. perhaps try loading from server AGAIN!!')
-		}
-	};
-	svReq.onerror = function() {
-		setTimeout(function() {
-			servicePageLoader();
-		}, 3000);
-	}
-	doFetch({
-		action: 'serviceProfile',
-		id: servID,
-		service: getBitsWinOpt('s')
-	}).then(function(e) {
-		if (e.status == "ok") {
-			var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-' + e.data.id);
-			svReq.onsuccess = function() {
-				try {
-					if (!populated) {
-						populateService(e.data)
-					}
-				} catch (err) {
-					console.log('service not found in db. perhaps try loading from server AGAIN!!')
-				}
-			};
-			svReq.onerror = function() {
-				setTimeout(function() {
-					servicePageLoader();
-				}, 3000);
-			}
-		} else {
-			$(".serviceListHolder").hide();
-			$(".serviceListCard").hide();
-			$(".promoHolder").show();
-			setTimeout(function() {
-				servicePageLoader();
-			}, 3000);
-		}
-	}).catch(function(err) {
-		console.log('error trying to populate from sever ', err);
+		$(".serviceListHolder").show();
+		$(".serviceListCard").show();
+		$(".promoHolder").hide();
+		populated = false;
 		var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
 		svReq.onsuccess = function(event) {
 			try {
 				populateService(JSON.parse(event.target.result));
 				populated = true;
 			} catch (err) {
-				console.log('service not found in db. perhaps trying loading from server AGAIN!!..');
+				console.log('service not found in db. perhaps try loading from server AGAIN!!')
+			}
+		};
+		svReq.onerror = function() {
+			setTimeout(function() {
+				servicePageLoader();
+			}, 3000);
+		}
+		doFetch({
+			action: 'serviceProfile',
+			id: servID,
+			service: getBitsWinOpt('s')
+		}).then(function(e) {
+			if (e.status == "ok") {
+				var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-' + e.data.id);
+				svReq.onsuccess = function() {
+					try {
+						if (!populated) {
+							populateService(e.data)
+						}
+					} catch (err) {
+						console.log('service not found in db. perhaps try loading from server AGAIN!!')
+					}
+				};
+				svReq.onerror = function() {
+					setTimeout(function() {
+						servicePageLoader();
+					}, 3000);
+				}
+			} else {
+				$(".serviceListHolder").hide();
+				$(".serviceListCard").hide();
+				$(".promoHolder").show();
+				setTimeout(function() {
+					servicePageLoader();
+				}, 3000);
+			}
+		}).catch(function(err) {
+			console.log('error trying to populate from sever ', err);
+			var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
+			svReq.onsuccess = function(event) {
+				try {
+					populateService(JSON.parse(event.target.result));
+					populated = true;
+				} catch (err) {
+					console.log('service not found in db. perhaps trying loading from server AGAIN!!..');
+					setTimeout(function() {
+						if (!populated) {
+							servicePageLoader();
+						}
+					}, 1500);
+				}
+			};
+			svReq.onerror = function() {
 				setTimeout(function() {
 					if (!populated) {
 						servicePageLoader();
 					}
 				}, 1500);
 			}
-		};
-		svReq.onerror = function() {
-			setTimeout(function() {
-				if (!populated) {
-					servicePageLoader();
-				}
-			}, 1500);
-		}
-	});
+		});
 		//merchants options end; 
 	}
 }
@@ -281,22 +280,22 @@ function tabulateTotals() {
 			// 	 $(".delivery").removeClass("displayNone");
 			// 	 $(".floatingPrice").removeClass("displayNone");
 			$(".totals").html(totals);
-			var xt =document.getElementById("totals").innerHTML
-			
-// 			if (xt == 0) {
-// 				console.log("minimum value")
-// 				$(".delivery ").removeClass("bits");
-// 				$(".delivery").addClass("pointer-events");
-// 				$(".bits-main-price").addClass("grey");
-// 				$(".localCurr").addClass("displayNone");
-// 				$(".bits-main-price ").removeClass("bits");
-// 										} 
-			//localStorage.setItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')),totals);
+			var xt = document.getElementById("totals").innerHTML
+				// 			if (xt == 0) {
+				// 				console.log("minimum value")
+				// 				$(".delivery ").removeClass("bits");
+				// 				$(".delivery").addClass("pointer-events");
+				// 				$(".bits-main-price").addClass("grey");
+				// 				$(".localCurr").addClass("displayNone");
+				// 				$(".bits-main-price ").removeClass("bits");
+				// 										} 
+				//localStorage.setItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')),totals);
 		} catch (err) {}
 	}
 }
 
 function makeOrder(orderArrayy, orderLoc) {
+	//Rewards();
 	$('.delivery').addClass('animated jello');
 	Materialize.toast('creating your order', 3000);
 	//checkanon();
@@ -346,7 +345,10 @@ function makeOrder(orderArrayy, orderLoc) {
 						//EarnedKobo: totalKobo,
 						loc: e.coords.latitude + ',' + e.coords.longitude,
 						user: localStorage.getItem("bits-user-name"),
-						pointsEarned: {"coin":"kobo","purchase":totalKobo},
+						pointsEarned: {
+							"coin": "kobo",
+							"purchase": totalKobo
+						},
 						service: parseInt(getBitsWinOpt('s'))
 					}).then(function(e) {
 						if (e.status == "ok") {
@@ -365,7 +367,6 @@ function makeOrder(orderArrayy, orderLoc) {
 		//function showPosition(e){getCoordDet(e.coords.latitude+','+e.coords.longitude).then(function(mapData){$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address); })}getLoc()
 	})
 }
-
 // function mobiVerification() {
 // 	doFetch({
 // 		action: 'userVerified',
@@ -387,15 +388,114 @@ function makeOrder(orderArrayy, orderLoc) {
 // 		}
 // 	})
 // }
-totalPoints = 0
-totalKobo = 0
+//totalPoints = 0
+
+function Rewards() {
+	totalPoints = 0
+	totalKobo = 0
 deliveriesPoints = 0
-function checkMinusRewards(t){}
-function checkRewards(t) {
-	
+console.log("=====================================>>>>>",totalPoints,totalKobo,deliveriesPoints);
+$('.star2').html('0');
+$('.star').html('0');
 	// a convenient wrapper.
 	new Promise(function(resolve, reject) {
-		console.log("this is var t" + t)
+		//console.log("this is var t" + t)
+		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
+		//t = t;
+		e.onsuccess = function(event) {
+			var x = JSON.parse(event.target.result);
+			resolve({
+				promotions: x.promotions,
+				list: x.list,
+				//t: t
+			});
+		}
+	}).then(function(r) {
+		var pds = r.promotions;
+		var itms = r.list
+			//var t = r.t;
+			//console.log("promos" + pds, +"T" + t, +"products" + itms)
+			//var allItms = [];
+			// inpt is the input field where the amount is passed thru 
+		//var inpt = document.getElementById("bitsInputQty" + t).value;
+		//console.log(document.getElementById("bitsInputQty" + t).value)
+		// loop through all the products and get how many times they have been selected...
+		var values = $(document.querySelectorAll(".bitsInputQty")).map(function() {
+			var av = $(this).val()
+			var aid = $(this).attr('id')
+			var apid = $(this).attr('pid')
+			var ap = $(this).attr('price')
+			return {
+				av,
+				aid,
+				apid,
+				ap
+			}
+		}).get();
+		console.log(values)
+		//loops all products in shop 
+		for (ix = 0; ix < values.length; ix++) {
+			// checks for number of products selected
+			if (values[ix].av >= 1) {
+				// if value is greater than 0 check if product is on any promotions
+				//console.log(values[ix])
+				for (var io = 0; io < pds.length; ++io) {
+					var wx = JSON.parse(pds[io].discount)
+					var t = values[ix].apid
+					console.log("passed into loop ii")
+						//console.log(JSON.parse(pds[io].promoItems),t,inpt)
+					var zx = JSON.parse(pds[io].promoItems)
+					if (parseInt(zx[io]) == parseInt(t)) {
+						console.log(parseInt(t), zx[io]);
+						console.log('found!!!!!!!!', zx[io]);
+						var prodID = zx[io]
+							// get promotino discount
+						for (var io in itms) {
+							//loop products for pri
+							if (parseInt(itms[io].id) == parseInt(zx[io])) {
+								//console.log("match id")
+								//var discount = wx
+								var discount = 10
+								console.log("discount", discount)
+								var prce = itms[io].price
+								console.log("prce", prce)
+								var ptsed = discount / 100 * prce
+								console.log("ptsed", ptsed)
+								var kshToPoints = Math.floor(ptsed) / 2
+								console.log("discount", kshToPoints)
+								totalPoints = totalPoints + kshToPoints
+								var rate = JSON.parse(localStorage.getItem('kobo-current-rates'));
+								//var rate = 2;
+								console.log("===============================");
+								console.log("rate", rate);
+								var kshToKobo = Math.floor(ptsed) / rate
+								console.log("ksh to kobo", kshToKobo);
+								totalKobo = totalKobo + kshToKobo
+								$('.star2').html('');
+								$('.star2').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(kshToKobo) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">pts</span></div>')
+								console.log("total points", totalPoints);
+								$('.star').html('')
+								$('.star').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(kshToKobo) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">kes</span></div>')
+								$("#bitsInputQty" + t).attr("rewarded", "rewarded");
+								$("#bitsInputQty" + t).attr("apts", Math.floor(kshToKobo));
+							}
+						}
+						dropStar();
+						console.log("=====================================>>>>>",totalPoints,totalKobo,deliveriesPoints)
+					} else {
+						console.log("dont pass reward point")
+					}
+				}
+			}
+		}
+	});
+}
+
+
+function checkRewards(t) {
+	// a convenient wrapper.
+	new Promise(function(resolve, reject) {
+		//console.log("this is var t" + t)
 		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
 		t = t;
 		e.onsuccess = function(event) {
@@ -410,78 +510,159 @@ function checkRewards(t) {
 		var pds = r.promotions;
 		var itms = r.list
 		var t = r.t;
-			//console.log("promos"+pds,+"T"+t,+"products"+itms)
-		var allItms = [];
+		//console.log("promos" + pds, +"T" + t, +"products" + itms)
+		//var allItms = [];
+		// inpt is the input field where the amount is passed thru 
 		var inpt = document.getElementById("bitsInputQty" + t).value;
-		 //console.log(document.getElementById("bitsInputQty"+t).value)
-		for (var iiii = 0, t = t; iiii < pds.length; ++iiii) {
-			//console.log("passed into loop 1"+pds,t,itms)
-			//console.log(JSON.parse(pds[iiii].promoItems),t,inpt)
-			var zx = JSON.parse(pds[iiii].promoItems)
-			var wx = JSON.parse(pds[iiii].discount)
-				//console.log("promo discount =" +wx);
-				//zx.sort();
-			var current = null;
-			var cnt = 1;
-			var pts = 0
-			for (var i in zx) {
-				// 				if (zx[i] != current) {
-				// 				 if (cnt > 0) {
-				//console.log("cnt vs inpt " + cnt, inpt);
-				//console.log(current + ' comes --> ' + cnt + ' times clicked ' + inpt + ' times');
-				if (cnt >= inpt) {
-					//console.log("pass reward point")
-					//console.log(i, zx.length, zx[i])
-					if (parseInt(zx[i]) == parseInt(t)) {
-						console.log(parseInt(t), zx[i]);
-						console.log('found!!!!!!!!', zx[i]);
-						
-						var prodID = zx[i]
+		//console.log(document.getElementById("bitsInputQty" + t).value)
+		// loop through all the products and get how many times they have been selected...
+		var values = $(document.querySelectorAll(".bitsInputQty")).map(function() {
+			var av=$(this).val()
+			var aid= $(this).attr('id')
+			var apid= $(this).attr('pid')
+			var ap= $(this).attr('price')
+			return	{av,aid,apid,ap}
+		}).get();
+		//console.log(values)
+		//loops all products in shop 
+		for (ix = 0; ix < values.length; ix++) { 
+		// checks for number of products selected
+		if (values[ix].av >= 1){
+			// if value is greater than 0 check if product is on any promotions
+		 //console.log(values[ix])
+ for (var io = 0; io < pds.length; ++io) {
+ 	var wx = JSON.parse(pds[io].discount)
+						console.log("passed into loop ii")
+						//console.log(JSON.parse(pds[io].promoItems),t,inpt)
+			var zx = JSON.parse(pds[io].promoItems)
+			if (parseInt(zx[io]) == parseInt(t)) {
+						console.log(parseInt(t), zx[io]);
+						console.log('found!!!!!!!!', zx[io]);
+						var prodID = zx[io]
 							// get promotino discount
 						for (var io in itms) {
 							//loop products for pri
-							if (parseInt(itms[io].id) == parseInt(zx[i])) {
+							if (parseInt(itms[io].id) == parseInt(zx[io])) {
 								//console.log("match id")
 								var discount = wx
-								console.log("discount",discount)
+								//var discount =10
+								console.log("discount", discount)
 								var prce = itms[io].price
-									console.log("prce",prce)
+								console.log("prce", prce)
 								var ptsed = discount / 100 * prce
-									console.log("ptsed",ptsed)
+								console.log("ptsed", ptsed)
 								var kshToPoints = Math.floor(ptsed) / 2
-									console.log("discount",kshToPoints)
-								 totalPoints = totalPoints + kshToPoints
-								 var rate=JSON.parse(localStorage.getItem('kobo-current-rates'));
-									 console.log("===============================");
-								 console.log("rate",rate);
-								 var kshToKobo = Math.floor(ptsed) / rate
-								 console.log("ksh to kobo",kshToKobo);
-								 totalKobo = totalKobo + kshToKobo
-								 $('.star2').html('');
-								$('.star2').append('<div style="position: relative;font-size: 15px;z-index: 1;">'+Math.floor(kshToKobo)+'<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">pts</span></div>')
-								console.log("total points",totalPoints);
+								console.log("discount", kshToPoints)
+								totalPoints = totalPoints + kshToPoints
+								var rate = JSON.parse(localStorage.getItem('kobo-current-rates'));
+								//var rate = 2;
+								console.log("===============================");
+								console.log("rate", rate);
+								var kshToKobo = Math.floor(ptsed) / rate
+								console.log("ksh to kobo", kshToKobo);
+								totalKobo = totalKobo + kshToKobo
+								$('.star2').html('');
+								$('.star2').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(kshToKobo) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">pts</span></div>')
+								console.log("total points", totalPoints);
 								$('.star').html('')
-								$('.star').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(kshToKobo) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">kes</span></div>')
-								$("#bitsInputQty"+t).attr("rewarded", "rewarded");
-								$("#bitsInputQty"+t).attr("apts",Math.floor(kshToKobo));
+								$('.star').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(ptsed) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">kes</span></div>')
+								$("#bitsInputQty" + t).attr("rewarded", "rewarded");
+								$("#bitsInputQty" + t).attr("apts", Math.floor(kshToKobo));
 							}
-
 						}
 						dropStar();
 					}
-				} else {
+					else {
 					console.log("dont pass reward point")
 				}
-				//console.log")
-				// 			}
-				//current = zx[i];
-				cnt = 1;
-				// 							} else {
-				// 								cnt++;
-				// 							}
-			}
-		}
-		for (var i = 0, t = t; i < pds.length; ++i) {}
+				} 
+		 }
+
+		
+		
+		
+
+		
+   
+}
+
+// 		for (var iv = 0, inpt = inpt, t = t; iv < itms.length; ++iv) {
+// 			// 			console.log("passed into loop 1", pds, t, itms)
+// 			// 			console.log(JSON.parse(itms[iv].id), t, inpt)
+// 			// log the items that have been selected
+// 			var ids = JSON.parse(itms[iv].id);
+// 			//console.log(inpt,ids);
+// 			if (ids == parseInt(t)) {
+// 				//console.log(inpt,ids);
+// 			}
+// 		}
+// 		// 		 first loop going through the promotions of the shop...
+// 		for (var iiii = 0, t = t; iiii < pds.length; ++iiii) {
+// 			// 			console.log("passed into loop 1",pds,t,itms)
+// 			// 			console.log(JSON.parse(pds[iiii].promoItems),t,inpt)
+// 			var zx = JSON.parse(pds[iiii].promoItems)
+// 			var wx = JSON.parse(pds[iiii].discount)
+// 			console.log("promo discount =" + wx);
+// 			//zx.sort();
+// 			var current = null;
+// 			var cnt = 1;
+// 			var pts = 0
+// 			for (var i in zx) {
+// 				// 				if (zx[i] != current) {
+// 				// 				 if (cnt > 0) {
+// 				// 				console.log("cnt vs inpt " + cnt, inpt);
+// 				// 				console.log(current + ' comes --> ' + cnt + ' times clicked ' + inpt + ' times');
+// 				if (cnt >= inpt) {
+// 					//console.log("pass reward point")
+// 					//console.log(i, zx.length, zx[i])
+// 					if (parseInt(zx[i]) == parseInt(t)) {
+// 						console.log(parseInt(t), zx[i]);
+// 						console.log('found!!!!!!!!', zx[i]);
+// 						var prodID = zx[i]
+// 							// get promotino discount
+// 						for (var io in itms) {
+// 							//loop products for pri
+// 							if (parseInt(itms[io].id) == parseInt(zx[i])) {
+// 								//console.log("match id")
+// 								var discount = wx
+// 								console.log("discount", discount)
+// 								var prce = itms[io].price
+// 								console.log("prce", prce)
+// 								var ptsed = discount / 100 * prce
+// 								console.log("ptsed", ptsed)
+// 								var kshToPoints = Math.floor(ptsed) / 2
+// 								console.log("discount", kshToPoints)
+// 								totalPoints = totalPoints + kshToPoints
+// 								var rate = JSON.parse(localStorage.getItem('kobo-current-rates'));
+// 								console.log("===============================");
+// 								console.log("rate", rate);
+// 								var kshToKobo = Math.floor(ptsed) / rate
+// 								console.log("ksh to kobo", kshToKobo);
+// 								totalKobo = totalKobo + kshToKobo
+// 								$('.star2').html('');
+// 								$('.star2').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(kshToKobo) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">pts</span></div>')
+// 								console.log("total points", totalPoints);
+// 								$('.star').html('')
+// 								$('.star').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(kshToKobo) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">kes</span></div>')
+// 								$("#bitsInputQty" + t).attr("rewarded", "rewarded");
+// 								$("#bitsInputQty" + t).attr("apts", Math.floor(kshToKobo));
+// 							}
+// 						}
+// 						dropStar();
+// 					}
+// 				} else {
+// 					console.log("dont pass reward point")
+// 				}
+// 				//console.log")
+// 				// 			}
+// 				//current = zx[i];
+// 				cnt = 1;
+// 				// 							} else {
+// 				// 								cnt++;
+// 				// 							}
+// 			}
+// 		}
+// 		for (var i = 0, t = t; i < pds.length; ++i) {}
 	});
 }
 
@@ -515,7 +696,6 @@ function checkmobiveri() {
 				return;
 			} else {
 				console.log("mobile phone verified")
-				
 			}
 			if (e.data == null) {
 				$('#MobileModal').openModal();
