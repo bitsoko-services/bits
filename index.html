@@ -988,7 +988,9 @@
 	   var dReady = Promise.resolve('ok');
 
 	   Promise.all([dReady,indexDbReady]).then(values => { 
-	    console.log(values); 
+	    document.querySelector(".js-push-button-notification").addEventListener('change', function(event) {
+			startPushManager();
+		});
 	    starting(); 
 	   });
 
