@@ -389,7 +389,9 @@ function makeOrder(orderArrayy, orderLoc) {
 // 	})
 // }
 //totalPoints = 0
-
+totalPoints = 0
+	totalKobo = 0
+deliveriesPoints = 0
 function Rewards() {
 	totalPoints = 0
 	totalKobo = 0
@@ -695,6 +697,7 @@ function checkmobiveri() {
 				Materialize.toast('Please verifiy your mobile number', 2000);
 				return;
 			} else {
+				$(".mobile").addClass("displayNone")
 				console.log("mobile phone verified")
 			}
 			if (e.data == null) {
