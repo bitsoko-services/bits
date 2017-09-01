@@ -1420,6 +1420,9 @@ if (typeof web3 == 'undefined') {
 
 	 window.web3 = new Web3(web3.currentProvider);
 }
+
+$('.addressClass').append('0x'+localStorage.getItem('bits-user-address-'+ localStorage.getItem('bits-user-name')));
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       function getBalances() {
         
