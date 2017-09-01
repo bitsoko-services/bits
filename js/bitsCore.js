@@ -282,8 +282,7 @@ function loadWallet(primWalA){
                  getBal();
                  //updateWallpaper();
             //setWallpaper();
-	$('.addressClass').append('0x'+localStorage.getItem('bits-user-address-'+ localStorage.getItem('bits-user-name')));
-
+	
     });
     updateBal();
     	getLoc();
