@@ -253,7 +253,8 @@ function loadWallet(primWalA){
 	
     data = primWalA;
      showAddr('bitcoin:'+data);
-    $( ".username-addr" ).html( data );
+   	$('.addressClass').append('0x'+localStorage.getItem('bits-user-address-'+ localStorage.getItem('bits-user-name')));
+
         var stor=getObjectStore('data', 'readwrite').get('user-profile-'+localStorage.getItem('bits-user-name'));
 	stor.onsuccess = function (event) {
   try{
