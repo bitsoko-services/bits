@@ -270,7 +270,8 @@ function tabulateTotals() {
 					pid: $(addproducts[i]).attr('pid'),
 					count: itVal
 				});
-				//console.log(pid);
+				console.log(orderArray);
+				Rewards(orderArray);
 				$('.recipt').append('');
 			}
 			totals = totals + (parseInt($(addproducts[i]).attr("price")) * parseInt(itVal));
@@ -390,243 +391,337 @@ function makeOrder(orderArrayy, orderLoc) {
 // }
 //totalPoints = 0
 totalPoints = 0
-	totalKobo = 0
+totalKobo = 0
 deliveriesPoints = 0
-function Rewards() {
-	totalPoints = 0
-	totalKobo = 0
-deliveriesPoints = 0
-console.log("=====================================>>>>>",totalPoints,totalKobo,deliveriesPoints);
-$('.star2').html('0');
-$('.star').html('0');
-	// a convenient wrapper.
-	new Promise(function(resolve, reject) {
-		//console.log("this is var t" + t)
-		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
-		//t = t;
-		e.onsuccess = function(event) {
-			var x = JSON.parse(event.target.result);
-			resolve({
-				promotions: x.promotions,
-				list: x.list,
-				//t: t
-			});
-		}
-	}).then(function(r) {
-		var pds = r.promotions;
-		var itms = r.list
-			//var t = r.t;
-			//console.log("promos" + pds, +"T" + t, +"products" + itms)
-			//var allItms = [];
-			// inpt is the input field where the amount is passed thru 
-		//var inpt = document.getElementById("bitsInputQty" + t).value;
-		//console.log(document.getElementById("bitsInputQty" + t).value)
-		// loop through all the products and get how many times they have been selected...
-		var values = $(document.querySelectorAll(".bitsInputQty")).map(function() {
-			var av = $(this).val()
-			var aid = $(this).attr('id')
-			var apid = $(this).attr('pid')
-			var ap = $(this).attr('price')
-			return {
-				av,
-				aid,
-				apid,
-				ap
+	/// function one get all selected items and the count
+	//// variable shopping cart
+	///var scart;
+	// function slist() {
+	// 	var values = $(document.querySelectorAll(".bitsInputQty")).map(function() {
+	// 			var av=$(this).val()
+	// 			var aid= $(this).attr('id')
+	// 			var apid= $(this).attr('pid')
+	// 			var ap= $(this).attr('price')
+	// 			return	{av,aid,apid,ap}
+	// 		}).get();
+	// 		console.log(values)
+	// 		//values = scart
+	// 		//console.log("first scart",scart)
+	// 		gtpromo(values);
+	// }
+	//// loop through promotions
+
+function Rewards(val) {
+	val = orderArray
+//tdp = 0
+		// loop 1
+	for (ix = 0; ix < val.length; ix++) {
+
+		console.log("================ loop one ===================")
+		// s.i is selected item
+		var si = parseInt(val[ix].pid);
+		var price = parseInt($("#bitsInputQty" + si).attr("price"));
+		// get selected item count
+		var sc = parseInt(val[ix].count);
+		console.log("selected items and the count -->", si, sc, price)
+		console.log("loop 1 [orderArray] -->", val[ix]);
+		//console.log(val)
+
+	}
+
+			new Promise(function(resolve, reject) {
+			//console.log("this is var t" + t)
+			e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
+			//t = t;
+			e.onsuccess = function(event) {
+				var x = JSON.parse(event.target.result);
+				resolve({
+					promotions: x.promotions,
+					list: x.list,
+					//discount: x.discount
+				});
 			}
-		}).get();
-		console.log(values)
-		//loops all products in shop 
-		for (ix = 0; ix < values.length; ix++) {
-			// checks for number of products selected
-			if (values[ix].av >= 1) {
-				// if value is greater than 0 check if product is on any promotions
-				//console.log(values[ix])
-				for (var io = 0; io < pds.length; ++io) {
-					var wx = JSON.parse(pds[io].discount)
-					var t = values[ix].apid
-					console.log("passed into loop ii")
-						//console.log(JSON.parse(pds[io].promoItems),t,inpt)
-					var zx = JSON.parse(pds[io].promoItems)
-					if (parseInt(zx[io]) == parseInt(t)) {
-						console.log(parseInt(t), zx[io]);
-						console.log('found!!!!!!!!', zx[io]);
-						var prodID = zx[io]
-							// get promotino discount
-						for (var io in itms) {
-							//loop products for pri
-							if (parseInt(itms[io].id) == parseInt(zx[io])) {
-								//console.log("match id")
-								//var discount = wx
-								var discount = 10
-								console.log("discount", discount)
-								var prce = itms[io].price
-								console.log("prce", prce)
-								var ptsed = discount / 100 * prce
-								console.log("ptsed", ptsed)
-								var kshToPoints = Math.floor(ptsed) / 2
-								console.log("discount", kshToPoints)
-								totalPoints = totalPoints + kshToPoints
-								var rate = allTokens['kobo'].rate;
-								//var rate = 2;
-								console.log("===============================");
-								console.log("rate", rate);
-								var kshToKobo = Math.floor(ptsed) / rate
-								console.log("ksh to kobo", kshToKobo);
-								totalKobo = totalKobo + kshToKobo
-								$('.star2').html('');
-								$('.star2').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(kshToKobo) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">pts</span></div>')
-								console.log("total points", totalPoints);
-								$('.star').html('')
-								$('.star').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(kshToKobo) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">kes</span></div>')
-								$("#bitsInputQty" + t).attr("rewarded", "rewarded");
-								$("#bitsInputQty" + t).attr("apts", Math.floor(kshToKobo));
-							}
-						}
-						dropStar();
-						console.log("=====================================>>>>>",totalPoints,totalKobo,deliveriesPoints)
-					} else {
-						console.log("dont pass reward point")
-					}
+		}).then(function(r) {
+			var pds = r.promotions;
+			var itms = r.list
+			for (iiv = 0, si = si, price = price, dis = dis, sc = sc; iiv < pds.length; iiv++) {
+				console.log("================ loop two ===================")
+				//loop 2
+				var dis = pds[iiv].discount
+				console.log(pds[iiv]);
+				console.log(JSON.parse(pds[iiv].promoItems), dis);
+				var objt = {};
+				var pitems = JSON.parse(pds[iiv].promoItems);
+				for (ivx = 0, si = si, sc = sc; ivx < pitems.length; ivx++) {
+					//loop 2.5
+					console.log("================ loop 2.5 ===================")
+					objt[pitems[ivx]] = (objt[pitems[ivx]] || 0) + 1;
 				}
+				console.log("promotions items and count -->", objt)
+				console.log("selected items and the count ii -->", si, sc, price, dis)
+				var tx = objt
+				console.log("", tx[si]); // value
+				var tt = tx[si]
+				if (sc >= tt) {
+					console.log("selected items and the count ii -->", tt, sc, price, dis)
+					console.log(" pass point");
+					// calculate total discounted price
+					tdp = (tt * price * dis) / 100
+				} else if ($("#bitsInputQty" + si).val() == 0) {
+					console.log("END")
+														tdp = 0
+						// 									console.log("It worked")
+				} else {
+					console.log("cant pass point max reached")
+					console.log("selected items and the count ii -->", tt, sc, price, dis)
+					tdp = (sc * price * dis) / 100
+				}
+			
+// 				console.log($("#bitsInputQty" + si), tdp)
+// 				totalPoints = totalPoints + tdp
+// 				console.log("total points  ===========>", totalPoints)
+console.log("total points  ===================================================================================================")
 			}
-		}
-	});
+			console.log("total discounted price  ===========>", tdp)
+			//totalPoints = totalPoints + tdp
+			//	console.log("total points  ===========>", totalPoints)
+		});
+		
 }
-
-
-function checkRewards(t) {
-	// a convenient wrapper.
-	new Promise(function(resolve, reject) {
-		//console.log("this is var t" + t)
-		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
-		t = t;
-		e.onsuccess = function(event) {
-			var x = JSON.parse(event.target.result);
-			resolve({
-				promotions: x.promotions,
-				list: x.list,
-				t: t
-			});
-		}
-	}).then(function(r) {
-		var pds = r.promotions;
-		var itms = r.list
-		var t = r.t;
-		//console.log("promos" + pds, +"T" + t, +"products" + itms)
-		//var allItms = [];
-		// inpt is the input field where the amount is passed thru 
-		var inpt = document.getElementById("bitsInputQty" + t).value;
-		//console.log(document.getElementById("bitsInputQty" + t).value)
-		// loop through all the products and get how many times they have been selected...
-		var values = $(document.querySelectorAll(".bitsInputQty")).map(function() {
-			var av=$(this).val()
-			var aid= $(this).attr('id')
-			var apid= $(this).attr('pid')
-			var ap= $(this).attr('price')
-			return	{av,aid,apid,ap}
-		}).get();
-		//console.log(values)
-		//loops all products in shop 
-		for (ix = 0; ix < values.length; ix++) { 
-		// checks for number of products selected
-		if (values[ix].av >= 1){
-			// if value is greater than 0 check if product is on any promotions
-		 //console.log(values[ix])
- for (var io = 0; io < pds.length; ++io) {
- 	var wx = JSON.parse(pds[io].discount)
-						console.log("passed into loop ii")
-						//console.log(JSON.parse(pds[io].promoItems),t,inpt)
-			var zx = JSON.parse(pds[io].promoItems)
-			if (parseInt(zx[io]) == parseInt(t)) {
-						console.log(parseInt(t), zx[io]);
-						console.log('found!!!!!!!!', zx[io]);
-						var prodID = zx[io]
-							// get promotino discount
-						for (var io in itms) {
-							//loop products for pri
-							if (parseInt(itms[io].id) == parseInt(zx[io])) {
-								//console.log("match id")
-								var discount = wx
-								//var discount =10
-								console.log("discount", discount)
-								var prce = itms[io].price
-								console.log("prce", prce)
-								var ptsed = discount / 100 * prce
-								console.log("ptsed", ptsed)
-								var kshToPoints = Math.floor(ptsed) / 2
-								console.log("discount", kshToPoints)
-								totalPoints = totalPoints + kshToPoints
-								var rate = JSON.parse(localStorage.getItem('kobo-current-rates'));
-								//var rate = 2;
-								console.log("===============================");
-								console.log("rate", rate);
-								var kshToKobo = Math.floor(ptsed) / rate
-								console.log("ksh to kobo", kshToKobo);
-								totalKobo = totalKobo + kshToKobo
-								$('.star2').html('');
-								$('.star2').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(kshToKobo) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">pts</span></div>')
-								console.log("total points", totalPoints);
-								$('.star').html('')
-								$('.star').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(ptsed) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">kes</span></div>')
-								$("#bitsInputQty" + t).attr("rewarded", "rewarded");
-								$("#bitsInputQty" + t).attr("apts", Math.floor(kshToKobo));
-							}
-						}
-						dropStar();
-					}
-					else {
-					console.log("dont pass reward point")
-				}
-				} 
-		 }
-
-		
-		
-		
-
-		
-   
-}
-
-// 		for (var iv = 0, inpt = inpt, t = t; iv < itms.length; ++iv) {
-// 			// 			console.log("passed into loop 1", pds, t, itms)
-// 			// 			console.log(JSON.parse(itms[iv].id), t, inpt)
-// 			// log the items that have been selected
-// 			var ids = JSON.parse(itms[iv].id);
-// 			//console.log(inpt,ids);
-// 			if (ids == parseInt(t)) {
-// 				//console.log(inpt,ids);
+// function cc(val) {
+// 	// loops through valuse to fet each ot the selected ones
+// 	new Promise(function(resolve, reject) {
+// 		//console.log("this is var t" + t)
+// 		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
+// 		//t = t;
+// 		e.onsuccess = function(event) {
+// 			var x = JSON.parse(event.target.result);
+// 			resolve({
+// 				promotions: x.promotions,
+// 				list: x.list,
+// 				//t: t
+// 			});
+// 		}
+// 	}).then(function(r) {
+// 		var pds = r.promotions;
+// 		var itms = r.list
+// 		var orderArray = val;
+// 		console.log("values selected array [orderArray] -->", val);
+// 		// loop 1 getting selected items [orderArray]
+// 		for (ix = 0; ix < val.length; ix++) {
+// 			// s.i is selected item
+// 			var si = parseInt(val[ix].pid);
+// 			// get selected item count
+// 			var sc = parseInt(val[ix].count);
+// 			console.log("selected items and the count -->", si, sc)
+				
+// 			console.log("loop 1 [orderArray] -->",val[ix]);
+// 			// get product details
+// 			//console.log(val[ix].pid);
+// 			//console.log(itms)
+// 				// loop products in promotions and pass in s.i
+// 			for (iv = 0, si = si, sc = sc; iv < itms.length; iv++) {
+// 				// li is products on the promotions
+// 				var li = parseInt(itms[iv].id);
+// 				// 			console.log("===",li);
+// 				// 			console.log("====",si);
+// 				// 			console.log("=====",sc);
+// 				// check if the products selected matches the products in the promotion 
+// 				if (si == li) {
+// 					console.log('match!!!!!!!!');
+// 					var objt = {};
+// 					for (iiv = 0, si = si, li = li; iiv < pds.length; iiv++) {
+// 						console.log(JSON.parse(pds[iiv].promoItems));
+// 						var pitems = JSON.parse(pds[iiv].promoItems);
+// 						for (ivx = 0, si = si, li = li; ivx < pitems.length; ivx++) {
+// 							objt[pitems[ivx]] = (objt[pitems[ivx]] || 0) + 1;
+// 							//console.log("____________",objt);
+// 							// 					console.log("looping promo items",parseInt(pitems[ivx]));
+// 							//						counting the number of occurance
+// 							//	var itmscount = parseInt(pitems[ivx]);
+// 							// 					if (itmscount == si){ 
+// 							// 					console.log("pass point")
+// 							// 					}
+// 							// 					else{
+// 							// 						console.log("dont pass point")
+// 							// 					}
+// 						}
+// 					}
+// 					console.log("promotions items and count -->", objt)
+// 						var tx = objt
+// 						for (var prop in tx) {
+// 							//console.log(tx[si]); // value
+// 							var tt = tx[si]
+// 							if (tt >= sc) {
+// 								console.log("pass point")
+// 									//calculate points
+							
+								
+// 							} else {
+// 								console.log("cant pass point max reached")
+// 							}
+// 						}
+// 				}
 // 			}
 // 		}
-// 		// 		 first loop going through the promotions of the shop...
-// 		for (var iiii = 0, t = t; iiii < pds.length; ++iiii) {
-// 			// 			console.log("passed into loop 1",pds,t,itms)
-// 			// 			console.log(JSON.parse(pds[iiii].promoItems),t,inpt)
-// 			var zx = JSON.parse(pds[iiii].promoItems)
-// 			var wx = JSON.parse(pds[iiii].discount)
-// 			console.log("promo discount =" + wx);
-// 			//zx.sort();
-// 			var current = null;
-// 			var cnt = 1;
-// 			var pts = 0
-// 			for (var i in zx) {
-// 				// 				if (zx[i] != current) {
-// 				// 				 if (cnt > 0) {
-// 				// 				console.log("cnt vs inpt " + cnt, inpt);
-// 				// 				console.log(current + ' comes --> ' + cnt + ' times clicked ' + inpt + ' times');
-// 				if (cnt >= inpt) {
-// 					//console.log("pass reward point")
-// 					//console.log(i, zx.length, zx[i])
-// 					if (parseInt(zx[i]) == parseInt(t)) {
-// 						console.log(parseInt(t), zx[i]);
-// 						console.log('found!!!!!!!!', zx[i]);
-// 						var prodID = zx[i]
+// 		//console.log(x)
+// 		// get number of times product appears on promotion 
+// 	});
+// }
+
+// function xx() {
+// 	//gtpromo(val);
+// 	//console.log("=====================================>>>>>", totalPoints, totalKobo, deliveriesPoints);
+// 	// $('.star2').html('0');
+// 	// $('.star').html('0');
+// 	// 	// a convenient wrapper.
+// 	// 	new Promise(function(resolve, reject) {
+// 	// 		//console.log("this is var t" + t)
+// 	// 		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
+// 	// 		//t = t;
+// 	// 		e.onsuccess = function(event) {
+// 	// 			var x = JSON.parse(event.target.result);
+// 	// 			resolve({
+// 	// 				promotions: x.promotions,
+// 	// 				list: x.list,
+// 	// 				//t: t
+// 	// 			});
+// 	// 		}
+// 	// 	}).then(function(r) {
+// 	// 		var pds = r.promotions;
+// 	// 		var itms = r.list
+// 	// 			//var t = r.t;
+// 	// 			//console.log("promos" + pds, +"T" + t, +"products" + itms)
+// 	// 			//var allItms = [];
+// 	// 			// inpt is the input field where the amount is passed thru 
+// 	// 		//var inpt = document.getElementById("bitsInputQty" + t).value;
+// 	// 		//console.log(document.getElementById("bitsInputQty" + t).value)
+// 	// 		// loop through all the products and get how many times they have been selected...
+// 	// 		var values = $(document.querySelectorAll(".bitsInputQty")).map(function() {
+// 	// 			var av = $(this).val()
+// 	// 			var aid = $(this).attr('id')
+// 	// 			var apid = $(this).attr('pid')
+// 	// 			var ap = $(this).attr('price')
+// 	// 			return {
+// 	// 				av,
+// 	// 				aid,
+// 	// 				apid,
+// 	// 				ap
+// 	// 			}
+// 	// 		}).get();
+// 	// 		console.log(values)
+// 	// 		//loops all products in shop 
+// 	// 		for (ix = 0; ix < values.length; ix++) {
+// 	// 			// checks for number of products selected
+// 	// 			if (values[ix].av >= 1) {
+// 	// 				// if value is greater than 0 check if product is on any promotions
+// 	// 				//console.log(values[ix])
+// 	// 				for (var io = 0; io < pds.length; ++io) {
+// 	// 					var wx = JSON.parse(pds[io].discount)
+// 	// 					var t = values[ix].apid
+// 	// 					console.log("passed into loop ii")
+// 	// 						//console.log(JSON.parse(pds[io].promoItems),t,inpt)
+// 	// 					var zx = JSON.parse(pds[io].promoItems)
+// 	// 					if (parseInt(zx[io]) == parseInt(t)) {
+// 	// 						console.log(parseInt(t), zx[io]);
+// 	// 						console.log('found!!!!!!!!', zx[io]);
+// 	// 						var prodID = zx[io]
+// 	// 							// get promotino discount
+// 	// 						for (var io in itms) {
+// 	// 							//loop products for pri
+// 	// 							if (parseInt(itms[io].id) == parseInt(zx[io])) {
+// 	// 								//console.log("match id")
+// 	// 								//var discount = wx
+// 	// 								var discount = 10
+// 	// 								console.log("discount", discount)
+// 	// 								var prce = itms[io].price
+// 	// 								console.log("prce", prce)
+// 	// 								var ptsed = discount / 100 * prce
+// 	// 								console.log("ptsed", ptsed)
+// 	// 								var kshToPoints = Math.floor(ptsed) / 2
+// 	// 								console.log("discount", kshToPoints)
+// 	// 								totalPoints = totalPoints + kshToPoints
+// 	// 								var rate = allTokens['kobo'].rate;
+// 	// 								//var rate = 2;
+// 	// 								console.log("===============================");
+// 	// 								console.log("rate", rate);
+// 	// 								var kshToKobo = Math.floor(ptsed) / rate
+// 	// 								console.log("ksh to kobo", kshToKobo);
+// 	// 								totalKobo = totalKobo + kshToKobo
+// 	// 								$('.star2').html('');
+// 	// 								$('.star2').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(totalKobo) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">pts</span></div>')
+// 	// 								console.log("total points", totalPoints);
+// 	// 								$('.star').html('')
+// 	// 								$('.star').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(totalKobo) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">kes</span></div>')
+// 	// 								$("#bitsInputQty" + t).attr("rewarded", "rewarded");
+// 	// 								$("#bitsInputQty" + t).attr("apts", Math.floor(kshToKobo));
+// 	// 							}
+// 	// 						}
+// 	// 						dropStar();
+// 	// 						console.log("=====================================>>>>>",totalPoints,totalKobo,deliveriesPoints)
+// 	// 					} else {
+// 	// 						console.log("dont pass reward point")
+// 	// 					}
+// 	// 				}
+// 	// 			}
+// 	// 		}
+// 	// 	});
+// }
+
+// function checkRewards(t) {
+// 	// a convenient wrapper.
+// 	new Promise(function(resolve, reject) {
+// 		//console.log("this is var t" + t)
+// 		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
+// 		t = t;
+// 		e.onsuccess = function(event) {
+// 			var x = JSON.parse(event.target.result);
+// 			resolve({
+// 				promotions: x.promotions,
+// 				list: x.list,
+// 				t: t
+// 			});
+// 		}
+// 	}).then(function(r) {
+// 		var pds = r.promotions;
+// 		var itms = r.list
+// 		var t = r.t;
+// 		//console.log("promos" + pds, +"T" + t, +"products" + itms)
+// 		//var allItms = [];
+// 		// inpt is the input field where the amount is passed thru 
+// 		var inpt = document.getElementById("bitsInputQty" + t).value;
+// 		//console.log(document.getElementById("bitsInputQty" + t).value)
+// 		// loop through all the products and get how many times they have been selected...
+// 		// 		var values = $(document.querySelectorAll(".bitsInputQty")).map(function() {
+// 		// 			var av=$(this).val()
+// 		// 			var aid= $(this).attr('id')
+// 		// 			var apid= $(this).attr('pid')
+// 		// 			var ap= $(this).attr('price')
+// 		// 			return	{av,aid,apid,ap}
+// 		// 		}).get();
+// 		// 		//console.log(values)
+// 		//loops all products in shop 
+// 		for (ix = 0; ix < values.length; ix++) {
+// 			// checks for number of products selected
+// 			if (values[ix].av >= 1) {
+// 				// if value is greater than 0 check if product is on any promotions
+// 				//console.log(values[ix])
+// 				for (var io = 0; io < pds.length; ++io) {
+// 					var wx = JSON.parse(pds[io].discount)
+// 					console.log("passed into loop ii")
+// 						//console.log(JSON.parse(pds[io].promoItems),t,inpt)
+// 					var zx = JSON.parse(pds[io].promoItems)
+// 					if (parseInt(zx[io]) == parseInt(t)) {
+// 						console.log(parseInt(t), zx[io]);
+// 						console.log('found!!!!!!!!', zx[io]);
+// 						var prodID = zx[io]
 // 							// get promotino discount
 // 						for (var io in itms) {
 // 							//loop products for pri
-// 							if (parseInt(itms[io].id) == parseInt(zx[i])) {
+// 							if (parseInt(itms[io].id) == parseInt(zx[io])) {
 // 								//console.log("match id")
 // 								var discount = wx
+// 									//var discount =10
 // 								console.log("discount", discount)
 // 								var prce = itms[io].price
 // 								console.log("prce", prce)
@@ -636,6 +731,7 @@ function checkRewards(t) {
 // 								console.log("discount", kshToPoints)
 // 								totalPoints = totalPoints + kshToPoints
 // 								var rate = JSON.parse(localStorage.getItem('kobo-current-rates'));
+// 								//var rate = 2;
 // 								console.log("===============================");
 // 								console.log("rate", rate);
 // 								var kshToKobo = Math.floor(ptsed) / rate
@@ -645,28 +741,97 @@ function checkRewards(t) {
 // 								$('.star2').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(kshToKobo) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">pts</span></div>')
 // 								console.log("total points", totalPoints);
 // 								$('.star').html('')
-// 								$('.star').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(kshToKobo) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">kes</span></div>')
+// 								$('.star').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(ptsed) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">kes</span></div>')
 // 								$("#bitsInputQty" + t).attr("rewarded", "rewarded");
 // 								$("#bitsInputQty" + t).attr("apts", Math.floor(kshToKobo));
 // 							}
 // 						}
 // 						dropStar();
+// 					} else {
+// 						console.log("dont pass reward point")
 // 					}
-// 				} else {
-// 					console.log("dont pass reward point")
 // 				}
-// 				//console.log")
-// 				// 			}
-// 				//current = zx[i];
-// 				cnt = 1;
-// 				// 							} else {
-// 				// 								cnt++;
-// 				// 							}
 // 			}
 // 		}
-// 		for (var i = 0, t = t; i < pds.length; ++i) {}
-	});
-}
+// 		// 		for (var iv = 0, inpt = inpt, t = t; iv < itms.length; ++iv) {
+// 		// 			// 			console.log("passed into loop 1", pds, t, itms)
+// 		// 			// 			console.log(JSON.parse(itms[iv].id), t, inpt)
+// 		// 			// log the items that have been selected
+// 		// 			var ids = JSON.parse(itms[iv].id);
+// 		// 			//console.log(inpt,ids);
+// 		// 			if (ids == parseInt(t)) {
+// 		// 				//console.log(inpt,ids);
+// 		// 			}
+// 		// 		}
+// 		// 		// 		 first loop going through the promotions of the shop...
+// 		// 		for (var iiii = 0, t = t; iiii < pds.length; ++iiii) {
+// 		// 			// 			console.log("passed into loop 1",pds,t,itms)
+// 		// 			// 			console.log(JSON.parse(pds[iiii].promoItems),t,inpt)
+// 		// 			var zx = JSON.parse(pds[iiii].promoItems)
+// 		// 			var wx = JSON.parse(pds[iiii].discount)
+// 		// 			console.log("promo discount =" + wx);
+// 		// 			//zx.sort();
+// 		// 			var current = null;
+// 		// 			var cnt = 1;
+// 		// 			var pts = 0
+// 		// 			for (var i in zx) {
+// 		// 				// 				if (zx[i] != current) {
+// 		// 				// 				 if (cnt > 0) {
+// 		// 				// 				console.log("cnt vs inpt " + cnt, inpt);
+// 		// 				// 				console.log(current + ' comes --> ' + cnt + ' times clicked ' + inpt + ' times');
+// 		// 				if (cnt >= inpt) {
+// 		// 					//console.log("pass reward point")
+// 		// 					//console.log(i, zx.length, zx[i])
+// 		// 					if (parseInt(zx[i]) == parseInt(t)) {
+// 		// 						console.log(parseInt(t), zx[i]);
+// 		// 						console.log('found!!!!!!!!', zx[i]);
+// 		// 						var prodID = zx[i]
+// 		// 							// get promotino discount
+// 		// 						for (var io in itms) {
+// 		// 							//loop products for pri
+// 		// 							if (parseInt(itms[io].id) == parseInt(zx[i])) {
+// 		// 								//console.log("match id")
+// 		// 								var discount = wx
+// 		// 								console.log("discount", discount)
+// 		// 								var prce = itms[io].price
+// 		// 								console.log("prce", prce)
+// 		// 								var ptsed = discount / 100 * prce
+// 		// 								console.log("ptsed", ptsed)
+// 		// 								var kshToPoints = Math.floor(ptsed) / 2
+// 		// 								console.log("discount", kshToPoints)
+// 		// 								totalPoints = totalPoints + kshToPoints
+// 		// 								var rate = JSON.parse(localStorage.getItem('kobo-current-rates'));
+// 		// 								console.log("===============================");
+// 		// 								console.log("rate", rate);
+// 		// 								var kshToKobo = Math.floor(ptsed) / rate
+// 		// 								console.log("ksh to kobo", kshToKobo);
+// 		// 								totalKobo = totalKobo + kshToKobo
+// 		// 								$('.star2').html('');
+// 		// 								$('.star2').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(kshToKobo) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">pts</span></div>')
+// 		// 								console.log("total points", totalPoints);
+// 		// 								$('.star').html('')
+// 		// 								$('.star').append('<div style="position: relative;font-size: 15px;z-index: 1;">' + Math.floor(kshToKobo) + '<br><span style="margin-top: -5px;position: absolute; font-size: 12px; margin-left: -11px;font-weight: 300;  text-transform: uppercase;">kes</span></div>')
+// 		// 								$("#bitsInputQty" + t).attr("rewarded", "rewarded");
+// 		// 								$("#bitsInputQty" + t).attr("apts", Math.floor(kshToKobo));
+// 		// 							}
+// 		// 						}
+// 		// 						dropStar();
+// 		// 					}
+// 		// 				} else {
+// 		// 					console.log("dont pass reward point")
+// 		// 				}
+// 		// 				//console.log")
+// 		// 				// 			}
+// 		// 				//current = zx[i];
+// 		// 				cnt = 1;
+// 		// 				// 							} else {
+// 		// 				// 								cnt++;
+// 		// 				// 							}
+// 		// 			}
+// 		// 		}
+// 		// 		for (var i = 0, t = t; i < pds.length; ++i) {}
+// 	});
+// }
 
 function sendratings() {
 	doFetch({
@@ -740,10 +905,10 @@ function getProdss(orderArrayx) {
 		}
 	}).then(function(r) {
 		var costofItems = 0;
-		console.log(r);
+		//console.log(r);
 		for (var o in r) {
 			for (var oo in orderArrayx) {
-				//console.log(r[o].id, orderArrayx[oo].count)
+				console.log("------------------------------------->>", r[o].id, orderArrayx[oo].count)
 				if (r[o].id == orderArrayx[oo].pid) {
 					costofItems = costofItems + (orderArrayx[oo].count * r[o].price);
 					console.log("match")

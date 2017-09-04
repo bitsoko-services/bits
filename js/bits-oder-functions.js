@@ -16,6 +16,9 @@ function oid() {
 			var shop = getBitsWinOpt('s')
 				// oid
 			console.log("this is shop id " + shop + " the oid is " + hval)
+			$(".otitle").html("");
+			$(".otitle").append("Your Order");
+			$(".of").html("");
 				//var uid = JSON.parseInt(hval)
 			var od = getObjectStore('data', 'readwrite').get('bits-user-orders-' + localStorage.getItem("bits-user-name"));
 			od.onsuccess = function(event) {
