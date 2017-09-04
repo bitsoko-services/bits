@@ -410,83 +410,68 @@ deliveriesPoints = 0
 	// 		gtpromo(values);
 	// }
 	//// loop through promotions
-
+	//totalP = 0
 function Rewards(val) {
 	val = orderArray
-//tdp = 0
 		// loop 1
 	for (ix = 0; ix < val.length; ix++) {
-
 		console.log("================ loop one ===================")
-		// s.i is selected item
+			// s.i is selected item
 		var si = parseInt(val[ix].pid);
 		var price = parseInt($("#bitsInputQty" + si).attr("price"));
 		// get selected item count
 		var sc = parseInt(val[ix].count);
-		console.log("selected items and the count -->", si, sc, price)
-		console.log("loop 1 [orderArray] -->", val[ix]);
+		//console.log("selected items and the count -->", si, sc, price)
+		//console.log("loop 1 [orderArray] -->", val[ix]);
 		//console.log(val)
-
 	}
-
-			new Promise(function(resolve, reject) {
-			//console.log("this is var t" + t)
-			e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
-			//t = t;
-			e.onsuccess = function(event) {
-				var x = JSON.parse(event.target.result);
-				resolve({
-					promotions: x.promotions,
-					list: x.list,
-					//discount: x.discount
-				});
-			}
-		}).then(function(r) {
-			var pds = r.promotions;
-			var itms = r.list
-			for (iiv = 0, si = si, price = price, dis = dis, sc = sc; iiv < pds.length; iiv++) {
-				console.log("================ loop two ===================")
+	new Promise(function(resolve, reject) {
+		//console.log("this is var t" + t)
+		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
+		//t = t;
+		e.onsuccess = function(event) {
+			var x = JSON.parse(event.target.result);
+			resolve({
+				promotions: x.promotions,
+				list: x.list,
+				//discount: x.discount
+			});
+		}
+	}).then(function(r) {
+		var pds = r.promotions;
+		var itms = r.list
+		for (iiv = 0, si = si, price = price, dis = dis, sc = sc; iiv < pds.length; iiv++) {
+			console.log("================ loop two ===================")
 				//loop 2
-				var dis = pds[iiv].discount
-				console.log(pds[iiv]);
-				console.log(JSON.parse(pds[iiv].promoItems), dis);
-				var objt = {};
-				var pitems = JSON.parse(pds[iiv].promoItems);
-				for (ivx = 0, si = si, sc = sc; ivx < pitems.length; ivx++) {
-					//loop 2.5
-					console.log("================ loop 2.5 ===================")
-					objt[pitems[ivx]] = (objt[pitems[ivx]] || 0) + 1;
-				}
-				console.log("promotions items and count -->", objt)
-				console.log("selected items and the count ii -->", si, sc, price, dis)
-				var tx = objt
-				console.log("", tx[si]); // value
-				var tt = tx[si]
-				if (sc >= tt) {
-					console.log("selected items and the count ii -->", tt, sc, price, dis)
-					console.log(" pass point");
-					// calculate total discounted price
-					tdp = (tt * price * dis) / 100
-				} else if ($("#bitsInputQty" + si).val() == 0) {
-					console.log("END")
-														tdp = 0
-						// 									console.log("It worked")
-				} else {
-					console.log("cant pass point max reached")
-					console.log("selected items and the count ii -->", tt, sc, price, dis)
-					tdp = (sc * price * dis) / 100
-				}
-			
-// 				console.log($("#bitsInputQty" + si), tdp)
-// 				totalPoints = totalPoints + tdp
-// 				console.log("total points  ===========>", totalPoints)
-console.log("total points  ===================================================================================================")
+			var dis = pds[iiv].discount
+				//console.log(pds[iiv]);
+				//console.log(JSON.parse(pds[iiv].promoItems), dis);
+			var objt = {};
+			var pitems = JSON.parse(pds[iiv].promoItems);
+			for (ivx = 0, si = si, sc = sc; ivx < pitems.length; ivx++) {
+				//loop 2.5
+				console.log("================ loop 2.5 ===================")
+				objt[pitems[ivx]] = (objt[pitems[ivx]] || 0) + 1;
 			}
-			console.log("total discounted price  ===========>", tdp)
-			//totalPoints = totalPoints + tdp
-			//	console.log("total points  ===========>", totalPoints)
-		});
-		
+		}
+		console.log("promotions items and count -->", objt)
+			////console.log("selected items and the count ii -->", si, sc, price, dis)
+		var tx = objt
+			//console.log("", tx[si]); // value
+		var tt = tx[si]
+		if (sc >= tt) {
+			//console.log("selected items and the count ii -->", tt, sc, price, dis)
+			//console.log(" pass point");
+			// calculate total discounted price
+			tdp = (tt * price * dis) / 100
+		} else if ($("#bitsInputQty" + si).val() == 0) {
+			//console.log("END")
+			tdp = 0
+		} else {
+			tdp = (sc * price * dis) / 100
+		}
+		console.log("total discount on this item  ===================================================================================================", tdp)
+	});
 }
 // function cc(val) {
 // 	// loops through valuse to fet each ot the selected ones
@@ -514,7 +499,6 @@ console.log("total points  =====================================================
 // 			// get selected item count
 // 			var sc = parseInt(val[ix].count);
 // 			console.log("selected items and the count -->", si, sc)
-				
 // 			console.log("loop 1 [orderArray] -->",val[ix]);
 // 			// get product details
 // 			//console.log(val[ix].pid);
@@ -555,8 +539,6 @@ console.log("total points  =====================================================
 // 							if (tt >= sc) {
 // 								console.log("pass point")
 // 									//calculate points
-							
-								
 // 							} else {
 // 								console.log("cant pass point max reached")
 // 							}
@@ -568,7 +550,6 @@ console.log("total points  =====================================================
 // 		// get number of times product appears on promotion 
 // 	});
 // }
-
 // function xx() {
 // 	//gtpromo(val);
 // 	//console.log("=====================================>>>>>", totalPoints, totalKobo, deliveriesPoints);
@@ -667,7 +648,6 @@ console.log("total points  =====================================================
 // 	// 		}
 // 	// 	});
 // }
-
 // function checkRewards(t) {
 // 	// a convenient wrapper.
 // 	new Promise(function(resolve, reject) {
@@ -832,7 +812,6 @@ console.log("total points  =====================================================
 // 		// 		for (var i = 0, t = t; i < pds.length; ++i) {}
 // 	});
 // }
-
 function sendratings() {
 	doFetch({
 		action: 'shopRatings',
