@@ -413,8 +413,9 @@ deliveriesPoints = 0
 	//totalP = 0
 function Rewards(val) {
 	val = orderArray
+	tdp = 0
 		// loop 1
-	for (ix = 0; ix < val.length; ix++) {
+	for (ix = 0, si = si; ix < val.length; ix++) {
 		console.log("================ loop one ===================")
 			// s.i is selected item
 		var si = parseInt(val[ix].pid);
@@ -424,6 +425,7 @@ function Rewards(val) {
 		//console.log("selected items and the count -->", si, sc, price)
 		//console.log("loop 1 [orderArray] -->", val[ix]);
 		//console.log(val)
+		console.log("================ loop one end ===================")
 	}
 	new Promise(function(resolve, reject) {
 		//console.log("this is var t" + t)
@@ -440,25 +442,44 @@ function Rewards(val) {
 	}).then(function(r) {
 		var pds = r.promotions;
 		var itms = r.list
-		for (iiv = 0, si = si, price = price, dis = dis, sc = sc; iiv < pds.length; iiv++) {
-			console.log("================ loop two ===================")
-				//loop 2
-			var dis = pds[iiv].discount
-				//console.log(pds[iiv]);
-				//console.log(JSON.parse(pds[iiv].promoItems), dis);
-			var objt = {};
-			var pitems = JSON.parse(pds[iiv].promoItems);
-			for (ivx = 0, si = si, sc = sc; ivx < pitems.length; ivx++) {
-				//loop 2.5
-				console.log("================ loop 2.5 ===================")
-				objt[pitems[ivx]] = (objt[pitems[ivx]] || 0) + 1;
-			}
-		}
-		console.log("promotions items and count -->", objt)
+		/////////////////////////////////////////////////////////////////////////////
+		pitems = JSON.parse(JSON.parse(e.result).promotions[0].promoItems);
+		console.log("===========", pitems);
+           // var search = JSON.parse(val[ix].pid);
+
+            dis = JSON.parse(e.result).promotions[0].discount;
+            //console.log(promosAvailable)
+            //console.log(promoItems)
+
+            var count = pitems.reduce(function (n, valu) {
+                return n + (valu === si);
+            }, 0);
+
+            console.log(count);
+//             if (prodsToCheck >= count) {
+//                 console.log("Stop Awarding Points")
+//             }
+            ////////////////////////////////////////////////////////////////////////
+// 		for (iiv = 0, si = si, price = price, dis = dis, sc = sc; iiv < pds.length; iiv++) {
+// 			console.log("================ loop two ===================")
+// 				//loop 2
+// 			var dis = pds[iiv].discount
+// 				//console.log(pds[iiv]);
+// 				//console.log(JSON.parse(pds[iiv].promoItems), dis);
+// 			var objt = {};
+// 			var pitems = JSON.parse(pds[iiv].promoItems);
+// 			for (ivx = 0, si = si, sc = sc; ivx < pitems.length; ivx++) {
+// 				//loop 2.5
+// 				console.log("================ loop 2.5 ===================")
+// 				objt[pitems[ivx]] = (objt[pitems[ivx]] || 0) + 1;
+// 			}
+// 			console.log("================ loop two end===================")
+// 		}
+		//console.log("promotions items and count -->", objt)
 			////console.log("selected items and the count ii -->", si, sc, price, dis)
-		var tx = objt
+		//var tx = objt
 			//console.log("", tx[si]); // value
-		var tt = tx[si]
+		var tt = count
 		if (sc >= tt) {
 			//console.log("selected items and the count ii -->", tt, sc, price, dis)
 			//console.log(" pass point");
@@ -471,7 +492,11 @@ function Rewards(val) {
 			tdp = (sc * price * dis) / 100
 		}
 		console.log("total discount on this item  ===================================================================================================", tdp)
+		totalPoints = totalPoints + tdp
+            				console.log("total points  ===========>", totalPoints)
 	});
+	//console.log($("#bitsInputQty" + si), tdp)
+            				
 }
 // function cc(val) {
 // 	// loops through valuse to fet each ot the selected ones
