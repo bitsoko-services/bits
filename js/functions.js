@@ -414,7 +414,7 @@ deliveriesPoints = 0
 function Rewards(val) {
 	val = orderArray
 	tdp = 0
-	totalPoints = 0
+	//totalPoints = 0
 		// loop 1
 	for (ix = 0, si = si; ix < val.length; ix++) {
 		console.log("================ loop one ===================")

@@ -45,7 +45,10 @@
   <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="js/plugins/magnific-popup/magnific-popup.css" type="text/css" rel="stylesheet" media="screen,projection">
+ <!-- Add IntroJs styles -->
+    <link href="css/introjs.css" rel="stylesheet">
 
+   
 	<style>
 	   .switch label input[type=checkbox]:checked + .lever:after {
 	      background-color: #{theme} !important;
@@ -416,10 +419,10 @@
 						<div class="chip doPayBut payment white-text pointer-events displayNone" id="" style=" width: 200px;">
 							<i class="mdi-maps-local-grocery-store left" style="font-size: 24px;"></i><span style="">send</span> <span class="" style="">recieve</span><i class="mdi-maps-local-grocery-store right" style="font-size: 24px;"></i>
 						</div>
-						<div class="chip delivery white-text pointer-events" id="" onclick="makeOrder(orderArray);" style="">
+						<div class="chip delivery white-text pointer-events"  id="" onclick="makeOrder(orderArray);" style="">
 							<span style="">deliver</span> <i class="mdi-maps-local-grocery-store right" style="font-size: 24px;"></i>
 						</div>
-						<div class="fixed-action-btn floatingPrice" id="bits-prices" style="bottom: 10px; right: 50px; pointer-events: none;">
+						<div class="fixed-action-btn floatingPrice" data-step="2" data-intro="Click to Check Out" tooltipPosition= "auto"id="bits-prices" style="bottom: 10px; right: 50px; pointer-events: none;">
 							<a class="bits-main-price bitswaves-effect waves-block grey waves-light btn-floating btn-large" href="#" style="pointer-events: none;"><span class="totals" id="totals" style="font-size: 15px !important;">0</span>
 							<div class="" style="margin-top: -19px; font-size: 10px !important;">
 								<span class="localCurr"><span class="conf-curr"></span></span>
@@ -845,7 +848,7 @@
 	</script> 
 	<script src="js/jquery.star.rating.js">
 	</script> <!--custom-script.js - Add your own theme custom JS-->
-	 
+	 <script type="text/javascript" src="js/intro.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBEpLoOInTvRSrkLpTHSu8EE3jiFD1Vk7E">
 	</script> 
 	<script src="js/custom-script.js" type="text/javascript">
