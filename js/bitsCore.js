@@ -253,7 +253,7 @@ function loadWallet(primWalA){
 	
     data = primWalA;
      showAddr('bitcoin:'+data);
-    $( ".username-addr" ).html( data );
+   	
         var stor=getObjectStore('data', 'readwrite').get('user-profile-'+localStorage.getItem('bits-user-name'));
 	stor.onsuccess = function (event) {
   try{
@@ -282,15 +282,7 @@ function loadWallet(primWalA){
                  getBal();
                  //updateWallpaper();
             //setWallpaper();
-             
-      doFetch({ action: 'getServs', user: localStorage.getItem('bits-user-name') }).then(function(e){
-          if(e.data.length==0){
-              
-      doFetch({ action: 'noServices', loc: localStorage.getItem('bits-settings-country')});
-          }
-              
-              
-      });
+	
     });
     updateBal();
     	getLoc();
@@ -1428,6 +1420,9 @@ if (typeof web3 == 'undefined') {
 
 	 window.web3 = new Web3(web3.currentProvider);
 }
+
+$('.addressClass').append('0x'+localStorage.getItem('bits-user-address-'+ localStorage.getItem('bits-user-name')));
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       function getBalances() {
         

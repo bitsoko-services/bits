@@ -40,7 +40,15 @@
 	<link href="js/plugins/jvectormap/jquery-jvectormap.css" media="screen,projection" rel="stylesheet" type="text/css">
 	<link href="js/plugins/chartist-js/chartist.min.css" media="screen,projection" rel="stylesheet" type="text/css">
 	<link href="https://bitsoko.co.ke/bitsAssets/html/connect.html" rel="import"><!--    <script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"></script>-->
+  <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+  <link href="js/plugins/prism/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="js/plugins/magnific-popup/magnific-popup.css" type="text/css" rel="stylesheet" media="screen,projection">
+ <!-- Add IntroJs styles -->
+<!--     <link href="css/introjs.css" rel="stylesheet"> -->
 
+   
 	<style>
 	   .switch label input[type=checkbox]:checked + .lever:after {
 	      background-color: #{theme} !important;
@@ -53,8 +61,26 @@
 	</style>
 </head>
 <body>
+<!-- <div id="preloader" style="position:absolute; top:0; left:0; right:0; bottom:0; background-color:#fefefe; z-index:5000; height:100%; width:100%; position:fixed;">
+        <div id="status" style="position:absolute; left: 50%;
+  transform: translateX(-27%); top:40%; margin:-100px 0 0 -100px;">
+            <img src="./images/icon.png" style="width:90px;display:block;margin-left:auto;margin-right:auto; margin-left:38%;">
+            <div class="loader">
+                <div></div>
+            </div>
+            <p id="signingIn" style="margin-left:33%;"></p>
+            <svg id="svgPreloader" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                 <defs>
+                    <filter id="goo">
+                        <fegaussianblur in="SourceGraphic" stddeviation="15" result="blur"></fegaussianblur>
+                        <fecolormatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 26 -7" result="goo"></fecolormatrix>
+                        <feblend in="SourceGraphic" in2="goo"></feblend>
+                    </filter>
+                </defs>
+            </svg>
+        </div> -->
 	<div id="oid-res" style=" display: none;"></div><!--Start Page Loading -->
-	<!--    <div id="loader-wrapper">
+<!-- 	   <div id="loader-wrapper">
         <div id="loader"></div>        
         <div class="loader-section section-left"></div>
         <div class="loader-section section-right"></div>
@@ -91,7 +117,7 @@
 				<ul class="side-nav fixed leftside-navigation" id="slide-out">
 					<li class="user-details bits" style=" background: url(images/3.png) no-repeat center center; background-size: cover; padding: 0px 0 0 0px;">
 						<div class="row" id="content" style=" text-align:center;">
-							<img alt="" class="bits-profile userProfImg circle responsive-img valign profile-image" src="images/contacts.png" style="padding-top: 5px;"> <a class="btn-flat waves-effect waves-light white-text profile-btn username-label dropdown-button" href="#" id="name"></a>
+							<img alt="" class="bits-profile userProfImg circle responsive-img valign profile-image" src="images/contacts.png" style="padding-top: 20px;"> <a class="btn-flat waves-effect waves-light white-text profile-btn username-label dropdown-button" href="#" id="name" style="line-height: 20px;height: 20px;"></a>
 							<center>
 								<span class="white-text profile-btn" id="download-button" style="font-size:; !important;"><span class="" style="font-size:12px;"></span></span>
 								<div class="addressClass bits-ellipsis" style="font-size:12px;"></div>
@@ -153,7 +179,7 @@
 					<li style="list-style: none; display: inline">
 						<ul class="collapsible collapsible-accordion">
 							<li class="li-hover center" style="position: absolute;bottom:-8%;margin-left: 20%;opacity: 0.4;">
-								<p class="ultra-small margin more-text">Bits V: <span class="ultra-small margin more-text" id="bv"></span></p>
+								<p class="ultra-small margin more-text" style="margin-top: -100px!important;">Bits V: <span class="ultra-small margin more-text" id="bv"></span></p>
 							</li><!--          <div  > -->
 							<li class="bold" style="opacity: 0.8;position: absolute;bottom:81px; width: 100%; border-top: solid 1px #d5d5d5;">
 								<a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-settings"></i>Settings</a>
@@ -162,20 +188,20 @@
 										<li>
 											<a href="#"><!-- Switch-->
 											<div class="switch">
-												<i class="mdi-communication-chat"></i> <span class="js-push-button-notification-title bits-13" style="">Notifications On</span> <label><input class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style="margin-top:13px;"></span></label>
+												<i class="mdi-communication-chat"></i> <span class="js-push-button-notification-title bits-13 " style="">Notifications On</span> <label><input class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style="margin-top:13px;"></span></label>
 											</div></a>
-										</li>
-										<li>
+<!-- 										</li>
+<!-- 										<li class"displayNone">
 											<a href="#"><!-- Switch-->
-											<div class="switch">
-												<i class="mdi-communication-location-on"></i> <span class="js-loc-button-notification-title bits-13" style="">Location On</span> <label><input class="js-loc-button-notification" style="background: rgba(15, 95, 118, 0.862745);" type="checkbox"> <span class="lever right" style="margin-top:13px;"></span></label>
-											</div></a>
-										</li><!--                            walletFunctions()      <li><a href="" class="modal-trigger"> <i class="mdi-action-assignment"></i><span class="bits-13" style=""></span> <span href id="btn">Addresses</span>  </a>  
+<!-- 											<div class="switch"> -->
+<!-- 												<i class="mdi-communication-location-on"></i> <span class="js-loc-button-notification-title bits-13" style="">Location </span> <label><input class="js-loc-button-notification" style="background: rgba(15, 95, 118, 0.862745);" type="checkbox"> <span class="lever right" style="margin-top:13px;"></span></label> -->
+<!-- 											</div></a> -->
+<!-- 										</li><!--                            walletFunctions()      <li><a href="" class="modal-trigger"> <i class="mdi-action-assignment"></i><span class="bits-13" style=""></span> <span href id="btn">Addresses</span>  </a>   --> 
 
    
-                                </li> -->
+<!--                                 </li> --> 
 										<li>
-											<a class="modal-trigger" href="#MobileModal"><i class="mdi-communication-phone"></i><span class="bits-13" style=""></span> <span id="btn">Mobile Number</span></a>
+											<a class="modal-trigger mobile" href="#MobileModal"><i class="mdi-communication-phone"></i><span class="bits-13" style=""></span> <span id="btn">Mobile Number</span></a>
 										</li>
 										<li>
 											<a class="" href="https://bitsoko.co.ke/home/bits.html" target="_blank"><i class="mdi-communication-live-help"></i><span class="bits-13" style=""></span> <span id="btn">Help</span></a>
@@ -393,10 +419,10 @@
 						<div class="chip doPayBut payment white-text pointer-events displayNone" id="" style=" width: 200px;">
 							<i class="mdi-maps-local-grocery-store left" style="font-size: 24px;"></i><span style="">send</span> <span class="" style="">recieve</span><i class="mdi-maps-local-grocery-store right" style="font-size: 24px;"></i>
 						</div>
-						<div class="chip delivery white-text pointer-events" id="" onclick="makeOrder(orderArray);" style="">
+						<div class="chip delivery white-text pointer-events"  id="" onclick="makeOrder(orderArray);" style="">
 							<span style="">deliver</span> <i class="mdi-maps-local-grocery-store right" style="font-size: 24px;"></i>
 						</div>
-						<div class="fixed-action-btn floatingPrice" id="bits-prices" style="bottom: 10px; right: 50px; pointer-events: none;">
+						<div class="fixed-action-btn floatingPrice" data-step="2" data-intro="Click to Check Out" tooltipPosition= "auto"id="bits-prices" style="bottom: 10px; right: 50px; pointer-events: none;">
 							<a class="bits-main-price bitswaves-effect waves-block grey waves-light btn-floating btn-large" href="#" style="pointer-events: none;"><span class="totals" id="totals" style="font-size: 15px !important;">0</span>
 							<div class="" style="margin-top: -19px; font-size: 10px !important;">
 								<span class="localCurr"><span class="conf-curr"></span></span>
@@ -417,7 +443,7 @@
 		<div class="bits" style="padding: 0px;position: fixed;width: 100%;">
 			<div class="">
 				<div class="">
-					<div class="white-text" style="height:50px;border-bottom: 1px solid rgba(0, 0, 0, 0.1);padding: 16px; font-size: 20px;text-align: center;">
+					<div class="white-text otitle" style="height:50px;border-bottom: 1px solid rgba(0, 0, 0, 0.1);padding: 16px; font-size: 20px;text-align: center;">
 						Order Delivery
 						<div class="star2" id="burst-11" style=" float: right; position: relative;top: 60px; z-index: 1;"></div>
 					</div>
@@ -440,7 +466,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="modal-footer bits" style="opacity: 0.9; height:36px; margin-top: -35px;">
+			<div class="modal-footer bits of" style="opacity: 0.9; height:36px; margin-top: -35px;">
 				<a class="white-text modal-action modal-close waves-effect waves-green btn-flat" id="ConfirmO" onclick="" style="margin-left: 25px;width:40%; margin: 0.5px 0;margin-top: -5px;">Confirm</a> <a class="white-text modal-action modal-close waves-effect waves-green btn-flat" id="CancelO" style="margin-left: 25px; width:50%; margin: 0.5px 0;margin-top: -5px;">Cancel</a>
 			</div>
 		</div>
@@ -822,12 +848,22 @@
 	</script> 
 	<script src="js/jquery.star.rating.js">
 	</script> <!--custom-script.js - Add your own theme custom JS-->
-	 
+<!-- 	 <script type="text/javascript" src="js/intro.js"></script> -->
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBEpLoOInTvRSrkLpTHSu8EE3jiFD1Vk7E">
 	</script> 
 	<script src="js/custom-script.js" type="text/javascript">
 	</script> <!--=============================================================================================================================================================== -->
-	 
+<!-- 	 <script>
+        //preloader
+        // makes sure the whole site is loaded
+        jQuery(window).load(function() {
+            // will first fade out the loading animation
+            jQuery("#status").delay(50000).fadeOut();
+            // will fade out the whole DIV that covers the website.
+            jQuery("#preloader").delay(10000).fadeOut("slow");
+        })
+
+    </script> -->
 	<script>
 	   ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
 	   //   if (bDet.os.name=='Android' && location.hostname=="bitsoko.co.ke"){ 
@@ -988,7 +1024,9 @@
 	   var dReady = Promise.resolve('ok');
 
 	   Promise.all([dReady,indexDbReady]).then(values => { 
-	    console.log(values); 
+	    document.querySelector(".js-push-button-notification").addEventListener('change', function(event) {
+			startPushManager();
+		});
 	    starting(); 
 	   });
 
@@ -1197,5 +1235,6 @@
 	    ga('send', 'pageview');
 
 	</script>
+	
 </body>
 </html>

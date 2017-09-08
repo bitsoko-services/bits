@@ -1,11 +1,11 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+				var rMax;
 function walletFunctions(p) {
 	//save wallet info
 	Materialize.toast('loading wallets', 3000);
 	var retrievePageOfFiles = function(request, result) {
-		console.log(result);
 		request.execute(function(resp) {
-			console.log(resp);
 			result = result.concat(resp.items);
 			console.log(result);
 			var nextPageToken = resp.nextPageToken;
@@ -15,12 +15,10 @@ function walletFunctions(p) {
 				});
 				retrievePageOfFiles(request, result);
 			} else {
-				var rMax;
 				var cm = 0;
 				var allWals = 0;
 				var olWals = [];
 				for (var i = 0, rMax = rMax, olWals = olWals, cm = cm; i < result.length; i++) {
-					console.log(result[i]);
 					if (result[i].title == 'wallets.json' && moment(result[i].modifiedDate).valueOf() > cm) {
 						allWals++;
 						//latest wallet
@@ -32,8 +30,7 @@ function walletFunctions(p) {
 						olWals.push(result[i]);
 					}
 				}
-				console.log('total wallets ' + cm);
-				console.log(rMax, olWals);
+				
 				if (allWals == 0) {
 					//Materialize.toast('need to create new wallet', 3000);
 					console.log(p);
@@ -67,15 +64,10 @@ function walletFunctions(p) {
 						});
 					});
 				} else {
+					console.log('getting latest wallet ',rMax);
 					downloadFile(rMax).then(function(eg) {
 						try {
-							//console.log("first p " + p);
-							//console.log('Loaded wallets: ', JSON.parse(eg.responseText).publicAddress);
-							var w = JSON.parse(eg.responseText).publicAddress
-							var all = JSON.parse(w)
-								// save Wallets to db
-							//console.log("wallet data to db")
-							localStorage.setItem('bits-user-wallets-' + localStorage.getItem('bits-user-name'), all);
+							
 							//sortad();
 							console.log('Loaded wallets: ', JSON.parse(eg.responseText));
 							var infoString = 'Loaded Wallets: "' + JSON.parse(eg.responseText).publicAddress + '"Enter your passcode to unlock your wallets.'
@@ -86,6 +78,14 @@ function walletFunctions(p) {
 			//console.log(password,randomSeed);				
 getUserAd(password,randomSeed,randomSalt).then(function(addresses){
 console.log(addresses,p);
+//console.log("first p " + p);
+							//console.log('Loaded wallets: ', JSON.parse(eg.responseText).publicAddress);
+							var w = addresses[0]
+							// toDo: add this line when getting multiple addresses
+							//var all = JSON.parse(w)
+								// save Wallets to db
+							//console.log("wallet data to db")
+							localStorage.setItem('bits-user-address-' + localStorage.getItem('bits-user-name'), w);
 
 									localStorage.setItem('bits-user-name', p.id);
 										getObjectStore('data', 'readwrite').put(addresses, 'bits-wallets-' + p.id);
@@ -124,7 +124,7 @@ console.log(addresses,p);
 						} catch (err) {
 							console.log("Error loading wallet: " + err + " fetching..");
 						}
-					});
+					}).catch(function(err){console.log(err)});
 				}
 			}
 		});
@@ -152,9 +152,9 @@ var global_keystore = new lightwallet.keystore(randomSeed, pwDerivedKey, hdPathS
 // the corresponding private keys are also encrypted
 global_keystore.generateNewAddress(pwDerivedKey, 1);
 var addr = global_keystore.getAddresses();
-console.log(addr)
+	localStorage.setItem('bits-user-address-' + localStorage.getItem('bits-user-name'), addr[0]);								
 
-$('.addressClass').append('0x'+addr);
+$('.addressClass').append('0x'+localStorage.getItem('bits-user-address-'+ localStorage.getItem('bits-user-name')));
 // Create a custom passwordProvider to prompt the user to enter their
 // password whenever the hooked web3 provider issues a sendTransaction
 // call.

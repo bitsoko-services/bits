@@ -18,6 +18,15 @@ aside>ul{
   left: -250px !important;
   }*/
 /*--------------------------------custom toast------------------------------------------------------------------------   */
+.user-details > .side-nav .fixed a {
+line-height:2px!important;
+}
+
+
+.profile-image{
+padding-top: 20px;
+}
+
 .collapsible-header:after {
    color: #ffffff !important;
 }
@@ -338,6 +347,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
   .bits-transpatent{
    background-color: rgba(0, 0, 0, 0) !important;
   }
+.addressClass{
+
+    color: #fff!important;
+    text-shadow: 1px 1px 1px #444;
+}
   .bits-row{
     margin-bottom: 0px !important;
   }
@@ -348,8 +362,10 @@ margin-left: -5px;
     font-size: 13px;
   }
   .bits-ellipsis{
-overflow: hidden;
-text-overflow: ellipsis !important;
+
+overflow: hidden;
+
+text-overflow: ellipsis !important;
 }
   .dropdown-bits {
 

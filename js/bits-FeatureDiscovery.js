@@ -19,24 +19,28 @@ function skipTour(){
 return;
 }
 function tookTour(){
-    console.log("took Tour");
-//     $('.tap-target').attr('data-activates','prod-5-counter');
-    $('.first-tt').tapTarget('open');
-       $('.tap-target-title').html("");
-    $('.tap-target-title').append("Choose items");
-      $('.tap-target-text').html("");   
-     $('.tap-target-text').append("Use this to add or remove products on shopping cart ");
-    setTimeout(function(){ nextTapTarget()}, 5000);
+ $('#modalwelcome').closeModal();
+  localStorage.setItem('bits-vst-'+parseInt(getBitsWinOpt('s')),"");
+      localStorage.setItem('bits-vst-'+parseInt(getBitsWinOpt('s')),"Took tour");
+ //   introJs().start();
+//     console.log("took Tour");
+  //  $('.tap-target').attr('data-activates','prod-5-counter');
+   //  $('.first-tt').tapTarget('open');
+//        $('.tap-target-title').html("");
+//     $('.tap-target-title').append("Choose items");
+//       $('.tap-target-text').html("");   
+//      $('.tap-target-text').append("Use this to add or remove products on shopping cart ");
+//    // setTimeout(function(){ nextTapTarget()}, 5000);
    
 
-//  document.getElementsByClassName("first-ol")[0].addEventListener("",function(){
-//          nextTapTarget();
-//            });
- /////////////////////////////////////////////////////////////////////////////////////////
-    localStorage.setItem('bits-vst-'+parseInt(getBitsWinOpt('s')),"");
-     localStorage.setItem('bits-vst-'+parseInt(getBitsWinOpt('s')),"Took tour");
-     $('#modalwelcome').closeModal();
-     //starting the tour
+// //  document.getElementsByClassName("first-ol")[0].addEventListener("",function(){
+// //          nextTapTarget();
+// //            });
+//  /////////////////////////////////////////////////////////////////////////////////////////
+//     localStorage.setItem('bits-vst-'+parseInt(getBitsWinOpt('s')),"");
+//      localStorage.setItem('bits-vst-'+parseInt(getBitsWinOpt('s')),"Took tour");
+//      $('#modalwelcome').closeModal();
+//      //starting the tour
    
    
 }

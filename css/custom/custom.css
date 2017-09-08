@@ -10,6 +10,37 @@ NOTE:
 PLACE HERE YOUR OWN CSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
 WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
 .material-placeholder{/* margin-top: -50px; */}
+.container1 {
+  position: relative;
+  /* width: 50%; */
+  height: 100px;
+}
+.overlaypromo {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 92px;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: rgba(11, 11, 11, 0.91);
+}
+
+.container1:hover .overlaypromo , .container1:focus .overlaypromo {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 18px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
 .ht{ height: 100vh !important;}
 #products{ 
    overflow: scroll;
@@ -451,4 +482,118 @@ nav {
 	    color: #757575 !important;
 	    z-index: 100;
 }
+/***************
+                 PRE LOADER
+***************/
+
+.loader {
+    -webkit-filter: url("#goo");
+    filter: url("#goo");
+    position: relative;
+    width: 500px;
+    height: 95px;
+}
+
+.loader::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #0F5F76;
+    margin: 0 auto;
+    position: absolute;
+    top: 30px;
+    left: 220px;
+    -webkit-animation: scale 2.5s ease-in-out infinite;
+    animation: scale 2.5s ease-in-out infinite;
+}
+
+.loader div {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0F5F76;
+    top: 35px;
+    left: 235px;
+    -webkit-animation: move 2.5s ease-in-out infinite alternate;
+    animation: move 2.5s ease-in-out infinite alternate;
+}
+
+.loader div::after,
+.loader div::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0F5F76;
+}
+
+.loader div::before {
+    left: -40px;
+}
+
+.loader div::after {
+    left: 40px;
+}
+
+@-webkit-keyframes move {
+    0% {
+        -webkit-transform: translateX(-200px);
+        transform: translateX(-200px);
+    }
+    100% {
+        -webkit-transform: translateX(100px);
+        transform: translateX(100px);
+    }
+}
+
+@keyframes move {
+    0% {
+        -webkit-transform: translateX(-120px);
+        transform: translateX(-120px);
+    }
+    100% {
+        -webkit-transform: translateX(100px);
+        transform: translateX(100px);
+    }
+}
+
+@-webkit-keyframes scale {
+    10% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    50% {
+        -webkit-transform: scale(1.25);
+        transform: scale(1.25);
+    }
+    90% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes scale {
+    10% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    50% {
+        -webkit-transform: scale(1.25);
+        transform: scale(1.25);
+    }
+    90% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+#svgPreloader {
+    position: absolute;
+    z-index: -100;
+    pointer-events: none;
 }
