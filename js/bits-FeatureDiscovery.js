@@ -22,10 +22,10 @@ function tookTour(){
  $('#modalwelcome').closeModal();
   localStorage.setItem('bits-vst-'+parseInt(getBitsWinOpt('s')),"");
       localStorage.setItem('bits-vst-'+parseInt(getBitsWinOpt('s')),"Took tour");
-    introJs().start();
+ //   introJs().start();
 //     console.log("took Tour");
-// //     $('.tap-target').attr('data-activates','prod-5-counter');
-//     $('.first-tt').tapTarget('open');
+  //  $('.tap-target').attr('data-activates','prod-5-counter');
+   //  $('.first-tt').tapTarget('open');
 //        $('.tap-target-title').html("");
 //     $('.tap-target-title').append("Choose items");
 //       $('.tap-target-text').html("");   
