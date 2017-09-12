@@ -154,12 +154,12 @@ global_keystore.generateNewAddress(pwDerivedKey, 1);
 var addr = global_keystore.getAddresses();
 	localStorage.setItem('bits-user-address-' + localStorage.getItem('bits-user-name'), addr[0]);								
 
-$('.addressClass').append('0x'+localStorage.getItem('bits-user-address-'+ localStorage.getItem('bits-user-name')));
+$('.addressClass').html('').append('0x'+localStorage.getItem('bits-user-address-'+ localStorage.getItem('bits-user-name')));
 // Create a custom passwordProvider to prompt the user to enter their
 // password whenever the hooked web3 provider issues a sendTransaction
 // call.
 global_keystore.passwordProvider = function (callback) {
-  var pw = prompt("Please enter password", "Password");
+  var pw = prompt("Please enter password", "password");
   callback(null, pw);
 };
 
