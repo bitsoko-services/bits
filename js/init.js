@@ -7,6 +7,7 @@ function profileLoaded(p){
 		  doFetch({action:'saveUserDet', user: p.id , data: JSON.stringify(p)}).then(function(e){
             if (e.status=="ok"){
               p.bitsokoUserID=e.buid;
+		    $('#useAnon').removeClass('displayNone');
               starting();
               walletFunctions(p);
 
