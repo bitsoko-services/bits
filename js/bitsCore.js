@@ -1388,42 +1388,7 @@ returns.symbol='usd';
 });
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-if (typeof web3 == 'undefined') {
-	console.log("web3 is undefined");
-	$.getScript("/bitsAssets/js/web3/web3.js", function() {
-		$.getScript("/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js", function() {
-			try{
-
-
-			var web3 = new Web3();
-
-			function setWeb3Provider(keystore) {
-				var web3Provider = new HookedWeb3Provider({
-					host: "http://127.0.0.1:8545/",
-        transaction_signer: global_keystore
-				});
-				web3.setProvider(web3Provider);
-			}
-
-       setWeb3Provider(global_keystore);
-				
-			}catch(err){
-
-				console.log('failed loading web3 lib ',err)
-			}
-		});
-	});
-} else {
-	console.log("web3 is defined");
-
-	 window.web3 = new Web3(web3.currentProvider);
-}
-
-$('.addressClass').append('0x'+localStorage.getItem('bits-user-address-'+ localStorage.getItem('bits-user-name')));
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      function getBalances() {
+function getBalances() {
         
         var addresses = global_keystore.getAddresses();
        // document.getElementById('addr').innerHTML = 'Retrieving addresses...'
