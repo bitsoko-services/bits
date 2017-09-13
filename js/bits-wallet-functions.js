@@ -1,6 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 				var rMax;
+var global_keystore;
 function walletFunctions(p) {
 	//save wallet info
 	Materialize.toast('loading wallets', 3000);
@@ -145,7 +146,7 @@ console.log(addresses,p);
 // This is the default recommended hdPathString value.
 var hdPathString = "m/0'/0'/0'";
 // When specifying a salt, the hdPathString is required.
-var global_keystore = new lightwallet.keystore(randomSeed, pwDerivedKey, hdPathString,randomSalt);
+global_keystore = new lightwallet.keystore(randomSeed, pwDerivedKey, hdPathString,randomSalt);
 
 
 // generate five new address/private key pairs
