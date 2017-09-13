@@ -87,17 +87,6 @@ localConverter();
 	showlogintoast();
 	 loadProfData();
 	
-				///////////////////////////////////
-	fetchRates().then(function(e) {
-		if (e.status == "ok") {
-			tBal=0;
-			 getUserOders(e);
-		} else {
-			console.log("error");
-		}
-	});
-	///////////////////////////////////////////////////////////////////////////////////////////////////
-	
 startUser(localStorage.getItem('bits-user-name')).then(function(e){
 
 	
@@ -158,6 +147,18 @@ if (typeof web3 == 'undefined') {
         transaction_signer: global_keystore
 				});
 				web3.setProvider(web3Provider);
+				
+				
+				/////////////////////////////////// update exchange rates
+	fetchRates().then(function(e) {
+		if (e.status == "ok") {
+			 getUserOders(e);
+		} else {
+			console.log("error");
+		}
+	});
+	///////////////////////////////////////////////////////////////////////////////////////////////////
+	
 			}
 			
 
@@ -173,6 +174,7 @@ if (typeof web3 == 'undefined') {
         try{
 		var pFl=JSON.parse(event.target.result);
         walletFunctions(pFl);
+		
     
 	}catch(err){	
 		reject(err);
