@@ -150,7 +150,8 @@ if (typeof web3 == 'undefined') {
 				/////////////////////////////////// update exchange rates
 	fetchRates().then(function(e) {
 		if (e.status == "ok") {
-			 getUserOders(e);
+		tBal=0;
+			 	 getUserOders(e);
 		} else {
 			console.log("error");
 		}
