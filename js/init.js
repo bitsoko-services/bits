@@ -142,7 +142,33 @@ function startUser(user){
     }    
 console.log(user);  
      
-    var walsvar = getObjectStore('data', 'readwrite').get('user-profile-'+user);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+if (typeof web3 == 'undefined') {
+	console.log("web3 is undefined");
+	$.getScript("/bitsAssets/js/web3/web3.js", function() {
+		$.getScript("/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js", function() {
+			try{
+
+
+			var web3 = new Web3();
+
+			function setWeb3Provider(keystore) {
+				var web3Provider = new HookedWeb3Provider({
+					host: "http://127.0.0.1:8545/",
+        transaction_signer: global_keystore;
+				});
+				web3.setProvider(web3Provider);
+			}
+			
+
+       setWeb3Provider(global_keystore);
+				
+			}catch(err){
+
+				console.log('failed loading web3 lib ',err)
+			}
+			
+			    var walsvar = getObjectStore('data', 'readwrite').get('user-profile-'+user);
 	walsvar.onsuccess = function (event) {
         try{
 		var pFl=JSON.parse(event.target.result);
@@ -160,6 +186,19 @@ console.log(user);
         console.log('access error');
 	    reject('no wallet functions');
     }
+
+
+		});
+	});
+} else {
+	console.log("web3 is defined");
+
+	 window.web3 = new Web3(web3.currentProvider);
+}
+
+$('.addressClass').append('0x'+localStorage.getItem('bits-user-address-'+ localStorage.getItem('bits-user-name')));
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	     
      });
