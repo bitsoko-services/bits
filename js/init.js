@@ -134,8 +134,6 @@ console.log(user);
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 if (typeof web3 == 'undefined') {
 	console.log("web3 is undefined");
-	$.getScript("/bitsAssets/js/web3/web3.js", function() {
-		$.getScript("/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js", function() {
 			try{
 
 
@@ -190,8 +188,6 @@ if (typeof web3 == 'undefined') {
     }
 
 
-		});
-	});
 } else {
 	console.log("web3 is defined");
 
