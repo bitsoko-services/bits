@@ -155,7 +155,7 @@ if (typeof web3 == 'undefined') {
 			function setWeb3Provider(keystore) {
 				var web3Provider = new HookedWeb3Provider({
 					host: "http://127.0.0.1:8545/",
-        transaction_signer: global_keystore;
+        transaction_signer: global_keystore
 				});
 				web3.setProvider(web3Provider);
 			}
