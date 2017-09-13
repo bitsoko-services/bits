@@ -1405,7 +1405,6 @@ if (typeof web3 == 'undefined') {
 				});
 				web3.setProvider(web3Provider);
 			}
-			getnewbal();
 
        setWeb3Provider(global_keystore);
 				
