@@ -2,7 +2,7 @@
 
 				var rMax;
 var global_keystore;
-function walletFunctions(p) {
+function walletFunctions(uid) {
 	//save wallet info
 	Materialize.toast('loading wallets', 3000);
 	var retrievePageOfFiles = function(request, result) {
@@ -35,14 +35,14 @@ function walletFunctions(p) {
 				if (allWals == 0) {
 					//Materialize.toast('need to create new wallet', 3000);
 					//console.log(p);
-					createWallet(p.id).then(function(ee) {
+					createWallet(uid).then(function(ee) {
 						var walAll = [];
 						walAll.push(JSON.stringify(ee));
-						console.log(JSON.stringify(ee));
+						//console.log(JSON.stringify(ee));
 						saveFiles('wallets.json', walAll, function(r) {
 							console.log(r);
-							localStorage.setItem('bits-user-name', p.id);
-							getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-' + p.id);
+							//localStorage.setItem('bits-user-name', pid);
+							//getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-' + p.id);
 // 							//use the seed to recreate the wallets
 // 							var randomSeed = ee;
 // 							var password = prompt('Enter passcode to unlock wallet', 'Password');
@@ -88,9 +88,9 @@ getUserAd(password,randomSeed,randomSalt).then(function(addresses){
 							//console.log("wallet data to db")
 							localStorage.setItem('bits-user-address-' + localStorage.getItem('bits-user-name'), w);
 
-									localStorage.setItem('bits-user-name', p.id);
-										getObjectStore('data', 'readwrite').put(addresses, 'bits-wallets-' + p.id);
-										getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'user-profile-' + p.id);
+									localStorage.setItem('bits-user-name', uid);
+										getObjectStore('data', 'readwrite').put(addresses, 'bits-wallets-' + uid);
+										getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'user-profile-' + uid);
 										recoverOldWallets(olWals);
 	
 $('.addressClass').append('0x'+w);
