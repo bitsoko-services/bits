@@ -91,7 +91,6 @@ getUserAd(password,randomSeed,randomSalt).then(function(addresses){
 							
 									localStorage.setItem('bits-user-name', uid);
 										getObjectStore('data', 'readwrite').put(addresses, 'bits-wallets-' + uid);
-										getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'user-profile-' + uid);
 										//recoverOldWallets(olWals);
 
 				web3Provider = new HookedWeb3Provider({
