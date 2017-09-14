@@ -88,7 +88,7 @@ localConverter();
 	
    loadWallet();
 	
-if(!checkanon()){
+if(checkanon()){
 	
      setTimeout(function(){ 
 walletFunctions(localStorage.getItem('bits-user-name'));
