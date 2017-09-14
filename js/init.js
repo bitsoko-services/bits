@@ -79,7 +79,6 @@ function starting(){
 	
 	startGoogle(); 
 	serviceOpener();
-	checkanon();
 localConverter();
 
 	togglebuttons();
@@ -88,7 +87,14 @@ localConverter();
 	 loadProfData();
 	
    loadWallet();
-
+	
+if(!checkanon()){
+	
+     setTimeout(function(){ 
+walletFunctions(localStorage.getItem('bits-user-name'));
+	
+     }, 1500);
+}
      setTimeout(function(){ 
      
            if (navigator.serviceWorker.controller) {
@@ -103,8 +109,7 @@ localConverter();
             } else {
               
             }
-	     walletFunctions(localStorage.getItem('bits-user-name'));
-	
+	     
      }, 850);
     	
 
