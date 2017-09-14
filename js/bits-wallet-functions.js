@@ -95,7 +95,7 @@ getUserAd(password,randomSeed,randomSalt).then(function(addresses){
 	
 $('.addressClass').append('0x'+w);
 
-		var web3 = new Web3();
+		web3 = new Web3();
 
 				var web3Provider = new HookedWeb3Provider({
 					host: "http://127.0.0.1:8545/",
