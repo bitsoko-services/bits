@@ -9,7 +9,7 @@ function profileLoaded(p){
               p.bitsokoUserID=e.buid;
 		    $('#useAnon').removeClass('displayNone');
               starting();
-              walletFunctions(p);
+             // walletFunctions(p);
 
 
          }            
