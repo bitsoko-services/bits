@@ -146,29 +146,7 @@ if (typeof web3 == 'undefined') {
 				});
 				web3.setProvider(web3Provider);
 				
-				
-				/////////////////////////////////// update exchange rates
-	fetchRates().then(function(e) {
-		if (e.status == "ok") {
-		tBal=0;
-			 	 getUserOders(e);
-		} else {
-			console.log("error");
-		}
-	});
-	///////////////////////////////////////////////////////////////////////////////////////////////////
-	
-			}
-			
-
-       setWeb3Provider(global_keystore);
-				
-			}catch(err){
-
-				console.log('failed loading web3 lib ',err)
-			}
-			
-			    var walsvar = getObjectStore('data', 'readwrite').get('user-profile-'+user);
+			    var walsvar = getObjectStore('data', 'readwrite').get('user-profile-'+ localStorage.getItem('bits-user-name'));
 	walsvar.onsuccess = function (event) {
         try{
 		var pFl=JSON.parse(event.target.result);
@@ -188,6 +166,17 @@ if (typeof web3 == 'undefined') {
 	    reject('no wallet functions');
     }
 
+		
+			}
+			
+
+       setWeb3Provider(global_keystore);
+				
+			}catch(err){
+
+				console.log('failed loading web3 lib ',err)
+			}
+			
 
 } else {
 	console.log("web3 is defined");
