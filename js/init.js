@@ -86,7 +86,6 @@ localConverter();
 	showuser();
 	showlogintoast();
 	 loadProfData();
-	walletFunctions(localStorage.getItem('bits-user-name'));
 	
    loadWallet();
 
@@ -104,6 +103,8 @@ localConverter();
             } else {
               
             }
+	     walletFunctions(localStorage.getItem('bits-user-name'));
+	
      }, 850);
     	
 
