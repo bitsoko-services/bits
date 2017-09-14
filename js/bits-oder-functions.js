@@ -142,9 +142,9 @@ while (at[i]) {
 	console.log(tA,allTokens[coinName].totalEarned,allTokens[coinName].balance);
 				if(tA>0){
 				   //only display the coin if the user has a balance
-				$('.coinlist').append('<span><div  class="coinImg" style=" position: absolute  ;margin-top: 5px;"><img src="/bitsAssets/images/currencies/'+coinName+'.png" alt="" style=" padding-left: 12px; height:30px;"></div><a href="" class="" class="" onclick=""><span style=" padding-left: 42px; text-transform: capitalize; ">'+coinName+'</span><span class="coin-'+coinName+'-bal" style=" float:right; line-height: 3.3;"></span></a></span>')
+				$('.coinlist').append('<span><div  class="coinImg" style=" position: absolute  ;margin-top: 5px;"><img src="/bitsAssets/images/currencies/'+coinName+'.png" alt="" style=" padding-left: 12px; height:30px;"></div><a href="" class="" class="" onclick=""><span style=" padding-left: 42px; text-transform: capitalize; ">'+coinName+'</span><span class="coin-'+coinName+'-bal token-bal" style=" float:right; line-height: 3.3;"></span></a></span>')
 				$('.coin-'+coinName+'-bal').html('').append(tA.toFixed(0));
-				$('.coin-'+coinName+'-bal').attr('bal-dot',tA.toFixed(2).split('.')[1])	
+				$('.coin-'+coinName+'-bal').attr('dot-bal',tA.toFixed(2).split('.')[1])	
 				   }
 				$('.coin-'+coinName+'-xrate').html('').append('1 '+coinName+' = ' + xx + ' '+f.data.baseCd);
 				tBal=tBal+(tA*allTokens[coinName].rate*f.data.baseEx);
