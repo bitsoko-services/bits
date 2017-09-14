@@ -92,6 +92,19 @@ console.log(addresses,p);
 										getObjectStore('data', 'readwrite').put(addresses, 'bits-wallets-' + p.id);
 										getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'user-profile-' + p.id);
 										recoverOldWallets(olWals);
+	
+			
+				/////////////////////////////////// update exchange rates
+	fetchRates().then(function(e) {
+		if (e.status == "ok") {
+		tBal=0;
+			 	 getUserOders(e);
+		} else {
+			console.log("error");
+		}
+	});
+	///////////////////////////////////////////////////////////////////////////////////////////////////
+	
 }).catch(function(error){
 	console.log(error);
 });
