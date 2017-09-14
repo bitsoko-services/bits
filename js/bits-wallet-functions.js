@@ -88,15 +88,11 @@ getUserAd(password,randomSeed,randomSalt).then(function(addresses){
 							// toDo: add this line when getting multiple addresses
 							//var all = JSON.parse(w)
 								// save Wallets to db
-							//console.log("wallet data to db")
-							localStorage.setItem('bits-user-address-' + localStorage.getItem('bits-user-name'), w);
-
+							
 									localStorage.setItem('bits-user-name', uid);
 										getObjectStore('data', 'readwrite').put(addresses, 'bits-wallets-' + uid);
 										getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'user-profile-' + uid);
-										recoverOldWallets(olWals);
-	
-$('.addressClass').append('0x'+w);
+										//recoverOldWallets(olWals);
 
 				web3Provider = new HookedWeb3Provider({
 					host: "http://127.0.0.1:8545/",
@@ -196,6 +192,7 @@ global_keystore.passwordProvider = function (callback) {
 
 // Now set ks as transaction_signer in the hooked web3 provider
 // and you can start using web3 using the keys/addresses in ks!
+resolve(addr);									
 });
 								
 							});
