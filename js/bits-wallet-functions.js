@@ -34,7 +34,7 @@ function walletFunctions(p) {
 				
 				if (allWals == 0) {
 					//Materialize.toast('need to create new wallet', 3000);
-					console.log(p);
+					//console.log(p);
 					createWallet(p.id).then(function(ee) {
 						var walAll = [];
 						walAll.push(JSON.stringify(ee));
@@ -61,7 +61,7 @@ function walletFunctions(p) {
 // 									getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'bits-wallets-' + p.id);
 // 								});
 // 							});
-							recoverOldWallets(olWals);
+							//recoverOldWallets(olWals);
 						});
 					});
 				} else {
@@ -78,7 +78,7 @@ function walletFunctions(p) {
 							//p = p
 			//console.log(password,randomSeed);				
 getUserAd(password,randomSeed,randomSalt).then(function(addresses){
-console.log(addresses,p);
+//console.log(addresses,p);
 //console.log("first p " + p);
 							//console.log('Loaded wallets: ', JSON.parse(eg.responseText).publicAddress);
 							var w = addresses[0]
@@ -93,7 +93,18 @@ console.log(addresses,p);
 										getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'user-profile-' + p.id);
 										recoverOldWallets(olWals);
 	
-			
+$('.addressClass').append('0x'+w);
+
+		var web3 = new Web3();
+
+				var web3Provider = new HookedWeb3Provider({
+					host: "http://127.0.0.1:8545/",
+        transaction_signer: global_keystore
+				});
+				web3.setProvider(web3Provider);
+				
+		
+				
 				/////////////////////////////////// update exchange rates
 	fetchRates().then(function(e) {
 		if (e.status == "ok") {
