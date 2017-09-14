@@ -275,16 +275,6 @@ function loadWallet(primWalA){
    $( ".userProfImg" ).attr( "src", '' );
   };    
    
-    //showNav();
-     //reqContacts()
-    //updateContacts();
-         fetchRates().then(function(e){
-                 getBal();
-                 //updateWallpaper();
-            //setWallpaper();
-	
-    });
-    updateBal();
     	getLoc();
 
   updatePromos();
