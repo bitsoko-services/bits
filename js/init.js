@@ -86,24 +86,9 @@ localConverter();
 	showuser();
 	showlogintoast();
 	 loadProfData();
+	walletFunctions(localStorage.getItem('bits-user-name'));
 	
-startUser(localStorage.getItem('bits-user-name')).then(function(e){
-
-	
-	
-   loadWallet(e);
-}).catch(function(err){
-	var user=localStorage.getItem('bits-user-name');
-	if (user == "" || user == "undefined" || user == "null" || user == null) {
-	
-
-	
-	}
-
-
-
-
-});
+   loadWallet();
 
      setTimeout(function(){ 
      
@@ -124,36 +109,18 @@ startUser(localStorage.getItem('bits-user-name')).then(function(e){
 
 }
 
+/*
 function startUser(user){
      return new Promise(function(resolve, reject) {
     if(user==undefined){
     user=anon;
     }    
 console.log(user);  
-     
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-if (typeof web3 == 'undefined') {
-	console.log("web3 is undefined");
-			try{
-
-
-			var web3 = new Web3();
-
-			function setWeb3Provider(keystore) {
-				var web3Provider = new HookedWeb3Provider({
-					host: "http://127.0.0.1:8545/",
-        transaction_signer: global_keystore
-				});
-				web3.setProvider(web3Provider);
-				
-		
-			}
-			    var walsvar = getObjectStore('data', 'readwrite').get('user-profile-'+ localStorage.getItem('bits-user-name'));
+		    var walsvar = getObjectStore('data', 'readwrite').get('user-profile-'+ localStorage.getItem('bits-user-name'));
 	walsvar.onsuccess = function (event) {
         try{
 		var pFl=JSON.parse(event.target.result);
-        walletFunctions(pFl);
-		
+        	
     
 	}catch(err){	
 		reject(err);
@@ -166,32 +133,10 @@ if (typeof web3 == 'undefined') {
     walsvar.onerror = function (event) {
         console.log('access error');
 	    reject('no wallet functions');
-    }
-
-			
-
-       setWeb3Provider(global_keystore);
-				
-			}catch(err){
-
-				console.log('failed loading web3 lib ',err)
-			}
-			
-
-} else {
-	console.log("web3 is defined");
-
-	 window.web3 = new Web3(web3.currentProvider);
-}
-
-$('.addressClass').append('0x'+localStorage.getItem('bits-user-address-'+ localStorage.getItem('bits-user-name')));
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	     
+    }	     
      });
 }
-
+*/
 
 /*********************************************************************************/
 /* Settings                                                                      */
