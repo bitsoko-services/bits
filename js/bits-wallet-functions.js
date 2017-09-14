@@ -2,6 +2,9 @@
 
 				var rMax;
 var global_keystore;
+
+		web3 = new Web3();
+
 function walletFunctions(uid) {
 	//save wallet info
 	Materialize.toast('loading wallets', 3000);
@@ -95,16 +98,16 @@ getUserAd(password,randomSeed,randomSalt).then(function(addresses){
 	
 $('.addressClass').append('0x'+w);
 
-		web3 = new Web3();
-
-				var web3Provider = new HookedWeb3Provider({
+				web3Provider = new HookedWeb3Provider({
 					host: "http://127.0.0.1:8545/",
         transaction_signer: global_keystore
 				});
-				web3.setProvider(web3Provider);
+	
+	
+    setTimeout(function(){ 
+	    web3.setProvider(web3Provider);
 				
-		
-				
+			
 				/////////////////////////////////// update exchange rates
 	fetchRates().then(function(e) {
 		if (e.status == "ok") {
@@ -116,6 +119,9 @@ $('.addressClass').append('0x'+w);
 	});
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	
+	 }, 600);
+				
+			
 }).catch(function(error){
 	console.log(error);
 });
