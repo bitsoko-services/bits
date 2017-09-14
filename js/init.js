@@ -146,6 +146,8 @@ if (typeof web3 == 'undefined') {
 				});
 				web3.setProvider(web3Provider);
 				
+		
+			}
 			    var walsvar = getObjectStore('data', 'readwrite').get('user-profile-'+ localStorage.getItem('bits-user-name'));
 	walsvar.onsuccess = function (event) {
         try{
@@ -166,8 +168,6 @@ if (typeof web3 == 'undefined') {
 	    reject('no wallet functions');
     }
 
-		
-			}
 			
 
        setWeb3Provider(global_keystore);
