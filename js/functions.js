@@ -270,8 +270,8 @@ function tabulateTotals() {
 					pid: $(addproducts[i]).attr('pid'),
 					count: itVal
 				});
-				console.log(orderArray);
-				Rewards(orderArray);
+				//console.log(orderArray);
+				//Rewards(orderArray);
 				$('.recipt').append('');
 			}
 			totals = totals + (parseInt($(addproducts[i]).attr("price")) * parseInt(itVal));
@@ -297,6 +297,11 @@ function tabulateTotals() {
 
 function makeOrder(orderArrayy, orderLoc) {
 	//Rewards();
+	console.log("->",orderArrayy)
+	if ( orderArrayy === undefined || orderArrayy.length == 0){
+		return;
+		console.log("stopped")
+	}
 	$('.delivery').addClass('animated jello');
 	Materialize.toast('creating your order', 3000);
 	//checkanon();
@@ -391,8 +396,6 @@ function makeOrder(orderArrayy, orderLoc) {
 // }
 //totalPoints = 0
 
-totalKobo = 0
-deliveriesPoints = 0
 	/// function one get all selected items and the count
 	//// variable shopping cart
 	///var scart;
@@ -411,7 +414,7 @@ deliveriesPoints = 0
 	// }
 	//// loop through promotions
 	//totalP = 0
-function Rewards(val) {
+function Rewardsx(val) {
 	val = orderArray
 	tdp = 0
 	//totalPoints = 0
@@ -424,7 +427,7 @@ function Rewards(val) {
 		// get selected item count
 		var sc = parseInt(val[ix].count);
 		//console.log("selected items and the count -->", si, sc, price)
-		//console.log("loop 1 [orderArray] -->", val[ix]);
+		console.log("loop 1 [orderArray] -->", val[ix]);
 		//console.log(val)
 		console.log("================ loop one end ===================")
 	}
@@ -901,7 +904,7 @@ function createOrder() {
 	}
 }
 
-function getProdss(orderArrayx) {
+function getProdss(orderArrayx, costofItems) {
 	new Promise(function(resolve, reject) {
 		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
 		e.onsuccess = function(event) {
@@ -926,6 +929,89 @@ function getProdss(orderArrayx) {
 		console.log('testing', costofItems);
 		$(".totals").html("")
 		$(".totals").append(JSON.parse(costofItems))
-		finalCost(costofItems);
+		finalCost(costofItems);cop(costofItems);
 	})
+}
+bp = 0
+dis = 0
+function buyPromo(promoOder){
+	bp = 1
+	promoOder = orderArray
+	console.log("buying promo");
+	console.log($(".bpromo").attr("id"));
+	// loop promos and get the promo items
+	var lipromo = $(".bpromo").attr("id");
+	new Promise(function(resolve, reject) {
+		//console.log("this is var t" + t)
+		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
+		//t = t;
+		e.onsuccess = function(event) {
+			var x = JSON.parse(event.target.result);
+			resolve({
+				promotions: x.promotions,
+				//list: x.list,
+				//discount: x.discount
+			});
+		}
+	}).then(function(r) {
+		var pd = r.promotions;
+		for (var ixi = 0, t = t; ixi < pd.length; ++ixi) {
+console.log("=============== looping ==============================")
+			var pitems = JSON.parse(pd[ixi].promoItems);
+			 dis = JSON.parse(pd[ixi].discount);
+			console.log(pitems, dis)
+			var obj = { };
+			var p = obj
+for (var i = 0, j = pitems.length; i < j; i++) {
+   obj[pitems[i]] = (obj[pitems[i]] || 0) + 1;
+}
+for (var key in p) {
+  if (p.hasOwnProperty(key)) {
+    console.log(key + " -> " + p[key]);
+    promoOder.push({
+					pid: key,
+					count: p[key]
+				});
+				// loop to get product price
+				for(var iix = 0, j = pitems.length; iix < j; iix++) {
+				}
+			
+  }
+}
+console.log(promoOder);	
+ makeOrder(promoOder);
+// cop();
+		}
+
+		});
+	//$(".bpromo").attr("id")
+}
+function clear(){
+console.log("clear cart"); 
+	$(".bitsInputQty").val(0);
+	$(".counter-minus").addClass("disabled");
+	$(".star2content").html('');
+
+	tabulateTotals();
+	$(".totals").html("")
+	$(".totals").append("0")
+}
+function cop(costofItems){
+	//costItems = costofItems
+	
+	if (bp == 1){
+		console.log("------> ",costofItems, dis , "<------------");
+		var pe = (costofItems * dis)/100
+		
+		
+		var rate = allTokens['kobo'].rate;
+		var g = Math.floor(pe);
+		var kshToKobo = rate / g 
+		totalKobo = kshToKobo
+		$(".star2content").html( '');
+		$(".star2content").append( Math.floor(pe));
+		console.log(">>>", g, ">>>", rate, ">>>" , kshToKobo);
+		bp = 1
+	}
+	else{ console.log("------> ","not promo" , "<------------");}
 }

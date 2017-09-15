@@ -50,7 +50,7 @@
 		$input.val(inputVal)
 		$btnMinus.click(function() {
 			//checkRewards($input.attr('pid'));
-			Rewards()
+			//Rewards()
 			var num = parseInt($input.val())
 			if (num > minimum) {
 				$input.val(num - 1)
@@ -60,11 +60,12 @@
 		$btnPlugs.click(function() {
 			//$(this).attr("rewarded", "rewarded");
 	$(".delivery ").addClass("bits");
+	$(".counter-minus").removeClass("disabled");
 			$(".delivery").removeClass("pointer-events");
 			$(".bits-main-price").removeClass("grey");
 			$(".localCurr").removeClass("displayNone");
 			$(".bits-main-price ").addClass("bits");
-			Rewards()
+			//Rewards()
 			//checkRewards($input.attr('pid'));
 			var num = parseInt($input.val())
 			if (maximize == null || num < maximize) {

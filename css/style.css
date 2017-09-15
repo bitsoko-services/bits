@@ -119,7 +119,7 @@ dd + dd {
     opacity:0.9;
 }
   .promoHome{
-    width: 100%;
+    /* width: 100%; */
     padding: 2%;
     height: 140px;
   }
@@ -442,7 +442,7 @@ text-overflow: ellipsis !important;
     position: relative;
     margin: 0.2em;
     padding: 0 15px 0 46px;
-    margin-left: 10%;
+    /* margin-left: 10%; */
     border: none;
     text-align: left;
     line-height: 34px;
