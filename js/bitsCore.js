@@ -277,7 +277,7 @@ function loadWallet(primWalA){
    
     	getLoc();
 
-  updatePromos();
+  //updatePromos();
 
         localConverter().then(function(loCon){
    $( ".conf-curr" ).html( loCon.symbol );
