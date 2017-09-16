@@ -11,7 +11,7 @@ function updatePromos(){
            	console.log(e.promotions.length)
            	 for(var ii = 0; ii < e.promotions.length; ++ii) { var dailyCost=(parseInt(e.promotions[ii].discount)/100)*e.promotions[ii].promoPrice
            	 console.log(e.promotions[ii].name)
-$('.promoHolder-home').append('<a href="https://bitsoko.co.ke/bits/?s='+e.promotions[ii].owner+'"><li class="promoHome  col s12 m6 l4 avatar bits-max promo-collection">'+'<img src="https://bitsoko.co.ke'+e.promotions[ii].customImagePath+'" data-caption="'+e.promotions[ii].name+'" alt="'+e.promotions[ii].promoDesc+'" class="materialboxed promoHome"><div class="product-card">'+
+$('.promoHolder-home').append('<a href="https://bitsoko.co.ke/bits/?s='+e.promotions[ii].owner+'#pid='+e.promotions[ii].id+'"><li class="promoHome  col s12 m6 l4 avatar bits-max promo-collection">'+'<img src="https://bitsoko.co.ke'+e.promotions[ii].customImagePath+'" data-caption="'+e.promotions[ii].name+'" alt="'+e.promotions[ii].promoDesc+'" class="materialboxed promoHome"><div class="product-card">'+
 '<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+e.promotions[ii].name+' </span></span>'+
 // '<p class="serviceListFirstline"><span class="bits-badge bits left" style="margin-left: 20px;">'+Math.ceil(dailyCost)+'<span class="localCurr">Ksh</span> daily</span></p>
 // '<span class="secondary-content"></span>'+'<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"></i> '+
@@ -70,7 +70,7 @@ function subscribedPromos(){
 			var id = subpromos[iii].uid ? subpromos[iii].uid : 'undefined';
 			 var dailyCost=(parseInt(subpromos[iii].discount)/100)*subpromos[iii].promoPrice;	
 			$('.promoHolder-home').html('')
-		 $('.promoHolder-home').append('<a href="https://bitsoko.co.ke/bits/?s='+e.promotions[ii].owner+'"><li class="promoHome col s12 m6 l4 avatar bits-max promo-collection">'+'<img src="https://bitsoko.co.ke'+subpromos[iii].promoBanner+'" data-caption="'+subpromos[iii].promoDesc+'" alt="'+subpromos[iii].promoDesc+'" class="materialboxed promoHome"><div class="product-card">'+'<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+subpromos[iii].promoDesc+' </span></span>'+
+		 $('.promoHolder-home').append('<a href="https://bitsoko.co.ke/bits/?s='+e.promotions[ii].owner+'#pid='+e.promotions[ii].id+'"><li class="promoHome col s12 m6 l4 avatar bits-max promo-collection">'+'<img src="https://bitsoko.co.ke'+subpromos[iii].promoBanner+'" data-caption="'+subpromos[iii].promoDesc+'" alt="'+subpromos[iii].promoDesc+'" class="materialboxed promoHome"><div class="product-card">'+'<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+subpromos[iii].promoDesc+' </span></span>'+
 // 		 '<p class="serviceListFirstline"><span class="bits-badge bits left" style="margin-left: 20px;">'+Math.ceil(dailyCost)+' <span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>'+
 // 		 '<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-'+subpromos[iii].id+'"> Not Subscribed</span> <label> <input type="checkbox" dailyR="" pid="" class="promoSubButton promoSubButton-'+subpromos[iii].id+'" style="background: rgb(128, 210, 147);"><span style="margin-top:2px;" class="lever right"></span></label>'+
 		 '</div></li></a>');   
