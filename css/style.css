@@ -22,6 +22,11 @@ aside>ul{
 line-height:2px!important;
 }
 
+.token-bal::after {
+  content: attr(dot-bal) ;
+  font-size:80%
+}
+
 
 .profile-image{
 padding-top: 20px;
@@ -114,8 +119,8 @@ dd + dd {
     opacity:0.9;
 }
   .promoHome{
-    width: 100%;
-    padding: 2%;
+    /* width: 100%; */
+    /* padding: 2%; */
     height: 140px;
   }
   bits-no shadow{
@@ -437,7 +442,7 @@ text-overflow: ellipsis !important;
     position: relative;
     margin: 0.2em;
     padding: 0 15px 0 46px;
-    margin-left: 10%;
+    /* margin-left: 10%; */
     border: none;
     text-align: left;
     line-height: 34px;

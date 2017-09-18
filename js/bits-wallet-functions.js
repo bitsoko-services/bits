@@ -1,7 +1,11 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 				var rMax;
-function walletFunctions(p) {
+var global_keystore;
+
+		web3 = new Web3();
+
+function walletFunctions(uid) {
 	//save wallet info
 	Materialize.toast('loading wallets', 3000);
 	var retrievePageOfFiles = function(request, result) {
@@ -33,15 +37,15 @@ function walletFunctions(p) {
 				
 				if (allWals == 0) {
 					//Materialize.toast('need to create new wallet', 3000);
-					console.log(p);
-					createWallet(p.id).then(function(ee) {
+					//console.log(p);
+					createWallet(uid).then(function(ee) {
 						var walAll = [];
 						walAll.push(JSON.stringify(ee));
-						console.log(JSON.stringify(ee));
+						//console.log(JSON.stringify(ee));
 						saveFiles('wallets.json', walAll, function(r) {
 							console.log(r);
-							localStorage.setItem('bits-user-name', p.id);
-							getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-' + p.id);
+							//localStorage.setItem('bits-user-name', pid);
+							//getObjectStore('data', 'readwrite').put(JSON.stringify(p), 'user-profile-' + p.id);
 // 							//use the seed to recreate the wallets
 // 							var randomSeed = ee;
 // 							var password = prompt('Enter passcode to unlock wallet', 'Password');
@@ -60,7 +64,7 @@ function walletFunctions(p) {
 // 									getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'bits-wallets-' + p.id);
 // 								});
 // 							});
-							recoverOldWallets(olWals);
+							//recoverOldWallets(olWals);
 						});
 					});
 				} else {
@@ -77,20 +81,42 @@ function walletFunctions(p) {
 							//p = p
 			//console.log(password,randomSeed);				
 getUserAd(password,randomSeed,randomSalt).then(function(addresses){
-console.log(addresses,p);
+//console.log(addresses,p);
 //console.log("first p " + p);
 							//console.log('Loaded wallets: ', JSON.parse(eg.responseText).publicAddress);
 							var w = addresses[0]
 							// toDo: add this line when getting multiple addresses
 							//var all = JSON.parse(w)
 								// save Wallets to db
-							//console.log("wallet data to db")
-							localStorage.setItem('bits-user-address-' + localStorage.getItem('bits-user-name'), w);
+							
+									localStorage.setItem('bits-user-name', uid);
+										getObjectStore('data', 'readwrite').put(addresses, 'bits-wallets-' + uid);
+										//recoverOldWallets(olWals);
 
-									localStorage.setItem('bits-user-name', p.id);
-										getObjectStore('data', 'readwrite').put(addresses, 'bits-wallets-' + p.id);
-										getObjectStore('data', 'readwrite').put(JSON.stringify(addresses), 'user-profile-' + p.id);
-										recoverOldWallets(olWals);
+				web3Provider = new HookedWeb3Provider({
+					host: "http://127.0.0.1:8545/",
+        transaction_signer: global_keystore
+				});
+	
+	
+    setTimeout(function(){ 
+	    web3.setProvider(web3Provider);
+				
+			
+				/////////////////////////////////// update exchange rates
+	fetchRates().then(function(e) {
+		if (e.status == "ok") {
+		tBal=0;
+			 	 getUserOders(e);
+		} else {
+			console.log("error");
+		}
+	});
+	///////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	 }, 600);
+				
+			
 }).catch(function(error){
 	console.log(error);
 });
@@ -145,7 +171,7 @@ console.log(addresses,p);
 // This is the default recommended hdPathString value.
 var hdPathString = "m/0'/0'/0'";
 // When specifying a salt, the hdPathString is required.
-var global_keystore = new lightwallet.keystore(randomSeed, pwDerivedKey, hdPathString,randomSalt);
+global_keystore = new lightwallet.keystore(randomSeed, pwDerivedKey, hdPathString,randomSalt);
 
 
 // generate five new address/private key pairs
@@ -154,17 +180,18 @@ global_keystore.generateNewAddress(pwDerivedKey, 1);
 var addr = global_keystore.getAddresses();
 	localStorage.setItem('bits-user-address-' + localStorage.getItem('bits-user-name'), addr[0]);								
 
-$('.addressClass').append('0x'+localStorage.getItem('bits-user-address-'+ localStorage.getItem('bits-user-name')));
+$('.addressClass').html('').append('0x'+localStorage.getItem('bits-user-address-'+ localStorage.getItem('bits-user-name')));
 // Create a custom passwordProvider to prompt the user to enter their
 // password whenever the hooked web3 provider issues a sendTransaction
 // call.
 global_keystore.passwordProvider = function (callback) {
-  var pw = prompt("Please enter password", "Password");
+  var pw = prompt("Please enter password", "password");
   callback(null, pw);
 };
 
 // Now set ks as transaction_signer in the hooked web3 provider
 // and you can start using web3 using the keys/addresses in ks!
+resolve(addr);									
 });
 								
 							});

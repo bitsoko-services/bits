@@ -275,19 +275,9 @@ function loadWallet(primWalA){
    $( ".userProfImg" ).attr( "src", '' );
   };    
    
-    //showNav();
-     //reqContacts()
-    //updateContacts();
-         fetchRates().then(function(e){
-                 getBal();
-                 //updateWallpaper();
-            //setWallpaper();
-	
-    });
-    updateBal();
     	getLoc();
 
-  updatePromos();
+  //updatePromos();
 
         localConverter().then(function(loCon){
    $( ".conf-curr" ).html( loCon.symbol );
@@ -1420,8 +1410,15 @@ if (typeof web3 == 'undefined') {
 
 	 window.web3 = new Web3(web3.currentProvider);
 }
+if(localStorage.getItem('bits-user-address-'+ localStorage.getItem('bits-user-name')) == null){
+$('.addressClass').html("")
+$('.addressClass').append('Log in to create wallet');
+}
+else{
+$('.addressClass').html("")
+$('.addressClass').append('0x'+localStorage.getItem('bits-user-address-'+ localStorage.getItem('bits-user-name')));	
+}
 
-$('.addressClass').append('0x'+localStorage.getItem('bits-user-address-'+ localStorage.getItem('bits-user-name')));
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       function getBalances() {

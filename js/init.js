@@ -7,8 +7,9 @@ function profileLoaded(p){
 		  doFetch({action:'saveUserDet', user: p.id , data: JSON.stringify(p)}).then(function(e){
             if (e.status=="ok"){
               p.bitsokoUserID=e.buid;
+		    $('#useAnon').removeClass('displayNone');
               starting();
-              walletFunctions(p);
+             // walletFunctions(p);
 
 
          }            
@@ -78,7 +79,6 @@ function starting(){
 	
 	startGoogle(); 
 	serviceOpener();
-	checkanon();
 localConverter();
 
 	togglebuttons();
@@ -86,35 +86,15 @@ localConverter();
 	showlogintoast();
 	 loadProfData();
 	
-				///////////////////////////////////
-	fetchRates().then(function(e) {
-		if (e.status == "ok") {
-			tBal=0;
-			 getUserOders(e);
-		} else {
-			console.log("error");
-		}
-	});
-	///////////////////////////////////////////////////////////////////////////////////////////////////
+   loadWallet();
 	
-startUser(localStorage.getItem('bits-user-name')).then(function(e){
-
+if(checkanon()){
 	
+     setTimeout(function(){ 
+walletFunctions(localStorage.getItem('bits-user-name'));
 	
-   loadWallet(e);
-}).catch(function(err){
-	var user=localStorage.getItem('bits-user-name');
-	if (user == "" || user == "undefined" || user == "null" || user == null) {
-	
-
-	
-	}
-
-
-
-
-});
-
+     }, 1500);
+}
      setTimeout(function(){ 
      
            if (navigator.serviceWorker.controller) {
@@ -129,23 +109,24 @@ startUser(localStorage.getItem('bits-user-name')).then(function(e){
             } else {
               
             }
+	     
      }, 850);
     	
 
 }
 
+/*
 function startUser(user){
      return new Promise(function(resolve, reject) {
     if(user==undefined){
     user=anon;
     }    
 console.log(user);  
-     
-    var walsvar = getObjectStore('data', 'readwrite').get('user-profile-'+user);
+		    var walsvar = getObjectStore('data', 'readwrite').get('user-profile-'+ localStorage.getItem('bits-user-name'));
 	walsvar.onsuccess = function (event) {
         try{
 		var pFl=JSON.parse(event.target.result);
-        walletFunctions(pFl);
+        	
     
 	}catch(err){	
 		reject(err);
@@ -158,12 +139,10 @@ console.log(user);
     walsvar.onerror = function (event) {
         console.log('access error');
 	    reject('no wallet functions');
-    }
-
-	     
+    }	     
      });
 }
-
+*/
 
 /*********************************************************************************/
 /* Settings                                                                      */
