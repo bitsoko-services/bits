@@ -996,6 +996,7 @@ console.log("clear cart");
 	$(".totals").html("")
 	$(".totals").append("0")
 }
+var totalKobo
 function cop(costofItems){
 	//costItems = costofItems
 	
