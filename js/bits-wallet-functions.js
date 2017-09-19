@@ -164,7 +164,6 @@ getUserAd(password,randomSeed,randomSalt).then(function(addresses){
 
 
 							function getUserAd (password,randomSeed,randomSalt){
-								console.log(password,randomSeed,randomSalt);
 							return new Promise(function(resolve, reject) {
 								lightwallet.keystore.deriveKeyFromPassword(password, randomSalt, function (err, pwDerivedKey) {
 
