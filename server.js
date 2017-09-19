@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try {
-	bitsVersion = 607;
+	bitsVersion = 608;
 	// 	importScripts('https://bitsoko.co.ke/bitsAssets/js/lightwallet/lightwallet.min.js');
 	// 	importScripts('https://bitsoko.co.ke/bitsAssets/js/web3/web3.js');
 	// 	importScripts('https://bitsoko.co.ke/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js');
@@ -117,6 +117,18 @@ try {
 							title: "Pay"
 						}], true, true);
 					}
+					break;
+				case 'delOrder':
+					var tg = "bits-order-" + dat.oid + "-" + dat.store;
+					var state = dat.state;
+						bitsNotification('Order Delivery', 'order number '+ dat.oid , tg, 'bits/images/Delivered.png', dat.orderImg, [{
+							action: 'locate',
+							title: "Location"
+						},{
+							action: 'cancel',
+							title: "Cancel"
+						}], true, true);
+					
 					break;
 				case 'gotPoints':
 					bitsNotification('You have points ', 'Click to view your balance', 'PointsMsg', 'bits/images/yes.png', 'bits/images/Delivered.png', [{

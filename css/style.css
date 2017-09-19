@@ -450,6 +450,7 @@ text-overflow: ellipsis !important;
     border-radius: 0.2em;
     font-size: 16px;
     color: #FFF;
+    width: 200px;
 }
 .loginBtn--google {
     background: #256D82;
