@@ -119,7 +119,7 @@ try {
 					}
 					break;
 				case 'delOrder':
-					var tg = "bits-order-" + dat.oid + "-" + dat.toLoc;
+					var tg = "bits-order-" + dat.oid + "-(" + dat.toLoc+")";
 					var state = dat.state;
 						bitsNotification('Order Delivery', 'order number '+ dat.oid , tg, 'bits/images/Delivered.png', dat.orderImg, [{
 							action: 'locate',
