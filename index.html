@@ -61,6 +61,17 @@
 	</style>
 </head>
 <body>
+<!-- 	<div class="cssLoader">
+		<div></div>
+	</div>
+	<p id="loaderText" style="margin-left:33%;"></p><svg id="svgPrecssLoader" version="1.1" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<filter id="goo">
+			<fegaussianblur in="SourceGraphic" result="blur" stddeviation="15"></fegaussianblur>
+			<fecolormatrix in="blur" mode="matrix" result="goo" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 26 -7"></fecolormatrix>
+			<feblend in="SourceGraphic" in2="goo"></feblend>
+		</filter>
+	</defs></svg>  -->
 <!-- <div id="preloader" style="position:absolute; top:0; left:0; right:0; bottom:0; background-color:#fefefe; z-index:5000; height:100%; width:100%; position:fixed;">
         <div id="status" style="position:absolute; left: 50%;
   transform: translateX(-27%); top:40%; margin:-100px 0 0 -100px;">
@@ -865,9 +876,9 @@
         // makes sure the whole site is loaded
         jQuery(window).load(function() {
             // will first fade out the loading animation
-            jQuery("#status").delay(50000).fadeOut();
+            jQuery(".cssLoader").delay(50000).fadeOut();
             // will fade out the whole DIV that covers the website.
-            jQuery("#preloader").delay(10000).fadeOut("slow");
+            jQuery(".cssLoader").delay(10000).fadeOut("slow");
         })
 
     </script> -->

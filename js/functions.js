@@ -326,6 +326,7 @@ function makeOrder(orderArrayy, orderLoc) {
 		// 	}
 		// 	catch (err) {}
 		// }
+
 		getLoc().then(function showPosition(e) {
 			console.log('4');
 			var mapLocc = orderLoc ? orderLoc : e.coords.latitude + ',' + e.coords.longitude;
@@ -340,6 +341,9 @@ function makeOrder(orderArrayy, orderLoc) {
 				$(".mapdata").attr('src', mapData[0]);
 				$(".mapText").append(mapData[1].results[0].formatted_address);
 				$('#modalconfirm').openModal();
+				$('.star2').addClass('animated shake'), setTimeout(function() {
+		$('.star2').removeClass('animated shake')
+	}, 1000);
 				document.getElementById("CancelO").addEventListener("click", function() {
 					$("#products").html("")
 				});
@@ -360,6 +364,7 @@ function makeOrder(orderArrayy, orderLoc) {
 						if (e.status == "ok") {
 							console.log('5');
 							swal("success!", "your order has been sent!", "success");
+							clear();
 						} else {
 							swal("Cancelled", "your order is not sent", "error");
 						}
@@ -414,94 +419,94 @@ function makeOrder(orderArrayy, orderLoc) {
 	// }
 	//// loop through promotions
 	//totalP = 0
-function Rewardsx(val) {
-	val = orderArray
-	tdp = 0
-	//totalPoints = 0
-		// loop 1
-	for (ix = 0, si = si; ix < val.length; ix++) {
-		console.log("================ loop one ===================")
-			// s.i is selected item
-		var si = parseInt(val[ix].pid);
-		var price = parseInt($("#bitsInputQty" + si).attr("price"));
-		// get selected item count
-		var sc = parseInt(val[ix].count);
-		//console.log("selected items and the count -->", si, sc, price)
-		console.log("loop 1 [orderArray] -->", val[ix]);
-		//console.log(val)
-		console.log("================ loop one end ===================")
-	}
-	new Promise(function(resolve, reject) {
-		//console.log("this is var t" + t)
-		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
-		//t = t;
-		e.onsuccess = function(event) {
-			var x = JSON.parse(event.target.result);
-			resolve({
-				promotions: x.promotions,
-				list: x.list,
-				//discount: x.discount
-			});
-		}
-	}).then(function(r) {
-		var pds = r.promotions;
-		var itms = r.list
-		/////////////////////////////////////////////////////////////////////////////
-		pitems = JSON.parse(JSON.parse(e.result).promotions[0].promoItems);
-		console.log("===========", pitems);
-           // var search = JSON.parse(val[ix].pid);
-
-            dis = JSON.parse(e.result).promotions[0].discount;
-            //console.log(promosAvailable)
-            //console.log(promoItems)
-
-            var count = pitems.reduce(function (n, valu) {
-                return n + (valu === si);
-            }, 0);
-
-            console.log(count);
-//             if (prodsToCheck >= count) {
-//                 console.log("Stop Awarding Points")
-//             }
-            ////////////////////////////////////////////////////////////////////////
-// 		for (iiv = 0, si = si, price = price, dis = dis, sc = sc; iiv < pds.length; iiv++) {
-// 			console.log("================ loop two ===================")
-// 				//loop 2
-// 			var dis = pds[iiv].discount
-// 				//console.log(pds[iiv]);
-// 				//console.log(JSON.parse(pds[iiv].promoItems), dis);
-// 			var objt = {};
-// 			var pitems = JSON.parse(pds[iiv].promoItems);
-// 			for (ivx = 0, si = si, sc = sc; ivx < pitems.length; ivx++) {
-// 				//loop 2.5
-// 				console.log("================ loop 2.5 ===================")
-// 				objt[pitems[ivx]] = (objt[pitems[ivx]] || 0) + 1;
-// 			}
-// 			console.log("================ loop two end===================")
+// function Rewardsx(val) {
+// 	val = orderArray
+// 	tdp = 0
+// 	//totalPoints = 0
+// 		// loop 1
+// 	for (ix = 0, si = si; ix < val.length; ix++) {
+// 		console.log("================ loop one ===================")
+// 			// s.i is selected item
+// 		var si = parseInt(val[ix].pid);
+// 		var price = parseInt($("#bitsInputQty" + si).attr("price"));
+// 		// get selected item count
+// 		var sc = parseInt(val[ix].count);
+// 		//console.log("selected items and the count -->", si, sc, price)
+// 		console.log("loop 1 [orderArray] -->", val[ix]);
+// 		//console.log(val)
+// 		console.log("================ loop one end ===================")
+// 	}
+// 	new Promise(function(resolve, reject) {
+// 		//console.log("this is var t" + t)
+// 		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
+// 		//t = t;
+// 		e.onsuccess = function(event) {
+// 			var x = JSON.parse(event.target.result);
+// 			resolve({
+// 				promotions: x.promotions,
+// 				list: x.list,
+// 				//discount: x.discount
+// 			});
 // 		}
-		//console.log("promotions items and count -->", objt)
-			////console.log("selected items and the count ii -->", si, sc, price, dis)
-		//var tx = objt
-			//console.log("", tx[si]); // value
-		var tt = count
-		if (sc >= tt) {
-			//console.log("selected items and the count ii -->", tt, sc, price, dis)
-			//console.log(" pass point");
-			// calculate total discounted price
-			tdp = (tt * price * dis) / 100
-		} else if ($("#bitsInputQty" + si).val() == 0) {
-			//console.log("END")
-			tdp = 0
-		} else {
-			tdp = (sc * price * dis) / 100
-		}
-		console.log("total discount on this item  ===================================================================================================", tdp)
-		totalPoints = totalPoints + tdp
-            				console.log("total points  ===========>", totalPoints)
-	});
-	//console.log($("#bitsInputQty" + si), tdp)
+// 	}).then(function(r) {
+// 		var pds = r.promotions;
+// 		var itms = r.list
+// 		/////////////////////////////////////////////////////////////////////////////
+// 		pitems = JSON.parse(JSON.parse(e.result).promotions[0].promoItems);
+// 		console.log("===========", pitems);
+//            // var search = JSON.parse(val[ix].pid);
+
+//             dis = JSON.parse(e.result).promotions[0].discount;
+//             //console.log(promosAvailable)
+//             //console.log(promoItems)
+
+//             var count = pitems.reduce(function (n, valu) {
+//                 return n + (valu === si);
+//             }, 0);
+
+//             console.log(count);
+// //             if (prodsToCheck >= count) {
+// //                 console.log("Stop Awarding Points")
+// //             }
+//             ////////////////////////////////////////////////////////////////////////
+// // 		for (iiv = 0, si = si, price = price, dis = dis, sc = sc; iiv < pds.length; iiv++) {
+// // 			console.log("================ loop two ===================")
+// // 				//loop 2
+// // 			var dis = pds[iiv].discount
+// // 				//console.log(pds[iiv]);
+// // 				//console.log(JSON.parse(pds[iiv].promoItems), dis);
+// // 			var objt = {};
+// // 			var pitems = JSON.parse(pds[iiv].promoItems);
+// // 			for (ivx = 0, si = si, sc = sc; ivx < pitems.length; ivx++) {
+// // 				//loop 2.5
+// // 				console.log("================ loop 2.5 ===================")
+// // 				objt[pitems[ivx]] = (objt[pitems[ivx]] || 0) + 1;
+// // 			}
+// // 			console.log("================ loop two end===================")
+// // 		}
+// 		//console.log("promotions items and count -->", objt)
+// 			////console.log("selected items and the count ii -->", si, sc, price, dis)
+// 		//var tx = objt
+// 			//console.log("", tx[si]); // value
+// 		var tt = count
+// 		if (sc >= tt) {
+// 			//console.log("selected items and the count ii -->", tt, sc, price, dis)
+// 			//console.log(" pass point");
+// 			// calculate total discounted price
+// 			tdp = (tt * price * dis) / 100
+// 		} else if ($("#bitsInputQty" + si).val() == 0) {
+// 			//console.log("END")
+// 			tdp = 0
+// 		} else {
+// 			tdp = (sc * price * dis) / 100
+// 		}
+// 		console.log("total discount on this item  ===================================================================================================", tdp)
+// 		totalPoints = totalPoints + tdp
+//             				console.log("total points  ===========>", totalPoints)
+// 	});
+// 	//console.log($("#bitsInputQty" + si), tdp)
             				
-}
+// }
 // function cc(val) {
 // 	// loops through valuse to fet each ot the selected ones
 // 	new Promise(function(resolve, reject) {
@@ -934,13 +939,19 @@ function getProdss(orderArrayx, costofItems) {
 }
 bp = 0
 dis = 0
-function buyPromo(promoOder){
+function buyPromo(clicked_id,promoOder){
 	bp = 1
-	promoOder = orderArray
-	console.log("buying promo");
-	console.log($(".bpromo").attr("id"));
-	// loop promos and get the promo items
-	var lipromo = $(".bpromo").attr("id");
+ 	promoOder = orderArray
+// 	var lipromo = $(".bpr").attr("id");
+	var w = clicked_id
+	console.log(clicked_id);
+// 	console.log($(".bpr").attr("id"));
+// 	//console.log($(".bpr").attr("promo"));
+	
+// 	var xx = document.getElementById(lipromo).id;
+	
+// 	var tt = $(".bpr").attr("promo");
+
 	new Promise(function(resolve, reject) {
 		//console.log("this is var t" + t)
 		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
@@ -955,11 +966,18 @@ function buyPromo(promoOder){
 		}
 	}).then(function(r) {
 		var pd = r.promotions;
-		for (var ixi = 0, t = t; ixi < pd.length; ++ixi) {
+
+		for (var ixi = 0; ixi < pd.length; ++ixi) {
 console.log("=============== looping ==============================")
 			var pitems = JSON.parse(pd[ixi].promoItems);
 			 dis = JSON.parse(pd[ixi].discount);
-			console.log(pitems, dis)
+			 var prid = pd[ixi].id;
+			 
+			//console.log(pitems, dis,">>>>>", prid, "....->", "xx...", xx);
+
+//console.log(w , tt , "ww and tt");
+if (prid == w){
+console.log("match");
 			var obj = { };
 			var p = obj
 for (var i = 0, j = pitems.length; i < j; i++) {
@@ -979,9 +997,14 @@ for (var key in p) {
   }
 }
 console.log(promoOder);	
- makeOrder(promoOder);
+ makeOrder(promoOder);	
+}else{ 
+console.log(" no match");
+}
+
 // cop();
 		}
+		
 
 		});
 	//$(".bpromo").attr("id")
