@@ -118,6 +118,18 @@ try {
 						}], true, true);
 					}
 					break;
+				case 'delOrder':
+					var tg = "bits-order-" + dat.oid + "-(" + dat.toLoc+")";
+					var state = dat.state;
+						bitsNotification('Order Delivery', 'order number '+ dat.oid , tg, 'bits/images/Delivered.png', dat.orderImg, [{
+							action: 'locate',
+							title: "Location"
+						},{
+							action: 'cancel',
+							title: "Cancel"
+						}], true, true);
+					
+					break;
 				case 'gotPoints':
 					bitsNotification('You have points ', 'Click to view your balance', 'PointsMsg', 'bits/images/yes.png', 'bits/images/Delivered.png', [{
 						action: '',
