@@ -20,11 +20,10 @@ function serviceOpener() {
 	if (getBitsWinOpt('s') != undefined) {
 		servicePageLoader();
 		if (getBitsOpt('pid') != undefined) {
-			var pi = ".p"+getBitsOpt('pid');
-			var px = JSON.stringify(pi);
-			console.log("pid found",px)
+			
+			console.log("pid found")
 			$(".collapsible-header").trigger( "click" );
-			$(px).trigger( "click" );
+			setTimeout(function(){  $(".p"+getBitsOpt('pid')).trigger( "click" );}, 3000);
 		}
 		if (getBitsOpt('vid') != undefined) {
 			doFetch({
