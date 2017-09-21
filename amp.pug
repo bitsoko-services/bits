@@ -392,7 +392,6 @@ html(⚡='')
      link(rel='preload', href="/bits/?s="+store.id)
   body.testFont
     mixin listpromo(item,title,desc,id)
-              .slide.slides
                 amp-img(src=item, width='400', height='200', layout='responsive', alt=title)
                 amp-fit-text.caption.center(layout='responsive', width='500', height='250')
                   br
@@ -409,6 +408,7 @@ html(⚡='')
                 amp-img.bxshadow.circle(src=item, width='70', height='70', alt=title)
                 .shp
                   a.btn2(href="/bits/?s="+id)  #{title}
+                  br
                   span.sub(class='shpDesc')
                      | #{desc}
    
@@ -443,7 +443,6 @@ html(⚡='')
       <amp-sidebar id="sidebar" layout="nodisplay" side="right">
       <amp-img class="amp-close-image" src="/img/ic_close_black_18dp_2x.png" width="20" height="20" alt="close sidebar" on="tap:sidebar.close" role="button" tabindex="0"></amp-img>
       <ul class="">
-      <li class="mi"><a href="/">Home</a></li>
       <li class="mi"> About us</li>
       <li class="mi">
       <amp-fit-text width="220" height="20" layout="responsive" max-font-size="24">
