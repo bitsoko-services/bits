@@ -472,7 +472,7 @@ html(⚡='')
         amp-carousel(height='300', layout='fixed-height', type='slides')
           div
             // promos
-            unless promos
+            //unless promos
               amp-carousel.z.carousel2(layout='responsive', height='500', width='500', type='slides', autoplay='', delay='4000')
                for promo in promos
                  +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner)
