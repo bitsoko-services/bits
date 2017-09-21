@@ -454,6 +454,18 @@ html(⚡='')
                 +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner)
       .col-3
         // shops
+     mixin listpromo(item,title,desc,id)
+           .slide.slides
+             amp-img(src=item, width='400', height='200', layout='responsive', alt=title)
+             amp-fit-text.caption.center(layout='responsive', width='500', height='250')
+               br
+               span(class='shpNm') #{title}
+               br
+               span(class='shpDesc')
+                 | #{desc}
+                 br
+                 br
+             a.btn(href="https://bitsoko.io/bits/?s="+id) open
     mixin liststore(item,title,desc,id)
           .lst
             amp-img.bxshadow.circle(src=item, width='70', height='70', alt=title)
