@@ -17,6 +17,7 @@ html(⚡='')
         body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
     style(amp-custom='').
       .circle {  border-radius: 50%;}
+      .shp{position: relative; margin-top: -63px; /* float: right; */  margin-left: 27% !important;}
       .x input[type=search], .x input[type=text] {
       position: absolute;
       top: 10px;
@@ -406,9 +407,10 @@ html(⚡='')
         mixin liststore(item,title,desc,id)
               .lst
                 amp-img.bxshadow.circle(src=item, width='70', height='70', alt=title)
-                a.btn2(href="/bits/?s="+id)  #{title}
-                span.sub(class='shpDesc')
-                   | #{desc}
+                .shp
+                  a.btn2(href="/bits/?s="+id)  #{title}
+                  span.sub(class='shpDesc')
+                     | #{desc}
    
    
     amp-font(layout='nodisplay', font-family='Lato', timeout='3000')
