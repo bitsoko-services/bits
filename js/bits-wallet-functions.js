@@ -94,7 +94,7 @@ getUserAd(password,randomSeed,randomSalt).then(function(addresses){
 										//recoverOldWallets(olWals);
 
 				web3Provider = new HookedWeb3Provider({
-					host: "http://127.0.0.1:8545/",
+					host: location.origin+":8545/",
         transaction_signer: global_keystore
 				});
 	
