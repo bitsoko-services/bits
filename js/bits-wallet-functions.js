@@ -104,10 +104,11 @@ getUserAd(password,randomSeed,randomSalt).then(function(addresses){
 				
 			
 				/////////////////////////////////// update exchange rates
-	fetchRates().then(function(e) {
+	 fetchRates().then(function(e) {
 		if (e.status == "ok") {
-		tBal=0;
+			tBal=0;
 			 	 getUserOders(e);
+		$( ".conf-curr" ).html( e.data.baseCd );
 		} else {
 			console.log("error");
 		}
