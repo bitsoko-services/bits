@@ -100,7 +100,7 @@ getUserAd(password,randomSeed,randomSalt).then(function(addresses){
 	
 	
     setTimeout(function(){ 
-	    web3.setProvider(web3Provider);
+	   // web3.setProvider(web3Provider);
 				
 			
 				/////////////////////////////////// update exchange rates
