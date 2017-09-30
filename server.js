@@ -110,6 +110,9 @@ try {
 						}], true, true);
 					} else if (state == 'delivering') {
 						bitsNotification('Order Delivery', 'Your order is being delivered', tg, 'bits/images/Delivered.png', dat.orderImg, [{
+							action: 'open',
+							title: "Open"
+						}, {
 							action: 'cancel',
 							title: "Cancel"
 						}, {
@@ -121,9 +124,12 @@ try {
 				case 'delOrder':
 					var tg = "bits-order-" + dat.oid + "-(" + dat.toLoc+")";
 					var state = dat.state;
-						bitsNotification('Order Delivery', 'order number '+ dat.oid , tg, 'bits/images/Delivered.png', dat.orderImg, [{
+						bitsNotification('New Delivery', 'order number '+ dat.oid , tg, 'bits/images/Delivered.png', dat.orderImg, [{
 							action: 'locate',
 							title: "Location"
+						},{
+							action: 'reject',
+							title: "Reject"
 						},{
 							action: 'cancel',
 							title: "Cancel"
