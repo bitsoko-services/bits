@@ -94,20 +94,21 @@ getUserAd(password,randomSeed,randomSalt).then(function(addresses){
 										//recoverOldWallets(olWals);
 
 				web3Provider = new HookedWeb3Provider({
-					host: "http://127.0.0.1:8545/",
+					host: location.origin+":8545/",
         transaction_signer: global_keystore
 				});
 	
 	
     setTimeout(function(){ 
-	    web3.setProvider(web3Provider);
+	   // web3.setProvider(web3Provider);
 				
 			
 				/////////////////////////////////// update exchange rates
-	fetchRates().then(function(e) {
+	 fetchRates().then(function(e) {
 		if (e.status == "ok") {
-		tBal=0;
+			tBal=0;
 			 	 getUserOders(e);
+		$( ".conf-curr" ).html( e.data.baseCd );
 		} else {
 			console.log("error");
 		}

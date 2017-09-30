@@ -279,12 +279,6 @@ function loadWallet(primWalA){
 
   //updatePromos();
 
-        localConverter().then(function(loCon){
-   $( ".conf-curr" ).html( loCon.symbol );
-          
-        
-    });
-    
 }
 //to functions.js
 function reqLoc(){
@@ -1391,7 +1385,7 @@ if (typeof web3 == 'undefined') {
 
 			function setWeb3Provider(keystore) {
 				var web3Provider = new HookedWeb3Provider({
-					host: "http://127.0.0.1:8545/",
+					host: location.origin+":8545/",
 				});
 				web3.setProvider(web3Provider);
 			}
