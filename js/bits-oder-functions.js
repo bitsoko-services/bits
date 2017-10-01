@@ -127,6 +127,7 @@ console.log(f);
 			
 var i = 0;
 	var tCe = 0;
+	tBal=0;
 while (at[i]) {
    
 
