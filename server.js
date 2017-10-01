@@ -93,9 +93,9 @@ try {
 					break;
 				case 'deliverOrder':
 					var tg = "soko-order-" + dat.oid + "-" + dat.store;
-					bitsNotification('New Order', dat.msg, tg, 'bits/images/yes.png', 'bits/images/Delivered.png', [{
-						action: '',
-						title: "Backed up"
+					bitsNotification('Manage Order', dat.msg, tg, 'bits/images/yes.png', 'bits/images/sokoNewOrder.png', [{
+						action: 'manage',
+						title: "Manage"
 					}], true, true);
 					// bitsNotification('Deliver Order',+dat.msg,'Delivery','bits/images/yes.png','bits/images/Delivered.png',[{action: '', title: "Backed up"}],true,true);
 					break;
@@ -124,7 +124,7 @@ try {
 				case 'delOrder':
 					var tg = "bits-order-" + dat.oid + "-(" + dat.toLoc+")";
 					var state = dat.state;
-						bitsNotification('New Delivery', 'order number '+ dat.oid , tg, 'bits/images/Delivered.png', dat.orderImg, [{
+						bitsNotification('New Delivery', 'order number '+ dat.oid , tg, 'bits/images/deliveryM.png', dat.orderImg, [{
 							action: 'locate',
 							title: "Location"
 						},{
