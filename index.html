@@ -911,35 +911,35 @@
     </script> -->
 	<script>
 	   ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
-	   //   if (bDet.os.name=='Android' && location.hostname=="bitsoko.co.ke"){ 
+	   if (bDet.os.name=='Android' && location.hostname=="bitsoko.co.ke"){ 
 	   // ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
 
-	   // if (bDet.browser.version>=minVersionSup && bDet.browser.name=='Chrome'){ 
-	   //        console.log('compatible'); 
+	   if (bDet.browser.version>=minVersionSup && bDet.browser.name=='Chrome'){ 
+	          console.log('compatible'); 
 	        
-	   //  }else{ 
+	    }else{ 
 	       
-	   //  $('#updateBrowsermodal').openModal({
-	   //       dismissible:false
-	   //  });
+	    $('#updateBrowsermodal').openModal({
+	         dismissible:false
+	    });
 	      
-	   //  } 
+	    } 
 	        
-	   //  }else if (bDet.os.name=='Android'){
+	    }else if (bDet.os.name=='Android'){
 
 	        
-	   //        console.log('uncompatible');      
-	   //                window.location="https://bitsoko.co.ke/soko/"; 
-	   //  }else{
+	          console.log('uncompatible');      
+	                  window.location="https://bitsoko.co.ke/soko/"; 
+	    }else{
 
 	        
-	   //  console.log('uncompatible');     
+	    console.log('uncompatible');     
 	         
-	   //  $('#updateBrowsermodal').openModal({
-	   //       dismissible:false
-	   //  });
+	    $('#updateBrowsermodal').openModal({
+	         dismissible:false
+	    });
 	    
-	   //  }
+	    }
 
 	          
 	   requestPersist();
