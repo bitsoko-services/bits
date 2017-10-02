@@ -970,10 +970,14 @@ function buyPromo(clicked_id,promoOder){
 		for (var ixi = 0; ixi < pd.length; ++ixi) {
 console.log("=============== looping ==============================")
 			var pitems = JSON.parse(pd[ixi].promoItems);
+			var prid = pd[ixi].id;
+			if(clicked_id!=prid){
+				continue;
+			}
 			 dis = JSON.parse(pd[ixi].discount);
-			 var prid = pd[ixi].id;
 			 
-			//console.log(pitems, dis,">>>>>", prid, "....->", "xx...", xx);
+			 
+			console.log("discount",dis);
 
 //console.log(w , tt , "ww and tt");
 if (prid == w){
@@ -1032,6 +1036,7 @@ function cop(costofItems){
 		var g = Math.floor(pe);
 		var kshToKobo = rate / g 
 		totalKobo = kshToKobo
+		$(".star2").removeClass("displayNone");
 		$(".star2content").html( '');
 		$(".star2content").append( Math.floor(pe));
 		console.log(">>>", g, ">>>", rate, ">>>" , kshToKobo);
