@@ -89,11 +89,21 @@ localConverter();
    loadWallet();
 	
 if(checkanon()){
+	 		
+				/////////////////////////////////// update exchange rates
+	 fetchRates().then(function(e) {
+		if (e.status == "ok") {
+			tBal=0;
+			 	 getUserOders(e);
+		$( ".conf-curr" ).html( e.data.baseCd );
+		} else {
+			console.log("error");
+		}
+	});
+	///////////////////////////////////////////////////////////////////////////////////////////////////
 	
-     setTimeout(function(){ 
-walletFunctions(localStorage.getItem('bits-user-name'));
 	
-     }, 1500);
+	
 }
      setTimeout(function(){ 
      
