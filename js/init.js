@@ -79,8 +79,8 @@ function starting(){
 	
 	startGoogle(); 
 	serviceOpener();
-localConverter();
-
+	localConverter();
+	checkmobiveri()
 	togglebuttons();
 	showuser();
 	showlogintoast();

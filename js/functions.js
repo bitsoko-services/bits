@@ -884,7 +884,14 @@ function checkmobiveri() {
 			} else {
 				console.log("mobile phone verified")
 			}
+
+			
 		}
+		if (e.status == "bad") {
+				//$('#MobileModal').openModal();
+				Materialize.toast('Please login and verifiy your mobile number', 2000);
+				return;
+			}
 	})
 }
 
