@@ -75,7 +75,9 @@ function starting(){
    loadWallet();
 	
 if(checkanon()){
-	 		
+	
+	walletFunctions(localStorage.getItem('bits-user-name')).then(function(e){
+	
 				/////////////////////////////////// update exchange rates
 	 fetchRates().then(function(e) {
 		if (e.status == "ok") {
@@ -87,6 +89,9 @@ if(checkanon()){
 		}
 	});
 	///////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	})
+	 		
 	
 	
 	
