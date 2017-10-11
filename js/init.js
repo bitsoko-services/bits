@@ -1,20 +1,6 @@
 function profileLoaded(p){
-
-//save user info
-
-
-		  
-		  doFetch({action:'saveUserDet', user: p.id , data: JSON.stringify(p)}).then(function(e){
-            if (e.status=="ok"){
-              p.bitsokoUserID=e.buid;
-		    $('#useAnon').removeClass('displayNone');
+   $('#useAnon').removeClass('displayNone');
               starting();
-             // walletFunctions(p);
-
-
-         }            
-               
-        });
 
 
 
@@ -79,8 +65,8 @@ function starting(){
 	
 	startGoogle(); 
 	serviceOpener();
-localConverter();
-
+	localConverter();
+	checkmobiveri()
 	togglebuttons();
 	showuser();
 	showlogintoast();
@@ -90,10 +76,25 @@ localConverter();
 	
 if(checkanon()){
 	
-     setTimeout(function(){ 
-walletFunctions(localStorage.getItem('bits-user-name'));
+	walletFunctions(localStorage.getItem('bits-user-name')).then(function(e){
 	
-     }, 1500);
+				/////////////////////////////////// update exchange rates
+	 fetchRates().then(function(e) {
+		if (e.status == "ok") {
+			tBal=0;
+			 	 getUserOders(e);
+		$( ".conf-curr" ).html( e.data.baseCd );
+		} else {
+			console.log("error");
+		}
+	});
+	///////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	})
+	 		
+	
+	
+	
 }
      setTimeout(function(){ 
      

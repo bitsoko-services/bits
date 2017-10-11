@@ -504,9 +504,10 @@ select {
 
 #left-sidebar-nav {
   position: fixed;
-  width: 100px;
+  width: 0px;
   left: 180px;
   z-index: 999;
+  /* top: 100px; */
   height: auto;
 }
 

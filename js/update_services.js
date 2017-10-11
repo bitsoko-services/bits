@@ -45,6 +45,7 @@ function serviceOpener() {
 		$('.bits').css("background-color", "");
 		$('.bits').css("background-color", "#0f5f76");
 		$(".promoHome").removeClass("displayNone");
+		$(".homeTabs").removeClass("displayNone");
 		updatePromos();
 		subscribedPromos();
 	}

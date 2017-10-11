@@ -77,7 +77,8 @@ function subscribedPromos(){
             } 
 	}
 catch(e) {  	console.log("no Promos subscribed")	 
-       $('.promoHolder-home').append('<li onclick="" class="collection-item waves-effect avatar"  style="background-color: inherit; width: 100%;"><img src="images/no.png" alt="" class="circle"><span class="title"><span class="serviceListTitle"> Subscribed Promotions</span></span><p class="serviceListFirstline"> You have not subscribed to any promotions <br class="servicelistSeccondline">  </p><a href="#!" class="secondary-content"></a></li>');
+ $('.promoHolder-home').html('')
+       $('.promoHolder-home').append('<li onclick="" class="collection-item waves-effect avatar"  style="background-color: inherit; width: 100%;"><img src="images/icons/idea.png" alt="" class="circle"><span class="title"><span class="serviceListTitle"> Subscribed Promotions</span></span><p class="serviceListFirstline"> You have not subscribed to any promotions <br class="servicelistSeccondline">  </p><a href="#!" class="secondary-content"></a></li>');
       }
 	}
 	return true 
