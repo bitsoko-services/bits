@@ -4,6 +4,7 @@
     function onLoad() {
       gapi.load('auth2', function() {
         gapi.auth2.init();
+	      gapi.client.load('drive', 'v2', readyDrive); 
       });
     }
  
