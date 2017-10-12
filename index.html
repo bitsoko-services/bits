@@ -1066,7 +1066,7 @@
 	   //
 	   var dReady = Promise.resolve('ok');
 
-	   Promise.all([dReady,indexDbReady]).then(values => { 
+	   Promise.all([dReady,indexDbReady,gDriveReady]).then(values => { 
 	    document.querySelector(".js-push-button-notification").addEventListener('change', function(event) {
 			startPushManager();
 		});
