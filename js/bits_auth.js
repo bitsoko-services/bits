@@ -2,6 +2,7 @@
 // sam@bitsoko.io
 // start function google authentication
     function onLoad() {
+	    alert('LD HR');
       gapi.load('auth2', function() {
         gapi.auth2.init();
 	      //gapi.client.load('drive', 'v2', readyDrive); 
