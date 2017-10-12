@@ -1064,8 +1064,9 @@
 	   // $('#loginModal').modal({ready: function(){
 	   //  startGoogle();
 	   // }});
-	   window.onLoad = function() {
-	   //
+	
+window.addEventListener('load', function () {
+//your code right here;
 		   /*
 	   var dReady = Promise.resolve('ok');
  gapi.load('auth2', function() {
@@ -1151,8 +1152,7 @@ gDriveReady = Promise.race([]);
 	      
 	         
 	    });
-	   };
-
+}, false);
 
 	   // e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
 	   // e.onsuccess = function (event) {
