@@ -1080,7 +1080,17 @@
  
       });
       */
-	   
+		   
+gDriveReady = Promise.race([]);
+	Promise.all([indexDbReady,gDriveReady]).then(values => { 
+	    
+		console.log('test starting');
+	    starting(); 
+	   });
+ 
+	   document.querySelector(".js-push-button-notification").addEventListener('change', function(event) {
+			startPushManager();
+		});
 	   //$(".serviceListHolder").hide();
 	   $(".serviceListCard").hide();
 	   // $('.carousel').carousel();
