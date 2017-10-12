@@ -1,14 +1,7 @@
 // bits_auth handles the google login process and has other functions that depend on login
 // sam@bitsoko.io
 // start function google authentication
-    function onLoad() {
-	    alert('LD HR');
-      gapi.load('auth2', function() {
-        gapi.auth2.init();
-	      //gapi.client.load('drive', 'v2', readyDrive); 
-      });
-    }
- 
+
   function signOut() {
     startGoogle()
     var auth2 = gapi.auth2.getAuthInstance();
