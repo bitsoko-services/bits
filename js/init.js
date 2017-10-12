@@ -63,7 +63,7 @@ Promise.all(allPs).then(olWalss => {
 function starting(){
 	$('#loginModal').closeModal()
 	
-	//startGoogle(); 
+	startGoogle(); 
 	serviceOpener();
 	localConverter();
 	checkmobiveri()
