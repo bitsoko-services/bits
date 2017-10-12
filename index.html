@@ -1070,14 +1070,15 @@
  gapi.load('auth2', function() {
         gapi.auth2.init();
 	      gapi.client.load('drive', 'v2', readyDrive); 
-      });
-	   Promise.all([dReady,indexDbReady,gDriveReady]).then(values => { 
+	Promise.all([dReady,indexDbReady,gDriveReady]).then(values => { 
 	    document.querySelector(".js-push-button-notification").addEventListener('change', function(event) {
 			startPushManager();
 		});
 	    starting(); 
 	   });
-
+ 
+      });
+	   
 	   //$(".serviceListHolder").hide();
 	   $(".serviceListCard").hide();
 	   // $('.carousel').carousel();
