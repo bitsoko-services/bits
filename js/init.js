@@ -573,7 +573,7 @@ function setupDC1() {
 }
 
    // Check if a new cache is available on page load.
-  
+  /*
 window.addEventListener('load', function(e) {
 
      bc.addEventListener('message', function(e) {
@@ -656,7 +656,7 @@ var keyelm=$(this);
   //  bindPlugins();
 }, false);   
 
-
+*/
     function updDetServ(cid,cname,cem,cimg){
       
         $("#serv-panel-content").removeClass('searching');
