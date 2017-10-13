@@ -790,8 +790,12 @@
 	
 	<script src="https://bitsoko.co.ke/bitsAssets/js/google.js">
 	</script>
-	<script src="https://apis.google.com/js/client:platform.js?onload=startGoogle">
-	</script>
+    <script async defer src="https://apis.google.com/js/api.js" 
+      onload="this.onload=function(){startGoogle()};" 
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+	<!--<script src="https://apis.google.com/js/client:platform.js?onload=startGoogle">
+	</script>-->
 	<script async defer src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js">
 	</script> 
 	<script src="https://bitsoko.co.ke/bitsAssets/js/storeManager.js">
@@ -1083,6 +1087,7 @@ window.addEventListener('load', function () {
       */
 		   
 //gDriveReady = Promise.race([]);
+	console.log
 	Promise.all([indexDbReady,gDriveReady]).then(values => { 
 	    
 		console.log('test starting');
