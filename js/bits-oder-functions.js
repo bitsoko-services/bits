@@ -3,19 +3,14 @@ function oid() {
 	if (window.location.hash != undefined) {
 		//check if hash is oid
 		var type = window.location.hash.substr(1);
-		console.log(type)
 			// split the hash
 		var fields = type.split('=');
 		var htpe = fields[0];
 		var hval = fields[1];
-		console.log(htpe)
-		console.log(hval)
 		if (htpe == "oid") {
-			console.log("its an order")
 				//get the shop and the oder details
 			var shop = getBitsWinOpt('s')
 				// oid
-			console.log("this is shop id " + shop + " the oid is " + hval)
 			$(".otitle").html("");
 			$(".otitle").append("Your Order");
 			$(".of").html("");
@@ -24,16 +19,13 @@ function oid() {
 			od.onsuccess = function(event) {
 				try {
 					var odData = JSON.parse(event.target.result);
-					console.log(odData)
 					for (var ii = 0; ii < odData.length; ++ii) {
 						var xx = odData[ii].items
 						var xid = odData[ii].id
-						console.log(xid, xx)
 							//makeOrder(products)
 							// match oid to url id
 						var urloid = getBitsOpt("oid")
 						if (urloid == xid) {
-							console.log("match")
 							makeOrder(JSON.parse(xx), odData[ii].location)
 						} else {
 							console.log("no match")
@@ -50,15 +42,12 @@ function oid() {
 }
 
 function getUserOders(f) {
-	// convert points to KOBO
-	console.log(f);
+	
 		doFetch({
 		action: 'getAllOrders',
 		uid: localStorage.getItem("bits-user-name")
 	}).then(function(e) {
-	console.log(f);
 		if (e.status == "ok") {
-			console.log(e.data)
 			xx = e.data;
 			//var earnedPoints = 0;
 
@@ -72,7 +61,6 @@ allTokens[ii].totalEarned=0;
 				try {
 					var typeofCoin = JSON.parse(items).coin;
 				} catch (err) {
-					console.log('this order does not have any rewards');
 					continue;
 				}
 				try {
@@ -90,7 +78,6 @@ allTokens[ii].totalEarned=0;
 						var deliveryPoints = 0;
 					}
 				} catch (err) {
-					console.log('this order does not have any delivery rewards');
 					var deliveryPoints = 0;
 				}
 				//console.log(typeofCoin, allTokens[typeofCoin].totalEarned, purchasePoints, deliveryPoints);
@@ -119,8 +106,6 @@ allTokens[ii].totalEarned=0;
 // 		var gtod = localStorage.getItem('bits-user-orders-'+localStorage.getItem("bits-user-name"));
 //
 function updateEarnedTokens(f){
-console.log(f);
-	
 			
 			$('.coinlist').html('');
 			var at=allTokens['allTokens'];
@@ -140,11 +125,10 @@ while (at[i]) {
 				var qq = rate * f.data.baseEx;
 				var xx = qq.toFixed(2);
 				var tA=allTokens[coinName].totalEarned+(allTokens[coinName].balance/Math.pow(10,allTokens[coinName].decimals));
-	console.log(tA,allTokens[coinName].totalEarned,allTokens[coinName].balance);
 				if(tA>0){
 				   //only display the coin if the user has a balance
-				$('.coinlist').append('<span><div  class="coinImg" style=" position: absolute  ;margin-top: 5px;"><img src="/bitsAssets/images/currencies/'+coinName+'.png" alt="" style=" padding-left: 12px; height:30px;"></div><a href="" class="" class="" onclick=""><span style=" padding-left: 42px; text-transform: capitalize; ">'+coinName+'</span><span class="coin-'+coinName+'-bal" style=" float:right; line-height: 3.3;"></span></a></span>')
-				$('.coin-'+coinName+'-bal').html('').append(tA.toFixed(2));
+				$('.coinlist').append('<span><div  class="coinImg" style=" position: absolute  ;margin-top: 5px;"><img src="/bitsAssets/images/currencies/'+coinName+'.png" alt="" style=" padding-left: 12px; height:30px;"></div><a href="" class="" class="" onclick=""><span style=" padding-left: 42px; text-transform: capitalize; ">'+coinName+'</span><span class="coin-'+coinName+'-bal" style=" float:right; line-height: 3.3;position: absolute;right: 15px;"></span></a></span>')
+				$('.coin-'+coinName+'-bal').html('').append(tA.toFixed(5));
 					
 				   }
 				$('.coin-'+coinName+'-xrate').html('').append('1 '+coinName+' = ' + xx + ' '+f.data.baseCd);

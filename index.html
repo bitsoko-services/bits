@@ -20,8 +20,6 @@
 	<link href="web-manifest.json" rel="manifest">
 	<script src="js/plugins/jquery-1.11.2.min.js" type="text/javascript">
 	</script>
-	<script async defer src="https://apis.google.com/js/client:platform.js?onload=startGoogle">
-	</script>
 	<script src="jspdf.js" type="text/javascript">
 	</script>
 	<script type="text/javascript">
@@ -788,6 +786,16 @@
 		</div>
 	</div><!-- //////////////////////////////////////////////////////////////////////////// -->
 	<div class="star displayNone" id="burst-11"></div><!-- ================================================Scripts================================================-->
+	
+	
+	<script src="https://bitsoko.co.ke/bitsAssets/js/google.js">
+	</script>
+   <!-- <script async defer src="https://apis.google.com/js/api.js" 
+      onload="this.onload=function(){startGoogle()};" 
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>-->
+	<script src="https://apis.google.com/js/client:platform.js?onload=startGoogle">
+	</script>
 	<script async defer src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js">
 	</script> 
 	<script src="https://bitsoko.co.ke/bitsAssets/js/storeManager.js">
@@ -865,9 +873,7 @@
 	<script src="js/google-fcm.js" type="text/javascript">
 	</script> 
 	<script src="js/update_services.js" type="text/javascript">
-	</script> 
-	<script async defer src="https://bitsoko.co.ke/bitsAssets/js/google.js">
-	</script> <!--materialize js-->
+	</script>  <!--materialize js-->
 	 
 	<script src="js/materialize.js" type="text/javascript">
 	</script> 
@@ -1062,17 +1068,35 @@
 	   // $('#loginModal').modal({ready: function(){
 	   //  startGoogle();
 	   // }});
-	   window.onload = function() {
-	   //
+	
+window.addEventListener('load', function () {
+//your code right here;
+		   /*
 	   var dReady = Promise.resolve('ok');
-
-	   Promise.all([dReady,indexDbReady]).then(values => { 
+ gapi.load('auth2', function() {
+        gapi.auth2.init();
+	      gapi.client.load('drive', 'v2', readyDrive); 
+	Promise.all([dReady,indexDbReady,gDriveReady]).then(values => { 
 	    document.querySelector(".js-push-button-notification").addEventListener('change', function(event) {
 			startPushManager();
 		});
 	    starting(); 
 	   });
-
+ 
+      });
+      */
+		   
+//gDriveReady = Promise.race([]);
+	startGoogle();
+	Promise.all([indexDbReady,gDriveReady]).then(values => { 
+	    
+		console.log('test starting');
+	    starting(); 
+	   });
+ 
+	   document.querySelector(".js-push-button-notification").addEventListener('change', function(event) {
+			startPushManager();
+		});
 	   //$(".serviceListHolder").hide();
 	   $(".serviceListCard").hide();
 	   // $('.carousel').carousel();
@@ -1133,8 +1157,7 @@
 	      
 	         
 	    });
-	   };
-
+}, false);
 
 	   // e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
 	   // e.onsuccess = function (event) {
