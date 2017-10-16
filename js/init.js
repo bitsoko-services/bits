@@ -76,7 +76,7 @@ function starting(){
 	
 if(checkanon()){
 	
-	walletFunctions(localStorage.getItem('bits-user-name')).then(function(e){
+	walletFunctions(localStorage.getItem('bits-user')).then(function(e){
 	
 				/////////////////////////////////// update exchange rates
 	 fetchRates().then(function(e) {
