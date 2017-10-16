@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try {
-	bitsVersion = 629;
+	bitsVersion = 630;
 	// 	importScripts('https://bitsoko.co.ke/bitsAssets/js/lightwallet/lightwallet.min.js');
 	// 	importScripts('https://bitsoko.co.ke/bitsAssets/js/web3/web3.js');
 	// 	importScripts('https://bitsoko.co.ke/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js');
@@ -100,6 +100,14 @@ try {
 					// bitsNotification('Deliver Order',+dat.msg,'Delivery','bits/images/yes.png','bits/images/Delivered.png',[{action: '', title: "Backed up"}],true,true);
 					break;
 					// get notifications when you request for services eg delivery
+				case 'marketTrade':
+					var tg = "tokenMarket-order-" + dat.oid;
+					bitsNotification('Complete Trade', dat.msg, tg, 'bits/images/yes.png', 'bits/images/sokoNewOrder.png', [{
+						action: 'tOrder',
+						title: "tOrder"
+					}], true, true);
+					// bitsNotification('Deliver Order',+dat.msg,'Delivery','bits/images/yes.png','bits/images/Delivered.png',[{action: '', title: "Backed up"}],true,true);
+					break;
 				case 'userOrder':
 					var tg = "bits-order-" + dat.oid + "-" + dat.store;
 					var state = dat.state;
