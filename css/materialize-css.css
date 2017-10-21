@@ -3003,7 +3003,7 @@ td, th {
 
 .collection {
   margin: 0.5rem 0 1rem 0;
-  border: 1px solid #e0e0e0;
+  /* border: 1px solid #e0e0e0; */
   border-radius: 2px;
   overflow: hidden;
   position: relative;
@@ -5940,7 +5940,7 @@ input[type=search],
 textarea.materialize-textarea {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #ffffff;
+  border-bottom: 1px solid rgba(1, 1, 1, 0.31);
   border-radius: 0;
   outline: none;
   height: 3rem;

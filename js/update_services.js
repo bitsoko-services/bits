@@ -20,15 +20,24 @@ function serviceOpener() {
 	if (getBitsWinOpt('s') != undefined) {
 		servicePageLoader();
 		if (getBitsOpt('pid') != undefined) {
-			
-			console.log("pid found")
+			var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
+		svReq.onsuccess = function(event) {
+			try {
+				var x =JSON.parse(event.target.result)
+				//console.log()
+				console.log("pid found")
 			$(".collapsible-header").trigger( "click" );
 			setTimeout(function(){  $(".p"+getBitsOpt('pid')).trigger( "click" );}, 1000);
 			setTimeout(function(){var clid = getBitsOpt('pid');
-			$(".materialbox-caption").css('height','150px').css('margin-bottom','50px').html( '<span style="font-size: 14px;">shopname</span><br><span  style="font-size: 12px;">shopdesc</span><br><a onclick="buyPromo(clid)" id="267" class="bpr btn-floating  bits waves-effect waves-light btn" style="font-size: 11px; padding: 2px; background-color: rgb(15, 95, 118);">Buy</a>' );
+			$(".materialbox-caption").css('height','150px').css('margin-bottom','50px').html( '<span style="font-size: 14px;">'+x.name+'</span><br><span  style="font-size: 12px;">'+x.description+'</span><br><a onclick="buyPromo('+getBitsOpt('pid')+')" id="267" class="bpr btn-floating  bits waves-effect waves-light btn" style="font-size: 11px; padding: 2px; background-color: rgb(15, 95, 118);">Buy</a>' );
 		
 
-		}, 1000);}
+		}, 1000);
+			} catch (err) {
+				console.log('service not found in db. perhaps try loading from server AGAIN!!')
+			}
+		};
+			}
 		if (getBitsOpt('vid') != undefined) {
 			doFetch({
 				action: 'addVisit',
