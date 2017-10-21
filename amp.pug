@@ -402,14 +402,14 @@ html(⚡='')
             br
            a.btn(href="/bits/?s="+id) open
 
-        mixin liststore(item,title,desc,id)
-               .lst
-                amp-img.bxshadow.circle(src=item, width='70', height='70', alt=title)
-                .shp
-                  a.btn2(href="/bits/?s="+id)  #{title}
-                  br
-                  span.sub(class='shpDesc')
-                     | #{desc}
+    mixin liststore(item,title,desc,id)
+           .lst
+            amp-img.bxshadow.circle(src=item, width='70', height='70', alt=title)
+            .shp
+              a.btn2(href="/bits/?s="+id)  #{title}
+              br
+              span.sub(class='shpDesc')
+                 | #{desc}
    
    
     amp-font(layout='nodisplay', font-family='Lato', timeout='3000')
