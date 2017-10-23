@@ -178,6 +178,9 @@ html(⚡='')
       .red-box {
       background: red;
       }
+      html,body,.cont-col {
+      height:100%!important;
+      }
       .fixed {
       position: relative;
       }
@@ -457,7 +460,7 @@ html(⚡='')
       </li>
       </ul>
       </amp-sidebar>
-    .row
+    .row.cont-col
       .col-9.x
         form(method='GET', action='#', target='_top')
           input(name='search', type='search', placeholder='Search')
