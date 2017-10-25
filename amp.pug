@@ -475,32 +475,18 @@ html(⚡='')
               li.mi Contact us
               li.mi Sign in
         #closemenu ×
-    // ## Basic Usage
-    //
-      The `amp-sidebar` should be a direct child of the `<body>`. It must have a layout of `nodisplay`. The`amp-sidebar` may not contain any AMP Elements except for `amp-accordion`, `amp-img` and `amp-fit-text`. `amp-fit-text` expands or shrinks its font size to fit the content within the space given to in the menu.
-    //
-      <amp-sidebar id="sidebar" layout="nodisplay" side="right">
-      <amp-img class="amp-close-image" src="/img/ic_close_black_18dp_2x.png" width="20" height="20" alt="close sidebar" on="tap:sidebar.close" role="button" tabindex="0"></amp-img>
-      <ul class="">
-      <li class="mi"> About us</li>
-      <li class="mi">
-      <amp-fit-text width="220" height="20" layout="responsive" max-font-size="24">
-      Contact us
-      </amp-fit-text>
-      </li>
-      <li class="mi">
-      <amp-fit-text width="220" height="20" layout="responsive" max-font-size="24">
-      Sign in
-      </amp-fit-text>
-      </li>
-      </ul>
-      </amp-sidebar>
     .row.cont-col
       .col-12.x
         div.home-header
         form(method='GET', action='#', target='_top')
           input(name='search', type='search', placeholder='Search')
           input(type='submit', value='')
-        .col-6 Our products & Services
-        .col-6 Connect with us
+        amp-carousel(height='300', layout='fixed-height', type='slides')		
+             for promo in promos		
+              +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner,promo.discount)		
+          .col-3		
+             for store in stores		
+              +liststore(store.banner,store.name,store.desc,store.id)		
+         .col-6 Our products & Services		
+         .col-6 Connect with us
     // A good use case for `amp-carousel` are image galleries, [here](/advanced/image_galleries_with_amp-carousel/) are some examples.
