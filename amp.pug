@@ -87,6 +87,13 @@ html(⚡='')
       .home-header {
       width: 100%;
       height: 50%;
+      text-align:center;
+      }
+      .home-title {
+      position: relative;
+      top: 180px;
+      font-size: 300%;
+      text-transform: uppercase;
       }
       input {
       -webkit-appearance: textfield;
@@ -459,9 +466,7 @@ html(⚡='')
    
     amp-font(layout='nodisplay', font-family='Lato', timeout='3000')
     header.ampstart-headerbar.fixed.flex.justify-start.items-center.top-0.left-0.right-0.pl2.pr4
-      a.my0.mx-auto(href='/')
-          | #{name}
-          amp-img.bxshadow.b.circle(src=img, height='70', width='70', alt='')
+      amp-img.bxshadow.b.circle(src=img, height='70', width='70', alt='')
       //
         <div class="fullnav fnav">
         Home | About us | Contacts | Sign in
@@ -480,6 +485,8 @@ html(⚡='')
     .row.cont-col
       .col-12.x
         div.home-header
+         div.home-title
+          | #{name}
         form(method='GET', action='#', target='_top')
           input(name='search', type='search', placeholder='Search')
           input(type='submit', value='')
