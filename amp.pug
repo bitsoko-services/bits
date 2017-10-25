@@ -309,7 +309,22 @@ html(⚡='')
       display: block;
       }
       }
-      @media only screen and (min-width: 720px) {  /* 720px */
+      
+      amp-carousel {
+      height: 300px;
+    float: right;
+    margin-top: 50px;
+    width: 100%;
+      }
+      @media only screen and (min-width: 720px) { 
+      
+      /* 720px */
+      amp-carousel {
+      height: 300px;
+    float: right;
+    margin-top: 50px;
+    width: 60%;
+      }
       .fullnav {
       display: none;
       }
@@ -323,7 +338,7 @@ html(⚡='')
       width: 12.66%;
       }
       .col-3 {
-      width: 21%;
+      width: 35%;
       }
       .col-4 {
       width: 29.33%;
@@ -463,7 +478,7 @@ html(⚡='')
       </ul>
       </amp-sidebar>
     .row.cont-col
-      .col-9.x
+      .col-12.x
         form(method='GET', action='#', target='_top')
           input(name='search', type='search', placeholder='Search')
           input(type='submit', value='')
