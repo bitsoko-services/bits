@@ -46,6 +46,15 @@ html(⚡='')
       header {
       background: #efefef;
       }
+      amp-fit-text {
+      position: absolute;
+      top: 0px;
+      height: 100%;
+      width: 30%;
+      right: 0px;
+      z-index: 100000;
+      background: rgba(255, 255, 255, 0.85);
+      }
       .x input[type=submit] {
       position: relative;
       right: 10%;
@@ -450,13 +459,13 @@ html(⚡='')
            div
             amp-img(src=item, width='400', height='200', layout='responsive', alt=title)
             amp-fit-text.caption.center(layout='responsive', width='500', height='250')
-            span(class='shpNm') #{title}
-            br
-            span(class='shpDesc')
-             | #{desc}
+             span(class='shpNm') #{title}
              br
-             br
-            a.btn(href="/bits/?s="+id) open
+             span(class='shpDesc')
+              | #{desc}
+              br
+              br
+             a.btn(href="/bits/?s="+id) open
 
     mixin liststore(item,title,desc,id)
            .lst
