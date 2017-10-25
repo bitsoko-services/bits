@@ -147,6 +147,10 @@ html(⚡='')
       .cont-col{
       margin-top: 0px;
       }
+      .col-3{
+      height: calc(50% - 150px)!important;
+      overflow: scroll;
+      }
       .blue-box, .red-box, .green-box {
       width: 100%;
       height: 280px;
@@ -509,7 +513,6 @@ html(⚡='')
         .col-3
            for store in stores
             +liststore(store.banner,store.name,store.desc,store.id)
-      .row.shado
-      .col-6 Our products & Services
-      .col-6 Connect with us
+       .col-6 Our products & Services
+       .col-6 Connect with us
     // A good use case for `amp-carousel` are image galleries, [here](/advanced/image_galleries_with_amp-carousel/) are some examples.
