@@ -10,12 +10,7 @@ function updatePromos(){
            if (e.status=="ok"){
            	console.log(e.promotions.length)
            	 for(var ii = 0; ii < e.promotions.length; ++ii) { var dailyCost=(parseInt(e.promotions[ii].discount)/100)*e.promotions[ii].promoPrice;
-$('.nearbypromoHolder').append('<li class="promoHome  col s12 m6 l4 avatar bits-max promo-collection">'+'<a href="/bits/?s='+e.promotions[ii].owner+'#pid='+e.promotions[ii].id+'"><img src="https://bitsoko.co.ke'+e.promotions[ii].customImagePath+'" data-caption="'+e.promotions[ii].name+'" alt="'+e.promotions[ii].promoDesc+'" class="materialboxed promoHome"><div class="product-card">'+
-'<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+e.promotions[ii].name+' </span></span>'+
-// '<p class="serviceListFirstline"><span class="bits-badge bits left" style="margin-left: 20px;">'+Math.ceil(dailyCost)+'<span class="localCurr">Ksh</span> daily</span></p>
-// '<span class="secondary-content"></span>'+'<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"></i> '+
-// '<span style="" class="promoSubState-'+e.promotions[ii].id+'"> Not Subscribed</span> <label> <input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+e.promotions[ii].id+'" class="promoSubButton promoSubButton-'+e.promotions[ii].id+'" style="background: rgb(128, 210, 147);"><span style="margin-top:2px;" class="lever right"></span></label>'+
-'</div></a></li> ');
+$('.nearbypromoHolder').append('<div class ="promoHome  col s12 m6 l4 bits-max promo-collection card horizontal"><div class="card-image"><img src="https://bitsoko.co.ke' + e.promotions[ii].customImagePath + '" data-caption="' + e.promotions[ii].name + '" alt="' + e.promotions[ii].msg + '" class="materialboxed promoHome"></div><div class="card-stacked"><div class="card-content"><p><h5>' + e.promotions[ii].name + '</h5>' + e.promotions[ii].msg + '</p></div><div class="card-action"> <a href="/bits/?s=' + e.promotions[ii].owner + '#pid=' + e.promotions[ii].id + '">Buy Promotion </a>  </div> </div></div>');
  
              };
              
