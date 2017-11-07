@@ -349,6 +349,7 @@ function makeOrder(orderArrayy, orderLoc) {
 				});
 				document.getElementById("ConfirmO").addEventListener("click", function() {
 					$("#products").html("")
+					transferTokenValue('0x','bits',200).then(function(res){console.log(res)}).catch(function(err){console.log(err)})
 					doFetch({
 						action: 'makeOrder',
 						data: orderArrayy,
@@ -356,7 +357,7 @@ function makeOrder(orderArrayy, orderLoc) {
 						loc: e.coords.latitude + ',' + e.coords.longitude,
 						user: localStorage.getItem("bits-user-name"),
 						pointsEarned: {
-							"coin": "kobo",
+							"coin": "bits",
 							"purchase": totalKobo
 						},
 						service: parseInt(getBitsWinOpt('s'))
@@ -1039,7 +1040,7 @@ function cop(costofItems){
 		var pe = (costofItems * dis)/100
 		
 		
-		var rate = allTokens['kobo'].rate;
+		var rate = allTokens['bits'].rate;
 		var g = Math.floor(pe);
 		var kshToKobo = rate / g 
 		totalKobo = kshToKobo

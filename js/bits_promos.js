@@ -10,7 +10,7 @@ function updatePromos(){
            if (e.status=="ok"){
            	console.log(e.promotions.length)
            	 for(var ii = 0; ii < e.promotions.length; ++ii) { var dailyCost=(parseInt(e.promotions[ii].discount)/100)*e.promotions[ii].promoPrice;
-$('.nearbypromoHolder').append('<div class ="promoHome  col s12 m6 l4 bits-max promo-collection card horizontal"><div class="card-image"><img src="https://bitsoko.co.ke' + e.promotions[ii].customImagePath + '" data-caption="' + e.promotions[ii].name + '" alt="' + e.promotions[ii].msg + '" class="materialboxed promoHome"></div><div class="card-stacked"><div class="card-content"><p><h5>' + e.promotions[ii].name + '</h5>' + e.promotions[ii].msg + '</p></div><div class="card-action"> <a href="/bits/?s=' + e.promotions[ii].owner + '#pid=' + e.promotions[ii].id + '">Buy Promotion </a>  </div> </div></div>');
+$('.nearbypromoHolder').append('<div class ="promoHome  col s12 m6 l4 bits-max promo-collection card horizontal"><div class="card-image"><img src="https://bitsoko.co.ke' + e.promotions[ii].customImagePath + '" data-caption="' + e.promotions[ii].name + '" alt="' + e.promotions[ii].msg + '" class="materialboxed promoHome"></div><div class="card-stacked"><div class="card-content"><p><h5>' + e.promotions[ii].name + '</h5>' + e.promotions[ii].msg + '</p></div><div class="card-action"><span><i class="material-icons" style="font-size: 15px;">share</i> <i class="material-icons" style="font-size:15px;">thumb_up</i></span><a href="/bits/?s=' + e.promotions[ii].owner + '#pid=' + e.promotions[ii].id + '"class ="right"> <i class="material-icons" style="font-size:15px;">add_shopping_cart</i>Buy </a>  </div> </div></div>');
  
              };
              
