@@ -28,9 +28,7 @@ line-height:2px!important;
 }
 
 
-.profile-image{
-padding-top: 20px;
-}
+.profile-image{/* padding-top: 20px; */}
 
 .collapsible-header:after {
    color: #ffffff !important;

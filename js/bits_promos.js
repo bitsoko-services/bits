@@ -10,8 +10,33 @@ function updatePromos(){
            if (e.status=="ok"){
            	console.log(e.promotions.length)
            	 for(var ii = 0; ii < e.promotions.length; ++ii) { var dailyCost=(parseInt(e.promotions[ii].discount)/100)*e.promotions[ii].promoPrice;
-$('.nearbypromoHolder').append('<div class ="promoHome  col s12 m6 l4 bits-max promo-collection card horizontal"><div class="card-image"><img src="https://bitsoko.co.ke' + e.promotions[ii].customImagePath + '" data-caption="' + e.promotions[ii].name + '" alt="' + e.promotions[ii].msg + '" class="materialboxed promoHome"></div><div class="card-stacked"><div class="card-content"><p><h5>' + e.promotions[ii].name + '</h5>' + e.promotions[ii].msg + '</p></div><div class="card-action"><span><i class="material-icons" style="font-size: 15px;">share</i> <i class="material-icons" style="font-size:15px;">thumb_up</i></span><a href="/bits/?s=' + e.promotions[ii].owner + '#pid=' + e.promotions[ii].id + '"class ="right"> <i class="material-icons" style="font-size:15px;">add_shopping_cart</i>Buy </a>  </div> </div></div>');
- 
+var owner = e.promotions[ii].ownerName 
+surl = '/bits/?s=' + e.promotions[ii].owner + '#pid=' + e.promotions[ii].id + ''
+console.log("shareURL", surl)
+$('.nearbypromoHolder').append('<div class ="promoHome  col s12 m6 l4 bits-max promo-collection card horizontal"><div class="card-image"><img src="https://bitsoko.co.ke' + e.promotions[ii].customImagePath + '" data-caption="' + e.promotions[ii].name + '" alt="' + e.promotions[ii].msg + '" class="materialboxed promoHome"></div><div class="card-stacked"><div class="card-content"><p><h5 style="font-size: 16px;">' + e.promotions[ii].name + '</h5><span style="font-size: 14px;"> at ' + e.promotions[ii].ownerName + '</span><br><span style="font-size: 13px;">' + e.promotions[ii].msg + '</span></p></div><div class="card-action"><span><button id="shareThis" value="Share" class="btn-floating" style="width: 30px; height: 30px; font-size: 10px !important;"><i class="material-icons" style="font-size: 15px; line-height: 30px;">share</i></button><button id="" value="" class="btn-floating" style="width: 30px; height: 30px;  font-size: 10px !important;"><i class="material-icons" style="font-size: 15px;line-height: 30px;">thumb_up</i></button></span><a href="/bits/?s=' + e.promotions[ii].owner + '#pid=' + e.promotions[ii].id + '"class ="right"> Buy </a>  </div> </div></div>');
+ var shareButton = document.getElementById('shareThis');
+var supported = document.getElementById('support');
+
+// Listen for any clicks
+shareButton.addEventListener('click', function (ev) {
+  // Check if the current browser supports the Web Share API
+  if (navigator.share !== undefined) {
+
+    // Get the canonical URL from the link tag
+    var shareUrl = document.querySelector('link[rel=canonical]') ? document.querySelector('link[rel=canonical]').href : window.location.href+surl;
+
+    // Share it!
+    navigator.share({
+      title: document.title,
+      url: shareUrl
+    }).then(() => console.log('Successful share'))
+      .catch((error) => console.log('Error sharing:', error));
+
+    ev.preventDefault();
+  } else {
+    supported.innerHTML = "Unfortunately, this feature is not supported on your browser";
+  }
+});
              };
              
         console.log(e);
@@ -79,3 +104,4 @@ catch(e) {  	console.log("no Promos subscribed")
 }
 
 //------------------------------------------my promos end-----------------------------------------------------------------------------------------
+
