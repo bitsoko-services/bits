@@ -18,6 +18,37 @@ aside>ul{
   left: -250px !important;
   }*/
 /*--------------------------------custom toast------------------------------------------------------------------------   */
+#burst-13 {
+    background: #dabb12;
+    width: 35px;
+    font-size: 20px;
+    font-weight: bold;
+    height: 35px;
+    position: relative;
+    text-align: center;
+    overflow: inherit;
+    /* background-color: rgb(0, 201, 247); */
+    margin-left: 12px;
+    margin-top: -45px;
+    color: white;
+}
+
+
+.star13 {
+    width: 100px;
+    height: 100px;
+    background: #ddbb06;
+    margin-top: -115px;
+    margin-left: 2% !important;
+    z-index: 1000;
+    position: absolute;
+    top: 52px;
+    z-index: 120 px;
+}
+
+
+
+
 .user-details > .side-nav .fixed a {
 line-height:2px!important;
 }

@@ -11,9 +11,8 @@ function updatePromos(){
            	console.log(e.promotions.length)
            	 for(var ii = 0; ii < e.promotions.length; ++ii) { var dailyCost=(parseInt(e.promotions[ii].discount)/100)*e.promotions[ii].promoPrice;
 var owner = e.promotions[ii].ownerName 
-surl = '?s=' + e.promotions[ii].owner + '#pid=' + e.promotions[ii].id + ''
-console.log("shareURL", surl)
-$('.nearbypromoHolder').append('<div class ="promoHome  col s12 m6 l4 bits-max promo-collection card horizontal"><div class="card-image"><img src="https://bitsoko.co.ke' + e.promotions[ii].customImagePath + '" data-caption="' + e.promotions[ii].name + '" alt="' + e.promotions[ii].msg + '" class="materialboxed promoHome"></div><div class="card-stacked" style="margin-left: 2%;"><div class="card-content"><p><h5 style="font-size: 16px;">' + e.promotions[ii].name + '</h5><span style="font-size: 14px;"> at ' + e.promotions[ii].ownerName + '</span><br><span style="font-size: 13px;">' + e.promotions[ii].msg + '</span></p></div><div class="card-action"><span><span id="shareThis" value="Share" class="" style="width: 30px; height: 30px; font-size: 10px !important;"><i class="material-icons" style="font-size: 15px; ">share</i></span>&nbsp;&nbsp; &nbsp;<span id="" value="" class="" style="margin-left: 20%; width: 30px; height: 30px;  font-size: 10px !important;"><i class="material-icons" style="font-size: 15px;">thumb_up</i></span></span><a href="/bits/?s=' + e.promotions[ii].owner + '#pid=' + e.promotions[ii].id + '"class ="right"> Buy </a>  </div> </div></div>');
+//console.log("shareURL", surl)
+$('.nearbypromoHolder').append('<div class ="promoHome  col s12 m6 l4 bits-max promo-collection card horizontal"><div class="card-image"><div class="star13 " id="burst-11"></div><img src="https://bitsoko.co.ke' + e.promotions[ii].customImagePath + '" data-caption="' + e.promotions[ii].name + '" alt="' + e.promotions[ii].msg + '" class="materialboxed promoHome"></div><div class="card-stacked" style="margin-left: 2%;"><div class="card-content"><p><h5 style="font-size: 16px;">' + e.promotions[ii].name + '</h5><span style="font-size: 14px;"> at ' + e.promotions[ii].ownerName + '</span><br><span style="font-size: 13px;">' + e.promotions[ii].msg + '</span></p></div><div class="card-action"><span><span id="shareThis" value="Share" class="" style="width: 30px; height: 30px; font-size: 10px !important;"><i class="material-icons" style="font-size: 15px; ">share</i></span>&nbsp;&nbsp; &nbsp;<span id="" value="" class="" style="margin-left: 20%; width: 30px; height: 30px;  font-size: 10px !important;"><i class="material-icons" style="font-size: 15px;">thumb_up</i></span></span><a href="/bits/?s=' + e.promotions[ii].owner + '#pid=' + e.promotions[ii].id + '"class ="right"> Buy </a>  </div> </div></div>');
  var shareButton = document.getElementById('shareThis');
 var supported = document.getElementById('support');
 
@@ -23,13 +22,32 @@ shareButton.addEventListener('click', function (ev) {
   if (navigator.share !== undefined) {
 
     // Get the canonical URL from the link tag
-    var shareUrl = document.querySelector('link[rel=canonical]') ? document.querySelector('link[rel=canonical]').href : window.location.href+surl;
+    var shareUrl = document.querySelector('link[rel=canonical]') ? document.querySelector('link[rel=canonical]').href : window.location.href+'?s=' + e.promotions[ii].owner + '#pid=' + e.promotions[ii].id + '';
+doFetch({
+		action: 'sharePromo',
+		url: shareUrl,
+		user: localStorage.getItem("bits-user-name"),
+		service: e.promotions[ii].owner
+	}).then(function(s) {
+		if (s.status == "ok") {
+			// $('#ratingId').val("");
+			//$('#textareaRating').val("");
+			swal("success!", "sharePromo sent!", "success")
+		} else {
+			swal("Cancelled", "sharePromo not sent", "error");
+		}
+	});
 
     // Share it!
     navigator.share({
       title: document.title,
       url: shareUrl
-    }).then(() => console.log('Successful share'))
+    }).then(() => console.log('Successful share')
+
+
+
+
+    )
       .catch((error) => console.log('Error sharing:', error));
 
     ev.preventDefault();
@@ -105,3 +123,6 @@ catch(e) {  	console.log("no Promos subscribed")
 
 //------------------------------------------my promos end-----------------------------------------------------------------------------------------
 
+function sharePromo() {
+	
+}
