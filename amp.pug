@@ -514,9 +514,9 @@ html(⚡='')
         form(method='GET', action='#', target='_top')
           input(name='search', type='search', placeholder='Search')
           input(type='submit', value='')
-        div		
-             for store in stores		
-              +liststore(store.banner,store.name,store.desc,store.id)	
+        .col-12		
+           for store in stores		
+            +liststore(store.banner,store.name,store.desc,store.id)	
         amp-carousel(height='300', layout='fixed-height', type='slides', autoplay='true', delay='4000')
           unless promos
              for promo in promos
