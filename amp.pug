@@ -515,7 +515,7 @@ html(⚡='')
           input(name='search', type='search', placeholder='Search')
           input(type='submit', value='')
         .col-6
-        amp-carousel(height='300', layout='fixed-height', type='slides', autoplay='true', delay='4000')
+         amp-carousel(height='300', layout='fixed-height', type='slides', autoplay='true', delay='4000')
           unless promos
              for promo in promos
               +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner,promo.discount)
