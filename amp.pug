@@ -494,10 +494,6 @@ html(⚡='')
     amp-font(layout='nodisplay', font-family='Lato', timeout='3000')
     header.ampstart-headerbar.fixed.flex.justify-start.items-center.top-0.left-0.right-0.pl2.pr4
       amp-img.bxshadow.b.circle(src=img, height='70', width='70', alt='')
-      //
-        <div class="fullnav fnav">
-        Home | About us | Contacts | Sign in
-        </div>
       nav.mobilelnav
         ul
           li
@@ -505,7 +501,6 @@ html(⚡='')
             ul.nopadding
               li.mi
                 a(href='/') Home
-              // <li class="mi"> About us</li>
               li.mi Contact us
               li.mi Sign in
         #closemenu ×
@@ -520,7 +515,7 @@ html(⚡='')
           input(name='search', type='search', placeholder='Search')
           input(type='submit', value='')
         amp-carousel(height='300', layout='fixed-height', type='slides', autoplay='true', delay='4000')
-          if !promos
+          unless promos
              for promo in promos
               +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner,promo.discount)
           .col-3		
