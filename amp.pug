@@ -514,11 +514,12 @@ html(⚡='')
         form(method='GET', action='#', target='_top')
           input(name='search', type='search', placeholder='Search')
           input(type='submit', value='')
+        .col-6
         amp-carousel(height='300', layout='fixed-height', type='slides', autoplay='true', delay='4000')
           unless promos
              for promo in promos
               +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner,promo.discount)
-         .col-3		
+        .col-3		
              for store in stores		
               +liststore(store.banner,store.name,store.desc,store.id)		
          .col-6 Our products & Services		
