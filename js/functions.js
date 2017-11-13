@@ -340,6 +340,16 @@ function makeOrder(orderArrayy, orderLoc) {
 				$(".mapText").html("")
 				$(".mapdata").attr('src', mapData[0]);
 				$(".mapText").append(mapData[1].results[0].formatted_address);
+
+
+$('#modalconfirm').modal({
+      complete: function() { clearCart(); } // Callback for Modal close
+    }
+  )
+
+
+
+				
 				$('#modalconfirm').openModal();
 				$('.star2').addClass('animated shake'), setTimeout(function() {
 		$('.star2').removeClass('animated shake')
@@ -349,8 +359,10 @@ function makeOrder(orderArrayy, orderLoc) {
 				});
 				document.getElementById("ConfirmO").addEventListener("click", function() {
 					$("#products").html("")
-					transferTokenValue('0x','bits',200).then(function(res){console.log(res)}).catch(function(err){console.log(err)})
-					doFetch({
+					transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481','bits',globalDel).then(function(res){
+						console.log(res);
+						//sent escrow to server so complete order
+						doFetch({
 						action: 'makeOrder',
 						data: orderArrayy,
 						//EarnedKobo: totalKobo,
@@ -370,6 +382,11 @@ function makeOrder(orderArrayy, orderLoc) {
 							swal("Cancelled", "your order is not sent", "error");
 						}
 					})
+
+						}).catch(function(err){
+Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 3000);
+							console.log(err)})
+					
 				});
 			}).catch(function() {
 				//toast location error
@@ -1021,7 +1038,7 @@ console.log(" no match");
 		});
 	//$(".bpromo").attr("id")
 }
-function clear(){
+function clearCart(){
 console.log("clear cart"); 
 	$(".bitsInputQty").val(0);
 	$(".counter-minus").addClass("disabled");

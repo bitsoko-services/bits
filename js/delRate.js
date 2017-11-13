@@ -25,6 +25,8 @@ getDistanceFromLatLonInKm(e.coords.latitude,e.coords.longitude,x,y).then(functio
 console.log(distance);
 //--rates
 var rates = Math.ceil(d*distance);
+
+globalDel=rates;
  
 console.log("The shops delivery rates are "+rates);
 
