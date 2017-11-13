@@ -20,6 +20,8 @@ var supported = document.getElementById('support');
 shareButton.addEventListener('click', function (ev) {
   // Check if the current browser supports the Web Share API
   console.log($(ev).attr('prid'),$(ev).attr('owner'))
+  console.log(ev);
+  teel = ev;
  var prid = $(ev).attr('prid');
  var powner = $(ev).attr('owner');
   if (navigator.share !== undefined) {
