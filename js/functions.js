@@ -959,7 +959,8 @@ function getProdss(orderArrayx, costofItems) {
 		console.log('testing', costofItems);
 		$(".totals").html("")
 		$(".totals").append(JSON.parse(costofItems))
-		finalCost(costofItems);cop(costofItems);
+		finalCost(costofItems);
+		//cop(costofItems);
 	})
 }
 bp = 0

@@ -59,9 +59,9 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 }
 .topdata{
 	    position: relative;
-    	font-size: 15px;
-    	z-index: 1;
-        font-weight: 200;
+	    font-size: 15px;
+	    z-index: 1;
+	    font-weight: 300;
 }
 .number {
 	width: 40px !important;
