@@ -340,6 +340,16 @@ function makeOrder(orderArrayy, orderLoc) {
 				$(".mapText").html("")
 				$(".mapdata").attr('src', mapData[0]);
 				$(".mapText").append(mapData[1].results[0].formatted_address);
+
+
+$('#modalconfirm').modal({
+      complete: function() { clearCart(); } // Callback for Modal close
+    }
+  )
+
+
+
+				
 				$('#modalconfirm').openModal();
 				$('.star2').addClass('animated shake'), setTimeout(function() {
 		$('.star2').removeClass('animated shake')
@@ -349,14 +359,17 @@ function makeOrder(orderArrayy, orderLoc) {
 				});
 				document.getElementById("ConfirmO").addEventListener("click", function() {
 					$("#products").html("")
-					doFetch({
+					transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481','bits',globalDel).then(function(res){
+						console.log(res);
+						//sent escrow to server so complete order
+						doFetch({
 						action: 'makeOrder',
 						data: orderArrayy,
 						//EarnedKobo: totalKobo,
 						loc: e.coords.latitude + ',' + e.coords.longitude,
 						user: localStorage.getItem("bits-user-name"),
 						pointsEarned: {
-							"coin": "kobo",
+							"coin": "bits",
 							"purchase": totalKobo
 						},
 						service: parseInt(getBitsWinOpt('s'))
@@ -369,6 +382,11 @@ function makeOrder(orderArrayy, orderLoc) {
 							swal("Cancelled", "your order is not sent", "error");
 						}
 					})
+
+						}).catch(function(err){
+Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 3000);
+							console.log(err)})
+					
 				});
 			}).catch(function() {
 				//toast location error
@@ -941,7 +959,8 @@ function getProdss(orderArrayx, costofItems) {
 		console.log('testing', costofItems);
 		$(".totals").html("")
 		$(".totals").append(JSON.parse(costofItems))
-		finalCost(costofItems);cop(costofItems);
+		finalCost(costofItems);
+		//cop(costofItems);
 	})
 }
 bp = 0
@@ -1020,7 +1039,7 @@ console.log(" no match");
 		});
 	//$(".bpromo").attr("id")
 }
-function clear(){
+function clearCart(){
 console.log("clear cart"); 
 	$(".bitsInputQty").val(0);
 	$(".counter-minus").addClass("disabled");
@@ -1039,7 +1058,7 @@ function cop(costofItems){
 		var pe = (costofItems * dis)/100
 		
 		
-		var rate = allTokens['kobo'].rate;
+		var rate = allTokens['bits'].rate;
 		var g = Math.floor(pe);
 		var kshToKobo = rate / g 
 		totalKobo = kshToKobo

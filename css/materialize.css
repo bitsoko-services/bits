@@ -7900,7 +7900,7 @@ nav .input-field label.active {
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
-  color: #ffab40;
+  color: #0f5f76;
   margin-right: 20px;
   -webkit-transition: color 0.3s ease;
   -moz-transition: color 0.3s ease;
@@ -8184,7 +8184,7 @@ nav .input-field label.active {
 }
 
 .btn-floating i {
-  width: inherit;
+  /* width: inherit; */
   display: inline-block;
   text-align: center;
   color: #fff;

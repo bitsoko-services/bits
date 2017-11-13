@@ -24,15 +24,37 @@ function serviceOpener() {
 		svReq.onsuccess = function(event) {
 			try {
 				var x =JSON.parse(event.target.result)
-				//console.log()
-				console.log("pid found")
+				var xc = x.promotions
+				
+				for (var ixc = 0; ixc < xc.length; ++ixc) {
+					var ttx = xc[ixc].id;
+					var pids = getBitsOpt('pid');
+					if (ttx == pids){ 
+					console.log(ttx,"xxxxxxxxxxxxx")
+  	console.log("pid found")
+  	console.log(xc[ixc].promoName, xc[ixc].promoDesc)
+  	var p = xc[ixc].promoName
+  	var c = xc[ixc].promoDesc
+  	$(".materialbox-caption").html('')
 			$(".collapsible-header").trigger( "click" );
 			setTimeout(function(){  $(".p"+getBitsOpt('pid')).trigger( "click" );}, 1000);
 			setTimeout(function(){var clid = getBitsOpt('pid');
-			$(".materialbox-caption").css('height','150px').css('margin-bottom','50px').html( '<span style="font-size: 14px;">'+x.name+'</span><br><span  style="font-size: 12px;">'+x.description+'</span><br><a onclick="buyPromo('+getBitsOpt('pid')+')" id="267" class="bpr btn-floating  bits waves-effect waves-light btn" style="font-size: 11px; padding: 2px; background-color: rgb(15, 95, 118);">Buy</a>' );
+			
+			$(".materialbox-caption").css('height','150px').css('margin-bottom','50px').html( '<span style="font-size: 14px;">'+p+'</span><br><span  style="font-size: 12px;">'+c+'</span><br><a onclick="buyPromo('+getBitsOpt('pid')+')" id="267" class="bpr btn-floating  bits waves-effect waves-light btn" style="font-size: 11px; padding: 2px; background-color: rgb(15, 95, 118);">Buy</a>' );
 		
 
-		}, 1000);
+		}, 1000);}
+		else{
+			console.log("not match")
+		}
+ 
+}
+
+
+
+
+
+			
 			} catch (err) {
 				console.log('service not found in db. perhaps try loading from server AGAIN!!')
 			}
@@ -204,7 +226,7 @@ function populateService(mDet) {
 			checkPayments();
 			bitsTheme(mDet.theme);
 			var dailyCost = (parseInt(mDet.promotions[ii].discount) / 100) * mDet.promotions[ii].promoPrice;
-			$('.merchPromo').append('<li class="avatar bits-max promo-collection ">' + '<a href="#" id="burst-12" class="waves-effect waves-light  bits accent-2"><span style="font-size: 17px;"class="topdata">' + mDet.promotions[ii].discount + ' % <br/> off</span></a><div class="container1"><img src="https://bitsoko.co.ke' + mDet.promotions[ii].promoBanner + '" style="margin-top:-50px ; height: 92px; width: 100%;" data-caption="' + mDet.promotions[ii].promoName + '" alt="' + mDet.promotions[ii].promoDesc + '" class="materialboxed p'+ mDet.promotions[ii].id +'"><div class="overlaypromo"><div class="text">' + mDet.promotions[ii].promoDesc + '</div></div></div><div class="serviceListTitle bits-ellipsis" style="margin-top: -29px;width: 100%;position: relative;text-align: center;background: rgba(255, 255, 255, 0.87);"> ' + mDet.promotions[ii].promoName + ' </div>' + '<span class="title"></span>' + '<p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge displayNone bits left" style="margin-left: 20px;">' + Math.ceil(dailyCost) + ' <span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>' + '<a onclick="buyPromo(this.id)" id="' + mDet.promotions[ii].id + '" class="bpr bpromo' + mDet.promotions[ii].id + ' btn-floating bits waves-effect waves-light btn" style="font-size: 11px; padding: 2px;">Buy</a><div class="switch " style="width: 190px;margin-top: -5px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-' + mDet.promotions[ii].id + '">Not Subscribed</span> <label><input type="checkbox" dailyR="' + Math.ceil(dailyCost) + '" pid="' + mDet.promotions[ii].id + '" class="promoSubButton bits promoSubButton-' + mDet.promotions[ii].id + '" style=""> <span style="margin-top:2px;" class="lever bits right"></span></label></div><br><center><p style=" bottom: 0px;text-align: center;width: 70%;" class="displayNone serviceListseccondline "><i style="float: left;" class="serviceListseccondline promo-state-icon mdi-notification-sync"> 0 shares</i><i class="promo-state-icon mdi-action-favorite"> 0 likes </i><i style="float: right;" class="promo-state-icon mdi-action-receipt"> 0 sales </i></p></center></li>');
+			$('.merchPromo').append('<li class="avatar bits-max promo-collection ">' + '<a href="#" id="burst-12" class="waves-effect waves-light  bits accent-2"><span style="font-size: 17px;"class="topdata">' + mDet.promotions[ii].discount + ' % <br/> off</span></a><div class="container1"><img src="https://bitsoko.co.ke' + mDet.promotions[ii].promoBanner + '" style="margin-top:-50px ; height: 92px; width: 100%;" data-caption="' + mDet.promotions[ii].promoName + '" alt="' + mDet.promotions[ii].promoDesc + '" class="materialboxed p'+ mDet.promotions[ii].id +'"><div class="overlaypromo"><div class="text">' + mDet.promotions[ii].promoDesc + '</div></div></div><div class="serviceListTitle bits-ellipsis" style="margin-top: ;width: 100%;position: relative;text-align: center;background: rgba(255, 255, 255, 0.87);"> ' + mDet.promotions[ii].promoName + ' </div>' + '<span class="title"></span>' + '<p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge displayNone bits left" style="margin-left: 20px;">' + Math.ceil(dailyCost) + ' <span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>' + '<div><a onclick="buyPromo(this.id)" id="' + mDet.promotions[ii].id + '" class="bpr bpromo' + mDet.promotions[ii].id + ' waves-effect waves-light " style="padding: 2px;margin-left: 20px;margin-top: -10px;"><span>Buy</span></a><div class="switch " style="width: 190px;margin-top: -5px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-' + mDet.promotions[ii].id + '">Not Subscribed</span> <label><input type="checkbox" dailyR="' + Math.ceil(dailyCost) + '" pid="' + mDet.promotions[ii].id + '" class="promoSubButton bits promoSubButton-' + mDet.promotions[ii].id + '" style=""> <span style="margin-top:2px;" class="lever bits right"></span></label></div></div><center><p style=" bottom: 0px;text-align: center;width: 70%;" class="displayNone serviceListseccondline "><i style="float: left;" class="serviceListseccondline promo-state-icon mdi-notification-sync"> 0 shares</i><i class="promo-state-icon mdi-action-favorite"> 0 likes </i><i style="float: right;" class="promo-state-icon mdi-action-receipt"> 0 sales </i></p></center></li>');
 			subs = mDet.promotions[ii].promoSubs;
 			console.log(mDet.promotions[ii].discount)
 			if (mDet.promotions[ii].discount == null) {

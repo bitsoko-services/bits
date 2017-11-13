@@ -20,8 +20,10 @@ html(⚡='')
       .circle {  border-radius: 50%;}
       .shp{position: relative; margin-top: -63px; /* float: right; */  margin-left: 27% !important;}
       .x input[type=search], .x input[type=text] {
-      position: absolute;
+      position: relative;
       top: 10px;
+      width: calc(80% - 36px);
+      margin: 10px 10%;
       background: #ededed;
       padding: 0 8px;
       width: 70%;
@@ -41,10 +43,23 @@ html(⚡='')
       border-top-left-radius: 4px;
       border-bottom-left-radius: 4px;
       }
-      .x input[type=submit] {
+      header {
+      background: #efefef;
+      }
+      amp-fit-text {
       position: absolute;
-      top: 10px;
-      right: 28%;
+      top: 0px;
+      height: 100%;
+      width: 20%;
+      right: 0px;
+      padding: 5%;
+      z-index: 100000;
+      background: rgba(255, 255, 255, 0.85);
+      }
+      .x input[type=submit] {
+      position: relative;
+      right: 10%;
+      top: 17px;
       background-color: #92c6e4;
       background-position: center;
       background-repeat: no-repeat;
@@ -81,6 +96,27 @@ html(⚡='')
       -webkit-appearance: push-button;
       user-select: none;
       white-space: pre;
+      }
+      .home-header {
+      width: 100%;
+      height: 50%;
+      text-align:center;
+      background: rgba(0, 0, 0, 0.04);
+      background-image: url(#{cover});
+      background-size: cover;
+      opacity: 1;
+      }
+      .home-title {
+      position: relative;
+      top: 150px;
+      font-size: 300%;
+      text-transform: uppercase;
+      }
+      .home-text {
+      position: relative;
+      top: 190px;
+      font-size: 150%;
+      text-transform: lowercase;
       }
       input {
       -webkit-appearance: textfield;
@@ -137,6 +173,12 @@ html(⚡='')
       width: 250px;
       padding-right: 10px;
       }
+      .shado,.mobilelnav{
+      display:none!important;
+      }
+      .cont-col{
+      margin-top: 0px;
+      }
       .blue-box, .red-box, .green-box {
       width: 100%;
       height: 280px;
@@ -178,16 +220,24 @@ html(⚡='')
       .red-box {
       background: red;
       }
+      html,body,.cont-col,.col-3,.col-9 {
+      height:100%!important;
+      }
+      
+      .col-3{
+      height: calc(50% - 150px)!important;
+      overflow: scroll;
+      }
       .fixed {
       position: relative;
       }
       .ampstart-headerbar {
-      background-color: #fff;
-      padding: 10px;
+      background: #efefef;
+      padding: 10px 5%;
       color: #000;
       z-index: 999;
       box-shadow: 0 0 5px 2px rgba(0,0,0,.1);
-      width:100%;
+      width:90%;
       }
       footer {
       background-color: #fff;
@@ -214,7 +264,7 @@ html(⚡='')
       .row {
       margin-left: auto;
       margin-right: auto;
-      margin-bottom: 20px;
+      margin-bottom: 0px;
       }
       /* ==== GRID SYSTEM ==== */
       .container {
@@ -228,7 +278,7 @@ html(⚡='')
       }
       .row [class^="col"] {
       float: left;
-      margin: 0.5rem 2%;
+      margin: 0px 2%;
       min-height: 0.125rem;
       }
       .col-1,
@@ -300,7 +350,28 @@ html(⚡='')
       display: block;
       }
       }
-      @media only screen and (min-width: 720px) {  /* 720px */
+      
+      amp-carousel {
+      height: 300px;
+      float: right;
+      margin-top: 50px;
+      width: 100%;
+      }
+      form{
+      position: relative;
+      top: 20px;
+      width: 100%;
+      z-index: 100000;
+      }
+      @media only screen and (min-width: 720px) { 
+      
+      /* 720px */
+      amp-carousel {
+      height: 300px;
+      float: right;
+      margin-top: 50px;
+      width: 60%;
+      }
       .fullnav {
       display: none;
       }
@@ -314,7 +385,8 @@ html(⚡='')
       width: 12.66%;
       }
       .col-3 {
-      width: 21%;
+      width: 35%;
+          margin: 50px 2% 10px!important;
       }
       .col-4 {
       width: 29.33%;
@@ -342,10 +414,14 @@ html(⚡='')
       }
       .col-12 {
       width: 96%;
+      height: 100%;
       }
       .hidden-sm {
       display: block;
       }
+      }
+      .shpNm {
+      font-weight: bold;
       }
       .lst {
       background-color: #fff;
@@ -393,15 +469,17 @@ html(⚡='')
      link(rel='preload', href="/bits/?s="+store.id)
   body.testFont
     mixin listpromo(item,title,desc,id,discount)
-           amp-img(src=item, width='400', height='200', layout='responsive', alt=title)
-           amp-fit-text.caption.center(layout='responsive', width='500', height='250')
-           span(class='shpNm') #{title}
-           br
-           span(class='shpDesc')
-            | #{desc}
-            br
-            br
-           a.btn(href="/bits/?s="+id) open
+           div
+            amp-img(src=item, width='400', height='200', layout='responsive', alt=title)
+            amp-fit-text.caption.center(layout='responsive', width='500', height='250')
+             span(class='shpNm') #{title}
+             br
+             br
+             span(class='shpDesc')
+              | #{desc}
+              br
+              br
+             a.btn(href="/bits/?s="+id) BUY
 
     mixin liststore(item,title,desc,id)
            .lst
@@ -415,13 +493,7 @@ html(⚡='')
    
     amp-font(layout='nodisplay', font-family='Lato', timeout='3000')
     header.ampstart-headerbar.fixed.flex.justify-start.items-center.top-0.left-0.right-0.pl2.pr4
-      a.my0.mx-auto(href='/')
-          | #{name}
-          amp-img.bxshadow.b.circle(src=img, height='70', width='70', alt='')
-      //
-        <div class="fullnav fnav">
-        Home | About us | Contacts | Sign in
-        </div>
+      amp-img.bxshadow.b.circle(src=img, height='70', width='70', alt='')
       nav.mobilelnav
         ul
           li
@@ -429,53 +501,19 @@ html(⚡='')
             ul.nopadding
               li.mi
                 a(href='/') Home
-              // <li class="mi"> About us</li>
               li.mi Contact us
               li.mi Sign in
         #closemenu ×
-    br
-    br
-    br
-    br
-    // ## Basic Usage
-    //
-      The `amp-sidebar` should be a direct child of the `<body>`. It must have a layout of `nodisplay`. The`amp-sidebar` may not contain any AMP Elements except for `amp-accordion`, `amp-img` and `amp-fit-text`. `amp-fit-text` expands or shrinks its font size to fit the content within the space given to in the menu.
-    //
-      <amp-sidebar id="sidebar" layout="nodisplay" side="right">
-      <amp-img class="amp-close-image" src="/img/ic_close_black_18dp_2x.png" width="20" height="20" alt="close sidebar" on="tap:sidebar.close" role="button" tabindex="0"></amp-img>
-      <ul class="">
-      <li class="mi"> About us</li>
-      <li class="mi">
-      <amp-fit-text width="220" height="20" layout="responsive" max-font-size="24">
-      Contact us
-      </amp-fit-text>
-      </li>
-      <li class="mi">
-      <amp-fit-text width="220" height="20" layout="responsive" max-font-size="24">
-      Sign in
-      </amp-fit-text>
-      </li>
-      </ul>
-      </amp-sidebar>
-    .row
-      .col-9.x
+    .row.cont-col
+      .col-12.x
+        div.home-header
+         div.home-title
+          | #{name}
+         div.home-text
+          | #{tagline}
         form(method='GET', action='#', target='_top')
           input(name='search', type='search', placeholder='Search')
-          input(type='submit', value='')
-        br
-        br
-        //
-          <br>           <form method="GET" action="/samples_templates/product_browse_page/source/search" target="_top">
-          <input name="search" type="search" placeholder="Search">
-          <input type="submit" value="">
-          </form>
-        amp-carousel(height='300', layout='fixed-height', type='slides')
-           for promo in promos
-            +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner,promo.discount)
-        .col-3
-           for store in stores
-            +liststore(store.banner,store.name,store.desc,store.id)
-      .row.shado
-      .col-6 Our products & Services
-      .col-6 Connect with us
+          input(type='submit')
+        .col-6 Our products & Services		
+        .col-6 Connect with us
     // A good use case for `amp-carousel` are image galleries, [here](/advanced/image_galleries_with_amp-carousel/) are some examples.
