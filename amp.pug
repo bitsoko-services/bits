@@ -514,7 +514,7 @@ html(⚡='')
         form(method='GET', action='#', target='_top')
           input(name='search', type='search', placeholder='Search')
           input(type='submit')
-      .col-3.x
+        //.col-3.x
            for store in stores		
             +liststore(store.banner,store.name,store.desc,store.id)	
         amp-carousel(height='300', layout='fixed-height', type='slides', autoplay='true', delay='4000')
