@@ -222,19 +222,9 @@ html(⚡='')
       }
       html,body,.cont-col,.col-3,.col-9 {
       height:100%!important;
-      }
-      /*  SECTIONS  */
-		.section {
-			clear: both;
-			padding: 0px;
-			margin: 0px;
-		}
-					/*  GRID OF THREE  */
-			.span_3_of_3 { width: 100%; }
-			.span_2_of_3 { width: 66.13%; }
-			.span_1_of_3 { width: 32.26%; }
-
-			/*  GO FULL WIDTH BELOW 480 PIXELS */
+      } /*  SECTIONS  */.section2 {clear: both;padding: 0px;	margin: 0px;}
+        /*  GRID OF THREE  */.span_3_of_3 { width: 100%; }.span_2_of_3 { width: 66.13%; }.span_1_of_3 { width: 32.26%; }
+      /*  GO FULL WIDTH BELOW 480 PIXELS */
 			@media only screen and (max-width: 480px) {
 				.col {  margin: 1% 0 1% 0%; }
 				.span_3_of_3, .span_2_of_3, .span_1_of_3 { width: 100%; }
@@ -542,7 +532,7 @@ html(⚡='')
         form(method='GET', action='#', target='_top')
           input(name='search', type='search', placeholder='Search')
           input(type='submit')
-      .section.group
+      .section2.group
 			.col.span_1_of_3
 				| Shops
 			.col.span_1_of_3
