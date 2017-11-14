@@ -223,7 +223,35 @@ html(⚡='')
       html,body,.cont-col,.col-3,.col-9 {
       height:100%!important;
       }
-      
+      /*  SECTIONS  */
+		.section {
+			clear: both;
+			padding: 0px;
+			margin: 0px;
+		}
+					/*  GRID OF THREE  */
+			.span_3_of_3 { width: 100%; }
+			.span_2_of_3 { width: 66.13%; }
+			.span_1_of_3 { width: 32.26%; }
+
+			/*  GO FULL WIDTH BELOW 480 PIXELS */
+			@media only screen and (max-width: 480px) {
+				.col {  margin: 1% 0 1% 0%; }
+				.span_3_of_3, .span_2_of_3, .span_1_of_3 { width: 100%; }
+			}
+		/*  COLUMN SETUP  */
+		.col {
+			display: block;
+			float:left;
+			margin: 1% 0 1% 1.6%;
+		}
+		.col:first-child { margin-left: 0; }
+
+		/*  GROUPING  */
+		.group:before,
+		.group:after { content:""; display:table; }
+		.group:after { clear:both;}
+		.group { zoom:1; /* For IE 6/7 */ }
       .col-3{
       height: calc(50% - 150px)!important;
       overflow: scroll;
@@ -514,7 +542,10 @@ html(⚡='')
         form(method='GET', action='#', target='_top')
           input(name='search', type='search', placeholder='Search')
           input(type='submit')
-    .row
-        .col-3.x
-        .col-4 Our products & Services
-        .col-4 Connect with us
+      .section.group
+			.col.span_1_of_3
+				| Shops
+			.col.span_1_of_3
+				| Our products & Services
+			.col.span_1_of_3
+				| Connect with us
