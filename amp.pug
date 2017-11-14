@@ -514,6 +514,13 @@ html(⚡='')
         form(method='GET', action='#', target='_top')
           input(name='search', type='search', placeholder='Search')
           input(type='submit')
+       .col-3.x 
+           for store in stores     
+            //+liststore(store.banner,store.name,store.desc,store.id)   
+        //amp-carousel(height='300', layout='fixed-height', type='slides', autoplay='true', delay='4000') 
+          //unless promos 
+             //for promo in promos 
+             // +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner,promo.discount) 
         .col-6 Our products & Services		
         .col-6 Connect with us
     // A good use case for `amp-carousel` are image galleries, [here](/advanced/image_galleries_with_amp-carousel/) are some examples.
