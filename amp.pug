@@ -71,8 +71,8 @@ html(⚡='')
         .center All Shops
           amp-list.m1(width='200', height='100', layout='responsive', src='https://ampbyexample.com/json/examples.json')
         
-         for store in stores
-          +liststore(store.banner,store.name,store.desc,store.id)
+		  for store in stores
+           +liststore(store.banner,store.name,store.desc,store.id)
          
       div
         amp-iframe.ml(width='200', height='10', sandbox='allow-scripts', layout='responsive', frameborder='0', src='/amp-iframe.html')
