@@ -471,8 +471,7 @@ html(⚡='')
     .row
      .col-5
        amp-carousel(height='300', layout='fixed-height', type='slides')
-        for promo in promos
-			+listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner,promo.discount)
+        
      .col-3
         for store in stores
 			+liststore(store.banner,store.name,store.desc,store.id)
