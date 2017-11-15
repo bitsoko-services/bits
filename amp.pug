@@ -389,8 +389,27 @@ html(⚡='')
       color: #848484;
       }
   for store in stores
-  link(rel='preload', href="/bits/?s="+store.id)
+    link(rel='preload', href="/bits/?s="+store.id)
   body.testFont
+       mixin listpromo(item,title,desc,id,discount)
+           amp-img(src=item, width='400', height='200', layout='responsive', alt=title)
+           amp-fit-text.caption.center(layout='responsive', width='500', height='250')
+           span(class='shpNm') #{title}
+           br
+           span(class='shpDesc')
+            | #{desc}
+            br
+            br
+           a.btn(href="/bits/?s="+id) open
+
+    mixin liststore(item,title,desc,id)
+           .lst
+            amp-img.bxshadow.circle(src=item, width='70', height='70', alt=title)
+            .shp
+              a.btn2(href="/bits/?s="+id)  #{title}
+              br
+              span.sub(class='shpDesc')
+                 | #{desc}
     amp-font(layout='nodisplay', font-family='Lato', timeout='3000')
     header.ampstart-headerbar.fixed.flex.justify-start.items-center.top-0.left-0.right-0.pl2.pr4
       a.my0.mx-auto(href='/')
