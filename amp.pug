@@ -463,17 +463,12 @@ html(⚡='')
               input(type='submit', value='')
             br
             br
-        //
-          <br>           <form method="GET" action="/samples_templates/product_browse_page/source/search" target="_top">
-          <input name="search" type="search" placeholder="Search">
-          <input type="submit" value="">
-          </form>
     .row
-        .col-9
+       .col-9
             amp-carousel(height='300', layout='fixed-height', type='slides')
                 for promo in promos
                     +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner,promo.discount)
-        .col-3
+       .col-3
            for store in stores
             +liststore(store.banner,store.name,store.desc,store.id)
       
