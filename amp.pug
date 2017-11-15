@@ -181,7 +181,7 @@ html(⚡='')
       position: relative;
       }
       .ampstart-headerbar {
-      background-color: #fff;
+      background-color:#efefef;
       padding: 10px;
       color: #000;
       z-index: 999;
@@ -457,8 +457,7 @@ html(⚡='')
       </ul>
       </amp-sidebar>
     .row
-        .col-12
-          .col-9.x
+         .col-9.x
             form(method='GET', action='#', target='_top')
               input(name='search', type='search', placeholder='Search')
               input(type='submit', value='')
@@ -473,5 +472,6 @@ html(⚡='')
            for store in stores
             +liststore(store.banner,store.name,store.desc,store.id)
       
-    .col-6 Our products & Services
-    .col-6 Connect with us
+    .row
+        .col-6 Our products & Services
+        .col-6 Connect with us
