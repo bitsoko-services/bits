@@ -388,7 +388,8 @@ html(⚡='')
       font-family: Lato;
       color: #848484;
       }
-  for store in storeslink(rel='preload', href="/bits/?s="+store.id)
+  for store in stores
+  link(rel='preload', href="/bits/?s="+store.id)
   body.testFont
     amp-font(layout='nodisplay', font-family='Lato', timeout='3000')
     header.ampstart-headerbar.fixed.flex.justify-start.items-center.top-0.left-0.right-0.pl2.pr4
