@@ -458,6 +458,12 @@ html(⚡='')
       </amp-sidebar>
     .row
          .col-9.x
+            
+            div.home-header
+              div.home-title
+               | #{name}
+              div.home-text
+               | #{tagline}
             form(method='GET', action='#', target='_top')
               input(name='search', type='search', placeholder='Search')
               input(type='submit', value='')
