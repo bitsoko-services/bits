@@ -388,8 +388,7 @@ html(⚡='')
       font-family: Lato;
       color: #848484;
       }
-  //
-    for store in storeslink(rel='preload', href="/bits/?s="+store.id)
+  for store in storeslink(rel='preload', href="/bits/?s="+store.id)
   body.testFont
     amp-font(layout='nodisplay', font-family='Lato', timeout='3000')
     header.ampstart-headerbar.fixed.flex.justify-start.items-center.top-0.left-0.right-0.pl2.pr4
@@ -432,9 +431,9 @@ html(⚡='')
     .row
      .col-5
        amp-carousel(height='300', layout='fixed-height', type='slides')
-        
+        for promo in promos+listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner,promo.discount)
      .col-3
-        
+        for store in stores+liststore(store.banner,store.name,store.desc,store.id)
     .row.shado
       .col-6 Our products & Services
       .col-6 Connect with us
