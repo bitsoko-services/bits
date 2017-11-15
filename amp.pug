@@ -388,35 +388,13 @@ html(⚡='')
       font-family: Lato;
       color: #848484;
       }
-  for store in stores
-     link(rel='preload', href="/bits/?s="+store.id)
+  //
+    for store in storeslink(rel='preload', href="/bits/?s="+store.id)
   body.testFont
-    mixin listpromo(item,title,desc,id,discount)
-           amp-img(src=item, width='400', height='200', layout='responsive', alt=title)
-           amp-fit-text.caption.center(layout='responsive', width='500', height='250')
-           span(class='shpNm') #{title}
-           br
-           span(class='shpDesc')
-            | #{desc}
-            br
-            br
-           a.btn(href="/bits/?s="+id) open
-
-    mixin liststore(item,title,desc,id)
-           .lst
-            amp-img.bxshadow.circle(src=item, width='70', height='70', alt=title)
-            .shp
-              a.btn2(href="/bits/?s="+id)  #{title}
-              br
-              span.sub(class='shpDesc')
-                 | #{desc}
-   
-   
     amp-font(layout='nodisplay', font-family='Lato', timeout='3000')
     header.ampstart-headerbar.fixed.flex.justify-start.items-center.top-0.left-0.right-0.pl2.pr4
       a.my0.mx-auto(href='/')
-          | #{name}
-          amp-img.bxshadow.b.circle(src=img, height='70', width='70', alt='')
+        amp-img.bxshadow.b.circle(height='70', width='70', alt='')
       //
         <div class="fullnav fnav">
         Home | About us | Contacts | Sign in
@@ -436,26 +414,6 @@ html(⚡='')
     br
     br
     br
-    // ## Basic Usage
-    //
-      The `amp-sidebar` should be a direct child of the `<body>`. It must have a layout of `nodisplay`. The`amp-sidebar` may not contain any AMP Elements except for `amp-accordion`, `amp-img` and `amp-fit-text`. `amp-fit-text` expands or shrinks its font size to fit the content within the space given to in the menu.
-    //
-      <amp-sidebar id="sidebar" layout="nodisplay" side="right">
-      <amp-img class="amp-close-image" src="/img/ic_close_black_18dp_2x.png" width="20" height="20" alt="close sidebar" on="tap:sidebar.close" role="button" tabindex="0"></amp-img>
-      <ul class="">
-      <li class="mi"> About us</li>
-      <li class="mi">
-      <amp-fit-text width="220" height="20" layout="responsive" max-font-size="24">
-      Contact us
-      </amp-fit-text>
-      </li>
-      <li class="mi">
-      <amp-fit-text width="220" height="20" layout="responsive" max-font-size="24">
-      Sign in
-      </amp-fit-text>
-      </li>
-      </ul>
-      </amp-sidebar>
     .row
       .col-12.x
         .home-header
@@ -471,12 +429,12 @@ html(⚡='')
           <input name="search" type="search" placeholder="Search">
           <input type="submit" value="">
           </form>
-        amp-carousel(height='300', layout='fixed-height', type='slides')
-           for promo in promos
-            +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner,promo.discount)
-        .col-3
-           for store in stores
-            +liststore(store.banner,store.name,store.desc,store.id)
+        .row
+          .col-5
+            amp-carousel(height='300', layout='fixed-height', type='slides')
+              for promo in promos+listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner,promo.discount)
+          .col-3
+            for store in stores+liststore(store.banner,store.name,store.desc,store.id)
       .row.shado
       .col-6 Our products & Services
       .col-6 Connect with us
