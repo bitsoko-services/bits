@@ -74,10 +74,9 @@ function starting(){
 	
    loadWallet();
 	
-if(checkanon()){
 	
-	walletFunctions(localStorage.getItem('bits-user-name')).then(function(e){
-				/////////////////////////////////// update exchange rates
+	/////////////////////////////////// update exchange rates
+	
 	 fetchRates().then(function(e) {
 		if (e.status == "ok") {
 			tBal=0;
@@ -87,13 +86,15 @@ if(checkanon()){
 			console.log("error");
 		}
 	});
+	
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	
+	
+if(checkanon()){
+	
+	walletFunctions(localStorage.getItem('bits-user-name')).then(function(e){
+				
 	});
-	 		
-	
-	
-	
 	
 }
      setTimeout(function(){ 
