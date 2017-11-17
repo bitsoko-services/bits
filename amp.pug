@@ -428,13 +428,22 @@ html(⚡='')
            a.btn(href="/bits/?s="+id) open
 
     mixin liststore(item,title,desc,id)
-           .lst
-            amp-img.bxshadow.circle(src=item, width='70', height='70', alt=title)
-            .shp
-              a.btn2(href="/bits/?s="+id)  #{title}
-              br
-              span.sub(class='shpDesc')
-                 | #{desc}
+            .card.horizontal
+              .card-image
+                amp-img(src=item, width='70', height='70', alt=title)
+              .card-stacked
+                .card-content.sub(class='shpDesc')
+                  p | #{desc}
+                .card-action
+                  a(href="/bits/?s="+id)  #{title}
+
+                //           .lst
+                //            
+                //            .shp
+                //              a.btn2(
+                //              br
+                //              span
+
    
    
     amp-font(layout='nodisplay', font-family='Lato', timeout='3000')
