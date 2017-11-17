@@ -16,6 +16,7 @@ html(⚡='')
       style(amp-boilerplate='').
         body{background-color: #fcfcfc; -webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
     style(amp-custom='').
+        body{background-color: #fcfcfc;}
       .circle {  border-radius: 50%;}
       .shp{position: relative; margin-top: -63px; /* float: right; */  margin-left: 27% !important;}
       .card.horizontal {
@@ -24,6 +25,9 @@ html(⚡='')
             display: -ms-flexbox;
             display: flex;
         }
+       a:link, a:visited , a:hover, a:active  {
+                 text-decoration: none;
+            }
       .card {
             position: relative;
             margin: .5rem 0 1rem 0;
@@ -275,7 +279,7 @@ html(⚡='')
       .row {
       margin-left: auto;
       margin-right: auto;
-      margin-bottom: 20px;
+      margin-bottom: -11px;
       }
       /* ==== GRID SYSTEM ==== */
       .container {
@@ -555,7 +559,7 @@ html(⚡='')
             div.home-header
               div.home-title
                a.my0.mx-auto(href='/')          
-                amp-img.bxshadow.b.circle(src=img, height='70', width='70', alt='')
+                amp-img.bxshadow.b.circle(src=img, height='70', width='100%', alt='')
                 br
                | #{name}
               div.home-text
@@ -573,6 +577,6 @@ html(⚡='')
            for store in stores
             +liststore(store.banner,store.name,store.desc,store.id)
       
-    .row
-        .col-6 Our products & Services
-        .col-6 Connect with us
+            //    .row
+            //        .col-6 Our products & Services
+            //        .col-6 Connect with us
