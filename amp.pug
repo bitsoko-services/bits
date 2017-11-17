@@ -495,7 +495,7 @@ html(⚡='')
     mixin liststore(item,title,desc,id)
             .card.horizontal
               .card-image
-                amp-img(src=item, width='70', height='146', alt=title)
+                amp-img(src=item, width='70', height='100%', alt=title)
               .card-stacked
                 .card-content.sub(class='shpDesc')
                   p  #{desc}
@@ -559,7 +559,7 @@ html(⚡='')
             div.home-header
               div.home-title
                a.my0.mx-auto(href='/')          
-                amp-img.bxshadow.b.circle(src=img, height='70', width='100%', alt='')
+                amp-img.bxshadow.b.circle(src=img, height='70', width='70', alt='')
                 br
                | #{name}
               div.home-text
