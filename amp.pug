@@ -393,13 +393,13 @@ html(⚡='')
       }
       .home-title {
       position: relative;
-      top: 150px;
+      top: 42px;
       font-size: 300%;
       text-transform: uppercase;
       }
       .home-text {
       position: relative;
-      top: 190px;
+      top: 70px;
       font-size: 150%;
       text-transform: lowercase;
       }
@@ -435,10 +435,8 @@ html(⚡='')
    
    
     amp-font(layout='nodisplay', font-family='Lato', timeout='3000')
-    header.ampstart-headerbar.fixed.flex.justify-start.items-center.top-0.left-0.right-0.pl2.pr4
-      a.my0.mx-auto(href='/')
-          
-          amp-img.bxshadow.b.circle(src=img, height='70', width='70', alt='')
+    //header.ampstart-headerbar.fixed.flex.justify-start.items-center.top-0.left-0.right-0.pl2.pr4
+      
       //
         <div class="fullnav fnav">
         Home | About us | Contacts | Sign in
@@ -479,10 +477,12 @@ html(⚡='')
       </ul>
       </amp-sidebar>
     .row.mtp
-         .col-12.x.xht
+         .x.xht
             
             div.home-header
               div.home-title
+               a.my0.mx-auto(href='/')          
+                amp-img.bxshadow.b.circle(src=img, height='70', width='70', alt='')
                | #{name}
               div.home-text
                | #{tagline}
