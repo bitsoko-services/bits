@@ -14,7 +14,7 @@ html(⚡='')
       body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
     noscript
       style(amp-boilerplate='').
-        body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
+        body{background-color: #fcfcfc; -webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
     style(amp-custom='').
       .circle {  border-radius: 50%;}
       .shp{position: relative; margin-top: -63px; /* float: right; */  margin-left: 27% !important;}
@@ -33,6 +33,7 @@ html(⚡='')
             transition: box-shadow .25s;
             transition: box-shadow .25s, -webkit-box-shadow .25s;
             border-radius: 2px;
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
         }
        .card.horizontal .card-image {
             max-width: 50%;
@@ -490,10 +491,10 @@ html(⚡='')
     mixin liststore(item,title,desc,id)
             .card.horizontal
               .card-image
-                amp-img(src=item, width='70', height='70', alt=title)
+                amp-img(src=item, width='70', height='146', alt=title)
               .card-stacked
                 .card-content.sub(class='shpDesc')
-                  p | #{desc}
+                  p  #{desc}
                 .card-action
                   a(href="/bits/?s="+id)  #{title}
 
