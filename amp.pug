@@ -488,17 +488,7 @@ html(⚡='')
   for store in stores
      link(rel='preload', href="/bits/?s="+store.id)
   body.testFont
-    mixin listpromo(item,title,desc,id,discount)
-           amp-img(src=item, width='400', height='200', layout='responsive', alt=title)
-           amp-fit-text.caption.center(layout='responsive', width='500', height='250')
-           span(class='shpNm') #{title}
-           br
-           span(class='shpDesc')
-            | #{desc}
-            br
-            br
-           a.btn(href="/bits/?s="+id) open
-
+    
     mixin liststore(item,title,desc,id)
             a(href="/bits/?s="+id)
              .card.horizontal
@@ -582,10 +572,13 @@ html(⚡='')
               input(type='submit', value='')
             
     .row.topm
-       .col-9.bgc
-            amp-carousel(height='300', layout='fixed-height', type='slides')
-                for promo in promos
-                    +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner,promo.discount)
+       .col-9
+            amp-carousel(height='300', layout='fixed-height', type='carousel')
+              amp-img(src='/images/slides/1.jpg', width='400', height='300', alt='a sample image')
+              amp-img(src='/images/slides/2.jpg', width='400', height='300', alt='another sample image')
+              amp-img(src='/images/slides/3.jpg', width='400', height='300', alt='and another sample image')
+              amp-img(src='/images/slides/4.jpg', width='400', height='300', alt='and another sample image')
+
        .col-3
            for store in stores
             +liststore(store.banner,store.name,store.desc,store.id)
