@@ -9,15 +9,15 @@ What you need
 - Chrome Browser
 # Installing
 Step by step guide to get a development env running
-# Clone this repository
+Clone this repository
 https://github.com/bitsoko-services/bits.git
-# Go into the repository
+Go into the repository
 $ cd bits
 
-# Launch Web Server for Chrome
+Launch Web Server for Chrome
 Search for Web Server for Chrome in your list of applications
 
-# Enter Port 
+Enter Port 
 Enter [9000] as the port number on Web Server for Chrome and navigate 
 to [localhost:9000/index.html] in your web browser.
 
