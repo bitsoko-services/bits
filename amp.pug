@@ -76,7 +76,7 @@ html(⚡='')
        .card .card-action:last-child {
             border-radius: 0 0 2px 2px;
         }
-
+       .topm{    margin-top: -43%;}
        .card .card-action {
             position: relative;
             background-color: inherit;
@@ -88,7 +88,7 @@ html(⚡='')
       background: #ededed;
       padding: 0 8px;
       width: 40%;
-      top: 89%;
+      top: -9%;
       left: 29%;
       height: 32px;
       font-family: inherit;
@@ -106,6 +106,7 @@ html(⚡='')
       border-top-left-radius: 4px;
       border-bottom-left-radius: 4px;
       }
+      .slde{margin-top: -43%;}
       .x input[type=submit] {
       position: absolute;
       right: 29%;
@@ -115,7 +116,7 @@ html(⚡='')
       background-image: -webkit-image-set( url(img/search-icon.png) 1x, url(img/search-icon.png) 2x );
       border: 0 none;
       height: 32px;
-      top: 89%;
+      top: -9%;
       width: 36px;
       -webkit-appearance: none;
       border-radius: 0;
@@ -175,6 +176,7 @@ html(⚡='')
       input, textarea, select, button, meter, progress {
       -webkit-writing-mode: horizontal-tb;
       }
+      .bgc{    background: #aebfff;}
       /* 40px padding top for the top menu*/
       /*body{padding:40px 32px 4px 32px;}*/
       /* fixed top menu has a 40px height*/
@@ -427,13 +429,13 @@ html(⚡='')
       .mobilelnav {
       display: block;
       }
-      .xht{height: 350px;}
+      /*.xht{height: 350px;}*/
       .container {
       width: 75%;
       max-width: 60rem;
       }
       }
-      .xht { height: 350px;    }
+      .xht {  }
       .le{margin-left: 71px;} .fixed{    position: fixed;}.nopadding{    padding: 0px;}   .shado{-webkit-box-shadow: 0px -1px 5px 0px rgba(153,153,153,1);
       -moz-box-shadow: 0px -1px 5px 0px rgba(153,153,153,1);
       box-shadow: 0px -1px 5px 0px rgba(153,153,153,1);}
@@ -452,7 +454,7 @@ html(⚡='')
       }
       .home-header {
       width: 100%;
-      height: 100%;
+      height: 87vh;
       text-align:center;
       background: rgba(0, 0, 0, 0.04);
       background-image: url(#{cover});
@@ -461,19 +463,20 @@ html(⚡='')
       }
       .home-title {
       position: relative;
-      top: 42px;
+      top: 52%;
       font-size: 300%;
       text-transform: uppercase;
       }
       .home-text {
       position: relative;
-      top: 70px;
+      top: 58%;
       font-size: 150%;
       text-transform: lowercase;
       }
       .fnav{color: #848484;
       float: right;
-      margin-right: 10%;}
+      margin-right: 10%;}      
+      .mbar{height:75px;padding-top:8px;padding-left:6%;-webkit-box-shadow:0px 4px 5px 0px rgba(196,196,196,1);-moz-box-shadow: 0px 4px 5px 0px rgba(196,196,196,1);box-shadow: 0px 4px 5px 0px rgba(196,196,196,1);}
       .testFont{
       font-family: Lato;
       color: #848484;
@@ -554,14 +557,15 @@ html(⚡='')
       </li>
       </ul>
       </amp-sidebar>
+    .mbar
+      a.my0.mx-auto(href='/')          
+                amp-img.bxshadow.b.circle(src=img, height='70', width='70', alt='')
     .row.mtp
          .x.xht
             
             div.home-header
               div.home-title
-               a.my0.mx-auto(href='/')          
-                amp-img.bxshadow.b.circle(src=img, height='70', width='70', alt='')
-                br
+               br
                | #{name}
               div.home-text
                | #{tagline}
@@ -569,8 +573,8 @@ html(⚡='')
               input(name='search', type='search', placeholder='Search')
               input(type='submit', value='')
             
-    .row
-       .col-9
+    .row.topm
+       .col-9.bgc
             amp-carousel(height='300', layout='fixed-height', type='slides')
                 for promo in promos
                     +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner,promo.discount)
