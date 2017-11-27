@@ -30,7 +30,7 @@ html(⚡='')
             }
       .card {
             position: relative;
-            margin: .5rem 0 1rem 0;
+            margin: 0px 0px 6px -17%;
             background-color: #fff;
             -webkit-transition: -webkit-box-shadow .25s;
             transition: -webkit-box-shadow .25s;
@@ -500,15 +500,16 @@ html(⚡='')
            a.btn(href="/bits/?s="+id) open
 
     mixin liststore(item,title,desc,id)
-            .card.horizontal
+            a(href="/bits/?s="+id)
+             .card.horizontal
               .card-image
-                amp-img(src=item, width='70', height='135', alt=title)
+                amp-img(src=item, width='70', height='70', alt=title)
               .card-stacked
                 .card-content.sub(class='shpDesc')
                   p  #{title} 
-                  p  #{desc}
-                .card-action
-                  a(href="/bits/?s="+id)  Visit shop
+                   br  #{desc}
+                
+                   
 
                 //           .lst
                 //            
