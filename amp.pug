@@ -469,7 +469,19 @@ html(⚡='')
       src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v13/1YwB1sO8YE1Lyjf12WNiUA.woff2) format('woff2');
       unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
       }
+      .footer-home{
+           height: 256px;
+        background-color: #3f3935;
+        position: absolute;
+        -webkit-box-shadow: inset 0px 9px 9px -9px rgba(69,67,69,1);
+        -moz-box-shadow: inset 0px 9px 9px -9px rgba(69,67,69,1);
+        box-shadow: inset 0px 9px 9px -9px rgb(0, 0, 0);
+      }
       .home-header {
+      padding-bottom: 15px;
+          border-width: 1px 0px 1px 0px;
+        border-style: solid solid solid solid;
+        border-color: #848484;
       width: 100%;
       text-align:center;
       background: rgba(0, 0, 0, 0.04);
@@ -600,11 +612,11 @@ html(⚡='')
                | #{tagline}
             
             
-    
-
-//       .col-3
-//           for store in stores
-//            +liststore(store.banner,store.name,store.desc,store.id)
+    .row.col-12.fill.footer-home
+       .col-12
+         .col-3
+           for store in stores
+            +liststore(store.banner,store.name,store.desc,store.id)
       
             //    .row
             //        .col-6 Our products & Services
