@@ -9,6 +9,8 @@ html(⚡='')
     script(async='', custom-element='amp-carousel', src='https://cdn.ampproject.org/v0/amp-carousel-0.1.js')
     script(async='', custom-element='amp-form', src='https://cdn.ampproject.org/v0/amp-form-0.1.js')
     link(rel='canonical', href='https://ampbyexample.com/components/amp-carousel/')
+    script(async='', custom-element='amp-list', src='https://cdn.ampproject.org/v0/amp-list-0.1.js')
+    script(async='', custom-template='amp-mustache', src='https://cdn.ampproject.org/v0/amp-mustache-0.1.js')
     meta(name='viewport', content='width=device-width,minimum-scale=1,initial-scale=1')
     style(amp-boilerplate='').
       body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
@@ -629,9 +631,33 @@ html(⚡='')
          .col-3
             span.whte 
               center THE COMPANY
+            center
+                  ul.footer-group.accordion-drawer
+                    li.footer-item
+                      a.footer-link(href='#') About Us
+                    li.footer-item
+                      a.footer-link(href='#') Careers
+                    li.footer-item
+                      a.footer-link(href='#') Legal
          .col-3 
             span.whte 
               center MAY WE HELP YOU?
+            center
+              ul.footer-group.accordion-drawer
+                li.footer-item
+                  a.footer-link(href='#') Contact Us
+                li.footer-item
+                  a.footer-link(href='#') FAQs
+                li.footer-item
+                  a.footer-link(href='#') Product Care
          .col-3 
             span.whte 
               center FIND US ON
+            center
+              ul.footer-group.accordion-drawer
+                li.footer-item
+                  a.footer-link(href='#') Facebook
+                li.footer-item
+                  a.footer-link(href='#') Twitter
+                li.footer-item
+                  a.footer-link(href='#') Google+
