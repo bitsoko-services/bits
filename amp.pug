@@ -17,7 +17,7 @@ html(⚡='')
         body{background-color: #fcfcfc; -webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
     style(amp-custom='').
         body{background-color: #fcfcfc;}
-      .circle {  border-radius: 50%;}
+      .circle {  border-radius: 50%;border: solid 1px #4e48481c;}
       .shp{position: relative; margin-top: -63px; /* float: right; */  margin-left: 27% !important;}
       .card.horizontal {
             display: -webkit-box;
@@ -94,9 +94,9 @@ html(⚡='')
       position: absolute;
       background: #ededed;
       padding: 0 8px;
-      width: 40%;
-      top: 4%;
-      left: 29%;
+      width: 51%;
+        top: 2%;
+            left: 25%;
       height: 32px;
       font-family: inherit;
       font-size: 100%;
@@ -115,24 +115,30 @@ html(⚡='')
       }
       .slde{margin-top: -43%;}
       .x input[type=submit] {
-      position: absolute;
-      right: 29%;
-      background-color: #92c6e4;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-image: -webkit-image-set( url(img/search-icon.png) 1x, url(img/search-icon.png) 2x );
-      border: 0 none;
-      height: 32px;
-      top: -9%;
-      width: 36px;
-      -webkit-appearance: none;
-      border-radius: 0;
-      -moz-border-top-right-radius: 4px;
-      -moz-border-bottom-right-radius: 4px;
-      -webkit-border-top-right-radius: 4px;
-      -webkit-border-bottom-right-radius: 4px;
-      border-top-right-radius: 4px;
-      border-bottom-right-radius: 4px;
+        position: absolute;
+        right: 25%;
+        background-color: #ededed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: -webkit-image-set( url(images/search-icon.png)1x, url(images/search-icon.png) 2x );
+        background-size: 25px 25px;
+        /* opacity: 2.4; */
+        /* border-left: 1px #000; */
+        border: none;
+        height: 25px;
+        -webkit-box-shadow: -2px 0px 0px -1px rgba(161,159,161,1);
+        -moz-box-shadow: -2px 0px 0px -1px rgba(161,159,161,1);
+        box-shadow: -2px 0px 0px -1px rgba(161, 159, 161, 0.4);
+        top: 3%;
+        width: 73px;
+        -webkit-appearance: none;
+        border-radius: 0;
+        -moz-border-top-right-radius: 4px;
+        -moz-border-bottom-right-radius: 4px;
+        -webkit-border-top-right-radius: 4px;
+        -webkit-border-bottom-right-radius: 4px;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
       }
       input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
       padding: 1px 6px;
@@ -306,7 +312,7 @@ html(⚡='')
       }
       .row [class^="col"] {
       float: left;
-      margin: 0px 2% 0px 2%;;
+       /*margin: 0px 2% 0px 2%;;*/
       min-height: 0.125rem;
       }
       .col-1,
@@ -485,7 +491,7 @@ html(⚡='')
       .fnav{color: #848484;
       float: right;
       margin-right: 10%;}      
-      .mbar{height:75px;padding-top:8px;padding-left:6%;-webkit-box-shadow:0px 4px 5px 0px rgba(196,196,196,1);-moz-box-shadow: 0px 4px 5px 0px rgba(196,196,196,1);box-shadow: 0px 4px 5px 0px rgba(196,196,196,1);}
+      .mbar{height: 50px;padding-top: 0px;background: #ededed61;padding-left:6%;-webkit-box-shadow:0px 4px 5px 0px rgba(196,196,196,1);-moz-box-shadow: 0px 4px 5px 0px rgba(196,196,196,1);box-shadow: 0px 4px 5px 0px rgba(196,196,196,1);}
       .testFont{
       font-family: Lato;
       color: #848484;
@@ -562,7 +568,7 @@ html(⚡='')
       </amp-sidebar>
     .mbar.x
       a.my0.mx-auto(href='/')          
-                amp-img.bxshadow.b.circle(src=img, height='70', width='70', alt='')
+                amp-img.bxshadow.b.circle(src=img, height='50', width='50', alt='')
       form(method='GET', action='#', target='_top')
               input(name='search', type='search', placeholder='Search')
               input(type='submit', value='')
@@ -578,7 +584,7 @@ html(⚡='')
             
             div.home-header
               div.home-title
-               br
+               
                | #{name}
               div.home-text
                | #{tagline}
