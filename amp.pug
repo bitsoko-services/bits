@@ -183,6 +183,7 @@ html(⚡='')
       input, textarea, select, button, meter, progress {
       -webkit-writing-mode: horizontal-tb;
       }
+      .fill{width: 100%;}
       .bgc{    background: #aebfff;
         background-image: url(https://www.ronlegrand.com/wp-content/uploads/2013/11/black-friday-banner.fw_.png);
         background-size: cover;
@@ -566,7 +567,7 @@ html(⚡='')
               input(name='search', type='search', placeholder='Search')
               input(type='submit', value='')
     .row.topm
-       .col-12
+       .col-12.fill
            amp-carousel(height='305', layout='fixed-height', type='carousel', controls, loop, autoplay, delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')  
               amp-img(src='/bits/images/slides/1.jpg', width='580', height='300', alt='a sample image')
               amp-img(src='/bits/images/slides/2.jpg', width='580', height='300', alt='another sample image')
