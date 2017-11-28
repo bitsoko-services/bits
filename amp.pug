@@ -76,7 +76,14 @@ html(⚡='')
        .card .card-action:last-child {
             border-radius: 0 0 2px 2px;
         }
-       .topm{    margin-top: -43%;}
+       .topm{border-width: 1px 0px 1px 0px;
+        border-style: solid solid solid solid;
+        border-color: #000000 #000000 #000000 #000000;
+        margin-top: ;
+        background: #e52d27;
+        background: -webkit-linear-gradient(to right, #b31217, #e52d27);
+        background: linear-gradient(to right, #b31217, #e52d27);    
+        }
        .card .card-action {
             position: relative;
             background-color: inherit;
@@ -558,6 +565,13 @@ html(⚡='')
     .mbar
       a.my0.mx-auto(href='/')          
                 amp-img.bxshadow.b.circle(src=img, height='70', width='70', alt='')
+    .row.topm
+       .col-12
+           amp-carousel(height='300', layout='fixed-height', type='carousel', controls, loop, autoplay, delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')  
+              amp-img(src='/bits/images/slides/1.jpg', width='580', height='300', alt='a sample image')
+              amp-img(src='/bits/images/slides/2.jpg', width='580', height='300', alt='another sample image')
+              amp-img(src='/bits/images/slides/3.jpg', width='580', height='300', alt='and another sample image')
+              amp-img(src='/bits/images/slides/4.jpg', width='580', height='300', alt='and another sample image')
     .row.mtp
          .x.xht
             
@@ -571,13 +585,7 @@ html(⚡='')
               input(name='search', type='search', placeholder='Search')
               input(type='submit', value='')
             
-    .row.topm
-       .col-12
-           amp-carousel(height='300', layout='fixed-height', type='carousel', controls, loop, autoplay, delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')  
-              amp-img(src='/bits/images/slides/1.jpg', width='580', height='300', alt='a sample image')
-              amp-img(src='/bits/images/slides/2.jpg', width='580', height='300', alt='another sample image')
-              amp-img(src='/bits/images/slides/3.jpg', width='580', height='300', alt='and another sample image')
-              amp-img(src='/bits/images/slides/4.jpg', width='580', height='300', alt='and another sample image')
+    
 
 //       .col-3
 //           for store in stores
