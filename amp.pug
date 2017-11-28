@@ -315,6 +315,7 @@ html(⚡='')
       float: left;
        /*margin: 0px 2% 0px 2%;;*/
       min-height: 0.125rem;
+      margin-right: 24px;
       }
       .col-1,
       .col-2,
@@ -474,7 +475,8 @@ html(⚡='')
            height: 256px;
         background-color: #3f3935;
         position: absolute;
-        padding: 50px;
+        padding-left: 50px;
+            padding-top: 13px;
         -webkit-box-shadow: inset 0px 9px 9px -9px rgba(69,67,69,1);
         -moz-box-shadow: inset 0px 9px 9px -9px rgba(69,67,69,1);
         box-shadow: inset 0px 9px 9px -9px rgb(0, 0, 0);
@@ -616,9 +618,13 @@ html(⚡='')
             
     .row.col-12.fill.footer-home
        .col-12
-         .col-4.whte OUR SHOPS
+         .col-4 
+           span.whte OUR SHOPS
            for store in stores
             +liststore(store.banner,store.name,store.desc,store.id)
-         .col-3.whte THE COMPANY
-         .col-2.whte MAY WE HELP YOU?
-         .col-3.whte FIND US ON
+         .col-3
+            span.whte THE COMPANY
+         .col-3 
+            span.whte MAY WE HELP YOU?
+         .col-3 
+            span.whte FIND US ON
