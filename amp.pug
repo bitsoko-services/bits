@@ -464,7 +464,6 @@ html(⚡='')
       }
       .home-header {
       width: 100%;
-      height: 87vh;
       text-align:center;
       background: rgba(0, 0, 0, 0.04);
       background-image:  linear-gradient(       rgba(255, 255, 255, 0.74),        rgba(255, 255, 255, 0.83)     ),url(#{cover});
@@ -474,13 +473,11 @@ html(⚡='')
       }
       .home-title {
       position: relative;
-      top: 52%;
       font-size: 300%;
       text-transform: uppercase;
       }
       .home-text {
       position: relative;
-      top: 58%;
       font-size: 150%;
       text-transform: lowercase;
       }
@@ -565,6 +562,9 @@ html(⚡='')
     .mbar
       a.my0.mx-auto(href='/')          
                 amp-img.bxshadow.b.circle(src=img, height='70', width='70', alt='')
+      form(method='GET', action='#', target='_top')
+              input(name='search', type='search', placeholder='Search')
+              input(type='submit', value='')
     .row.topm
        .col-12
            amp-carousel(height='300', layout='fixed-height', type='carousel', controls, loop, autoplay, delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')  
@@ -581,9 +581,7 @@ html(⚡='')
                | #{name}
               div.home-text
                | #{tagline}
-            form(method='GET', action='#', target='_top')
-              input(name='search', type='search', placeholder='Search')
-              input(type='submit', value='')
+            
             
     
 
