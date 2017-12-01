@@ -529,6 +529,39 @@ html(⚡='')
       .le{margin-left: 71px;} .fixed{    position: fixed;}.nopadding{    padding: 0px;}   .shado{-webkit-box-shadow: 0px -1px 5px 0px rgba(153,153,153,1);
       -moz-box-shadow: 0px -1px 5px 0px rgba(153,153,153,1);
       box-shadow: 0px -1px 5px 0px rgba(153,153,153,1);}
+            .shopCard {
+            background: white;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 0px !important;
+        }
+        .shopCard img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .shopCard p {
+            margin: 0px;
+            line-height: 1.3;
+        }
+        .shopLstHeader {
+            border-bottom: 1px solid #ccc;
+            padding: 3px 0px;
+        }
+        .shopLstHeader h5 {
+            margin: 7px;
+            font-size: 1.2em;
+        }
+        .shopLstHeader button {
+            float: right;
+            background: #619ed1;
+            color: white;
+            border: none;
+            padding: 4px 7px;
+            border-radius: 2px;
+            position: absolute;
+            right: 0;
+            top: 10px;
+        }      
       .mi{border-bottom: 1px #e5e5e5 solid;
       font-family: Lato;
       padding:20px;
@@ -690,39 +723,16 @@ html(⚡='')
             amp-img(src='/bits/images/slides/2.jpg', width='580', height='300', alt='another sample image')
             amp-img(src='/bits/images/slides/3.jpg', width='580', height='300', alt='and another sample image')
             amp-img(src='/bits/images/slides/4.jpg', width='580', height='300', alt='and another sample image')
+        .shopCard
+          .row.shopLstHeader
+            .col-6
+              h5 SHOPS
+            .col-6
+              button VIEW ALL
+          .row.shopLst
+            .col-2.shopCard
+                for store in stores
+                 +liststore(store.banner,store.name,store.desc,store.id)
 
-//          .row.col-12.fill.footer-home
-//            .col-12
-//              amp-selector.ampTabContainer(role='tablist', layout='container')
-//                  .tabButton(role='tab', selected='', option='a') OUR SHOPS
-//                  .tabContent(role='tabpanel') 
-//                                 .col-4  
-//                                   for store in stores
-//                                    +liststore(store.banner,store.name,store.desc,store.id)
-//                  .tabButton(role='tab', option='b') THE COMPANY
-//                  .tabContent(role='tabpanel') 
-//                         ul.footer-group.flist
-//                            li.footer-item
-//                              a.footer-link(href='#') About Us
-//                            li.footer-item
-//                              a.footer-link(href='#') Careers
-//                            li.footer-item
-//                              a.footer-link(href='#') Legal
-    //              .tabButton(role='tab', option='c')  MAY WE HELP YOU?
-    //              .tabContent(role='tabpanel')
-    //                     ul.footer-group.flist
-    //                        li.footer-item
-    //                          a.footer-link(href='#') Contact Us
-    //                        li.footer-item
-    //                          a.footer-link(href='#') FAQs
-    //                        li.footer-item
-    //                          a.footer-link(href='#') Product Care
-    //              .tabButton(role='tab', option='c') FIND US ON
-    //              .tabContent(role='tabpanel') 
-    //                    ul.footer-group.flist
-    //                        li.footer-item
-    //                          a.footer-link(href='#') Facebook
-    //                        li.footer-item
-    //                          a.footer-link(href='#') Twitter
-    //                        li.footer-item
-    //                          a.footer-link(href='#') Google+
+
+                               
