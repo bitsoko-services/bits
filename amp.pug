@@ -10,6 +10,7 @@ html(⚡='')
     script(async='', custom-element='amp-form', src='https://cdn.ampproject.org/v0/amp-form-0.1.js')
     link(rel='canonical', href='https://ampbyexample.com/components/amp-carousel/')
     script(async='', custom-element='amp-list', src='https://cdn.ampproject.org/v0/amp-list-0.1.js')
+    script(async='', custom-element='amp-selector', src='https://cdn.ampproject.org/v0/amp-selector-0.1.js')
     script(async='', custom-template='amp-mustache', src='https://cdn.ampproject.org/v0/amp-mustache-0.1.js')
     meta(name='viewport', content='width=device-width,minimum-scale=1,initial-scale=1')
     style(amp-boilerplate='').
@@ -19,6 +20,47 @@ html(⚡='')
         body{background-color: #fcfcfc; -webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
     style(amp-custom='').
         body{background-color: #fcfcfc;}
+            .ampTabContainer {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .tabButton[selected] {
+            outline: none;
+            background: #ccc;
+        }
+
+        .tabButton {
+            list-style: none;
+            flex-grow: 1;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .tabContent {
+            display: none;
+            width: 100%;
+            order: 1; /* must be greater than the order of the tab buttons to flex to the next line */
+            border: 1px solid #ccc;
+        }
+
+        .tabButton[selected]+.tabContent {
+            display: block;
+        }
+
+        /* For example below (not required) */
+        .itemCustom {
+            border: 1px solid #000;
+            height: 280px;
+            width: 380px;
+            margin: 10px;
+            text-align: center;
+            padding-top: 140px;
+        }
+        amp-selector {
+          padding: 1rem;
+          margin: 1rem;
+        }
       .circle {  border-radius: 50%;border: solid 1px #4e48481c;}
       .shp{position: relative; margin-top: -63px; /* float: right; */  margin-left: 27% !important;}
       .card.horizontal {
@@ -638,39 +680,35 @@ html(⚡='')
             
     .row.col-12.fill.footer-home
        .col-12
-         .col-4 
-           span.whte OUR SHOPS
-           for store in stores
-            +liststore(store.banner,store.name,store.desc,store.id)
-         .col-3
-            span.whte 
-              center THE COMPANY
-            ul.footer-group.flist
-                    li.footer-item
-                      a.footer-link(href='#') About Us
-                    li.footer-item
-                      a.footer-link(href='#') Careers
-                    li.footer-item
-                      a.footer-link(href='#') Legal
-         .col-3 
-            span.whte 
-              center MAY WE HELP YOU?
-            
-            ul.footer-group.flist
-                li.footer-item
-                  a.footer-link(href='#') Contact Us
-                li.footer-item
-                  a.footer-link(href='#') FAQs
-                li.footer-item
-                  a.footer-link(href='#') Product Care
-         .col-3 
-            span.whte 
-              center FIND US ON
-            
-            ul.footer-group.flist
-                li.footer-item
-                  a.footer-link(href='#') Facebook
-                li.footer-item
-                  a.footer-link(href='#') Twitter
-                li.footer-item
-                  a.footer-link(href='#') Google+
+          amp-selector.ampTabContainer(role='tablist', layout='container')
+              .tabButton(role='tab', selected='', option='a') OUR SHOPS
+              .tabContent(role='tabpanel') 
+                               for store in stores
+                                +liststore(store.banner,store.name,store.desc,store.id)
+              .tabButton(role='tab', option='b') THE COMPANY
+              .tabContent(role='tabpanel') 
+                     ul.footer-group.flist
+                        li.footer-item
+                          a.footer-link(href='#') About Us
+                        li.footer-item
+                          a.footer-link(href='#') Careers
+                        li.footer-item
+                          a.footer-link(href='#') Legal
+              .tabButton(role='tab', option='c')  MAY WE HELP YOU?
+              .tabContent(role='tabpanel')
+                     ul.footer-group.flist
+                        li.footer-item
+                          a.footer-link(href='#') Contact Us
+                        li.footer-item
+                          a.footer-link(href='#') FAQs
+                        li.footer-item
+                          a.footer-link(href='#') Product Care
+              .tabButton(role='tab', option='c') FIND US ON
+              .tabContent(role='tabpanel') 
+                    ul.footer-group.flist
+                        li.footer-item
+                          a.footer-link(href='#') Facebook
+                        li.footer-item
+                          a.footer-link(href='#') Twitter
+                        li.footer-item
+                          a.footer-link(href='#') Google+
