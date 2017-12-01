@@ -574,6 +574,11 @@ html(⚡='')
       font-size: 150%;
       text-transform: lowercase;
       }
+      .sb{
+            border: 10px solid #FFF;
+            border-radius: 5px;
+            background: #fff;
+      }
       .call{    float: right;
         top: 3.5%;
         position: absolute;
@@ -670,9 +675,9 @@ html(⚡='')
       amp-img.bxshadow.b.mail(src='/bits/images/mail.png', height='20', width='25', alt='')
     
     .row.topm
-      .container
+    .container
         .col-12.fill
-          amp-carousel(height='305', layout='fixed-height', type='carousel', controls='controls', loop='loop', autoplay='autoplay', delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')
+          amp-carousel.sb(height='247', layout='fixed-height', type='carousel', controls='controls', loop='loop', autoplay='autoplay', delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')
             amp-img(src='/bits/images/slides/1.jpg', width='580', height='300', alt='a sample image')
             amp-img(src='/bits/images/slides/2.jpg', width='580', height='300', alt='another sample image')
             amp-img(src='/bits/images/slides/3.jpg', width='580', height='300', alt='and another sample image')
@@ -685,23 +690,23 @@ html(⚡='')
                    | #{name}
                   div.home-text
                    | #{tagline}
-          .row.col-12.fill.footer-home
-            .col-12
-              amp-selector.ampTabContainer(role='tablist', layout='container')
-                  .tabButton(role='tab', selected='', option='a') OUR SHOPS
-                  .tabContent(role='tabpanel') 
-                                 .col-4  
-                                   for store in stores
-                                    +liststore(store.banner,store.name,store.desc,store.id)
-                  .tabButton(role='tab', option='b') THE COMPANY
-                  .tabContent(role='tabpanel') 
-                         ul.footer-group.flist
-                            li.footer-item
-                              a.footer-link(href='#') About Us
-                            li.footer-item
-                              a.footer-link(href='#') Careers
-                            li.footer-item
-                              a.footer-link(href='#') Legal
+//          .row.col-12.fill.footer-home
+//            .col-12
+//              amp-selector.ampTabContainer(role='tablist', layout='container')
+//                  .tabButton(role='tab', selected='', option='a') OUR SHOPS
+//                  .tabContent(role='tabpanel') 
+//                                 .col-4  
+//                                   for store in stores
+//                                    +liststore(store.banner,store.name,store.desc,store.id)
+//                  .tabButton(role='tab', option='b') THE COMPANY
+//                  .tabContent(role='tabpanel') 
+//                         ul.footer-group.flist
+//                            li.footer-item
+//                              a.footer-link(href='#') About Us
+//                            li.footer-item
+//                              a.footer-link(href='#') Careers
+//                            li.footer-item
+//                              a.footer-link(href='#') Legal
     //              .tabButton(role='tab', option='c')  MAY WE HELP YOU?
     //              .tabContent(role='tabpanel')
     //                     ul.footer-group.flist
