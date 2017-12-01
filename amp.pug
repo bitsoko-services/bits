@@ -27,7 +27,7 @@ html(⚡='')
 
         .tabButton[selected] {
             outline: none;
-            background: #ccc;
+            
         }
 
         .tabButton {
@@ -41,7 +41,7 @@ html(⚡='')
             display: none;
             width: 100%;
             order: 1; /* must be greater than the order of the tab buttons to flex to the next line */
-            border: 1px solid #ccc;
+           border-top: 1px solid #ffffff24;
         }
 
         .tabButton[selected]+.tabContent {
@@ -57,6 +57,12 @@ html(⚡='')
             text-align: center;
             padding-top: 140px;
         }
+        amp-selector [option][selected] {
+                cursor: auto;
+                outline:0px solid rgba(220, 219, 219, 0.31);
+                border: 1px solid rgba(220, 219, 219, 0.31);
+                border-bottom: none;
+            }
         amp-selector {
           padding: 1rem;
           margin: 1rem;
@@ -683,6 +689,7 @@ html(⚡='')
           amp-selector.ampTabContainer(role='tablist', layout='container')
               .tabButton(role='tab', selected='', option='a') OUR SHOPS
               .tabContent(role='tabpanel') 
+                             .col-4  
                                for store in stores
                                 +liststore(store.banner,store.name,store.desc,store.id)
               .tabButton(role='tab', option='b') THE COMPANY
@@ -694,21 +701,21 @@ html(⚡='')
                           a.footer-link(href='#') Careers
                         li.footer-item
                           a.footer-link(href='#') Legal
-              .tabButton(role='tab', option='c')  MAY WE HELP YOU?
-              .tabContent(role='tabpanel')
-                     ul.footer-group.flist
-                        li.footer-item
-                          a.footer-link(href='#') Contact Us
-                        li.footer-item
-                          a.footer-link(href='#') FAQs
-                        li.footer-item
-                          a.footer-link(href='#') Product Care
-              .tabButton(role='tab', option='c') FIND US ON
-              .tabContent(role='tabpanel') 
-                    ul.footer-group.flist
-                        li.footer-item
-                          a.footer-link(href='#') Facebook
-                        li.footer-item
-                          a.footer-link(href='#') Twitter
-                        li.footer-item
-                          a.footer-link(href='#') Google+
+//              .tabButton(role='tab', option='c')  MAY WE HELP YOU?
+//              .tabContent(role='tabpanel')
+//                     ul.footer-group.flist
+//                        li.footer-item
+//                          a.footer-link(href='#') Contact Us
+//                        li.footer-item
+//                          a.footer-link(href='#') FAQs
+//                        li.footer-item
+//                          a.footer-link(href='#') Product Care
+//              .tabButton(role='tab', option='c') FIND US ON
+//              .tabContent(role='tabpanel') 
+//                    ul.footer-group.flist
+//                        li.footer-item
+//                          a.footer-link(href='#') Facebook
+//                        li.footer-item
+//                          a.footer-link(href='#') Twitter
+//                        li.footer-item
+//                          a.footer-link(href='#') Google+
