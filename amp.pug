@@ -544,6 +544,7 @@ html(⚡='')
             margin: 0px;
             line-height: 1.3;
         }
+        .shopLst{display: -webkit-inline-box;}
         .shopLstHeader {
             border-bottom: 1px solid #ccc;
             padding: 3px 0px;
@@ -729,6 +730,7 @@ html(⚡='')
               h5 SHOPS
             .col-6
               button VIEW ALL
+          br
           .row.shopLst
              for store in stores
                 +liststore(store.banner,store.name,store.desc,store.id)
