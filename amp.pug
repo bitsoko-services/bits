@@ -385,7 +385,7 @@ html(⚡='')
       
       }
       .row [class^="col"] {
-      float: left;
+        /*     float: left;
        /*margin: 0px 2% 0px 2%;;*/
       min-height: 0.125rem;
       margin-right: 24px;
@@ -637,9 +637,9 @@ html(⚡='')
   body.testFont
     
     mixin liststore(item,title,desc,id)
-            a(href="/bits/?s="+id)
-             .col-2.shopCard
-                amp-img(src=item, width='70', height='70', alt=title)              
+            .col-2.shopCard
+              a(href="/bits/?s="+id)             
+                amp-img(layout='responsive', width='200', height='200') 
                 .card-content.sub(class='shpDesc')
                     p
                       |#{title} 
