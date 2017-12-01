@@ -637,10 +637,8 @@ html(⚡='')
     
     mixin liststore(item,title,desc,id)
             a(href="/bits/?s="+id)
-             .card.horizontal
-              .card-image
-                amp-img(src=item, width='70', height='70', alt=title)
-              .card-stacked
+             .col-2.shopCard
+                amp-img(src=item, width='70', height='70', alt=title)              
                 .card-content.sub(class='shpDesc')
                     p
                       |#{title} 
@@ -731,9 +729,8 @@ html(⚡='')
             .col-6
               button VIEW ALL
           .row.shopLst
-            .col-2.shopCard
-            for store in stores
-              +liststore(store.banner,store.name,store.desc,store.id)
+             for store in stores
+                +liststore(store.banner,store.name,store.desc,store.id)
         br
 
 
