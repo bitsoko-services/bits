@@ -732,8 +732,9 @@ html(⚡='')
               button VIEW ALL
           .row.shopLst
             .col-2.shopCard
-                for store in stores
-                 +liststore(store.banner,store.name,store.desc,store.id)
+            for store in stores
+              +liststore(store.banner,store.name,store.desc,store.id)
+         br
 
 
                                
