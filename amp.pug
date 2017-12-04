@@ -9,14 +9,65 @@ html(⚡='')
     script(async='', custom-element='amp-carousel', src='https://cdn.ampproject.org/v0/amp-carousel-0.1.js')
     script(async='', custom-element='amp-form', src='https://cdn.ampproject.org/v0/amp-form-0.1.js')
     link(rel='canonical', href='https://ampbyexample.com/components/amp-carousel/')
+    script(async='', custom-element='amp-list', src='https://cdn.ampproject.org/v0/amp-list-0.1.js')
+    script(async='', custom-element='amp-selector', src='https://cdn.ampproject.org/v0/amp-selector-0.1.js')
+    script(async='', custom-template='amp-mustache', src='https://cdn.ampproject.org/v0/amp-mustache-0.1.js')
     meta(name='viewport', content='width=device-width,minimum-scale=1,initial-scale=1')
     style(amp-boilerplate='').
       body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
     noscript
       style(amp-boilerplate='').
-        body{background-color: #fcfcfc; -webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
+        body{background-color: #eaeaea; -webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
     style(amp-custom='').
-        body{background-color: #fcfcfc;}
+        body{background-color: #eaeaea;}
+            .ampTabContainer {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .tabButton[selected] {
+            outline: none;
+            
+        }
+
+        .tabButton {
+            list-style: none;
+            flex-grow: 1;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .tabContent {
+            display: none;
+            width: 100%;
+            order: 1; /* must be greater than the order of the tab buttons to flex to the next line */
+           border-top: 1px solid #ffffff24;
+        }
+
+        .tabButton[selected]+.tabContent {
+            display: block;
+        }
+
+        /* For example below (not required) */
+        .itemCustom {
+            border: 1px solid #000;
+            height: 280px;
+            width: 380px;
+            margin: 10px;
+            text-align: center;
+            padding-top: 140px;
+        }
+        amp-selector [option][selected] {
+                cursor: auto;
+                outline:0px solid rgba(220, 219, 219, 0.31);
+                border: 1px solid rgba(220, 219, 219, 0.31);
+                border-bottom: none;
+                padding: 10px;
+            }
+        amp-selector {
+          padding: 1rem;
+          margin: 1rem;
+        }
       .circle {  border-radius: 50%;border: solid 1px #4e48481c;}
       .shp{position: relative; margin-top: -63px; /* float: right; */  margin-left: 27% !important;}
       .card.horizontal {
@@ -25,13 +76,32 @@ html(⚡='')
             display: -ms-flexbox;
             display: flex;
         }
+            .flist  {color: #848484;
+            MARGIN-LEFT: 27%;}
        a:link, a:visited , a:hover, a:active  {
                  text-decoration: none;
             }
+      .whte{font-size: 20px;
+            /* font-style: normal; */
+            /* text-align: unset; */
+            text-transform: lowercase;}
+        .footer-group{
+           list-style-type: none;
+           color:#848484;
+               margin-left: 23%;
+            font-size: 13px;
+        }
+        a:-webkit-any-link {
+            color: #848484;
+            cursor: auto;
+            text-decoration: underline;
+            }
+
       .card {
             position: relative;
-            margin: 0px 0px 6px -17%;
-            background-color: #fff;
+            margin: 0px 0px 6px 0%;
+            background-color: #ffffff47;
+            color: #fff;
             -webkit-transition: -webkit-box-shadow .25s;
             transition: -webkit-box-shadow .25s;
             transition: box-shadow .25s;
@@ -80,6 +150,7 @@ html(⚡='')
         border-style: solid solid solid solid;
         border-color: #000000 #000000 #000000 #000000;
         margin-top: ;
+        height:150px;
         background: #e52d27;
         background: -webkit-linear-gradient(to right, #b31217, #e52d27);
         background: linear-gradient(to right, #b31217, #e52d27);    
@@ -95,7 +166,7 @@ html(⚡='')
       background: #ededed;
       padding: 0 8px;
       width: 51%;
-        top: 2%;
+        top: 1%;
             left: 25%;
       height: 32px;
       font-family: inherit;
@@ -125,11 +196,11 @@ html(⚡='')
         /* opacity: 2.4; */
         /* border-left: 1px #000; */
         border: none;
-        height: 25px;
+        height: 20px;
         -webkit-box-shadow: -2px 0px 0px -1px rgba(161,159,161,1);
         -moz-box-shadow: -2px 0px 0px -1px rgba(161,159,161,1);
         box-shadow: -2px 0px 0px -1px rgba(161, 159, 161, 0.4);
-        top: 3%;
+        top: 1.7%;
         width: 73px;
         -webkit-appearance: none;
         border-radius: 0;
@@ -302,18 +373,22 @@ html(⚡='')
       }
       /* ==== GRID SYSTEM ==== */
       .container {
-      width: 90%;
-      margin-left: auto;
-      margin-right: auto;
+        width: 90%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+                margin-top: -20vh;
       }
       .row {
       position: relative;
       width: 100%;
+      
       }
       .row [class^="col"] {
-      float: left;
+        /*     float: left;
        /*margin: 0px 2% 0px 2%;;*/
       min-height: 0.125rem;
+      margin-right: 24px;
       }
       .col-1,
       .col-2,
@@ -375,7 +450,7 @@ html(⚡='')
       }
       @media only screen and (min-width: 540px) {  /* 540px */
       .container {
-      width: 80%;
+      width: 87%;
       }
       
       .fullnav {
@@ -448,14 +523,52 @@ html(⚡='')
       }
       /*.xht{height: 350px;}*/
       .container {
-      width: 75%;
-      max-width: 60rem;
+     
       }
       }
       .xht {  }
       .le{margin-left: 71px;} .fixed{    position: fixed;}.nopadding{    padding: 0px;}   .shado{-webkit-box-shadow: 0px -1px 5px 0px rgba(153,153,153,1);
       -moz-box-shadow: 0px -1px 5px 0px rgba(153,153,153,1);
       box-shadow: 0px -1px 5px 0px rgba(153,153,153,1);}
+            .shopCard {
+            background: white;
+            border-radius: 5px;
+            padding: 10px;
+            
+        }
+        .shopCard img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .shopCard p {
+            margin: 0px;
+            line-height: 1.3;
+        }
+        .shopLst{display: -webkit-inline-box;}
+        .shopLstHeader {
+            border-bottom: 1px solid #ccc;
+            padding: 3px 0px;
+        }
+        .dsdw{
+            -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+        -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+        box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+        }
+        .shopLstHeader h5 {
+            margin: 7px;
+            font-size: 1.2em;
+        }
+        .shopLstHeader button {
+            float: right;
+            background: #619ed1;
+            color: white;
+            border: none;
+            padding: 4px 7px;
+            border-radius: 2px;
+            position: absolute;
+            right: 0;
+            top: 10px;
+        }      
       .mi{border-bottom: 1px #e5e5e5 solid;
       font-family: Lato;
       padding:20px;
@@ -473,15 +586,15 @@ html(⚡='')
            height: 256px;
         background-color: #3f3935;
         position: absolute;
+        padding-left: 50px;
+            padding-top: 13px;
         -webkit-box-shadow: inset 0px 9px 9px -9px rgba(69,67,69,1);
         -moz-box-shadow: inset 0px 9px 9px -9px rgba(69,67,69,1);
         box-shadow: inset 0px 9px 9px -9px rgb(0, 0, 0);
       }
+      @media only screen and (min-width: 500px) {.home-title{padding-top:3%;}}
       .home-header {
       padding-bottom: 15px;
-          border-width: 1px 0px 1px 0px;
-        border-style: solid solid solid solid;
-        border-color: #848484;
       width: 100%;
       text-align:center;
       background: rgba(0, 0, 0, 0.04);
@@ -489,6 +602,10 @@ html(⚡='')
       background-image: linear-gradient(       rgba(255, 255, 255, 0.74),        rgba(255, 255, 255, 0.83)     ),url(http://www.beyondmarketnoise.com/wp-content/uploads/2016/05/placeholder-2.gif);
       background-size: cover;
       opacity: 1;
+          height: 40vh;
+        border-bottom: 1px solid #d8d8d8;
+        -webkit-box-shadow: 0px 4px 5px 0px rgba(196,196,196,1);
+        box-shadow: 0px 4px 5px 0px rgba(196,196,196,1);
       }
       .home-title {
       position: relative;
@@ -500,18 +617,23 @@ html(⚡='')
       font-size: 150%;
       text-transform: lowercase;
       }
+      .sb{
+            border: 10px solid #FFF;
+            border-radius: 5px;
+            background: #fff;
+      }
       .call{    float: right;
-        top: 3.5%;
+        top: 1.5%;
         position: absolute;
         right: 13%;}
       .mail{float: right;
-        top: 3.5%;
+        top: 1.5%;
         position: absolute;
         right: 8%;}
       .fnav{color: #848484;
       float: right;
       margin-right: 10%;}      
-      .mbar{height: 50px;padding-top: 0px;background: #ededed61;padding-left:6%;-webkit-box-shadow:0px 4px 5px 0px rgba(196,196,196,1);-moz-box-shadow: 0px 4px 5px 0px rgba(196,196,196,1);box-shadow: 0px 4px 5px 0px rgba(196,196,196,1);}
+      .mbar{border-bottom: 1px solid #d8d8d8;height: 50px;padding-top: 0px;background: #fff;padding-left:6%;}
       .testFont{
       font-family: Lato;
       color: #848484;
@@ -521,11 +643,9 @@ html(⚡='')
   body.testFont
     
     mixin liststore(item,title,desc,id)
-            a(href="/bits/?s="+id)
-             .card.horizontal
-              .card-image
-                amp-img(src=item, width='70', height='70', alt=title)
-              .card-stacked
+            .col-2.shopCard
+              a(href="/bits/?s="+id)             
+                amp-img(layout='responsive', width='200', height='200') 
                 .card-content.sub(class='shpDesc')
                     p
                       |#{title} 
@@ -594,30 +714,32 @@ html(⚡='')
               input(type='submit', value='')
       amp-img.bxshadow.b.call(src='/bits/images/call.png', height='20', width='20', alt='')
       amp-img.bxshadow.b.mail(src='/bits/images/mail.png', height='20', width='25', alt='')
-    .row.topm
-       .col-12.fill
-           amp-carousel(height='305', layout='fixed-height', type='carousel', controls, loop, autoplay, delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')  
-              amp-img(src='/bits/images/slides/1.jpg', width='580', height='300', alt='a sample image')
-              amp-img(src='/bits/images/slides/2.jpg', width='580', height='300', alt='another sample image')
-              amp-img(src='/bits/images/slides/3.jpg', width='580', height='300', alt='and another sample image')
-              amp-img(src='/bits/images/slides/4.jpg', width='580', height='300', alt='and another sample image')
-    .row.mtp
-         .x.xht
-            
-            div.home-header
-              div.home-title
-               
-               | #{name}
-              div.home-text
-               | #{tagline}
-            
-            
-    .row.col-12.fill.footer-home
-       .col-12
-         .col-3
-           for store in stores
-            +liststore(store.banner,store.name,store.desc,store.id)
-      
-            //    .row
-            //        .col-6 Our products & Services
-            //        .col-6 Connect with us
+    
+    .row
+         div.home-header
+            div.home-title
+                   | #{name}
+            div.home-text
+                   | #{tagline}
+    .container
+        .col-12.fill.dsdw
+          amp-carousel.sb(height='247', layout='fixed-height', type='carousel', controls='controls', loop='loop', autoplay='autoplay', delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')
+            amp-img(src='/bits/images/slides/1.jpg', width='580', height='300', alt='a sample image')
+            amp-img(src='/bits/images/slides/2.jpg', width='580', height='300', alt='another sample image')
+            amp-img(src='/bits/images/slides/3.jpg', width='580', height='300', alt='and another sample image')
+            amp-img(src='/bits/images/slides/4.jpg', width='580', height='300', alt='and another sample image')
+        br
+        .shopCard.dsdw
+          .row.shopLstHeader
+            .col-6
+              h5 SHOPS
+            .col-6
+              button VIEW ALL
+          br
+          .row.shopLst
+             for store in stores
+                +liststore(store.banner,store.name,store.desc,store.id)
+        br
+
+
+                               
