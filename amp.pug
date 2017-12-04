@@ -751,17 +751,15 @@ html(⚡='')
              for store in stores
                 +liststore(store.banner,store.name,store.desc,store.id)
         br
-.shopCard.dsdw
-          .row.shopLstHeader
-            .col-6
-              h5 MANAGERS
-            .col-6
-              button 
-          br
-          .row.shopLst
-             for store in stores
-                +liststore(store.banner,store.name,store.desc,store.id)
-        br
+        .shopCard.dsdw
+                  .row.shopLstHeader
+                    .col-6
+                      h5 MANAGERS
+                    .col-6
+                      button 
+                  br
+                  .row.shopLst
+                     for store in stores
+                        +liststore(store.banner,store.name,store.desc,store.id)
+                br
 
-
-                               
