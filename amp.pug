@@ -494,6 +494,7 @@ html(⚡='')
       .col-9 {
       width: 71%;
       }
+      
       .col-10 {
       width: 79.33%;
       }
@@ -638,6 +639,16 @@ html(⚡='')
       font-family: Lato;
       color: #848484;
       }
+      @media only screen and (max-width: 500px) {
+          .home-title {
+            font-size: 200%;
+            padding-top: 20px;
+            }
+          .call{
+            margin-right:10px;
+          }
+
+        }
   for store in stores
      link(rel='preload', href="/bits/?s="+store.id)
   body.testFont
