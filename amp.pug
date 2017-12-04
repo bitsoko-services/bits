@@ -649,6 +649,9 @@ html(⚡='')
           }
 
         }
+        .managerLst{
+            display:none;
+        }
   for store in stores
      link(rel='preload', href="/bits/?s="+store.id)
   body.testFont
@@ -751,7 +754,7 @@ html(⚡='')
              for store in stores
                 +liststore(store.banner,store.name,store.desc,store.id)
         br
-        .shopCard.dsdw
+        .shopCard.managerLst.dsdw
                   .row.shopLstHeader
                     .col-6
                       h5 MANAGERS
