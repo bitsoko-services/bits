@@ -327,6 +327,8 @@ function populateService(mDet) {
 		}
 		else{
 					$('.merchantsProducts').removeClass('displayNone');
+					// constract categories 
+ var productCategory = [{"id":125,"name":"Drinks"},{"id":80,"name":"Food"}];
 	$('.prod').append('<span class="new badge bits" data-badge-caption="">'+ mDet.list.length +'</span>');
 		$('.merchproducts').html("");
 		for (var ii = 0; ii < mDet.list.length; ++ii) {
@@ -338,7 +340,7 @@ function populateService(mDet) {
 				$('.first-tt').attr('data-activates', 'prod-' + mDet.list[ii].id + '-counter');
 			}
 
-			$('.merchproducts').append('<li class="collection-item avatar bits-max "><img src="https://bitsoko.co.ke' + mDet.list[ii].imagePath + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> ' + mDet.list[ii].name + ' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + mDet.list[ii].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + mDet.list[ii].metric + ' </span></p><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + mDet.list[ii].id + '-counter"><button class="counter-minus bits btn btn-primary btn-floating btn-f"  style="line-height: 5px;">-</button><input id= "bitsInputQty' + mDet.list[ii].id + '" class="bitsInputQty" price="' + mDet.list[ii].price + '" pid="' + mDet.list[ii].id + '" type="text" value="0" min="" style="border-bottom: none;"><span> ' + mDet.list[ii].metric + ' </span><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f" style="line-height: 5px; float:right; margin-top: 7px;" >+</button>'
+			$('.merchproducts').append('<li class="collection-item avatar bits-max "><span style="font-size:0px;">' + mDet.list[ii].name + ' </span><img src="https://bitsoko.co.ke' + mDet.list[ii].imagePath + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle"> ' + mDet.list[ii].name + ' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + mDet.list[ii].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + mDet.list[ii].metric + ' </span></p><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + mDet.list[ii].id + '-counter"><button class="counter-minus bits btn btn-primary btn-floating btn-f"  style="line-height: 5px;">-</button><input id= "bitsInputQty' + mDet.list[ii].id + '" class="bitsInputQty" price="' + mDet.list[ii].price + '" pid="' + mDet.list[ii].id + '" type="text" value="0" min="" style="border-bottom: none;"><span> ' + mDet.list[ii].metric + ' </span><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f" style="line-height: 5px; float:right; margin-top: 7px;" >+</button>'
 				// +'</div><p class="col s4" style=""> <input class="number bitsInputQty sinpt" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'><label for='+mDet.list[ii].name+'></label></p>'+
 				+ '</li>');
 			$('#prod-' + mDet.list[ii].id + '-counter').handleCounter()
@@ -348,6 +350,7 @@ function populateService(mDet) {
 		//  	 	console.log(mDet.list[ii].name)	
 		// 	 };
 		bitsTheme(mDet.theme);
+		sortListDir();
 		$('.materialboxed').materialbox();
 		var addproducts = document.querySelectorAll(".bitsInputQty");
 		for (var i = 0; i < addproducts.length; ++i) {
@@ -430,4 +433,56 @@ function populateModal(x, y) {
 		};
 		document.querySelector('.btnname').innerHTML = activeService.name;
 	};
+}
+
+////----------------------------------------------------function sort list-------------------------------------------------------------------------------------
+function sortListDir() {
+  var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
+  list = document.getElementById("id01");
+  switching = true;
+  // Set the sorting direction to ascending:
+  dir = "asc"; 
+  // Make a loop that will continue until no switching has been done:
+  while (switching) {
+    // Start by saying: no switching is done:
+    switching = false;
+    b = list.getElementsByTagName("LI");
+    // Loop through all list-items:
+    for (i = 0; i < (b.length - 1); i++) {
+      // Start by saying there should be no switching:
+      shouldSwitch = false;
+      /* Check if the next item should switch place with the current item,
+      based on the sorting direction (asc or desc): */
+      if (dir == "asc") {
+        if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+          /* If next item is alphabetically lower than current item,
+          mark as a switch and break the loop: */
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (b[i].innerHTML.toLowerCase() < b[i + 1].innerHTML.toLowerCase()) {
+          /* If next item is alphabetically higher than current item,
+          mark as a switch and break the loop: */
+          shouldSwitch= true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark that a switch has been done: */
+      b[i].parentNode.insertBefore(b[i + 1], b[i]);
+      switching = true;
+      // Each time a switch is done, increase switchcount by 1:
+      switchcount ++;
+    } else {
+      /* If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again. */
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
 }
