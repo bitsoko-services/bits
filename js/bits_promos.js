@@ -28,7 +28,7 @@ shareButton.addEventListener('click', function (ev) {
   if (navigator.share !== undefined) {
 
     // Get the canonical URL from the link tag
-    var shareUrl = document.querySelector('link[rel=canonical]') ? document.querySelector('link[rel=canonical]').href : window.location.href+'?s=' +powner+ '#pid=' +prid+ '';
+    var shareUrl = document.querySelector('link[rel=canonical]') ? document.querySelector('link[rel=canonical]').href : location.origin+location.pathname+'?s=' +powner+ '#pid=' +prid+ '';
 
     // Share it!
     navigator.share({
