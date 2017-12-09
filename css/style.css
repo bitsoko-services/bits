@@ -168,7 +168,7 @@ dd + dd {
 .collection .collection-item.avatar {
     /* min-height: 84px; */
     /*padding-left: 55px !important;*/
-    position: relative;
+    /* position: relative; */
 }
   .collection.promo-collection.avatar { 
     min-height: 84px; 

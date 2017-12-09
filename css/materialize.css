@@ -3287,12 +3287,12 @@ td, th {
   background-color: #fff;
   line-height: 1.5rem;
   padding: 20px 20px;
-  margin: 0;
+  /* margin: 0; */
   border-bottom: 1px solid #e0e0e0;
 }
 
 .collection .collection-item.avatar {
-  min-height: 84px;
+  min-height: 85px;
   padding-left: 72px;
   position: relative;
 }

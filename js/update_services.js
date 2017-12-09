@@ -189,9 +189,10 @@ function populateService(mDet) {
 		if (mDet.managers.length == 0) {
 			console.log("no managers for this shop")
 		} else {
-			console.log("this shop has managers")
+			console.log("this shop has managers", mDet.managers)
 		}
 		var x = JSON.parse(mDet.managers);
+		console.log(x);
 		for (var iii in x) {
 			if (parseInt(x[iii].id) == parseInt(localStorage.getItem('bits-user-name'))) {
 				$('#manage-store').css("display", "block");
@@ -328,7 +329,27 @@ function populateService(mDet) {
 		else{
 					$('.merchantsProducts').removeClass('displayNone');
 					// constract categories 
- var productCategory = [{"id":125,"name":"Drinks"},{"id":80,"name":"Food"}];
+ var productCategory = '[{"id":125,"name":"Food"},{"id":80,"name":"Drinks"}]'
+ 	//------------------------------------------ checking if the user is a manager -------------------------------------------------------------------------------------------------------------------------------------
+	try {
+		if (productCategory.length == 0) {
+			console.log("no categories for this shop")
+		} else {
+			console.log("this shop has categories")
+var x = JSON.parse(productCategory);
+$('.prodtabs').html("");
+		for (var iii in x) {
+			console.log(x[iii].name);
+
+			$('.prodtabs').append('<li class="tab col s3"><a href="#'+x[iii].name+'">'+x[iii].name+'</a></li>');
+		}
+		
+		}
+		
+	} catch (err) {
+		console.log("unable to validate categories")
+	}
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	$('.prod').append('<span class="new badge bits" data-badge-caption="">'+ mDet.list.length +'</span>');
 		$('.merchproducts').html("");
 		for (var ii = 0; ii < mDet.list.length; ++ii) {
