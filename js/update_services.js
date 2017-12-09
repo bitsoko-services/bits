@@ -329,11 +329,12 @@ function populateService(mDet) {
 		else{
 					$('.merchantsProducts').removeClass('displayNone');
 					// constract categories 
- var productCategory = '[{"id":125,"name":"Food"},{"id":80,"name":"Drinks"}]'
+ var productCategory = mDet.productCategory
  	//------------------------------------------ checking if the user is a manager -------------------------------------------------------------------------------------------------------------------------------------
 	try {
 		if (productCategory.length == 0) {
 			console.log("no categories for this shop")
+			$('.prodtabs').addClass("displayNone");
 		} else {
 			console.log("this shop has categories")
 var x = JSON.parse(productCategory);
