@@ -658,6 +658,18 @@ html(⚡='')
      link(rel='preload', href="#")
 
   body.testFont
+    mixin listpromo(item,title,desc,id)
+          .slide.slides
+            amp-img(src=item, width='400', height='200', layout='responsive', alt=title)
+            amp-fit-text.caption.center(layout='responsive', width='500', height='250')
+              br
+              span(class='shpNm') #{title}
+              br
+              span(class='shpDesc')
+                | #{desc}
+                br
+                br
+            a.btn(href="/bits/?s="+id) open
     
     mixin liststore(item,title,desc,id)
             .col-2.shopCard
@@ -668,10 +680,7 @@ html(⚡='')
                       |#{title} 
                       br
                       | #{desc}
-    mixin listmanager(name,id)
-            .col-2.shopCard
-                      .col-2.shopCard
-                        amp-img(src='/bits/images/slides/p.png', width='100', height='100', alt='a sample image')
+   
                       
                     
                 
@@ -740,10 +749,8 @@ html(⚡='')
     .container
         .col-12.fill.dsdw
           amp-carousel.sb(height='247', layout='fixed-height', type='carousel', controls='controls', loop='loop', autoplay='autoplay', delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')
-            amp-img(src='/bits/images/slides/1.jpg', width='580', height='300', alt='a sample image')
-            amp-img(src='/bits/images/slides/2.jpg', width='580', height='300', alt='another sample image')
-            amp-img(src='/bits/images/slides/3.jpg', width='580', height='300', alt='and another sample image')
-            amp-img(src='/bits/images/slides/4.jpg', width='580', height='300', alt='and another sample image')
+            for promo in promos
+                +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner)
         br
         .shopCard.dsdw
           .row.shopLstHeader
@@ -764,8 +771,7 @@ html(⚡='')
              button VIEW ALL
          br
          .row.shopLst
-            for manager in managers
-                +listmanager(manager.name,manager.id)
+           
 
             
     br

@@ -350,7 +350,7 @@ $('.prodtabs').append('<li class="tab col s3"><a href="#allproducts">All</a></li
 
 			
 			$('.prodtabs').append('<li class="tab col s3"><a href="#'+x[iii].name+'">'+x[iii].name+'</a></li>');
-			 $('.ptabs').append('<div id="'+x[iii].name+'" class="col s12 blue">'+x[iii].name+'</div>')
+// 			 $('.ptabs').append('<div id="'+x[iii].name+'" class="col s12 blue">'+x[iii].name+'</div>')
 		}
 		  $('ul.tabs').tabs();
 		}
