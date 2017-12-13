@@ -654,8 +654,7 @@ html(⚡='')
         }
   for store in stores
      link(rel='preload', href="/bits/?s="+store.id)
-  for promo in promos
-     +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner)
+  
 
   body.testFont
     mixin listpromo(item,title,desc,id)
@@ -749,7 +748,8 @@ html(⚡='')
     .container
         .col-12.fill.dsdw
           amp-carousel.sb(height='247', layout='fixed-height', type='carousel', controls='controls', loop='loop', autoplay='autoplay', delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')
-
+            for promo in promos
+                +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.promoOwner)
         br
         .shopCard.dsdw
           .row.shopLstHeader
