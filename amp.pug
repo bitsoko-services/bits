@@ -658,7 +658,6 @@ html(⚡='')
 
   body.testFont
     mixin listpromo(item,title,desc,id)
-          .slide.slides
             amp-img(src=item, width='400', height='200', layout='responsive', alt=title)
             amp-fit-text.caption.center(layout='responsive', width='500', height='250')
               br
@@ -668,7 +667,7 @@ html(⚡='')
                 | #{desc}
                 br
                 br
-            a.btn(href="/bits/?s="+id) open
+            a.btn(href="/bits/?s="+id) Buy
     
     mixin liststore(item,title,desc,id)
             .col-2.shopCard
@@ -770,7 +769,8 @@ html(⚡='')
              button VIEW ALL
          br
          .row.shopLst
-           
+            for store in stores
+                +liststore(store.banner,store.name,store.desc,store.id)
 
             
     br

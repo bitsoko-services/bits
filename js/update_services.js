@@ -344,7 +344,7 @@ var x = JSON.parse(productCategory);
 $('.prodtabs').html("");
 $('.ptabs').html("");
 $('.prodtabs').append('<li class="tab col s3"><a href="#allproducts">All</a></li>');
- $('.ptabs').append('<div id="allproducts" class="col s12 blue">All</div>')
+ //$('.ptabs').append('<div id="allproducts" class="col s12 blue">All</div>')
 		for (var iii in x) {
 			console.log(x[iii].name);
 
