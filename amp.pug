@@ -569,7 +569,9 @@ html(⚡='')
             position: absolute;
             right: 0;
             top: 10px;
-        }      
+        } 
+        .pic{    width: 600px;
+            height: 300px;}
       .mi{border-bottom: 1px #e5e5e5 solid;
       font-family: Lato;
       padding:20px;
@@ -658,7 +660,7 @@ html(⚡='')
 
   body.testFont
     mixin listpromo(item,title,desc,id)
-            amp-img(src='/bits/images/slides/1.jpg', width='580', height='300', layout='responsive', alt=title)
+            amp-img.pic(src='/bits/images/slides/1.jpg', width='580', height='300', layout='responsive', alt=title)
               amp-fit-text.caption.center(layout='responsive', width='500', height='250')
               br
               span(class='shpNm') #{title}
