@@ -696,6 +696,12 @@ html(⚡='')
     mixin listmanager(name,shop,id)
         .col-2.shopCard
             amp-img(src='/bits/images/slides/p.png', width='100', height='100', alt='a sample image')
+                br
+                  span(class='shpNm') #{name}
+                  br
+                  span(class='shpDesc')
+                    | #{id}
+                    br
             p
 
     
