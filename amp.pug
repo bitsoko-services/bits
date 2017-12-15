@@ -692,6 +692,12 @@ html(⚡='')
                     br
                     br
                   a.btn(href="/bits/?s="+id) Buy
+                  
+    mixin listmanager(name,shop,id)
+        .col-2.shopCard
+            amp-img(src='/bits/images/slides/p.png', width='100', height='100', alt='a sample image')
+            p
+
     
     mixin liststore(item,title,desc,id)
             .col-2.shopCard
@@ -793,8 +799,8 @@ html(⚡='')
              button VIEW ALL
          br
          .row.shopLst
-            for store in stores
-                +liststore(store.banner,store.name,store.desc,store.id)
+            for manager in managers
+                +listmanager(manager.name,manager.shop,manager.id)
 
             
     br
