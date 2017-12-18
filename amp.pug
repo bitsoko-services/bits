@@ -692,13 +692,13 @@ html(⚡='')
                     | #{desc}
                     br
                     br
-                  a.btn(href="/bits/?s="+promoOwner+"pid="+id) Buy
+                  a.btn(href="/bits/?s="+promoOwner+"#pid="+id) Buy
                   
-    mixin listmanager(name,shop,id)
+    mixin listmanager(managerName,ManagerImage,shop,id)
         .col-2.shopCard
-            amp-img(src='/bits/images/slides/p.png', width='100', height='100', alt='a sample image')
+            amp-img(src=ManagerImage, width='100', height='100', alt='a sample image')
                   br
-                  span(class='shpNm') #{name}
+                  span(class='shpNm') #{managerName}
                   br
                   span(class='shpDesc')
                     | #{id}
@@ -807,7 +807,7 @@ html(⚡='')
          br
          .row.shopLst
             for manager in managers
-                +listmanager(manager.name,manager.shop,manager.id)
+                +listmanager(manager.managerName,manager.managerImage,manager.sID,manager.id)
 
             
     br
