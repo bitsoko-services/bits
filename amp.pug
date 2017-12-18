@@ -681,7 +681,7 @@ html(⚡='')
   
 
   body.testFont
-    mixin listpromo(item,title,desc,id)
+    mixin listpromo(item,title,desc,id,promoOwner)
             amp-img.pic(src=item, width='580', height='300', layout='responsive', alt=title)
               .cption
                   amp-fit-text.caption.center(layout='responsive', width='500', height='250')
@@ -692,7 +692,7 @@ html(⚡='')
                     | #{desc}
                     br
                     br
-                  a.btn(href="/bits/?s="+id) Buy
+                  a.btn(href="/bits/?s="+promoOwner+"pid="+id) Buy
                   
     mixin listmanager(name,shop,id)
         .col-2.shopCard
