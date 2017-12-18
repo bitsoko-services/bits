@@ -682,7 +682,7 @@ html(⚡='')
 
   body.testFont
     mixin listpromo(item,title,desc,id)
-            amp-img.pic(src='/bits/images/slides/1.jpg', width='580', height='300', layout='responsive', alt=title)
+            amp-img.pic(src=item, width='580', height='300', layout='responsive', alt=title)
               .cption
                   amp-fit-text.caption.center(layout='responsive', width='500', height='250')
                   br
@@ -709,7 +709,7 @@ html(⚡='')
     mixin liststore(item,title,desc,id)
             .col-2.shopCard
               a(href="/bits/?s="+id)             
-                amp-img(layout='responsive', width='200', height='200') 
+                amp-img(src=item,layout='responsive', width='200', height='200') 
                 .card-content.sub(class='shpDesc')
                     p
                       |#{title} 
