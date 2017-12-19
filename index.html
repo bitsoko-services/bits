@@ -1182,7 +1182,7 @@ window.addEventListener('load', function () {
 	      //serviceOpener()
 	   e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
 	   e.onsuccess = function (event) {
-	      console.log(e)
+	      console.log(e,"***")
 	          try{
 	              var e=JSON.parse(event.target.result);
 	              resolve(e);
