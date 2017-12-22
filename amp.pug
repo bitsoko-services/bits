@@ -699,7 +699,9 @@ html(⚡='')
             amp-img(src=icon, width='100', height='100', alt='a sample image')
             br
             span(class='mnm') #{name}
-                  br
+            br
+            span(class='mnm') #{shop}
+            br
                   
             
 
@@ -805,7 +807,7 @@ html(⚡='')
          br
          .row.shopLst
             for manager in managers
-                +listmanager(manager.name,manager.icon,manager.sID,manager.id)
+                +listmanager(manager.name,manager.icon,manager.shop,manager.id)
 
             
     br
