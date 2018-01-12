@@ -18,6 +18,7 @@ function updateServicelist() {
 function serviceOpener() {
 	console.log('serviceOpener()..');
 	if (getBitsWinOpt('s') != undefined) {
+		$('.bitsmenuslider').addClass('displayNone');
 		servicePageLoader();
 		if (getBitsOpt('pid') != undefined) {
 			var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
