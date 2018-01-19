@@ -10,11 +10,11 @@ function checkPayments() {
 			$(".chat-outs").addClass("displayNone")
 			$("#paymentBTN").addClass("displayNone")
 			$("#promopriced").addClass("displayNone")
-				// $("#bitsPrice").addClass("displayNone")
-				//removes the button
+			// $("#bitsPrice").addClass("displayNone")
+			//removes the button
 			$(".floatingPrice").html("")
 			$(".floatingPrice").addClass("pointerNone")
-				//adds class with no side panel activatr
+			//adds class with no side panel activatr
 			$(".floatingPrice").append('<a href="#" class="bitswaves-effect waves-block bits bitb waves-light chat-collapse btn-floating btn-large "style="pointer-events: none; background-color:#{theme} !important;"><span id="totals" class="totals"></span></a>')
 		}
 	})
@@ -23,7 +23,7 @@ function checkPayments() {
 function callMerchant() {
 	actvServ().then(function(x) {
 		var p = x.phone
-			//console.log(p)
+		//console.log(p)
 		$('.callbtn').html('')
 		$('.callbtn').append('<a  onclick="rate()" id="star" value="rating" class=" btn-large btn-price bits noshadow bitb" style="float: right !important;margin: 0px 20px;"><i class="mdi-action-grade activator"></i></a><button  id="share" value="Share" class="bitb btn-large btn-price bits noshadow" style="float: right !important;margin: 0px 20px;"><i class="mdi-social-share"></i></button> <a href="tel:' + p + '"  id="" value="" class=" btn-large btn-price bits noshadow bitb" style="float: right !important; margin-right: ;margin: 0px 20px;"><i class="mdi-communication-call"></i></a>');
 		//web Share start
@@ -168,7 +168,7 @@ function loadoldwalletData() {
 			var upDat = JSON.parse(event.target.result);
 			for (var iii = 0; iii < upDat.length; ++iii) {
 				console.log("old wallets found")
-					//var id = upDat[iii].uid ? upDat[iii].uid : 'undefined';	
+				//var id = upDat[iii].uid ? upDat[iii].uid : 'undefined';	
 				$('.username-addr-old').append('<span class="title"><a href="#!" id="share" class="secondary-content right"></a></span><span class ="" style="font-size: 12px;">' + upDat.user + '</span>');
 			}
 		} catch (err) {}
@@ -214,7 +214,7 @@ function showuserNumber() {
 			try {
 				var no = JSON.parse(event.target.result);
 				console.log(no.tel)
-					// 	Materialize.toast('<span class="toastlogin">You are Signed in as: '+ nam.name, 10000);
+				// 	Materialize.toast('<span class="toastlogin">You are Signed in as: '+ nam.name, 10000);
 				if (no.tel == null) {
 					$('#MobileModal').openModal()
 				}
@@ -282,23 +282,23 @@ function tabulateTotals() {
 			// 	 $(".floatingPrice").removeClass("displayNone");
 			$(".totals").html(totals);
 			var xt = document.getElementById("totals").innerHTML
-				// 			if (xt == 0) {
-				// 				console.log("minimum value")
-				// 				$(".delivery ").removeClass("bits");
-				// 				$(".delivery").addClass("pointer-events");
-				// 				$(".bits-main-price").addClass("grey");
-				// 				$(".localCurr").addClass("displayNone");
-				// 				$(".bits-main-price ").removeClass("bits");
-				// 										} 
-				//localStorage.setItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')),totals);
+			// 			if (xt == 0) {
+			// 				console.log("minimum value")
+			// 				$(".delivery ").removeClass("bits");
+			// 				$(".delivery").addClass("pointer-events");
+			// 				$(".bits-main-price").addClass("grey");
+			// 				$(".localCurr").addClass("displayNone");
+			// 				$(".bits-main-price ").removeClass("bits");
+			// 										} 
+			//localStorage.setItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')),totals);
 		} catch (err) {}
 	}
 }
 
 function makeOrder(orderArrayy, orderLoc) {
 	//Rewards();
-	console.log("->",orderArrayy)
-	if ( orderArrayy === undefined || orderArrayy.length == 0){
+	console.log("->", orderArrayy)
+	if (orderArrayy === undefined || orderArrayy.length == 0) {
 		return;
 		console.log("stopped")
 	}
@@ -326,7 +326,6 @@ function makeOrder(orderArrayy, orderLoc) {
 		// 	}
 		// 	catch (err) {}
 		// }
-
 		getLoc().then(function showPosition(e) {
 			console.log('4');
 			var mapLocc = orderLoc ? orderLoc : e.coords.latitude + ',' + e.coords.longitude;
@@ -340,54 +339,48 @@ function makeOrder(orderArrayy, orderLoc) {
 				$(".mapText").html("")
 				$(".mapdata").attr('src', mapData[0]);
 				$(".mapText").append(mapData[1].results[0].formatted_address);
-
-
-$('#modalconfirm').modal({
-      complete: function() { clearCart(); } // Callback for Modal close
-    }
-  )
-
-
-
-				
+				$('#modalconfirm').modal({
+					complete: function() {
+						clearCart();
+					} // Callback for Modal close
+				})
 				$('#modalconfirm').openModal();
 				$('.star2').addClass('animated shake'), setTimeout(function() {
-		$('.star2').removeClass('animated shake')
-	}, 1000);
+					$('.star2').removeClass('animated shake')
+				}, 1000);
 				document.getElementById("CancelO").addEventListener("click", function() {
 					clearCart()
 					$("#products").html("")
 				});
 				document.getElementById("ConfirmO").addEventListener("click", function() {
 					$("#products").html("")
-					transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481','bits',globalDel).then(function(res){
+					transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', 'bits', globalDel).then(function(res) {
 						console.log(res);
 						//sent escrow to server so complete order
 						doFetch({
-						action: 'makeOrder',
-						data: orderArrayy,
-						//EarnedKobo: totalKobo,
-						loc: e.coords.latitude + ',' + e.coords.longitude,
-						user: localStorage.getItem("bits-user-name"),
-						pointsEarned: {
-							"coin": "bits",
-							"purchase": totalKobo
-						},
-						service: parseInt(getBitsWinOpt('s'))
-					}).then(function(e) {
-						if (e.status == "ok") {
-							console.log('5');
-							swal("success!", "your order has been sent!", "success");
-							clear();
-						} else {
-							swal("Cancelled", "your order is not sent", "error");
-						}
+							action: 'makeOrder',
+							data: orderArrayy,
+							//EarnedKobo: totalKobo,
+							loc: e.coords.latitude + ',' + e.coords.longitude,
+							user: localStorage.getItem("bits-user-name"),
+							pointsEarned: {
+								"coin": "bits",
+								"purchase": totalKobo
+							},
+							service: parseInt(getBitsWinOpt('s'))
+						}).then(function(e) {
+							if (e.status == "ok") {
+								console.log('5');
+								swal("success!", "your order has been sent!", "success");
+								clear();
+							} else {
+								swal("Cancelled", "your order is not sent", "error");
+							}
+						})
+					}).catch(function(err) {
+						Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 3000);
+						console.log(err)
 					})
-
-						}).catch(function(err){
-Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 3000);
-							console.log(err)})
-					
 				});
 			}).catch(function() {
 				//toast location error
@@ -419,25 +412,24 @@ Materialize.toast('<span class="toastlogin">You have insufficient funds to compl
 // 	})
 // }
 //totalPoints = 0
-
-	/// function one get all selected items and the count
-	//// variable shopping cart
-	///var scart;
-	// function slist() {
-	// 	var values = $(document.querySelectorAll(".bitsInputQty")).map(function() {
-	// 			var av=$(this).val()
-	// 			var aid= $(this).attr('id')
-	// 			var apid= $(this).attr('pid')
-	// 			var ap= $(this).attr('price')
-	// 			return	{av,aid,apid,ap}
-	// 		}).get();
-	// 		console.log(values)
-	// 		//values = scart
-	// 		//console.log("first scart",scart)
-	// 		gtpromo(values);
-	// }
-	//// loop through promotions
-	//totalP = 0
+/// function one get all selected items and the count
+//// variable shopping cart
+///var scart;
+// function slist() {
+// 	var values = $(document.querySelectorAll(".bitsInputQty")).map(function() {
+// 			var av=$(this).val()
+// 			var aid= $(this).attr('id')
+// 			var apid= $(this).attr('pid')
+// 			var ap= $(this).attr('price')
+// 			return	{av,aid,apid,ap}
+// 		}).get();
+// 		console.log(values)
+// 		//values = scart
+// 		//console.log("first scart",scart)
+// 		gtpromo(values);
+// }
+//// loop through promotions
+//totalP = 0
 // function Rewardsx(val) {
 // 	val = orderArray
 // 	tdp = 0
@@ -474,15 +466,12 @@ Materialize.toast('<span class="toastlogin">You have insufficient funds to compl
 // 		pitems = JSON.parse(JSON.parse(e.result).promotions[0].promoItems);
 // 		console.log("===========", pitems);
 //            // var search = JSON.parse(val[ix].pid);
-
 //             dis = JSON.parse(e.result).promotions[0].discount;
 //             //console.log(promosAvailable)
 //             //console.log(promoItems)
-
 //             var count = pitems.reduce(function (n, valu) {
 //                 return n + (valu === si);
 //             }, 0);
-
 //             console.log(count);
 // //             if (prodsToCheck >= count) {
 // //                 console.log("Stop Awarding Points")
@@ -524,7 +513,6 @@ Materialize.toast('<span class="toastlogin">You have insufficient funds to compl
 //             				console.log("total points  ===========>", totalPoints)
 // 	});
 // 	//console.log($("#bitsInputQty" + si), tdp)
-            				
 // }
 // function cc(val) {
 // 	// loops through valuse to fet each ot the selected ones
@@ -903,14 +891,12 @@ function checkmobiveri() {
 			} else {
 				console.log("mobile phone verified")
 			}
-
-			
 		}
 		if (e.status == "bad") {
-				//$('#MobileModal').openModal();
-				Materialize.toast('Please login and verifiy your mobile number', 2000);
-				return;
-			}
+			//$('#MobileModal').openModal();
+			Materialize.toast('Please login and verifiy your mobile number', 2000);
+			return;
+		}
 	})
 }
 
@@ -951,8 +937,8 @@ function getProdss(orderArrayx, costofItems) {
 				if (r[o].id == orderArrayx[oo].pid) {
 					costofItems = costofItems + (orderArrayx[oo].count * r[o].price);
 					console.log("match")
-						//products
-						//$("#products").html("")
+					//products
+					//$("#products").html("")
 					$("#products").append('<div class="chip">' + '<img src="' + r[o].imagePath + '" alt="Contact Person">' + orderArrayx[oo].count + ' ' + r[o].name + '</div>')
 				}
 			}
@@ -966,19 +952,17 @@ function getProdss(orderArrayx, costofItems) {
 }
 bp = 0
 dis = 0
-function buyPromo(clicked_id,promoOder){
+
+function buyPromo(clicked_id, promoOder) {
 	bp = 1
- 	promoOder = orderArray
-// 	var lipromo = $(".bpr").attr("id");
+	promoOder = orderArray
+	// 	var lipromo = $(".bpr").attr("id");
 	var w = clicked_id
 	console.log(clicked_id);
-// 	console.log($(".bpr").attr("id"));
-// 	//console.log($(".bpr").attr("promo"));
-	
-// 	var xx = document.getElementById(lipromo).id;
-	
-// 	var tt = $(".bpr").attr("promo");
-
+	// 	console.log($(".bpr").attr("id"));
+	// 	//console.log($(".bpr").attr("promo"));
+	// 	var xx = document.getElementById(lipromo).id;
+	// 	var tt = $(".bpr").attr("promo");
 	new Promise(function(resolve, reject) {
 		//console.log("this is var t" + t)
 		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
@@ -993,81 +977,71 @@ function buyPromo(clicked_id,promoOder){
 		}
 	}).then(function(r) {
 		var pd = r.promotions;
-
 		for (var ixi = 0; ixi < pd.length; ++ixi) {
-console.log("=============== looping ==============================")
+			console.log("=============== looping ==============================")
 			var pitems = JSON.parse(pd[ixi].promoItems);
 			var prid = pd[ixi].id;
-			if(clicked_id!=prid){
+			if (clicked_id != prid) {
 				continue;
 			}
-			 dis = JSON.parse(pd[ixi].discount);
-			 
-			 
-			console.log("discount",dis);
-
-//console.log(w , tt , "ww and tt");
-if (prid == w){
-console.log("match");
-			var obj = { };
-			var p = obj
-for (var i = 0, j = pitems.length; i < j; i++) {
-   obj[pitems[i]] = (obj[pitems[i]] || 0) + 1;
-}
-for (var key in p) {
-  if (p.hasOwnProperty(key)) {
-    console.log(key + " -> " + p[key]);
-    promoOder.push({
-					pid: key,
-					count: p[key]
-				});
-				// loop to get product price
-				for(var iix = 0, j = pitems.length; iix < j; iix++) {
+			dis = JSON.parse(pd[ixi].discount);
+			console.log("discount", dis);
+			//console.log(w , tt , "ww and tt");
+			if (prid == w) {
+				console.log("match");
+				var obj = {};
+				var p = obj
+				for (var i = 0, j = pitems.length; i < j; i++) {
+					obj[pitems[i]] = (obj[pitems[i]] || 0) + 1;
 				}
-			
-  }
-}
-console.log(promoOder);	
- makeOrder(promoOder);	
-}else{ 
-console.log(" no match");
-}
-
-// cop();
+				for (var key in p) {
+					if (p.hasOwnProperty(key)) {
+						console.log(key + " -> " + p[key]);
+						promoOder.push({
+							pid: key,
+							count: p[key]
+						});
+						// loop to get product price
+						for (var iix = 0, j = pitems.length; iix < j; iix++) {}
+					}
+				}
+				console.log(promoOder);
+				makeOrder(promoOder);
+			} else {
+				console.log(" no match");
+			}
+			// cop();
 		}
-		
-
-		});
+	});
 	//$(".bpromo").attr("id")
 }
-function clearCart(){
-console.log("clear cart"); 
+
+function clearCart() {
+	console.log("clear cart");
 	$(".bitsInputQty").val(0);
 	$(".counter-minus").addClass("disabled");
 	$(".star2content").html('');
-
 	tabulateTotals();
 	$(".totals").html("")
 	$(".totals").append("0")
 }
 var totalKobo
-function cop(costofItems){
+
+function cop(costofItems) {
 	//costItems = costofItems
-	
-	if (bp == 1){
-		console.log("------> ",costofItems, dis , "<------------");
-		var pe = (costofItems * dis)/100
-		
-		
+	if (bp == 1) {
+		console.log("------> ", costofItems, dis, "<------------");
+		var pe = (costofItems * dis) / 100
 		var rate = allTokens['bits'].rate;
 		var g = Math.floor(pe);
-		var kshToKobo = rate / g 
+		var kshToKobo = rate / g
 		totalKobo = kshToKobo
 		$(".star2").removeClass("displayNone");
-		$(".star2content").html( '');
-		$(".star2content").append( Math.floor(pe));
-		console.log(">>>", g, ">>>", rate, ">>>" , kshToKobo);
+		$(".star2content").html('');
+		$(".star2content").append(Math.floor(pe));
+		console.log(">>>", g, ">>>", rate, ">>>", kshToKobo);
 		bp = 1
+	} else {
+		console.log("------> ", "not promo", "<------------");
 	}
-	else{ console.log("------> ","not promo" , "<------------");}
 }
