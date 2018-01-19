@@ -626,7 +626,7 @@ html(⚡='')
       width: 100%;
       text-align:center;
       background: rgba(0, 0, 0, 0.04);
-      background-image:  linear-gradient(       rgba(255, 255, 255, 0.74),        rgba(255, 255, 255, 0.83)     ),url(#{cover});
+      background-image:  linear-gradient(  rgba(0, 0, 0, 0.45),        rgba(0, 0, 0, 0)    ),url(#{cover});
       background-size: contain;
       background-repeat: no-repeat;
       opacity: 1;
@@ -651,11 +651,11 @@ html(⚡='')
             background: #fff;
       }
       .call{    float: right;
-        top: 1.5%;
+        top: 0.5%;
         position: absolute;
         right: 13%;}
       .mail{float: right;
-        top: 1.5%;
+        top: 0.5%;
         position: absolute;
         right: 8%;}
       .fnav{color: #848484;
@@ -697,7 +697,7 @@ html(⚡='')
                   a.btn(href="/bits/?s="+promoOwner+"#pid="+id) Buy
                   
     mixin listmanager(name,icon,shop,id)
-        .col-2.shopCard
+        .col-2
             amp-img(src=icon, width='100', height='100', alt='a sample image')
             br
             span(class='mnm') #{name}
@@ -709,7 +709,7 @@ html(⚡='')
 
     
     mixin liststore(item,title,desc,id)
-            .col-2.shopCard
+            .col-2
               a(href="/bits/?s="+id)             
                 amp-img(src=item,layout='responsive', width='200', height='200') 
                 .card-content.sub(class='shpDesc')
