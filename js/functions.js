@@ -372,7 +372,7 @@ function makeOrder(orderArrayy, orderLoc) {
 							if (e.status == "ok") {
 								console.log('5');
 								swal("success!", "your order has been sent!", "success");
-								clear();
+								//clear();
 							} else {
 								swal("Cancelled", "your order is not sent", "error");
 							}
