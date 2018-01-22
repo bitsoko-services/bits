@@ -355,8 +355,8 @@ function makeOrder(orderArrayy, orderLoc) {
 				});
 				document.getElementById("ConfirmO").addEventListener("click", function() {
 					$("#products").html("")
-					transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', 'bits', globalDel).then(function(res) {
-						console.log(res);
+					//transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', 'bits', globalDel).then(function(res) {
+						//console.log(res);
 						//sent escrow to server so complete order
 						doFetch({
 							action: 'makeOrder',
@@ -373,15 +373,15 @@ function makeOrder(orderArrayy, orderLoc) {
 							if (e.status == "ok") {
 								console.log('5');
 								swal("success!", "your order has been sent!", "success");
-								clear();
+								//clear();
 							} else {
 								swal("Cancelled", "your order is not sent", "error");
 							}
 						})
-					}).catch(function(err) {
-						Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 3000);
-						console.log(err)
-					})
+					//}).catch(function(err) {
+					//	Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 3000);
+					//	console.log(err)
+					//})
 				});
 			}).catch(function() {
 				//toast location error
