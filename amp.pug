@@ -457,11 +457,16 @@ html(⚡='')
       .hidden-sm {
       display: none;
       }
-      @media only screen and (min-width: 540px) {  /* 540px */
+      @media only screen and (min-width: 480px) {  /* 540px */
       .container {
       width: 87%;
       }
-      
+      .shpDesc{
+                float: right;
+                width: 62%;
+                margin-top: -110px;
+      }
+      .apimg{width:35%;}
       .fullnav {
       display: none;
       }
@@ -712,7 +717,7 @@ html(⚡='')
     mixin liststore(item,title,desc,id)
             .col-2.ww
               a(href="/bits/?s="+id)             
-                amp-img(src=item,layout='responsive', width='200', height='200') 
+                amp-img(src=item,layout='responsive',class='apimg', width='200', height='200') 
                 .card-content.sub(class='shpDesc')
                     p
                       |#{title} 
