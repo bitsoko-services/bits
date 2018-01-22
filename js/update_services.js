@@ -18,7 +18,9 @@ function updateServicelist() {
 function serviceOpener() {
 	console.log('serviceOpener()..');
 	if (getBitsWinOpt('s') != undefined) {
-		$('.bitsmenuslider').addClass('displayNone');
+		/// hide menu button on shop page show back to home button................
+		//$('.bitsmenuslider').addClass('displayNone');
+		$('.bitsHome').append('<a class="bitsmenuslider sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only bits" href="'+window.location.origin+'/" style=" background-color: #{theme} !important; box-shadow: none;"><i class="material-icons dp48">home</i></a>');
 		servicePageLoader();
 		if (getBitsOpt('pid') != undefined) {
 			var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));

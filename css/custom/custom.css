@@ -329,9 +329,9 @@ ul.side-nav.leftside-navigation li.active > a {
 .btn-floating {
     display: inline-block;
     color: #fff;
-    position: relative;
+    /* position: relative; */
     overflow: hidden;
-    z-index: 1;
+    /* z-index: 1; */
     width: 40px;
     height: 40px;
     line-height: 40px;

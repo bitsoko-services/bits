@@ -5203,8 +5203,8 @@ small {
 }
 
 .btn-floating.btn-large {
-  width: 56px;
-  height: 56px;
+  /* width: 56px; */
+  /* height: 56px; */
 }
 
 .btn-floating.btn-large.halfway-fab {

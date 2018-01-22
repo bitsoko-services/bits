@@ -340,11 +340,12 @@ function makeOrder(orderArrayy, orderLoc) {
 				$(".mapdata").attr('src', mapData[0]);
 				$(".mapText").append(mapData[1].results[0].formatted_address);
 				$('#modalconfirm').modal({
+					
 					complete: function() {
 						clearCart();
 					} // Callback for Modal close
 				})
-				$('#modalconfirm').openModal();
+				$('#modalconfirm').openModal({ dismissible: false});
 				$('.star2').addClass('animated shake'), setTimeout(function() {
 					$('.star2').removeClass('animated shake')
 				}, 1000);
