@@ -1168,9 +1168,10 @@ ul.side-nav .collapsible-header {
 
 .sidebar-collapse {
   position: absolute;
-  left: 10px;
+  left: -163px;
   z-index: 999;
-  top: 9px;
+  top: -49px;
+  /* float: unset; */
 }
 
 .user-task,
