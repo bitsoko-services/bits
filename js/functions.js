@@ -25,7 +25,7 @@ function callMerchant() {
 		var p = x.phone
 		//console.log(p)
 		$('.callbtn').html('')
-		$('.callbtn').append('<a  onclick="rate()" id="star" value="rating" class=" btn-large btn-price bits noshadow bitb" style="float: right !important;margin: 0px 20px;"><i class="mdi-action-grade activator"></i></a><button  id="share" value="Share" class="bitb btn-large btn-price bits noshadow" style="float: right !important;margin: 0px 20px;"><i class="mdi-social-share"></i></button> <a href="tel:' + p + '"  id="" value="" class=" btn-large btn-price bits noshadow bitb" style="float: right !important; margin-right: ;margin: 0px 20px;"><i class="mdi-communication-call"></i></a>');
+		$('.callbtn').append('<a  onclick="rate()" id="star" value="rating" class=" btn-large btn-price bits noshadow bitb" style="float: right !important;margin: 0px 20px;"><i class="mdi-action-grade activator"></i></a><button  id="share" value="Share" class="bitb btn-large btn-price bits noshadow" style="float: right !important;margin: 0px 20px; background:none;"><i class="mdi-social-share"></i></button> <a href="tel:' + p + '"  id="" value="" class=" btn-large btn-price bits noshadow bitb" style="float: right !important; margin-right: ;margin: 0px 20px;"><i class="mdi-communication-call"></i></a>');
 		//web Share start
 		document.querySelector("#share").addEventListener('click', function(event) {
 			navigator.share({
@@ -934,13 +934,17 @@ function getProdss(orderArrayx, costofItems) {
 		//console.log(r);
 		for (var o in r) {
 			for (var oo in orderArrayx) {
-				console.log("------------------------------------->>", r[o].id, orderArrayx[oo].count)
+				//console.log("------------------------------------->>", r[o].id, orderArrayx[oo].count)
 				if (r[o].id == orderArrayx[oo].pid) {
 					costofItems = costofItems + (orderArrayx[oo].count * r[o].price);
-					console.log("match")
+					//console.log("match")
 					//products
 					//$("#products").html("")
-					$("#products").append('<div class="chip">' + '<img src="' + r[o].imagePath + '" alt="Contact Person">' + orderArrayx[oo].count + ' ' + r[o].name + '</div>')
+				//	$("#products").append('<div class="chip">' + '<img src="' + r[o].imagePath + '" ">' + orderArrayx[oo].count + ' ' + r[o].name + ' at '+ r[o].price+'/=</div>')
+				$("#products").append('<li class="collection-item avatar"style="padding: 10px;margin: 0px;background: none !important;min-height: 10px;"><img src="' + r[o].imagePath + '" "><span class="title">' + orderArrayx[oo].count + ' ' + r[o].name + ' at '+ r[o].price+'/=</span></a></li>')
+				
+
+
 				}
 			}
 		}
