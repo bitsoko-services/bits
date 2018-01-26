@@ -18,6 +18,8 @@ aside>ul{
   left: -250px !important;
   }*/
 /*--------------------------------custom toast------------------------------------------------------------------------   */
+.modalconfirm{top:2% !important;height:80% !important}
+
 #burst-13 {
     background: #dabb12;
     width: 35px;
