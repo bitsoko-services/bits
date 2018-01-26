@@ -43,9 +43,11 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
   -ms-transform: translate(-50%, -50%);
 }
 .ht{ height: 100vh !important;}
-#products{ 
+#products{
    overflow: scroll;
-    max-height: 150px;}
+   max-height: 150px;
+   z-index: 101;
+   }
 .star{
     width: 100px;
     height: 100px;
@@ -481,7 +483,7 @@ nav {
 	    /* margin: auto; */
 	    /* filter: blur(5px); */ */
 	    z-index: 1;
-	    margin-top: 109px;
+	    margin-top: 168px;
 	    color: #757575 !important;
 	    z-index: 100;
 }
