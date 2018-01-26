@@ -373,7 +373,7 @@ function makeOrder(orderArrayy, orderLoc) {
 							if (e.status == "ok") {
 								console.log('5');
 								swal("success!", "your order has been sent!", "success");
-								//clear();
+								clearCart();
 							} else {
 								swal("Cancelled", "your order is not sent", "error");
 							}
@@ -941,7 +941,7 @@ function getProdss(orderArrayx, costofItems) {
 					//products
 					//$("#products").html("")
 				//	$("#products").append('<div class="chip">' + '<img src="' + r[o].imagePath + '" ">' + orderArrayx[oo].count + ' ' + r[o].name + ' at '+ r[o].price+'/=</div>')
-				$("#products").append('<li class="collection-item avatar"style="padding: 10px;margin: 0px;background: none !important;min-height: 10px;"><img src="' + r[o].imagePath + '" "><span class="title">' + orderArrayx[oo].count + ' ' + r[o].name + ' at '+ r[o].price+'/=</span></a></li>')
+				$("#products").append('<li class="collection-item avatar"style="padding: 10px;margin: 0px;background: none !important;min-height: 10px;"><img src="' + r[o].imagePath + '"  style="height: 36px; width: 36px;"><span class="title">' + orderArrayx[oo].count + ' ' + r[o].name + ' at '+ r[o].price+'/=</span></a></li>')
 				
 
 
