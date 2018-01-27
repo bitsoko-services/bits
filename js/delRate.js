@@ -43,11 +43,11 @@ console.log("The shops delivery rates are "+rates);
 
 		//localStorage.setItem('bits-merchant'+parseInt(getBitsWinOpt('s'))+'-Total cost',totalCost);
 $(".confirmText").html("")
-$(".confirmText").append(totalCost+'<span class="localCurr">Kes</span></span>')
+$(".confirmText").append(totalCost+'<span class=""> /=</span></span>')
 $(".totals2").html("")
-$(".totals2").append(parseInt(divObj.innerHTML))
+$(".totals2").append(parseInt(divObj.innerHTML)+'<span class=""> /=</span></span>')
 $(".del").html("")
-$(".del").append(rates)
+$(".del").append(rates+'<span class=""> /=</span></span>')
 
 
 

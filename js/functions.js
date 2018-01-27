@@ -338,7 +338,7 @@ function makeOrder(orderArrayy, orderLoc) {
 				$(".del").append()
 				$(".mapText").html("")
 				$(".mapdata").attr('src', mapData[0]);
-				$(".mapText").append(mapData[1].results[0].formatted_address);
+				$(".mapText").append("Pick up / Drop off :"+mapData[1].results[0].formatted_address);
 				$('#modalconfirm').modal({
 					
 					complete: function() {
@@ -941,7 +941,7 @@ function getProdss(orderArrayx, costofItems) {
 					//products
 					//$("#products").html("")
 				//	$("#products").append('<div class="chip">' + '<img src="' + r[o].imagePath + '" ">' + orderArrayx[oo].count + ' ' + r[o].name + ' at '+ r[o].price+'/=</div>')
-				$("#products").append('<li class="collection-item avatar"style="padding: 10px;margin: 0px;background: none !important;min-height: 10px;"><img src="' + r[o].imagePath + '"  style="height: 36px; width: 36px;"><span class="title">' + orderArrayx[oo].count + ' ' + r[o].name + ' at '+ r[o].price+'/=</span></a></li>')
+				$("#products").append('<li class="collection-item avatar"style="padding: 10px;margin: 0px;background: none !important;min-height: 10px;"><img class="circle" src="' + r[o].imagePath + '"  style="height: 36px; width: 36px;"><span class="title"style=" padding-left: 65px;">' + orderArrayx[oo].count + ' ' + r[o].name + ' <div  class="chip right">'+ r[o].price+'/=</div></span></a></li>')
 				
 
 

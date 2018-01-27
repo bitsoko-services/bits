@@ -47,6 +47,7 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
    overflow: scroll;
    max-height: 150px;
    z-index: 101;
+   background: #ebe8de;
    }
 .star{
     width: 100px;
@@ -209,7 +210,7 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
     font-size: 25px !important;
 }
 .mapdata{
-	margin-top: 98px !important;
+	margin-top: 88px !important;
 	width: 100% !important;
 	/* margin-left: -50% !important; */
 	/* display: none !important; */
@@ -430,15 +431,18 @@ nav {
 	/* text-align: left !important; */
 	/* padding: 10px; */
 	/* margin-left: 0px; */
-	/* height: 500px; */
+	height: auto;
+	min-height: 150px;
 	text-align: left;
 	font-size: 20px !important;
 	/* margin-top: -37px; */
-	/* position: fixed; */
+	position: relative;
+	border-bottom: #68676617 1px solid;
+	background: #ebe8de;
 	/* color: #fff; */
 	/* padding-top: 50px; */
 	/* width: 100%; */
-	/* z-index: 10; */
+	z-index: 110;
 	/* position: absolute; */
 }
 .sweet-alert + p + .deldata{
@@ -451,7 +455,7 @@ nav {
 	opacity: 0.9;
 }
 .mapText{
-	margin-top: 150px;
+	margin-top: 189px;
 	font-size: 14px !important;
 	width: 100%;
 	position: absolute;
@@ -466,7 +470,9 @@ nav {
 }
 .confirmText{
 	font-size: 17px;
-	padding: 7px;
+	margin-top: 3px;
+	color: #224763;
+	/* padding: 7px; */
 }
 .totalp{
 	    /* border: 1px solid #ffffff; */
@@ -483,7 +489,7 @@ nav {
 	    /* margin: auto; */
 	    /* filter: blur(5px); */ */
 	    z-index: 1;
-	    margin-top: 168px;
+	    margin-top: 150px;
 	    color: #757575 !important;
 	    z-index: 100;
 }
