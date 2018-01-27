@@ -702,7 +702,8 @@ html(⚡='')
             
         }
   
-  
+  for store in stores		 
+     link(rel='prerender', href="/bits/?s="+store.id)
 
   body.testFont
     mixin listpromo(item,title,desc,id,promoOwner)
