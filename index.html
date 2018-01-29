@@ -1,63 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>#{name}</title>
-	<meta content="text/html; charset=utf-8" http-equiv="content-type">
-	<meta content="#{name}" name="og:title">
-	<meta content="https://bitsoko.co.ke/app" name="og:url">
-	<meta content="#{img}" name="og:image"><!-- Origin Trial Token, feature = Web Share, origin = https://bitsoko.co.ke, expires = 2017-01-12 -->
-	<!-- Origin Trial Token, feature = Web Share, origin = https://bitsoko.co.ke, expires = 2017-03-31 -->
-	<meta content="AmhVefTF40eyTfFt5ZHxLSoKVazcEs/9vGgan3XHC/BIk1f2i3FEkF0VdA/oxRRA0jQvIBD+431GPVLADBVaGAoAAABfeyJvcmlnaW4iOiJodHRwczovL2JpdHNva28uaW86NDQzIiwiZmVhdHVyZSI6IldlYlNoYXJlIiwiZXhwaXJ5IjoxNDkwOTczMDU4LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=" data-expires="2017-03-31" data-feature="Web Share" http-equiv="origin-trial"><!--====<meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2017-01-03" content="AvwH05WjeD812bDpeWTWGEc3d81qoKI1Z4YsUtPVo4poXAr61FSAZ/Rp3zd3tqCkOqw8Ay+/aSYvxYG4oJtDqgMAAABReyJvcmlnaW4iOiAiaHR0cHM6Ly9iaXRzb2tvLmlvOjQ0MyIsICJmZWF0dXJlIjogIldlYlNoYXJlIiwgImV4cGlyeSI6IDE0ODQyMzkxMzZ9"> -->
-	<meta content="#{desc}" name="og:description">
-	<meta content="#{desc}" name="description">
-	<meta content="" name="keywords">
-	<link href="#{img}" rel="shortcut icon" type="image/png">
-	<meta content="width=device-width, initial-scale=1" name="viewport">
-	<meta content="width=device-width,user-scalable=no" name="viewport">
-	<meta content="#{theme}" name="msapplication-navbutton-color">
-	<meta content="#{theme}" name="theme-color">
-	<meta content="476194103258-98t0j7p1lrela49ispgj3jfokl2r3ils.apps.googleusercontent.com" name="google-signin-client_id">
-	<link href="web-manifest.json" rel="manifest">
-	<script src="js/plugins/jquery-1.11.2.min.js" type="text/javascript">
-	</script>
-	<script src="jspdf.js" type="text/javascript">
-	</script>
-	<script type="text/javascript">
-	</script>
-	<script async src="https://bitsoko.co.ke/bitsAssets/js/webcomponents.js">
-	</script><!-- CORE CSS-->
-	<link href="css/materialize.css" media="screen,projection" rel="stylesheet" type="text/css">
-	<link href="css/materialize-css.css" media="screen,projection" rel="stylesheet" type="text/css">
-	<link href="css/style.css" media="screen,projection" rel="stylesheet" type="text/css"><!-- Custome CSS-->
-	<link href="js/plugins/animate-css/animate.css" media="screen,projection" rel="stylesheet" type="text/css">
-	<link href="js/plugins/sweetalert/dist/sweetalert.css" media="screen,projection" rel="stylesheet" type="text/css">
-	<link href="css/custom/custom.css" media="screen,projection" rel="stylesheet" type="text/css">
-	<link href="css/keypad.css" media="" rel="stylesheet" type="text/css">
-	<link href="css/handleCounter.css" media="" rel="stylesheet" type="text/css"><!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
-	<link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" media="screen,projection" rel="stylesheet" type="text/css">
-	<link href="js/plugins/jvectormap/jquery-jvectormap.css" media="screen,projection" rel="stylesheet" type="text/css">
-	<link href="js/plugins/chartist-js/chartist.min.css" media="screen,projection" rel="stylesheet" type="text/css">
-	<link href="https://bitsoko.co.ke/bitsAssets/html/connect.html" rel="import"><!--    <script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"></script>-->
-	<!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
-	<link href="js/plugins/prism/prism.css" media="screen,projection" rel="stylesheet" type="text/css">
-	<link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" media="screen,projection" rel="stylesheet" type="text/css">
-	<link href="js/plugins/chartist-js/chartist.min.css" media="screen,projection" rel="stylesheet" type="text/css">
-	<link href="js/plugins/magnific-popup/magnific-popup.css" media="screen,projection" rel="stylesheet" type="text/css"><!-- Add IntroJs styles -->
-	<!--     <link href="css/introjs.css" rel="stylesheet"> -->
 
-	<style>
-	      .switch label input[type=checkbox]:checked + .lever:after {
-	         background-color: #{theme} !important;
-	      }
-	      .bitb,.bits,.progress,.sweet-alert button {
-	         background-color: #{theme} !important;
-	      }
-	      #burst-12:before, #burst-12:after {  background-color: #{theme} !important;}
-	      #burst-12:before, #burst-12:after{border: 6px solid  #{theme} !important;}
-	</style>
+<head>
+    <title>#{name}</title>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <meta content="#{name}" name="og:title">
+    <meta content="https://bitsoko.co.ke/app" name="og:url">
+    <meta content="#{img}" name="og:image">
+    <!-- Origin Trial Token, feature = Web Share, origin = https://bitsoko.co.ke, expires = 2017-01-12 -->
+    <!-- Origin Trial Token, feature = Web Share, origin = https://bitsoko.co.ke, expires = 2017-03-31 -->
+    <meta content="AmhVefTF40eyTfFt5ZHxLSoKVazcEs/9vGgan3XHC/BIk1f2i3FEkF0VdA/oxRRA0jQvIBD+431GPVLADBVaGAoAAABfeyJvcmlnaW4iOiJodHRwczovL2JpdHNva28uaW86NDQzIiwiZmVhdHVyZSI6IldlYlNoYXJlIiwiZXhwaXJ5IjoxNDkwOTczMDU4LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=" data-expires="2017-03-31" data-feature="Web Share" http-equiv="origin-trial">
+    <!--====<meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2017-01-03" content="AvwH05WjeD812bDpeWTWGEc3d81qoKI1Z4YsUtPVo4poXAr61FSAZ/Rp3zd3tqCkOqw8Ay+/aSYvxYG4oJtDqgMAAABReyJvcmlnaW4iOiAiaHR0cHM6Ly9iaXRzb2tvLmlvOjQ0MyIsICJmZWF0dXJlIjogIldlYlNoYXJlIiwgImV4cGlyeSI6IDE0ODQyMzkxMzZ9"> -->
+    <meta content="#{desc}" name="og:description">
+    <meta content="#{desc}" name="description">
+    <meta content="" name="keywords">
+    <link href="#{img}" rel="shortcut icon" type="image/png">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="width=device-width,user-scalable=no" name="viewport">
+    <meta content="#{theme}" name="msapplication-navbutton-color">
+    <meta content="#{theme}" name="theme-color">
+    <meta content="476194103258-98t0j7p1lrela49ispgj3jfokl2r3ils.apps.googleusercontent.com" name="google-signin-client_id">
+    <link href="web-manifest.json" rel="manifest">
+    <script src="js/plugins/jquery-1.11.2.min.js" type="text/javascript">
+
+
+    </script>
+    <script src="jspdf.js" type="text/javascript">
+
+
+    </script>
+    <script type="text/javascript">
+
+
+    </script>
+    <script async src="https://bitsoko.co.ke/bitsAssets/js/webcomponents.js">
+
+
+    </script>
+    <!-- CORE CSS-->
+    <link href="css/materialize.css" media="screen,projection" rel="stylesheet" type="text/css">
+    <link href="css/materialize-css.css" media="screen,projection" rel="stylesheet" type="text/css">
+    <link href="css/style.css" media="screen,projection" rel="stylesheet" type="text/css">
+    <!-- Custome CSS-->
+    <link href="js/plugins/animate-css/animate.css" media="screen,projection" rel="stylesheet" type="text/css">
+    <link href="js/plugins/sweetalert/dist/sweetalert.css" media="screen,projection" rel="stylesheet" type="text/css">
+    <link href="css/custom/custom.css" media="screen,projection" rel="stylesheet" type="text/css">
+    <link href="css/keypad.css" media="" rel="stylesheet" type="text/css">
+    <link href="css/handleCounter.css" media="" rel="stylesheet" type="text/css">
+    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+    <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" media="screen,projection" rel="stylesheet" type="text/css">
+    <link href="js/plugins/jvectormap/jquery-jvectormap.css" media="screen,projection" rel="stylesheet" type="text/css">
+    <link href="js/plugins/chartist-js/chartist.min.css" media="screen,projection" rel="stylesheet" type="text/css">
+    <link href="https://bitsoko.co.ke/bitsAssets/html/connect.html" rel="import">
+    <!--    <script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"></script>-->
+    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+    <link href="js/plugins/prism/prism.css" media="screen,projection" rel="stylesheet" type="text/css">
+    <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" media="screen,projection" rel="stylesheet" type="text/css">
+    <link href="js/plugins/chartist-js/chartist.min.css" media="screen,projection" rel="stylesheet" type="text/css">
+    <link href="js/plugins/magnific-popup/magnific-popup.css" media="screen,projection" rel="stylesheet" type="text/css">
+    <!-- Add IntroJs styles -->
+    <!--     <link href="css/introjs.css" rel="stylesheet"> -->
+
+    <style>
+        .switch label input[type=checkbox]:checked+.lever:after {
+            background-color: #{theme} !important;
+        }
+        
+        .bitb,
+        .bits,
+        .progress,
+        .sweet-alert button {
+            background-color: #{theme} !important;
+        }
+        
+        #burst-12:before,
+        #burst-12:after {
+            background-color: #{theme} !important;
+        }
+        
+        #burst-12:before,
+        #burst-12:after {
+            border: 6px solid #{theme} !important;
+        }
+
+    </style>
 </head>
+
 <body>
-	<!--    <div class="cssLoader">
+    <!--    <div class="cssLoader">
         <div></div>
     </div>
     <p id="loaderText" style="margin-left:33%;"></p><svg id="svgPrecssLoader" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -68,7 +98,7 @@
             <feblend in="SourceGraphic" in2="goo"></feblend>
         </filter>
     </defs></svg>  -->
-	<!-- <div id="preloader" style="position:absolute; top:0; left:0; right:0; bottom:0; background-color:#fefefe; z-index:5000; height:100%; width:100%; position:fixed;">
+    <!-- <div id="preloader" style="position:absolute; top:0; left:0; right:0; bottom:0; background-color:#fefefe; z-index:5000; height:100%; width:100%; position:fixed;">
         <div id="status" style="position:absolute; left: 50%;
   transform: translateX(-27%); top:40%; margin:-100px 0 0 -100px;">
             <img src="./images/icon.png" style="width:90px;display:block;margin-left:auto;margin-right:auto; margin-left:38%;">
@@ -86,142 +116,159 @@
                 </defs>
             </svg>
         </div> -->
-	<div id="oid-res" style=" display: none;"></div><!--Start Page Loading -->
-	<!--       <div id="loader-wrapper">
+    <div id="oid-res" style=" display: none;"></div>
+    <!--Start Page Loading -->
+    <!--       <div id="loader-wrapper">
         <div id="loader"></div>        
         <div class="loader-section section-left"></div>
         <div class="loader-section section-right"></div>
     </div> -->
-	<!-- End Page Loading -->
-	<!-- //////////////////////////////////////////////////////////////////////////// --><!-- START HEADER -->
-	<header class="page-topbar bits" id="header" style=" background-color: #{theme} !important;">
-		<!-- start header nav-->
-		<div class="navbar-fixed">
-			<nav class="bits" style=" background-color: #{theme} !important;">
-				<div class="nav-wrapper">
-					<div class="navbar-color bits" id="bits-header" style=" background-color: #{theme} !important;">
-						<ul class="center">
-							<li>
-								<h1 class="logo-wrapper"><a class="brand-logo darken-1" href="index.html"></a> <span class="logo-text"></span></h1>
-							</li>
-							<li></li>
-						</ul>
-						<div class="manage-store" id="manage-store"></div><span class="callbtn"></span> <!--                     <div class="bits-nav-bal right" id="bits-nav-bal"style="color:#fff; padding-right:10px; margin-top: -55px;" ><span class="bitsoko-balance">0.00</span> <span class="bitsoko-currency"></span></div> -->
-					</div>
-					<ul class="right"></ul>
-				</div>
-			</nav>
-		</div><!-- end header nav-->
-	</header><!-- END HEADER -->
-	<!-- //////////////////////////////////////////////////////////////////////////// -->
-	<!-- START MAIN -->
-	<div id="main">
-		<!-- START WRAPPER -->
-		<div class="wrapper col s12 m6">
-			<!-- START LEFT SIDEBAR NAV-->
-			<aside id="left-sidebar-nav">
-				<ul class="side-nav fixed leftside-navigation" id="slide-out">
-					<li class="user-details bits" style=" background: url(images/3.png) no-repeat center center; background-size: cover; padding: 0px 0 0 0px;">
-						<div class="row" id="content" style=" text-align:center;">
-							<img alt="" class="bits-profile userProfImg circle responsive-img valign profile-image" src="images/contacts.png" style="margin-top: 20px;"> <a class="btn-flat waves-effect waves-light white-text profile-btn username-label dropdown-button" href="#" id="name" style="line-height: 20px;height: 20px;"></a>
-							<center>
-								<span class="white-text profile-btn" id="download-button" style="font-size:; !important;"><span class="" style="font-size:12px;"></span></span>
-								<div class="addressClass bits-ellipsis" style="font-size:12px;"></div><span class="" id="balance-coins" style="color: #fff;text-shadow: 1px 1px 1px #444;font-size: 15px;">wallet locked</span>
-								<ul class="collapsible" data-collapsible="accordion" style="">
-									<li class="bold" style="">
-										<a class="collapsible-header waves-effect waves-cyan white-text"><i class="mdi-action-settings white-text"></i>Settings</a>
-										<div class="collapsible-body" style="display: block;">
-											<ul>
-												<li>
-													<a href="#"><!-- Switch-->
-													<div class="switch">
-														<i class="mdi-communication-chat"></i> <span class="js-push-button-notification-title bits-13" style="">Notifications</span> <label><input class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style="margin-top:13px;"></span></label>
-													</div></a>
-												</li><!--                                    <li class"displayNone"> -->
-												<!--                                            <a href="#" class"displayNone"><!== Switch-->
-												<li style="list-style: none; display: inline">
-													<div class="switch displayNone">
-														<i class="mdi-communication-location-on"></i> <span class="js-loc-button-notification-title bits-13" style="">Location</span> <label><input class="js-loc-button-notification" style="background: rgba(15, 95, 118, 0.862745);" type="checkbox"> <span class="lever right" style="margin-top:13px;"></span></label>
-													</div><!--                                            </a> -->
-													<!--                                        </li><!==                            walletFunctions()      <li><a href="" class="modal-trigger"> <i class="mdi-action-assignment"></i><span class="bits-13" style=""></span> <span href id="btn">Addresses</span>  </a>   --><!--                                     </li> -->
-												</li>
-												<li>
-													<a class="modal-trigger mobile" href="#MobileModal"><i class="mdi-communication-phone"></i><span class="bits-13" style=""></span> <span id="btn">Mobile Number</span></a>
-												</li>
-												<li>
-													<a class="" href="https://bitsoko.co.ke/home/bits.html" target="_blank"><i class="mdi-communication-live-help"></i><span class="bits-13" style=""></span> <span id="btn">Help</span></a>
-												</li>
-												<li>
-													<a class="modal-trigger displayNone" href="#KYCModal"><i class="mdi-action-grade"></i><span class="bits-13" style=""></span> <span id="btn">Your details</span></a>
-												</li>
-											</ul>
-										</div>
-									</li>
-								</ul>
-							</center>
-						</div>
-					</li>
-					<li>
-						<div>
-							<div class="col s12 m6">
-								<center>
-									<div class="displayNone" id="qrcode"></div>
-								</center>
-								<ul>
-									<li class="bits-ellipsis col s6 m8 l9 displayNone" style="margin-left: 15px;"><span class="username-addr" style=""></span></li>
-									<li class="bold">
-										<div class="" style="">
-											<div class="permanentChng">
-												<div style="padding: 0px 15%;">
-													<h6 style="border-bottom: solid 1px #cccccc;margin-bottom: 5px; margin-top: 15px;color: #7c7c7c;"><span style="background: #f5f5f5;">Balances</span></h6>
-												</div>
-												<div class="switch coinlist" style="margin-top:5px;">
-													<!--                                            <span><div  class="coinImg" style=" position: absolute"><img src="https://bitsoko.co.ke/bitsAssets/images/currencies/kobo.png" alt="" style=" padding-left: 12px; height:30px;"></div><a href="" class="" class="" onclick=""><i style=" float: right; margin: 0; height: 30px; " class="mdi-action-credit-card"></i><span style=" padding-left: 42px;">KOBO</span></a></span> -->
-												</div>
-											</div>
-										</div>
-									</li>
-									<li class="bold displayNone">
-										<a class="waves-effect waves-cyan" href="?"><i class="mdi-action-redeem"></i>Nearby Offers</a>
-									</li>
-									<li class="displayNone">
-										<a href="#" id="shareQR"><i class="mdi-social-share bits-color"></i><span class="bits-13" style=""></span> <span id="">Share Wallet</span></a>
-									</li>
-									<li class="bold" style="opacity: 0.8;position: absolute;bottom:32px; width: 100%; border-top: solid 0px #d5d5d5;">
-										<a class="waves-effect waves-cyan" href="#" id="useLogin" onclick="showLogin();"><i class="mdi-action-lock-open"></i>Login</a>
-									</li>
-									<li class="li-hover"></li>
-								</ul>
-							</div>
-						</div>
-					</li><!--================== commented change account dropdown end ====================================================================================-->
-					<li class="li-hover displayNone">
-						<div class="divider"></div>
-					</li>
-					<li>
-						<a class=" displayNone" href=""><i class="mdi-action-grade"></i><span class="bits-13" style=""></span> <span id="btn">Your details</span></a>
-					</li>
-					<li style="list-style: none; display: inline">
-						<ul class="collapsible collapsible-accordion">
-							<li class="li-hover center" style="position: absolute;bottom:-8%;margin-left: 20%;opacity: 0.4;">
-								<p class="ultra-small margin more-text" style="margin-top: -100px!important;">Bits V: <span class="ultra-small margin more-text" id="bv"></span></p>
-							</li><!--          <div  > -->
-							<li class="bold" style="opacity: 0.8;position: absolute;bottom:32px; width: 100%; border-top: solid 0px #d5d5d5; border-bottom: solid 0px #d5d5d5 !important;">
-								<a class="waves-effect waves-cyan" href="#" id="useAnon" onclick="signOut();"><i class="mdi-action-lock"></i>Sign Out</a>
-							</li><!--             </div> -->
-						</ul>
-					</li>
-				</ul><!--         <ul id="store-dropdown" class="dropdown-content drop-down-content-bits" style="">
+    <!-- End Page Loading -->
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- START HEADER -->
+    <header class="page-topbar bits" id="header" style=" background-color: #{theme} !important;">
+        <!-- start header nav-->
+        <div class="navbar-fixed">
+            <nav class="bits" style=" background-color: #{theme} !important;">
+                <div class="nav-wrapper">
+                    <div class="navbar-color bits" id="bits-header" style=" background-color: #{theme} !important;">
+                        <ul class="center">
+                            <li>
+                                <h1 class="logo-wrapper">
+                                    <a class="brand-logo darken-1" href="index.html"></a> <span class="logo-text"></span></h1>
+                            </li>
+                            <li></li>
+                        </ul>
+                        <div class="manage-store" id="manage-store"></div><span class="callbtn"></span>
+                        <!--                     <div class="bits-nav-bal right" id="bits-nav-bal"style="color:#fff; padding-right:10px; margin-top: -55px;" ><span class="bitsoko-balance">0.00</span> <span class="bitsoko-currency"></span></div> -->
+                    </div>
+                    <ul class="right"></ul>
+                </div>
+            </nav>
+        </div>
+        <!-- end header nav-->
+    </header>
+    <!-- END HEADER -->
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- START MAIN -->
+    <div id="main">
+        <!-- START WRAPPER -->
+        <div class="wrapper col s12 m6">
+            <!-- START LEFT SIDEBAR NAV-->
+            <aside id="left-sidebar-nav">
+                <ul class="side-nav fixed leftside-navigation" id="slide-out">
+                    <li class="user-details bits" style=" background: url(images/3.png) no-repeat center center; background-size: cover; padding: 0px 0 0 0px;">
+                        <div class="row" id="content" style=" text-align:center;">
+                            <img alt="" class="bits-profile userProfImg circle responsive-img valign profile-image" src="images/contacts.png" style="margin-top: 20px;">
+                            <a class="btn-flat waves-effect waves-light white-text profile-btn username-label dropdown-button" href="#" id="name" style="line-height: 20px;height: 20px;"></a>
+                            <center>
+                                <span class="white-text profile-btn" id="download-button" style="font-size:; !important;"><span class="" style="font-size:12px;"></span></span>
+                                <div class="addressClass bits-ellipsis" style="font-size:12px;"></div><span class="" id="balance-coins" style="color: #fff;text-shadow: 1px 1px 1px #444;font-size: 15px;">wallet locked</span>
+                                <ul class="collapsible" data-collapsible="accordion" style="">
+                                    <li class="bold" style="">
+                                        <a class="collapsible-header waves-effect waves-cyan white-text"><i class="mdi-action-settings white-text"></i>Settings</a>
+                                        <div class="collapsible-body" style="display: block;">
+                                            <ul>
+                                                <li>
+                                                    <a href="#">
+                                                        <!-- Switch-->
+                                                        <div class="switch">
+                                                            <i class="mdi-communication-chat"></i> <span class="js-push-button-notification-title bits-13" style="">Notifications</span> <label><input class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style="margin-top:13px;"></span></label>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <!--                                    <li class"displayNone"> -->
+                                                <!--                                            <a href="#" class"displayNone"><!== Switch-->
+                                                <li style="list-style: none; display: inline">
+                                                    <div class="switch displayNone">
+                                                        <i class="mdi-communication-location-on"></i> <span class="js-loc-button-notification-title bits-13" style="">Location</span> <label><input class="js-loc-button-notification" style="background: rgba(15, 95, 118, 0.862745);" type="checkbox"> <span class="lever right" style="margin-top:13px;"></span></label>
+                                                    </div>
+                                                    <!--                                            </a> -->
+                                                    <!--                                        </li><!==                            walletFunctions()      <li><a href="" class="modal-trigger"> <i class="mdi-action-assignment"></i><span class="bits-13" style=""></span> <span href id="btn">Addresses</span>  </a>   -->
+                                                    <!--                                     </li> -->
+                                                </li>
+                                                <li>
+                                                    <a class="modal-trigger mobile" href="#MobileModal"><i class="mdi-communication-phone"></i><span class="bits-13" style=""></span> <span id="btn">Mobile Number</span></a>
+                                                </li>
+                                                <li>
+                                                    <a class="" href="https://bitsoko.co.ke/home/bits.html" target="_blank"><i class="mdi-communication-live-help"></i><span class="bits-13" style=""></span> <span id="btn">Help</span></a>
+                                                </li>
+                                                <li>
+                                                    <a class="modal-trigger displayNone" href="#KYCModal"><i class="mdi-action-grade"></i><span class="bits-13" style=""></span> <span id="btn">Your details</span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </center>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <div class="col s12 m6">
+                                <center>
+                                    <div class="displayNone" id="qrcode"></div>
+                                </center>
+                                <ul>
+                                    <li class="bits-ellipsis col s6 m8 l9 displayNone" style="margin-left: 15px;"><span class="username-addr" style=""></span></li>
+                                    <li class="bold">
+                                        <div class="" style="">
+                                            <div class="permanentChng">
+                                                <div style="padding: 0px 15%;">
+                                                    <h6 style="border-bottom: solid 1px #cccccc;margin-bottom: 5px; margin-top: 15px;color: #7c7c7c;"><span style="background: #f5f5f5;">Balances</span></h6>
+                                                </div>
+                                                <div class="switch coinlist" style="margin-top:5px;">
+                                                    <!--                                            <span><div  class="coinImg" style=" position: absolute"><img src="https://bitsoko.co.ke/bitsAssets/images/currencies/kobo.png" alt="" style=" padding-left: 12px; height:30px;"></div><a href="" class="" class="" onclick=""><i style=" float: right; margin: 0; height: 30px; " class="mdi-action-credit-card"></i><span style=" padding-left: 42px;">KOBO</span></a></span> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="bold displayNone">
+                                        <a class="waves-effect waves-cyan" href="?"><i class="mdi-action-redeem"></i>Nearby Offers</a>
+                                    </li>
+                                    <li class="displayNone">
+                                        <a href="#" id="shareQR"><i class="mdi-social-share bits-color"></i><span class="bits-13" style=""></span> <span id="">Share Wallet</span></a>
+                                    </li>
+                                    <li class="bold" style="opacity: 0.8;position: absolute;bottom:32px; width: 100%; border-top: solid 0px #d5d5d5;">
+                                        <a class="waves-effect waves-cyan" href="#" id="useLogin" onclick="showLogin();"><i class="mdi-action-lock-open"></i>Login</a>
+                                    </li>
+                                    <li class="li-hover"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <!--================== commented change account dropdown end ====================================================================================-->
+                    <li class="li-hover displayNone">
+                        <div class="divider"></div>
+                    </li>
+                    <li>
+                        <a class=" displayNone" href=""><i class="mdi-action-grade"></i><span class="bits-13" style=""></span> <span id="btn">Your details</span></a>
+                    </li>
+                    <li style="list-style: none; display: inline">
+                        <ul class="collapsible collapsible-accordion">
+                            <li class="li-hover center" style="position: absolute;bottom:-8%;margin-left: 20%;opacity: 0.4;">
+                                <p class="ultra-small margin more-text" style="margin-top: -100px!important;">Bits V: <span class="ultra-small margin more-text" id="bv"></span></p>
+                            </li>
+                            <!--          <div  > -->
+                            <li class="bold" style="opacity: 0.8;position: absolute;bottom:32px; width: 100%; border-top: solid 0px #d5d5d5; border-bottom: solid 0px #d5d5d5 !important;">
+                                <a class="waves-effect waves-cyan" href="#" id="useAnon" onclick="signOut();"><i class="mdi-action-lock"></i>Sign Out</a>
+                            </li>
+                            <!--             </div> -->
+                        </ul>
+                    </li>
+                </ul>
+                <!--         <ul id="store-dropdown" class="dropdown-content drop-down-content-bits" style="">
                         <li>
                         </li>
                                 <li>
                     </ul> -->
-				<a class="bitsmenuslider displayNone sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only bits" data-activates="slide-out" href="#" style=" background-color: #{theme} !important; box-shadow: none;"><i class="mdi-navigation-menu"></i></a>
-				<div class="bitsHome"></div>
-			</aside><!--========================================== END LEFT SIDEBAR NAV ====================================================================================-->
-			<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-			<!--==========================================START RIGHT SIDEBAR NAV============================================================================================-->
-			<!--         <div id="card-alert card-welcome" class="card bits" style="width: 98%;margin-left: auto;margin-right: auto;padding: 7px;">
+                <a class="bitsmenuslider displayNone sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only bits" data-activates="slide-out" href="#" style=" background-color: #{theme} !important; box-shadow: none;"><i class="mdi-navigation-menu"></i></a>
+                <div class="bitsHome"></div>
+            </aside>
+            <!--========================================== END LEFT SIDEBAR NAV ====================================================================================-->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+            <!--==========================================START RIGHT SIDEBAR NAV============================================================================================-->
+            <!--         <div id="card-alert card-welcome" class="card bits" style="width: 98%;margin-left: auto;margin-right: auto;padding: 7px;">
                       <div class="card-content white-text"style="padding: 5px !important;">
                         <span class="card-title white-text darken-1">Welcome to Bits Wallet</span>
                         <p>A mobile wallet. The Bitsoko App enables users to use bitcoins as currency by connecting you to merchants who accept bitcoins.</p>
@@ -234,10 +281,10 @@
                         <span aria-hidden="true">×</span>
                       </button> ==
                     </div> -->
-			<!--========================================== END LEFT SIDEBAR NAV ====================================================================================-->
-			<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-			<!--==========================================START RIGHT SIDEBAR NAV============================================================================================-->
-			<!--             <aside id="right-sidebar-nav" class="chat-outs">
+            <!--========================================== END LEFT SIDEBAR NAV ====================================================================================-->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+            <!--==========================================START RIGHT SIDEBAR NAV============================================================================================-->
+            <!--             <aside id="right-sidebar-nav" class="chat-outs">
                 <ul id="chat-out" class=" side-nav rightside-navigation">
                     <li class="li-hover">
                     <a href="#" data-activates="chat-out" class="chat-close-collapse right"><i class="mdi-navigation-close"></i></a>
@@ -297,11 +344,11 @@
                     </li>
                 </ul>
             </aside> -->
-			<!-- LEFT RIGHT SIDEBAR NAV-->
-			<!--========================================== START CONTENT ===========================================================================================-->
-			<div class=" col s12 m6" id="content" style="margin-bottom: 300px;">
-				<!--========================================== start container =========================================================================================-->
-				<!--              <div class="bal bits nav-wrapper center"  style="padding-bottom:20px;">
+            <!-- LEFT RIGHT SIDEBAR NAV-->
+            <!--========================================== START CONTENT ===========================================================================================-->
+            <div class=" col s12 m6" id="content" style="margin-bottom: 300px;">
+                <!--========================================== start container =========================================================================================-->
+                <!--              <div class="bal bits nav-wrapper center"  style="padding-bottom:20px;">
 <div id="index-banner" class="waves-effect">
     <div class=" no-pad-bot">
       <div class="container">
@@ -312,38 +359,40 @@
     </div></div>
     </div>
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-				<div class="progress preload">
-					<div class="indeterminate"></div>
-				</div>
-				<div class="maincont displayNone">
-					<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-					<div class="card-container-bits displayNone" id="">
-						<div class="card-bit serviceListCard" id="">
-							<div class="card small maincard bits" style="border-radius: 0px; position: sticky;/* width: 100%; */ z-index: 100; box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0) !important;">
-								<!--                                <div class="btn-bar bits bitb" style="margin-top:0px;">
+                <div class="progress preload">
+                    <div class="indeterminate"></div>
+                </div>
+                <div class="maincont displayNone">
+                    <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+                    <div class="card-container-bits displayNone" id="">
+                        <div class="card-bit serviceListCard" id="">
+                            <div class="card small maincard bits" style="border-radius: 0px; position: sticky;/* width: 100%; */ z-index: 100; box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0) !important;">
+                                <!--                                <div class="btn-bar bits bitb" style="margin-top:0px;">
                                     
                                 </div> -->
-								<div class="card-image carousel carousel-slider">
-									<a class="carousel-item" href="#one!"><img alt="" class="cardimage service-banner" src="" style="border-radius: 0px; height: 200px;"></a> <!--                 <a class="carousel-item" href="#two!"> <img  src="" alt="" class="cardimage service-banner "style="border-radius: 0px; height: 250px;"> </a> -->
-								</div>
-								<div class="min-card">
-									<ul class="card-action-buttons left">
-										<li>
-											<div class="col s2"><img alt="" class="shopLogo bits-up circle btn-floating btn-large waves-effect waves-light bits-white accent-4 responsive-img valign" src=""></div>
-										</li>
-									</ul>
-									<ul class="card-action-buttons"></ul>
-									<div class="card-content">
-										<div class="row bits-row">
-											<div class="col s12" style="margin-top: -12px;">
-												<h5 class="serviceName" id="serviceName"></h5>
-											</div>
-										</div>
-										<div class="row" style=" margin-bottom: -9px !important; font-size: 12px; width: 98%; float: left;">
-											<p class="serviceDescription" id="serviceDescription" style="min-height:45px; margin-left: 11px;">Loading....</p><span class="followbtn right" style="margin-top: -70px;"></span>
-										</div>
-									</div>
-								</div><!--======================================================= Confirms=============================================================================================== ==
+                                <div class="card-image carousel carousel-slider">
+                                    <a class="carousel-item" href="#one!"><img alt="" class="cardimage service-banner" src="" style="border-radius: 0px; height: 200px;"></a>
+                                    <!--                 <a class="carousel-item" href="#two!"> <img  src="" alt="" class="cardimage service-banner "style="border-radius: 0px; height: 250px;"> </a> -->
+                                </div>
+                                <div class="min-card">
+                                    <ul class="card-action-buttons left">
+                                        <li>
+                                            <div class="col s2"><img alt="" class="shopLogo bits-up circle btn-floating btn-large waves-effect waves-light bits-white accent-4 responsive-img valign" src=""></div>
+                                        </li>
+                                    </ul>
+                                    <ul class="card-action-buttons"></ul>
+                                    <div class="card-content">
+                                        <div class="row bits-row">
+                                            <div class="col s12" style="margin-top: -12px;">
+                                                <h5 class="serviceName" id="serviceName"></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row" style=" margin-bottom: -9px !important; font-size: 12px; width: 98%; float: left;">
+                                            <p class="serviceDescription" id="serviceDescription" style="min-height:45px; margin-left: 11px;">Loading....</p><span class="followbtn right" style="margin-top: -70px;"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--======================================================= Confirms=============================================================================================== ==
 <div class="card-reveal">
                                        
                                         </div>
@@ -352,316 +401,350 @@
 
 
 ============== commented send / recive buttons  ============================-->
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="homeTabs displayNone" style="margin-top: -4px;">
-					<div class="col s12">
-						<ul class="tabs tab-demo-active z-depth-1 bits" style="width: 100%;">
-							<li class="tab col s3 displayNone">
-								<a class="white-text waves-effect waves-light" href="#1"><i class="mdi-communication-quick-contacts-mail"></i> Contacts</a>
-							</li>
-							<li class="tab col s3">
-								<a class="white-text waves-effect waves-light active" href="#2"><i class="mdi-action-redeem"></i> Nearby</a>
-							</li>
-							<li class="tab col s3 displayNone">
-								<a class="white-text waves-effect waves-light" href="#3"><i class="mdi-action-store"></i> Subscribed</a>
-							</li>
-							<li style="list-style: none; display: inline">
-								<div class="indicator" style="right: 142px; left: 141px;"></div>
-							</li>
-						</ul>
-					</div>
-					<div class="col s12">
-						<div class="col s12 tabContacts" id="1">
-							<ul class="contactsListHolder collection popup-gallery" id="myContacts" style="">
-								<li class="searchContacts"></li>
-								<li class="collection-item waves-effect avatar noContacts" onclick="contact()" style="background-color: inherit; width: 100%;">
-									<img alt="" class="circle" src="images/icons/phone-call.png"> <span class="title"><span class="serviceListTitle">Load Contacts</span></span>
-									<p class="serviceListFirstline">Click to load your contacts<br class="servicelistSeccondline"></p><a class="secondary-content" href="#!"></a>
-								</li>
-							</ul>
-						</div>
-						<div class="col s12 tabShops" id="2">
-							<ul class="nearbypromoHolder collection" id="card-widgets" style=""></ul>
-						</div>
-						<div class="col s12 tabPromo" id="3">
-							<ul class="promoHolder-home collection" id="card-widgets" style=""></ul>
-						</div>
-					</div>
-				</div><!--========================================================================================================-->
-				<!--====================list holder  collections start =====================================================-->
-				<div class="col s12 m8 l9" id="">
-					<ul class="collapsible collapsible-accordion" data-collapsible="accordion">
-						<li>
-							<center>
-								<ul class="collapsible merchantsPromotions displayNone">
-									<li class="active">
-										<div class="collapsible-header">
-											Promotions <span class="pro"></span>
-										</div>
-										<div class="collapsible-body merchPromo" style="display: none;"></div>
-									</li>
-								</ul>
-							</center>
-						</li>
-						<li>
-							<center>
-								<ul class="tabs prodtabs displayNone" id="tabs-swipe-demo"></ul>
-								<div class="ptabs"></div>
-								<ul class="collapsible merchantsProducts displayNone">
-									<li class="">
-										<div class="collapsible-header active">
-											Products<span class="prod"></span>
-											<div class="" style="float: right;"></div>
-										</div>
-										<div class="collapsible-body merchproducts collection popup-gallery" id="id01" style="display: none;"></div>
-									</li>
-								</ul>
-							</center>
-						</li>
-						<li>
-							<center>
-								<ul class="collapsible userContacts displayNone">
-									<li class="">
-										<div class="collapsible-header active">
-											Contacts<span class="prod"></span>
-											<div class="" style="float: right;"></div>
-										</div>
-										<div class="collapsible-body userCont collection popup-gallery" style="display: none;"></div>
-									</li>
-								</ul>
-							</center>
-						</li>
-					</ul>
-					<ul class="serviceListHolder collection popup-gallery" style="display:none;"></ul>
-					<ul class="promoHolder displayNone collection" id="card-widgets" style="width: 90%;margin-left: 5%;"></ul>
-				</div><!--list holder  end-->
-				<!-- ================================================================================================================= -->
-				<!-- =====================  Floating Action Button Home page sends you to contact or merchants page ================== -->
-				<div class="fixed-action-btn fixed-a displayNone" id="fixed-a" style="bottom: 50px; right: 19px;">
-					<a class="btn bits">Send / Receive</a>
-					<ul class="serviceButtonsHolder"></ul>
-				</div><!-- ================================== Floating Action Button homepage End =======================================================-->
-				<!-- =====================  Floating Action Button Home page sends you to contact or merchants page ================== -->
-				<div class="">
-					<div class="row delrow displayNone">
-						<div class="chip doPayBut payment white-text pointer-events displayNone" id="" style=" width: 200px;">
-							<i class="mdi-maps-local-grocery-store left" style="font-size: 24px;"></i><span style="">send</span> <span class="" style="">recieve</span><i class="mdi-maps-local-grocery-store right" style="font-size: 24px;"></i>
-						</div>
-						<div class="chip delivery white-text pointer-events" id="" onclick="makeOrder(orderArray);" style="">
-							<span style="">deliver</span> <i class="mdi-maps-local-grocery-store right" style="font-size: 24px;"></i>
-						</div>
-						<div class="fixed-action-btn floatingPrice" data-intro="Click to Check Out" data-step="2" id="bits-prices" style="bottom: 10px; right: 50px; pointer-events: none;">
-							<a class="bits-main-price bitswaves-effect waves-block grey waves-light btn-floating btn-large" href="#" style="pointer-events: none;"><span class="totals" id="totals" style="font-size: 15px !important;">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="homeTabs displayNone" style="margin-top: -4px;">
+                    <div class="col s12">
+                        <ul class="tabs tab-demo-active z-depth-1 bits" style="width: 100%;">
+                            <li class="tab col s3 displayNone">
+                                <a class="white-text waves-effect waves-light" href="#1"><i class="mdi-communication-quick-contacts-mail"></i> Contacts</a>
+                            </li>
+                            <li class="tab col s3">
+                                <a class="white-text waves-effect waves-light active" href="#2"><i class="mdi-action-redeem"></i> Nearby</a>
+                            </li>
+                            <li class="tab col s3 displayNone">
+                                <a class="white-text waves-effect waves-light" href="#3"><i class="mdi-action-store"></i> Subscribed</a>
+                            </li>
+                            <li style="list-style: none; display: inline">
+                                <div class="indicator" style="right: 142px; left: 141px;"></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col s12">
+                        <div class="col s12 tabContacts" id="1">
+                            <ul class="contactsListHolder collection popup-gallery" id="myContacts" style="">
+                                <li class="searchContacts"></li>
+                                <li class="collection-item waves-effect avatar noContacts" onclick="contact()" style="background-color: inherit; width: 100%;">
+                                    <img alt="" class="circle" src="images/icons/phone-call.png"> <span class="title"><span class="serviceListTitle">Load Contacts</span></span>
+                                    <p class="serviceListFirstline">Click to load your contacts<br class="servicelistSeccondline"></p>
+                                    <a class="secondary-content" href="#!"></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col s12 tabShops" id="2">
+                            <ul class="nearbypromoHolder collection" id="card-widgets" style=""></ul>
+                        </div>
+                        <div class="col s12 tabPromo" id="3">
+                            <ul class="promoHolder-home collection" id="card-widgets" style=""></ul>
+                        </div>
+                    </div>
+                </div>
+                <!--========================================================================================================-->
+                <!--====================list holder  collections start =====================================================-->
+                <div class="col s12 m8 l9" id="">
+                    <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
+                        <li>
+                            <center>
+                                <ul class="collapsible merchantsPromotions displayNone">
+                                    <li class="active">
+                                        <div class="collapsible-header">
+                                            Promotions <span class="pro"></span>
+                                        </div>
+                                        <div class="collapsible-body merchPromo" style="display: none;"></div>
+                                    </li>
+                                </ul>
+                            </center>
+                        </li>
+                        <li>
+                            <center>
+                                <ul class="tabs prodtabs displayNone" id="tabs-swipe-demo"></ul>
+                                <div class="ptabs"></div>
+                                <ul class="collapsible merchantsProducts displayNone">
+                                    <li class="">
+                                        <div class="collapsible-header active">
+                                            Products<span class="prod"></span>
+                                            <div class="" style="float: right;"></div>
+                                        </div>
+                                        <div class="collapsible-body merchproducts collection popup-gallery" id="id01" style="display: none;"></div>
+                                    </li>
+                                </ul>
+                            </center>
+                        </li>
+                        <li>
+                            <center>
+                                <ul class="collapsible userContacts displayNone">
+                                    <li class="">
+                                        <div class="collapsible-header active">
+                                            Contacts<span class="prod"></span>
+                                            <div class="" style="float: right;"></div>
+                                        </div>
+                                        <div class="collapsible-body userCont collection popup-gallery" style="display: none;"></div>
+                                    </li>
+                                </ul>
+                            </center>
+                        </li>
+                    </ul>
+                    <ul class="serviceListHolder collection popup-gallery" style="display:none;"></ul>
+                    <ul class="promoHolder displayNone collection" id="card-widgets" style="width: 90%;margin-left: 5%;"></ul>
+                </div>
+                <!--list holder  end-->
+                <!-- ================================================================================================================= -->
+                <!-- =====================  Floating Action Button Home page sends you to contact or merchants page ================== -->
+                <div class="fixed-action-btn fixed-a displayNone" id="fixed-a" style="bottom: 50px; right: 19px;">
+                    <a class="btn bits">Send / Receive</a>
+                    <ul class="serviceButtonsHolder"></ul>
+                </div>
+                <!-- ================================== Floating Action Button homepage End =======================================================-->
+                <!-- =====================  Floating Action Button Home page sends you to contact or merchants page ================== -->
+                <div class="">
+                    <div class="row delrow displayNone">
+                        <div class="chip doPayBut payment white-text pointer-events displayNone" id="" style=" width: 200px;">
+                            <i class="mdi-maps-local-grocery-store left" style="font-size: 24px;"></i><span style="">send</span> <span class="" style="">recieve</span><i class="mdi-maps-local-grocery-store right" style="font-size: 24px;"></i>
+                        </div>
+                        <div class="chip delivery white-text pointer-events" id="" onclick="makeOrder(orderArray);" style="">
+                            <span style="">deliver</span> <i class="mdi-maps-local-grocery-store right" style="font-size: 24px;"></i>
+                        </div>
+                        <div class="fixed-action-btn floatingPrice" data-intro="Click to Check Out" data-step="2" id="bits-prices" style="bottom: 10px; right: 50px; pointer-events: none;">
+                            <a class="bits-main-price bitswaves-effect waves-block grey waves-light btn-floating btn-large" href="#" style="pointer-events: none;"><span class="totals" id="totals" style="font-size: 15px !important;">0</span>
 							<div class="localCurr conf-curr" style="margin-top: -19px; font-size: 10px !important;"></div></a>
-						</div>
-					</div>
-				</div><!-- ================================== Floating Action Button homepage End =======================================================-->
-				<!--========Floating Action Button Merchants and contacts pages. opens modal for key in amount and send or recive cash=============-->
-				<!--========Floating Action Button Merchants and contacts pages end ===============================================================-->
-				<!-- Floating Action Buttons end-->
-			</div><!--end container-->
-		</div><!-- END CONTENT -->
-		<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-	</div><!-- END WRAPPER -->
-	<!-- END MAIN -->
-	<!-- Modal Structure -->
-	<div class="modal bits modalconfirm" id="modalconfirm" style="top:5% !important; height:82%; max-height: 800px !important;">
-		<div class="bits" style="padding: 0px;position: fixed;width: 100%;">
-			<div class="">
-				<div class="">
-					<div class="white-text otitle" style="height:50px;border-bottom: 1px solid rgba(0, 0, 0, 0.1);padding: 16px; font-size: 20px;text-align: center;">
-						Order Delivery
-						<div class="star2 displayNone" id="burst-11" style=" float: right; position: relative;top: 60px; z-index: 1;">
-							<div class="star2content" style=" position: absolute; z-index: 1; font-size: 17px !important; /* align-content: space-around; */ text-align: center; margin-left: 2px;"></div>
-							<div class="star2cur" style="margin-top: 16px;font-size: 14px;z-index: 7;position: absolute;margin-left: 7px;">
-								kes
-							</div>
-						</div>
-					</div>
-					<div class="card" style="height:450px; margin: 0rem 0 0rem 0;position:;border-radius: 0px;">
-						<div class="card-content">
-							<div class=" totalp" style="background: rgb(240, 237, 229);">
-								<div class="chip" style=" margin-top: 4px; background: none; font-size: 12px;">
-									Products:</i> <span class="totals2"></span>
-								</div>
-								<div class="chip" style=" margin-top: 4px;background: none; font-size: 12px;">
-									Delivery:</i> <span class="del"></span>
-								</div><div class="chip confirmText right"></div>
-							</div>
-							<div class="mapText" style="background: rgb(240, 237, 229);"></div>
-							<div class="deldata" style=" ">
-								<div>
-									<ul class="collection" id="products" style=" padding: 0px; margin: 0px; color: gray;"></ul>
-								</div>
-							</div>
-							<div class="card-image"><img class="mapdata" src="" style="width:100%; height: ;"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="modal-footer bits of" style=" position: fixed; bottom: 0px; height: 10%; margin-top: -35px;">
-				<div class="row">
-					<div class="col s6 m6">
-						<a class="white-text modal-action modal-close waves-effect waves-green btn-flat" id="CancelO" style="margin-left: 25px; width:70%; margin: 0.5px 0;">Cancel</a>
-					</div>
-					<div class="col s6 m6">
-						<a class="white-text modal-action modal-close waves-effect waves-green btn-flat" id="ConfirmO" onclick="" style="margin-left: 25px;width:70%; margin: 0.5px 0;">Confirm</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div><!--=================================== Modal keypad start================================================================================-->
-	<div class="modal relodeModal" id="relodeModal">
-		<div class="modal-content center" style="background: url(images/3.png) no-repeat center center !important;background-size: cover !important; padding: 4px; !important background: url(images/3.png) no-repeat center center !important;background-size: cover !important;">
-			<br>
-			<br>
-			<!--     start preloader -->
-			<div class="col s12 m4 center">
-				<div class="preloader-wrapper big active">
-					<div class="spinner-layer spinner-blue">
-						<div class="circle-clipper left">
-							<div class="circle"></div>
-						</div>
-						<div class="gap-patch">
-							<div class="circle"></div>
-						</div>
-						<div class="circle-clipper right">
-							<div class="circle"></div>
-						</div>
-					</div>
-					<div class="spinner-layer spinner-red">
-						<div class="circle-clipper left">
-							<div class="circle"></div>
-						</div>
-						<div class="gap-patch">
-							<div class="circle"></div>
-						</div>
-						<div class="circle-clipper right">
-							<div class="circle"></div>
-						</div>
-					</div>
-					<div class="spinner-layer spinner-yellow">
-						<div class="circle-clipper left">
-							<div class="circle"></div>
-						</div>
-						<div class="gap-patch">
-							<div class="circle"></div>
-						</div>
-						<div class="circle-clipper right">
-							<div class="circle"></div>
-						</div>
-					</div>
-					<div class="spinner-layer spinner-green">
-						<div class="circle-clipper left">
-							<div class="circle"></div>
-						</div>
-						<div class="gap-patch">
-							<div class="circle"></div>
-						</div>
-						<div class="circle-clipper right">
-							<div class="circle"></div>
-						</div>
-					</div>
-				</div>
-				<p>Please wait as we locate the closest shop around you</p>
-			</div><!-- end preloader   -->
-		</div>
-	</div><!--=================================== Modal keypad end ==================================================================================-->
-	<!--=================================== Modal keypad start================================================================================-->
-	<div class="modal keypadinp" id="keypadModal">
-		<div class="modal-content" style="padding: 2px;"></div>
-	</div><!--=================================== Modal keypad end ==================================================================================-->
-	<!--================================== modal enter phone number start =====================================================================-->
-	<div class="modal MobileModal" id="MobileModal"></div><!--================================== modal enter phone number end =====================================================================-->
-	<!--=========================================== modal check adresses start ==============================================================-->
-	<!--============================================modal will contain all the user adresses and qr codes ===================================-->
-	<div class="modal" id="adressesModal">
-		<div class="modal-content">
-			<div class=" wallbtn displayNone">
-				<button class="btn" onclick="switchOnWallet();" value="">click to load wallets</button>
-			</div>
-			<div class="row walls">
-				<span style=""><span class="badge chip" style="right: 20% !important;"><span class="totalamts" id="totalamts"><span class="bitsoko-xrate user-roal store-desc" style="text-align:left;"></span></span><span></span></span> Your Wallet Address</span><br>
-				<br>
-				<ul class="collapsible collapsible-accordion" data-collapsible="accordion" style="border-top: 1px solid #ddd;">
-					<li>
-						<div class="collapsible-header">
-							<span class="badge totalethpri chip" style="right: 20% !important;">0</span> Private Wallet
-						</div>
-						<div class="collapsible-body Private"></div>
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<span class="badge totalethpub chip" style="right: 20% !important;">0</span> Public Wallet
-						</div>
-						<div class="collapsible-body Public"></div>
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<span class="badge totaleths chip" style="right: 20% !important;">0</span> Service Wallet
-						</div>
-						<div class="collapsible-body Service"></div>
-					</li>
-				</ul>
-				<ul class="collection displayNone">
-					<li class="collection-item"><span class="title"><a class="secondary-content right" href="#!" id="share"></a></span> <span class="" style="font-size: 12px;">Currency: ETH</span> <span class="username-addr" style="font-size: 12px;"></span></li>
-					<li class="collection-item username-addr-old"></li>
-				</ul>
-			</div>
-		</div>
-		<div class="modal-footer blue-grey lighten-5">
-			<a class=" modal-action modal-close waves-effect waves-green btn-flat" href="#!">Close</a> <!--           <a href="#!" id="btn_save" class="waves-effect waves-green btn-flat">Back up</a> -->
-		</div>
-	</div><!--================================== modal enter phone number end =====================================================================-->
-	<!--=========================================== modal check adresses start ==============================================================-->
-	<!--============================================modal will contain all the user adresses and qr codes ===================================-->
-	<div class="modal" id="updateBrowsermodal">
-		<div class="modal-content">
-			<div class="row">
-				<h4 class="">Update Your Browser</h4><br>
-				<span>Please update to latest version of chrome browser to have the best experience with bits wallet</span>
-			</div>
-		</div><!--================================== modal enter phone number end =====================================================================-->
-		<!--=========================================== modal check adresses start ==============================================================-->
-		<!--============================================modal will contain all the user adresses and qr codes ===================================-->
-		<div class="modal-footer blue-grey lighten-5">
-			<a class="waves-effect waves-green btn-flat" href="https://play.google.com/store/apps/details?id=com.android.chrome" id="" target="_blank">Update</a>
-		</div>
-	</div><!--modal rate-->
-	<div class="modal bits" id="RateModal">
-		<div class="modal-content white-text">
-			<span class=""></span>
-			<h4><span class="">Ratings</span></h4><span class=""></span>
-			<center>
-				<div class="rating"></div>
-			</center>
-			<div class="input-field col s12" style="color:#000 !important;">
-				<textarea class="materialize-textarea white-text" id="textareaRating"></textarea> <label class="white-text" for="textarea1">Write a review</label> <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
-			</div>
-		</div>
-		<div class="modal-footer blue-grey lighten-5">
-			<a class="modal-action modal-close waves-effect waves-green btn-flat" href="#!" onclick="sendratings()">Send</a>
-		</div>
-	</div><!--modal login-->
-	<div class="modal" id="loginModal" style="margin-top:30%;height:50%; overflow:initial; height:260px;">
-		<div style="height:100px;width:100px;border-radius:50%;background:#FAFAFA; display: block; margin-left:auto; margin-right: auto; margin-top:-50px;"><img alt="" class="shopLogo bits-up circle btn-floating btn-large waves-effect waves-light bits-white accent-4 responsive-img valign profile-image" src="" style=" margin-left: auto; margin-right: auto; /* position: absolute; */ display: block; height: 100px; width: 100px;"></div>
-		<div class="modal-content" style="">
-			<div class="col s2"></div>
-			<div style="height:30px;width:100%;display: inline-block;margin-bottom:5px;text-align: center;">
-				<h5 class="eName title center" style="text-transform: uppercase;"></h5><span class="eDesc"></span>
-				<p><!-- Terms and conditions --></p>
-			</div>
-			<div id="qrcode" style="height:200px;width:200px;display:none;"></div>
-		</div>
-		<div class="modal-footer">
-			<div class="customGPlusSignIn" id="customBtn" style="text-align:center;">
-				<span class="buttonText"><button class="loginBtn loginBtn--google"><span class="buttonText"><span class="buttonText"><span class="buttonText"><span class="buttonText">Google Sign in</span></span></span></span></button></span>
-			</div>
-		</div>
-	</div><!--modal login
+                        </div>
+                    </div>
+                </div>
+                <!-- ================================== Floating Action Button homepage End =======================================================-->
+                <!--========Floating Action Button Merchants and contacts pages. opens modal for key in amount and send or recive cash=============-->
+                <!--========Floating Action Button Merchants and contacts pages end ===============================================================-->
+                <!-- Floating Action Buttons end-->
+            </div>
+            <!--end container-->
+        </div>
+        <!-- END CONTENT -->
+        <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    </div>
+    <!-- END WRAPPER -->
+    <!-- END MAIN -->
+    <!-- Modal Structure -->
+    <div class="modal bits modalconfirm" id="modalconfirm" style="top:5% !important; height:82%; max-height: 800px !important;">
+        <div class="bits" style="padding: 0px;position: fixed;width: 100%;">
+            <div class="">
+                <div class="">
+                    <div class="white-text otitle" style="height:50px;border-bottom: 1px solid rgba(0, 0, 0, 0.1);padding: 16px; font-size: 20px;text-align: center;">
+                        Order Delivery
+                        <div class="star2 displayNone" id="burst-11" style=" float: right; position: relative;top: 60px; z-index: 1;">
+                            <div class="star2content" style=" position: absolute; z-index: 1; font-size: 17px !important; /* align-content: space-around; */ text-align: center; margin-left: 2px;"></div>
+                            <div class="star2cur" style="margin-top: 16px;font-size: 14px;z-index: 7;position: absolute;margin-left: 7px;">
+                                kes
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="height:450px; margin: 0rem 0 0rem 0;position:;border-radius: 0px;">
+                        <div class="card-content">
+                            <div class=" totalp" style="background: rgb(240, 237, 229);">
+                                <div class="row" style="text-align: center;">
+                                    <div class="col s4" style="padding: 0px;border-right: solid 0.1px #b9b9b9;">
+                                        <div style=" margin-top: 4px; background: none; font-size: 12px;">
+                                            Products: <span class="totals2"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col s4" style="padding: 0px;border-right: solid 0.1px #b9b9b9;">
+                                        <div style=" margin-top: 4px;background: none; font-size: 12px;">
+                                            Delivery: <span class="del"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col s4" style="padding: 0px;">
+                                        <div class="confirmText" style="font-size: 12px !important; margin-top: 4px;color:#757575 !important;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mapText" style="background: rgb(240, 237, 229);"></div>
+                            <div class="deldata" style=" ">
+                                <div>
+                                    <ul class="collection" id="products" style=" padding: 0px; margin: 0px; color: gray;"></ul>
+                                </div>
+                            </div>
+                            <div class="card-image"><img class="mapdata" src="" style="width:100%; height: ;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer bits of" style=" position: fixed; bottom: 0px; height: 10%; margin-top: -35px;">
+                <div class="row">
+                    <div class="col s6 m6">
+                        <a class="white-text modal-action modal-close waves-effect waves-green btn-flat" id="CancelO" style="margin-left: 25px; width:70%; margin: 0.5px 0;">Cancel</a>
+                    </div>
+                    <div class="col s6 m6">
+                        <a class="white-text modal-action modal-close waves-effect waves-green btn-flat" id="ConfirmO" onclick="" style="margin-left: 25px;width:70%; margin: 0.5px 0;">Confirm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--=================================== Modal keypad start================================================================================-->
+    <div class="modal relodeModal" id="relodeModal">
+        <div class="modal-content center" style="background: url(images/3.png) no-repeat center center !important;background-size: cover !important; padding: 4px; !important background: url(images/3.png) no-repeat center center !important;background-size: cover !important;">
+            <br>
+            <br>
+            <!--     start preloader -->
+            <div class="col s12 m4 center">
+                <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-blue">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                    <div class="spinner-layer spinner-red">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                    <div class="spinner-layer spinner-yellow">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                    <div class="spinner-layer spinner-green">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+                <p>Please wait as we locate the closest shop around you</p>
+            </div>
+            <!-- end preloader   -->
+        </div>
+    </div>
+    <!--=================================== Modal keypad end ==================================================================================-->
+    <!--=================================== Modal keypad start================================================================================-->
+    <div class="modal keypadinp" id="keypadModal">
+        <div class="modal-content" style="padding: 2px;"></div>
+    </div>
+    <!--=================================== Modal keypad end ==================================================================================-->
+    <!--================================== modal enter phone number start =====================================================================-->
+    <div class="modal MobileModal" id="MobileModal"></div>
+    <!--================================== modal enter phone number end =====================================================================-->
+    <!--=========================================== modal check adresses start ==============================================================-->
+    <!--============================================modal will contain all the user adresses and qr codes ===================================-->
+    <div class="modal" id="adressesModal">
+        <div class="modal-content">
+            <div class=" wallbtn displayNone">
+                <button class="btn" onclick="switchOnWallet();" value="">click to load wallets</button>
+            </div>
+            <div class="row walls">
+                <span style=""><span class="badge chip" style="right: 20% !important;"><span class="totalamts" id="totalamts"><span class="bitsoko-xrate user-roal store-desc" style="text-align:left;"></span></span><span></span></span> Your Wallet Address</span><br>
+                <br>
+                <ul class="collapsible collapsible-accordion" data-collapsible="accordion" style="border-top: 1px solid #ddd;">
+                    <li>
+                        <div class="collapsible-header">
+                            <span class="badge totalethpri chip" style="right: 20% !important;">0</span> Private Wallet
+                        </div>
+                        <div class="collapsible-body Private"></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <span class="badge totalethpub chip" style="right: 20% !important;">0</span> Public Wallet
+                        </div>
+                        <div class="collapsible-body Public"></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <span class="badge totaleths chip" style="right: 20% !important;">0</span> Service Wallet
+                        </div>
+                        <div class="collapsible-body Service"></div>
+                    </li>
+                </ul>
+                <ul class="collection displayNone">
+                    <li class="collection-item"><span class="title"><a class="secondary-content right" href="#!" id="share"></a></span> <span class="" style="font-size: 12px;">Currency: ETH</span> <span class="username-addr" style="font-size: 12px;"></span></li>
+                    <li class="collection-item username-addr-old"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="modal-footer blue-grey lighten-5">
+            <a class=" modal-action modal-close waves-effect waves-green btn-flat" href="#!">Close</a>
+            <!--           <a href="#!" id="btn_save" class="waves-effect waves-green btn-flat">Back up</a> -->
+        </div>
+    </div>
+    <!--================================== modal enter phone number end =====================================================================-->
+    <!--=========================================== modal check adresses start ==============================================================-->
+    <!--============================================modal will contain all the user adresses and qr codes ===================================-->
+    <div class="modal" id="updateBrowsermodal">
+        <div class="modal-content">
+            <div class="row">
+                <h4 class="">Update Your Browser</h4><br>
+                <span>Please update to latest version of chrome browser to have the best experience with bits wallet</span>
+            </div>
+        </div>
+        <!--================================== modal enter phone number end =====================================================================-->
+        <!--=========================================== modal check adresses start ==============================================================-->
+        <!--============================================modal will contain all the user adresses and qr codes ===================================-->
+        <div class="modal-footer blue-grey lighten-5">
+            <a class="waves-effect waves-green btn-flat" href="https://play.google.com/store/apps/details?id=com.android.chrome" id="" target="_blank">Update</a>
+        </div>
+    </div>
+    <!--modal rate-->
+    <div class="modal bits" id="RateModal">
+        <div class="modal-content white-text">
+            <span class=""></span>
+            <h4><span class="">Ratings</span></h4><span class=""></span>
+            <center>
+                <div class="rating"></div>
+            </center>
+            <div class="input-field col s12" style="color:#000 !important;">
+                <textarea class="materialize-textarea white-text" id="textareaRating"></textarea> <label class="white-text" for="textarea1">Write a review</label> <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+            </div>
+        </div>
+        <div class="modal-footer blue-grey lighten-5">
+            <a class="modal-action modal-close waves-effect waves-green btn-flat" href="#!" onclick="sendratings()">Send</a>
+        </div>
+    </div>
+    <!--modal login-->
+    <div class="modal" id="loginModal" style="margin-top:30%;height:50%; overflow:initial; height:260px;">
+        <div style="height:100px;width:100px;border-radius:50%;background:#FAFAFA; display: block; margin-left:auto; margin-right: auto; margin-top:-50px;"><img alt="" class="shopLogo bits-up circle btn-floating btn-large waves-effect waves-light bits-white accent-4 responsive-img valign profile-image" src="" style=" margin-left: auto; margin-right: auto; /* position: absolute; */ display: block; height: 100px; width: 100px;"></div>
+        <div class="modal-content" style="">
+            <div class="col s2"></div>
+            <div style="height:30px;width:100%;display: inline-block;margin-bottom:5px;text-align: center;">
+                <h5 class="eName title center" style="text-transform: uppercase;"></h5><span class="eDesc"></span>
+                <p>
+                    <!-- Terms and conditions -->
+                </p>
+            </div>
+            <div id="qrcode" style="height:200px;width:200px;display:none;"></div>
+        </div>
+        <div class="modal-footer">
+            <div class="customGPlusSignIn" id="customBtn" style="text-align:center;">
+                <span class="buttonText"><button class="loginBtn loginBtn--google"><span class="buttonText"><span class="buttonText"><span class="buttonText"><span class="buttonText">Google Sign in</span></span>
+                </span>
+                </span>
+                </button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <!--modal login
  <div id="loginModal" class="modal " >
    <div class="modal-content">
       <div class="row">
@@ -680,230 +763,354 @@
     </div>
     </div>
 <!========================================================= Modal Structure ========================================================-->
-	<div class="modal modal-bits blog-card" id="contactModle">
-		<div class="modal-content" style="padding: 2px;">
-			<div class="">
-				<div class="card small">
-					<div class="card-image waves-effect waves-block waves-light"><img alt="blog-img" class="cardimage service-banner" src="images/merchantsBanner.png"></div>
-					<ul class="card-action-buttons left">
-						<li><!--                            <div class="col s2"><img alt="" class="cardLogo bits-up circle btn-floating btn-large waves-effect waves-light bits-white accent-4 responsive-img valign profile-image" src="images/merchants.png"></div> --></li>
-					</ul>
-					<div class="card-content">
-						<div class="row bits-row">
-							<div class="col s12">
-								<h5 class="serviceName bits-move"></h5>
-							</div>
-						</div>
-						<div class="row">
-							<p class="serviceDescription">Loading....</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="modal-content" style="padding: 2px;"></div>
-			<div class="col s12 m8 l9">
-				<!--                <div class="serviceListHolder collection" style="margin-left: 2em">
+    <div class="modal modal-bits blog-card" id="contactModle">
+        <div class="modal-content" style="padding: 2px;">
+            <div class="">
+                <div class="card small">
+                    <div class="card-image waves-effect waves-block waves-light"><img alt="blog-img" class="cardimage service-banner" src="images/merchantsBanner.png"></div>
+                    <ul class="card-action-buttons left">
+                        <li>
+                            <!--                            <div class="col s2"><img alt="" class="cardLogo bits-up circle btn-floating btn-large waves-effect waves-light bits-white accent-4 responsive-img valign profile-image" src="images/merchants.png"></div> -->
+                        </li>
+                    </ul>
+                    <div class="card-content">
+                        <div class="row bits-row">
+                            <div class="col s12">
+                                <h5 class="serviceName bits-move"></h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="serviceDescription">Loading....</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-content" style="padding: 2px;"></div>
+            <div class="col s12 m8 l9">
+                <!--                <div class="serviceListHolder collection" style="margin-left: 2em">
                     <div class="serviceListHolder"></div>
                 </div> -->
-			</div>
-		</div>
-	</div>
-	<div id="#mysubscriptions"></div><!-- Modal Structure -->
-	<div class="modal" id="modal1">
-		<div class="modal-content">
-			<h4>Modal Header</h4>
-			<p>A bunch of text</p>
-		</div>
-		<div class="modal-footer">
-			<a class="modal-action modal-close waves-effect waves-green btn-flat" href="#!">Agree</a>
-		</div>
-	</div><!-- //////////////////////////////////////////////////////////////////////////// -->
-	<!-- Modal Structure -->
-	<!-- //////////////////////////////////////////////////////////////////////////// -->
-	<div class="modal bits" id="modalwelcome" style="width: 88% !important;">
-		<div class="modal-content center" style="background: url(images/3.png) no-repeat center center !important;background-size: cover !important; padding: 4px; !important background: url(images/3.png) no-repeat center center !important;background-size: cover !important;">
-			<div class="row">
-				<div class="col s12"><img class="bitsWcover circle" src="" style="margin-top: 15px;"></div>
-			</div>
-			<div class="row">
-				<div class="col s12 white-text">
-					<h5>Welcome to,<br>
-					<span class="serviceName2 title center"></span></h5><br>
-					<span class="serviceDescription2"></span>
-				</div>
-			</div>
-		</div>
-		<div class="modal-footer">
-			<a class="modal-action modal-close waves-effect waves-red btn-flat skip" href="#!" onclick="skipTour()">Maybe later</a> <a class="modal-action waves-effect waves-green btn-flat take" href="#!" onclick="tookTour();">Take Tour</a>
-		</div>
-	</div><!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-	<!-- ================================================oder Modal ================================================-->
-	<div class="modal" id="oderModal" style="">
-		<div class="modal-content">
-			<h5>Your Oders</h5>
-		</div>
-		<div class="modal-footer">
-			<a class="modal-action modal-close waves-effect waves-green btn-flat" href="#!">Agree</a>
-		</div>
-	</div><!-- ====================================================oder Modal end ================================================--><!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-	<!-- =========================================================KYC Modal ================================================-->
-	<div class="modal" id="KYCModal" style="width: 98% !important;">
-		<div class="modal-content">
-			<h5>Your Details</h5>
-			<ul class="collection">
-				<li class="collection-item avatar">
-					<img alt="" class="bits-profile userProfImg circle responsive-img valign profile-image" src=""> <span class="title">Personal Details</span>
-					<p><span class="title username-label">First Line</span><br>
-					<span>ID Number:</span></p><a class="secondary-content" href="#!"><i class="mdi-editor-mode-edit"></i></a>
-				</li>
-				<li class="collection-item avatar">
-					<i class="mdi-communication-message circle bits"></i> <span class="title">Contact Details</span>
-					<p><span>Phone Number:</span><br>
-					<span>email:</span></p><a class="secondary-content" href="#!"><i class="mdi-editor-mode-edit"></i></a>
-				</li>
-				<li class="collection-item avatar">
-					<i class="mdi-communication-location-on circle bits"></i> <span class="title">Location Details</span>
-					<p><span>Home address:</span><br>
-					<span>Work address:</span></p><a class="secondary-content" href="#!"><i class="mdi-editor-mode-edit"></i></a>
-				</li>
-			</ul>
-		</div>
-	</div><!-- ================================================KYC Modal end ================================================--><!-- //////////////////////////////////////////////////////////////////////////// -->
-	<!-- Tap Target Structure -->
-	<div class="bits-tap-target">
-		<div class="tap-target bits white-text first-tt first-ol" data-activates="" style="">
-			<div class="tap-target-content first-btt" style="">
-				<h5 class="tap-target-title">Title</h5>
-				<p class="tap-target-text">A bunch of text</p><br>
-				<!--   <a href="#!" class="btn white-text tap-target-next  first-ol" onclick="nextTapTarget" style=" pointer-events: all;" >Next tip</a>  -->
-			</div><!--     <div class="lean-overlay first-ol displayNone" id="materialize-lean-overlay-2" style="z-index: 990; display: block; opacity: 0.5; top: -300px !important;"></div> -->
-		</div>
-		<div class="tap-target bits white-text second-tt" data-activates="bits-prices" style="">
-			<div class="tap-target-content" style="z-index: 1000;">
-				<h5 class="tap-target-title">Title</h5>
-				<p class="tap-target-text">A bunch of text</p><br>
-				<!--       <a href="#!" class="btn white-text tap-target-next" onclick="nextTapTarget" style=" pointer-events: all;" >Next tip</a> -->
-			</div><!--     <div class="lean-overlay" id="materialize-lean-overlay-2" style="z-index: 990; display: block; opacity: 0.5; top: -300px !important;"></div> -->
-		</div>
-	</div><!-- //////////////////////////////////////////////////////////////////////////// -->
-	<div class="star displayNone" id="burst-11"></div><!-- ================================================Scripts================================================-->
-	<script src="https://bitsoko.co.ke/bitsAssets/js/google.js">
-	</script> <!-- <script async defer src="https://apis.google.com/js/api.js" 
+            </div>
+        </div>
+    </div>
+    <div id="#mysubscriptions"></div>
+    <!-- Modal Structure -->
+    <div class="modal" id="modal1">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a class="modal-action modal-close waves-effect waves-green btn-flat" href="#!">Agree</a>
+        </div>
+    </div>
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- Modal Structure -->
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <div class="modal bits" id="modalwelcome" style="width: 88% !important;">
+        <div class="modal-content center" style="background: url(images/3.png) no-repeat center center !important;background-size: cover !important; padding: 4px; !important background: url(images/3.png) no-repeat center center !important;background-size: cover !important;">
+            <div class="row">
+                <div class="col s12"><img class="bitsWcover circle" src="" style="margin-top: 15px;"></div>
+            </div>
+            <div class="row">
+                <div class="col s12 white-text">
+                    <h5>Welcome to,<br>
+                        <span class="serviceName2 title center"></span></h5><br>
+                    <span class="serviceDescription2"></span>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a class="modal-action modal-close waves-effect waves-red btn-flat skip" href="#!" onclick="skipTour()">Maybe later</a> <a class="modal-action waves-effect waves-green btn-flat take" href="#!" onclick="tookTour();">Take Tour</a>
+        </div>
+    </div>
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- ================================================oder Modal ================================================-->
+    <div class="modal" id="oderModal" style="">
+        <div class="modal-content">
+            <h5>Your Oders</h5>
+        </div>
+        <div class="modal-footer">
+            <a class="modal-action modal-close waves-effect waves-green btn-flat" href="#!">Agree</a>
+        </div>
+    </div>
+    <!-- ====================================================oder Modal end ================================================-->
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- =========================================================KYC Modal ================================================-->
+    <div class="modal" id="KYCModal" style="width: 98% !important;">
+        <div class="modal-content">
+            <h5>Your Details</h5>
+            <ul class="collection">
+                <li class="collection-item avatar">
+                    <img alt="" class="bits-profile userProfImg circle responsive-img valign profile-image" src=""> <span class="title">Personal Details</span>
+                    <p><span class="title username-label">First Line</span><br>
+                        <span>ID Number:</span></p><a class="secondary-content" href="#!"><i class="mdi-editor-mode-edit"></i></a>
+                </li>
+                <li class="collection-item avatar">
+                    <i class="mdi-communication-message circle bits"></i> <span class="title">Contact Details</span>
+                    <p><span>Phone Number:</span><br>
+                        <span>email:</span></p><a class="secondary-content" href="#!"><i class="mdi-editor-mode-edit"></i></a>
+                </li>
+                <li class="collection-item avatar">
+                    <i class="mdi-communication-location-on circle bits"></i> <span class="title">Location Details</span>
+                    <p><span>Home address:</span><br>
+                        <span>Work address:</span></p><a class="secondary-content" href="#!"><i class="mdi-editor-mode-edit"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- ================================================KYC Modal end ================================================-->
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- Tap Target Structure -->
+    <div class="bits-tap-target">
+        <div class="tap-target bits white-text first-tt first-ol" data-activates="" style="">
+            <div class="tap-target-content first-btt" style="">
+                <h5 class="tap-target-title">Title</h5>
+                <p class="tap-target-text">A bunch of text</p><br>
+                <!--   <a href="#!" class="btn white-text tap-target-next  first-ol" onclick="nextTapTarget" style=" pointer-events: all;" >Next tip</a>  -->
+            </div>
+            <!--     <div class="lean-overlay first-ol displayNone" id="materialize-lean-overlay-2" style="z-index: 990; display: block; opacity: 0.5; top: -300px !important;"></div> -->
+        </div>
+        <div class="tap-target bits white-text second-tt" data-activates="bits-prices" style="">
+            <div class="tap-target-content" style="z-index: 1000;">
+                <h5 class="tap-target-title">Title</h5>
+                <p class="tap-target-text">A bunch of text</p><br>
+                <!--       <a href="#!" class="btn white-text tap-target-next" onclick="nextTapTarget" style=" pointer-events: all;" >Next tip</a> -->
+            </div>
+            <!--     <div class="lean-overlay" id="materialize-lean-overlay-2" style="z-index: 990; display: block; opacity: 0.5; top: -300px !important;"></div> -->
+        </div>
+    </div>
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <div class="star displayNone" id="burst-11"></div>
+    <!-- ================================================Scripts================================================-->
+    <script src="https://bitsoko.co.ke/bitsAssets/js/google.js">
+
+
+    </script>
+    <!-- <script async defer src="https://apis.google.com/js/api.js" 
       onload="this.onload=function(){startGoogle()};" 
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>-->
-	 
-	<script src="https://apis.google.com/js/client:platform.js?onload=startGoogle">
-	</script> 
-	<script async defer src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js">
-	</script> 
-	<script src="https://bitsoko.co.ke/bitsAssets/js/storeManager.js">
-	</script> 
-	<script async src="https://bitsoko.co.ke/bitsAssets/js/knockout-3.1.0.js">
-	</script> 
-	<script async src="https://bitsoko.co.ke/bitsAssets/js/raphQR.js">
-	</script> 
-	<script async src="https://bitsoko.co.ke/bitsAssets/js/qrcodesvg.js">
-	</script> 
-	<script async src="https://bitsoko.co.ke/bitsAssets/js/broadcastChannel.js">
-	</script> 
-	<script async src="https://bitsoko.co.ke/bitsAssets/js/moment.js">
-	</script> 
-	<script async defer src="https://bitsoko.co.ke/bitsAssets/js/lightwallet/lightwallet.min.js">
-	</script> 
-	<script src="https://bitsoko.co.ke/bitsAssets/js/ethjs-provider-signer.js" type="text/javascript">
-	</script> <!-- <script type="text/javascript" src="https://bitsoko.co.ke/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js"></script>  -->
-	 
-	<script src="https://bitsoko.co.ke/bitsAssets/js/async/lib/async.js" type="text/javascript">
-	</script> 
-	<script src="https://bitsoko.co.ke/bitsAssets/js/locationManager.js">
-	</script> 
-	<script src="https://bitsoko.co.ke/bitsAssets/js/globalVariables.js">
-	</script> 
-	<script src="https://bitsoko.co.ke/bitsAssets/js/globalServices.js">
-	</script> 
-	<script src="https://bitsoko.co.ke/bitsAssets/js/browserDetect.js">
-	</script> 
-	<script src="https://bitsoko.co.ke/bitsAssets/js/ethereumjs-tx.js">
-	</script> 
-	<script src="https://bitsoko.co.ke/bitsAssets/js/web3/web3.js">
-	</script> 
-	<script src="https://bitsoko.co.ke/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js">
-	</script> 
-	<script src="js/bits-addMobiVeri.js">
-	</script> 
-	<script async src="https://bitsoko.co.ke/bitsAssets/js/pushManager/google-fcm.js">
-	</script> 
-	<script async defer src="https://bitsoko.co.ke/bitsAssets/js/md5.min.js">
-	</script> 
-	<script src="js/bits_contacts.js" type="text/javascript">
-	</script> 
-	<script src="js/functions.js" type="text/javascript">
-	</script> 
-	<script src="js/bits_jspdf.js" type="text/javascript">
-	</script> 
-	<script src="js/bits_auth.js" type="text/javascript">
-	</script> 
-	<script src="js/products-promo-match.js" type="text/javascript">
-	</script> 
-	<script src="js/delRate.js" type="text/javascript">
-	</script> 
-	<script src="js/bits_promos.js" type="text/javascript">
-	</script> 
-	<script src="js/bits-theme.js" type="text/javascript">
-	</script> 
-	<script src="js/bits-wallets-sort.js" type="text/javascript">
-	</script> 
-	<script src="js/bits_number.js" type="text/javascript">
-	</script> 
-	<script src="js/Bits-closest-shop.js" type="text/javascript">
-	</script> 
-	<script src="js/bits-FeatureDiscovery.js" type="text/javascript">
-	</script> 
-	<script src="js/bits-follow.js" type="text/javascript">
-	</script> 
-	<script src="js/bits-wallet-on.js" type="text/javascript">
-	</script> 
-	<script src="js/bits-wallet-functions.js" type="text/javascript">
-	</script> 
-	<script src="js/bits-oder-functions.js" type="text/javascript">
-	</script> 
-	<script src="js/bits-animate.js" type="text/javascript">
-	</script> 
-	<script src="js/google-fcm.js" type="text/javascript">
-	</script> 
-	<script src="js/update_services.js" type="text/javascript">
-	</script> <!--materialize js-->
-	 
-	<script src="js/materialize.js" type="text/javascript">
-	</script> 
-	<script src="js/materialize-css.js" type="text/javascript">
-	</script> <!--scrollbar-->
-	 
-	<script src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js" type="text/javascript">
-	</script> <!--  <script src="https://bitsoko.co.ke/bitsAssets/js/bitcore-ecies.min.js"></script> 
+
+    <script src="https://apis.google.com/js/client:platform.js?onload=startGoogle">
+
+
+    </script>
+    <script async defer src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js">
+
+
+    </script>
+    <script src="https://bitsoko.co.ke/bitsAssets/js/storeManager.js">
+
+
+    </script>
+    <script async src="https://bitsoko.co.ke/bitsAssets/js/knockout-3.1.0.js">
+
+
+    </script>
+    <script async src="https://bitsoko.co.ke/bitsAssets/js/raphQR.js">
+
+
+    </script>
+    <script async src="https://bitsoko.co.ke/bitsAssets/js/qrcodesvg.js">
+
+
+    </script>
+    <script async src="https://bitsoko.co.ke/bitsAssets/js/broadcastChannel.js">
+
+
+    </script>
+    <script async src="https://bitsoko.co.ke/bitsAssets/js/moment.js">
+
+
+    </script>
+    <script async defer src="https://bitsoko.co.ke/bitsAssets/js/lightwallet/lightwallet.min.js">
+
+
+    </script>
+    <script src="https://bitsoko.co.ke/bitsAssets/js/ethjs-provider-signer.js" type="text/javascript">
+
+
+    </script>
+    <!-- <script type="text/javascript" src="https://bitsoko.co.ke/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js"></script>  -->
+
+    <script src="https://bitsoko.co.ke/bitsAssets/js/async/lib/async.js" type="text/javascript">
+
+
+    </script>
+    <script src="https://bitsoko.co.ke/bitsAssets/js/locationManager.js">
+
+
+    </script>
+    <script src="https://bitsoko.co.ke/bitsAssets/js/globalVariables.js">
+
+
+    </script>
+    <script src="https://bitsoko.co.ke/bitsAssets/js/globalServices.js">
+
+
+    </script>
+    <script src="https://bitsoko.co.ke/bitsAssets/js/browserDetect.js">
+
+
+    </script>
+    <script src="https://bitsoko.co.ke/bitsAssets/js/ethereumjs-tx.js">
+
+
+    </script>
+    <script src="https://bitsoko.co.ke/bitsAssets/js/web3/web3.js">
+
+
+    </script>
+    <script src="https://bitsoko.co.ke/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js">
+
+
+    </script>
+    <script src="js/bits-addMobiVeri.js">
+
+
+    </script>
+    <script async src="https://bitsoko.co.ke/bitsAssets/js/pushManager/google-fcm.js">
+
+
+    </script>
+    <script async defer src="https://bitsoko.co.ke/bitsAssets/js/md5.min.js">
+
+
+    </script>
+    <script src="js/bits_contacts.js" type="text/javascript">
+
+
+    </script>
+    <script src="js/functions.js" type="text/javascript">
+
+
+    </script>
+    <script src="js/bits_jspdf.js" type="text/javascript">
+
+
+    </script>
+    <script src="js/bits_auth.js" type="text/javascript">
+
+
+    </script>
+    <script src="js/products-promo-match.js" type="text/javascript">
+
+
+    </script>
+    <script src="js/delRate.js" type="text/javascript">
+
+
+    </script>
+    <script src="js/bits_promos.js" type="text/javascript">
+
+
+    </script>
+    <script src="js/bits-theme.js" type="text/javascript">
+
+
+    </script>
+    <script src="js/bits-wallets-sort.js" type="text/javascript">
+
+
+    </script>
+    <script src="js/bits_number.js" type="text/javascript">
+
+
+    </script>
+    <script src="js/Bits-closest-shop.js" type="text/javascript">
+
+
+    </script>
+    <script src="js/bits-FeatureDiscovery.js" type="text/javascript">
+
+
+    </script>
+    <script src="js/bits-follow.js" type="text/javascript">
+
+
+    </script>
+    <script src="js/bits-wallet-on.js" type="text/javascript">
+
+
+    </script>
+    <script src="js/bits-wallet-functions.js" type="text/javascript">
+
+
+    </script>
+    <script src="js/bits-oder-functions.js" type="text/javascript">
+
+
+    </script>
+    <script src="js/bits-animate.js" type="text/javascript">
+
+
+    </script>
+    <script src="js/google-fcm.js" type="text/javascript">
+
+
+    </script>
+    <script src="js/update_services.js" type="text/javascript">
+
+
+    </script>
+    <!--materialize js-->
+
+    <script src="js/materialize.js" type="text/javascript">
+
+
+    </script>
+    <script src="js/materialize-css.js" type="text/javascript">
+
+
+    </script>
+    <!--scrollbar-->
+
+    <script src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js" type="text/javascript">
+
+
+    </script>
+    <!--  <script src="https://bitsoko.co.ke/bitsAssets/js/bitcore-ecies.min.js"></script> 
     <script src="https://bitsoko.co.ke/bitsAssets/js/bitcore.min.js"></script> -->
-	 <!--<script src="js/bitcore-ecies.min.js" ></script> 
-        <script src="js/bitcore.min.js"></script> --> 
-	<script src="js/bitsCore.js" type="text/javascript">
-	</script> 
-	<script defer src="js/init.js" type="text/javascript">
-	</script> <!--sweetalert -->
-	 
-	<script src="js/plugins/sweetalert/dist/sweetalert.min.js" type="text/javascript">
-	</script> <!--plugins.js - Some Specific JS codes for Plugin Settings-->
-	 
-	<script src="js/plugins.js" type="text/javascript">
-	</script> 
-	<script src="js/jquery.star.rating.js">
-	</script> <!--custom-script.js - Add your own theme custom JS-->
-	<!--     <script type="text/javascript" src="js/intro.js"></script> -->
-	 
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBEpLoOInTvRSrkLpTHSu8EE3jiFD1Vk7E">
-	</script> 
-	<script src="js/custom-script.js" type="text/javascript">
-	</script> <!--=============================================================================================================================================================== -->
-	<!--     <script>
+    <!--<script src="js/bitcore-ecies.min.js" ></script> 
+        <script src="js/bitcore.min.js"></script> -->
+    <script src="js/bitsCore.js" type="text/javascript">
+
+
+    </script>
+    <script defer src="js/init.js" type="text/javascript">
+
+
+    </script>
+    <!--sweetalert -->
+
+    <script src="js/plugins/sweetalert/dist/sweetalert.min.js" type="text/javascript">
+
+
+    </script>
+    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+
+    <script src="js/plugins.js" type="text/javascript">
+
+
+    </script>
+    <script src="js/jquery.star.rating.js">
+
+
+    </script>
+    <!--custom-script.js - Add your own theme custom JS-->
+    <!--     <script type="text/javascript" src="js/intro.js"></script> -->
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBEpLoOInTvRSrkLpTHSu8EE3jiFD1Vk7E">
+
+
+    </script>
+    <script src="js/custom-script.js" type="text/javascript">
+
+
+    </script>
+    <!--=============================================================================================================================================================== -->
+    <!--     <script>
         //preloader
         // makes sure the whole site is loaded
         jQuery(window).load(function() {
@@ -914,168 +1121,169 @@
         })
 
     </script> -->
-	 
-	<script>
 
-	      ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
-	      if (bDet.os.name=='Android' && location.hostname=="bitsoko.co.ke"){ 
-	      // ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
+    <script>
+        ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
+        if (bDet.os.name == 'Android' && location.hostname == "bitsoko.co.ke") {
+            // ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
 
-	      if (bDet.browser.version>=minVersionSup && bDet.browser.name=='Chrome'){ 
-	             console.log('compatible'); 
-	           
-	       }else{ 
-	          
-	       $('#updateBrowsermodal').openModal({
-	            dismissible:false
-	       });
-	         
-	       } 
-	           
-	       }else if (bDet.os.name=='Android'){
+            if (bDet.browser.version >= minVersionSup && bDet.browser.name == 'Chrome') {
+                console.log('compatible');
 
-	           
-	             console.log('uncompatible');      
-	                  //   window.location="https://bitsoko.co.ke/soko/"; 
-	       }else{
+            } else {
 
-	           
-	       console.log('uncompatible');     
-	            
-	//      $('#updateBrowsermodal').openModal({
-	//           dismissible:false
-	//      });
-	new RegExp('mobile','i').test(navigator.userAgent)
-	       
-	       }
+                $('#updateBrowsermodal').openModal({
+                    dismissible: false
+                });
 
-	             
-	      requestPersist();
-	             
-	       function reload(){
-	         location.reload();
-	             
-	      }
-	      //----------------------------------------------floating button change  --------------------------------------------------------------------
-	         if ((!location.port || location.port == "80") && location.protocol != 'https:') {}       
-	         if ("onhashchange" in window) {
-	          function locationHashChanged(e) {
-	            console.log(e);
-	          // serviceOpener()         
-	      }
-	             window.addEventListener("hashchange", locationHashChanged, false);
-	      }  
-	      //-----------------------------------------------------------------------------------------------------------------------------------  
-	            
-	      function getBitsOpt(aKey){      
-	      var pairs = window.location.hash.slice(1).split("&");       
-	      for(var i = 0, aKey=aKey; i < pairs.length; ++i) {
-	      var key=pairs[i].split("=")[0];
-	      var value=pairs[i].split("=")[1];
-	      if (key==aKey){
-	          return value;
-	       }  
-	      }
-	      }
-	      function getBitsWinOpt(aKey){     
-	      var pairs = window.location.search.slice(1).split("&");           
-	      for(var i = 0, aKey=aKey; i < pairs.length; ++i) {
-	      var key=pairs[i].split("=")[0];
-	      var value=pairs[i].split("=")[1];
-	      if (key==aKey){   
-	      return value;
-	      }     
-	      }   
-	      }
+            }
 
-	      //                               fetchRates().then(function(e) {
-	      //                                      if (e.status == "ok") {
-	      //                                          console.log(e.data);
-	      //                                          coinList = e.data.data;
-	      //                                          for (i = 0; i < coinList.length; i++) {
-	      //                                              var rate = coinList[i].coinRate
-	      //                                              console.log(rate);
-	      //                                              localStorage.setItem('kobo-current-rates', rate);
-	      //                                              //swal("success!", "your order has been sent!", "success");
-	      //                                          }
-	      //                                      } else {
-	      //                                          //swal("Cancelled", "your order is not sent", "error");
-	      //                                      }
-	      //                                  });
-	                                      // end
-	      //----------------------------------------------updating promotions----------------------------------------------------------------------------------
-	//      function updatePromos(){
-	//        bitsTheme()
-	//             navigator.permissions.query({name:'geolocation'}).then(function(p)
-	//     {  
-	//        doFetch({ action: 'nearbyPromos', loc: 
-	//        localStorage.getItem('bitsoko-settings-location')}).then(function(e){
-	//               if (e.status=="ok"){
-	                 
-	//                 for(var ii = 0; ii < e.promotions.length; ++ii) { var dailyCost=(parseInt(e.promotions[ii].discount)/100)*e.promotions[ii].promoPrice
-	//     $('.promoHolder-home').append(' <li class="promoHome displayNone col s12 m6 l4 avatar bits-max promo-collection">'+'<img src="https://bitsoko.co.ke'+e.promotions[ii].promoBanner+'" data-caption="'+e.promotions[ii].promoDesc+'" alt="'+e.promotions[ii].promoDesc+'" class="materialboxed promoHome"><div class="product-card">'+'<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+e.promotions[ii].promoDesc+' <\/span><\/span>'+'<p id="promopriced" class="serviceListFirstline"><span id="bitsPrice" class="bits-badge bitsb left"  style="margin-left: 20px;">'+Math.ceil(dailyCost)+'<span class="localCurr">Ksh<\/span> daily<\/span><\/p><span class="secondary-content"><a class="waves-effect waves-light  btn"><i class="mdi-social-share left"><\/i> share<\/a><a class="waves-effect waves-light  btn"><i class="mdi-action-thumb-up left"><\/i>like<\/a><a class="waves-effect waves-light  btn"><i class="mdi-social-person-add right"><\/i>subscribers<\/a><\/span>'+'<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"><\/i> <span style="" class="promoSubState- '+e.promotions[ii].id+'"> Not Subscribed<\/span> <label> <input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+e.promotions[ii].id+'" class="promoSubButton promoSubButton-'+e.promotions[ii].id+'" style="background: rgb(128, 210, 147);"><span style="margin-top:2px;" class="lever right"><\/span><\/label><\/div><br><center><p style=" bottom: 0px;text-align: center;width: 70%;" class="serviceListseccondline "><i style="float: left;" class="serviceListseccondline promo-state-icon mdi-notification-sync"> 0 shares<\/i><i class="promo-state-icon mdi-action-favorite"> 0 likes <\/i><i style="float: right;" class="promo-state-icon mdi-action-receipt"> 0 sales <\/i><\/p><\/center><\/li>');
-	//                    //               subs=JSON.parse(e.promotions[ii].promoSubs);
-	//     //       for(var iii = 0,subs=subs,mDet=e; iii < subs.length; ++iii) { 
-	//     //           if(subs[iii]==localStorage.getItem('bitsoko-owner-id')){
-	//     //           console.log('im subscribed to ',e.promotions[ii]);
-	//     //               $( ".promoSubButton-"+e.promotions[ii].id ).prop( "checked", true );
-	//     //               $(".promoSubState-"+e.promotions[ii].id).html("Subscribed");
-	//     //           };
-	//     //       }
-	//     //      }; 
-	//     //   doSubscribe(); 
-	       
-	//                 };
-	                  
-	//            console.log(e);
-	//               }else{
-	//             $('.promoHolder-home').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong>No Promotions found<\/strong><\/p><p class="collections-content"><\/p><\/div><\/li><\/ul>');
-	                 
-	//               }
-	//            });
+        } else if (bDet.os.name == 'Android') {
 
-	//     $(function(){
-	//        $("#bits-nav-bal").hide();
-	        
-	//     });
-	           
 
-	//     }).catch(function(e){
-	//        showPositionError()
-	//     })
-	//     }; 
-	               function sendMessage(message) {
-	             // This wraps the message posting/response in a promise, which will resolve if the response doesn't
-	             // contain an error, and reject with the error if it does. If you'd prefer, it's possible to call
-	             // controller.postMessage() and set up the onmessage handler independently of a promise, but this is
-	             // a convenient wrapper.
-	             return new Promise(function(resolve, reject) {
-	               var messageChannel = new MessageChannel();
-	               messageChannel.port1.onmessage = function(event) {
-	                 if (event.data.error) {
-	                   reject(event.data.error);
-	                 } else {
-	                   resolve(event.data);
-	                 }
-	               };
+            console.log('uncompatible');
+            //   window.location="https://bitsoko.co.ke/soko/"; 
+        } else {
 
-	               // This sends the message data as well as transferring messageChannel.port2 to the service worker.
-	               // The service worker can then use the transferred port to reply via postMessage(), which
-	               // will in turn trigger the onmessage handler on messageChannel.port1.
-	               // See https://html.spec.whatwg.org/multipage/workers.html#dom-worker-postmessage
-	               navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
-	             });
-	           }
-	      (navigator.share !== undefined)
-	</script> 
-	<script type="text/javascript">
-	      // $('#loginModal').modal({ready: function(){
-	      //  startGoogle();
-	      // }});
-	   
-	window.addEventListener('load', function () {
-	//your code right here;
-	          /*
+
+            console.log('uncompatible');
+
+            //      $('#updateBrowsermodal').openModal({
+            //           dismissible:false
+            //      });
+            new RegExp('mobile', 'i').test(navigator.userAgent)
+
+        }
+
+
+        requestPersist();
+
+        function reload() {
+            location.reload();
+
+        }
+        //----------------------------------------------floating button change  --------------------------------------------------------------------
+        if ((!location.port || location.port == "80") && location.protocol != 'https:') {}
+        if ("onhashchange" in window) {
+            function locationHashChanged(e) {
+                console.log(e);
+                // serviceOpener()         
+            }
+            window.addEventListener("hashchange", locationHashChanged, false);
+        }
+        //-----------------------------------------------------------------------------------------------------------------------------------  
+
+        function getBitsOpt(aKey) {
+            var pairs = window.location.hash.slice(1).split("&");
+            for (var i = 0, aKey = aKey; i < pairs.length; ++i) {
+                var key = pairs[i].split("=")[0];
+                var value = pairs[i].split("=")[1];
+                if (key == aKey) {
+                    return value;
+                }
+            }
+        }
+
+        function getBitsWinOpt(aKey) {
+            var pairs = window.location.search.slice(1).split("&");
+            for (var i = 0, aKey = aKey; i < pairs.length; ++i) {
+                var key = pairs[i].split("=")[0];
+                var value = pairs[i].split("=")[1];
+                if (key == aKey) {
+                    return value;
+                }
+            }
+        }
+
+        //                               fetchRates().then(function(e) {
+        //                                      if (e.status == "ok") {
+        //                                          console.log(e.data);
+        //                                          coinList = e.data.data;
+        //                                          for (i = 0; i < coinList.length; i++) {
+        //                                              var rate = coinList[i].coinRate
+        //                                              console.log(rate);
+        //                                              localStorage.setItem('kobo-current-rates', rate);
+        //                                              //swal("success!", "your order has been sent!", "success");
+        //                                          }
+        //                                      } else {
+        //                                          //swal("Cancelled", "your order is not sent", "error");
+        //                                      }
+        //                                  });
+        // end
+        //----------------------------------------------updating promotions----------------------------------------------------------------------------------
+        //      function updatePromos(){
+        //        bitsTheme()
+        //             navigator.permissions.query({name:'geolocation'}).then(function(p)
+        //     {  
+        //        doFetch({ action: 'nearbyPromos', loc: 
+        //        localStorage.getItem('bitsoko-settings-location')}).then(function(e){
+        //               if (e.status=="ok"){
+
+        //                 for(var ii = 0; ii < e.promotions.length; ++ii) { var dailyCost=(parseInt(e.promotions[ii].discount)/100)*e.promotions[ii].promoPrice
+        //     $('.promoHolder-home').append(' <li class="promoHome displayNone col s12 m6 l4 avatar bits-max promo-collection">'+'<img src="https://bitsoko.co.ke'+e.promotions[ii].promoBanner+'" data-caption="'+e.promotions[ii].promoDesc+'" alt="'+e.promotions[ii].promoDesc+'" class="materialboxed promoHome"><div class="product-card">'+'<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+e.promotions[ii].promoDesc+' <\/span><\/span>'+'<p id="promopriced" class="serviceListFirstline"><span id="bitsPrice" class="bits-badge bitsb left"  style="margin-left: 20px;">'+Math.ceil(dailyCost)+'<span class="localCurr">Ksh<\/span> daily<\/span><\/p><span class="secondary-content"><a class="waves-effect waves-light  btn"><i class="mdi-social-share left"><\/i> share<\/a><a class="waves-effect waves-light  btn"><i class="mdi-action-thumb-up left"><\/i>like<\/a><a class="waves-effect waves-light  btn"><i class="mdi-social-person-add right"><\/i>subscribers<\/a><\/span>'+'<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"><\/i> <span style="" class="promoSubState- '+e.promotions[ii].id+'"> Not Subscribed<\/span> <label> <input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+e.promotions[ii].id+'" class="promoSubButton promoSubButton-'+e.promotions[ii].id+'" style="background: rgb(128, 210, 147);"><span style="margin-top:2px;" class="lever right"><\/span><\/label><\/div><br><center><p style=" bottom: 0px;text-align: center;width: 70%;" class="serviceListseccondline "><i style="float: left;" class="serviceListseccondline promo-state-icon mdi-notification-sync"> 0 shares<\/i><i class="promo-state-icon mdi-action-favorite"> 0 likes <\/i><i style="float: right;" class="promo-state-icon mdi-action-receipt"> 0 sales <\/i><\/p><\/center><\/li>');
+        //                    //               subs=JSON.parse(e.promotions[ii].promoSubs);
+        //     //       for(var iii = 0,subs=subs,mDet=e; iii < subs.length; ++iii) { 
+        //     //           if(subs[iii]==localStorage.getItem('bitsoko-owner-id')){
+        //     //           console.log('im subscribed to ',e.promotions[ii]);
+        //     //               $( ".promoSubButton-"+e.promotions[ii].id ).prop( "checked", true );
+        //     //               $(".promoSubState-"+e.promotions[ii].id).html("Subscribed");
+        //     //           };
+        //     //       }
+        //     //      }; 
+        //     //   doSubscribe(); 
+
+        //                 };
+
+        //            console.log(e);
+        //               }else{
+        //             $('.promoHolder-home').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong>No Promotions found<\/strong><\/p><p class="collections-content"><\/p><\/div><\/li><\/ul>');
+
+        //               }
+        //            });
+
+        //     $(function(){
+        //        $("#bits-nav-bal").hide();
+
+        //     });
+
+
+        //     }).catch(function(e){
+        //        showPositionError()
+        //     })
+        //     }; 
+        function sendMessage(message) {
+            // This wraps the message posting/response in a promise, which will resolve if the response doesn't
+            // contain an error, and reject with the error if it does. If you'd prefer, it's possible to call
+            // controller.postMessage() and set up the onmessage handler independently of a promise, but this is
+            // a convenient wrapper.
+            return new Promise(function(resolve, reject) {
+                var messageChannel = new MessageChannel();
+                messageChannel.port1.onmessage = function(event) {
+                    if (event.data.error) {
+                        reject(event.data.error);
+                    } else {
+                        resolve(event.data);
+                    }
+                };
+
+                // This sends the message data as well as transferring messageChannel.port2 to the service worker.
+                // The service worker can then use the transferred port to reply via postMessage(), which
+                // will in turn trigger the onmessage handler on messageChannel.port1.
+                // See https://html.spec.whatwg.org/multipage/workers.html#dom-worker-postmessage
+                navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
+            });
+        }
+        (navigator.share !== undefined)
+
+    </script>
+    <script type="text/javascript">
+        // $('#loginModal').modal({ready: function(){
+        //  startGoogle();
+        // }});
+
+        window.addEventListener('load', function() {
+            //your code right here;
+            /*
 	      var dReady = Promise.resolve('ok');
 	gapi.load('auth2', function() {
 	       gapi.auth2.init();
@@ -1089,221 +1297,235 @@
 
 	     });
 	     */
-	          
-	//gDriveReady = Promise.race([]);
-	   startGoogle();
-	   Promise.all([indexDbReady,gDriveReady]).then(values => { 
-	       
-	       console.log('test starting');
-	       starting(); 
-	      });
 
-	      document.querySelector(".js-push-button-notification").addEventListener('change', function(event) {
-	           startPushManager();
-	       });
-	      //$(".serviceListHolder").hide();
-	      $(".serviceListCard").hide();
-	      // $('.carousel').carousel();
-	      $('.carousel.carousel-slider').carousel({fullWidth: true});
-	      $(".promoHolder").hide();
+            //gDriveReady = Promise.race([]);
+            startGoogle();
+            Promise.all([indexDbReady, gDriveReady]).then(values => {
 
-	      //$('.delivery').addClass('animated jello');
+                console.log('test starting');
+                starting();
+            });
 
-	         
+            document.querySelector(".js-push-button-notification").addEventListener('change', function(event) {
+                startPushManager();
+            });
+            //$(".serviceListHolder").hide();
+            $(".serviceListCard").hide();
+            // $('.carousel').carousel();
+            $('.carousel.carousel-slider').carousel({
+                fullWidth: true
+            });
+            $(".promoHolder").hide();
 
-	         $(".saleButton").click(function() {
-	             if(checkanon()==false){$('#loginModal').openModal()}
-	             else{
-	                 // $("#keypadModal").openModal();
-	       currentTransaction.action = $(this).attr('value');
-	             }
-	        
-	       
-	       });
-
-
-	       $(".KeypadButtonClose").click(function() {
-	         $(".amtDisplay").html("");
-	         currentTransaction.amount='';
-	         $("#keypadModal").closeModal();
-	       });
-	      //keypad function 
-	      $(".send-receive").click(function() {
-	         console.log($(this).attr('value'));
-	          $(".actionDisplay").html($(this).attr('value'))
-	         if($(this).attr('value')=='Send'){
-	      $(".from-to-Display").html('to')
-	         }
-	         else{
-	             $(".from-to-Display").html('from')
-	         }
-	         });
-
-	         $(".keypadKey").click(function() {
-	         console.log($(this).attr('value'));
-	         if($(this).attr('value')=='ok'){
-	      startPay(actvServ().storeAddress,'servID-'+getBitsWinOpt('s')+'-'+getBitsWinOpt('a'),currentTransaction.amount,currentTransaction.action,'qwerty').then(function(result) {
-	       console.log(result);
-	        // "Stuff worked!"
-	        Materialize.toast(result, 3000);
-	      }, function(err) {
-	       console.log(err);
-	        // Error: "It broke"
-	        Materialize.toast(err, 3000);
-	      });
-	         }else{
-	         
-	         currentTransaction.amount=currentTransaction.amount+$(this).attr('value');
-	         console.log(currentTransaction.amount);
-	         $(".amtDisplay").html(currentTransaction.amount)    
-	         }
-
-	         
-	            
-	       });
-	}, false);
-
-	      // e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
-	      // e.onsuccess = function (event) {
-	      //  console.log(e.result)
-	         
-	      //   }     
-
-	       function actvServ(){
-	      return new Promise(function(resolve, reject) {
-	         //serviceOpener()
-	      e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
-	      e.onsuccess = function (event) {
-	         console.log(e,"***")
-	             try{
-	                 var e=JSON.parse(event.target.result);
-	                 resolve(e);
-	             }catch(err){
-	                 console.log('this service is not in the indexdb!!!!');
-	                 }
-
-	       }     
-	       e.onerror = function (e) {
-	      reject(e);
-	       }
-
-	             });
+            //$('.delivery').addClass('animated jello');
 
 
 
-
-	       //return e;
-
-	       }
-	      //------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-	      //web Share end location.hash=location.hash+"&i="+
-	      //web ShareQR start
-	      // document.querySelector("#shareQR").addEventListener('click', function(event) {
-	      //     navigator.share({
-	      //     title: "Bitcoin Address",
-	      //     text: localStorage.getItem('bits-user-wallet')
-	      // // url: window.location.href
-	      // }).then(() => console.log('Successful shareQR'))
-	      // .catch(error => console.log('Error sharingQR:', error));
-	      //             });
-	      function navMenu(sId){
-	      //navigate to the sId service page
-	      contact();
-	      }
-
-	      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	      ////////////////////////////////////////////star rating //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	       (function ($) {
-	      $(document).ready(function(){$(".rating").addRating({fieldId:"ratingId"});})
-	      })(jQuery);  
-	       (function ( $ ) { 
-	       $.fn.addRating = function(options) { 
-	         var obj = this; 
-	         var settings = $.extend({ 
-	           max : 5, 
-	           half : true, 
-	           fieldName : 'rating', 
-	           fieldId : 'rating', 
-	           fieldClass: 'rating', 
-	           icon : 'star' 
-
-	         }, options ); 
-	         this.settings = settings; 
-	         $(this).data('settings',settings) 
-
-	         // create the stars 
-	         for(var i = 1 ; i <= settings.max ; i++) 
-	         { 
-	           var star = $('<i/>').addClass('material-icons').html(this.settings.icon+'_border').data('rating', i).appendTo(this).click( 
-	             function(){ 
-	               obj.setRating($(this).data('rating')); 
-	             } 
-	           ).hover( 
-	             function(e){ 
-	               obj.showRating($(this).data('rating'), false); 
-	             }, function(){ 
-	               obj.showRating(0,false); 
-	             } 
-	           ); 
-	         } 
-	         $(this).append('<input type="hidden" name="'+settings.fieldName+'" id="'+settings.fieldId+'" class="'+settings.fieldClass+'"/>'); 
-	         return this 
-	       }; 
-
-	       $.fn.setRating = function(numRating) { 
-	         var obj = this; 
-	         $('#'+obj.settings.fieldId).val(numRating); 
-	         obj.showRating(numRating, true); 
-	       }; 
-
-	       $.fn.showRating = function(numRating, force) { 
-	         var obj = this; 
-	         if($('#'+obj.settings.fieldId).val() == '' || force) 
-	         { 
-	           $(obj).find('i').each(function(){ 
-	             var icon = obj.settings.icon+'_border'; 
-	             if($(this).data('rating') <= numRating) 
-	             { 
-	               icon = obj.settings.icon; 
-	             } 
-	             $(this).html(icon); 
-	           }) 
-	         } 
-	       } 
-
-	      }( jQuery )); 
-	      //------------------------------------------------------------------------------------ ratings end -------------------------------------------------------------------------------------------------------------------
-	      //  $('#modalconfirm').modal({
-	      //       dismissible: true, // Modal can be dismissed by clicking outside of the modal
-	      //       opacity: .5, // Opacity of modal background
-	      //       inDuration: 300, // Transition in duration
-	      //       outDuration: 200, // Transition out duration
-	      //       startingTop: '4%', // Starting top style attribute
-	      //       endingTop: '10%', // Ending top style attribute
-	      //       ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-	      //        // alert("Ready");
-	      //        // console.log(modal, trigger);
-	      //       },
-	      //      // complete: function() { alert('Closed'); } // Callback for Modal close
-	      //     }
-	      //   );
+            $(".saleButton").click(function() {
+                if (checkanon() == false) {
+                    $('#loginModal').openModal()
+                } else {
+                    // $("#keypadModal").openModal();
+                    currentTransaction.action = $(this).attr('value');
+                }
 
 
-	      //------------------------------------------------makeOrder--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	</script> <!-- =========================================================================google analytics code ========================================================================================================================================= -->
-	 
-	<script>
-	       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            });
 
-	       ga('create', 'UA-60165544-1', 'auto');
-	       ga('send', 'pageview');
 
-	</script>
+            $(".KeypadButtonClose").click(function() {
+                $(".amtDisplay").html("");
+                currentTransaction.amount = '';
+                $("#keypadModal").closeModal();
+            });
+            //keypad function 
+            $(".send-receive").click(function() {
+                console.log($(this).attr('value'));
+                $(".actionDisplay").html($(this).attr('value'))
+                if ($(this).attr('value') == 'Send') {
+                    $(".from-to-Display").html('to')
+                } else {
+                    $(".from-to-Display").html('from')
+                }
+            });
+
+            $(".keypadKey").click(function() {
+                console.log($(this).attr('value'));
+                if ($(this).attr('value') == 'ok') {
+                    startPay(actvServ().storeAddress, 'servID-' + getBitsWinOpt('s') + '-' + getBitsWinOpt('a'), currentTransaction.amount, currentTransaction.action, 'qwerty').then(function(result) {
+                        console.log(result);
+                        // "Stuff worked!"
+                        Materialize.toast(result, 3000);
+                    }, function(err) {
+                        console.log(err);
+                        // Error: "It broke"
+                        Materialize.toast(err, 3000);
+                    });
+                } else {
+
+                    currentTransaction.amount = currentTransaction.amount + $(this).attr('value');
+                    console.log(currentTransaction.amount);
+                    $(".amtDisplay").html(currentTransaction.amount)
+                }
+
+
+
+            });
+        }, false);
+
+        // e = getObjectStore('data', 'readwrite').get('bits-merchant-id-'+localStorage.getItem('bits-active-service'));
+        // e.onsuccess = function (event) {
+        //  console.log(e.result)
+
+        //   }     
+
+        function actvServ() {
+            return new Promise(function(resolve, reject) {
+                //serviceOpener()
+                e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
+                e.onsuccess = function(event) {
+                    console.log(e, "***")
+                    try {
+                        var e = JSON.parse(event.target.result);
+                        resolve(e);
+                    } catch (err) {
+                        console.log('this service is not in the indexdb!!!!');
+                    }
+
+                }
+                e.onerror = function(e) {
+                    reject(e);
+                }
+
+            });
+
+
+
+
+            //return e;
+
+        }
+        //------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+        //web Share end location.hash=location.hash+"&i="+
+        //web ShareQR start
+        // document.querySelector("#shareQR").addEventListener('click', function(event) {
+        //     navigator.share({
+        //     title: "Bitcoin Address",
+        //     text: localStorage.getItem('bits-user-wallet')
+        // // url: window.location.href
+        // }).then(() => console.log('Successful shareQR'))
+        // .catch(error => console.log('Error sharingQR:', error));
+        //             });
+        function navMenu(sId) {
+            //navigate to the sId service page
+            contact();
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////star rating //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        (function($) {
+            $(document).ready(function() {
+                $(".rating").addRating({
+                    fieldId: "ratingId"
+                });
+            })
+        })(jQuery);
+        (function($) {
+            $.fn.addRating = function(options) {
+                var obj = this;
+                var settings = $.extend({
+                    max: 5,
+                    half: true,
+                    fieldName: 'rating',
+                    fieldId: 'rating',
+                    fieldClass: 'rating',
+                    icon: 'star'
+
+                }, options);
+                this.settings = settings;
+                $(this).data('settings', settings)
+
+                // create the stars 
+                for (var i = 1; i <= settings.max; i++) {
+                    var star = $('<i/>').addClass('material-icons').html(this.settings.icon + '_border').data('rating', i).appendTo(this).click(
+                        function() {
+                            obj.setRating($(this).data('rating'));
+                        }
+                    ).hover(
+                        function(e) {
+                            obj.showRating($(this).data('rating'), false);
+                        },
+                        function() {
+                            obj.showRating(0, false);
+                        }
+                    );
+                }
+                $(this).append('<input type="hidden" name="' + settings.fieldName + '" id="' + settings.fieldId + '" class="' + settings.fieldClass + '"/>');
+                return this
+            };
+
+            $.fn.setRating = function(numRating) {
+                var obj = this;
+                $('#' + obj.settings.fieldId).val(numRating);
+                obj.showRating(numRating, true);
+            };
+
+            $.fn.showRating = function(numRating, force) {
+                var obj = this;
+                if ($('#' + obj.settings.fieldId).val() == '' || force) {
+                    $(obj).find('i').each(function() {
+                        var icon = obj.settings.icon + '_border';
+                        if ($(this).data('rating') <= numRating) {
+                            icon = obj.settings.icon;
+                        }
+                        $(this).html(icon);
+                    })
+                }
+            }
+
+        }(jQuery));
+        //------------------------------------------------------------------------------------ ratings end -------------------------------------------------------------------------------------------------------------------
+        //  $('#modalconfirm').modal({
+        //       dismissible: true, // Modal can be dismissed by clicking outside of the modal
+        //       opacity: .5, // Opacity of modal background
+        //       inDuration: 300, // Transition in duration
+        //       outDuration: 200, // Transition out duration
+        //       startingTop: '4%', // Starting top style attribute
+        //       endingTop: '10%', // Ending top style attribute
+        //       ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+        //        // alert("Ready");
+        //        // console.log(modal, trigger);
+        //       },
+        //      // complete: function() { alert('Closed'); } // Callback for Modal close
+        //     }
+        //   );
+
+
+        //------------------------------------------------makeOrder--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    </script>
+    <!-- =========================================================================google analytics code ========================================================================================================================================= -->
+
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-60165544-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
 </body>
+
 </html>

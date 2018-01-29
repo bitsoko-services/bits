@@ -1,135 +1,135 @@
 ///.........................................checks if the payments option for the merchant is on or off ........................................................./////
 function checkPayments() {
-	actvServ().then(function(p) {
-		var p = p.payments
-		if (p) {
-			//console.log("payments on")
-			$("#paymentBTN").removeClass("displayNone")
-		} else {
-			console.log("payments off")
-			$(".chat-outs").addClass("displayNone")
-			$("#paymentBTN").addClass("displayNone")
-			$("#promopriced").addClass("displayNone")
-			// $("#bitsPrice").addClass("displayNone")
-			//removes the button
-			$(".floatingPrice").html("")
-			$(".floatingPrice").addClass("pointerNone")
-			//adds class with no side panel activatr
-			$(".floatingPrice").append('<a href="#" class="bitswaves-effect waves-block bits bitb waves-light chat-collapse btn-floating btn-large "style="pointer-events: none; background-color:#{theme} !important;"><span id="totals" class="totals"></span></a>')
-		}
-	})
+    actvServ().then(function (p) {
+        var p = p.payments
+        if (p) {
+            //console.log("payments on")
+            $("#paymentBTN").removeClass("displayNone")
+        } else {
+            console.log("payments off")
+            $(".chat-outs").addClass("displayNone")
+            $("#paymentBTN").addClass("displayNone")
+            $("#promopriced").addClass("displayNone")
+            // $("#bitsPrice").addClass("displayNone")
+            //removes the button
+            $(".floatingPrice").html("")
+            $(".floatingPrice").addClass("pointerNone")
+            //adds class with no side panel activatr
+            $(".floatingPrice").append('<a href="#" class="bitswaves-effect waves-block bits bitb waves-light chat-collapse btn-floating btn-large "style="pointer-events: none; background-color:#{theme} !important;"><span id="totals" class="totals"></span></a>')
+        }
+    })
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function callMerchant() {
-	actvServ().then(function(x) {
-		var p = x.phone
-		//console.log(p)
-		$('.callbtn').html('')
-		$('.callbtn').append('<a  onclick="rate()" id="star" value="rating" class=" btn-large btn-price bits noshadow bitb" style="float: right !important;margin: 0px 20px;"><i class="mdi-action-grade activator"></i></a><button  id="share" value="Share" class="bitb btn-large btn-price bits noshadow" style="float: right !important;margin: 0px 20px; background:none;"><i class="mdi-social-share"></i></button> <a href="tel:' + p + '"  id="" value="" class=" btn-large btn-price bits noshadow bitb" style="float: right !important; margin-right: ;margin: 0px 20px;"><i class="mdi-communication-call"></i></a>');
-		//web Share start
-		document.querySelector("#share").addEventListener('click', function(event) {
-			navigator.share({
-				title: actvServ().name,
-				text: actvServ().desription,
-				url: window.location.href
-			}).then(() => console.log('Successful share')).catch(error => console.log('Error sharing:', error));
-		});
-	});
+    actvServ().then(function (x) {
+        var p = x.phone
+        //console.log(p)
+        $('.callbtn').html('')
+        $('.callbtn').append('<a  onclick="rate()" id="star" value="rating" class=" btn-large btn-price bits noshadow bitb" style="float: right !important;margin: 0px 20px;"><i class="mdi-action-grade activator"></i></a><button  id="share" value="Share" class="bitb btn-large btn-price bits noshadow" style="float: right !important;margin: 0px 20px; background:none;"><i class="mdi-social-share"></i></button> <a href="tel:' + p + '"  id="" value="" class=" btn-large btn-price bits noshadow bitb" style="float: right !important; margin-right: ;margin: 0px 20px;"><i class="mdi-communication-call"></i></a>');
+        //web Share start
+        document.querySelector("#share").addEventListener('click', function (event) {
+            navigator.share({
+                title: actvServ().name,
+                text: actvServ().desription,
+                url: window.location.href
+            }).then(() => console.log('Successful share')).catch(error => console.log('Error sharing:', error));
+        });
+    });
 }
 
 function rate() {
-	$('#RateModal').openModal();
+    $('#RateModal').openModal();
 }
 //...........................URL check end//.................................................................................................................................................
 //function service Page loader..........
 function servicePageLoader() {
-	//console.log('servicePageLoader()..');
-	$(".delrow").removeClass("displayNone");
-	if (parseInt(getBitsWinOpt('s')) > 5) {
-		var servID = getBitsWinOpt('s');
-	} else {
-		var servID = getBitsWinOpt('a');
-	}
-	document.querySelector("link[rel='manifest']").href = "https://bitsoko.co.ke/bits/web-manifest.json?s=" + servID;
-	localStorage.setItem('bits-active-service', servID);
-	if (parseInt(getBitsWinOpt('s')) == 2) {
-		contact();
-	}
-	if (parseInt(getBitsWinOpt('s')) > 2) {
-		//merchants options start; 
-		$(".serviceListHolder").show();
-		$(".serviceListCard").show();
-		$(".promoHolder").hide();
-		populated = false;
-		var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
-		svReq.onsuccess = function(event) {
-			try {
-				populateService(JSON.parse(event.target.result));
-				populated = true;
-			} catch (err) {
-				console.log('service not found in db. perhaps try loading from server AGAIN!!')
-			}
-		};
-		svReq.onerror = function() {
-			setTimeout(function() {
-				servicePageLoader();
-			}, 3000);
-		}
-		doFetch({
-			action: 'serviceProfile',
-			id: servID,
-			service: getBitsWinOpt('s')
-		}).then(function(e) {
-			if (e.status == "ok") {
-				var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-' + e.data.id);
-				svReq.onsuccess = function() {
-					try {
-						if (!populated) {
-							populateService(e.data)
-						}
-					} catch (err) {
-						console.log('service not found in db. perhaps try loading from server AGAIN!!')
-					}
-				};
-				svReq.onerror = function() {
-					setTimeout(function() {
-						servicePageLoader();
-					}, 3000);
-				}
-			} else {
-				$(".serviceListHolder").hide();
-				$(".serviceListCard").hide();
-				$(".promoHolder").show();
-				setTimeout(function() {
-					servicePageLoader();
-				}, 3000);
-			}
-		}).catch(function(err) {
-			console.log('error trying to populate from sever ', err);
-			var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
-			svReq.onsuccess = function(event) {
-				try {
-					populateService(JSON.parse(event.target.result));
-					populated = true;
-				} catch (err) {
-					console.log('service not found in db. perhaps trying loading from server AGAIN!!..');
-					setTimeout(function() {
-						if (!populated) {
-							servicePageLoader();
-						}
-					}, 1500);
-				}
-			};
-			svReq.onerror = function() {
-				setTimeout(function() {
-					if (!populated) {
-						servicePageLoader();
-					}
-				}, 1500);
-			}
-		});
-		//merchants options end; 
-	}
+    //console.log('servicePageLoader()..');
+    $(".delrow").removeClass("displayNone");
+    if (parseInt(getBitsWinOpt('s')) > 5) {
+        var servID = getBitsWinOpt('s');
+    } else {
+        var servID = getBitsWinOpt('a');
+    }
+    document.querySelector("link[rel='manifest']").href = "https://bitsoko.co.ke/bits/web-manifest.json?s=" + servID;
+    localStorage.setItem('bits-active-service', servID);
+    if (parseInt(getBitsWinOpt('s')) == 2) {
+        contact();
+    }
+    if (parseInt(getBitsWinOpt('s')) > 2) {
+        //merchants options start; 
+        $(".serviceListHolder").show();
+        $(".serviceListCard").show();
+        $(".promoHolder").hide();
+        populated = false;
+        var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
+        svReq.onsuccess = function (event) {
+            try {
+                populateService(JSON.parse(event.target.result));
+                populated = true;
+            } catch (err) {
+                console.log('service not found in db. perhaps try loading from server AGAIN!!')
+            }
+        };
+        svReq.onerror = function () {
+            setTimeout(function () {
+                servicePageLoader();
+            }, 3000);
+        }
+        doFetch({
+            action: 'serviceProfile',
+            id: servID,
+            service: getBitsWinOpt('s')
+        }).then(function (e) {
+            if (e.status == "ok") {
+                var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-' + e.data.id);
+                svReq.onsuccess = function () {
+                    try {
+                        if (!populated) {
+                            populateService(e.data)
+                        }
+                    } catch (err) {
+                        console.log('service not found in db. perhaps try loading from server AGAIN!!')
+                    }
+                };
+                svReq.onerror = function () {
+                    setTimeout(function () {
+                        servicePageLoader();
+                    }, 3000);
+                }
+            } else {
+                $(".serviceListHolder").hide();
+                $(".serviceListCard").hide();
+                $(".promoHolder").show();
+                setTimeout(function () {
+                    servicePageLoader();
+                }, 3000);
+            }
+        }).catch(function (err) {
+            console.log('error trying to populate from sever ', err);
+            var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
+            svReq.onsuccess = function (event) {
+                try {
+                    populateService(JSON.parse(event.target.result));
+                    populated = true;
+                } catch (err) {
+                    console.log('service not found in db. perhaps trying loading from server AGAIN!!..');
+                    setTimeout(function () {
+                        if (!populated) {
+                            servicePageLoader();
+                        }
+                    }, 1500);
+                }
+            };
+            svReq.onerror = function () {
+                setTimeout(function () {
+                    if (!populated) {
+                        servicePageLoader();
+                    }
+                }, 1500);
+            }
+        });
+        //merchants options end; 
+    }
 }
 // scroll function....................................................................................................................
 // $(window).scroll(function scroll (){
@@ -143,37 +143,37 @@ function servicePageLoader() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //------------------------------load name and image of user profile---------------------------------------------------------------------
 function loadProfData() {
-	var stor = getObjectStore('data', 'readwrite').get('user-profile-' + localStorage.getItem('bits-user-name'));
-	stor.onsuccess = function(event) {
-		try {
-			var upData = JSON.parse(event.target.result);
-			$(".username-label").html(upData.name);
-			$(".userProfImg").attr("src", upData.image);
-		} catch (err) {
-			$(".username-label").html('Anonymous');
-			$(".userProfImg").attr("src", '');
-		}
-	};
-	stor.onerror = function() {
-		$(".username-label").html('Anonymous');
-		$(".userProfImg").attr("src", '');
-	};
+    var stor = getObjectStore('data', 'readwrite').get('user-profile-' + localStorage.getItem('bits-user-name'));
+    stor.onsuccess = function (event) {
+        try {
+            var upData = JSON.parse(event.target.result);
+            $(".username-label").html(upData.name);
+            $(".userProfImg").attr("src", upData.image);
+        } catch (err) {
+            $(".username-label").html('Anonymous');
+            $(".userProfImg").attr("src", '');
+        }
+    };
+    stor.onerror = function () {
+        $(".username-label").html('Anonymous');
+        $(".userProfImg").attr("src", '');
+    };
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //------------------------------load old wallets of user---------------------------------------------------------------------
 function loadoldwalletData() {
-	var ol = getObjectStore('data', 'readwrite').get('bits-wallets-old-' + localStorage.getItem('bits-user-name'));
-	ol.onsuccess = function(event) {
-		try {
-			var upDat = JSON.parse(event.target.result);
-			for (var iii = 0; iii < upDat.length; ++iii) {
-				console.log("old wallets found")
-				//var id = upDat[iii].uid ? upDat[iii].uid : 'undefined';	
-				$('.username-addr-old').append('<span class="title"><a href="#!" id="share" class="secondary-content right"></a></span><span class ="" style="font-size: 12px;">' + upDat.user + '</span>');
-			}
-		} catch (err) {}
-	};
-	ol.onerror = function() {};
+    var ol = getObjectStore('data', 'readwrite').get('bits-wallets-old-' + localStorage.getItem('bits-user-name'));
+    ol.onsuccess = function (event) {
+        try {
+            var upDat = JSON.parse(event.target.result);
+            for (var iii = 0; iii < upDat.length; ++iii) {
+                console.log("old wallets found")
+                //var id = upDat[iii].uid ? upDat[iii].uid : 'undefined';	
+                $('.username-addr-old').append('<span class="title"><a href="#!" id="share" class="secondary-content right"></a></span><span class ="" style="font-size: 12px;">' + upDat.user + '</span>');
+            }
+        } catch (err) {}
+    };
+    ol.onerror = function () {};
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -181,215 +181,217 @@ function loadoldwalletData() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //----------------------------------------function to pop up login toast--------------------------------------------------------------------
 function togglebuttons() {
-	if (checkanon() == false) {
-		$("#useAnon").addClass("displayNone");
-		$(".call").addClass("displayNone");
-	} else {
-		$("#useLogin").addClass("displayNone");
-		$(".call").removeClass("displayNone");
-	}
+    if (checkanon() == false) {
+        $("#useAnon").addClass("displayNone");
+        $(".call").addClass("displayNone");
+    } else {
+        $("#useLogin").addClass("displayNone");
+        $(".call").removeClass("displayNone");
+    }
 }
 //------------------end function -------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------------
 function showuser() {
-	if (checkanon() == true) {
-		var gtname = getObjectStore('data', 'readwrite').get('user-profile-' + localStorage.getItem('bits-user-name'));
-		gtname.onsuccess = function(event) {
-			try {
-				var nam = JSON.parse(event.target.result);
-				//console.log(nam.name)
-				Materialize.toast('<span class="toastlogin">You are Signed in as: ' + nam.name, 1000);
-			} catch (err) {}
-		};
-	} else {
-		//showlogintoast()
-	}
+    if (checkanon() == true) {
+        var gtname = getObjectStore('data', 'readwrite').get('user-profile-' + localStorage.getItem('bits-user-name'));
+        gtname.onsuccess = function (event) {
+            try {
+                var nam = JSON.parse(event.target.result);
+                //console.log(nam.name)
+                Materialize.toast('<span class="toastlogin">You are Signed in as: ' + nam.name, 1000);
+            } catch (err) {}
+        };
+    } else {
+        //showlogintoast()
+    }
 }
 //------------------end function -------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------------
 function showuserNumber() {
-	if (checkanon()) {
-		var gtno = getObjectStore('data', 'readwrite').get('user-profile-' + localStorage.getItem('bits-user-name'));
-		gtno.onsuccess = function(event) {
-			try {
-				var no = JSON.parse(event.target.result);
-				console.log(no.tel)
-				// 	Materialize.toast('<span class="toastlogin">You are Signed in as: '+ nam.name, 10000);
-				if (no.tel == null) {
-					$('#MobileModal').openModal()
-				}
-			} catch (err) {}
-		};
-	} else {
-		showLogin();
-		return false;
-	}
+    if (checkanon()) {
+        var gtno = getObjectStore('data', 'readwrite').get('user-profile-' + localStorage.getItem('bits-user-name'));
+        gtno.onsuccess = function (event) {
+            try {
+                var no = JSON.parse(event.target.result);
+                console.log(no.tel)
+                // 	Materialize.toast('<span class="toastlogin">You are Signed in as: '+ nam.name, 10000);
+                if (no.tel == null) {
+                    $('#MobileModal').openModal()
+                }
+            } catch (err) {}
+        };
+    } else {
+        showLogin();
+        return false;
+    }
 }
 //------------------end function -------------------------------------------------------------------------------------
 //---------------function to check if wallet is anon----------------------------------------------------------------------------------------------------
 function checkanon() {
-	if (localStorage.getItem('bits-user-name') == null) {
-		return false;
-	} else {
-		return true;
-	}
+    if (localStorage.getItem('bits-user-name') == null) {
+        return false;
+    } else {
+        return true;
+    }
 }
 //--------------------------------------end if popup login----------------------------------------------------------------------------------------- 
 //----------------------------------------------if ststements for popup login modal if user is on anon mode----------------------------------------
 //----------------------------------------------function to pop up login modal---------------------------------------------------------------------
 function showLogin() {
-	startGoogle();
-	if (checkanon() == false) {
-		$('#loginModal').openModal()
-	}
-	return;
+    startGoogle();
+    if (checkanon() == false) {
+        $('#loginModal').openModal()
+    }
+    return;
 }
 //------------------end function -------------------------------------------------------------------------------------
 //------------------function to pop up login toast--------------------------------------------------------------------
 function showlogintoast() {
-	if (checkanon() == false) {
-		Materialize.toast('<span class="toastlogin">You are using the app anonymously.</span><a onclick="showLogin()" class="btn-flat toastlogin yellow-text">Login<a>', 10000);
-	} else { //showuser()
-	}
+    if (checkanon() == false) {
+        Materialize.toast('<span class="toastlogin">You are using the app anonymously.</span><a onclick="showLogin()" class="btn-flat toastlogin yellow-text">Login<a>', 10000);
+    } else { //showuser()
+    }
 }
 orderArray = [];
 //---------------------------------------function gets the totals of all items on a list----------------------------------------------------------------------------
 function tabulateTotals() {
-	//console.log(this);
-	var addproducts = document.querySelectorAll(".bitsInputQty");
-	var totals = 0;
-	orderArray = [];
-	$('.floatingPrice').addClass('animated shake'), setTimeout(function() {
-		$('.floatingPrice').removeClass('animated shake')
-	}, 1000);
-	for (var i = 0; i < addproducts.length; ++i) {
-		try {
-			var itVal = $(addproducts[i]).val() ? $(addproducts[i]).val() : 0;
-			if (itVal > 0) {
-				orderArray.push({
-					pid: $(addproducts[i]).attr('pid'),
-					count: itVal
-				});
-				//console.log(orderArray);
-				//Rewards(orderArray);
-				$('.recipt').append('');
-			}
-			totals = totals + (parseInt($(addproducts[i]).attr("price")) * parseInt(itVal));
-			//console.log(totals);
-			$(".recipt").html("");
-			//Materialize.toast('your total is'+ totals, 1000);delivery
-			// 	 $(".delivery").removeClass("displayNone");
-			// 	 $(".floatingPrice").removeClass("displayNone");
-			$(".totals").html(totals);
-			var xt = document.getElementById("totals").innerHTML
-			// 			if (xt == 0) {
-			// 				console.log("minimum value")
-			// 				$(".delivery ").removeClass("bits");
-			// 				$(".delivery").addClass("pointer-events");
-			// 				$(".bits-main-price").addClass("grey");
-			// 				$(".localCurr").addClass("displayNone");
-			// 				$(".bits-main-price ").removeClass("bits");
-			// 										} 
-			//localStorage.setItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')),totals);
-		} catch (err) {}
-	}
+    //console.log(this);
+    var addproducts = document.querySelectorAll(".bitsInputQty");
+    var totals = 0;
+    orderArray = [];
+    $('.floatingPrice').addClass('animated shake'), setTimeout(function () {
+        $('.floatingPrice').removeClass('animated shake')
+    }, 1000);
+    for (var i = 0; i < addproducts.length; ++i) {
+        try {
+            var itVal = $(addproducts[i]).val() ? $(addproducts[i]).val() : 0;
+            if (itVal > 0) {
+                orderArray.push({
+                    pid: $(addproducts[i]).attr('pid'),
+                    count: itVal
+                });
+                //console.log(orderArray);
+                //Rewards(orderArray);
+                $('.recipt').append('');
+            }
+            totals = totals + (parseInt($(addproducts[i]).attr("price")) * parseInt(itVal));
+            //console.log(totals);
+            $(".recipt").html("");
+            //Materialize.toast('your total is'+ totals, 1000);delivery
+            // 	 $(".delivery").removeClass("displayNone");
+            // 	 $(".floatingPrice").removeClass("displayNone");
+            $(".totals").html(totals);
+            var xt = document.getElementById("totals").innerHTML
+            // 			if (xt == 0) {
+            // 				console.log("minimum value")
+            // 				$(".delivery ").removeClass("bits");
+            // 				$(".delivery").addClass("pointer-events");
+            // 				$(".bits-main-price").addClass("grey");
+            // 				$(".localCurr").addClass("displayNone");
+            // 				$(".bits-main-price ").removeClass("bits");
+            // 										} 
+            //localStorage.setItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')),totals);
+        } catch (err) {}
+    }
 }
 
 function makeOrder(orderArrayy, orderLoc) {
-	//Rewards();
-	console.log("->", orderArrayy)
-	if (orderArrayy === undefined || orderArrayy.length == 0) {
-		return;
-		console.log("stopped")
-	}
-	$('.delivery').addClass('animated jello');
-	Materialize.toast('creating your order', 3000);
-	//checkanon();
-	if (checkanon() == false) {
-		$('#loginModal').openModal();
-		return;
-	}
-	console.log('1 checking mobile verifications');
-	checkmobiveri();
-	console.log('2 done checking mobile verifications');
-	actvServ().then(function(p) {
-		console.log('3');
-		//var p=p.deliveries
-		// 	var p=p.payments
-		// if (p){console.log("payments are on")}else{
-		// 	swal("Sorry", "payments for this shop not available", "error");
-		// 		return;
-		// }
-		// var t=document.querySelectorAll(".bitsInputQty");
-		// for(var i = 0; i< t.length; ++i){
-		// 	try{
-		// 	}
-		// 	catch (err) {}
-		// }
-		getLoc().then(function showPosition(e) {
-			console.log('4');
-			var mapLocc = orderLoc ? orderLoc : e.coords.latitude + ',' + e.coords.longitude;
-			console.log(orderLoc, e, mapLocc);
-			getCoordDet(mapLocc).then(function(mapData) {
-				getProdss(orderArrayy)
-				$(".confirmText").html("")
-				$(".confirmText").append()
-				$(".del").html("")
-				$(".del").append()
-				$(".mapText").html("")
-				$(".mapdata").attr('src', mapData[0]);
-				$(".mapText").append("Pick up / Drop off :"+mapData[1].results[0].formatted_address);
-				$('#modalconfirm').modal({
-					
-					complete: function() {
-						clearCart();
-					} // Callback for Modal close
-				})
-				$('#modalconfirm').openModal({ dismissible: false});
-				$('.star2').addClass('animated shake'), setTimeout(function() {
-					$('.star2').removeClass('animated shake')
-				}, 1000);
-				document.getElementById("CancelO").addEventListener("click", function() {
-					clearCart()
-					$("#products").html("")
-				});
-				document.getElementById("ConfirmO").addEventListener("click", function() {
-					$("#products").html("")
-					//transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', 'bits', globalDel).then(function(res) {
-						//console.log(res);
-						//sent escrow to server so complete order
-						doFetch({
-							action: 'makeOrder',
-							data: orderArrayy,
-							//EarnedKobo: totalKobo,
-							loc: e.coords.latitude + ',' + e.coords.longitude,
-							user: localStorage.getItem("bits-user-name"),
-							pointsEarned: {
-								"coin": "bits",
-								"purchase": totalKobo
-							},
-							service: parseInt(getBitsWinOpt('s'))
-						}).then(function(e) {
-							if (e.status == "ok") {
-								console.log('5');
-								swal("success!", "your order has been sent!", "success");
-								clearCart();
-							} else {
-								swal("Cancelled", "your order is not sent", "error");
-							}
-						})
-					//}).catch(function(err) {
-					//	Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 3000);
-					//	console.log(err)
-					//})
-				});
-			}).catch(function() {
-				//toast location error
-				Materialize.toast('<span class="toastlogin">Turn on your location', 3000);
-			});
-		});
-		//function showPosition(e){getCoordDet(e.coords.latitude+','+e.coords.longitude).then(function(mapData){$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address); })}getLoc()
-	})
+    //Rewards();
+    console.log("->", orderArrayy)
+    if (orderArrayy === undefined || orderArrayy.length == 0) {
+        return;
+        console.log("stopped")
+    }
+    $('.delivery').addClass('animated jello');
+    Materialize.toast('creating your order', 3000);
+    //checkanon();
+    if (checkanon() == false) {
+        $('#loginModal').openModal();
+        return;
+    }
+    console.log('1 checking mobile verifications');
+    checkmobiveri();
+    console.log('2 done checking mobile verifications');
+    actvServ().then(function (p) {
+        console.log('3');
+        //var p=p.deliveries
+        // 	var p=p.payments
+        // if (p){console.log("payments are on")}else{
+        // 	swal("Sorry", "payments for this shop not available", "error");
+        // 		return;
+        // }
+        // var t=document.querySelectorAll(".bitsInputQty");
+        // for(var i = 0; i< t.length; ++i){
+        // 	try{
+        // 	}
+        // 	catch (err) {}
+        // }
+        getLoc().then(function showPosition(e) {
+            console.log('4');
+            var mapLocc = orderLoc ? orderLoc : e.coords.latitude + ',' + e.coords.longitude;
+            console.log(orderLoc, e, mapLocc);
+            getCoordDet(mapLocc).then(function (mapData) {
+                getProdss(orderArrayy)
+                $(".confirmText").html("")
+                $(".confirmText").append()
+                $(".del").html("")
+                $(".del").append()
+                $(".mapText").html("")
+                $(".mapdata").attr('src', mapData[0]);
+                $(".mapText").append("Pick up / Drop off :" + mapData[1].results[0].formatted_address);
+                $('#modalconfirm').modal({
+
+                    complete: function () {
+                        clearCart();
+                    } // Callback for Modal close
+                })
+                $('#modalconfirm').openModal({
+                    dismissible: false
+                });
+                $('.star2').addClass('animated shake'), setTimeout(function () {
+                    $('.star2').removeClass('animated shake')
+                }, 1000);
+                document.getElementById("CancelO").addEventListener("click", function () {
+                    clearCart()
+                    $("#products").html("")
+                });
+                document.getElementById("ConfirmO").addEventListener("click", function () {
+                    $("#products").html("")
+                    //transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', 'bits', globalDel).then(function(res) {
+                    //console.log(res);
+                    //sent escrow to server so complete order
+                    doFetch({
+                        action: 'makeOrder',
+                        data: orderArrayy,
+                        //EarnedKobo: totalKobo,
+                        loc: e.coords.latitude + ',' + e.coords.longitude,
+                        user: localStorage.getItem("bits-user-name"),
+                        pointsEarned: {
+                            "coin": "bits",
+                            "purchase": totalKobo
+                        },
+                        service: parseInt(getBitsWinOpt('s'))
+                    }).then(function (e) {
+                        if (e.status == "ok") {
+                            console.log('5');
+                            swal("success!", "your order has been sent!", "success");
+                            clearCart();
+                        } else {
+                            swal("Cancelled", "your order is not sent", "error");
+                        }
+                    })
+                    //}).catch(function(err) {
+                    //	Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 3000);
+                    //	console.log(err)
+                    //})
+                });
+            }).catch(function () {
+                //toast location error
+                Materialize.toast('<span class="toastlogin">Turn on your location', 3000);
+            });
+        });
+        //function showPosition(e){getCoordDet(e.coords.latitude+','+e.coords.longitude).then(function(mapData){$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address); })}getLoc()
+    })
 }
 // function mobiVerification() {
 // 	doFetch({
@@ -855,198 +857,198 @@ function makeOrder(orderArrayy, orderLoc) {
 // 	});
 // }
 function sendratings() {
-	doFetch({
-		action: 'shopRatings',
-		stars: $('#ratingId').val(),
-		review: $('#textareaRating').val(),
-		user: localStorage.getItem("bits-user-name"),
-		service: parseInt(getBitsWinOpt('s'))
-	}).then(function(s) {
-		if (s.status == "ok") {
-			// $('#ratingId').val("");
-			//$('#textareaRating').val("");
-			swal("success!", "Ratings and Reviews have been sent!", "success")
-		} else {
-			swal("Cancelled", "Ratings and Reviews have not sent", "error");
-		}
-	});
+    doFetch({
+        action: 'shopRatings',
+        stars: $('#ratingId').val(),
+        review: $('#textareaRating').val(),
+        user: localStorage.getItem("bits-user-name"),
+        service: parseInt(getBitsWinOpt('s'))
+    }).then(function (s) {
+        if (s.status == "ok") {
+            // $('#ratingId').val("");
+            //$('#textareaRating').val("");
+            swal("success!", "Ratings and Reviews have been sent!", "success")
+        } else {
+            swal("Cancelled", "Ratings and Reviews have not sent", "error");
+        }
+    });
 }
 
 function checkmobiveri() {
-	doFetch({
-		action: 'userVerified',
-		uid: localStorage.getItem("bits-user-name")
-	}).then(function(e) {
-		if (e.status == "ok") {
-			if (e.data == "false") {
-				$('#MobileModal').openModal();
-				Materialize.toast('Please verifiy your mobile number', 2000);
-				return;
-			} else {
-				$(".mobile").addClass("displayNone")
-				console.log("mobile phone verified")
-			}
-			if (e.data == null) {
-				$('#MobileModal').openModal();
-				return;
-			} else {
-				console.log("mobile phone verified")
-			}
-		}
-		if (e.status == "bad") {
-			//$('#MobileModal').openModal();
-			Materialize.toast('Please login and verifiy your mobile number', 2000);
-			return;
-		}
-	})
+    doFetch({
+        action: 'userVerified',
+        uid: localStorage.getItem("bits-user-name")
+    }).then(function (e) {
+        if (e.status == "ok") {
+            if (e.data == "false") {
+                $('#MobileModal').openModal();
+                Materialize.toast('Please verifiy your mobile number', 2000);
+                return;
+            } else {
+                $(".mobile").addClass("displayNone")
+                console.log("mobile phone verified")
+            }
+            if (e.data == null) {
+                $('#MobileModal').openModal();
+                return;
+            } else {
+                console.log("mobile phone verified")
+            }
+        }
+        if (e.status == "bad") {
+            //$('#MobileModal').openModal();
+            Materialize.toast('Please login and verifiy your mobile number', 2000);
+            return;
+        }
+    })
 }
 
 function checkDeliveries(d) {
-	//console.log(d);
-	if (d == 'false') {
-		console.log("Deliveries for this shop not available");
-		$(".delivery").addClass("displayNone");
-	} else {
-		$(".delivery").removeClass("displayNone");
-	}
+    //console.log(d);
+    if (d == 'false') {
+        console.log("Deliveries for this shop not available");
+        $(".delivery").addClass("displayNone");
+    } else {
+        $(".delivery").removeClass("displayNone");
+    }
 }
 
 function createOrder() {
-	for (var o = 0; o < orderArray.length; o++) {
-		console.log(orderArray[o].pid);
-		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
-		e.onsuccess = function(event) {
-			console.log(orderArray[o].pid);
-		}
-		e.onerror = function(e) {}
-	}
+    for (var o = 0; o < orderArray.length; o++) {
+        console.log(orderArray[o].pid);
+        e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
+        e.onsuccess = function (event) {
+            console.log(orderArray[o].pid);
+        }
+        e.onerror = function (e) {}
+    }
 }
 
 function getProdss(orderArrayx, costofItems) {
-	new Promise(function(resolve, reject) {
-		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
-		e.onsuccess = function(event) {
-			var x = JSON.parse(event.target.result);
-			resolve(x.list);
-		}
-	}).then(function(r) {
-		var costofItems = 0;
-		//console.log(r);
-		for (var o in r) {
-			for (var oo in orderArrayx) {
-				//console.log("------------------------------------->>", r[o].id, orderArrayx[oo].count)
-				if (r[o].id == orderArrayx[oo].pid) {
-					costofItems = costofItems + (orderArrayx[oo].count * r[o].price);
-					//console.log("match")
-					//products
-					//$("#products").html("")
-				//	$("#products").append('<div class="chip">' + '<img src="' + r[o].imagePath + '" ">' + orderArrayx[oo].count + ' ' + r[o].name + ' at '+ r[o].price+'/=</div>')
-				$("#products").append('<li class="collection-item avatar"style="padding: 10px;margin: 0px;background: none !important;min-height: 10px;"><img class="circle" src="' + r[o].imagePath + '"  style="height: 36px; width: 36px;"><span class="title"style=" padding-left: 65px;">' + orderArrayx[oo].count + ' ' + r[o].name + ' <div  class="chip right">'+ r[o].price+'/=</div></span></a></li>')
-				
+    new Promise(function (resolve, reject) {
+        e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
+        e.onsuccess = function (event) {
+            var x = JSON.parse(event.target.result);
+            resolve(x.list);
+        }
+    }).then(function (r) {
+        var costofItems = 0;
+        //console.log(r);
+        for (var o in r) {
+            for (var oo in orderArrayx) {
+                //console.log("------------------------------------->>", r[o].id, orderArrayx[oo].count)
+                if (r[o].id == orderArrayx[oo].pid) {
+                    costofItems = costofItems + (orderArrayx[oo].count * r[o].price);
+                    //console.log("match")
+                    //products
+                    //$("#products").html("")
+                    //	$("#products").append('<div class="chip">' + '<img src="' + r[o].imagePath + '" ">' + orderArrayx[oo].count + ' ' + r[o].name + ' at '+ r[o].price+'/=</div>')
+                    $("#products").append('<li class="collection-item avatar"style="padding: 3px;margin: 0px;background: none !important;min-height: 10px;"><div class="row" style="line-height: 30px;margin-bottom: 0px;"> <div class="col s2"><img class="circle" src="' + r[o].imagePath + '"  style="height: 30px; width: 30px;"></div><div class="col s8" style="padding:0px;"><span class="title truncate" style="width: 95%;">' + orderArrayx[oo].count + 'X ' + r[o].name + ' </span></div><div class="col s2"><div  class="right" style="font-size:0.7em;">' + r[o].price + '/=</div></div></div></li>')
 
 
-				}
-			}
-		}
-		console.log('testing', costofItems);
-		$(".totals").html("")
-		$(".totals").append(JSON.parse(costofItems))
-		finalCost(costofItems);
-		//cop(costofItems);
-	})
+
+                }
+            }
+        }
+        console.log('testing', costofItems);
+        $(".totals").html("")
+        $(".totals").append(JSON.parse(costofItems))
+        finalCost(costofItems);
+        //cop(costofItems);
+    })
 }
 bp = 0
 dis = 0
 
 function buyPromo(clicked_id, promoOder) {
-	bp = 1
-	promoOder = orderArray
-	// 	var lipromo = $(".bpr").attr("id");
-	var w = clicked_id
-	console.log(clicked_id);
-	// 	console.log($(".bpr").attr("id"));
-	// 	//console.log($(".bpr").attr("promo"));
-	// 	var xx = document.getElementById(lipromo).id;
-	// 	var tt = $(".bpr").attr("promo");
-	new Promise(function(resolve, reject) {
-		//console.log("this is var t" + t)
-		e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
-		//t = t;
-		e.onsuccess = function(event) {
-			var x = JSON.parse(event.target.result);
-			resolve({
-				promotions: x.promotions,
-				//list: x.list,
-				//discount: x.discount
-			});
-		}
-	}).then(function(r) {
-		var pd = r.promotions;
-		for (var ixi = 0; ixi < pd.length; ++ixi) {
-			console.log("=============== looping ==============================")
-			var pitems = JSON.parse(pd[ixi].promoItems);
-			var prid = pd[ixi].id;
-			if (clicked_id != prid) {
-				continue;
-			}
-			dis = JSON.parse(pd[ixi].discount);
-			console.log("discount", dis);
-			//console.log(w , tt , "ww and tt");
-			if (prid == w) {
-				console.log("match");
-				var obj = {};
-				var p = obj
-				for (var i = 0, j = pitems.length; i < j; i++) {
-					obj[pitems[i]] = (obj[pitems[i]] || 0) + 1;
-				}
-				for (var key in p) {
-					if (p.hasOwnProperty(key)) {
-						console.log(key + " -> " + p[key]);
-						promoOder.push({
-							pid: key,
-							count: p[key]
-						});
-						// loop to get product price
-						for (var iix = 0, j = pitems.length; iix < j; iix++) {}
-					}
-				}
-				console.log(promoOder);
-				makeOrder(promoOder);
-			} else {
-				console.log(" no match");
-			}
-			// cop();
-		}
-	});
-	//$(".bpromo").attr("id")
+    bp = 1
+    promoOder = orderArray
+    // 	var lipromo = $(".bpr").attr("id");
+    var w = clicked_id
+    console.log(clicked_id);
+    // 	console.log($(".bpr").attr("id"));
+    // 	//console.log($(".bpr").attr("promo"));
+    // 	var xx = document.getElementById(lipromo).id;
+    // 	var tt = $(".bpr").attr("promo");
+    new Promise(function (resolve, reject) {
+        //console.log("this is var t" + t)
+        e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
+        //t = t;
+        e.onsuccess = function (event) {
+            var x = JSON.parse(event.target.result);
+            resolve({
+                promotions: x.promotions,
+                //list: x.list,
+                //discount: x.discount
+            });
+        }
+    }).then(function (r) {
+        var pd = r.promotions;
+        for (var ixi = 0; ixi < pd.length; ++ixi) {
+            console.log("=============== looping ==============================")
+            var pitems = JSON.parse(pd[ixi].promoItems);
+            var prid = pd[ixi].id;
+            if (clicked_id != prid) {
+                continue;
+            }
+            dis = JSON.parse(pd[ixi].discount);
+            console.log("discount", dis);
+            //console.log(w , tt , "ww and tt");
+            if (prid == w) {
+                console.log("match");
+                var obj = {};
+                var p = obj
+                for (var i = 0, j = pitems.length; i < j; i++) {
+                    obj[pitems[i]] = (obj[pitems[i]] || 0) + 1;
+                }
+                for (var key in p) {
+                    if (p.hasOwnProperty(key)) {
+                        console.log(key + " -> " + p[key]);
+                        promoOder.push({
+                            pid: key,
+                            count: p[key]
+                        });
+                        // loop to get product price
+                        for (var iix = 0, j = pitems.length; iix < j; iix++) {}
+                    }
+                }
+                console.log(promoOder);
+                makeOrder(promoOder);
+            } else {
+                console.log(" no match");
+            }
+            // cop();
+        }
+    });
+    //$(".bpromo").attr("id")
 }
 
 function clearCart() {
-	console.log("clear cart");
-	$(".bitsInputQty").val(0);
-	$(".counter-minus").addClass("disabled");
-	$(".star2content").html('');
-	tabulateTotals();
-	$(".totals").html("")
-	$(".totals").append("0")
+    console.log("clear cart");
+    $(".bitsInputQty").val(0);
+    $(".counter-minus").addClass("disabled");
+    $(".star2content").html('');
+    tabulateTotals();
+    $(".totals").html("")
+    $(".totals").append("0")
 }
 var totalKobo
 
 function cop(costofItems) {
-	//costItems = costofItems
-	if (bp == 1) {
-		console.log("------> ", costofItems, dis, "<------------");
-		var pe = (costofItems * dis) / 100
-		var rate = allTokens['bits'].rate;
-		var g = Math.floor(pe);
-		var kshToKobo = rate / g
-		totalKobo = kshToKobo
-		$(".star2").removeClass("displayNone");
-		$(".star2content").html('');
-		$(".star2content").append(Math.floor(pe));
-		console.log(">>>", g, ">>>", rate, ">>>", kshToKobo);
-		bp = 1
-	} else {
-		console.log("------> ", "not promo", "<------------");
-	}
+    //costItems = costofItems
+    if (bp == 1) {
+        console.log("------> ", costofItems, dis, "<------------");
+        var pe = (costofItems * dis) / 100
+        var rate = allTokens['bits'].rate;
+        var g = Math.floor(pe);
+        var kshToKobo = rate / g
+        totalKobo = kshToKobo
+        $(".star2").removeClass("displayNone");
+        $(".star2content").html('');
+        $(".star2content").append(Math.floor(pe));
+        console.log(">>>", g, ">>>", rate, ">>>", kshToKobo);
+        bp = 1
+    } else {
+        console.log("------> ", "not promo", "<------------");
+    }
 }
