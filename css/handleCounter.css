@@ -1,0 +1,42 @@
+.handle-counter {
+    overflow: hidden;
+    float: right;
+    margin-top: -16px;
+    width: 129px;
+    /* margin-right: -20px; */
+ }
+
+.handle-counter .counter-minus,  .handle-counter .counter-plus,  .handle-counter input {
+/*   float: left; */
+  text-align: center;
+}
+
+.handle-counter .counter-minus,  .handle-counter .counter-plus { text-align: center; }
+
+.handle-counter input {
+  width:25px;
+  border-width: 1px;
+  border-left: none;
+  border-right: none;
+}
+
+.btn {
+/*   padding: 6px 12px; */
+  border: 1px solid transparent;
+  color: #fff;
+}
+
+.btn:disabled, .btn:disabled:hover {
+  background-color: darkgrey;
+  cursor: not-allowed;
+}
+
+.btn-primary { background-color: #009dda; }
+
+.btn-primary:hover, .btn-primary:focus { background-color: #0486b9; }
+.btn-f{
+  width: 30px;
+    height: 30px;
+    font-size: 11px;
+        box-shadow: none;
+}

@@ -6,7 +6,7 @@
     display: block;
     font-family: sans-serif;
     margin: 5px auto;
-    text-align: center;
+/*     text-align: center; */
     padding-top: 20px;
     font-size: 100%;
     outline: none;
@@ -33,13 +33,12 @@
 
 /* Button styling */
 .btn-style {
-    
-    width: 28%;
-    height: 60px;
+    width: 25%;
+    height: 40px;
 }
 
 
-.first-child {margin-left: 10px;
+.first-child {margin-left: 0px;
 }
 
 
@@ -47,7 +46,7 @@
  .num-bg {
   background: #fafafa;
     color: #0f5f76 !important;
-    font-size: 19px;
+    font-size: 15px;
     cursor: pointer;
     outline: none;
     border: 1px solid #eae8e8;
