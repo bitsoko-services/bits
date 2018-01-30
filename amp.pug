@@ -630,7 +630,18 @@ html(⚡='')
             height: 76%;
             color: #fff;
             margin-left: 73%;
-      }.mnm{    text-transform: capitalize;}
+      }
+      
+      .cption>div{
+      
+      width: calc(100% - 45px);
+    position: absolute;
+    bottom: 10px;
+    
+      }
+      
+      .mnm{    text-transform: capitalize;}
+      
       .footer-home{
            height: 256px;
         background-color: #3f3935;
@@ -717,7 +728,7 @@ html(⚡='')
                     | #{desc}
                     br
                     br
-                  a.btn(href="/bits/?s="+promoOwner+"#pid="+id) Buy
+                  div.btn(href="/bits/?s="+promoOwner+"#pid="+id) Buy
                   
     mixin listmanager(name,icon,shop,id)
         .ww
