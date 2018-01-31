@@ -718,7 +718,7 @@ html(⚡='')
                   div.btn(href="/bits/?s="+promoOwner+"#pid="+id) Buy
                   
     mixin listmanager(name,icon,shop,id)
-        .ww
+        .col-2-sm.ww
             amp-img(src=icon,class='apimg', width='100', height='100', alt='a sample image')
             .card-content.shpDesc2 
                 br
@@ -731,7 +731,7 @@ html(⚡='')
 
     
     mixin liststore(item,title,desc,id)
-            .col-2.ww
+            .col-2-sm.ww
               a(href="/bits/?s="+id)             
                 amp-img(src=item,layout='responsive',class='apimg', width='200', height='200') 
                 .card-content.sub(class='shpDesc')
