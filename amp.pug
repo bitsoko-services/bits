@@ -159,6 +159,14 @@ html(⚡='')
             border-top: 1px solid rgba(160,160,160,0.2);
             padding: 16px 24px;
         }
+        
+        .mx-auto>amp-img{
+        margin:5px;
+        }
+        .shpNm{
+        font-size:130px;
+        }
+        
       .x input[type=search], .x input[type=text] {
       position: absolute;
       background: #ededed;
@@ -712,7 +720,7 @@ html(⚡='')
                   br
                   span(class='shpNm') #{title}
                   br
-                  span(class='shpDesc')
+                  span(class='shpDes')
                     | #{desc}
                     br
                     br
@@ -793,7 +801,7 @@ html(⚡='')
       </amp-sidebar>
     .mbar.x
       a.my0.mx-auto(href='/')          
-                amp-img.bxshadow.b.circle(src=img, height='50', width='50', alt='')
+                amp-img.bxshadow.b.circle(src=img, height='40', width='40', alt='')
       form(method='GET', action='#', target='_top')
               input(name='search', type='search', placeholder='Search')
               input(type='submit', value='')
