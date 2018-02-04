@@ -619,14 +619,23 @@ html(⚡='')
             color: #fff;
             margin-left: 73%;
       }
+      .mngrCrd{ -webkit-box-shadow: 0px 0px 13px -2prgba(0,0,0,0.75); -moz-box-shadow: 0px 0px 13px -2px rgba(0,0,0,0.75); box-shadow: 0px 0px 13px -2px rgba(0,0,0,0.75); border-radius: 3px; margin: 0px 15px;
+      }
+      .mngrCrd amp-img{
+        width:100%;
+        height 150px;
+      }
+      .mngrCrd img{object-fit: cover;}
+      .shpDesc2{padding: 9px 5px;}
       
       .cption>div{
       
-      width: calc(100% - 45px);
+       width: calc(100% - 45px);
         position: absolute;
         bottom: 10px;
     
       }
+      
       
       .mnm{    text-transform: capitalize;}
       
@@ -720,9 +729,9 @@ html(⚡='')
                   
     mixin listmanager(name,icon,shop,id)
         .col-2-sm.ww
+          .mngrCrd
             amp-img(src=icon,class='apimg', width='100', height='100', alt='a sample image')
             .card-content.shpDesc2 
-                br
                 span(class='mnm') #{name}
                 br
                 span(class='mnm') #{shop}
@@ -796,7 +805,7 @@ html(⚡='')
                 amp-img.bxshadow.b.circle(src=img, height='50', width='50', alt='')
       form(method='GET', action='#', target='_top')
               input(name='search', type='search', placeholder='Search', disabled='disabled')
-      amp-img.bxshadow.b.call(src='/bits/images/call.png', height='20', width='20', tel='#| {phone}')
+      amp-img.bxshadow.b.call(src='/bits/images/call.png', height='20', width='20', tel='')
       amp-img.bxshadow.b.mail(src='/bits/images/mail.png', height='20', width='25', alt='')
     
     .row
