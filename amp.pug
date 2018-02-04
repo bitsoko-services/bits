@@ -621,6 +621,18 @@ html(⚡='')
       .shpDesc2{padding: 9px 5px;}
       .mngrCrd{margin-bottom: 20px;}
       @media only screen and (max-width: 720px) {.mngrCrd amp-img {width: 100px !important;}.shpDesc2{padding: 0px 5px; display: table-cell; vertical-align: middle; height: 100px;}}
+      .socialMedia{
+        margin-right:10px;
+        background:white;
+        padding:15px;
+        border-radius:5px;
+      }
+      .tokenInfo{
+        margin-right:10px;
+        background:white;
+        padding:15px;
+        border-radius:5px;
+      }
       
       .cption>div{
       
@@ -835,6 +847,15 @@ html(⚡='')
          .row.shopLst
             for manager in managers
                 +listmanager(manager.name,manager.icon,manager.shop,manager.id)
+                
+        br
+        .row 
+            .col-6-sm
+                .socialMedia
+                  h5 CONNECT WITH US
+            .col-6-sm
+                .tokenInfo
+                  h5 TRADE
 
             
     br
