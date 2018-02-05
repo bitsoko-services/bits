@@ -861,13 +861,18 @@ html(⚡='')
                 +listmanager(manager.name,manager.icon,manager.shop,manager.id)
                 
         br
-        //.row.footer
+        .row.footer
             .col-6-sm
                 .socialMedia
                   h5 CONNECT WITH US
             .col-6-sm
                 .tokenInfo
                   h5 TRADE
+                  .row
+                    .col-4-sm
+                        | #{rate}
+                    .col-8-sm
+                        link(rel='prerender', href="/tm/cid="+entContract)
 
             
     br
