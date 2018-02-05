@@ -5,7 +5,7 @@ html(⚡='')
     script(async='', src='https://cdn.ampproject.org/v0.js')
     // ## Setup
     // Import the carousel component in the header.
-    script( async="", custom-element="amp-install-serviceworker" src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js">)
+    script(async="", custom-element="amp-install-serviceworker", src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js")
     script(async='', custom-element='amp-font', src='https://cdn.ampproject.org/v0/amp-font-0.1.js')
     script(async='', custom-element='amp-carousel', src='https://cdn.ampproject.org/v0/amp-carousel-0.1.js')
     script(async='', custom-element='amp-form', src='https://cdn.ampproject.org/v0/amp-form-0.1.js')
@@ -726,7 +726,7 @@ html(⚡='')
             
         }
         
-        amp-install-serviceworker(src="./bitsAssets/business/sw.js",data-iframe-src="./bitsAssets/html/connect.html", layout="nodisplay")
+        amp-install-serviceworker(src="/sw.js",data-iframe-src="./bitsAssets/html/connect.html", layout="nodisplay")
   
   for store in stores		 
      link(rel='prerender', href="/bits/?s="+store.id)
