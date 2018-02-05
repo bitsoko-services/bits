@@ -642,8 +642,19 @@ html(⚡='')
         padding:15px;
         border-radius:5px;
       }
-      .footer h5{margin: 0px; font-size: 1.2em; font-weight: bold;}
-      
+      .footer h5{margin: 0px; font-size: 1.2em; font-weight: bold; border-bottom: 1px solid #ccc;}
+      .tokenRate{font-size: 2em;}
+      .investBtn{    
+        background: #619ed1;
+        border: none;
+        color: white;
+        border-radius: 3px;
+        padding: 6px 35px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .tokenInfo .row{padding: 10px 0px;}
       .cption>div{
       
        width: calc(100% - 45px);
@@ -870,8 +881,10 @@ html(⚡='')
                   h5 TRADE
                   .row
                     .col-4-sm
-                        | #{rate}
+                        p.tokenRate
+                            | #{rate}%
                     .col-8-sm
+                        p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         a(href="/tm/cid="+entContract)
                             button.investBtn INVEST
 
