@@ -642,8 +642,8 @@ html(⚡='')
         padding:15px;
         border-radius:5px;
       }
-      .footer h5{margin: 0px; font-size: 1.2em; font-weight: bold; border-bottom: 1px solid #ccc;}
-      .tokenRate{font-size: 2em;}
+      .footer h5{margin: 0px; font-size: 1.2em; font-weight: bold; border-bottom: 1px solid #ccc;padding-bottom: 10px;}
+      .tokenRate{font-size: 2em;margin: 0; */}
       .investBtn{    
         background: #619ed1;
         border: none;
@@ -653,8 +653,10 @@ html(⚡='')
         display: block;
         margin-left: auto;
         margin-right: auto;
+        cursor: pointer;
       }
-      .tokenInfo .row{padding: 10px 0px;}
+      .tokenInfo .row{padding: 10px 0px;display: flex;}
+      .tokenInfo.col-4-sm{display: flex;}
       .cption>div{
       
        width: calc(100% - 45px);
@@ -884,7 +886,7 @@ html(⚡='')
                         p.tokenRate
                             | #{rate}%
                     .col-8-sm
-                        p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        p This is a decentralized service. Become a shareholder to earn daily dividends
                         a(href="/tm/cid="+entContract)
                             button.investBtn INVEST
 
