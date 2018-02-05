@@ -731,7 +731,7 @@ html(⚡='')
      link(rel='prerender', href="/bits/?s="+store.id)
 
   body.testFont
-    amp-install-serviceworker(src="/sw.js",data-iframe-src="./bitsAssets/html/connect.html", layout="nodisplay")
+    amp-install-serviceworker(src="./sw.js",data-iframe-src="./bitsAssets/html/connect.html", layout="nodisplay")
     mixin listpromo(item,title,desc,id,promoOwner)
             amp-img.pic(src=item, width='580', height='300', layout='responsive', alt=title)
               .cption
