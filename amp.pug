@@ -657,6 +657,8 @@ html(⚡='')
       }
       .tokenInfo .row{padding: 10px 0px;display: flex;}
       .tokenInfo.col-4-sm{display: flex;}
+      .bold{font-weight: bold;font-size: 1.1em;}
+      
       .cption>div{
       
        width: calc(100% - 45px);
@@ -763,7 +765,7 @@ html(⚡='')
           .mngrCrd
             amp-img(src=icon,class='apimg', width='100', height='100', alt='a sample image')
             .card-content.shpDesc2 
-                span(class='mnm') #{name}
+                span(class='mnm bold') #{name}
                 br
                 span(class='mnm') #{shop}
                 br
@@ -778,7 +780,7 @@ html(⚡='')
                   amp-img(src=item,layout='responsive',class='apimg', width='200', height='200') 
                   .card-content.sub(class='shpDesc')
                       p
-                        |#{title} 
+                        span(class='bold')|#{title} 
                         br
                         | #{desc}
                       
