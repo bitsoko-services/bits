@@ -10,8 +10,8 @@ html(⚡='')
     script(async='', custom-element='amp-carousel', src='https://cdn.ampproject.org/v0/amp-carousel-0.1.js')
     script(async='', custom-element='amp-form', src='https://cdn.ampproject.org/v0/amp-form-0.1.js')
     link(rel='canonical', href='https://ampbyexample.com/components/amp-carousel/')
-    link(rel="prefetch", href="/soko/")
-    link(rel="prefetch", href="/tm/")
+    link(rel='prefetch', href='/soko/')
+    link(rel='prefetch', href='/tm/')
     script(async='', custom-element='amp-list', src='https://cdn.ampproject.org/v0/amp-list-0.1.js')
     script(async='', custom-element='amp-selector', src='https://cdn.ampproject.org/v0/amp-selector-0.1.js')
     script(async='', custom-template='amp-mustache', src='https://cdn.ampproject.org/v0/amp-mustache-0.1.js')
@@ -761,7 +761,7 @@ html(⚡='')
         
         
   for store in stores		 
-     link(rel="prefetch", href="/bits/?s="+store.id)
+     link(rel='prefetch', href="/bits/?s="+store.id)
 
   body.testFont
     amp-install-serviceworker(src="./sw.js",data-iframe-src="./bitsAssets/html/connect.html", layout="nodisplay")
