@@ -609,16 +609,16 @@ html(⚡='')
       unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
       }
       .cption{
-            position: absolute;
-            z-index: 1;
-            display: block;
-            margin-top: -52%;
-            /* float: left; */
-            background: #0000008f;
-            padding: 10px;
-            height: 76%;
-            color: #fff;
-            margin-left: 73%;
+      position: absolute;
+      z-index: 1;
+      display: block;
+      margin-top: -52%;
+      background: #0000008f;
+      padding: 10px;
+      height: 76%;
+      color: #fff;
+      right: 0px;
+      width: 30%;
       }
       .mngrCrd{ -webkit-box-shadow: 0px 0px 13px -2prgba(0,0,0,0.75); -moz-box-shadow: 0px 0px 13px -2px rgba(0,0,0,0.75); box-shadow: 0px 0px 13px -2px rgba(0,0,0,0.75); border-radius: 3px; margin: 0px 15px;width: 100%;
       }
@@ -658,12 +658,18 @@ html(⚡='')
       .tokenInfo .row{padding: 10px 0px;display: flex;}
       .tokenInfo.col-4-sm{display: flex;}
       .bold{font-weight: bold;font-size: 1.1em;}
+      .shpDes{
+       position: absolute; 
+       width: 90%; 
+       white-space: inherit;
+       }
       
       .cption>div{
       
-       width: calc(100% - 45px);
-        position: absolute;
-        bottom: 10px;
+       padding: 7px 30px;
+       position: absolute;
+       bottom: 10px;
+       font-weight: bold;
     
       }
       
