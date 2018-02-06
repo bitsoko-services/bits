@@ -759,7 +759,7 @@ html(⚡='')
         
         
   for store in stores		 
-     link(rel='prerender', href="/bits/?s="+store.id)
+     link(rel="prefetch", href="/bits/?s="+store.id)
 
   body.testFont
     amp-install-serviceworker(src="./sw.js",data-iframe-src="./bitsAssets/html/connect.html", layout="nodisplay")
