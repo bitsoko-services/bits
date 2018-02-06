@@ -1276,6 +1276,39 @@
         (navigator.share !== undefined)
 
     </script>
+    <script>
+        $(document).ready(function() {
+            navigator.permissions.query({
+                    name: 'notifications'
+                })
+                .then(function(permissionStatus) {
+                    console.log('geolocation permission state is ', permissionStatus.state);
+                    if (permissionStatus.state != "granted") {
+                        Materialize.toast("Notificatons are turned off <span class='turnOnNtfn' style='color:yellow;'>Turn on</span>", 5000, "notificationToast");
+                    }
+
+                    permissionStatus.onchange = function() {
+                        console.log('geolocation permission state has changed to ', this.state);
+                    };
+                });
+
+        });
+        $(document).on("click", ".turnOnNtfn", function() {
+            alert("turned on")
+            $(".notificationToast").remove();
+            Notification.requestPermission(function(result) {
+                if (result === 'denied') {
+                    console.log('Permission wasn\'t granted. Allow a retry.');
+                    return;
+                } else if (result === 'default') {
+                    console.log('The permission request was dismissed.');
+                    return;
+                }
+                console.log('Permission was granted for notifications');
+            });
+        })
+
+    </script>
     <script type="text/javascript">
         // $('#loginModal').modal({ready: function(){
         //  startGoogle();
