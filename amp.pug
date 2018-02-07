@@ -883,12 +883,13 @@ html(⚡='')
              for store in stores
                 +liststore(store.banner,store.name,store.desc,store.id)
         br
-        .shopCard.managerLst.dsdw
-         .row.shopLstHeader
-           .col-6
-             h5 MANAGERS
-           .col-6
-             button VIEW ALL
+        unless managerState.true
+            .shopCard.managerLst.dsdw
+             .row.shopLstHeader
+               .col-6
+                 h5 MANAGERS
+               .col-6
+                 button VIEW ALL
          br
          .row.shopLst
             for manager in managers
