@@ -201,6 +201,35 @@ function showuser() {
                 Materialize.toast('<span class="toastlogin">You are Signed in as: ' + nam.name, 1000);
             } catch (err) {}
         };
+
+        navigator.permissions.query({
+                name: 'notifications'
+            })
+            .then(function (permissionStatus) {
+                console.log('geolocation permission state is ', permissionStatus.state);
+                if (permissionStatus.state != "granted") {
+                    Materialize.toast("Notificatons are turned off <span class='turnOnNtfn' style='color:yellow;'>Turn on</span>", 5000, "notificationToast");
+                }
+
+                permissionStatus.onchange = function () {
+                    console.log('geolocation permission state has changed to ', this.state);
+                };
+            });
+        $(document).on("click", ".turnOnNtfn", function () {
+            alert("turned on")
+            $(".notificationToast").remove();
+            Notification.requestPermission(function (result) {
+                if (result === 'denied') {
+                    console.log('Permission wasn\'t granted. Allow a retry.');
+                    return;
+                } else if (result === 'default') {
+                    console.log('The permission request was dismissed.');
+                    return;
+                }
+                console.log('Permission was granted for notifications');
+            });
+        })
+
     } else {
         //showlogintoast()
     }
