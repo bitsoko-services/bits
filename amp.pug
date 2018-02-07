@@ -763,6 +763,7 @@ html(⚡='')
   for store in stores		 
      link(rel='prefetch', href="/bits/?s="+store.id)
 
+
   body.testFont
     amp-install-serviceworker(src="./sw.js",data-iframe-src="./bitsAssets/html/connect.html", layout="nodisplay")
     mixin listpromo(item,title,desc,id,promoOwner)
