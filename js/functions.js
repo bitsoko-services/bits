@@ -216,7 +216,6 @@ function showuser() {
                 };
             });
         $(document).on("click", ".turnOnNtfn", function () {
-            alert("turned on")
             $(".notificationToast").remove();
             Notification.requestPermission(function (result) {
                 if (result === 'denied') {
