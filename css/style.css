@@ -59,6 +59,10 @@ aside>ul{
     z-index: 120 px;
 }
 
+#star {
+    display: none;
+}
+
 .user-details>.side-nav .fixed a {
     line-height: 2px!important;
 }
@@ -755,6 +759,10 @@ li.kitchen:before {
 
 li.home:before {
     background: #fdb45c;
+}
+
+.dp48 {
+    text-shadow: none !important;
 }
 
 .more-text {
