@@ -891,7 +891,8 @@ html(⚡='')
                  button VIEW ALL
              br
              .row.shopLst
-                for manager in managers +listmanager(manager.name,manager.icon,manager.shop,manager.id)
+                for manager in managers 
+                    +listmanager(manager.name,manager.icon,manager.shop,manager.id)
                 
         br
         .row.footer
