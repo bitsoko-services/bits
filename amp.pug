@@ -891,7 +891,8 @@ html(⚡='')
                  button VIEW ALL
              br
              .row.shopLst
-                for manager in managers +listmanager(manager.name,manager.icon,manager.shop,manager.id)
+                for manager in managers 
+                    +listmanager(manager.name,manager.icon,manager.shop,manager.id)
                 
         br
         .row.footer
@@ -907,7 +908,7 @@ html(⚡='')
                             | #{rate}%
                     .col-8-sm
                         p This is a decentralized service. Become a shareholder to earn daily dividends
-                        a(href="/tm/cid="+entContract)
+                        a(href="/tm/?cid="+entContract)
                             button.investBtn INVEST
 
             
