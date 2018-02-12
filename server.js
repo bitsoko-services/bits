@@ -112,12 +112,15 @@ try {
                     var tg = "bits-order-" + dat.oid + "-" + dat.store;
                     var state = dat.state;
                     if (state == 'pending') {
-                        bitsNotification('Order Pending', 'You have requested for this service ', tg, 'bits/images/pending.png', dat.orderImg, [{
+                        bitsNotification('Order ' + dat.oid + ' Pending', 'You have requested for this service ', tg, 'bits/images/pending.png', dat.orderImg, [{
+                            action: 'open',
+                            title: "Open"
+						},{
                             action: 'rem-pend',
                             title: "Cancel"
 						}], true, true);
                     } else if (state == 'delivering') {
-                        bitsNotification('Order Delivery', 'Your order is being delivered', tg, 'bits/images/Delivered.png', dat.orderImg, [{
+                        bitsNotification('Order ' + dat.oid + ' Delivery', 'Your order is being delivered', tg, 'bits/images/Delivered.png', dat.orderImg, [{
                             action: 'open',
                             title: "Open"
 						}, {
@@ -138,9 +141,6 @@ try {
 						}, {
                         action: 'reject',
                         title: "Reject"
-						}, {
-                        action: 'cancel',
-                        title: "Cancel"
 						}], true, true);
 
                     break;
