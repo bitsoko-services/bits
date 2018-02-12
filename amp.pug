@@ -481,10 +481,6 @@ html(⚡='')
       .footer .col-6-sm{
         width: 100%;
        }
-       .socialMedia{
-       margin-right: 0px;
-       margin-bottom: 20px;
-       }
        .tokenInfo{margin-left:0px;}
        .tokenRate{font-size:3em;}
       .apimg{    width: 150px; height: 150px;}
@@ -642,17 +638,19 @@ html(⚡='')
       .shpDesc2{padding: 9px 5px;}
       .mngrCrd{margin-bottom: 20px;}
       @media only screen and (max-width: 720px) {.mngrCrd amp-img {width: 100px !important;}.shpDesc2{padding: 0px 5px; display: table-cell; vertical-align: middle; height: 100px;}}
-      .socialMedia{
-        margin-right:10px;
-        background:white;
-        padding:15px;
-        border-radius:5px;
-      }
-      .tokenInfo{
-        margin-left:10px;
-        background:white;
-        padding:15px;
-        border-radius:5px;
+      @media only screen and (min-width: 720px) {
+          .socialMedia{
+            margin-right:10px;
+            background:white;
+            padding:15px;
+            border-radius:5px;
+           }
+           .tokenInfo{
+                margin-left:10px;
+                background:white;
+                padding:15px;
+                border-radius:5px;
+              }
       }
       .footer h5{margin: 0px; font-size: 1.2em; font-weight: bold; border-bottom: 1px solid #ccc;padding-bottom: 10px;}
       .tokenRate{font-size: 4em; margin: 0px 5%; }
@@ -679,7 +677,14 @@ html(⚡='')
             -o-object-fit: cover;
             object-fit: cover;
         }
-       @media only screen and (max-width: 720px) {.socialMedia{ margin-right: 0px; margin-bottom: 20px;
+       @media only screen and (max-width: 720px) {
+            .socialMedia{ 
+            margin-right: 0px; 
+            margin-bottom: 20px;
+           }
+           .tokenInfo {
+            margin-left: 0px;
+            }
        }
       
       .cption>div{
