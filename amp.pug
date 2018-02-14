@@ -878,8 +878,10 @@ html(⚡='')
                 amp-img.bxshadow.b.circle(src=img, height='40', width='40', alt='')
       form(method='GET', action='#', target='_top')
               input(name='search', type='search', placeholder='Search', disabled='disabled')
-      amp-img.bxshadow.b.call(src='/bits/images/call.png', height='20', width='20', href='tel:'+phone)
-      amp-img.bxshadow.b.mail(src='/bits/images/mail.png', height='20', width='25', href='mailto:'+email)
+      a(href='tel:'+phone)
+        amp-img.bxshadow.b.call(src='/bits/images/call.png', height='20', width='20')
+      a(href='mailto:'+email)
+        amp-img.bxshadow.b.mail(src='/bits/images/mail.png', height='20', width='25')
     
     .row
          div.home-header
@@ -898,7 +900,7 @@ html(⚡='')
             .col-6
               h5 SHOPS
             .col-6
-              button VIEW ALL
+              //button VIEW ALL
           br
           .row.shopLst
              for store in stores
@@ -909,7 +911,7 @@ html(⚡='')
                .col-6
                  h5 MANAGERS
                .col-6
-                 button VIEW ALL
+                 //button VIEW ALL
              br
              .row.shopLst
                 for manager in managers 
