@@ -267,10 +267,10 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
 
 #burst-11 {
     background: #dabb12;
-    width: 35px;
+    width: 30px;
     font-size: 20px;
     font-weight: bold;
-    height: 35px;
+    height: 30px;
     /* position: relative; */
     text-align: center;
     overflow: inherit;
@@ -284,8 +284,8 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
     position: absolute;
     top: 0;
     left: 0;
-    height: 35px;
-    width: 35px;
+    height: 30px;
+    width: 30px;
     border: 5px solid #dabb12;
     /* background: #ffd700; */
 }

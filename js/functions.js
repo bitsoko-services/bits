@@ -1021,6 +1021,13 @@ function buyPromo(clicked_id, promoOder) {
             }
             dis = JSON.parse(pd[ixi].discount);
             console.log("discount", dis);
+            setTimeout(function () {
+                var getProdPrice = $(".totals2")[0].textContent.replace(" /=", "");
+                var promoDiscount = (dis / 100) * getProdPrice
+                console.log("this is the discount" + (dis / 100) * getProdPrice);
+                $("#promoDiscount").html('kes<br>' + promoDiscount + '');
+            }, 1000);
+
             //console.log(w , tt , "ww and tt");
             if (prid == w) {
                 console.log("match");
