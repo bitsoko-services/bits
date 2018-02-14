@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try {
-    bitsVersion = 652;
+    bitsVersion = 653;
     // 	importScripts('https://bitsoko.co.ke/bitsAssets/js/lightwallet/lightwallet.min.js');
     // 	importScripts('https://bitsoko.co.ke/bitsAssets/js/web3/web3.js');
     // 	importScripts('https://bitsoko.co.ke/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js');
@@ -115,7 +115,7 @@ try {
                         bitsNotification('Order ' + dat.oid + ' Pending', 'You have requested for this service ', tg, 'bits/images/pending.png', dat.orderImg, [{
                             action: 'open',
                             title: "Open"
-						},{
+						}, {
                             action: 'rem-pend',
                             title: "Cancel"
 						}], true, true);
