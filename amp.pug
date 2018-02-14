@@ -699,6 +699,12 @@ html(⚡='')
             .cardContnr{margin:0px;}
             .mngrCrd{margin: 0px 5px;}
        }
+       .buyBtn{
+        position: absolute;
+        bottom: 15px;
+        padding: 4px 10px;
+        border-radius: 3px;
+       }
       
       .cption>div{
       
@@ -800,7 +806,7 @@ html(⚡='')
                     | #{desc}
                     br
                     br
-                  a.btn(href="/bits/?s="+promoOwner+"#pid="+id) Buy
+                  a.btn.buyBtn(href="/bits/?s="+promoOwner+"#pid="+id) Buy
                   
     mixin listmanager(name,icon,shop,id)
         .col-2-sm.ww
