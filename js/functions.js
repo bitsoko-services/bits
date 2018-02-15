@@ -379,6 +379,10 @@ function makeOrder(orderArrayy, orderLoc) {
                     }).then(function (e) {
                         if (e.status == "ok") {
                             console.log('5');
+                            
+                document.getElementById("ConfirmO").removeEventListener("click", doSendOrder);
+                            
+                $('#modalconfirm').closeModal();
                             swal("success!", "your order has been sent!", "success");
                             clearCart();
                         } else {
