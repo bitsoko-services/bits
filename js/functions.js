@@ -359,31 +359,8 @@ function makeOrder(orderArrayy, orderLoc) {
             var mapLocc = orderLoc ? orderLoc : e.coords.latitude + ',' + e.coords.longitude;
             console.log(orderLoc, e, mapLocc);
             getCoordDet(mapLocc).then(function (mapData) {
-                getProdss(orderArrayy)
-                $(".confirmText").html("")
-                $(".confirmText").append()
-                $(".del").html("")
-                $(".del").append()
-                $(".mapText").html("")
-                $(".mapdata").attr('src', mapData[0]);
-                $(".mapText").append("Pick up / Drop off :" + mapData[1].results[0].formatted_address);
-                $('#modalconfirm').modal({
-
-                    complete: function () {
-                        clearCart();
-                    } // Callback for Modal close
-                })
-                $('#modalconfirm').openModal({
-                    dismissible: false
-                });
-                $('.star2').addClass('animated shake'), setTimeout(function () {
-                    $('.star2').removeClass('animated shake')
-                }, 1000);
-                document.getElementById("CancelO").addEventListener("click", function () {
-                    clearCart()
-                    $("#products").html("")
-                });
-                document.getElementById("ConfirmO").addEventListener("click", function () {
+                getProdss(orderArrayy);
+                function doSendOrder() {
                     $("#products").html("")
                     //transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', 'bits', globalDel).then(function(res) {
                     //console.log(res);
@@ -412,7 +389,33 @@ function makeOrder(orderArrayy, orderLoc) {
                     //	Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 3000);
                     //	console.log(err)
                     //})
+                }
+                $(".confirmText").html("")
+                $(".confirmText").append()
+                $(".del").html("")
+                $(".del").append()
+                $(".mapText").html("")
+                $(".mapdata").attr('src', mapData[0]);
+                $(".mapText").append("Pick up / Drop off :" + mapData[1].results[0].formatted_address);
+                $('#modalconfirm').modal({
+
+                    complete: function () {
+                        clearCart();
+                    } // Callback for Modal close
+                })
+                $('#modalconfirm').openModal({
+                    dismissible: false
                 });
+                $('.star2').addClass('animated shake'), setTimeout(function () {
+                    $('.star2').removeClass('animated shake')
+                }, 1000);
+                document.getElementById("CancelO").addEventListener("click", function () {
+                    
+                document.getElementById("ConfirmO").removeEventListener("click", doSendOrder);
+                    clearCart()
+                    $("#products").html("")
+                });
+                document.getElementById("ConfirmO").addEventListener("click", doSendOrder);
             }).catch(function () {
                 //toast location error
                 Materialize.toast('<span class="toastlogin">Turn on your location', 3000);
