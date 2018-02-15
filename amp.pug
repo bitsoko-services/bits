@@ -169,6 +169,8 @@ html(⚡='')
         .shpNm{
         font-size: 1.2em;
         font-weight: bold;
+        width:90%;
+        white-space:initial;
         }
         
       .x input[type=search], .x input[type=text] {
@@ -715,6 +717,19 @@ html(⚡='')
                 right: 10%;
             }
        }
+       @media only screen and (min-width: 720px) {
+            .call{    
+                float: right;
+                top: 0.8%;
+                position: absolute;
+                right: 10%;}
+            .mail{
+                float: right;
+                top: 0.8%;
+                position: absolute;
+                right: 5%;
+            }
+       }
        .buyBtn{
         position: absolute;
         bottom: 15px;
@@ -780,14 +795,6 @@ html(⚡='')
             background: #fff;
       }
       .ww{    display: flex;}
-      .call{    float: right;
-        top: 0.8%;
-        position: absolute;
-        right: 10%;}
-      .mail{float: right;
-        top: 0.8%;
-        position: absolute;
-        right: 5%;}
       .fnav{color: #848484;
       float: right;
       margin-right: 10%;}      
