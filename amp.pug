@@ -825,18 +825,18 @@ html(⚡='')
   body.testFont
     amp-install-serviceworker(src="./sw.js",data-iframe-src="./bitsAssets/html/connect.html", layout="nodisplay")
     mixin listpromo(item,title,desc,id,promoOwner)
-            amp-img.pic(src=item, width='580', height='300', layout='responsive', alt=title)
-              .cption
-                  amp-fit-text.caption.center(layout='responsive', width='500', height='250')
-                  br
-                  span(class='shpNm') #{title}
-                  br
-                  span(class='shpDes')
-                    | #{desc}
+            div(class='slide')
+              amp-img.pic(src=item, width='580', height='300', layout='responsive', alt=title)
+                .cption
+                    amp-fit-text.caption.center(layout='responsive', width='500', height='250')
                     br
+                    span(class='shpNm') #{title}
                     br
-
-                  a.btn.buyBtn(href="/bits/?s="+promoOwner+"#pid="+id) Get Promotion
+                    span(class='shpDes')
+                     | #{desc}
+                      br
+                      br
+                    a.btn.buyBtn(href="/bits/?s="+promoOwner+"#pid="+id) Get Promotion
                   
     mixin listmanager(name,icon,shop,id)
         .col-2-sm.ww
