@@ -13,6 +13,7 @@ function bitsTheme(thm) {
 
     var bits_theme = $('.bits').css('background-color');
     $('.bits').css('background-color', p);
+
     //gradient fade
     var w = convertHex(p, 24);
     var q = convertHex(p, 13);
@@ -23,6 +24,12 @@ function bitsTheme(thm) {
 
 
 }
+$("#burst-12:after").addRule({
+    border: "solid 6px black"
+});
+$("#burst-12:before").addRule({
+    border: "solid 6px black"
+});
 
 function convertHex(hex, opacity) {
     hex = hex.replace('#', '');
