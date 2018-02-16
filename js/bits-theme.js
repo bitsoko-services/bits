@@ -24,12 +24,6 @@ function bitsTheme(thm) {
 
 
 }
-$("#burst-12:after").addRule({
-    border: "solid 6px black"
-});
-$("#burst-12:before").addRule({
-    border: "solid 6px black"
-});
 
 function convertHex(hex, opacity) {
     hex = hex.replace('#', '');

@@ -1033,7 +1033,7 @@ function buyPromo(clicked_id, promoOder) {
                 var getProdPrice = $(".totals2")[0].textContent.replace(" /=", "");
                 var promoDiscount = (dis / 100) * getProdPrice
                 console.log("this is the discount" + (dis / 100) * getProdPrice);
-                $("#promoDiscount").html('kes<br><span id="dscnt">' + promoDiscount + '</span>');
+                $("#promoDiscount").html('<span id="dscnt">' + promoDiscount + '</span><br>OFF');
             }, 1000);
 
             //console.log(w , tt , "ww and tt");
