@@ -62,9 +62,11 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 }
 .topdata{
 	    position: relative;
-	    font-size: 15px;
+	    font-size: 1.2em;
 	    z-index: 1;
-	    font-weight: 300;
+	    font-weight: bold;
+	    width: 100%;
+	    text-align: center;
 }
 .number {
 	width: 40px !important;
@@ -224,7 +226,7 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
     /* position: relative; */
     text-align: center;
     overflow: inherit;
-    background-color: rgb(0, 201, 247);
+    background-color: #D9C600;
     margin-left: 12px;
     margin-top: 10px;
     line-height: 0.95;
@@ -250,7 +252,7 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
     /* -webkit-box-shadow: 0px 0px 0px 9px rgba(0,0,0,0.75); */
     -moz-box-shadow: 0px 0px 0px 9px rgba(0,0,0,0.75);
     /* box-shadow: 0px 0px 0px 7px rgb(0, 201, 247); */
-    border: 6px solid;
+    border: 6px solid #D9C600;
 }
 #burst-12:before {
     -webkit-transform: rotate(30deg);

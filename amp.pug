@@ -618,7 +618,7 @@ html(⚡='')
       position: absolute;
       z-index: 1;
       display: block;
-      margin-top: -52%;
+      margin-top: -45%;
       background: #0000008f;
       padding: 10px;
       height: 76%;
@@ -929,7 +929,7 @@ html(⚡='')
                    | #{tagline}
     .container
         .col-12.fill.dsdw
-          amp-carousel.sb(height='247', layout='fixed-height', type='slides', controls='controls', loop='loop', autoplay='autoplay', delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')
+          amp-carousel.sb(height='247', layout='fixed-height', type='slides', controls='controls', loop='loop', autoplay='true', delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')
             for promo in promos
                 +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.id,promo.promoOwner)
         br

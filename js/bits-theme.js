@@ -13,6 +13,7 @@ function bitsTheme(thm) {
 
     var bits_theme = $('.bits').css('background-color');
     $('.bits').css('background-color', p);
+
     //gradient fade
     var w = convertHex(p, 24);
     var q = convertHex(p, 13);

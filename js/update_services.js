@@ -245,7 +245,7 @@ function populateService(mDet) {
             bitsTheme(mDet.theme);
             var dailyCost = (parseInt(mDet.promotions[ii].discount) / 100) * mDet.promotions[ii].promoPrice;
             $('.merchPromo').append('<li class="avatar bits-max promo-collection ">' +
-                '<a href="#" id="burst-12" class="waves-effect waves-light  bits accent-2"><span style="font-size: 17px;"class="topdata">' + mDet.promotions[ii].discount +
+                '<a href="#" id="burst-12" class="waves-effect waves-light accent-2"><span style=""class="topdata">' + mDet.promotions[ii].discount +
                 ' % <br/> off</span></a><div class="container1"><img src="https://bitsoko.co.ke' + mDet.promotions[ii].promoBanner +
                 '" style="margin-top:-50px ; height: 92px; width: 100%;" data-caption="' + mDet.promotions[ii].promoName + '" alt="' + mDet.promotions[ii].promoDesc +
                 '" class="materialboxed p' + mDet.promotions[ii].id + '"><div class="overlaypromo"><div class="text">' + mDet.promotions[ii].promoDesc +
