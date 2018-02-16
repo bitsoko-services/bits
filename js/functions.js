@@ -15,7 +15,7 @@ function checkPayments() {
             $(".floatingPrice").html("")
             $(".floatingPrice").addClass("pointerNone")
             //adds class with no side panel activatr
-            $(".floatingPrice").append('<a href="#" class="bitswaves-effect waves-block bits bitb waves-light chat-collapse btn-floating btn-large "style="pointer-events: none; background-color:#{theme} !important;"><span id="totals" class="totals"></span></a>')
+            $(".floatingPrice").append('<a href="#" class="bitswaves-effect waves-block bits bitb waves-light chat-collapse btn-floating btn-large "style="pointer-events: none;"><span id="totals" class="totals"></span></a>')
         }
     })
 }
@@ -359,7 +359,42 @@ function makeOrder(orderArrayy, orderLoc) {
             var mapLocc = orderLoc ? orderLoc : e.coords.latitude + ',' + e.coords.longitude;
             console.log(orderLoc, e, mapLocc);
             getCoordDet(mapLocc).then(function (mapData) {
-                getProdss(orderArrayy)
+                getProdss(orderArrayy);
+
+                function doSendOrder() {
+                    $("#products").html("")
+                    //transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', 'bits', globalDel).then(function(res) {
+                    //console.log(res);
+                    //sent escrow to server so complete order
+                    doFetch({
+                        action: 'makeOrder',
+                        data: orderArrayy,
+                        //EarnedKobo: totalKobo,
+                        loc: e.coords.latitude + ',' + e.coords.longitude,
+                        user: localStorage.getItem("bits-user-name"),
+                        pointsEarned: {
+                            "coin": "bits",
+                            "purchase": totalKobo
+                        },
+                        service: parseInt(getBitsWinOpt('s'))
+                    }).then(function (e) {
+                        if (e.status == "ok") {
+                            console.log('5');
+
+                            document.getElementById("ConfirmO").removeEventListener("click", doSendOrder);
+
+                            $('#modalconfirm').closeModal();
+                            swal("success!", "your order has been sent!", "success");
+                            clearCart();
+                        } else {
+                            swal("Cancelled", "your order is not sent", "error");
+                        }
+                    })
+                    //}).catch(function(err) {
+                    //	Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 3000);
+                    //	console.log(err)
+                    //})
+                }
                 $(".confirmText").html("")
                 $(".confirmText").append()
                 $(".del").html("")
@@ -380,39 +415,12 @@ function makeOrder(orderArrayy, orderLoc) {
                     $('.star2').removeClass('animated shake')
                 }, 1000);
                 document.getElementById("CancelO").addEventListener("click", function () {
+
+                    document.getElementById("ConfirmO").removeEventListener("click", doSendOrder);
                     clearCart()
                     $("#products").html("")
                 });
-                document.getElementById("ConfirmO").addEventListener("click", function () {
-                    $("#products").html("")
-                    //transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', 'bits', globalDel).then(function(res) {
-                    //console.log(res);
-                    //sent escrow to server so complete order
-                    doFetch({
-                        action: 'makeOrder',
-                        data: orderArrayy,
-                        //EarnedKobo: totalKobo,
-                        loc: e.coords.latitude + ',' + e.coords.longitude,
-                        user: localStorage.getItem("bits-user-name"),
-                        pointsEarned: {
-                            "coin": "bits",
-                            "purchase": totalKobo
-                        },
-                        service: parseInt(getBitsWinOpt('s'))
-                    }).then(function (e) {
-                        if (e.status == "ok") {
-                            console.log('5');
-                            swal("success!", "your order has been sent!", "success");
-                            clearCart();
-                        } else {
-                            swal("Cancelled", "your order is not sent", "error");
-                        }
-                    })
-                    //}).catch(function(err) {
-                    //	Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 3000);
-                    //	console.log(err)
-                    //})
-                });
+                document.getElementById("ConfirmO").addEventListener("click", doSendOrder);
             }).catch(function () {
                 //toast location error
                 Materialize.toast('<span class="toastlogin">Turn on your location', 3000);
@@ -1025,7 +1033,7 @@ function buyPromo(clicked_id, promoOder) {
                 var getProdPrice = $(".totals2")[0].textContent.replace(" /=", "");
                 var promoDiscount = (dis / 100) * getProdPrice
                 console.log("this is the discount" + (dis / 100) * getProdPrice);
-                $("#promoDiscount").html('kes<br>' + promoDiscount + '');
+                $("#promoDiscount").html('kes<br><span id="dscnt">' + promoDiscount + '</span>');
             }, 1000);
 
             //console.log(w , tt , "ww and tt");
@@ -1064,8 +1072,9 @@ function clearCart() {
     $(".counter-minus").addClass("disabled");
     $(".star2content").html('');
     tabulateTotals();
-    $(".totals").html("")
-    $(".totals").append("0")
+    $(".totals").html("");
+    $(".totals").append("0");
+    $("#dscnt").html("");
 }
 var totalKobo
 
