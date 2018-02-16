@@ -15,7 +15,7 @@ function checkPayments() {
             $(".floatingPrice").html("")
             $(".floatingPrice").addClass("pointerNone")
             //adds class with no side panel activatr
-            $(".floatingPrice").append('<a href="#" class="bitswaves-effect waves-block bits bitb waves-light chat-collapse btn-floating btn-large "style="pointer-events: none; background-color:#{theme} !important;"><span id="totals" class="totals"></span></a>')
+            $(".floatingPrice").append('<a href="#" class="bitswaves-effect waves-block bits bitb waves-light chat-collapse btn-floating btn-large "style="pointer-events: none;"><span id="totals" class="totals"></span></a>')
         }
     })
 }
@@ -368,7 +368,6 @@ function makeOrder(orderArrayy, orderLoc) {
                 $(".mapdata").attr('src', mapData[0]);
                 $(".mapText").append("Pick up / Drop off :" + mapData[1].results[0].formatted_address);
                 $('#modalconfirm').modal({
-
                     complete: function () {
                         clearCart();
                     } // Callback for Modal close
@@ -1025,7 +1024,7 @@ function buyPromo(clicked_id, promoOder) {
                 var getProdPrice = $(".totals2")[0].textContent.replace(" /=", "");
                 var promoDiscount = (dis / 100) * getProdPrice
                 console.log("this is the discount" + (dis / 100) * getProdPrice);
-                $("#promoDiscount").html('kes<br>' + promoDiscount + '');
+                $("#promoDiscount").html('kes<br><span id="dscnt">' + promoDiscount + '</span>');
             }, 1000);
 
             //console.log(w , tt , "ww and tt");
@@ -1064,8 +1063,9 @@ function clearCart() {
     $(".counter-minus").addClass("disabled");
     $(".star2content").html('');
     tabulateTotals();
-    $(".totals").html("")
-    $(".totals").append("0")
+    $(".totals").html("");
+    $(".totals").append("0");
+    $("#dscnt").html("");
 }
 var totalKobo
 
