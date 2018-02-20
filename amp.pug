@@ -169,6 +169,8 @@ html(⚡='')
         .shpNm{
         font-size: 1.2em;
         font-weight: bold;
+        width:90%;
+        white-space:initial;
         }
         
       .x input[type=search], .x input[type=text] {
@@ -667,14 +669,14 @@ html(⚡='')
       .shpDes{
        position: absolute; 
        width: 90%; 
-    font-size: 0.9em;
-    margin-top: 15px;
+       font-size: 0.9em;
+       margin-top: 15px;
        white-space: initial;
-       }
-       .amp-carousel-slide>.i-amphtml-replaced-content {
+      }
+      .amp-carousel-slide>.i-amphtml-replaced-content {
             -o-object-fit: cover;
             object-fit: cover;
-        }
+       }
        @media only screen and (max-width: 720px) {
             .socialMedia{ 
             margin-right: 0px; 
@@ -701,6 +703,31 @@ html(⚡='')
             .tokenRate {
                 font-size: 3em;
                 margin: 10px 5%;
+            }
+            .mail{
+                float: right;
+                top: 0.5%;
+                position: absolute;
+                right: 5%;
+            }
+            .call{
+                float: right;
+                top: 0.5%;
+                position: absolute;
+                right: 10%;
+            }
+       }
+       @media only screen and (min-width: 720px) {
+            .call{    
+                float: right;
+                top: 0.8%;
+                position: absolute;
+                right: 10%;}
+            .mail{
+                float: right;
+                top: 0.8%;
+                position: absolute;
+                right: 5%;
             }
        }
        .buyBtn{
@@ -739,7 +766,7 @@ html(⚡='')
           padding-bottom: 15px;
           width: 100%;
           text-align:center;
-          background: rgba(0, 0, 0, 0.04);
+          background: rgba(0, 0, 0, 0.12);
           background-image:  linear-gradient(  rgba(0, 0, 0, 0.58),        rgba(0, 0, 0, 0)    ),url(#{cover});
           background-size: contain;
           background-repeat: no-repeat;
@@ -768,14 +795,6 @@ html(⚡='')
             background: #fff;
       }
       .ww{    display: flex;}
-      .call{    float: right;
-        top: 0.8%;
-        position: absolute;
-        right: 10%;}
-      .mail{float: right;
-        top: 0.8%;
-        position: absolute;
-        right: 5%;}
       .fnav{color: #848484;
       float: right;
       margin-right: 10%;}      
@@ -925,7 +944,7 @@ html(⚡='')
                 +liststore(store.banner,store.name,store.desc,store.id)
         br
         unless entSettings.managersDisabled
-        .shopCard.managerLst.dsdw
+            .shopCard.managerLst.dsdw
              .row.shopLstHeader
                .col-6
                  h5 MANAGERS
