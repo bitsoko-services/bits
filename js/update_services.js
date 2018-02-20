@@ -189,6 +189,17 @@ function populateService(mDet) {
     setTimeout(function () {
         loadvisit();
     }, 1050);
+    
+    //----------------------------------------------- enable sharing------------------------------------------//
+	//web Share start
+        document.querySelector("#share").addEventListener('click', function (event) {
+            navigator.share({
+                title: actvServ().name,
+                text: actvServ().desription,
+                url: window.location.href
+            }).then(() => console.log('Successful share')).catch(error => console.log('Error sharing:', error));
+        });
+	
     //-----------------------------------------------Check if deliveries are on -----------------------------------------------------------------------------------
     checkDeliveries(mDet.deliveries);
 
