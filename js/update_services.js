@@ -189,6 +189,17 @@ function populateService(mDet) {
     setTimeout(function () {
         loadvisit();
     }, 1050);
+    
+    //----------------------------------------------- enable sharing------------------------------------------//
+	//web Share start
+        document.querySelector("#share").addEventListener('click', function (event) {
+            navigator.share({
+                title: actvServ().name,
+                text: actvServ().desription,
+                url: window.location.href
+            }).then(() => console.log('Successful share')).catch(error => console.log('Error sharing:', error));
+        });
+	
     //-----------------------------------------------Check if deliveries are on -----------------------------------------------------------------------------------
     checkDeliveries(mDet.deliveries);
 
@@ -214,7 +225,7 @@ function populateService(mDet) {
             if (parseInt(x[iii].id) == parseInt(localStorage.getItem('bits-user-name'))) {
                 $('#manage-store').css("display", "block");
                 $('.manage-store').html("");
-                $('.callbtn').html('');
+               // $('.callbtn').html('');
                 $('.manage-store').append('<a  style=" background: none; float:right; !important; margin-top: ;" href="../soko/#s=' + parseInt(getBitsWinOpt('s')) + '" class="noshadow btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>');
             }
         }

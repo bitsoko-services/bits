@@ -24,16 +24,9 @@ function callMerchant() {
     actvServ().then(function (x) {
         var p = x.phone
         //console.log(p)
-        $('.callbtn').html('')
-        $('.callbtn').append('<a  onclick="rate()" id="star" value="rating" class=" btn-large btn-price bits noshadow bitb" style="float: right !important;margin: 0px 10px;"><i class="mdi-action-grade activator"></i></a><button  id="share" value="Share" class="bitb btn-large btn-price bits noshadow" style="float: right !important;margin: 0px 10px; background:none;"><i class="mdi-social-share"></i></button> <a href="tel:' + p + '"  id="" value="" class=" btn-large btn-price bits noshadow bitb" style="float: right !important;margin: 1px 3px;"><i class="mdi-communication-call"></i></a>');
-        //web Share start
-        document.querySelector("#share").addEventListener('click', function (event) {
-            navigator.share({
-                title: actvServ().name,
-                text: actvServ().desription,
-                url: window.location.href
-            }).then(() => console.log('Successful share')).catch(error => console.log('Error sharing:', error));
-        });
+       // $('.callbtn').html('')
+       $('.callbtn').append('<a  onclick="rate()" id="star" value="rating" class=" btn-large btn-price bits noshadow bitb" style="float: right !important;margin: 0px 10px;"><i class="mdi-action-grade activator"></i></a><a href="tel:"  id="" value="" class=" btn-large btn-price bits noshadow bitb" style="float: right !important;margin: 1px 3px;"><i class="mdi-communication-call"></i></a>');
+        
     });
 }
 
