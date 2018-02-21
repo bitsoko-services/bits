@@ -761,7 +761,15 @@ html(⚡='')
        bottom: 10px;
        font-weight: bold;
       }
-      .entPromoDisc:before, .entPromoDisc:after {
+      .entPromoDisc{    
+        position: absolute;
+        z-index: 10;
+        top: 9%;
+        background: yellow;
+        width: 35px;
+        height: 35px;
+       }
+      entPromoDisc:before {
             content: "";
             position: absolute;
             top: 0;
@@ -769,14 +777,19 @@ html(⚡='')
             height: 30px;
             width: 30px;
             border: 5px solid #dabb12;
-      }
-      entPromoDisc:before {
             -webkit-transform: rotate(30deg);
                -moz-transform: rotate(30deg);
                 -ms-transform: rotate(30deg);
                  -o-transform: rotate(30deg);
         }
         #entPromoDisc:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 30px;
+            width: 30px;
+            border: 5px solid #dabb12;
             -webkit-transform: rotate(60deg);
                -moz-transform: rotate(60deg);
                 -ms-transform: rotate(60deg);
