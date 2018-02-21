@@ -24,9 +24,9 @@ function callMerchant() {
     actvServ().then(function (x) {
         var p = x.phone
         //console.log(p)
-       // $('.callbtn').html('')
-       $('.callbtn').append('<a  onclick="rate()" id="star" value="rating" class=" btn-large btn-price bits noshadow bitb" style="float: right !important;margin: 0px 10px;"><i class="mdi-action-grade activator"></i></a><a href="tel:"  id="" value="" class=" btn-large btn-price bits noshadow bitb" style="float: right !important;margin: 1px 3px;"><i class="mdi-communication-call"></i></a>');
-        
+        // $('.callbtn').html('')
+        $('.callbtn').append('<a  onclick="rate()" id="star" value="rating" class=" btn-large btn-price bits noshadow bitb" style="float: right !important;margin: 0px 10px;"><i class="mdi-action-grade activator"></i></a><a href="tel:"  id="" value="" class=" btn-large btn-price bits noshadow bitb" style="float: right !important;margin: 1px 3px;"><i class="mdi-communication-call"></i></a>');
+
     });
 }
 
@@ -1023,6 +1023,7 @@ function buyPromo(clicked_id, promoOder) {
             dis = JSON.parse(pd[ixi].discount);
             console.log("discount", dis);
             setTimeout(function () {
+                $("#burst-11").css("display", "block");
                 var getProdPrice = $(".totals2")[0].textContent.replace(" /=", "");
                 var promoDiscount = (dis / 100) * getProdPrice
                 console.log("this is the discount" + (dis / 100) * getProdPrice);
@@ -1068,6 +1069,7 @@ function clearCart() {
     $(".totals").html("");
     $(".totals").append("0");
     $("#dscnt").html("");
+    $("#burst-11").css("display", "none")
 }
 var totalKobo
 
