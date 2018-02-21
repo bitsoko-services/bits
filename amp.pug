@@ -643,12 +643,18 @@ html(⚡='')
             padding:15px;
             border-radius:5px;
            }
+           .socialMediaIcons{
+            margin-right:10px;
+           }
            .tokenInfo{
                 margin-left:10px;
                 background:white;
                 padding:15px;
                 border-radius:5px;
               }
+      }
+      .socialMediaIcons{
+        margin-right:20px;
       }
       .footer h5{margin: 0px; font-size: 1.2em; font-weight: bold; border-bottom: 1px solid #ccc;padding-bottom: 10px;}
       .tokenRate{font-size: 4em; margin: 0px 5%; }
@@ -684,6 +690,12 @@ html(⚡='')
             background: white;
             padding: 10px;
             border-radius: 3px;
+           }
+           .socialMediaIcons{    
+           background: white;
+           margin-bottom: 20px;
+           padding: 10px;
+           margin-right: 0px;
            }
            .tokenInfo {
             margin-left: 0px;
@@ -962,7 +974,7 @@ html(⚡='')
                   h5 CONNECT WITH US
                 .socialMediaIcons
                     each val in socialLinks
-                      amp-img(src=val, height='25', width='25')
+                      amp-img(src=val, height='50', width='50')
             unless entSettings.tokensDisabled
             .col-6-sm
                 .tokenInfo
