@@ -761,6 +761,10 @@ html(⚡='')
        bottom: 10px;
        font-weight: bold;
       }
+      .entPromoDisc>p{
+        color: white;
+        text-align: center;
+        font-size: 0.9em;}
       .entPromoDisc{    
         position: absolute;
         z-index: 10;
@@ -877,7 +881,9 @@ html(⚡='')
     mixin listpromo(item,title,desc,id,promoOwner)
             amp-img.pic(src=item, width='580', height='300', layout='responsive', alt=title)
                div.entPromoDisc
-                p | #{discount}%
+                p
+                 span #{discount}%
+                 br
                  span OFF
                .cption
                    amp-fit-text.caption.center(layout='responsive', width='500', height='250')
