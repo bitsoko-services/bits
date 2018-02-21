@@ -764,36 +764,37 @@ html(⚡='')
       .entPromoDisc{    
         position: absolute;
         z-index: 10;
-        top: 9%;
-        background: yellow;
-        width: 35px;
-        height: 35px;
+        top: 13%;
+        background: #dabb12;
+        width: 60px;
+        height: 60px;
+        left: 10px;
        }
       .entPromoDisc:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 30px;
-            width: 30px;
-            border: 5px solid #dabb12;
-            -webkit-transform: rotate(30deg);
-               -moz-transform: rotate(30deg);
-                -ms-transform: rotate(30deg);
-                 -o-transform: rotate(30deg);
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 40px;
+        width: 40px;
+        border: 10px solid #dabb12;
+        -webkit-transform: rotate(30deg);
+        -moz-transform: rotate(30deg);
+        -ms-transform: rotate(30deg);
+        -o-transform: rotate(30deg);
         }
         .entPromoDisc:after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 30px;
-            width: 30px;
-            border: 5px solid #dabb12;
-            -webkit-transform: rotate(60deg);
-               -moz-transform: rotate(60deg);
-                -ms-transform: rotate(60deg);
-                 -o-transform: rotate(60deg);
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 40px;
+        width: 40px;
+        border: 10px solid #dabb12;
+        -webkit-transform: rotate(60deg);
+        -moz-transform: rotate(60deg);
+        -ms-transform: rotate(60deg);
+        -o-transform: rotate(60deg);
         }
       
       
@@ -876,6 +877,9 @@ html(⚡='')
     mixin listpromo(item,title,desc,id,promoOwner)
             amp-img.pic(src=item, width='580', height='300', layout='responsive', alt=title)
                div.entPromoDisc
+                p | #{discount}%
+                br
+                span OFF
                .cption
                    amp-fit-text.caption.center(layout='responsive', width='500', height='250')
                    br
