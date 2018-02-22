@@ -801,9 +801,12 @@ html(⚡='')
         -ms-transform: rotate(60deg);
         -o-transform: rotate(60deg);
         }
-      
-      
-      
+        .socialMediaIcons>amp-social-share{    
+            width: 60px;
+            height: 60px;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
       .mnm{    text-transform: capitalize;}
       
       .footer-home{
@@ -1022,6 +1025,7 @@ html(⚡='')
                 .socialMedia
                   h5 CONNECT WITH US
                 .socialMediaIcons
+                  amp-social-share(type="email")
                   amp-social-share(type="facebook",
                     data-param-app_id="254325784911610")
                   amp-social-share(type="gplus")
