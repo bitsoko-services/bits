@@ -15,6 +15,7 @@ html(⚡='')
     script(async='', custom-element='amp-list', src='https://cdn.ampproject.org/v0/amp-list-0.1.js')
     script(async='', custom-element='amp-selector', src='https://cdn.ampproject.org/v0/amp-selector-0.1.js')
     script(async='', custom-template='amp-mustache', src='https://cdn.ampproject.org/v0/amp-mustache-0.1.js')
+    script(async='', custom-element="amp-social-share", src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js")
     meta(name='viewport', content='width=device-width,minimum-scale=1,initial-scale=1')
     style(amp-boilerplate='').
       body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
@@ -878,11 +879,12 @@ html(⚡='')
 
   body.testFont
     amp-install-serviceworker(src="./sw.js",data-iframe-src="./bitsAssets/html/connect.html", layout="nodisplay")
-    mixin listpromo(item,title,desc,id,promoOwner)
+    mixin listpromo(item,title,desc,id,promoOwner,discount)
             amp-img.pic(src=item, width='580', height='300', layout='responsive', alt=title)
                div.entPromoDisc
                 p
                  span #{discount}%
+                    | #{discount}
                  br
                  span OFF
                .cption
@@ -989,7 +991,7 @@ html(⚡='')
         .col-12.fill.dsdw
           amp-carousel.sb(height='247', layout='fixed-height', type='slides', controls loop autoplay delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')
             for promo in promos
-                +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.id,promo.promoOwner)
+                +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.id,promo.promoOwner,promo.discount)
         br
         .shopCard.dsdw
           .row.shopLstHeader
@@ -1020,8 +1022,14 @@ html(⚡='')
                 .socialMedia
                   h5 CONNECT WITH US
                 .socialMediaIcons
-                    each val in socialLinks
-                      amp-img(src=val, height='50', width='50')
+                  amp-social-share(type="facebook",
+                    data-param-app_id="254325784911610")
+                  amp-social-share(type="gplus")
+                  amp-social-share(type="linkedin")
+                  amp-social-share(type="pinterest"
+                    data-param-media="https://ampbyexample.com/img/amp.jpg")
+                  amp-social-share(type="tumblr")
+                  amp-social-share(type="twitter")
             unless entSettings.tokensDisabled
             .col-6-sm
                 .tokenInfo
