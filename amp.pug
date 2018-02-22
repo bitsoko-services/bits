@@ -872,6 +872,34 @@ html(⚡='')
 
   body.testFont
     amp-install-serviceworker(src="./sw.js",data-iframe-src="./bitsAssets/html/connect.html", layout="nodisplay")
+    mixin listIconSection(item,title,desc,id,promoOwner)
+            amp-img.pic(src=item, width='580', height='300', layout='responsive', alt=title)
+               div.entPromoDisc
+               .cption
+                   amp-fit-text.caption.center(layout='responsive', width='500', height='250')
+                   br
+                   span(class='shpNm') #{title}
+                   br
+                   span(class='shpDes')
+                    | #{desc}
+                    br
+                    br
+                   a.btn.buyBtn(href="/bits/?s="+promoOwner+"#pid="+id) Get Promotion
+                  
+    mixin listImageSection(item,title,desc,id,promoOwner)
+            amp-img.pic(src=item, width='580', height='300', layout='responsive', alt=title)
+               div.entPromoDisc
+               .cption
+                   amp-fit-text.caption.center(layout='responsive', width='500', height='250')
+                   br
+                   span(class='shpNm') #{title}
+                   br
+                   span(class='shpDes')
+                    | #{desc}
+                    br
+                    br
+                   a.btn.buyBtn(href="/bits/?s="+promoOwner+"#pid="+id) Get Promotion
+                  
     mixin listpromo(item,title,desc,id,promoOwner)
             amp-img.pic(src=item, width='580', height='300', layout='responsive', alt=title)
                div.entPromoDisc
@@ -982,8 +1010,8 @@ html(⚡='')
                 +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.id,promo.promoOwner)
         br
         div
-         h2.aboutHeader ABOUT US
-         p.aboutBody #{aboutBody} tell us more about your business
+         h2.aboutHeader #{entSettings.entAboutBody}
+         p.aboutBody #{entSettings.entAboutBody}
         br
         .shopCard.dsdw
           .row.shopLstHeader
