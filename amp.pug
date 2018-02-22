@@ -15,7 +15,6 @@ html(⚡='')
     script(async='', custom-element='amp-list', src='https://cdn.ampproject.org/v0/amp-list-0.1.js')
     script(async='', custom-element='amp-selector', src='https://cdn.ampproject.org/v0/amp-selector-0.1.js')
     script(async='', custom-template='amp-mustache', src='https://cdn.ampproject.org/v0/amp-mustache-0.1.js')
-    script(async='', custom-element="amp-social-share", src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js")
     meta(name='viewport', content='width=device-width,minimum-scale=1,initial-scale=1')
     style(amp-boilerplate='').
       body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
@@ -762,51 +761,18 @@ html(⚡='')
        bottom: 10px;
        font-weight: bold;
       }
-      .entPromoDisc>p{
-        color: white;
-        text-align: center;
-        font-size: 0.9em;}
-      .entPromoDisc{    
-        position: absolute;
-        z-index: 10;
-        top: 13%;
-        background: #dabb12;
-        width: 60px;
-        height: 60px;
-        left: 10px;
-       }
-      .entPromoDisc:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 40px;
-        width: 40px;
-        border: 10px solid #dabb12;
-        -webkit-transform: rotate(30deg);
-        -moz-transform: rotate(30deg);
-        -ms-transform: rotate(30deg);
-        -o-transform: rotate(30deg);
-        }
-        .entPromoDisc:after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 40px;
-        width: 40px;
-        border: 10px solid #dabb12;
-        -webkit-transform: rotate(60deg);
-        -moz-transform: rotate(60deg);
-        -ms-transform: rotate(60deg);
-        -o-transform: rotate(60deg);
-        }
-        .socialMediaIcons>amp-social-share{    
-            width: 60px;
-            height: 60px;
-            border-radius: 5px;
-            margin-right: 5px;
-        }
+      .entPromoDisc:before, .entPromoDisc:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 30px;
+            width: 30px;
+            border: 5px solid #dabb12;
+      }
+      
+      
+      
       .mnm{    text-transform: capitalize;}
       
       .footer-home{
@@ -825,7 +791,7 @@ html(⚡='')
           width: 100%;
           text-align:center;
           background: rgba(0, 0, 0, 0.12);
-          background-image:  linear-gradient(  rgba(0, 0, 0, 0.58),        rgba(0, 0, 0, 0)    ),url(#{cover});
+          background-image:  linear-gradient(  rgba(0, 0, 0, 0),        rgba(0, 0, 0, 0.58)    ),url(#{cover});
           background-size: contain;
           background-repeat: no-repeat;
           opacity: 1;
@@ -838,12 +804,19 @@ html(⚡='')
           background-position: center center;
       }
       .home-title {
-      position: relative;
-      font-size: 300%;
-      text-transform: uppercase;
+      position: absolute;
+    color: #000000d1;
+    top: -75px;
+    font-size: 150%;
+    text-transform: uppercase;
+    left: 130px;
       }
       .home-text {
-      position: relative;
+      
+    bottom: 60px;
+    left: calc(50% - 250px);
+    width: 500px;
+      position: absolute;
       font-size: 150%;
       text-transform: lowercase;
       }
@@ -882,13 +855,9 @@ html(⚡='')
 
   body.testFont
     amp-install-serviceworker(src="./sw.js",data-iframe-src="./bitsAssets/html/connect.html", layout="nodisplay")
-    mixin listpromo(item,title,desc,id,promoOwner,discount)
+    mixin listpromo(item,title,desc,id,promoOwner)
             amp-img.pic(src=item, width='580', height='300', layout='responsive', alt=title)
                div.entPromoDisc
-                p
-                 span #{discount}%
-                 br
-                 span OFF
                .cption
                    amp-fit-text.caption.center(layout='responsive', width='500', height='250')
                    br
@@ -993,7 +962,7 @@ html(⚡='')
         .col-12.fill.dsdw
           amp-carousel.sb(height='247', layout='fixed-height', type='slides', controls loop autoplay delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')
             for promo in promos
-                +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.id,promo.promoOwner,promo.discount)
+                +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.id,promo.promoOwner)
         br
         .shopCard.dsdw
           .row.shopLstHeader
@@ -1021,42 +990,11 @@ html(⚡='')
         br
         .row.footer
             .col-6-sm
-                //amp-list.geolist-preview(width="auto", height="611", layout="fixed-height", noloading src="https://caramel-wolf.glitch.me//location-specific-results.json", single-item, items=".")
-                  template(type="amp-mustache", id="amp-template-id")
-                    p.title You are in {{location}}
-                    ul.results {{#results}}
-                      li
-                        amp-img(alt="{{placeName}} Map", noloading layout="fixed", width="150", height="100", src="https://maps.googleapis.com/maps/api/staticmap?markers={{lat}},{{lng}}&zoom=9&size=150x100&maptype=roadmap&key=AIzaSyByT-0aYa-nEF0gGqJHNpEEK1bus00losI")
-                        p
-                          strong {{placeName}}
-                          br 
-                          |{{adminName1}}
-                          br
-                          |{{countryCode}}
-                      span {{/results}}
-                  div(placeholder)
-                    p.title You are in
-                      span(placeholder)
-                    ul.results
-                      li
-                      li
-                      li
-                      li
-                      li
-                      
-                      
                 .socialMedia
                   h5 CONNECT WITH US
                 .socialMediaIcons
-                  amp-social-share(type="email")
-                  amp-social-share(type="facebook",
-                    data-param-app_id="254325784911610")
-                  amp-social-share(type="gplus")
-                  amp-social-share(type="linkedin")
-                  amp-social-share(type="pinterest"
-                    data-param-media="https://ampbyexample.com/img/amp.jpg")
-                  amp-social-share(type="tumblr")
-                  amp-social-share(type="twitter")
+                    each val in socialLinks
+                      amp-img(src=val, height='50', width='50')
             unless entSettings.tokensDisabled
             .col-6-sm
                 .tokenInfo
