@@ -791,7 +791,7 @@ html(⚡='')
           width: 100%;
           text-align:center;
           background: rgba(0, 0, 0, 0.12);
-          background-image:  linear-gradient(  rgba(0, 0, 0, 0.58),        rgba(0, 0, 0, 0)    ),url(#{cover});
+          background-image:  linear-gradient(  rgba(0, 0, 0, 0),        rgba(0, 0, 0, 0.58)    ),url(#{cover});
           background-size: contain;
           background-repeat: no-repeat;
           opacity: 1;
@@ -809,7 +809,11 @@ html(⚡='')
       text-transform: uppercase;
       }
       .home-text {
-      position: relative;
+      
+    bottom: 60px;
+    left: calc(50% - 250px);
+    width: 500px;
+      position: absolute;
       font-size: 150%;
       text-transform: lowercase;
       }
