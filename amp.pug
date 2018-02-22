@@ -27,6 +27,18 @@ html(⚡='')
             display: flex;
             flex-wrap: wrap;
         }
+        
+        .aboutHeader {
+            width: 35%;
+            margin-left: calc(50% - 17.5%);
+            text-align: center
+        }
+        
+        .aboutBody {
+            width: 70%;
+            margin-left: calc(50% - 30% - 1em);
+            text-align: center;
+        }
 
         .tabButton[selected] {
             outline: none;
@@ -785,7 +797,7 @@ html(⚡='')
         -moz-box-shadow: inset 0px 9px 9px -9px rgba(69,67,69,1);
         box-shadow: inset 0px 9px 9px -9px rgb(0, 0, 0);
       }
-      @media only screen and (min-width: 500px) {.home-title{padding-top:3%;}}
+      @media only screen and (min-width: 500px) {}
       .home-header {
           padding-bottom: 15px;
           width: 100%;
@@ -803,22 +815,21 @@ html(⚡='')
           color:white;
           background-position: center center;
       }
-      .home-title {
-      position: absolute;
-    color: #000000d1;
-    top: -75px;
-    font-size: 150%;
-    text-transform: uppercase;
-    left: 130px;
+      .home-title {    
+          position: absolute;
+          color: #000000D1;
+          top: -40px;
+          font-size: 130%;
+          text-transform: uppercase;
+          left: calc(70px + 5%);
       }
       .home-text {
-      
-    bottom: 60px;
-    left: calc(50% - 250px);
-    width: 500px;
-      position: absolute;
-      font-size: 150%;
-      text-transform: lowercase;
+        bottom: 60px;
+        left: calc(50% - 250px);
+        width: 500px;
+        position: absolute;
+        font-size: 150%;
+        text-transform: lowercase;
       }
       .sb{
             border: 10px solid #FFF;
@@ -835,9 +846,15 @@ html(⚡='')
       color: #848484;
       }
       @media only screen and (max-width: 500px) {
+          .home-text {
+            left: calc(50% - 200px);
+            width: 400px;
+            font-size: 120%;
+            }
           .home-title {
-            font-size: 200%;
-            padding-top: 20px;
+            font-size: 120%;
+            margin-top: 38px;
+            left: 85px;
             }
           .call{
             margin-right:30px;
@@ -963,6 +980,10 @@ html(⚡='')
           amp-carousel.sb(height='247', layout='fixed-height', type='slides', controls loop autoplay delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')
             for promo in promos
                 +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.id,promo.promoOwner)
+        br
+        div
+         h2.aboutHeader ABOUT US
+         p.aboutBody #{aboutBody} tell us more about your business
         br
         .shopCard.dsdw
           .row.shopLstHeader
