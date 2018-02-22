@@ -1030,8 +1030,10 @@ html(⚡='')
                         amp-img(alt="{{placeName}} Map", noloading layout="fixed", width="150", height="100", src="https://maps.googleapis.com/maps/api/staticmap?markers={{lat}},{{lng}}&zoom=9&size=150x100&maptype=roadmap&key=AIzaSyByT-0aYa-nEF0gGqJHNpEEK1bus00losI")
                         p
                           strong {{placeName}}
-                          br {{adminName1}}
-                          br {{countryCode}}
+                          br 
+                          |{{adminName1}}
+                          br
+                          |{{countryCode}}
                       span {{/results}}
                   div(placeholder)
                     p.title You are in
