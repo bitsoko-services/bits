@@ -1022,6 +1022,28 @@ html(⚡='')
         br
         .row.footer
             .col-6-sm
+                amp-list.geolist-preview(width="auto", height="611", layout="fixed-height", noloading src="https://caramel-wolf.glitch.me//location-specific-results.json", single-item, items=".")
+                  template(type="amp-mustache", id="amp-template-id")
+                    p.title You are in {{location}}
+                    ul.results {{#results}}
+                      li
+                        amp-img(alt="{{placeName}} Map", noloading layout="fixed", width="150", height="100", src="https://maps.googleapis.com/maps/api/staticmap?markers={{lat}},{{lng}}&zoom=9&size=150x100&maptype=roadmap&key=AIzaSyByT-0aYa-nEF0gGqJHNpEEK1bus00losI")
+                        p
+                          strong {{placeName}}
+                          br {{adminName1}}
+                          br {{countryCode}}
+                      span {{/results}}
+                  div(placeholder)
+                    p.title You are in
+                      span(placeholder)
+                    ul.results
+                      li
+                      li
+                      li
+                      li
+                      li
+                      
+                      
                 .socialMedia
                   h5 CONNECT WITH US
                 .socialMediaIcons
