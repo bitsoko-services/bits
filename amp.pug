@@ -1025,7 +1025,8 @@ html(⚡='')
         amp-img.bxshadow.b.mail(src='/bits/images/mail.png', height='26', width='35')
     
     .row
-         div.home-header
+         .parallax-image-window
+           amp-img(amp-fx='parallax', data-parallax-factor='1.1', width='1280', height='873', layout='responsive', src=cover, alt='')
             div.home-title
                    | #{name}
             div.home-text
@@ -1040,9 +1041,7 @@ html(⚡='')
          h2.aboutHeader #{entSettings.entAboutTitle}
          p.aboutBody #{entSettings.entAboutBody}
         br
-        .parallax-image-window
-          amp-img(amp-fx='parallax', data-parallax-factor='1.1', width='1280', height='873', layout='responsive', src=cover, alt='')
-
+        
         br
         .shopCard.dsdw
           .row.shopLstHeader
