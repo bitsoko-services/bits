@@ -82,6 +82,9 @@ html(⚡='')
           background-color: black;
           color: white;
         }
+        .parallax-image-window-holder{
+          height:500px;
+        }
 
         .parallax-image-window {
           overflow: hidden;
@@ -437,7 +440,7 @@ html(⚡='')
             display: block;
             margin-left: auto;
             margin-right: auto;
-                margin-top: -5vh;
+                margin-top: calc(-400px + 10%);
       }
       .row {
       position: relative;
@@ -1024,7 +1027,7 @@ html(⚡='')
       a(href='mailto:'+email)
         amp-img.bxshadow.b.mail(src='/bits/images/mail.png', height='26', width='35')
     
-    .row
+    .row.parallax-image-window-holder
          .parallax-image-window
            amp-img(amp-fx='parallax', data-parallax-factor='1.1', width='1280', height='873', layout='responsive', src=cover, alt='')
             div.home-title
