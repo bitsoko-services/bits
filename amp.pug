@@ -1040,10 +1040,11 @@ html(⚡='')
         div
          h2.aboutHeader #{entSettings.entAboutTitle}
          p.aboutBody #{entSettings.entAboutBody}
-        br
-        .sec1Lst.dsdw
-          for store in stores
-                +listImageSection(entSettings.entImageList.title,entSettings.entImageList.icon,entSettings.entImageList.body)
+        unless entSettings.entImageListDisabled 
+            br
+            .sec1Lst.dsdw
+               for sec1 in entSettings.entImageList
+                  +listImageSection(sec1.title,sec1.icon,entSettings.sec1.body)
         br
         .shopCard.dsdw
           .row.shopLstHeader
