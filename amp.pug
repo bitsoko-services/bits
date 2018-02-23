@@ -29,6 +29,11 @@ html(⚡='')
             flex-wrap: wrap;
         }
         
+        .wwb{
+            display: inline-block;
+            margin: 0px 10px;
+        }
+        
         .aboutHeader {
             width: 35%;
             margin-left: calc(50% - 17.5%);
@@ -908,11 +913,11 @@ html(⚡='')
   body.testFont
     amp-install-serviceworker(src="./sw.js",data-iframe-src="./bitsAssets/html/connect.html", layout="nodisplay")
     mixin listIconSection(name,icon,body)
-        .col-2-sm.ww
+        .col-2-sm.wwb
           .mngrCrd
-            amp-img(src=icon,class='apimg', width='100', height='100', alt='a sample image')
+            amp-img(src=icon,class='apimg', width='60', height='60', alt='a sample image')
             .card-content.shpDesc2 
-                span(class='mnm bold') #{name}
+                h3(class='mnm bold') #{name}
                 br
                 span(class='mnm') #{body}
                 br
