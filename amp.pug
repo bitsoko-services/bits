@@ -1022,6 +1022,10 @@ html(⚡='')
     .mbar.x
       a.my0.mx-auto(href='/')          
                 amp-img.bxshadow.b.circle(src=img, height='40', width='40', alt='')
+                div.home-title
+                   | #{name}
+                div.home-text
+                   | #{tagline}
       form(method='GET', action='#', target='_top')
               input(name='search', type='search', placeholder='Search', disabled='disabled')
       a(href='tel:'+phone)
@@ -1032,10 +1036,6 @@ html(⚡='')
     .row.parallax-image-window-holder
          .parallax-image-window
            amp-img(amp-fx='parallax', data-parallax-factor='1.1', width='1280', height='873', layout='responsive', src=cover, alt='')
-            div.home-title
-                   | #{name}
-            div.home-text
-                   | #{tagline}
     .container.content-container
         .col-12.fill.dsdw
           amp-carousel.sb(height='247', layout='fixed-height', type='slides', controls loop autoplay delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')
