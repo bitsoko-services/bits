@@ -9,6 +9,7 @@ html(⚡='')
     script(async='', custom-element='amp-font', src='https://cdn.ampproject.org/v0/amp-font-0.1.js')
     script(async='', custom-element='amp-carousel', src='https://cdn.ampproject.org/v0/amp-carousel-0.1.js')
     script(async='', custom-element='amp-form', src='https://cdn.ampproject.org/v0/amp-form-0.1.js')
+    script(async='', custom-element='amp-fx-collection', src='https://cdn.ampproject.org/v0/amp-fx-collection-0.1.js')
     link(rel='canonical', href='https://ampbyexample.com/components/amp-carousel/')
     link(rel='prefetch', href='/soko/')
     link(rel='prefetch', href='/tm/')
@@ -61,6 +62,37 @@ html(⚡='')
 
         .tabButton[selected]+.tabContent {
             display: block;
+        }
+        
+        .header {
+          position: relative;
+          overflow: hidden;
+        }
+
+        .header h1 {
+          color: white;
+          bottom: 10%;
+          left: 10px;
+          position: absolute;
+          z-index: 1;
+          font-size: 1.7em;
+         }
+
+        .title {
+          background-color: black;
+          color: white;
+        }
+        .parallax-image-window-holder{
+          height:500px;
+        }
+
+        .parallax-image-window {
+          overflow: hidden;
+              height: 100%;
+        }
+
+        .parallax-image-window amp-img {
+          margin-bottom: -30%;
         }
 
         /* For example below (not required) */
@@ -409,7 +441,7 @@ html(⚡='')
             display: block;
             margin-left: auto;
             margin-right: auto;
-                margin-top: -5vh;
+                margin-top: calc(-400px + 10%);
       }
       .row {
       position: relative;
@@ -853,7 +885,6 @@ html(⚡='')
             }
           .home-title {
             font-size: 120%;
-            margin-top: 38px;
             left: 85px;
             }
           .call{
@@ -872,6 +903,34 @@ html(⚡='')
 
   body.testFont
     amp-install-serviceworker(src="./sw.js",data-iframe-src="./bitsAssets/html/connect.html", layout="nodisplay")
+    mixin listIconSection(item,title,desc,id,promoOwner)
+            amp-img.pic(src=item, width='580', height='300', layout='responsive', alt=title)
+               div.entPromoDisc
+               .cption
+                   amp-fit-text.caption.center(layout='responsive', width='500', height='250')
+                   br
+                   span(class='shpNm') #{title}
+                   br
+                   span(class='shpDes')
+                    | #{desc}
+                    br
+                    br
+                   a.btn.buyBtn(href="/bits/?s="+promoOwner+"#pid="+id) Get Promotion
+                  
+    mixin listImageSection(item,title,desc,id,promoOwner)
+            amp-img.pic(src=item, width='580', height='300', layout='responsive', alt=title)
+               div.entPromoDisc
+               .cption
+                   amp-fit-text.caption.center(layout='responsive', width='500', height='250')
+                   br
+                   span(class='shpNm') #{title}
+                   br
+                   span(class='shpDes')
+                    | #{desc}
+                    br
+                    br
+                   a.btn.buyBtn(href="/bits/?s="+promoOwner+"#pid="+id) Get Promotion
+                  
     mixin listpromo(item,title,desc,id,promoOwner)
             amp-img.pic(src=item, width='580', height='300', layout='responsive', alt=title)
                div.entPromoDisc
@@ -969,8 +1028,9 @@ html(⚡='')
       a(href='mailto:'+email)
         amp-img.bxshadow.b.mail(src='/bits/images/mail.png', height='26', width='35')
     
-    .row
-         div.home-header
+    .row.parallax-image-window-holder
+         .parallax-image-window
+           amp-img(amp-fx='parallax', data-parallax-factor='1.1', width='1280', height='873', layout='responsive', src=cover, alt='')
             div.home-title
                    | #{name}
             div.home-text
@@ -982,8 +1042,10 @@ html(⚡='')
                 +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.id,promo.promoOwner)
         br
         div
-         h2.aboutHeader ABOUT US
-         p.aboutBody #{aboutBody} tell us more about your business
+         h2.aboutHeader #{entSettings.entAboutTitle}
+         p.aboutBody #{entSettings.entAboutBody}
+        br
+        
         br
         .shopCard.dsdw
           .row.shopLstHeader
