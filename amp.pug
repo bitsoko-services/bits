@@ -360,6 +360,10 @@ html(⚡='')
       width: 100%;
       height: 280px;
       }
+      .content-container{
+        position: relative;
+        z-index: 100;
+      }
       .blue-box {
       background: blue;
       }
@@ -1035,7 +1039,7 @@ html(⚡='')
                    | #{name}
             div.home-text
                    | #{tagline}
-    .container
+    .container.content-container
         .col-12.fill.dsdw
           amp-carousel.sb(height='247', layout='fixed-height', type='slides', controls loop autoplay delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')
             for promo in promos
