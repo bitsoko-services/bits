@@ -2,8 +2,11 @@
     overflow: hidden;
     float: right;
     margin-top: -16px;
-    width: 129px;
     /* margin-right: -20px; */
+ }
+
+.handle-counter > span {
+    display:none;
  }
 
 .handle-counter .counter-minus,  .handle-counter .counter-plus,  .handle-counter input {
@@ -14,7 +17,6 @@
 .handle-counter .counter-minus,  .handle-counter .counter-plus { text-align: center; }
 
 .handle-counter input {
-  width:25px;
   border-width: 1px;
   border-left: none;
   border-right: none;
