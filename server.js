@@ -137,7 +137,7 @@ try {
                     var state = dat.state;
                     bitsNotification('New Delivery', 'order number ' + dat.oid, tg, 'bits/images/deliveryM.png', dat.orderImg, [{
                         action: 'call',
-                        title: "Call Customer"
+                        title: "Call"
 						}, {
                         action: 'locate',
                         title: "Location"
