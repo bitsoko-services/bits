@@ -1046,10 +1046,11 @@ html(⚡='')
          .parallax-image-window
            amp-img(amp-fx='parallax', data-parallax-factor='1.1', width='1280', height='873', layout='responsive', src=cover, alt='')
     .container.content-container
-        .col-12.fill.dsdw
-          amp-carousel.sb(height='347', layout='fixed-height', type='slides', controls loop autoplay delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')
-            for promo in promos
-                +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.id,promo.promoOwner)
+        unless entSettings.promotionsDisabled
+            .col-12.fill.dsdw
+              amp-carousel.sb(height='347', layout='fixed-height', type='slides', controls loop autoplay delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')
+                for promo in promos
+                    +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.id,promo.promoOwner)
         br
         div
          h2.aboutHeader #{entSettings.entAboutTitle}
