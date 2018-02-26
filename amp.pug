@@ -9,6 +9,7 @@ html(⚡='')
     script(async='', custom-element='amp-font', src='https://cdn.ampproject.org/v0/amp-font-0.1.js')
     script(async='', custom-element='amp-carousel', src='https://cdn.ampproject.org/v0/amp-carousel-0.1.js')
     script(async='', custom-element='amp-form', src='https://cdn.ampproject.org/v0/amp-form-0.1.js')
+    script(async='', custom-element='amp-fx-collection', src='https://cdn.ampproject.org/v0/amp-fx-collection-0.1.js')
     link(rel='canonical', href='https://ampbyexample.com/components/amp-carousel/')
     link(rel='prefetch', href='/soko/')
     link(rel='prefetch', href='/tm/')
@@ -27,6 +28,29 @@ html(⚡='')
             .ampTabContainer {
             display: flex;
             flex-wrap: wrap;
+        }
+        .imgSecCrd{
+        text-align: center;
+        width:90%;
+        }
+        .sec1Lst{
+        text-align: center;
+        }
+        .wwb{
+            display: inline-block;
+            margin: 0px 4%;
+        }
+        
+        .aboutHeader {
+            width: 55%;
+            margin-left: calc(50% - 27.5%);
+            text-align: center
+        }
+        
+        .aboutBody {
+            width: 80%;
+            margin-left: calc(50% - 40%);
+            text-align: center;
         }
 
         .tabButton[selected] {
@@ -50,6 +74,37 @@ html(⚡='')
 
         .tabButton[selected]+.tabContent {
             display: block;
+        }
+        
+        .header {
+          position: relative;
+          overflow: hidden;
+        }
+
+        .header h1 {
+          color: white;
+          bottom: 10%;
+          left: 10px;
+          position: absolute;
+          z-index: 1;
+          font-size: 1.7em;
+         }
+
+        .title {
+          background-color: black;
+          color: white;
+        }
+        .parallax-image-window-holder{
+          height:700px;
+        }
+
+        .parallax-image-window {
+          overflow: hidden;
+              height: 100%;
+        }
+
+        .parallax-image-window amp-img {
+          margin-bottom: -30%;
         }
 
         /* For example below (not required) */
@@ -317,6 +372,12 @@ html(⚡='')
       width: 100%;
       height: 280px;
       }
+      .content-container{
+        position: relative;
+        z-index: 100;    
+        margin-top: calc(-500px + 10%);
+        background: #ffffffa1;
+      }
       .blue-box {
       background: blue;
       }
@@ -396,9 +457,7 @@ html(⚡='')
       .container {
         width: 90%;
             display: block;
-            margin-left: auto;
-            margin-right: auto;
-                margin-top: -5vh;
+            margin-left: 5%;
       }
       .row {
       position: relative;
@@ -465,7 +524,9 @@ html(⚡='')
       }
       @media only screen and (max-width: 480px) {  /* 540px */
       .container {
-      width: 95%;
+        width: 95%;
+        display: block;
+        margin-left: 2.5%;
       }
       .apimg{width:35%;}
       .fullnav {
@@ -627,7 +688,7 @@ html(⚡='')
       right: 0px;
       width: 40%;
       }
-       .mngrCrd{ -webkit-box-shadow: 0px 0px 13px -2prgba(0,0,0,0.75); -moz-box-shadow: 0px 0px 13px -2px rgba(0,0,0,0.75); box-shadow: 0px 0px 13px -2px rgba(0,0,0,0.75); border-radius: 3px; margin: 0px 15px;width: 100%;
+       .mngrCrd{ -webkit-box-shadow: 0px 0px 13px -2prgba(0,0,0,0.75); -moz-box-shadow: 0px 0px 13px -2px rgba(0,0,0,0.75); box-shadow: 0px 0px 13px -2px rgba(0,0,0,0.75); border-radius: 3px; margin: 0px 15px;width: 90%;
       }
       .mngrCrd amp-img{
         width:100% !important;
@@ -819,13 +880,13 @@ html(⚡='')
         -moz-box-shadow: inset 0px 9px 9px -9px rgba(69,67,69,1);
         box-shadow: inset 0px 9px 9px -9px rgb(0, 0, 0);
       }
-      @media only screen and (min-width: 500px) {.home-title{padding-top:3%;}}
+      @media only screen and (min-width: 500px) {}
       .home-header {
           padding-bottom: 15px;
           width: 100%;
           text-align:center;
           background: rgba(0, 0, 0, 0.12);
-          background-image:  linear-gradient(  rgba(0, 0, 0, 0.58),        rgba(0, 0, 0, 0)    ),url(#{cover});
+          background-image:  linear-gradient(  rgba(0, 0, 0, 0),        rgba(0, 0, 0, 0.58)    ),url(#{cover});
           background-size: contain;
           background-repeat: no-repeat;
           opacity: 1;
@@ -837,15 +898,22 @@ html(⚡='')
           color:white;
           background-position: center center;
       }
-      .home-title {
-      position: relative;
-      font-size: 300%;
-      text-transform: uppercase;
+      .home-title {    
+          position: absolute;
+          color: #000000D1;
+          top: 10px;
+          font-size: 130%;
+          text-transform: uppercase;
+          left: calc(70px + 5%);
       }
       .home-text {
-      position: relative;
-      font-size: 150%;
-      text-transform: lowercase;
+        bottom: 60px;
+        left: calc(50% - 250px);
+        width: 500px;
+        position: absolute;
+        font-size: 150%;
+        text-transform: lowercase;
+        display:none;
       }
       .sb{
             border: 10px solid #FFF;
@@ -859,12 +927,17 @@ html(⚡='')
       .mbar{border-bottom: 1px solid #d8d8d8;height: 50px;padding-top: 0px;background: #fff;padding-left:6%;}
       .testFont{
       font-family: Lato;
-      color: #848484;
+      color: #5d5b5b;
       }
       @media only screen and (max-width: 500px) {
+          .home-text {
+            left: calc(50% - 200px);
+            width: 400px;
+            font-size: 120%;
+            }
           .home-title {
-            font-size: 200%;
-            padding-top: 20px;
+            font-size: 120%;
+            left: 85px;
             }
           .call{
             margin-right:30px;
@@ -882,7 +955,27 @@ html(⚡='')
 
   body.testFont
     amp-install-serviceworker(src="./sw.js",data-iframe-src="./bitsAssets/html/connect.html", layout="nodisplay")
-    mixin listpromo(item,title,desc,id,promoOwner,discount)
+    mixin listIconSection(name,icon,body)
+        .col-2-sm.wwc
+          .iconSecCrd
+            amp-img(src=icon,class='apimg', width='60', height='60', alt='a sample image')
+            .card-content.shpDesc2 
+                h3(class='mnm bold') #{name}
+                br
+                span(class='mnm') #{body}
+                br
+                  
+    mixin listImageSection(name,icon,body)
+        .col-2-sm.wwb
+          .imgSecCrd
+            amp-img(src=icon,class='apimg', width='150', height='100', alt='a sample image')
+            .card-content.shpDesc2 
+                span(class='mnm bold') #{name}
+                br
+                span(class='mnm') #{body}
+                br
+                  
+    mixin listpromo(item,title,desc,id,promoOwner)
             amp-img.pic(src=item, width='580', height='300', layout='responsive', alt=title)
                div.entPromoDisc
                 p
@@ -976,6 +1069,10 @@ html(⚡='')
     .mbar.x
       a.my0.mx-auto(href='/')          
                 amp-img.bxshadow.b.circle(src=img, height='40', width='40', alt='')
+                div.home-title
+                   | #{name}
+                div.home-text
+                   | #{tagline}
       form(method='GET', action='#', target='_top')
               input(name='search', type='search', placeholder='Search', disabled='disabled')
       a(href='tel:'+phone)
@@ -983,17 +1080,25 @@ html(⚡='')
       a(href='mailto:'+email)
         amp-img.bxshadow.b.mail(src='/bits/images/mail.png', height='26', width='35')
     
-    .row
-         div.home-header
-            div.home-title
-                   | #{name}
-            div.home-text
-                   | #{tagline}
-    .container
-        .col-12.fill.dsdw
-          amp-carousel.sb(height='247', layout='fixed-height', type='slides', controls loop autoplay delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')
-            for promo in promos
-                +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.id,promo.promoOwner,promo.discount)
+    
+    .row.parallax-image-window-holder
+         .parallax-image-window
+           amp-img(amp-fx='parallax', data-parallax-factor='1.1', width='1280', height='873', layout='responsive', src=cover, alt='')
+    .container.content-container
+        unless entSettings.promotionsDisabled
+            .col-12.fill.dsdw
+              amp-carousel.sb(height='347', layout='fixed-height', type='slides', controls loop autoplay delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')
+                for promo in promos
+                    +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.id,promo.promoOwner)
+        br
+        div
+         h2.aboutHeader #{entSettings.entAboutTitle}
+         p.aboutBody #{entSettings.entAboutBody}
+        unless entSettings.entImageListDisabled 
+            br
+            .sec1Lst.dsdw
+               for sec1 in entSettings.entImageList
+                  +listImageSection(sec1.title,sec1.icon,sec1.body)
         br
         .shopCard.dsdw
           .row.shopLstHeader
