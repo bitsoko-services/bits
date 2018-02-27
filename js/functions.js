@@ -363,7 +363,7 @@ function makeOrder(orderArrayy, orderLoc) {
                         action: 'makeOrder',
                         data: orderArrayy,
                         //EarnedKobo: totalKobo,
-                        delRate: globalDel,
+                        delPrice: globalDel,
                         loc: e.coords.latitude + ',' + e.coords.longitude,
                         user: localStorage.getItem("bits-user-name"),
                         pointsEarned: {
