@@ -2,7 +2,7 @@
     overflow: hidden;
     float: right;
     margin-top: -16px;
-    width: 129px;
+    width: 100px;
     /* margin-right: -20px; */
 }
 
@@ -23,6 +23,7 @@
     border-width: 1px;
     border-left: none;
     border-right: none;
+    margin-left: 8px;
 }
 
 .btn {

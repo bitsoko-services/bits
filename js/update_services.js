@@ -189,17 +189,17 @@ function populateService(mDet) {
     setTimeout(function () {
         loadvisit();
     }, 1050);
-    
+
     //----------------------------------------------- enable sharing------------------------------------------//
-	//web Share start
-        document.querySelector("#share").addEventListener('click', function (event) {
-            navigator.share({
-                title: actvServ().name,
-                text: actvServ().desription,
-                url: window.location.href
-            }).then(() => console.log('Successful share')).catch(error => console.log('Error sharing:', error));
-        });
-	
+    //web Share start
+    document.querySelector("#share").addEventListener('click', function (event) {
+        navigator.share({
+            title: actvServ().name,
+            text: actvServ().desription,
+            url: window.location.href
+        }).then(() => console.log('Successful share')).catch(error => console.log('Error sharing:', error));
+    });
+
     //-----------------------------------------------Check if deliveries are on -----------------------------------------------------------------------------------
     checkDeliveries(mDet.deliveries);
 
@@ -225,7 +225,7 @@ function populateService(mDet) {
             if (parseInt(x[iii].id) == parseInt(localStorage.getItem('bits-user-name'))) {
                 $('#manage-store').css("display", "block");
                 $('.manage-store').html("");
-               // $('.callbtn').html('');
+                // $('.callbtn').html('');
                 $('.manage-store').append('<a  style=" background: none; float:right; !important; margin-top: ;" href="../soko/#s=' + parseInt(getBitsWinOpt('s')) + '" class="noshadow btn-large waves-effect waves-light "><i class="mdi-action-store"></i></a>');
             }
         }
@@ -398,7 +398,7 @@ function populateService(mDet) {
             }
 
 
-            $('.merchproducts').append('<li class="collection-item avatar bits-max "><span style="font-size:0px;">' + mDet.list[ii].name + ' </span><img src="https://bitsoko.co.ke' + mDet.list[ii].imagePath + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + mDet.list[ii].name + ' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + mDet.list[ii].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + mDet.list[ii].metric + ' </span></p><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + mDet.list[ii].id + '-counter"><button class="counter-minus bits btn btn-primary btn-floating btn-f"  style="line-height: 5px;">-</button><input id= "bitsInputQty' + mDet.list[ii].id + '" class="bitsInputQty" price="' + mDet.list[ii].price + '" pid="' + mDet.list[ii].id + '" type="text" value="0" min="" style="border-bottom: none;"><span> ' + mDet.list[ii].metric + ' </span><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f" style="line-height: 5px; float:right; margin-top: 7px;" >+</button>'
+            $('.merchproducts').append('<li class="collection-item avatar bits-max "><span style="font-size:0px;">' + mDet.list[ii].name + ' </span><img src="https://bitsoko.co.ke' + mDet.list[ii].imagePath + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + mDet.list[ii].name + ' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + mDet.list[ii].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + mDet.list[ii].metric + ' </span></p><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + mDet.list[ii].id + '-counter"><button class="counter-minus bits btn btn-primary btn-floating btn-f"  style="line-height: 5px;">-</button><input id= "bitsInputQty' + mDet.list[ii].id + '" class="bitsInputQty" price="' + mDet.list[ii].price + '" pid="' + mDet.list[ii].id + '" type="text" value="0" min="" style="border-bottom: none;"><span>  </span><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f" style="line-height: 5px; float:right; margin-top: 7px;" >+</button>'
                 // +'</div><p class="col s4" style=""> <input class="number bitsInputQty sinpt" price="'+mDet.list[ii].price+'" type="number" placeholder="0" min="0.25" max="10" id='+mDet.list[ii].name+'><label for='+mDet.list[ii].name+'></label></p>'+
                 +
                 '</li>');
