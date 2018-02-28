@@ -185,13 +185,15 @@ function togglebuttons() {
 //------------------end function -------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------------
 function showuser() {
+    $(".notificationToast").remove()
+    $(".signedAsToast").remove()
     if (checkanon() == true) {
         var gtname = getObjectStore('data', 'readwrite').get('user-profile-' + localStorage.getItem('bits-user-name'));
         gtname.onsuccess = function (event) {
             try {
                 var nam = JSON.parse(event.target.result);
                 //console.log(nam.name)
-                Materialize.toast('<span class="toastlogin">You are Signed in as: ' + nam.name, 1000);
+                Materialize.toast('<span class="toastlogin">You are Signed in as: ' + nam.name, 1000, 'signedAsToast');
             } catch (err) {}
         };
 
@@ -269,7 +271,7 @@ function showLogin() {
 //------------------function to pop up login toast--------------------------------------------------------------------
 function showlogintoast() {
     if (checkanon() == false) {
-        Materialize.toast('<span class="toastlogin">You are using the app anonymously.</span><a onclick="showLogin()" class="btn-flat toastlogin yellow-text">Login<a>', 10000);
+        Materialize.toast('<span class="toastlogin">You are using the app anonymously.</span><a onclick="showLogin()" class="btn-flat toastlogin yellow-text">Login<a>', null, 'loginToast');
     } else { //showuser()
     }
 }
@@ -929,7 +931,7 @@ function checkmobiveri() {
         }
         if (e.status == "bad") {
             //$('#MobileModal').openModal();
-            Materialize.toast('Please login and verifiy your mobile number', 2000);
+            //            Materialize.toast('Please login and verifiy your mobile number', 2000);
             return;
         }
     })
