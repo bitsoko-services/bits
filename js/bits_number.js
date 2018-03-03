@@ -61,6 +61,7 @@
             //$(this).attr("rewarded", "rewarded");
             var themeClr = $('.navbar-color').css('backgroundColor');
             $(".delivery").css("background-color", themeClr)
+            $(".floatingPrice a").css("background-color", themeClr)
             $(".counter-minus").removeClass("disabled");
             $(".delivery").removeClass("pointer-events");
             $(".bits-main-price").removeClass("grey");
