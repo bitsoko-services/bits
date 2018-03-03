@@ -24,8 +24,8 @@ function callMerchant() {
     actvServ().then(function (x) {
         var p = x.phone
         //console.log(p)
-        // $('.callbtn').html('')
-        $('.callbtn').append('<a  onclick="rate()" id="star" value="rating" class=" btn-large btn-price bits noshadow bitb" style="float: right !important;margin: 0px 10px;"><i class="mdi-action-grade activator"></i></a><a href="tel:"  id="" value="" class=" btn-large btn-price bits noshadow bitb" style="float: right !important;margin: 1px 3px;"><i class="mdi-communication-call"></i></a>');
+        $('#appendCallBtn').html('')
+        $('#appendCallBtn').append('<a  onclick="rate()" id="star" value="rating" class=" btn-large btn-price bits noshadow bitb" style="float: right !important;margin: 0px 10px;"><i class="mdi-action-grade activator"></i></a><a href="tel:"  id="" value="" class=" btn-large btn-price bits noshadow bitb" style="float: right !important;margin: 1px 3px;"><i class="mdi-communication-call"></i></a>');
 
     });
 }
