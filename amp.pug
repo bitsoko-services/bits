@@ -1099,16 +1099,8 @@ html(⚡='')
                 .tokenInfo
                   h5 INVESTORS
                   .row
-                    .col-4-sm
-                        p.tokenRate
-                            | #{rate}%
-                    .col-8-sm
-                        p This is a decentralized service. Become a shareholder to earn daily dividends
-                        p PRICE:  #{rate}/= kes
-                        p CHANGE: +1%
+                    amp-iframe(width='400', title='token infodata', height='400', tRate=rate, layout='responsive', sandbox='allow-scripts allow-same-origin allow-popups', frameborder='0', src='/bitsAssets/html/token-market-widget.html')
                         a(href="/tm/?cid="+entContract)
                             button.investBtn Buy Tokens
-                    amp-iframe(width='400', title='token infodata', height='400', layout='responsive', sandbox='allow-scripts allow-same-origin allow-popups', frameborder='0', src='https://bitsoko.io/bitsAssets/html/token-market-widget.html')
-
             
     br
