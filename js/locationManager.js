@@ -98,7 +98,11 @@ function getLoc(retDt) {
                 $("#locationModal").openModal();
             } else {
                 reject('request not yet allowed');
-                $("#locationModal").openModal();
+                $('#locationModal').modal({
+                    complete: function () {
+                        myLoc();
+                    }
+                }).modal('open');
             }
         });
     });
