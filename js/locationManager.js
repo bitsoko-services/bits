@@ -47,6 +47,7 @@ function showPosition(position) {
 
                                 console.log('updated location');
                                 document.querySelector('.js-loc-button-notification').checked = true;
+                                $('#locationModal').modal("close");
                             };
 
                         } else {
@@ -95,11 +96,17 @@ function getLoc(retDt) {
 
 
             } else if (p.state === 'prompt') {
-                $("#locationModal").openModal();
+                $('#locationModal').modal({
+                    complete: function () {
+                        console.log("Running")
+                        myLoc();
+                    }
+                }).modal('open');
             } else {
                 reject('request not yet allowed');
                 $('#locationModal').modal({
                     complete: function () {
+                        console.log("Running")
                         myLoc();
                     }
                 }).modal('open');
