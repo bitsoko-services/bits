@@ -273,6 +273,7 @@ function showlogintoast() {
     if (checkanon() == false) {
         Materialize.toast('<span class="toastlogin">You are using the app anonymously.</span><a onclick="showLogin()" class="btn-flat toastlogin yellow-text">Login<a>', null, 'loginToast');
     } else { //showuser()
+        console.log("The user is signed in!")
     }
 }
 orderArray = [];
@@ -333,7 +334,7 @@ function makeOrder(orderArrayy, orderLoc) {
         return;
     }
     console.log('1 checking mobile verifications');
-    checkmobiveri();
+    //    checkmobiveri();
     console.log('2 done checking mobile verifications');
     actvServ().then(function (p) {
         console.log('3');
