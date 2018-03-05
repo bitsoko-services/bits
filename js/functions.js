@@ -323,8 +323,8 @@ function makeOrder(orderArrayy, orderLoc) {
     //Rewards();
     console.log("->", orderArrayy)
     if (orderArrayy === undefined || orderArrayy.length == 0) {
+        Materialize.toast("Ooops! You didn't select any product", 2000);
         return;
-        console.log("stopped")
     }
     $('.delivery').addClass('animated jello');
     Materialize.toast('creating your order', 3000);
@@ -334,7 +334,7 @@ function makeOrder(orderArrayy, orderLoc) {
         return;
     }
     console.log('1 checking mobile verifications');
-    //    checkmobiveri();
+    checkmobiveri();
     console.log('2 done checking mobile verifications');
     actvServ().then(function (p) {
         console.log('3');
