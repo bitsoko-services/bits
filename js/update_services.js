@@ -422,8 +422,17 @@ function populateService(mDet) {
         }
     }
 
-
+    if (mDet.phone == "") {
+        $(".mobiVerificationToast").remove();
+        Materialize.toast('Please verifiy your mobile number<div class="right verifyPhoneNumb" style="color:yellow;">verify</button>', null, "mobiVerificationToast");
+    } else if (mDet.phone == null) {
+        $(".mobiVerificationToast").remove();
+        Materialize.toast('Please verifiy your mobile number<div class="right verifyPhoneNumb" style="color:yellow;">verify</button>', null, "mobiVerificationToast");
+    }
 }
+$(document).on("click", ".verifyPhoneNumb ", function () {
+    $("#MobileModal").openModal()
+})
 //---------------------------------------------------end populateService function------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------  function handleModal---------------------------------------------------------------------------------------------------------------------------------------
 function handleModal() {
