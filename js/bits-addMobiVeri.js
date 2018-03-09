@@ -3,26 +3,26 @@
 //----------------------------------------------updating addMobiVeri ---------------------------------------------------------------------------------
 function addMobiVeri() {
     //----------------------------------------------append contact modal--------------------------------------------------------------------------------------
-    $(".MobileModal").append('<div class="modal-content">' +
+    $(".MobileModal").append('<div class="modal-content" style="padding: 24px 10px;">' +
         ' <div class="row">' +
-        '<div class="input-field col s8">' +
+        '<div class="input-field col s9">' +
         '  <i class="mdi-hardware-phone-android prefix"></i>' +
         '  <input id="inp-phone" type="number" class="validate" >' +
-        '  <label for="inp-phone" class="">enter phone number</label>' +
+        '  <label for="inp-phone" class="">Phone number</label>' +
         ' </div>' +
-        ' <div class="input-field col s4">' +
+        ' <div class="input-field col s3">' +
         '  <div class="input-field col s12">' +
         '    <button class="inp-phone btn cyan waves-effect waves-light" type="submit" name="action" disabled><i class="mdi-navigation-refresh"></i></button>' +
         '  </div>' +
         ' </div>' +
         ' </div>' +
         ' <div class="row">' +
-        ' <div class="input-field col s8">' +
+        ' <div class="input-field col s9">' +
         '  <i class="mdi-action-lock-outline prefix"></i>' +
         ' <input id="inp-code" type="number" class="validate" >' +
         '  <label for="inp-code" class="">confirmation code</label>' +
         ' </div>' +
-        ' <div class="input-field col s4">' +
+        ' <div class="input-field col s3">' +
         '  <div class="input-field col s12">' +
         '    <button class="inp-code btn cyan waves-effect waves-light" type="submit" name="action" disabled><i class="mdi-navigation-refresh"></i></button>' +
         '  </div>' +
@@ -30,8 +30,8 @@ function addMobiVeri() {
         ' </div>' +
 
         '</div>' +
-        ' <div class="modal-footer blue-grey lighten-5">' +
-        ' <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>' +
+        ' <div class="modal-footer blue-grey lighten-5" style="height: auto; padding: 0px;">' +
+        ' <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat bits" style="padding: 0px 10px; color: white; margin-right: 10%;">Close</a>' +
         '</div>');
 
     var forEach = function (array, callback, scope) {

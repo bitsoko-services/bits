@@ -1,9 +1,9 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function oid() {
     //Get Token Balance
-    //    $(document).ready(function () {
-    //        $("#tokenBal").html(allTokens.balanceTokens.totalEarned.toFixed(2) + " tokens");
-    //    });
+    $(document).ready(function () {
+        $("#tokenBal").html(allTokens.balanceTokens.totalEarned.toFixed(2) + " tokens");
+    });
     if (window.location.hash != undefined) {
         //check if hash is oid
         var type = window.location.hash.substr(1);
