@@ -135,10 +135,7 @@ try {
                 case 'delOrder':
                     var tg = "bits-order-" + dat.oid + "-(" + dat.toLoc + ")";
                     var state = dat.state;
-                    bitsNotification('New Delivery', 'order number ' + dat.oid, tg, 'bits/images/deliveryM.png', dat.orderImg, [{
-                        action: 'call',
-                        title: "Call"
-						}, {
+                    bitsNotification('New '+dat.deliveryPrice+'/= Delivery', 'order number ' + dat.oid, tg, 'bits/images/deliveryM.png', dat.orderImg, [{
                         action: 'locate',
                         title: "Location"
 						}, {
