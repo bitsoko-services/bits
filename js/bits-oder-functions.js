@@ -1,9 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function oid() {
     //Get Token Balance
-    $(document).ready(function () {
-        $("#tokenBal").html(allTokens.balanceTokens.totalEarned.toFixed(2) + " tokens");
-    });
+    $("#tokenBal").html(allTokens.balanceTokens.totalEarned.toFixed(2) + " tokens");
+    //Load Wallet
+    $(".walletToast").remove();
+    if (localStorage.getItem('bits-user-name') == null) {
+        console.log("Not logged in")
+    } else {
+        Materialize.toast('Unlock wallet <span class="right" style="color:yellow;" onclick="unlockWallet()">Unlock</span>', null, 'walletToast')
+    }
     if (window.location.hash != undefined) {
         //check if hash is oid
         var type = window.location.hash.substr(1);
@@ -43,6 +48,13 @@ function oid() {
             console.log("we dont know this hash")
         }
     } else {}
+}
+
+function unlockWallet() {
+    walletFunctions(90).then(function (e) {
+        loadGdrive();
+        $(".walletToast").remove();
+    })
 }
 
 function getUserOders(f) {

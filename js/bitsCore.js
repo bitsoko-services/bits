@@ -478,7 +478,7 @@ function updateBal(notif) {
 
         var inbits = parseInt(localStorage.getItem('bitsoko-wallets-bal')) / 100000000;
         inbits.toFixed(8)
-        $("#balance-coins").html(inbits + " Eth");
+        $(".balance-coins").html(inbits + " Eth");
     });
 
     $("#balance-counter").css('opacity', '1');
