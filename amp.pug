@@ -899,7 +899,7 @@ html(⚡='')
             top: 16px;
             line-height: 0.8;
       }
-      .entPromoDisc>span{
+      #percOff{
         font-size: 19px;
         margin-left: 10px;
        }
@@ -1020,8 +1020,8 @@ html(⚡='')
     mixin listpromo(item,title,desc,id,promoOwner)
             amp-img.pic(src=item, width='580', height='300', layout='responsive', alt=title)
                div.entPromoDisc
-                p | #{discount}
-                    span OFF
+                p #{discount}
+                    span(id="percOff") OFF
                .cption
                    amp-fit-text.caption.center(layout='responsive', width='500', height='250')
                    br
