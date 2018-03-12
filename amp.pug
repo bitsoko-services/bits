@@ -889,7 +889,20 @@ html(⚡='')
             -ms-transform: rotate(60deg);
             z-index: 1;
         }
-      
+      .entPromoDisc>p{
+            z-index: 2;
+            color: white;
+            position: absolute;
+            font-size: 2em;
+            margin: 0px;
+            left: 10px;
+            top: 16px;
+            line-height: 0.8;
+      }
+      .entPromoDisc>span{
+        font-size: 19px;
+        margin-left: 10px;
+       }
       
       
       .mnm{    text-transform: capitalize;}
@@ -1007,6 +1020,8 @@ html(⚡='')
     mixin listpromo(item,title,desc,id,promoOwner)
             amp-img.pic(src=item, width='580', height='300', layout='responsive', alt=title)
                div.entPromoDisc
+                p | #{discount}
+                    span OFF
                .cption
                    amp-fit-text.caption.center(layout='responsive', width='500', height='250')
                    br
