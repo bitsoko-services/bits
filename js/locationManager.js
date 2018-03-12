@@ -1,7 +1,10 @@
 function showPositionError(e) {
 
     try {
-        Materialize.toast('Turn on your location to continue.. ', 5000);
+        M.toast({
+            html: 'Turn on your location to continue..',
+            displayLength: 5000
+        })
     } catch (err) {
 
         console.log('could not show location error message ', err);
@@ -210,7 +213,10 @@ function reqLoc() {
                 });
 
             } else {
-                Materialize.toast('<span >Your location is turned off. Enable in android settingd</span>', 3000);
+                M.toast({
+                    html: '>Your location is turned off. Enable in android settings',
+                    displayLength: 3000
+                })
 
             }
         };

@@ -77,6 +77,7 @@ function getUserOders(f) {
                 try {
                     var typeofCoin = JSON.parse(items).coin;
                 } catch (err) {
+                    console.log(err);
                     continue;
                 }
                 try {
@@ -85,7 +86,7 @@ function getUserOders(f) {
                         var purchasePoints = 0;
                     }
                 } catch (err) {
-                    console.log('this order does not have any purchase rewards');
+                    console.log('this order does not have any purchase rewards',err);
                     var purchasePoints = 0;
                 }
                 try {
@@ -94,9 +95,9 @@ function getUserOders(f) {
                         var deliveryPoints = 0;
                     }
                 } catch (err) {
+                     console.log('this order does not have any delivery rewards',err);
                     var deliveryPoints = 0;
                 }
-                //console.log(typeofCoin, allTokens[typeofCoin].totalEarned, purchasePoints, deliveryPoints);
                 try {
                     allTokens[typeofCoin].totalEarned = allTokens[typeofCoin].totalEarned + purchasePoints + deliveryPoints;
 
@@ -104,6 +105,10 @@ function getUserOders(f) {
                     console.log('this coin had not been included in the rewards since its currently inactive', typeofCoin);
                     continue;
                 }
+
+                console.log(typeofCoin, purchasePoints, deliveryPoints);
+                
+
             };
 
             var setdb = getObjectStore('data', 'readwrite').put(JSON.stringify(xx), 'bits-user-orders-' + localStorage.getItem("bits-user-name"));
@@ -126,7 +131,7 @@ function getUserOders(f) {
 function updateEarnedTokens(f) {
 
     $('.coinlist').html('');
-    var at = allTokens['allTokens'];
+    var at = allTokens['allContracts'];
 
     var i = 0;
     var tCe = 0;
@@ -135,24 +140,25 @@ function updateEarnedTokens(f) {
 
 
         var rate = allTokens[at[i]].rate;
-        var coinName = at[i];
+        var coinName = allTokens[at[i]].name;
         //if i have 1000 kobos
         //var koboBalance = 1000;
         //		console.log((rate*e.data.baseEx*koboBalance).toFixed(2)+' KES');
-        var koboRate = Math.floor(rate * f.data.baseEx);
-        var qq = rate * f.data.baseEx;
+        var koboRate = Math.floor(rate * baseX);
+        var qq = rate * baseX;
         var xx = qq.toFixed(2);
-        var tA = allTokens[coinName].totalEarned + (allTokens[coinName].balance / Math.pow(10, allTokens[coinName].decimals));
+        var coinId= at[i];
+        var tA = allTokens[coinId].totalEarned + (allTokens[coinId].balance / Math.pow(10, allTokens[coinId].decimals));
         if (tA > 0) {
             //only display the coin if the user has a balance
-            $('.coinlist').append('<span><div  class="coinImg" style=" position: absolute  ;margin-top: 5px;"><img src="/bitsAssets/images/currencies/' + coinName + '.png" alt="" style=" padding-left: 12px; height:30px;"></div><a href="" class="" class="" onclick=""><span style=" padding-left: 42px; text-transform: capitalize; ">' + coinName + '</span><span class="coin-' + coinName + '-bal" style=" float:right; line-height: 3.3;position: absolute;right: 15px;"></span></a></span>')
-            $('.coin-' + coinName + '-bal').html('').append(tA.toFixed(5));
+            $('.coinlist').append('<span><div  class="coinImg" style=" position: absolute  ;margin-top: 5px;"><img src="/bitsAssets/images/currencies/' + coinName + '.png" alt="" style=" padding-left: 12px; height:30px;"></div><a href="" class="" class="" onclick=""><span style=" padding-left: 42px; text-transform: capitalize; ">' + coinName + '</span><span class="coin-' + coinId + '-bal" style=" float:right; line-height: 3.3;position: absolute;right: 15px;"></span></a></span>')
+            $('.coin-' + coinId + '-bal').html('').append(tA.toFixed(5));
 
         }
-        $('.coin-' + coinName + '-xrate').html('').append('1 ' + coinName + ' = ' + xx + ' ' + f.data.baseCd);
-        tBal = tBal + (tA * allTokens[coinName].rate * f.data.baseEx);
+        $('.coin-' + coinId + '-xrate').html('').append('1 ' + coinName + ' = ' + xx + ' ' + baseCd);
+        tBal = tBal + (tA * allTokens[coinId].rate * baseX);
         i++;
     }
 
-    $('#balance-coins').html('').append(tBal.toFixed(2) + ' ' + f.data.baseCd);
+    $('.balance-coins').html('').append(tBal.toFixed(2) + ' ' + baseCd);
 }

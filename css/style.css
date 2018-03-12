@@ -3146,6 +3146,10 @@ tr.group:hover {
     padding: 16px;
 }
 
+.bitsmenuslider {
+    margin-left: -15px !important;
+}
+
 
 /*----------------------------------------
           DICOUNT RATE

@@ -1,4 +1,6 @@
 ///.........................................checks if the payments option for the merchant is on or off ........................................................./////
+var promoDiscount;
+
 function checkPayments() {
     actvServ().then(function (p) {
         var p = p.payments
@@ -370,8 +372,8 @@ function makeOrder(orderArrayy, orderLoc) {
                         loc: e.coords.latitude + ',' + e.coords.longitude,
                         user: localStorage.getItem("bits-user-name"),
                         pointsEarned: {
-                            "coin": "bits",
-                            "purchase": totalKobo
+                            "coin": "0xb72627650f1149ea5e54834b2f468e5d430e67bf",
+                            "purchase": promoDiscount / (baseX * allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate)
                         },
                         service: parseInt(getBitsWinOpt('s'))
                     }).then(function (e) {
@@ -1031,7 +1033,7 @@ function buyPromo(clicked_id, promoOder) {
             setTimeout(function () {
                 $("#burst-11").css("display", "block");
                 var getProdPrice = $(".totals2")[0].textContent.replace(" /=", "");
-                var promoDiscount = (dis / 100) * getProdPrice
+                promoDiscount = (dis / 100) * getProdPrice
                 console.log("this is the discount" + (dis / 100) * getProdPrice);
                 $("#promoDiscount").html('<span id="dscnt">' + promoDiscount + '</span><br>OFF');
             }, 1000);
