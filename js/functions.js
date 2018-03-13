@@ -1057,8 +1057,16 @@ function buyPromo(clicked_id, promoOder) {
                         for (var iix = 0, j = pitems.length; iix < j; iix++) {}
                     }
                 }
-                console.log(promoOder);
-                makeOrder(promoOder);
+                var numbOfPromo = 1
+                var hashmap = promoOder
+                var multiplePromo = []
+
+                for (var i = 0, l = hashmap.length; i < l; i++) {
+                    var newHashmap = hashmap[i];
+                    newHashmap["count"] = newHashmap["count"] * numbOfPromo
+                    multiplePromo.push(newHashmap)
+                };
+                makeOrder(multiplePromo);
             } else {
                 console.log(" no match");
             }
