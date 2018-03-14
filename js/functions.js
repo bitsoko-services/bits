@@ -1003,6 +1003,7 @@ function buyPromo(clicked_id, promoOder) {
     // 	var lipromo = $(".bpr").attr("id");
     var w = clicked_id
     console.log(clicked_id);
+    var numbOfPromo = $(".promoInput-" + clicked_id).val();
     // 	console.log($(".bpr").attr("id"));
     // 	//console.log($(".bpr").attr("promo"));
     // 	var xx = document.getElementById(lipromo).id;
@@ -1057,8 +1058,15 @@ function buyPromo(clicked_id, promoOder) {
                         for (var iix = 0, j = pitems.length; iix < j; iix++) {}
                     }
                 }
-                console.log(promoOder);
-                makeOrder(promoOder);
+                var hashmap = promoOder
+                var multiplePromo = []
+
+                for (var i = 0, l = hashmap.length; i < l; i++) {
+                    var newHashmap = hashmap[i];
+                    newHashmap["count"] = newHashmap["count"] * numbOfPromo
+                    multiplePromo.push(newHashmap)
+                };
+                makeOrder(multiplePromo);
             } else {
                 console.log(" no match");
             }
