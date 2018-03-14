@@ -263,9 +263,9 @@ function populateService(mDet) {
                 '</div></div></div><div class="serviceListTitle bits-ellipsis" style="margin-top: ;width: 100%;position: relative;text-align: center;background: rgba(255, 255, 255, 0.87);"> ' + mDet.promotions[ii].promoName +
                 ' </div>' + '<span class="title"></span>' + '<p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge displayNone bits left" style="margin-left: 20px;">' + Math.ceil(dailyCost) +
                 ' <span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>' +
-                '<div><a onclick="buyPromo(this.id)" id="' + mDet.promotions[ii].id +
+                '<div class="row"> <div class="col s4"><a onclick="buyPromo(this.id)" id="' + mDet.promotions[ii].id +
                 '" class="bpr bpromo' + mDet.promotions[ii].id +
-                ' waves-effect waves-light " style="padding: 2px;margin-left: 20px;margin-top: -10px;"><span style=" color: ' + mDet.theme + ' !important;margin: 10px 0px;border: 2px solid ' + mDet.theme + ';padding: 2px 10px;border-radius: 20px;">Buy</span></a><div class="switch " style="width: 190px;margin-top: -5px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-' + mDet.promotions[ii].id +
+                ' waves-effect waves-light " style=" color: ' + mDet.theme + ' !important;margin: 10px 0px;border: 2px solid ' + mDet.theme + ';padding: 2px 10px;border-radius: 20px;">Buy</a></div><div class="col s5 right"><div class="row" style="margin-bottom: 0px; padding-top: 10px;"> <div class="col s4" style="text-align: center; padding:0px;"><button style="border-radius: 50%; height: 30px; width: 30px; line-height: 20px; font-size: 1.2em;" class="btn bits promoMinusBtn" disabled="disabled">-</button></div><div class="col s4" style="padding:0px;"><div class="row" style="margin-bottom: 0px;"> <div class="input-field col s12" style="margin-top: 0px;"> <input value="1" type="number" class="validate inputNo promoInput-' + mDet.promotions[ii].id + '" style="text-align: center;margin-bottom: 0px; margin-top:-15px;"> <label class="active" for="inputNo"></label> </div></div></div><div class="col s4" style="text-align: center; padding:0px;"><button style="border-radius: 50%; height: 30px; width: 30px; line-height: 20px; font-size: 1.2em;" class="btn bits promoPlusBtn">+</button></div></div></div><div class="switch " style="width: 190px;margin-top: 15px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-' + mDet.promotions[ii].id +
                 '">Not Subscribed</span> <label><input type="checkbox" dailyR="' + Math.ceil(dailyCost) + '" pid="' + mDet.promotions[ii].id +
                 '" class="promoSubButton bits promoSubButton-' + mDet.promotions[ii].id +
                 '" style=""> <span style="margin-top:2px;" class="lever bits right"></span></label></div></div><center><p style=" bottom: 0px;text-align: center;width: 70%;" class="displayNone serviceListseccondline "><i style="float: left;" class="serviceListseccondline promo-state-icon mdi-notification-sync"> 0 shares</i><i class="promo-state-icon mdi-action-favorite"> 0 likes </i><i style="float: right;" class="promo-state-icon mdi-action-receipt"> 0 sales </i></p></center></li>');
@@ -430,6 +430,29 @@ function populateService(mDet) {
         Materialize.toast('Please verifiy your mobile number<div class="right verifyPhoneNumb" style="color:yellow;">verify</button>', null, "mobiVerificationToast");
     }
 }
+
+//Multiple promo function
+$(document).on("click", ".promoPlusBtn ", function () {
+    var promoInput = $(this).parent().parent().find(".inputNo");
+    var newPromoVal = JSON.parse(promoInput.val()) + 1
+    var minusBtn = $(this).parent().parent().find(".promoMinusBtn")
+    console.log(minusBtn)
+
+    minusBtn.attr("disabled", false)
+    promoInput.val(newPromoVal)
+})
+$(document).on("click", ".promoMinusBtn ", function () {
+    var minusBtn = $(this)
+    var promoInput = $(this).parent().parent().find(".inputNo");
+    var newPromoVal = JSON.parse(promoInput.val()) - 1
+
+
+    if (promoInput.val() == 1) {
+        minusBtn.attr("disabled", true)
+    }
+    promoInput.val(newPromoVal)
+})
+
 $(document).on("click", ".verifyPhoneNumb ", function () {
     $("#MobileModal").openModal()
 })

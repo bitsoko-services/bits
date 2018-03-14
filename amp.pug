@@ -1017,11 +1017,11 @@ html(⚡='')
                 span(class='mnm') #{body}
                 br
                   
-    mixin listpromo(item,title,desc,id,promoOwner)
+    mixin listpromo(item,title,desc,id,promoOwner,discount)
             amp-img.pic(src=item, width='580', height='300', layout='responsive', alt=title)
                div.entPromoDisc
                 p #{discount}
-                    span(id="percOff") OFF
+                    span(id="percOff") BACK
                .cption
                    amp-fit-text.caption.center(layout='responsive', width='500', height='250')
                    br
@@ -1129,7 +1129,7 @@ html(⚡='')
             .col-12.fill.dsdw
               amp-carousel.sb(height='347', layout='fixed-height', type='slides', controls loop autoplay delay='3000', data-next-button-aria-label='Go to next slide', data-previous-button-aria-label='Go to revious slide')
                 for promo in promos
-                    +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.id,promo.promoOwner)
+                    +listpromo(promo.promoBanner,promo.promoName,promo.promoDesc,promo.id,promo.promoOwner,promo.discount)
         br
         div
          h2.aboutHeader #{entSettings.entAboutTitle}

@@ -1003,6 +1003,7 @@ function buyPromo(clicked_id, promoOder) {
     // 	var lipromo = $(".bpr").attr("id");
     var w = clicked_id
     console.log(clicked_id);
+    var numbOfPromo = $(".promoInput-" + clicked_id).val();
     // 	console.log($(".bpr").attr("id"));
     // 	//console.log($(".bpr").attr("promo"));
     // 	var xx = document.getElementById(lipromo).id;
@@ -1057,7 +1058,6 @@ function buyPromo(clicked_id, promoOder) {
                         for (var iix = 0, j = pitems.length; iix < j; iix++) {}
                     }
                 }
-                var numbOfPromo = 1
                 var hashmap = promoOder
                 var multiplePromo = []
 
