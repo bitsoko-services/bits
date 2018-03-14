@@ -1030,10 +1030,10 @@ function buyPromo(clicked_id, promoOder) {
                 continue;
             }
             dis = JSON.parse(pd[ixi].discount);
-            console.log("discount", dis);
+            console.log("discount is >>>>>>>>>", dis);
             setTimeout(function () {
                 $("#burst-11").css("display", "block");
-                var getProdPrice = $(".totals2")[0].textContent.replace(" /=", "");
+                var getProdPrice = document.getElementById("totals").innerHTML;
                 promoDiscount = (dis / 100) * getProdPrice
                 console.log("this is the discount" + (dis / 100) * getProdPrice);
                 $("#promoDiscount").html('<span id="dscnt">' + promoDiscount + '</span><br>OFF');
