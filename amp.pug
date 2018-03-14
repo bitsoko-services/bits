@@ -895,14 +895,23 @@ html(⚡='')
             position: absolute;
             font-size: 2em;
             margin: 0px;
-            left: 10px;
+            left: 17px;
             top: 16px;
             line-height: 0.8;
             text-align: center;
             margin-left: 5px;
       }
       #percOff{
-        font-size: 19px;
+            z-index: 2;
+            color: white;
+            position: absolute;
+            font-size: 1em;
+            margin: 0px;
+            left: 15px;
+            top: 50px;
+            line-height: 0.8;
+            text-align: center;
+            margin-left: 5px;
        }
       
       
@@ -1021,7 +1030,7 @@ html(⚡='')
     mixin listpromo(item,title,desc,id,promoOwner,discount)
             amp-img.pic(src=item, width='580', height='300', layout='responsive', alt=title)
                div.entPromoDisc
-                p #{discount}
+                p #{discount}%
                 br
                 span(id="percOff") BACK
                .cption
