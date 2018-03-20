@@ -169,6 +169,7 @@ function populateService(mDet) {
     console.log(mDet.id)
     console.log(mDet);
     var getPhnNo = mDet.phone
+
     //Check User Phone Number
     if (getPhnNo == "") {
         alert(getPhnNo)
@@ -178,6 +179,7 @@ function populateService(mDet) {
         $(".mobiVerificationToast").remove();
         Materialize.toast('Please verifiy your mobile number<div class="right verifyPhoneNumb" style="color:yellow;">verify</button>', null, "mobiVerificationToast");
     }
+
     bitsTheme(mDet.theme);
     $(".resDisplay").html(mDet.name);
     document.querySelector('.serviceName').innerHTML = mDet.name;
