@@ -86,7 +86,7 @@ function getUserOders(f) {
                         var purchasePoints = 0;
                     }
                 } catch (err) {
-                    console.log('this order does not have any purchase rewards',err);
+                    console.log('this order does not have any purchase rewards', err);
                     var purchasePoints = 0;
                 }
                 try {
@@ -95,7 +95,7 @@ function getUserOders(f) {
                         var deliveryPoints = 0;
                     }
                 } catch (err) {
-                     console.log('this order does not have any delivery rewards',err);
+                    console.log('this order does not have any delivery rewards', err);
                     var deliveryPoints = 0;
                 }
                 try {
@@ -107,7 +107,7 @@ function getUserOders(f) {
                 }
 
                 console.log(typeofCoin, purchasePoints, deliveryPoints);
-                
+
 
             };
 
@@ -147,7 +147,7 @@ function updateEarnedTokens(f) {
         var koboRate = Math.floor(rate * baseX);
         var qq = rate * baseX;
         var xx = qq.toFixed(2);
-        var coinId= at[i];
+        var coinId = at[i];
         var tA = allTokens[coinId].totalEarned + (allTokens[coinId].balance / Math.pow(10, allTokens[coinId].decimals));
         if (tA > 0) {
             //only display the coin if the user has a balance
@@ -162,3 +162,13 @@ function updateEarnedTokens(f) {
 
     $('.balance-coins').html('').append(tBal.toFixed(2) + ' ' + baseCd);
 }
+
+
+//Check Bal Interval 
+var checkBal = window.setInterval(function () {
+    if ($("#checkBal")[0].innerHTML == "") {
+        updateEarnedTokens()
+    } else {
+        clearInterval(checkBal);
+    }
+}, 7000);
