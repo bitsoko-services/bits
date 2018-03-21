@@ -338,106 +338,110 @@ function makeOrder(orderArrayy, orderLoc) {
     console.log('1 checking mobile verifications');
     console.log('2 done checking mobile verifications');
     //Check User Phone Number
-    if (getPhnNo == "") {
-        $(".mobiVerificationToast").remove();
-        Materialize.toast('Please verifiy your mobile number<div class="right verifyPhoneNumb" style="color:yellow;">verify</button>', null, "mobiVerificationToast");
-    } else if (getPhnNo == null) {
-        $(".mobiVerificationToast").remove();
-        Materialize.toast('Please verifiy your mobile number<div class="right verifyPhoneNumb" style="color:yellow;">verify</button>', null, "mobiVerificationToast");
-    } else {
-        actvServ().then(function (p) {
-            console.log('3');
-            //var p=p.deliveries
-            // 	var p=p.payments
-            // if (p){console.log("payments are on")}else{
-            // 	swal("Sorry", "payments for this shop not available", "error");
-            // 		return;
-            // }
-            // var t=document.querySelectorAll(".bitsInputQty");
-            // for(var i = 0; i< t.length; ++i){
-            // 	try{
-            // 	}
-            // 	catch (err) {}
-            // }
-            getLoc().then(function showPosition(e) {
-                console.log('4');
-                var mapLocc = orderLoc ? orderLoc : e.coords.latitude + ',' + e.coords.longitude;
-                console.log(orderLoc, e, mapLocc);
-                getCoordDet(mapLocc).then(function (mapData) {
-                    getProdss(orderArrayy);
+    doFetch({
+        action: 'userVerified',
+        uid: localStorage.getItem("bits-user-name")
+    }).then(function (e) {
+        if (e.status == "ok") {
+            actvServ().then(function (p) {
+                console.log('3');
+                //var p=p.deliveries
+                // 	var p=p.payments
+                // if (p){console.log("payments are on")}else{
+                // 	swal("Sorry", "payments for this shop not available", "error");
+                // 		return;
+                // }
+                // var t=document.querySelectorAll(".bitsInputQty");
+                // for(var i = 0; i< t.length; ++i){
+                // 	try{
+                // 	}
+                // 	catch (err) {}
+                // }
+                getLoc().then(function showPosition(e) {
+                    console.log('4');
+                    var mapLocc = orderLoc ? orderLoc : e.coords.latitude + ',' + e.coords.longitude;
+                    console.log(orderLoc, e, mapLocc);
+                    getCoordDet(mapLocc).then(function (mapData) {
+                        getProdss(orderArrayy);
 
-                    function doSendOrder() {
-                        $("#products").html("")
-                        //transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', 'bits', globalDel).then(function(res) {
-                        //console.log(res);
-                        //sent escrow to server so complete order
-                        doFetch({
-                            action: 'makeOrder',
-                            data: orderArrayy,
-                            //EarnedKobo: totalKobo,
-                            delPrice: globalDel,
-                            loc: e.coords.latitude + ',' + e.coords.longitude,
-                            user: localStorage.getItem("bits-user-name"),
-                            pointsEarned: {
-                                "coin": "0xb72627650f1149ea5e54834b2f468e5d430e67bf",
-                                "purchase": promoDiscount / (baseX * allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate)
-                            },
-                            service: parseInt(getBitsWinOpt('s'))
-                        }).then(function (e) {
-                            $("#appendPushSubs").remove();
-                            if (e.status == "ok") {
-                                console.log('5');
+                        function doSendOrder() {
+                            $("#products").html("")
+                            //transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', 'bits', globalDel).then(function(res) {
+                            //console.log(res);
+                            //sent escrow to server so complete order
+                            doFetch({
+                                action: 'makeOrder',
+                                data: orderArrayy,
+                                //EarnedKobo: totalKobo,
+                                delPrice: globalDel,
+                                loc: e.coords.latitude + ',' + e.coords.longitude,
+                                user: localStorage.getItem("bits-user-name"),
+                                pointsEarned: {
+                                    "coin": "0xb72627650f1149ea5e54834b2f468e5d430e67bf",
+                                    "purchase": promoDiscount / (baseX * allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate)
+                                },
+                                service: parseInt(getBitsWinOpt('s'))
+                            }).then(function (e) {
+                                $("#appendPushSubs").remove();
+                                if (e.status == "ok") {
+                                    console.log('5');
 
-                                document.getElementById("ConfirmO").removeEventListener("click", doSendOrder);
+                                    document.getElementById("ConfirmO").removeEventListener("click", doSendOrder);
 
-                                $('#modalconfirm').closeModal();
-                                swal("success!", "your order has been sent!", "success");
-                                $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input onclick="startPushManager();" class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
+                                    $('#modalconfirm').closeModal();
+                                    swal("success!", "your order has been sent!", "success");
+                                    $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input onclick="startPushManager();" class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
+                                    clearCart();
+                                } else {
+                                    swal("Cancelled", "your order is not sent", "error");
+                                }
+                            })
+                            //}).catch(function(err) {
+                            //	Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 3000);
+                            //	console.log(err)
+                            //})
+                        }
+                        $(".confirmText").html("")
+                        $(".confirmText").append()
+                        $(".del").html("")
+                        $(".del").append()
+                        $(".mapText").html("")
+                        $(".mapdata").attr('src', mapData[0]);
+                        $(".mapText").append("Pick up / Drop off :" + mapData[1].results[0].formatted_address);
+                        $('#modalconfirm').modal({
+
+                            complete: function () {
                                 clearCart();
-                            } else {
-                                swal("Cancelled", "your order is not sent", "error");
-                            }
+                            } // Callback for Modal close
                         })
-                        //}).catch(function(err) {
-                        //	Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 3000);
-                        //	console.log(err)
-                        //})
-                    }
-                    $(".confirmText").html("")
-                    $(".confirmText").append()
-                    $(".del").html("")
-                    $(".del").append()
-                    $(".mapText").html("")
-                    $(".mapdata").attr('src', mapData[0]);
-                    $(".mapText").append("Pick up / Drop off :" + mapData[1].results[0].formatted_address);
-                    $('#modalconfirm').modal({
+                        $('#modalconfirm').openModal({
+                            dismissible: false
+                        });
+                        $('.star2').addClass('animated shake'), setTimeout(function () {
+                            $('.star2').removeClass('animated shake')
+                        }, 1000);
+                        document.getElementById("CancelO").addEventListener("click", function () {
 
-                        complete: function () {
-                            clearCart();
-                        } // Callback for Modal close
-                    })
-                    $('#modalconfirm').openModal({
-                        dismissible: false
+                            document.getElementById("ConfirmO").removeEventListener("click", doSendOrder);
+                            clearCart()
+                            $("#products").html("")
+                        });
+                        document.getElementById("ConfirmO").addEventListener("click", doSendOrder);
+                    }).catch(function () {
+                        //toast location error
+                        Materialize.toast('<span class="toastlogin">Turn on your location', 3000);
                     });
-                    $('.star2').addClass('animated shake'), setTimeout(function () {
-                        $('.star2').removeClass('animated shake')
-                    }, 1000);
-                    document.getElementById("CancelO").addEventListener("click", function () {
-
-                        document.getElementById("ConfirmO").removeEventListener("click", doSendOrder);
-                        clearCart()
-                        $("#products").html("")
-                    });
-                    document.getElementById("ConfirmO").addEventListener("click", doSendOrder);
-                }).catch(function () {
-                    //toast location error
-                    Materialize.toast('<span class="toastlogin">Turn on your location', 3000);
                 });
-            });
-            //function showPosition(e){getCoordDet(e.coords.latitude+','+e.coords.longitude).then(function(mapData){$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address); })}getLoc()
-        })
-    }
-
+                //function showPosition(e){getCoordDet(e.coords.latitude+','+e.coords.longitude).then(function(mapData){$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address); })}getLoc()
+            })
+        } else if (e.status == "bad") {
+            $(".mobiVerificationToast").remove();
+            Materialize.toast('Please verifiy your mobile number<div class="right verifyPhoneNumb" style="color:yellow;">verify</button>', null, "mobiVerificationToast");
+        } else {
+            $(".mobiVerificationToast").remove();
+            Materialize.toast('Please verifiy your mobile number<div class="right verifyPhoneNumb" style="color:yellow;">verify</button>', null, "mobiVerificationToast");
+        }
+    })
 }
 // function mobiVerification() {
 // 	doFetch({
