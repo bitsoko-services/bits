@@ -12,11 +12,13 @@ html(⚡='')
     script(async='', custom-element='amp-fx-collection', src='https://cdn.ampproject.org/v0/amp-fx-collection-0.1.js')
     link(rel='canonical', href='https://ampbyexample.com/components/amp-carousel/')
     link(rel='prefetch', href='/soko/')
-    link(rel='prefetch', href='/tm/')
+    link(rel='prefetch', href='/tm/?cid='+entContract)
     script(async='', custom-element='amp-list', src='https://cdn.ampproject.org/v0/amp-list-0.1.js')
     script(async='', custom-element='amp-iframe', src='https://cdn.ampproject.org/v0/amp-iframe-0.1.js')
     script(async='', custom-element='amp-selector', src='https://cdn.ampproject.org/v0/amp-selector-0.1.js')
     script(async='', custom-template='amp-mustache', src='https://cdn.ampproject.org/v0/amp-mustache-0.1.js')
+    script(async='', custom-element='amp-fx-flying-carpet', src='https://cdn.ampproject.org/v0/amp-fx-flying-carpet-0.1.js')
+
     meta(name='viewport', content='width=device-width,minimum-scale=1,initial-scale=1')
     style(amp-boilerplate='').
       body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
@@ -29,6 +31,7 @@ html(⚡='')
             display: flex;
             flex-wrap: wrap;
         }
+        
         .imgSecCrd{
         text-align: center;
         width:90%;
@@ -396,6 +399,16 @@ html(⚡='')
       amp-sidebar {
       width: 250px;
       padding-right: 10px;
+      }
+      .parallax-image-window > amp-img.i-amphtml-element.i-amphtml-layout-responsive.i-amphtml-layout-size-defined.i-amphtml-layout:before {
+      content: "";
+      background: url(/bits/images/tex2.png), repeat, rgba(14, 6, 8, 0.3);
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: 2;
       }
       .blue-box, .red-box, .green-box {
       width: 100%;
@@ -1151,10 +1164,16 @@ html(⚡='')
                for sec1 in entSettings.entImageList
                   +listImageSection(sec1.title,sec1.icon,sec1.body)
         br
+        amp-fx-flying-carpet(height='200px')
+          amp-img(src=cover, width='1280', height='853', alt='an image')
+          div(style='position:absolute;z-index: 10;color:white')
+           p(style='font-size: 200%;text-align: center;width: 100%;') "Quick deliveries and great customer service! always on time"
+           br
+           br
         .shopCard.dsdw
           .row.shopLstHeader
             .col-6
-              h5 SHOPS
+              h5 SERVICES
             .col-6
               //button VIEW ALL
           br
