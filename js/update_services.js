@@ -1,3 +1,4 @@
+var getPhnNo;
 //-----------------------------------------updating service list function-------------------------------------------------------------------------------------------
 function updateServicelist() {
     activeService = $('#serviceModal').attr('service');
@@ -168,17 +169,7 @@ function doSubscribe() {
 function populateService(mDet) {
     console.log(mDet.id)
     console.log(mDet);
-    var getPhnNo = mDet.phone
-
-    //Check User Phone Number
-    if (getPhnNo == "") {
-        alert(getPhnNo)
-        $(".mobiVerificationToast").remove();
-        Materialize.toast('Please verifiy your mobile number<div class="right verifyPhoneNumb" style="color:yellow;">verify</button>', null, "mobiVerificationToast");
-    } else if (getPhnNo == null) {
-        $(".mobiVerificationToast").remove();
-        Materialize.toast('Please verifiy your mobile number<div class="right verifyPhoneNumb" style="color:yellow;">verify</button>', null, "mobiVerificationToast");
-    }
+    getPhnNo = mDet.phone
 
     bitsTheme(mDet.theme);
     $(".resDisplay").html(mDet.name);
