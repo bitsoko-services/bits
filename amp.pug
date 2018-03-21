@@ -31,6 +31,7 @@ html(⚡='')
             display: flex;
             flex-wrap: wrap;
         }
+        
         .imgSecCrd{
         text-align: center;
         width:90%;
@@ -398,6 +399,16 @@ html(⚡='')
       amp-sidebar {
       width: 250px;
       padding-right: 10px;
+      }
+      .parallax-image-window > amp-img.i-amphtml-element.i-amphtml-layout-responsive.i-amphtml-layout-size-defined.i-amphtml-layout:before {
+      content: "";
+      background: url(/bits/images/tex2.png), repeat, rgba(14, 6, 8, 0.3);
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: 2;
       }
       .blue-box, .red-box, .green-box {
       width: 100%;
