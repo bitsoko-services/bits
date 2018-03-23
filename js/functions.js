@@ -328,15 +328,20 @@ function makeOrder(orderArrayy, orderLoc) {
         Materialize.toast("Ooops! You didn't select any product", 2000);
         return;
     }
+    var minimumOrder = $("#totals")[0].innerHTML
     $('.delivery').addClass('animated jello');
     //checkanon();
     if (checkanon() == false) {
         $('#loginModal').openModal();
         return;
     }
-    if ($("#totals")[0].innerHTML <= 200) {
-        Materialize.toast("Ooops! Minimum order is Ksh. 200", 2000);
-    } else {
+    if (minimumOrder <= 200) {
+        Materialize.toast("Ooops! Minimum order is Ksh. 200", 2000, "minOrderToast");
+    } else if (minimumOrder >= 200) {
+        $("#totals").parent().addClass("granted");
+    }
+    if ($("#totals").parent().hasClass("granted") == true) {
+        $(".minOrderToast").remove();
         Materialize.toast('creating your order', 3000);
 
         //Check User Phone Number
@@ -411,14 +416,12 @@ function makeOrder(orderArrayy, orderLoc) {
                             $(".mapdata").attr('src', mapData[0]);
                             $(".mapText").append("Pick up / Drop off :" + mapData[1].results[0].formatted_address);
                             $('#modalconfirm').modal({
-
                                 complete: function () {
                                     clearCart();
-                                } // Callback for Modal close
-                            })
-                            $('#modalconfirm').openModal({
+                                    $("#totals").parent().removeClass("granted");
+                                },
                                 dismissible: false
-                            });
+                            }).modal("open");
                             $('.star2').addClass('animated shake'), setTimeout(function () {
                                 $('.star2').removeClass('animated shake')
                             }, 1000);
@@ -1003,6 +1006,8 @@ function buyPromo(clicked_id, promoOder) {
     var w = clicked_id
     console.log(clicked_id);
     var numbOfPromo = $(".promoInput-" + clicked_id).val();
+    $("#totals").parent().addClass("granted");
+    $("#totals").parent().parent().addClass("granted");
     // 	console.log($(".bpr").attr("id"));
     // 	//console.log($(".bpr").attr("promo"));
     // 	var xx = document.getElementById(lipromo).id;
