@@ -1,6 +1,6 @@
 // BITS Server-JavaScript Document
 try {
-    bitsVersion = 653;
+    bitsVersion = 654;
     // 	importScripts('https://bitsoko.co.ke/bitsAssets/js/lightwallet/lightwallet.min.js');
     // 	importScripts('https://bitsoko.co.ke/bitsAssets/js/web3/web3.js');
     // 	importScripts('https://bitsoko.co.ke/bitsAssets/js/hooked-web3-provider/build/hooked-web3-provider.js');
@@ -123,9 +123,6 @@ try {
                         bitsNotification('Order ' + dat.oid + ' Delivery', 'Your order is being delivered', tg, 'bits/images/Delivered.png', dat.orderImg, [{
                             action: 'open',
                             title: "Open"
-						}, {
-                            action: 'cancel',
-                            title: "Cancel"
 						}, {
                             action: 'pay',
                             title: "Pay"
