@@ -1172,7 +1172,7 @@ html(⚡='')
         amp-fx-flying-carpet(height='200px')
           amp-img(src=cover, width='1280', height='853', alt='an image')
             for review in reviews
-              listreviews(review.revName,review.revIcon,review.revMsg)
+              +listreviews(review.revName,review.revIcon,review.revMsg)
         .shopCard.dsdw
           .row.shopLstHeader
             .col-6
