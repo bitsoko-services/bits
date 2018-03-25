@@ -121,9 +121,6 @@ try {
 						}], true, true);
                     } else if (state == 'delivering') {
                         bitsNotification('Order ' + dat.oid + ' Delivery', 'Your order is being delivered', tg, 'bits/images/Delivered.png', dat.orderImg, [{
-                            action: 'open',
-                            title: "Open"
-						}, {
                             action: 'cancel',
                             title: "Cancel"
 						}, {
