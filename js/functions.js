@@ -373,19 +373,20 @@ function makeOrder(orderArrayy, orderLoc) {
 
                             function doSendOrder() {
                                 $("#products").html("")
-                                //transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', 'bits', globalDel).then(function(res) {
+                                var totCost=parseFloat($("#totals")[0].innerHTML)+globalDel;
+                                transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function(res) {
                                 //console.log(res);
                                 //sent escrow to server so complete order
                                 doFetch({
                                     action: 'makeOrder',
                                     data: orderArrayy,
-                                    //EarnedKobo: totalKobo,
+                                    hash: res,
                                     delPrice: globalDel,
                                     loc: e.coords.latitude + ',' + e.coords.longitude,
                                     user: localStorage.getItem("bits-user-name"),
                                     pointsEarned: {
-                                        "coin": "0xb72627650f1149ea5e54834b2f468e5d430e67bf",
-                                        "purchase": promoDiscount / (baseX * allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate)
+                                        "coin": enterpriseContract,
+                                        "purchase": promoDiscount / (baseX * allTokens[enterpriseContract].rate)
                                     },
                                     service: parseInt(getBitsWinOpt('s'))
                                 }).then(function (e) {
@@ -403,10 +404,10 @@ function makeOrder(orderArrayy, orderLoc) {
                                         swal("Cancelled", "your order is not sent", "error");
                                     }
                                 })
-                                //}).catch(function(err) {
-                                //	Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 3000);
-                                //	console.log(err)
-                                //})
+                                }).catch(function(err) {
+                                	Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 3000);
+                                	console.log(err)
+                                })
                             }
                             $(".confirmText").html("")
                             $(".confirmText").append()
