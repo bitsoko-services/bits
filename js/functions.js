@@ -373,40 +373,42 @@ function makeOrder(orderArrayy, orderLoc) {
 
                             function doSendOrder() {
                                 $("#products").html("")
-                                var totCost=parseFloat($("#totals")[0].innerHTML)+globalDel;
-                                transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function(res) {
-                                //console.log(res);
-                                //sent escrow to server so complete order
-                                doFetch({
-                                    action: 'makeOrder',
-                                    data: orderArrayy,
-                                    hash: res,
-                                    delPrice: globalDel,
-                                    loc: e.coords.latitude + ',' + e.coords.longitude,
-                                    user: localStorage.getItem("bits-user-name"),
-                                    pointsEarned: {
-                                        "coin": enterpriseContract,
-                                        "purchase": promoDiscount / (baseX * allTokens[enterpriseContract].rate)
-                                    },
-                                    service: parseInt(getBitsWinOpt('s'))
-                                }).then(function (e) {
-                                    $("#appendPushSubs").remove();
-                                    if (e.status == "ok") {
-                                        console.log('5');
+                                var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
+                                transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function (res) {
+                                    //console.log(res);
+                                    //sent escrow to server so complete order
+                                    doFetch({
+                                        action: 'makeOrder',
+                                        data: orderArrayy,
+                                        hash: res,
+                                        delPrice: globalDel,
+                                        loc: e.coords.latitude + ',' + e.coords.longitude,
+                                        user: localStorage.getItem("bits-user-name"),
+                                        pointsEarned: {
+                                            "coin": enterpriseContract,
+                                            "purchase": promoDiscount / (baseX * allTokens[enterpriseContract].rate)
+                                        },
+                                        service: parseInt(getBitsWinOpt('s'))
+                                    }).then(function (e) {
+                                        $("#appendPushSubs").remove();
+                                        if (e.status == "ok") {
+                                            console.log('5');
 
-                                        document.getElementById("ConfirmO").removeEventListener("click", doSendOrder);
+                                            document.getElementById("ConfirmO").removeEventListener("click", doSendOrder);
 
-                                        $('#modalconfirm').closeModal();
-                                        swal("success!", "your order has been sent!", "success");
-                                        $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input onclick="startPushManager();" class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
-                                        clearCart();
-                                    } else {
-                                        swal("Cancelled", "your order is not sent", "error");
-                                    }
-                                })
-                                }).catch(function(err) {
-                                	Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 3000);
-                                	console.log(err)
+                                            $('#modalconfirm').closeModal();
+                                            swal("success!", "your order has been sent!", "success");
+                                            $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input onclick="startPushManager();" class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
+                                            clearCart();
+                                        } else {
+                                            swal("Cancelled", "your order is not sent", "error");
+                                        }
+                                    })
+                                }).catch(function (err) {
+                                    Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 6000);
+                                    $('#modalconfirm').closeModal();
+                                    clearCart();
+                                    console.log(err)
                                 })
                             }
                             $(".confirmText").html("")
