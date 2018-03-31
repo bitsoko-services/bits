@@ -138,7 +138,9 @@ function updateEarnedTokens(f) {
     tBal = 0;
     
     for(var i in at) {
-
+if(!location.origin.includes(allTokens[allTokens['allContracts'][at[i]]].webpage)){
+   continue;
+   }
 try{
         var rate = allTokens[at[i]].rate;
         var coinName = allTokens[at[i]].name;
