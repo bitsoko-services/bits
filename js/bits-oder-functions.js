@@ -138,7 +138,7 @@ function updateEarnedTokens(f) {
     tBal = 0;
     
     for(var i in at) {
-if(!(location.origin+'/').includes(allTokens[allTokens['allContracts'][at[i]]].webpage)){
+if(!(location.origin+'/').includes(allTokens[at[i]].webpage)){
    continue;
    }
 try{
