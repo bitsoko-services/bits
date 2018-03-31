@@ -164,7 +164,7 @@ try{
         i++;
     }
 
-    $('.balance-coins').html('').append(tBal.toFixed(2) + ' ' + baseCd);
+    $('.balance-coins').html('').append(numberify(tBal.toFixed(2)) + ' ' + baseCd);
 }
 
 
