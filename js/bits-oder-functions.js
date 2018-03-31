@@ -136,7 +136,8 @@ function updateEarnedTokens(f) {
     var i = 0;
     var tCe = 0;
     tBal = 0;
-    while (at[i]) {
+    
+    for(var i in at) {
 
 
         var rate = allTokens[at[i]].rate;
