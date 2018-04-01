@@ -377,7 +377,6 @@ function makeOrder(orderArrayy, orderLoc) {
                                 transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function (res) {
                                     console.log(res);
                                     //sent escrow to server so complete order
-                                    alert("running 1")
                                     doFetch({
                                         action: 'makeOrder',
                                         data: orderArrayy,
@@ -406,13 +405,12 @@ function makeOrder(orderArrayy, orderLoc) {
                                             swal("Cancelled", "your order is not sent", "error");
                                         }
                                     })
+                                }).catch(function (err) {
+                                    Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 6000);
+                                    $('#modalconfirm').closeModal();
+                                    clearCart();
+                                    console.log(err)
                                 })
-//                                    .catch(function (err) {
-            //                                    Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 6000);
-            //                                    $('#modalconfirm').closeModal();
-            //                                    //                                    clearCart();
-            //                                    console.log(err)
-            //                                })
                             }
                             $(".confirmText").html("")
                             $(".confirmText").append()
