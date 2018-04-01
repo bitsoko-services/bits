@@ -136,9 +136,13 @@ function updateEarnedTokens(f) {
     var i = 0;
     var tCe = 0;
     tBal = 0;
-    while (at[i]) {
+    
+    for(var i in at) {
 
-
+try{
+    if(!(location.origin+'/').includes(allTokens[at[i]].webpage)){
+   continue;
+   }
         var rate = allTokens[at[i]].rate;
         var coinName = allTokens[at[i]].name;
         //if i have 1000 kobos
@@ -157,10 +161,13 @@ function updateEarnedTokens(f) {
         }
         $('.coin-' + coinId + '-xrate').html('').append('1 ' + coinName + ' = ' + xx + ' ' + baseCd);
         tBal = tBal + (tA * allTokens[coinId].rate * baseX);
+    }catch(e){
+        console.log(e)
+    }
         i++;
     }
 
-    $('.balance-coins').html('').append(tBal.toFixed(2) + ' ' + baseCd);
+    $('.balance-coins').html('').append(numberify(tBal,2) + ' ' + baseCd);
 }
 
 
