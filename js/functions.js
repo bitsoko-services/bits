@@ -375,8 +375,9 @@ function makeOrder(orderArrayy, orderLoc) {
                                 $("#products").html("")
                                 var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
                                 transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function (res) {
-                                    //console.log(res);
+                                    console.log(res);
                                     //sent escrow to server so complete order
+                                    alert("running 1")
                                     doFetch({
                                         action: 'makeOrder',
                                         data: orderArrayy,
@@ -391,6 +392,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                         service: parseInt(getBitsWinOpt('s'))
                                     }).then(function (e) {
                                         $("#appendPushSubs").remove();
+                                        alert("running 2")
                                         if (e.status == "ok") {
                                             console.log('5');
 
@@ -404,12 +406,13 @@ function makeOrder(orderArrayy, orderLoc) {
                                             swal("Cancelled", "your order is not sent", "error");
                                         }
                                     })
-                                }).catch(function (err) {
-                                    Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 6000);
-                                    $('#modalconfirm').closeModal();
-                                    clearCart();
-                                    console.log(err)
                                 })
+//                                    .catch(function (err) {
+            //                                    Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 6000);
+            //                                    $('#modalconfirm').closeModal();
+            //                                    //                                    clearCart();
+            //                                    console.log(err)
+            //                                })
                             }
                             $(".confirmText").html("")
                             $(".confirmText").append()
