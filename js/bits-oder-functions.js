@@ -138,10 +138,11 @@ function updateEarnedTokens(f) {
     tBal = 0;
     
     for(var i in at) {
-if(!(location.origin+'/').includes(allTokens[at[i]].webpage)){
+
+try{
+    if(!(location.origin+'/').includes(allTokens[at[i]].webpage)){
    continue;
    }
-try{
         var rate = allTokens[at[i]].rate;
         var coinName = allTokens[at[i]].name;
         //if i have 1000 kobos
