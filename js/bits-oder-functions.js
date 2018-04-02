@@ -2,13 +2,6 @@
 function oid() {
     //Get Token Balance
     $("#tokenBal").html(allTokens.balanceTokens.totalEarned.toFixed(2) + " tokens");
-    //Load Wallet
-    $(".walletToast").remove();
-    if (localStorage.getItem('bits-user-name') == null) {
-        console.log("Not logged in")
-    } else {
-        Materialize.toast('Unlock wallet <span class="right" style="color:yellow;" onclick="unlockWallet()">Unlock</span>', null, 'walletToast')
-    }
     if (window.location.hash != undefined) {
         //check if hash is oid
         var type = window.location.hash.substr(1);
