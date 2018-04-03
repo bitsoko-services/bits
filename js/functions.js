@@ -1045,7 +1045,7 @@ function buyPromo(clicked_id, promoOder) {
                 promoDiscount = (dis / 100) * getProdPrice
                 console.log("this is the discount" + (dis / 100) * getProdPrice);
                 $("#promoDiscount").html('<span id="dscnt">' + promoDiscount + '</span><br>OFF');
-            }, 1000);
+            }, 2000);
 
             //console.log(w , tt , "ww and tt");
             if (prid == w) {
