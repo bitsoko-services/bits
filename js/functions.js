@@ -375,7 +375,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                 $("#products").html("")
                                 var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
                                 transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function (res) {
-                                    //console.log(res);
+                                    console.log(res);
                                     //sent escrow to server so complete order
                                     doFetch({
                                         action: 'makeOrder',
