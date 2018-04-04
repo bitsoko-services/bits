@@ -102,6 +102,7 @@ $(function() {
   // Materialize Parallax
   $('.parallax').parallax();
   
+  /*
   // Materialize Modal
   var modInstance = M.Modal.init(document.querySelector('.modal-trigger'), {
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
@@ -109,7 +110,7 @@ $(function() {
       in_duration: 300, // Transition in duration
       out_duration: 200
   });
-  
+  */
 
   // Materialize scrollSpy
   $('.scrollspy').scrollSpy();
