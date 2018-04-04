@@ -104,6 +104,9 @@ $(function() {
   // Materialize Parallax
   $('.parallax').parallax();
   
+  // Collapsible options
+  $('.collapsible').collapsible();
+  
   /*
   // Materialize Modal
   var modInstance = M.Modal.init(document.querySelector('.modal-trigger'), {
