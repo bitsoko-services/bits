@@ -265,7 +265,7 @@ function checkanon() {
 function showLogin() {
     startGoogle();
     if (checkanon() == false) {
-        $('#loginModal').openModal()
+        $('#loginModal').modal('open');
     }
     return;
 }
@@ -336,7 +336,8 @@ function makeOrder(orderArrayy, orderLoc) {
     $('.delivery').addClass('animated jello');
     //checkanon();
     if (checkanon() == false) {
-        $('#loginModal').openModal();
+        
+        $('#loginModal').modal('open');
         return;
     }
     if (minimumOrder <= 200) {
