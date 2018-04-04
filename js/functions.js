@@ -329,7 +329,8 @@ function makeOrder(orderArrayy, orderLoc) {
     //Rewards();
     console.log("->", orderArrayy)
     if (orderArrayy === undefined || orderArrayy.length == 0) {
-        Materialize.toast("Ooops! You didn't select any product", 2000);
+        
+  M.toast({html: "Ooops! You didn't select any product"});
         return;
     }
     var minimumOrder = $("#totals")[0].innerHTML
@@ -341,14 +342,15 @@ function makeOrder(orderArrayy, orderLoc) {
         return;
     }
     if (minimumOrder <= 200) {
-        Materialize.toast("Ooops! Minimum order is Ksh. 200", 2000, "minOrderToast");
+        
+  M.toast({html: "Ooops! Minimum order is Ksh. 200"});
     } else if (minimumOrder >= 200) {
         $("#totals").parent().addClass("granted");
     }
     if ($("#totals").parent().hasClass("granted") == true) {
         $(".minOrderToast").remove();
-        Materialize.toast('creating your order', 3000);
 
+  M.toast({html: 'creating your order..'});
         //Check User Phone Number
         doFetch({
             action: 'userVerified',
@@ -403,7 +405,7 @@ function makeOrder(orderArrayy, orderLoc) {
 
                                                 document.getElementById("ConfirmO").removeEventListener("click", doSendOrder);
 
-                                                $('#modalconfirm').closeModal();
+                                                $('#modalconfirm').modal('close');
                                                 swal("success!", "your order has been sent!", "success");
                                                 $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input onclick="startPushManager();" class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
                                                 clearCart();
@@ -413,14 +415,14 @@ function makeOrder(orderArrayy, orderLoc) {
                                         })
                                     }).catch(function (err) {
                                         Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 6000);
-                                        $('#modalconfirm').closeModal();
+                                        $('#modalconfirm').modal('close');
                                         clearCart();
                                         console.log(err)
                                     })
 
                                 } else {
                                     Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 6000);
-                                    $('#modalconfirm').closeModal();
+                                    $('#modalconfirm').modal('close');
                                     clearCart();
                                 }
                             }
@@ -432,7 +434,7 @@ function makeOrder(orderArrayy, orderLoc) {
                             $(".mapdata").attr('src', mapData[0]);
                             $(".mapText").append("Pick up / Drop off :" + mapData[1].results[0].formatted_address);
                             $('#modalconfirm').modal({
-                                complete: function () {
+                                onOpenStart: function () {
                                     clearCart();
                                     $("#totals").parent().removeClass("granted");
                                 },
@@ -450,17 +452,22 @@ function makeOrder(orderArrayy, orderLoc) {
                             document.getElementById("ConfirmO").addEventListener("click", doSendOrder);
                         }).catch(function () {
                             //toast location error
-                            Materialize.toast('<span class="toastlogin">Turn on your location', 3000);
+                            
+                            M.toast({html: "Turn on your location!"});
+                            
                         });
                     });
                     //function showPosition(e){getCoordDet(e.coords.latitude+','+e.coords.longitude).then(function(mapData){$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address); })}getLoc()
                 })
             } else if (e.status == "bad") {
                 $(".mobiVerificationToast").remove();
-                Materialize.toast('Please verifiy your mobile number<div class="right verifyPhoneNumb" style="color:yellow;">verify</button>', null, "mobiVerificationToast");
+                
+            
+                            M.toast({html: "Please verifiy your mobile number"});
             } else {
                 $(".mobiVerificationToast").remove();
-                Materialize.toast('Please verifiy your mobile number<div class="right verifyPhoneNumb" style="color:yellow;">verify</button>', null, "mobiVerificationToast");
+            
+                            M.toast({html: "Please verifiy your mobile number"});
             }
         })
     }
