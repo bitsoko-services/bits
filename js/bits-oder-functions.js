@@ -129,46 +129,43 @@ function updateEarnedTokens(f) {
     var i = 0;
     var tCe = 0;
     tBal = 0;
-    
-    for(var i in at) {
 
-try{
-    if(!(location.origin+'/').includes(allTokens[at[i]].webpage)){
-   continue;
-   }
-        var rate = allTokens[at[i]].rate;
-        var coinName = allTokens[at[i]].name;
-        //if i have 1000 kobos
-        //var koboBalance = 1000;
-        //		console.log((rate*e.data.baseEx*koboBalance).toFixed(2)+' KES');
-        var koboRate = Math.floor(rate * baseX);
-        var qq = rate * baseX;
-        var xx = qq.toFixed(2);
-        var coinId = at[i];
-        var tA = allTokens[coinId].totalEarned + (allTokens[coinId].balance / Math.pow(10, allTokens[coinId].decimals));
-        if (tA > 0) {
-            //only display the coin if the user has a balance
-            $('.coinlist').append('<span><div  class="coinImg" style=" position: absolute  ;margin-top: 5px;"><img src="/bitsAssets/images/currencies/' + coinName + '.png" alt="" style=" padding-left: 12px; height:30px;"></div><a href="" class="" class="" onclick=""><span style=" padding-left: 42px; text-transform: capitalize; ">' + coinName + '</span><span class="coin-' + coinId + '-bal" style=" float:right; line-height: 3.3;position: absolute;right: 15px;"></span></a></span>')
-            $('.coin-' + coinId + '-bal').html('').append(tA.toFixed(5));
+    for (var i in at) {
 
+        try {
+            if (!(location.origin + '/').includes(allTokens[at[i]].webpage)) {
+                continue;
+            }
+            var rate = allTokens[at[i]].rate;
+            var coinName = allTokens[at[i]].name;
+            //if i have 1000 kobos
+            //var koboBalance = 1000;
+            //		console.log((rate*e.data.baseEx*koboBalance).toFixed(2)+' KES');
+            var koboRate = Math.floor(rate * baseX);
+            var qq = rate * baseX;
+            var xx = qq.toFixed(2);
+            var coinId = at[i];
+            var tA = allTokens[coinId].totalEarned + (allTokens[coinId].balance / Math.pow(10, allTokens[coinId].decimals));
+            if (tA > 0) {
+                //only display the coin if the user has a balance
+                $('.coinlist').append('<span><div  class="coinImg" style=" position: absolute  ;margin-top: 5px;"><img src="/bitsAssets/images/currencies/' + coinName + '.png" alt="" style=" padding-left: 12px; height:30px;"></div><a href="" class="" class="" onclick=""><span style=" padding-left: 42px; text-transform: capitalize; ">' + coinName + '</span><span class="coin-' + coinId + '-bal" style=" float:right; line-height: 3.3;position: absolute;right: 15px;"></span></a></span>')
+                $('.coin-' + coinId + '-bal').html('').append(tA.toFixed(5));
+
+            }
+            $('.coin-' + coinId + '-xrate').html('').append('1 ' + coinName + ' = ' + xx + ' ' + baseCd);
+            tBal = tBal + (tA * allTokens[coinId].rate * baseX);
+        } catch (e) {
+            console.log(e)
         }
-        $('.coin-' + coinId + '-xrate').html('').append('1 ' + coinName + ' = ' + xx + ' ' + baseCd);
-        tBal = tBal + (tA * allTokens[coinId].rate * baseX);
-    }catch(e){
-        console.log(e)
-    }
         i++;
     }
 
-    $('.balance-coins').html('').append(numberify(tBal,2) + ' ' + baseCd);
+    $('.balance-coins').html('').append(numberify(tBal, 2) + ' ' + baseCd);
 }
 
 
 //Check Bal Interval 
-var checkBal = window.setInterval(function () {
-    if ($("#checkBal")[0].innerHTML == "") {
-        updateEarnedTokens()
-    } else {
-        clearInterval(checkBal);
-    }
-}, 7000);
+window.setInterval(function () {
+    updateEarnedTokens();
+    console.log("running")
+}, 10000);
