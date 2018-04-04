@@ -69,7 +69,7 @@ function recoverOldWallets(olWals) {
 }
 
 function starting() {
-    $('#loginModal').closeModal()
+    //$('#loginModal').closeModal()
 
     startGoogle();
     serviceOpener();
