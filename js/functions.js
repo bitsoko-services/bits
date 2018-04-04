@@ -372,8 +372,8 @@ function makeOrder(orderArrayy, orderLoc) {
                             getProdss(orderArrayy);
 
                             function doSendOrder() {
-                               if(parseFloat($("#checkBal")[0].innerHTML)>(parseFloat($("#totals")[0].innerHTML) + globalDel)){
-                                 $("#products").html("")
+                                if(parseFloat($("#checkBal")[0].innerHTML)>(parseFloat($("#totals")[0].innerHTML) + globalDel)){
+                                $("#products").html("");
                                 var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
                                 transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function (res) {
                                     console.log(res);
@@ -412,7 +412,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                     clearCart();
                                     console.log(err)
                                 })
-                                
+
                                 }else{
                                 Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 6000);
                                     $('#modalconfirm').closeModal();
