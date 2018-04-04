@@ -112,7 +112,7 @@ $(function() {
       in_duration: 300, // Transition in duration
       out_duration: 200
   });
-  */
+ 
 
   // Materialize scrollSpy
   $('.scrollspy').scrollSpy();
@@ -178,7 +178,7 @@ $(function() {
   $('.rightside-navigation').height(righttnav).perfectScrollbar({
     suppressScrollX: true
   }); 
-  
+   */
   
   // Fullscreen
   function toggleFullScreen() {
