@@ -273,7 +273,11 @@ function showLogin() {
 //------------------function to pop up login toast--------------------------------------------------------------------
 function showlogintoast() {
     if (checkanon() == false) {
-        Materialize.toast('<span class="toastlogin">You are using the app anonymously.</span><a onclick="showLogin()" class="btn-flat toastlogin yellow-text">Login<a>', null, 'loginToast');
+   
+        M.toast({
+            displayLength: 1000000000,
+            html: '<span class="toastlogin">your wallet is locked</span><button id="toast-wallet-unlocker" onclick="showLogin()" class="btn-flat toast-action" ><span id="toast-wallet-unlocker-sp" style="pointer-events:none;" class="toastloginbutton">Unlock</span></button>'
+        });
     } else { //showuser()
         console.log("The user is signed in!")
     }
