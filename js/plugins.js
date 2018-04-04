@@ -54,6 +54,7 @@ $(function() {
   //var selElem = M.FormSelect.init(document.querySelector('select'), {});
   //$('select').material_select();
   // Set checkbox on forms.html to indeterminate
+  /*
   var indeterminateCheckbox = document.getElementById('indeterminate-checkbox');
   if (indeterminateCheckbox !== null)
     indeterminateCheckbox.indeterminate = true;
@@ -95,7 +96,7 @@ $(function() {
       alignment: 'left' // Displays dropdown with edge aligned to the left of button
     }
   );
-
+*/
   // Materialize Tabs
   $('.tab-demo').show().tabs();
   $('.tab-demo-active').show().tabs();
