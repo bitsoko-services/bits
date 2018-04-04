@@ -1,3 +1,5 @@
+var locInstance;
+
 function showPositionError(e) {
 
     try {
