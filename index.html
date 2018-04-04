@@ -1179,8 +1179,7 @@
         }
 
 
-        requestPersist();
-
+       
         function reload() {
             location.reload();
 
@@ -1305,21 +1304,9 @@
         // }});
 
         window.addEventListener('load', function() {
-            //your code right here;
-            /*
-	      var dReady = Promise.resolve('ok');
-	gapi.load('auth2', function() {
-	       gapi.auth2.init();
-	         gapi.client.load('drive', 'v2', readyDrive); 
-	   Promise.all([dReady,indexDbReady,gDriveReady]).then(values => { 
-	       document.querySelector(".js-push-button-notification").addEventListener('change', function(event) {
-	           startPushManager();
-	       });
-	       starting(); 
-	      });
+             //request persistent storage
+		requestPersist();
 
-	     });
-	     */
 
             //gDriveReady = Promise.race([]);
             startGoogle();
