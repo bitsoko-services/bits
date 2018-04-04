@@ -51,7 +51,8 @@ $(function() {
   * Plugin initialization
   ------------------------*/
   
-  $('select').material_select();
+  var selElem = M.FormSelect.init(document.querySelector('select'), {});
+  //$('select').material_select();
   // Set checkbox on forms.html to indeterminate
   var indeterminateCheckbox = document.getElementById('indeterminate-checkbox');
   if (indeterminateCheckbox !== null)
