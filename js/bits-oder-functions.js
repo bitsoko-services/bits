@@ -129,7 +129,6 @@ function updateEarnedTokens(f) {
     var i = 0;
     var tCe = 0;
     tBal = 0;
-
     for (var i in at) {
 
         try {
