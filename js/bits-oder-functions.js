@@ -167,5 +167,4 @@ function updateEarnedTokens(f) {
 //Check Bal Interval 
 window.setInterval(function () {
     updateEarnedTokens();
-    console.log("running")
 }, 10000);
