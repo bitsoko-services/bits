@@ -705,8 +705,7 @@ function fetchRatesProc(e) {
         }
 
         var contCoAdr = contracts[i].coinAddress.toLowerCase();
-        enterpriseContract = contCoAdr;
-
+        
         //specify ent contract
         if ((location.origin + '/').includes(contracts[i].webpage)) {
 
