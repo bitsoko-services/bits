@@ -3181,3 +3181,7 @@ tr.group:hover {
 .pointer-events {
     pointer-events: none !important;
 }
+
+.settingsCollapsible::after {
+    content: '';
+}
