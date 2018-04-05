@@ -27,6 +27,10 @@ aside>ul{
 
 /*--------------------------------custom toast------------------------------------------------------------------------   */
 
+body {
+    overflow-x: hidden;
+}
+
 .modalconfirm {
     top: 15% !important;
     height: 65% !important;
