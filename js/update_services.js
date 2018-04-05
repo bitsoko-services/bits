@@ -389,7 +389,7 @@ function populateService(mDet) {
             console.log("unable to validate categories")
         }
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        $('.prod').append('<span class="new badge bits" data-badge-caption="">' + mDet.list.length + '</span>');
+        $('.prod').html('<span class="new badge bits" data-badge-caption="">' + mDet.list.length + '</span>');
         $('.merchproducts').html("");
         for (var ii = 0; ii < mDet.list.length; ++ii) {
             if (mDet.list[ii].metric == null) {
