@@ -250,7 +250,7 @@ function populateService(mDet) {
         // $(".merchantsPromotions").removeClass("displayNone") 
         $('.merchPromo').append('<li id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong><center>No Promotions found</center></strong></p><p class="collections-content"></p></div></li></li>');
     } else {
-        $('.pro').append('<span class="new badge bits" data-badge-caption="">' + mDet.promotions.length + '</span>');
+        $('.pro').html('<span class="new badge bits" data-badge-caption="">' + mDet.promotions.length + '</span>');
         $('.merchPromo').html("");
         $(".merchantsPromotions").removeClass("displayNone")
         var nnew = [];
@@ -312,7 +312,7 @@ function populateService(mDet) {
             $('.doPayBut').removeClass('displayNone');
         }
         $('.serviceListCard').css('display', 'block');
-        $('.prod').append('<span class="new badge bits" data-badge-caption="">' + mDet.list.length + '</span>');
+        $('.prod').html('<span class="new badge bits" data-badge-caption="">' + mDet.list.length + '</span>');
         $('.userCont').html("");
         for (var ii = 0; ii < mDet.list.length; ++ii) {
             $('.userContacts').removeClass('displayNone');

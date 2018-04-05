@@ -3185,3 +3185,8 @@ tr.group:hover {
 .settingsCollapsible::after {
     content: '';
 }
+
+.pro .badge {
+    position: absolute;
+    right: 15px;
+}
