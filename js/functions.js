@@ -195,7 +195,11 @@ function showuser() {
             try {
                 var nam = JSON.parse(event.target.result);
                 //console.log(nam.name)
-                Materialize.toast('<span class="toastlogin">You are Signed in as: ' + nam.name, 1000, 'signedAsToast');
+                M.toast({
+                    html: '<span class="toastlogin">You are Signed in as: ' + nam.name,
+                    displayLength: 1000,
+                    classes: 'signedAsToast'
+                });
             } catch (err) {}
         };
 
@@ -205,7 +209,7 @@ function showuser() {
             .then(function (permissionStatus) {
                 console.log('geolocation permission state is ', permissionStatus.state);
                 if (permissionStatus.state != "granted") {
-                    //                    Materialize.toast("Notificatons are turned off <span class='turnOnNtfn' style='color:yellow;'>Turn on</span>", 5000, "notificationToast");
+                    //                    M.toast("Notificatons are turned off <span class='turnOnNtfn' style='color:yellow;'>Turn on</span>", 5000, "notificationToast");
                 }
 
                 permissionStatus.onchange = function () {
@@ -239,7 +243,7 @@ function showuserNumber() {
             try {
                 var no = JSON.parse(event.target.result);
                 console.log(no.tel)
-                // 	Materialize.toast('<span class="toastlogin">You are Signed in as: '+ nam.name, 10000);
+                // 	M.toast('<span class="toastlogin">You are Signed in as: '+ nam.name, 10000);
                 if (no.tel == null) {
                     $('#MobileModal').openModal()
                 }
@@ -273,7 +277,7 @@ function showLogin() {
 //------------------function to pop up login toast--------------------------------------------------------------------
 function showlogintoast() {
     if (checkanon() == false) {
-   
+
         M.toast({
             displayLength: 1000000000,
             html: '<span class="toastlogin">your wallet is locked</span><button id="toast-wallet-unlocker" onclick="showLogin()" class="btn-flat toast-action" ><span id="toast-wallet-unlocker-sp" style="pointer-events:none;" class="toastloginbutton">Unlock</span></button>'
@@ -307,7 +311,7 @@ function tabulateTotals() {
             totals = totals + (parseInt($(addproducts[i]).attr("price")) * parseInt(itVal));
             //console.log(totals);
             $(".recipt").html("");
-            //Materialize.toast('your total is'+ totals, 1000);delivery
+            //M.toast('your total is'+ totals, 1000);delivery
             // 	 $(".delivery").removeClass("displayNone");
             // 	 $(".floatingPrice").removeClass("displayNone");
             $(".totals").html(totals);
@@ -329,151 +333,159 @@ function makeOrder(orderArrayy, orderLoc) {
     //Rewards();
     console.log("->", orderArrayy)
     if (orderArrayy === undefined || orderArrayy.length == 0) {
-        
-  M.toast({html: "Ooops! You didn't select any product"});
+        M.toast({
+            html: "Ooops! You didn't select any product"
+        });
         return;
     }
     var minimumOrder = $("#totals")[0].innerHTML
     $('.delivery').addClass('animated jello');
     //checkanon();
     if (checkanon() == false) {
-        
         $('#loginModal').modal('open');
         return;
     }
     if (minimumOrder <= 200) {
-        
-  M.toast({html: "Ooops! Minimum order is Ksh. 200"});
+        M.toast({
+            html: "Ooops! Minimum order is Ksh. 200"
+        });
         return;
-        
+
     } else if (minimumOrder >= 200) {
         $("#totals").parent().addClass("granted");
     }
     if ($("#totals").parent().hasClass("granted") == true) {
         $(".minOrderToast").remove();
+        M.toast({
+            html: 'creating your order..',
+            displayLength: null
+        });
 
-  M.toast({html: 'creating your order..'});
-        //Check User Phone Number
-        doFetch({
-            action: 'userVerified',
-            uid: localStorage.getItem("bits-user-name")
-        }).then(function (e) {
-            if (e.status == "ok") {
-                actvServ().then(function (p) {
-                    console.log('3');
-                    //var p=p.deliveries
-                    // 	var p=p.payments
-                    // if (p){console.log("payments are on")}else{
-                    // 	swal("Sorry", "payments for this shop not available", "error");
-                    // 		return;
-                    // }
-                    // var t=document.querySelectorAll(".bitsInputQty");
-                    // for(var i = 0; i< t.length; ++i){
-                    // 	try{
-                    // 	}
-                    // 	catch (err) {}
-                    // }
-                    getLoc().then(function showPosition(e) {
-                        console.log('4');
-                        var mapLocc = orderLoc ? orderLoc : e.coords.latitude + ',' + e.coords.longitude;
-                        console.log(orderLoc, e, mapLocc);
-                        getCoordDet(mapLocc).then(function (mapData) {
-                            getProdss(orderArrayy);
+        actvServ().then(function (p) {
+            console.log('3');
+            //var p=p.deliveries
+            // 	var p=p.payments
+            // if (p){console.log("payments are on")}else{
+            // 	swal("Sorry", "payments for this shop not available", "error");
+            // 		return;
+            // }
+            // var t=document.querySelectorAll(".bitsInputQty");
+            // for(var i = 0; i< t.length; ++i){
+            // 	try{
+            // 	}
+            // 	catch (err) {}
+            // }
+            getLoc().then(function showPosition(e) {
+                console.log('4');
+                var mapLocc = orderLoc ? orderLoc : e.coords.latitude + ',' + e.coords.longitude;
+                console.log(orderLoc, e, mapLocc);
+                getCoordDet(mapLocc).then(function (mapData) {
+                    getProdss(orderArrayy);
 
-                            function doSendOrder() {
-                                if (parseFloat($("#checkBal")[0].innerHTML) > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
-                                    $("#products").html("");
-                                    var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
-                                    transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function (res) {
-                                        console.log(res);
-                                        //sent escrow to server so complete order
-                                        doFetch({
-                                            action: 'makeOrder',
-                                            data: orderArrayy,
-                                            hash: res,
-                                            delPrice: globalDel,
-                                            loc: e.coords.latitude + ',' + e.coords.longitude,
-                                            user: localStorage.getItem("bits-user-name"),
-                                            pointsEarned: {
-                                                "coin": enterpriseContract,
-                                                "purchase": promoDiscount / (baseX * allTokens[enterpriseContract].rate)
-                                            },
-                                            service: parseInt(getBitsWinOpt('s'))
-                                        }).then(function (e) {
-                                            $("#appendPushSubs").remove();
-                                            alert("running 2")
-                                            if (e.status == "ok") {
-                                                console.log('5');
+                    function doSendOrder() {
+                        if (parseFloat($("#checkBal")[0].innerHTML) > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
+                            $("#products").html("");
+                            var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
+                            transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function (res) {
+                                console.log(res);
+                                //sent escrow to server so complete order
+                                doFetch({
+                                    action: 'makeOrder',
+                                    data: orderArrayy,
+                                    hash: res,
+                                    delPrice: globalDel,
+                                    loc: e.coords.latitude + ',' + e.coords.longitude,
+                                    user: localStorage.getItem("bits-user-name"),
+                                    pointsEarned: {
+                                        "coin": enterpriseContract,
+                                        "purchase": promoDiscount / (baseX * allTokens[enterpriseContract].rate)
+                                    },
+                                    service: parseInt(getBitsWinOpt('s'))
+                                }).then(function (e) {
+                                    $("#appendPushSubs").remove();
+                                    alert("running 2")
+                                    if (e.status == "ok") {
+                                        console.log('5');
 
-                                                document.getElementById("ConfirmO").removeEventListener("click", doSendOrder);
+                                        document.getElementById("ConfirmO").removeEventListener("click", doSendOrder);
 
-                                                $('#modalconfirm').modal('close');
-                                                swal("success!", "your order has been sent!", "success");
-                                                $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input onclick="startPushManager();" class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
-                                                clearCart();
-                                            } else {
-                                                swal("Cancelled", "your order is not sent", "error");
-                                            }
-                                        })
-                                    }).catch(function (err) {
-                                        Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 6000);
                                         $('#modalconfirm').modal('close');
+                                        swal("success!", "your order has been sent!", "success");
+                                        $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input onclick="startPushManager();" class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
                                         clearCart();
-                                        console.log(err)
-                                    })
+                                    } else {
+                                        swal("Cancelled", "your order is not sent", "error");
+                                    }
+                                })
+                            }).catch(function (err) {
+                                M.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 6000);
+                                $('#modalconfirm').modal('close');
+                                clearCart();
+                                console.log(err)
+                            })
 
-                                } else {
-                                    Materialize.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 6000);
-                                    $('#modalconfirm').modal('close');
-                                    clearCart();
-                                }
-                            }
-                            $(".confirmText").html("")
-                            $(".confirmText").append()
-                            $(".del").html("")
-                            $(".del").append()
-                            $(".mapText").html("")
-                            $(".mapdata").attr('src', mapData[0]);
-                            $(".mapText").append("Pick up / Drop off :" + mapData[1].results[0].formatted_address);
-                            $('#modalconfirm').modal({
-                                onOpenStart: function () {
-                                    clearCart();
-                                    $("#totals").parent().removeClass("granted");
-                                },
-                                dismissible: false
-                            }).modal("open");
-                            $('.star2').addClass('animated shake'), setTimeout(function () {
-                                $('.star2').removeClass('animated shake')
-                            }, 1000);
-                            document.getElementById("CancelO").addEventListener("click", function () {
+                        } else {
+                            M.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 6000);
+                            $('#modalconfirm').modal('close');
+                            clearCart();
+                        }
+                    }
+                    $(".confirmText").html("")
+                    $(".confirmText").append()
+                    $(".del").html("")
+                    $(".del").append()
+                    $(".mapText").html("")
+                    $(".mapdata").attr('src', mapData[0]);
+                    $(".mapText").append("Pick up / Drop off :" + mapData[1].results[0].formatted_address);
+                    $('#modalconfirm').modal({
+                        onOpenStart: function () {
+                            clearCart();
+                            $("#totals").parent().removeClass("granted");
+                        },
+                        dismissible: false
+                    }).modal("open");
+                    $('.star2').addClass('animated shake'), setTimeout(function () {
+                        $('.star2').removeClass('animated shake')
+                    }, 1000);
+                    document.getElementById("CancelO").addEventListener("click", function () {
 
-                                document.getElementById("ConfirmO").removeEventListener("click", doSendOrder);
-                                clearCart()
-                                $("#products").html("")
-                            });
-                            document.getElementById("ConfirmO").addEventListener("click", doSendOrder);
-                        }).catch(function () {
-                            //toast location error
-                            
-                            M.toast({html: "Turn on your location!"});
-                            
-                        });
+                        document.getElementById("ConfirmO").removeEventListener("click", doSendOrder);
+                        clearCart()
+                        $("#products").html("")
                     });
-                    //function showPosition(e){getCoordDet(e.coords.latitude+','+e.coords.longitude).then(function(mapData){$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address); })}getLoc()
-                })
-            } else if (e.status == "bad") {
-                $(".mobiVerificationToast").remove();
-                
-            
-                            M.toast({html: "Please verifiy your mobile number"});
-            } else {
-                $(".mobiVerificationToast").remove();
-            
-                            M.toast({html: "Please verifiy your mobile number"});
-            }
+                    document.getElementById("ConfirmO").addEventListener("click", doSendOrder);
+                }).catch(function () {
+                    //toast location error
+
+                    M.toast({
+                        html: "Turn on your location!"
+                    });
+
+                });
+            });
+            //function showPosition(e){getCoordDet(e.coords.latitude+','+e.coords.longitude).then(function(mapData){$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address); })}getLoc()
         })
     }
 }
+
+//Check User Phone Number
+//        doFetch({
+//            action: 'userVerified',
+//            uid: localStorage.getItem("bits-user-name")
+//        }).then(function (e) {
+//            if (e.status == "ok") {} else if (e.status == "bad") {
+//                $(".mobiVerificationToast").remove();
+//                M.toast({
+//                    html: "Please verifiy your mobile number"
+//                });
+//            } else {
+//                $(".mobiVerificationToast").remove();
+//
+//                M.toast({
+//                    html: "Please verifiy your mobile number"
+//                });
+//            }
+//        })
 
 function sendratings() {
     doFetch({
@@ -497,10 +509,10 @@ function checkmobiveri() {
     //    //Check User Phone Number
     //    if (getPhnNo != "") {
     //        $(".mobiVerificationToast").remove();
-    //        Materialize.toast('Please verifiy your mobile number<div class="right verifyPhoneNumb" style="color:yellow;">verify</button>', null, "mobiVerificationToast");
+    //        M.toast('Please verifiy your mobile number<div class="right verifyPhoneNumb" style="color:yellow;">verify</button>', null, "mobiVerificationToast");
     //    } else if (getPhnNo == null) {
     //        $(".mobiVerificationToast").remove();
-    //        Materialize.toast('Please verifiy your mobile number<div class="right verifyPhoneNumb" style="color:yellow;">verify</button>', null, "mobiVerificationToast");
+    //        M.toast('Please verifiy your mobile number<div class="right verifyPhoneNumb" style="color:yellow;">verify</button>', null, "mobiVerificationToast");
     //    }
 
 }
