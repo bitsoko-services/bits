@@ -314,7 +314,7 @@ function tabulateTotals() {
             //M.toast('your total is'+ totals, 1000);delivery
             // 	 $(".delivery").removeClass("displayNone");
             // 	 $(".floatingPrice").removeClass("displayNone");
-            $(".totals").html(totals);
+            $(".totals").html(numberify(totals));
             var xt = document.getElementById("totals").innerHTML
             // 			if (xt == 0) {
             // 				console.log("minimum value")
