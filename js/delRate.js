@@ -49,12 +49,9 @@ function finalCost(costofItems) {
                     //else{Materialize.toast('your order is more than 500KSH ', 1000);}
 
                     //localStorage.setItem('bits-merchant'+parseInt(getBitsWinOpt('s'))+'-Total cost',totalCost);
-                    $(".confirmText").html("")
-                    $(".confirmText").append('Total: ' + totalCost + '<span class=""> /=</span></span>')
-                    $(".totals2").html("")
-                    $(".totals2").append(parseInt(divObj.innerHTML) + '<span class=""> /=</span></span>')
-                    $(".del").html("")
-                    $(".del").append(rates + '<span class=""> /=</span></span>')
+                    $(".confirmText").html('Total: ' + totalCost + '<span class=""> /=</span></span>')
+                    $(".totals2").html(parseInt(divObj.innerHTML) + '<span class=""> /=</span></span>')
+                    $(".del").html(rates + '<span class=""> /=</span></span>')
                 });
             })
         })

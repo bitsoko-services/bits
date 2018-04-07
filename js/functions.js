@@ -190,6 +190,7 @@ function showuser() {
     $(".notificationToast").remove()
     $(".signedAsToast").remove()
     if (checkanon() == true) {
+        $("#loginModal").modal("close")
         var gtname = getObjectStore('data', 'readwrite').get('user-profile-' + localStorage.getItem('bits-user-name'));
         gtname.onsuccess = function (event) {
             try {
@@ -345,20 +346,20 @@ function makeOrder(orderArrayy, orderLoc) {
         $('#loginModal').modal('open');
         return;
     }
-    if (minimumOrder <= 200) {
+    if (minimumOrder < 200) {
         M.toast({
             html: "Ooops! Minimum order is Ksh. 200"
         });
         return;
 
-    } else if (minimumOrder >= 200) {
+    } else {
         $("#totals").parent().addClass("granted");
     }
     if ($("#totals").parent().hasClass("granted") == true) {
         $(".minOrderToast").remove();
         M.toast({
-            html: 'creating your order..',
-            displayLength: null
+            html: 'Creating your order, please wait',
+            displayLength: 3000
         });
 
         actvServ().then(function (p) {
@@ -418,15 +419,20 @@ function makeOrder(orderArrayy, orderLoc) {
                                     }
                                 })
                             }).catch(function (err) {
-                                M.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 6000);
+                                M.toast({
+                                    html: '<span class="toastlogin">You have insufficient funds to complete this order ',
+                                    displayLength: 6000
+                                });
                                 $('#modalconfirm').modal('close');
                                 clearCart();
                                 console.log(err)
                             })
 
                         } else {
-                            M.toast('<span class="toastlogin">You have insufficient funds to complete this order ', 6000);
-                            $('#modalconfirm').modal('close');
+                            M.toast({
+                                html: '<span class="toastlogin">You have insufficient funds to complete this order ',
+                                displayLength: 6000
+                            });
                             clearCart();
                         }
                     }
@@ -469,23 +475,23 @@ function makeOrder(orderArrayy, orderLoc) {
 }
 
 //Check User Phone Number
-//        doFetch({
-//            action: 'userVerified',
-//            uid: localStorage.getItem("bits-user-name")
-//        }).then(function (e) {
-//            if (e.status == "ok") {} else if (e.status == "bad") {
-//                $(".mobiVerificationToast").remove();
-//                M.toast({
-//                    html: "Please verifiy your mobile number"
-//                });
-//            } else {
-//                $(".mobiVerificationToast").remove();
+//doFetch({
+//    action: 'userVerified',
+//    uid: localStorage.getItem("bits-user-name")
+//}).then(function (e) {
+//    if (e.status == "ok") {} else if (e.status == "bad") {
+//        $(".mobiVerificationToast").remove();
+//        M.toast({
+//            html: "Please verifiy your mobile number"
+//        });
+//    } else {
+//        $(".mobiVerificationToast").remove();
 //
-//                M.toast({
-//                    html: "Please verifiy your mobile number"
-//                });
-//            }
-//        })
+//        M.toast({
+//            html: "Please verifiy your mobile number"
+//        });
+//    }
+//})
 
 function sendratings() {
     doFetch({
