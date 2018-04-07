@@ -35,6 +35,7 @@ body {
     top: 15% !important;
     max-height: 65% !important;
     min-height: 60% !important;
+    width: 85% !important;
 }
 
 .modal {
