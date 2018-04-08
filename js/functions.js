@@ -62,7 +62,13 @@ function servicePageLoader() {
                 populateService(JSON.parse(event.target.result));
                 populated = true;
             } catch (err) {
-                console.log('service not found in db. perhaps try loading from server AGAIN!!')
+           
+                   console.log('service not found in db. perhaps trying from DOM');
+                    var re = /&quot;/gi;
+var str = document.getElementById('storeMeta').innerHTML;
+var newstr = str.replace(re, '"');
+populateService(JSON.parse(newstr));
+                    populated = true;
             }
         };
         svReq.onerror = function () {
