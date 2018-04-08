@@ -445,10 +445,7 @@ function makeOrder(orderArrayy, orderLoc) {
                     $(".mapdata").attr('src', mapData[0]);
                     $(".mapText").append("Pick up / Drop off :" + mapData[1].results[0].formatted_address);
                     $('#modalconfirm').modal({
-                        onOpenStart: function () {
-                            clearCart();
-                            $("#totals").parent().removeClass("granted");
-                        },
+                        onOpenEnd: $("#totals").parent().removeClass("granted"),
                         dismissible: false
                     }).modal("open");
                     $('.star2').addClass('animated shake'), setTimeout(function () {
