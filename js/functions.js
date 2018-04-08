@@ -356,6 +356,8 @@ function makeOrder(orderArrayy, orderLoc) {
         $("#totals").parent().addClass("granted");
     }
     if ($("#totals").parent().hasClass("granted") == true) {
+        $('.spinnerCheckout').css("display", "block");
+        $('.checkoutInfo').css("display", "none");
         $(".minOrderToast").remove();
         M.toast({
             html: 'Creating your order, please wait',
@@ -445,6 +447,8 @@ function makeOrder(orderArrayy, orderLoc) {
                     $(".mapText").append("Pick up / Drop off :" + mapData[1].results[0].formatted_address);
                     $('#modalconfirm').modal({
                         onOpenEnd: $("#totals").parent().removeClass("granted"),
+                        onOpenEnd: $('.spinnerCheckout').css("display", "none"),
+                        onOpenEnd: $('.checkoutInfo').css("display", "block"),
                         dismissible: false
                     }).modal("open");
                     $('.star2').addClass('animated shake'), setTimeout(function () {
