@@ -181,7 +181,7 @@ function populateService(mDet) {
         slogo[i].src = mDet.icon;
     }
     document.querySelector('.eName').innerHTML = mDet.eName;
-    document.querySelector('.eDesc').innerHTML = mDet.eDesc;
+    //    document.querySelector('.eDesc').innerHTML = mDet.eDesc;
     document.querySelector('.bitsWcover').src = mDet.icon;
     document.querySelector('.serviceDescription2').innerHTML = mDet.description;
     document.querySelector('.serviceDescription').innerHTML = mDet.description;
