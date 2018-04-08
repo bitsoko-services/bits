@@ -449,7 +449,7 @@ function makeOrder(orderArrayy, orderLoc) {
                             clearCart();
                             $("#totals").parent().removeClass("granted");
                         },
-                        //                        dismissible: false
+                        dismissible: false
                     }).modal("open");
                     $('.star2').addClass('animated shake'), setTimeout(function () {
                         $('.star2').removeClass('animated shake')
