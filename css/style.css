@@ -3200,3 +3200,12 @@ tr.group:hover {
     position: absolute;
     right: 15px;
 }
+
+#checkBrowser {
+    overflow: initial !important;
+    top: 20% !important;
+}
+
+#updateBrowsermodal {
+    overflow: initial !important;
+}

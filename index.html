@@ -792,10 +792,18 @@
     <!--================================== modal enter phone number end =====================================================================-->
     <!--=========================================== modal check adresses start ==============================================================-->
     <!--============================================modal will contain all the user adresses and qr codes ===================================-->
-    <div class="modal" id="updateBrowsermodal">
+    <div class="modal" id="updateBrowsermodal" style="overflow: initial;">
+        <div style="width: 95px; display: block; margin-left: auto; margin-right: auto; margin-top: -40px;">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;-webkit-box-shadow: 0px 9px 23px -6px rgba(0,0,0,0.75); -moz-box-shadow: 0px 9px 23px -6px rgba(0,0,0,0.75); box-shadow: 0px 9px 23px -6px rgba(0,0,0,0.75); border-radius: 50%;" xml:space="preserve">
+                <circle style="fill:#5ED1B3;" cx="256" cy="256" r="256"/>
+                <path style="fill:#4BC2A2;" d="M506.885,307.099c-22.09,109.054-113.514,192.942-226.262,203.715L150.788,384.093  c-15.863-43.871-40.746-52.149-40.746-118.085s60.476-146.748,143.054-146.748c13.145,0,25.883,1.693,38.028,4.88l22.288,22.288  l76.66,77.303l-17.717-51.16L506.885,307.099z"/>
+                <path style="fill:#F8F8F8;" d="M253.097,86.112l60.315,60.315l-60.315,60.315v-32.246v-0.334  c-48.022,6.696-84.987,47.936-84.987,97.811c0,39.424,23.103,73.448,56.51,89.287c13.639,5.189,28.428,8.043,43.884,8.043  c68.222,0,123.534-55.324,123.534-123.534c0-47.837-27.217-89.336-66.999-109.857h-0.012c0,0,3.583,1.73,7.573,3.793  c6.177,3.57,12.07,7.549,17.667,11.922c4.472,3.731,9.056,7.709,10.168,8.685l0.086,0.074  c30.034,27.983,48.813,67.889,48.813,112.168c0,84.679-68.655,153.333-153.333,153.333s-153.333-68.655-153.333-153.333  c0-83.715,67.098-151.752,150.43-153.296v-0.334V86.112z"/>
+                <path style="fill:#D9D9DD;" d="M313.412,146.427l-60.315,60.315c0-10.749,0-21.497,0-32.246v-0.334  c-48.022,6.709-84.987,47.936-84.987,97.811c0,39.424,23.103,73.461,56.51,89.287c13.639,5.189,28.428,8.043,43.884,8.043  c68.222,0,123.534-55.324,123.534-123.534c0-37.521-16.741-71.15-43.167-93.796c74.078,52.532,82.974,230.488-78.983,243.262  c-72.855,5.745-135.407-51.791-135.407-121.384s53.706-127.784,132.318-127.166L313.412,146.427z"/>
+            </svg>
+        </div>
         <div class="modal-content">
             <div class="row">
-                <h4 class="">Update Your Browser</h4><br>
+                <h4 class="" style="text-align: center;">Update Your Browser</h4><br>
                 <span>Please update to latest version of chrome browser to have the best experience with bits wallet</span>
             </div>
         </div>
@@ -1249,6 +1257,10 @@
 
 
             console.log('uncompatible');
+            $("#checkBrowser").modal({
+                dismissible: false
+            }).modal("open")
+
 
             //      $('#updateBrowsermodal').openModal({
             //           dismissible:false
