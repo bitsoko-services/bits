@@ -252,11 +252,10 @@ function walletFunctions(uid) {
             //Materialize.toast('<span class="toastlogin">your wallet is locked</span><a onclick="loadGdrive()" class="btn-flat toast-action"><span style="pointer-events:none;margin: 0px;" class="btn-flat yellow-text">Unlock</span></a>', 8000);
 
         } else {
-            M.toast({
-                displayLength: 1000000000,
-                html: '<span class="toastlogin">your wallet is locked</span><button onclick="loadGdrive()" class="btn-flat toast-action" ><span style="pointer-events:none;">Unlock</span></button>'
-            });
-
+            //            M.toast({
+            //                displayLength: 1000000000,
+            //                html: '<span class="toastlogin">your wallet is locked</span><button onclick="loadGdrive()" class="btn-flat toast-action" ><span style="pointer-events:none;">Unlock</span></button>'
+            //            });
         }
         resolve('loaded wallets ' + uid);
 
@@ -705,7 +704,7 @@ function fetchRatesProc(e) {
         }
 
         var contCoAdr = contracts[i].coinAddress.toLowerCase();
-        
+
         //specify ent contract
         if ((location.origin + '/').includes(contracts[i].webpage)) {
 

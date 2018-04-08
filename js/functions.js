@@ -278,10 +278,10 @@ function showLogin() {
 function showlogintoast() {
     if (checkanon() == false) {
 
-        M.toast({
-            displayLength: 1000000000,
-            html: '<span class="toastlogin">your wallet is locked</span><button id="toast-wallet-unlocker" onclick="showLogin()" class="btn-flat toast-action" ><span id="toast-wallet-unlocker-sp" style="pointer-events:none;" class="toastloginbutton">Unlock</span></button>'
-        });
+        //        M.toast({
+        //            displayLength: 1000000000,
+        //            html: '<span class="toastlogin">your wallet is locked</span><button id="toast-wallet-unlocker" onclick="showLogin()" class="btn-flat toast-action" ><span id="toast-wallet-unlocker-sp" style="pointer-events:none;" class="toastloginbutton">Unlock</span></button>'
+        //        });
     } else { //showuser()
         console.log("The user is signed in!")
     }
@@ -701,3 +701,16 @@ function checkBrowser() {
         $("#checkBrowser").openModal()
     }
 }
+
+//Wallet State
+if (sessionStorage.getItem('walletKey')) {
+    $("#walletUnlocked").css("display", "block");
+    $("#walletLocked").css("display", "none")
+} else {
+    $("#walletUnlocked").css("display", "none");
+    $("#walletLocked").css("display", "block")
+}
+$(document).on('click', '#walletLocked', function () {
+    loadGdrive();
+    $("#walletLocked").html('<div class="preloader-wrapper active" style="width: 25px;height: 25px;margin: 0px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
+})
