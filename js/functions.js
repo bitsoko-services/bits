@@ -1,5 +1,6 @@
 ///.........................................checks if the payments option for the merchant is on or off ........................................................./////
 var promoDiscount;
+var getDiscount;
 
 function checkPayments() {
     actvServ().then(function (p) {
@@ -346,7 +347,7 @@ function makeOrder(orderArrayy, orderLoc) {
         $('#loginModal').modal('open');
         return;
     }
-    if (minimumOrder < 200) {
+    if ($("#totals").parent().hasClass("granted") == true) {} else if (minimumOrder < 200) {
         M.toast({
             html: "Ooops! Minimum order is Ksh. 200"
         });
@@ -447,6 +448,8 @@ function makeOrder(orderArrayy, orderLoc) {
                         onOpenStart: function () {
                             clearCart();
                             $("#totals").parent().removeClass("granted");
+                            getDiscount
+                            alert("dddd")
                         },
                         dismissible: false
                     }).modal("open");
@@ -588,7 +591,6 @@ function buyPromo(clicked_id, promoOder) {
     console.log(clicked_id);
     var numbOfPromo = $(".promoInput-" + clicked_id).val();
     $("#totals").parent().addClass("granted");
-    $("#totals").html(200);
     // 	console.log($(".bpr").attr("id"));
     // 	//console.log($(".bpr").attr("promo"));
     // 	var xx = document.getElementById(lipromo).id;
@@ -616,7 +618,7 @@ function buyPromo(clicked_id, promoOder) {
             }
             dis = JSON.parse(pd[ixi].discount);
             console.log("discount is >>>>>>>>>", dis);
-            setTimeout(function () {
+            getDiscount = setTimeout(function () {
                 $("#burst-11").css("display", "block");
                 var getProdPrice = document.getElementById("totals").innerHTML;
                 promoDiscount = (dis / 100) * getProdPrice
