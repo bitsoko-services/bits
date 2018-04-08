@@ -66,9 +66,13 @@ function servicePageLoader() {
             }
         };
         svReq.onerror = function () {
-            setTimeout(function () {
-                servicePageLoader();
-            }, 3000);
+           
+                   console.log('service not found in db. perhaps trying from DOM');
+                    var re = /&quot;/gi;
+var str = document.getElementById('storeMeta').innerHTML;
+var newstr = str.replace(re, '"');
+populateService(JSON.parse(newstr));
+                    populated = true;
         }
         doFetch({
             action: 'serviceProfile',
