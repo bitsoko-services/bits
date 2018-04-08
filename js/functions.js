@@ -190,7 +190,6 @@ function showuser() {
     $(".notificationToast").remove()
     $(".signedAsToast").remove()
     if (checkanon() == true) {
-        $("#loginModal").modal("close")
         var gtname = getObjectStore('data', 'readwrite').get('user-profile-' + localStorage.getItem('bits-user-name'));
         gtname.onsuccess = function (event) {
             try {
@@ -473,6 +472,9 @@ function makeOrder(orderArrayy, orderLoc) {
 }
 
 //Check User Phone Number
+$(document).on('click', '#ConfirmO', function (e) {
+    console.log("clicked")
+})
 //doFetch({
 //    action: 'userVerified',
 //    uid: localStorage.getItem("bits-user-name")
