@@ -347,10 +347,11 @@ function makeOrder(orderArrayy, orderLoc) {
         return;
     }
     if (minimumOrder < 200) {
-        M.toast({
-            html: "Ooops! Minimum order is Ksh. 200"
-        });
-        return;
+        if ($("#totals").parent().hasClass("granted") == true) {} else {
+            M.toast({
+                html: "Ooops! Minimum order is Ksh. 200"
+            });
+        }
 
     } else {
         $("#totals").parent().addClass("granted");
@@ -588,7 +589,6 @@ function buyPromo(clicked_id, promoOder) {
     console.log(clicked_id);
     var numbOfPromo = $(".promoInput-" + clicked_id).val();
     $("#totals").parent().addClass("granted");
-    $("#totals").html(200);
     // 	console.log($(".bpr").attr("id"));
     // 	//console.log($(".bpr").attr("promo"));
     // 	var xx = document.getElementById(lipromo).id;
