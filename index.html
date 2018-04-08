@@ -870,9 +870,14 @@
     </div>
     <div id="#mysubscriptions"></div>
     <!-- Location Manager Modal Start -->
-    <div id="locationModal" class="modal">
+    <div id="locationModal" class="modal" style="overflow: initial;">
+        <div class="locIcon" style="background: white; border-radius: 50%; width: 90px; display: block; margin-left: auto; margin-right: auto; margin-top: -40px;padding: 10px;-webkit-box-shadow: 0px 8px 27px -5px rgba(0,0,0,0.75); -moz-box-shadow: 0px 8px 27px -5px rgba(0,0,0,0.75); box-shadow: 0px 8px 27px -5px rgba(0,0,0,0.75);">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 52 52" style="enable-background:new 0 0 52 52;" xml:space="preserve">
+                <path style="fill:#1081E0;" d="M38.853,5.324L38.853,5.324c-7.098-7.098-18.607-7.098-25.706,0h0  C6.751,11.72,6.031,23.763,11.459,31L26,52l14.541-21C45.969,23.763,45.249,11.72,38.853,5.324z M26.177,24c-3.314,0-6-2.686-6-6  s2.686-6,6-6s6,2.686,6,6S29.491,24,26.177,24z"/>    
+            </svg>
+        </div>
         <div class="modal-content">
-            <p>Please turn on your device location to complete your oder and click on the button below.</p>
+            <p>Please turn on your device location so that the delivery operator can deliver your order.</p>
         </div>
         <div class="modal-footer" style="height: auto;padding: 4px 0px;">
             <a class="modal-close waves-effect waves-green bits" id="checkLocation" href="#!" style="color: white;width: 80%;text-align: center;margin: 0px 0px 20px;display:  block;margin-left:  auto;margin-right:  auto;padding:  10px;border-radius:  3px;font-size: 1.2em;">Okay</a>

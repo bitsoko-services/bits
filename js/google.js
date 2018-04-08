@@ -50,6 +50,7 @@ function handleEmailResponse(resp) {
         data: JSON.stringify(profile)
     }).then(function (e) {
         if (e.status == "ok") {
+            $("#loginModal").modal("close")
             $(".loginToast").remove();
             profile.bitsokoUserID = e.buid;
             profile.id = e.buid;
