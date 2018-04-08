@@ -107,20 +107,21 @@ function servicePageLoader() {
                     populateService(JSON.parse(event.target.result));
                     populated = true;
                 } catch (err) {
-                    console.log('service not found in db. perhaps trying loading from server AGAIN!!..');
-                    setTimeout(function () {
-                        if (!populated) {
-                            servicePageLoader();
-                        }
-                    }, 1500);
+                   console.log('service not found in db. perhaps trying from DOM');
+                    var re = /&quot;/gi;
+var str = document.getElementById('storeMeta').innerHTML;
+var newstr = str.replace(re, '"');
+populateService(JSON.parse(newstr));
+                    populated = true;
                 }
             };
             svReq.onerror = function () {
-                setTimeout(function () {
-                    if (!populated) {
-                        servicePageLoader();
-                    }
-                }, 1500);
+                console.log('service not found in db. perhaps trying from DOM');
+                    var re = /&quot;/gi;
+var str = document.getElementById('storeMeta').innerHTML;
+var newstr = str.replace(re, '"');
+populateService(JSON.parse(newstr));
+                    populated = true;
             }
         });
         //merchants options end; 
