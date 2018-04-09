@@ -141,7 +141,20 @@ function servicePageLoader() {
 
 function checkServicePageLoader() {
     if (servicePageLoader.called == true) {
-        console.log("do nothing")
+        console.log("do nothing");
+        //Check User Phone Number
+        doFetch({
+            action: 'userVerified',
+            uid: localStorage.getItem("bits-user-name")
+        }).then(function (e) {
+            if (e.status == "ok") {
+                $(".MobileModal").modal("open")
+            } else if (e.status == "bad") {
+                $(".MobileModal").modal("open")
+            } else {
+                $(".MobileModal").modal("open")
+            }
+        })
     } else {
         servicePageLoader()
     }
@@ -495,23 +508,6 @@ function makeOrder(orderArrayy, orderLoc) {
         })
     }
 }
-
-//Check User Phone Number
-$(document).on('click', '#ConfirmO', function (e) {
-    doFetch({
-        action: 'userVerified',
-        uid: localStorage.getItem("bits-user-name")
-    }).then(function (e) {
-        if (e.status == "ok") {} else if (e.status == "bad") {
-            $(".mobiVerificationToast").remove();
-            $(".MobileModal").modal("open")
-        } else {
-            $(".mobiVerificationToast").remove();
-
-            $(".MobileModal").modal("open")
-        }
-    })
-})
 
 function sendratings() {
     doFetch({
