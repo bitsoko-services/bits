@@ -3209,3 +3209,7 @@ tr.group:hover {
 #updateBrowsermodal {
     overflow: initial !important;
 }
+
+#locationModal {
+    overflow: initial !important;
+}
