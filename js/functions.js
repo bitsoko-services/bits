@@ -477,25 +477,20 @@ function makeOrder(orderArrayy, orderLoc) {
 
 //Check User Phone Number
 $(document).on('click', '#ConfirmO', function (e) {
-    console.log("clicked")
+    doFetch({
+        action: 'userVerified',
+        uid: localStorage.getItem("bits-user-name")
+    }).then(function (e) {
+        if (e.status == "ok") {} else if (e.status == "bad") {
+            $(".mobiVerificationToast").remove();
+            $(".MobileModal").modal("open")
+        } else {
+            $(".mobiVerificationToast").remove();
+
+            $(".MobileModal").modal("open")
+        }
+    })
 })
-//doFetch({
-//    action: 'userVerified',
-//    uid: localStorage.getItem("bits-user-name")
-//}).then(function (e) {
-//    if (e.status == "ok") {} else if (e.status == "bad") {
-//        $(".mobiVerificationToast").remove();
-//        M.toast({
-//            html: "Please verifiy your mobile number"
-//        });
-//    } else {
-//        $(".mobiVerificationToast").remove();
-//
-//        M.toast({
-//            html: "Please verifiy your mobile number"
-//        });
-//    }
-//})
 
 function sendratings() {
     doFetch({
