@@ -108,12 +108,9 @@ function getLoc(retDt) {
 
             } else {
                 reject('request not yet allowed');
-                var locInstance = M.Modal.init(document.querySelector('#locationModal'), {
-                    onCloseStart: function () {
-                        myLoc();
-                    }
-                });
-                locInstance.open();
+                $("#locationModal").modal({
+                    onCloseEnd: myLoc()
+                }).modal("open")
 
             }
         });
