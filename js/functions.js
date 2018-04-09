@@ -147,9 +147,7 @@ function checkServicePageLoader() {
             action: 'userVerified',
             uid: localStorage.getItem("bits-user-name")
         }).then(function (e) {
-            if (e.status == "ok") {
-                $(".MobileModal").modal("open")
-            } else if (e.status == "bad") {
+            if (e.status == "ok") {} else if (e.status == "bad") {
                 $(".MobileModal").modal("open")
             } else {
                 $(".MobileModal").modal("open")
