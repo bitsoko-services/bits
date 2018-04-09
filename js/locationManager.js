@@ -1,5 +1,3 @@
-var locInstance;
-
 function showPositionError(e) {
 
     try {
@@ -52,8 +50,7 @@ function showPosition(position) {
 
                                 console.log('updated location');
                                 document.querySelector('.js-loc-button-notification').checked = true;
-
-                                locInstance.close();
+                                $('#locationModal').modal("close");
                             };
 
                         } else {
@@ -102,16 +99,20 @@ function getLoc(retDt) {
 
 
             } else if (p.state === 'prompt') {
-                $("#locationModal").modal({
-                    onCloseEnd: myLoc()
-                }).modal("open")
-
+                $('#locationModal').modal({
+                    complete: function () {
+                        console.log("Running")
+                        myLoc();
+                    }
+                }).modal('open');
             } else {
                 reject('request not yet allowed');
-                $("#locationModal").modal({
-                    onCloseEnd: myLoc()
-                }).modal("open")
-
+                $('#locationModal').modal({
+                    complete: function () {
+                        console.log("Running")
+                        myLoc();
+                    }
+                }).modal('open');
             }
         });
     });
