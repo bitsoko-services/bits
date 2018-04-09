@@ -91,7 +91,7 @@ function changedConfCode(t) {
             M.toast({
                 html: 'Phone Number added'
             });
-            $("#MobileModal").closeModal()
+            $("#MobileModal").modal("close")
 
         } else {
             console.log(e);
