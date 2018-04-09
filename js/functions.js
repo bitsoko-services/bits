@@ -38,6 +38,7 @@ function rate() {
 //...........................URL check end//.................................................................................................................................................
 //function service Page loader..........
 function servicePageLoader() {
+    servicePageLoader.called = true
     //console.log('servicePageLoader()..');
     $(".delrow").removeClass("displayNone");
     if (parseInt(getBitsWinOpt('s')) > 5) {
@@ -62,23 +63,23 @@ function servicePageLoader() {
                 populateService(JSON.parse(event.target.result));
                 populated = true;
             } catch (err) {
-           
-                   console.log('service not found in db. perhaps trying from DOM');
-                    var re = /&quot;/gi;
-var str = document.getElementById('storeMeta').innerHTML;
-var newstr = str.replace(re, '"');
-populateService(JSON.parse(newstr));
-                    populated = true;
+
+                console.log('service not found in db. perhaps trying from DOM');
+                var re = /&quot;/gi;
+                var str = document.getElementById('storeMeta').innerHTML;
+                var newstr = str.replace(re, '"');
+                populateService(JSON.parse(newstr));
+                populated = true;
             }
         };
         svReq.onerror = function () {
-           
-                   console.log('service not found in db. perhaps trying from DOM');
-                    var re = /&quot;/gi;
-var str = document.getElementById('storeMeta').innerHTML;
-var newstr = str.replace(re, '"');
-populateService(JSON.parse(newstr));
-                    populated = true;
+
+            console.log('service not found in db. perhaps trying from DOM');
+            var re = /&quot;/gi;
+            var str = document.getElementById('storeMeta').innerHTML;
+            var newstr = str.replace(re, '"');
+            populateService(JSON.parse(newstr));
+            populated = true;
         }
         doFetch({
             action: 'serviceProfile',
@@ -117,26 +118,35 @@ populateService(JSON.parse(newstr));
                     populateService(JSON.parse(event.target.result));
                     populated = true;
                 } catch (err) {
-                   console.log('service not found in db. perhaps trying from DOM');
+                    console.log('service not found in db. perhaps trying from DOM');
                     var re = /&quot;/gi;
-var str = document.getElementById('storeMeta').innerHTML;
-var newstr = str.replace(re, '"');
-populateService(JSON.parse(newstr));
+                    var str = document.getElementById('storeMeta').innerHTML;
+                    var newstr = str.replace(re, '"');
+                    populateService(JSON.parse(newstr));
                     populated = true;
                 }
             };
             svReq.onerror = function () {
                 console.log('service not found in db. perhaps trying from DOM');
-                    var re = /&quot;/gi;
-var str = document.getElementById('storeMeta').innerHTML;
-var newstr = str.replace(re, '"');
-populateService(JSON.parse(newstr));
-                    populated = true;
+                var re = /&quot;/gi;
+                var str = document.getElementById('storeMeta').innerHTML;
+                var newstr = str.replace(re, '"');
+                populateService(JSON.parse(newstr));
+                populated = true;
             }
         });
         //merchants options end; 
     }
 }
+
+function checkServicePageLoader() {
+    if (servicePageLoader.called == true) {
+        console.log("do nothing")
+    } else {
+        servicePageLoader()
+    }
+}
+
 // scroll function....................................................................................................................
 // $(window).scroll(function scroll (){
 // 	if($('#serviceListCard').hasClass("pin-top")){

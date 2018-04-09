@@ -28,7 +28,7 @@ function serviceOpener() {
             $('.bitsHome').append('<a class="bitsmenuslider sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only bits" href="' + window.location.origin + '/" style=" background-color: #{theme} !important; box-shadow: none;"><i class="material-icons dp48">home</i></a>');
 
         }
-        servicePageLoader();
+        checkServicePageLoader()
         if (getBitsOpt('pid') != undefined) {
             var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
             svReq.onsuccess = function (event) {
