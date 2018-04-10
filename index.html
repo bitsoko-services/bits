@@ -1505,7 +1505,14 @@
                         var e = JSON.parse(event.target.result);
                         resolve(e);
                     } catch (err) {
-                        console.log('this service is not in the indexdb!!!!');
+                        console.log('this service is not in the indexdb!!!! try dom?');
+			    
+                var re = /&quot;/gi;
+                var str = document.getElementById('storeMeta').innerHTML;
+			    
+                var newstr = str.replace(re, '"');
+			     resolve(JSON.parse(newstr).res);
+                
                     }
 
                 }
