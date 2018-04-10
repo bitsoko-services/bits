@@ -335,21 +335,21 @@ ul.side-nav.leftside-navigation li.active > a {
     background-color: #ffffff !important;
 }
 .btn-floating {
-    display: inline-block;
-    color: #fff;
+    /* display: inline-block; */
+    /* color: #fff; */
     /* position: relative; */
-    overflow: hidden;
+    /* overflow: hidden; */
     /* z-index: 1; */
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    padding: 0;
+    /* width: 40px; */
+    /* height: 40px; */
+    /* line-height: 40px; */
+    /* padding: 0; */
     /* background-color: #0f5f76 !important; */
-    border-radius: 50%;
-    transition: .3s;
-    cursor: pointer;
+    /* border-radius: 50%; */
+    /* transition: .3s; */
+    /* cursor: pointer; */
     /* left: 100px; */
-    vertical-align: middle;
+    /* vertical-align: middle; */
 }
 .tap-target-origin.floatingPrice   {
     top: 35% !important;
