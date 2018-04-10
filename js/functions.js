@@ -45,7 +45,7 @@ function servicePageLoader() {
     } else {
         var servID = getBitsWinOpt('a');
     }
-    document.querySelector("link[rel='manifest']").href = "https://bitsoko.co.ke/bits/web-manifest.json?s=" + servID;
+    document.querySelector("link[rel='manifest']").href = "/bits/web-manifest.json?s=" + servID;
     localStorage.setItem('bits-active-service', servID);
     if (parseInt(getBitsWinOpt('s')) == 2) {
         contact();
@@ -67,7 +67,7 @@ function servicePageLoader() {
                 var re = /&quot;/gi;
                 var str = document.getElementById('storeMeta').innerHTML;
                 var newstr = str.replace(re, '"');
-                populateService(JSON.parse(newstr));
+                populateService(JSON.parse(newstr).res);
                 populated = true;
             }
         };
@@ -77,7 +77,7 @@ function servicePageLoader() {
             var re = /&quot;/gi;
             var str = document.getElementById('storeMeta').innerHTML;
             var newstr = str.replace(re, '"');
-            populateService(JSON.parse(newstr));
+            populateService(JSON.parse(newstr).res);
             populated = true;
         }
         doFetch({
@@ -121,7 +121,7 @@ function servicePageLoader() {
                     var re = /&quot;/gi;
                     var str = document.getElementById('storeMeta').innerHTML;
                     var newstr = str.replace(re, '"');
-                    populateService(JSON.parse(newstr));
+                    populateService(JSON.parse(newstr).res);
                     populated = true;
                 }
             };
@@ -130,7 +130,7 @@ function servicePageLoader() {
                 var re = /&quot;/gi;
                 var str = document.getElementById('storeMeta').innerHTML;
                 var newstr = str.replace(re, '"');
-                populateService(JSON.parse(newstr));
+                populateService(JSON.parse(newstr).res);
                 populated = true;
             }
         });
