@@ -62,7 +62,7 @@
 </head>
 
 <body>
-    
+
     <!--------- PRE LOADER ---------->
     <div id="preloader" style="position:absolute; top:0; left:0; right:0; bottom:0; background-color:#fefefe; z-index:5000; height:100%; width:100%; position:fixed;">
         <div id="status" style="position:absolute; left: 50%; transform: translateX(-27%); top:40%; margin:-100px 0 0 -100px;">
@@ -83,7 +83,7 @@
             <p style="margin-left: 15%;width: 70%;">Please wait while the satellite moves into position</p>
         </div>
     </div>
-    
+
     <!--    <div class="cssLoader">
         <div></div>
     </div>
@@ -879,9 +879,11 @@
         </div>
         <div class="modal-footer">
             <div class="customGPlusSignIn" id="customBtn" style="text-align:center;">
-                <span class="buttonText"><button class="loginBtn loginBtn--google"><span class="buttonText"><span class="buttonText"><span class="buttonText"><span class="buttonText">Google Sign in</span></span>
-                </span>
-                </span>
+                <span class="buttonText">
+                    <button class="loginBtn loginBtn--google">        
+                        <span class="buttonText" style="width: 100%">        
+                            <span class="buttonText" id="loginWait" style="width: 100%">Google Sign in</span>
+                        </span>
                 </button>
                 </span>
             </div>
@@ -1038,10 +1040,6 @@
 
     </script>
     <script async defer src="jspdf.js" type="text/javascript">
-
-
-    </script>
-    <script async defer src="./js/google.js">
 
 
     </script>
@@ -1253,6 +1251,10 @@
 
     </script>
     <script async defer src="js/custom-script.js" type="text/javascript">
+
+
+    </script>
+    <script async defer src="./js/google.js">
 
 
     </script>
@@ -1528,13 +1530,13 @@
                         resolve(e);
                     } catch (err) {
                         console.log('this service is not in the indexdb!!!! try dom?');
-			    
-                var re = /&quot;/gi;
-                var str = document.getElementById('storeMeta').innerHTML;
-			    
-                var newstr = str.replace(re, '"');
-			     resolve(JSON.parse(newstr).res);
-                
+
+                        var re = /&quot;/gi;
+                        var str = document.getElementById('storeMeta').innerHTML;
+
+                        var newstr = str.replace(re, '"');
+                        resolve(JSON.parse(newstr).res);
+
                     }
 
                 }
@@ -1673,7 +1675,10 @@
     </script>
 
     <script type="application/json" id="storeMeta">
-        #{stMeta}
+        #
+        {
+            stMeta
+        }
 
     </script>
 </body>

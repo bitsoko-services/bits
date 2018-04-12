@@ -372,3 +372,6 @@ function reqContacts() {
     });
 
 }
+$(document).on('click','#customBtn', function(e){
+    $("#loginWait").html('logging in... <div class="spinnerCheckout right" style="margin-top: 7px;line-height: normal;"> <div class="preloader-wrapper active" style="width: 20px; height: 20px; margin: 0px;"> <div class="spinner-layer spinner-white-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div></div>')
+})
