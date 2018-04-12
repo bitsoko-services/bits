@@ -101,6 +101,7 @@ function servicePageLoader() {
                         servicePageLoader();
                     }, 3000);
                 }
+                $("#preloader").fadeOut(1500)
             } else {
                 $(".serviceListHolder").hide();
                 $(".serviceListCard").hide();

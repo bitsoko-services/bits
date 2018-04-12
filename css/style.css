@@ -3173,6 +3173,124 @@ tr.group:hover {
 
 
 /*----------------------------------------
+    PRELOADER
+------------------------------------------*/
+/*******************************************
+                 PRE LOADER
+*********************************************/
+
+.loader {
+    -webkit-filter: url("#goo");
+    filter: url("#goo");
+    position: relative;
+    width: 500px;
+    height: 95px;
+}
+
+.loader::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #0F5F76;
+    margin: 0 auto;
+    position: absolute;
+    top: 30px;
+    left: 220px;
+    -webkit-animation: scale 2.5s ease-in-out infinite;
+    animation: scale 2.5s ease-in-out infinite;
+}
+
+.loader div {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0F5F76;
+    top: 35px;
+    left: 235px;
+    -webkit-animation: move 2.5s ease-in-out infinite alternate;
+    animation: move 2.5s ease-in-out infinite alternate;
+}
+
+.loader div::after,
+.loader div::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0F5F76;
+}
+
+.loader div::before {
+    left: -40px;
+}
+
+.loader div::after {
+    left: 40px;
+}
+
+@-webkit-keyframes move {
+    0% {
+        -webkit-transform: translateX(-200px);
+        transform: translateX(-200px);
+    }
+    100% {
+        -webkit-transform: translateX(100px);
+        transform: translateX(100px);
+    }
+}
+
+@keyframes move {
+    0% {
+        -webkit-transform: translateX(-120px);
+        transform: translateX(-120px);
+    }
+    100% {
+        -webkit-transform: translateX(100px);
+        transform: translateX(100px);
+    }
+}
+
+@-webkit-keyframes scale {
+    10% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    50% {
+        -webkit-transform: scale(1.25);
+        transform: scale(1.25);
+    }
+    90% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes scale {
+    10% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    50% {
+        -webkit-transform: scale(1.25);
+        transform: scale(1.25);
+    }
+    90% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+#svgPreloader {
+    position: absolute;
+    z-index: -100;
+    pointer-events: none;
+}
+/*----------------------------------------
     footer charts
 ------------------------------------------*/
 
