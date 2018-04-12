@@ -413,7 +413,7 @@ nav {
 	position:fixed !important;
 }
 .sweet-alert{
-	margin-top: -290px !important;
+	margin-top: -50% !important;
 	/* text-align: left; */
 	/* height: 95%; */
 	padding:7 !important;
