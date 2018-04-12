@@ -169,6 +169,7 @@ function doSubscribe() {
 function populateService(mDet) {
     console.log(mDet.id)
     console.log(mDet);
+    $("#preloader").fadeOut(1000);
     getPhnNo = mDet.phone
 
     bitsTheme(mDet.theme);
