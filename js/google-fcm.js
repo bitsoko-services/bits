@@ -54,6 +54,11 @@ function startmessage() {
         })
         .catch(function (err) {
             console.log('Unable to get permission to notify.', err);
+            M.toast({
+                html: 'Error! Activate notifications from the side menu.',
+                displayLength: 3000,
+                classes: "acvtNotiToast"
+            })
 
             pushButtonTitle.textContent = 'Notifications Off';
             pushButton.checked = false;

@@ -3331,3 +3331,6 @@ tr.group:hover {
 #locationModal {
     overflow: initial !important;
 }
+.acvtNotiToast{
+    padding: 0px 5px;
+}
