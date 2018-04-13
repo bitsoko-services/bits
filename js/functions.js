@@ -67,8 +67,8 @@ function servicePageLoader() {
                 var re = /&quot;/gi;
                 var str = document.getElementById('storeMeta').innerHTML;
                 var newstr = str.replace(re, '"');
+    $("#preloader").fadeOut(1000);
                 populateService(JSON.parse(newstr).res);
-                $("#preloader").css('display','none');
                 populated = true;
             }
         };
@@ -78,8 +78,8 @@ function servicePageLoader() {
             var re = /&quot;/gi;
             var str = document.getElementById('storeMeta').innerHTML;
             var newstr = str.replace(re, '"');
+    $("#preloader").fadeOut(1000);
             populateService(JSON.parse(newstr).res);
-                $("#preloader").css('display','none');
             populated = true;
         }
         doFetch({
@@ -123,8 +123,8 @@ function servicePageLoader() {
                     var re = /&quot;/gi;
                     var str = document.getElementById('storeMeta').innerHTML;
                     var newstr = str.replace(re, '"');
+    $("#preloader").fadeOut(1000);
                     populateService(JSON.parse(newstr).res);
-                $("#preloader").css('display','none');
                     populated = true;
                 }
             };
@@ -133,8 +133,8 @@ function servicePageLoader() {
                 var re = /&quot;/gi;
                 var str = document.getElementById('storeMeta').innerHTML;
                 var newstr = str.replace(re, '"');
+    $("#preloader").fadeOut(1000);
                 populateService(JSON.parse(newstr).res);
-                $("#preloader").css('display','none');
                 populated = true;
             }
         });
