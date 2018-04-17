@@ -160,6 +160,13 @@ function updateEarnedTokens(f) {
     }
 
     $('.balance-coins').html('').append(numberify(tBal, 2) + ' ' + baseCd);
+
+    var checkWalletStatus = $("#walletLocked").css('display') == "block"
+    if (checkWalletStatus == true) {
+        $("#checkBal").html("locked")
+    } else {
+        $('.balance-coins').html('').append(numberify(tBal, 2) + ' ' + baseCd);
+    }
 }
 
 

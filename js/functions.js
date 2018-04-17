@@ -733,12 +733,6 @@ function cop(costofItems) {
     }
 }
 
-function checkBrowser() {
-    if (navigator.userAgent.indexOf("Chrome") != -1) {} else {
-        $("#checkBrowser").openModal()
-    }
-}
-
 //Wallet State
 if (sessionStorage.getItem('walletKey')) {
     $("#walletUnlocked").css("display", "block");
