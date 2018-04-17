@@ -435,7 +435,7 @@ function makeOrder(orderArrayy, orderLoc) {
                         },
                         service: parseInt(getBitsWinOpt('s'))
                     })
-                    var payByToken = false;
+                    var payByToken = true;
 
                     function doSendOrder() {
                         if (payByToken == true) {
