@@ -244,6 +244,7 @@ function walletFunctions(uid) {
 
                 }
                 resolve('loaded wallets ' + uid);
+                $("#walletLocked").replaceWith('<div id="walletUnlocked" style="float: left;margin-left: 10px;margin-top: 13px;display: block;line-height: normal;"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;padding:4px;" xml:space="preserve"> <path d="M24,0c-4.411,0-8,3.589-8,8v6H3c-1.654,0-3,1.346-3,3v12c0,1.654,1.346,3,3,3h16c1.654,0,3-1.346,3-3V17 c0-1.654-1.346-3-3-3h-1V8c0-3.309,2.691-6,6-6s6,2.691,6,6v6c0,0.553,0.448,1,1,1s1-0.447,1-1V8C32,3.589,28.411,0,24,0z M19,16 c0.551,0,1,0.448,1,1v12c0,0.552-0.449,1-1,1H3c-0.551,0-1-0.448-1-1V17c0-0.552,0.449-1,1-1H19z M11,26c1.104,0,2-0.896,2-2 c0-0.738-0.405-1.376-1-1.723V20c0-0.553-0.448-1-1-1s-1,0.447-1,1v2.277C9.405,22.624,9,23.262,9,24C9,25.104,9.896,26,11,26z" style="fill: white;"></path> </svg> </div>')
                 return;
             }
         }
@@ -258,7 +259,7 @@ function walletFunctions(uid) {
             //            });
         }
         resolve('loaded wallets ' + uid);
-
+        $("#walletLocked").replaceWith('<div id="walletUnlocked" style="float: left;margin-left: 10px;margin-top: 13px;display: block;line-height: normal;"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;padding:4px;" xml:space="preserve"> <path d="M24,0c-4.411,0-8,3.589-8,8v6H3c-1.654,0-3,1.346-3,3v12c0,1.654,1.346,3,3,3h16c1.654,0,3-1.346,3-3V17 c0-1.654-1.346-3-3-3h-1V8c0-3.309,2.691-6,6-6s6,2.691,6,6v6c0,0.553,0.448,1,1,1s1-0.447,1-1V8C32,3.589,28.411,0,24,0z M19,16 c0.551,0,1,0.448,1,1v12c0,0.552-0.449,1-1,1H3c-0.551,0-1-0.448-1-1V17c0-0.552,0.449-1,1-1H19z M11,26c1.104,0,2-0.896,2-2 c0-0.738-0.405-1.376-1-1.723V20c0-0.553-0.448-1-1-1s-1,0.447-1,1v2.277C9.405,22.624,9,23.262,9,24C9,25.104,9.896,26,11,26z" style="fill: white;"></path> </svg> </div>')
 
     });
 }
