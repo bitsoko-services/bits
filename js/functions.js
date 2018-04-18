@@ -67,7 +67,7 @@ function servicePageLoader() {
                 var re = /&quot;/gi;
                 var str = document.getElementById('storeMeta').innerHTML;
                 var newstr = str.replace(re, '"');
-    $("#preloader").fadeOut(1000);
+                $("#preloader").fadeOut(1000);
                 populateService(JSON.parse(newstr).res);
                 populated = true;
             }
@@ -78,7 +78,7 @@ function servicePageLoader() {
             var re = /&quot;/gi;
             var str = document.getElementById('storeMeta').innerHTML;
             var newstr = str.replace(re, '"');
-    $("#preloader").fadeOut(1000);
+            $("#preloader").fadeOut(1000);
             populateService(JSON.parse(newstr).res);
             populated = true;
         }
@@ -123,7 +123,7 @@ function servicePageLoader() {
                     var re = /&quot;/gi;
                     var str = document.getElementById('storeMeta').innerHTML;
                     var newstr = str.replace(re, '"');
-    $("#preloader").fadeOut(1000);
+                    $("#preloader").fadeOut(1000);
                     populateService(JSON.parse(newstr).res);
                     populated = true;
                 }
@@ -133,7 +133,7 @@ function servicePageLoader() {
                 var re = /&quot;/gi;
                 var str = document.getElementById('storeMeta').innerHTML;
                 var newstr = str.replace(re, '"');
-    $("#preloader").fadeOut(1000);
+                $("#preloader").fadeOut(1000);
                 populateService(JSON.parse(newstr).res);
                 populated = true;
             }
@@ -439,45 +439,60 @@ function makeOrder(orderArrayy, orderLoc) {
 
                     function doSendOrder() {
                         if (payByToken == true) {
-                            if (parseFloat($("#checkBal")[0].innerHTML) > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
-                                $("#products").html("");
-                                var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
-                                transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function (res) {
-                                    console.log(res);
-                                    //sent escrow to server so complete order
-                                    orderData.then(function (e) {
-                                        $("#appendPushSubs").remove();
-                                        alert("running 2")
-                                        if (e.status == "ok") {
-                                            console.log('5');
+                            $(document).on("click", "#ConfirmO", function (e) {
+                                if (sessionStorage.getItem('walletKey')) {
+                                    if (parseFloat($("#checkBal")[0].innerHTML) > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
+                                        $("#products").html("");
+                                        var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
+                                        transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function (res) {
+                                            console.log(res);
+                                            //sent escrow to server so complete order
+                                            orderData.then(function (e) {
+                                                $("#appendPushSubs").remove();
+                                                alert("running 2")
+                                                if (e.status == "ok") {
+                                                    console.log('5');
 
-                                            document.getElementById("ConfirmO").removeEventListener("click", doSendOrder);
+                                                    document.getElementById("ConfirmO").removeEventListener("click", doSendOrder);
 
+                                                    $('#modalconfirm').modal('close');
+                                                    swal("success!", "your order has been sent!", "success");
+                                                    $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input onclick="startPushManager();" class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
+                                                    clearCart();
+                                                } else {
+                                                    swal("Cancelled", "your order is not sent", "error");
+                                                }
+                                            })
+                                        }).catch(function (err) {
+                                            M.toast({
+                                                html: '<span class="toastlogin">You have insufficient funds to complete this order ',
+                                                displayLength: 6000
+                                            });
                                             $('#modalconfirm').modal('close');
-                                            swal("success!", "your order has been sent!", "success");
-                                            $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input onclick="startPushManager();" class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
                                             clearCart();
-                                        } else {
-                                            swal("Cancelled", "your order is not sent", "error");
-                                        }
-                                    })
-                                }).catch(function (err) {
-                                    M.toast({
-                                        html: '<span class="toastlogin">You have insufficient funds to complete this order ',
-                                        displayLength: 6000
-                                    });
-                                    $('#modalconfirm').modal('close');
-                                    clearCart();
-                                    console.log(err)
-                                })
+                                            console.log(err)
+                                        })
 
-                            } else {
-                                M.toast({
-                                    html: '<span class="toastlogin">You have insufficient funds to complete this order ',
-                                    displayLength: 6000
-                                });
-                                clearCart();
-                            }
+                                    } else {
+                                        M.toast({
+                                            html: '<span class="toastlogin">You have insufficient funds to complete this order ',
+                                            displayLength: 6000
+                                        });
+                                        clearCart();
+                                    }
+                                } else {
+                                    var toastHTML = '<span>Unlock wallet to checkout</span><button class="btn-flat toast-action" onclick="loadGdrive()">Unlock</button>';
+                                    if ($(".unlockWalletToast").length >= 1) {
+                                        $(".unlockWalletToast").remove()
+                                    } else {
+                                        M.toast({
+                                            html: toastHTML,
+                                            classes: "unlockWalletToast",
+                                            displayLength: 5000
+                                        });
+                                    }
+                                }
+                            })
                         } else {
                             orderData.then(function (e) {
                                 $("#appendPushSubs").remove();
@@ -745,3 +760,12 @@ $(document).on('click', '#walletLocked', function () {
     loadGdrive();
     $("#walletLocked").html('<div class="preloader-wrapper active" style="width: 25px;height: 25px;margin: 0px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
 })
+
+function walletStatus() {
+    if (sessionStorage.getItem('walletKey')) {
+        console.log('unlocked')
+        $("#walletLocked").replaceWith('<div id="walletUnlocked" style="float: left;margin-left: 10px;margin-top: 13px;display: block;line-height: normal;"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;padding:4px;" xml:space="preserve"> <path d="M24,0c-4.411,0-8,3.589-8,8v6H3c-1.654,0-3,1.346-3,3v12c0,1.654,1.346,3,3,3h16c1.654,0,3-1.346,3-3V17 c0-1.654-1.346-3-3-3h-1V8c0-3.309,2.691-6,6-6s6,2.691,6,6v6c0,0.553,0.448,1,1,1s1-0.447,1-1V8C32,3.589,28.411,0,24,0z M19,16 c0.551,0,1,0.448,1,1v12c0,0.552-0.449,1-1,1H3c-0.551,0-1-0.448-1-1V17c0-0.552,0.449-1,1-1H19z M11,26c1.104,0,2-0.896,2-2 c0-0.738-0.405-1.376-1-1.723V20c0-0.553-0.448-1-1-1s-1,0.447-1,1v2.277C9.405,22.624,9,23.262,9,24C9,25.104,9.896,26,11,26z" style="fill: white;"></path> </svg> </div>')
+    } else {
+        console.log('locked')
+    }
+}
