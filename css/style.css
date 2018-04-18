@@ -41,12 +41,47 @@ body {
 .modal {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 9px rgba(255, 255, 255, 0.4)
 }
-.spinner-layer{
+
+.spinner-layer {
     border-color: white !important;
 }
-.unlockWalletToast{
+
+.unlockWalletToast {
     padding: 3px !important;
 }
+
+@keyframes blink {
+    0% {
+        box-shadow: 0 0 70px green;
+    }
+    50% {
+        box-shadow: none;
+    }
+    100% {
+        box-shadow: 0 0 70px green;
+    }
+}
+
+@-webkit-keyframes blink {
+    0% {
+        box-shadow: 0 0 70px green
+    }
+    50% {
+        box-shadow: 0 0 0;
+    }
+    100% {
+        box-shadow: 0 0 70px green
+    }
+}
+
+.blink {
+    -webkit-animation: blink 1.0s linear infinite;
+    -moz-animation: blink 1.0s linear infinite;
+    -ms-animation: blink 1.0s linear infinite;
+    -o-animation: blink 1.0s linear infinite;
+    animation: blink 1.0s linear infinite;
+}
+
 #burst-13 {
     background: #dabb12;
     width: 35px;
@@ -3180,6 +3215,8 @@ tr.group:hover {
 /*----------------------------------------
     PRELOADER
 ------------------------------------------*/
+
+
 /*******************************************
                  PRE LOADER
 *********************************************/
@@ -3295,6 +3332,8 @@ tr.group:hover {
     z-index: -100;
     pointer-events: none;
 }
+
+
 /*----------------------------------------
     footer charts
 ------------------------------------------*/
@@ -3336,6 +3375,7 @@ tr.group:hover {
 #locationModal {
     overflow: initial !important;
 }
-.acvtNotiToast{
+
+.acvtNotiToast {
     padding: 0px 5px;
 }
