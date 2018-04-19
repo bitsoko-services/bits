@@ -98,6 +98,7 @@ function loadGdrive() {
 'q': '\'appfolder\' in parents'
 	});
 	*/
+
     retrievePageOfFiles(initialRequest, []);
 
 }
@@ -1014,9 +1015,14 @@ window.onload = function () {
             }).then(function (e) {
                 if (e.status == 'ok') {
                     console.log('error reported:' + msg);
+                    if (msg == 'Uncaught ReferenceError: retrievePageOfFiles is not defined') { //Check if user is signed in
+                        var toastHTML = '<span>Login to unlock wallet</span><a class="btn-flat toast-action modal-trigger" href="#loginModal">login</a>';
+                        M.toast({
+                            html: toastHTML,
+                            displayLength: 4000
+                        });
+                    }
                 }
-
-
             });
         }
 
@@ -1115,12 +1121,18 @@ function createBTC(user) {
                 walSaving.onsuccess = function (event) {
                     localStorage.setItem("bits-user-wallet", publicAddress);
                     resolve(walData);
-                    M.toast({html:'created new wallet', displayLength: 3000});
+                    M.toast({
+                        html: 'created new wallet',
+                        displayLength: 3000
+                    });
 
                 }
             } else {
                 reject('failed to create wallet, please try again');
-M.toast({html:'failed to create wallet, please try again', displayLength: 3000});
+                M.toast({
+                    html: 'failed to create wallet, please try again',
+                    displayLength: 3000
+                });
 
             }
 
@@ -1193,12 +1205,18 @@ function createETH(user) {
                         //localStorage.setItem("bits-user-wallet", publicAddress); 
 
                         resolve(walData);
-                        M.toast({html:'created new Ethereum wallet', displayLength: 3000});
+                        M.toast({
+                            html: 'created new Ethereum wallet',
+                            displayLength: 3000
+                        });
 
                     }
                 } else {
                     reject('failed to create wallet, please try again');
-                    M.toast({html:'failed to create wallet, please try again', displayLength: 3000});
+                    M.toast({
+                        html: 'failed to create wallet, please try again',
+                        displayLength: 3000
+                    });
 
                 }
 
