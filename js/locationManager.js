@@ -50,7 +50,11 @@ function showPosition(position) {
 
                                 console.log('updated location');
                                 document.querySelector('.js-loc-button-notification').checked = true;
-                                $('#locationModal').modal("close");
+                                try {
+                                    $('#locationModal').modal("close");
+                                } catch (err) {
+                                    $('#locationModal').modal("close");
+                                }
                             };
 
                         } else {
