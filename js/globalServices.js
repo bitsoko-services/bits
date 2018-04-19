@@ -245,7 +245,6 @@ function walletFunctions(uid) {
 
                 }
                 resolve('loaded wallets ' + uid);
-                walletStatus();
                 return;
             }
         }
@@ -261,7 +260,6 @@ function walletFunctions(uid) {
         }
         resolve('loaded wallets ' + uid);
     });
-    walletStatus()
 }
 
 
@@ -712,6 +710,7 @@ function fetchRatesProc(e) {
             enterpriseContract = contCoAdr;
             console.log("THIS IS THE CONTRACT ADDRESS")
             console.log(contCoAdr)
+            walletStatus()
 
         }
         //  console.log(contracts[i].name)
