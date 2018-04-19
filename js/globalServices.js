@@ -260,9 +260,8 @@ function walletFunctions(uid) {
             //            });
         }
         resolve('loaded wallets ' + uid);
-        walletStatus();
-
     });
+    walletStatus()
 }
 
 
