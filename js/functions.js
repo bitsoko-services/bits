@@ -443,7 +443,7 @@ function makeOrder(orderArrayy, orderLoc) {
                             $(document).on("click", "#ConfirmO", function (e) {
                                 if (sessionStorage.getItem('walletKey')) {
                                     console.log(parseFloat($("#checkBal")[0].innerHTML), (parseFloat($("#totals")[0].innerHTML) + globalDel));
-                                    if (((allTokens[enterpriseContract].balance/Math.pow(10, allTokens[enterpriseContract].decimals))+allTokens[enterpriseContract].totalEarned) * baseX > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
+                                    if (((allTokens[enterpriseContract].balance / Math.pow(10, allTokens[enterpriseContract].decimals)) + allTokens[enterpriseContract].totalEarned) * baseX > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
                                         $("#products").html("");
                                         var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
                                         transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function (res) {
@@ -753,15 +753,15 @@ function cop(costofItems) {
 function walletStatus() {
     if (sessionStorage.getItem('walletKey')) {
         $("#walletUnlocked").css("display", "block");
-        $("#walletLocked").css("display", "none")
+        $("#walletLocked").css("display", "none");
     } else {
         $("#walletUnlocked").css("display", "none");
         $("#walletLocked").css("display", "block")
     }
-}
-walletStatus()
 
-$(document).on('click', '#walletLocked', function () {
-    loadGdrive();
-    $("#walletLocked").html('<div class="preloader-wrapper active" style="width: 25px;height: 25px;margin: 0px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
-})
+    $(document).on('click', '#walletLocked', function () {
+        loadGdrive();
+        $("#walletLocked").html('<div class="preloader-wrapper active" style="width: 25px;height: 25px;margin: 0px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
+    })
+}
+walletStatus();
