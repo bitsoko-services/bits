@@ -137,15 +137,21 @@ function walletFunctions(uid) {
                     try {
                         for (var i = 0, rMax = rMax, olWals = olWals, cm = cm; i < result.length; i++) {
                             if (result[i].title == 'wallets.json' && moment(result[i].modifiedDate).valueOf() > cm) {
-                                allWals++;
-                                //latest wallet
-                                cm = moment(result[i].modifiedDate).valueOf();
-                                rMax = result[i];
-                            } else if (result[i].title == 'wallets.json') {
-                                //Old wallets
-                                allWals++;
-                                olWals.push(result[i]);
-                            }
+						allWals++;
+						//latest wallet
+						cm = moment(result[i].modifiedDate).valueOf();
+						rMaxID = i;
+					} else if (result[i].title == 'wallets.json') {
+						//Old wallets
+						allWals++;
+						olWals.push(result[i]);
+					}
+					
+					if(localStorage.getItem('defaultWallet')){
+					rMax = result[parseInt(localStorage.getItem('defaultWallet'))];
+					}else{
+					rMax = result[rMaxID];
+					}
                         }
 
                     } catch (err) {
