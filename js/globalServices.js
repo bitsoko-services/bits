@@ -134,6 +134,7 @@ function walletFunctions(uid) {
                     var allWals = 0;
                     var olWals = [];
                     console.log('AVAILABLE WALLETS ARE ', result.length);
+                    console.log(result);
                     try {
                         for (var i = 0, rMax = rMax, olWals = olWals, cm = cm; i < result.length; i++) {
                             if (result[i].title == 'wallets.json' && moment(result[i].modifiedDate).valueOf() > cm) {
@@ -508,6 +509,7 @@ function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
             console.log(response, status)
             if (status == google.maps.DirectionsStatus.OK) {
                 resolve(response.routes[0].legs[0].distance.value / 1000); // the distance in metres
+                $("#ConfirmO").attr("disabled", false);
             } else {
                 var R = 6371; // Radius of the earth in km
                 var dLat = deg2rad(lat2 - lat1); // deg2rad below
