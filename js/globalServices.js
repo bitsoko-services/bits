@@ -183,6 +183,20 @@ function walletFunctions(uid) {
                                 localStorage.setItem('bits-user-address-' + localStorage.getItem('bits-user-name'), JSON.parse(eg.responseText).publicAddress);
                                 console.log(JSON.parse(eg.responseText).publicAddress)
                                 password = "password";
+				    
+				    // start update wallet details to server
+				    
+                                var walDetUpd = JSON.parse(eg.responseText);
+							
+							delete walDetUpd.walletSeed;
+							delete walDetUpd.walletSalt;
+							
+							doFetch({action:'saveUserWallet', data: JSON.stringify(walDetUpd), user:localStorage.getItem('bits-user-name') }).then(function(e){
+								
+							}).catch(function(e){console.log(e)});
+	
+					
+				    // end update wallet details to server
 
                                 var randomSeed = JSON.parse(eg.responseText).walletSeed;
                                 var randomSalt = JSON.parse(eg.responseText).walletSalt;
