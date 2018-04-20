@@ -421,9 +421,11 @@ function makeOrder(orderArrayy, orderLoc) {
                 console.log(orderLoc, e, mapLocc);
                 getCoordDet(mapLocc).then(function (mapData) {
                     getProdss(orderArrayy);
+                    
+                    var locOrigin = e.coords.latitude + ',' + e.coords.longitude
 
                     var payByToken = true;
-                    
+
                     if (payByToken == true) {
                         $(document).on("click", "#ConfirmO", function (e) {
                             if (sessionStorage.getItem('walletKey')) {
@@ -433,13 +435,12 @@ function makeOrder(orderArrayy, orderLoc) {
                                     var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
                                     transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function (res) {
                                         console.log(res);
-                                        //sent escrow to server so complete order
                                         doFetch({
                                             action: 'makeOrder',
                                             data: orderArrayy,
                                             //EarnedKobo: totalKobo,
                                             delPrice: globalDel,
-                                            loc: e.coords.latitude + ',' + e.coords.longitude,
+                                            loc: locOrigin,
                                             user: localStorage.getItem("bits-user-name"),
                                             pointsEarned: {
                                                 "coin": "bits",
@@ -489,28 +490,30 @@ function makeOrder(orderArrayy, orderLoc) {
                             }
                         })
                     } else {
-                        doFetch({
-                            action: 'makeOrder',
-                            data: orderArrayy,
-                            //EarnedKobo: totalKobo,
-                            delPrice: globalDel,
-                            loc: e.coords.latitude + ',' + e.coords.longitude,
-                            user: localStorage.getItem("bits-user-name"),
-                            pointsEarned: {
-                                "coin": "bits",
-                                "purchase": totalKobo
-                            },
-                            service: parseInt(getBitsWinOpt('s'))
-                        }).then(function (e) {
-                            $("#appendPushSubs").remove();
-                            if (e.status == "ok") {
-                                $('#modalconfirm').modal("close");
-                                swal("success!", "your order has been sent!", "success");
-                                $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox" onclick="startmessage()"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
-                                clearCart();
-                            } else {
-                                swal("Cancelled", "your order is not sent", "error");
-                            }
+                        $(document).on("click", "#ConfirmO", function (e) {
+                            doFetch({
+                                action: 'makeOrder',
+                                data: orderArrayy,
+                                //EarnedKobo: totalKobo,
+                                delPrice: globalDel,
+                                loc: locOrigin,
+                                user: localStorage.getItem("bits-user-name"),
+                                pointsEarned: {
+                                    "coin": "bits",
+                                    "purchase": totalKobo
+                                },
+                                service: parseInt(getBitsWinOpt('s'))
+                            }).then(function (e) {
+                                $("#appendPushSubs").remove();
+                                if (e.status == "ok") {
+                                    $('#modalconfirm').modal("close");
+                                    swal("success!", "your order has been sent!", "success");
+                                    $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox" onclick="startmessage()"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
+                                    clearCart();
+                                } else {
+                                    swal("Cancelled", "your order is not sent", "error");
+                                }
+                            })
                         })
                     }
                     $(".confirmText").html("")
