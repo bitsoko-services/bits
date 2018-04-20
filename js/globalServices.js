@@ -172,64 +172,91 @@ function walletFunctions(uid) {
                         $("#walletList").append('<button class="btn selectedWallet" id="' + walletIndex + '">' + walletNumb + '</button>')
                     }
 
+                    function getWalletAddress(){downloadFile(rMax).then(function (eg) {
+                        try {
+                            localStorage.setItem('bits-user-address-' + localStorage.getItem('bits-user-name'), JSON.parse(eg.responseText).publicAddress);
+                            console.log(JSON.parse(eg.responseText).publicAddress)
+                            //var infoString = 'Loaded Wallets: "' + JSON.parse(eg.responseText).publicAddress + '"Enter your password to unlock your wallets.'
+
+
+                            password = "password";
+                            // update wallet details to server 
+                            var walDetUpd = JSON.parse(eg.responseText);
+
+                            delete walDetUpd.walletSeed;
+                            delete walDetUpd.walletSalt;
+
+                            doFetch({
+                                action: 'saveUserWallet',
+                                data: JSON.stringify(walDetUpd),
+                                user: localStorage.getItem('bits-user-name')
+                            }).then(function (e) {
+
+                            }).catch(function (e) {
+                                console.log(e)
+                            });
+
+
+                            var randomSeed = JSON.parse(eg.responseText).walletSeed;
+                            var randomSalt = JSON.parse(eg.responseText).walletSalt;
+                            //p = p
+                            //console.log(password,randomSeed);				
+                            getUserAd(password, randomSeed, randomSalt).then(function (addresses) {
+                                //console.log(addresses,p);
+                                //console.log("first p " + p);
+                                //console.log('Loaded wallets: ', JSON.parse(eg.responseText).publicAddress);
+                                var w = addresses[0]
+                                // toDo: add this line when getting multiple addresses
+                                //var all = JSON.parse(w)
+                                // save Wallets to db
+                                getObjectStore('data', 'readwrite').put(addresses, 'bits-wallets-' + uid);
+                                ////////Add callback for loaded function
+                                fetchRates().then(function (e) {
+                                    try {
+
+                                        upDtokenD();
+                                        sortOrderBookColor();
+
+                                    } catch (e) {
+                                        console.log('ERR! getting rates after loading wallet.', e)
+                                    }
+                                    // start first transaction
+                                    try {
+                                        doFirstBuy();
+                                    } catch (er) {
+                                        console.log('INFO! not started firstbuy, is wallet locked? ', er)
+                                    }
+                                });
+
+
+                            }).catch(function (error) {
+                                console.log(error);
+                            });
+
+                        } catch (err) {
+                            console.log("Error loading wallet: " + err + " fetching..");
+                            if ($(".unlockWalletToast").length >= 1) {
+                                $(".unlockWalletToast").remove();
+                            }
+                            M.toast({
+                                html: "Error unlocking wallet. Try again later.",
+                                displayLength: 3000,
+                                classes: "unlockWalletToast"
+                            });
+                            $("#walletLocked").replaceWith('<div id="walletLocked" style="float: left; margin-left: 15px; margin-top: 17px; display: block; line-height: normal;"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width: 25px;" xml:space="preserve"> <path d="M256.001,276.673c-28.017,0-50.81,22.793-50.81,50.81c0,13.895,5.775,27.33,15.858,36.891v45.875 c0,19.273,15.68,34.953,34.953,34.953s34.953-15.68,34.953-34.953v-45.875c10.078-9.555,15.857-22.993,15.857-36.891 C306.81,299.466,284.016,276.673,256.001,276.673z M273.979,346.558c-4.851,4.571-7.633,10.96-7.633,17.53v46.161 c0,5.705-4.64,10.345-10.345,10.345c-5.704,0-10.345-4.64-10.345-10.345v-46.161c0-6.569-2.782-12.957-7.63-17.527 c-5.307-5.003-8.229-11.778-8.229-19.078c0-14.447,11.755-26.202,26.202-26.202c14.447,0,26.202,11.755,26.202,26.202 C282.203,334.783,279.281,341.558,273.979,346.558z" fill="#FFFFFF"></path> <path d="M404.979,209.876h-36.908v-97.804C368.071,50.275,317.795,0,256.001,0C194.205,0,143.93,50.275,143.93,112.072v97.804 h-36.909c-20.353,0-36.911,16.559-36.911,36.911v228.301c0,20.353,16.558,36.911,36.911,36.911h297.958 c20.353,0,36.911-16.558,36.911-36.911V246.788C441.89,226.435,425.332,209.876,404.979,209.876z M168.536,112.072 c0-48.227,39.236-87.464,87.464-87.464c48.227,0,87.463,39.237,87.463,87.464v97.804H168.536V112.072z M417.283,475.089 L417.283,475.089c0,6.784-5.52,12.304-12.304,12.304H107.021c-6.784,0-12.304-5.519-12.304-12.304V246.788 c0-6.784,5.52-12.304,12.304-12.304h297.958c6.784,0,12.304,5.519,12.304,12.304V475.089z" fill="#FFFFFF"></path> </svg> </div>')
+                        }
+                    }).catch(function (err) {
+                        console.log(err)
+                    });
+                                                }
+
                     $(document).on('click', '.selectedWallet', function (e) {
                         var selectedWallet = $(this).attr("id");
                         console.log("wallet index")
                         console.log(selectedWallet)
-                        
-                        var rMaxSlct = result[selectedWallet]
-                        downloadFile(rMaxSlct).then(function (eg) {
-                            try {
-                                localStorage.setItem('bits-user-address-' + localStorage.getItem('bits-user-name'), JSON.parse(eg.responseText).publicAddress);
-                                console.log(JSON.parse(eg.responseText).publicAddress)
-                                password = "password";
 
-                                var randomSeed = JSON.parse(eg.responseText).walletSeed;
-                                var randomSalt = JSON.parse(eg.responseText).walletSalt;
-                                //p = p
-                                //console.log(password,randomSeed);				
-                                getUserAd(password, randomSeed, randomSalt).then(function (addresses) {
-                                    var w = addresses[0]
-                                    // save Wallets to db
-                                    getObjectStore('data', 'readwrite').put(addresses, 'bits-wallets-' + uid);
-                                    ////////Add callback for loaded function
-                                    fetchRates().then(function (e) {
-                                        try {
-
-                                            upDtokenD();
-                                            sortOrderBookColor();
-
-                                        } catch (e) {
-                                            console.log('ERR! getting rates after loading wallet.', e)
-                                        }
-                                        // start first transaction
-                                        try {
-                                            doFirstBuy();
-                                        } catch (er) {
-                                            console.log('INFO! not started firstbuy, is wallet locked? ', er)
-                                        }
-                                    });
-
-
-                                }).catch(function (error) {
-                                    console.log(error);
-                                });
-
-                            } catch (err) {
-                                console.log("Error loading wallet: " + err + " fetching..");
-                                if ($(".unlockWalletToast").length >= 1) {
-                                    $(".unlockWalletToast").remove();
-                                }
-                                M.toast({
-                                    html: "Error unlocking wallet. Try again later.",
-                                    displayLength: 3000,
-                                    classes: "unlockWalletToast"
-                                });
-                                $("#walletLocked").replaceWith('<div id="walletLocked" style="float: left; margin-left: 15px; margin-top: 17px; display: block; line-height: normal;"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width: 25px;" xml:space="preserve"> <path d="M256.001,276.673c-28.017,0-50.81,22.793-50.81,50.81c0,13.895,5.775,27.33,15.858,36.891v45.875 c0,19.273,15.68,34.953,34.953,34.953s34.953-15.68,34.953-34.953v-45.875c10.078-9.555,15.857-22.993,15.857-36.891 C306.81,299.466,284.016,276.673,256.001,276.673z M273.979,346.558c-4.851,4.571-7.633,10.96-7.633,17.53v46.161 c0,5.705-4.64,10.345-10.345,10.345c-5.704,0-10.345-4.64-10.345-10.345v-46.161c0-6.569-2.782-12.957-7.63-17.527 c-5.307-5.003-8.229-11.778-8.229-19.078c0-14.447,11.755-26.202,26.202-26.202c14.447,0,26.202,11.755,26.202,26.202 C282.203,334.783,279.281,341.558,273.979,346.558z" fill="#FFFFFF"></path> <path d="M404.979,209.876h-36.908v-97.804C368.071,50.275,317.795,0,256.001,0C194.205,0,143.93,50.275,143.93,112.072v97.804 h-36.909c-20.353,0-36.911,16.559-36.911,36.911v228.301c0,20.353,16.558,36.911,36.911,36.911h297.958 c20.353,0,36.911-16.558,36.911-36.911V246.788C441.89,226.435,425.332,209.876,404.979,209.876z M168.536,112.072 c0-48.227,39.236-87.464,87.464-87.464c48.227,0,87.463,39.237,87.463,87.464v97.804H168.536V112.072z M417.283,475.089 L417.283,475.089c0,6.784-5.52,12.304-12.304,12.304H107.021c-6.784,0-12.304-5.519-12.304-12.304V246.788 c0-6.784,5.52-12.304,12.304-12.304h297.958c6.784,0,12.304,5.519,12.304,12.304V475.089z" fill="#FFFFFF"></path> </svg> </div>')
-                            }
-                        }).catch(function (err) {
-                            console.log(err)
-                        });
+                        rMax = result[selectedWallet]
+getWalletAddress()
                     })
 
                     if (allWals == 0 && result[i] == undefined && Array.isArray(result)) {
@@ -250,76 +277,7 @@ function walletFunctions(uid) {
                     } else {
                         console.log(rMax)
 
-                        downloadFile(rMax).then(function (eg) {
-                            try {
-                                localStorage.setItem('bits-user-address-' + localStorage.getItem('bits-user-name'), JSON.parse(eg.responseText).publicAddress);
-                                console.log(JSON.parse(eg.responseText).publicAddress)
-                                //var infoString = 'Loaded Wallets: "' + JSON.parse(eg.responseText).publicAddress + '"Enter your password to unlock your wallets.'
-
-
-                                password = "password";		
-// update wallet details to server
-                                var walDetUpd = JSON.parse(eg.responseText);
-							
-							delete walDetUpd.walletSeed;
-							delete walDetUpd.walletSalt;
-							
-							doFetch({action:'saveUserWallet', data: JSON.stringify(walDetUpd), user:localStorage.getItem('bits-user-name') }).then(function(e){
-								
-							}).catch(function(e){console.log(e)});
-	
-
-                                var randomSeed = JSON.parse(eg.responseText).walletSeed;
-                                var randomSalt = JSON.parse(eg.responseText).walletSalt;
-                                //p = p
-                                //console.log(password,randomSeed);				
-                                getUserAd(password, randomSeed, randomSalt).then(function (addresses) {
-                                    //console.log(addresses,p);
-                                    //console.log("first p " + p);
-                                    //console.log('Loaded wallets: ', JSON.parse(eg.responseText).publicAddress);
-                                    var w = addresses[0]
-                                    // toDo: add this line when getting multiple addresses
-                                    //var all = JSON.parse(w)
-                                    // save Wallets to db
-                                    getObjectStore('data', 'readwrite').put(addresses, 'bits-wallets-' + uid);
-                                    ////////Add callback for loaded function
-                                    fetchRates().then(function (e) {
-                                        try {
-
-                                            upDtokenD();
-                                            sortOrderBookColor();
-
-                                        } catch (e) {
-                                            console.log('ERR! getting rates after loading wallet.', e)
-                                        }
-                                        // start first transaction
-                                        try {
-                                            doFirstBuy();
-                                        } catch (er) {
-                                            console.log('INFO! not started firstbuy, is wallet locked? ', er)
-                                        }
-                                    });
-
-
-                                }).catch(function (error) {
-                                    console.log(error);
-                                });
-
-                            } catch (err) {
-                                console.log("Error loading wallet: " + err + " fetching..");
-                                if ($(".unlockWalletToast").length >= 1) {
-                                    $(".unlockWalletToast").remove();
-                                }
-                                M.toast({
-                                    html: "Error unlocking wallet. Try again later.",
-                                    displayLength: 3000,
-                                    classes: "unlockWalletToast"
-                                });
-                                $("#walletLocked").replaceWith('<div id="walletLocked" style="float: left; margin-left: 15px; margin-top: 17px; display: block; line-height: normal;"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width: 25px;" xml:space="preserve"> <path d="M256.001,276.673c-28.017,0-50.81,22.793-50.81,50.81c0,13.895,5.775,27.33,15.858,36.891v45.875 c0,19.273,15.68,34.953,34.953,34.953s34.953-15.68,34.953-34.953v-45.875c10.078-9.555,15.857-22.993,15.857-36.891 C306.81,299.466,284.016,276.673,256.001,276.673z M273.979,346.558c-4.851,4.571-7.633,10.96-7.633,17.53v46.161 c0,5.705-4.64,10.345-10.345,10.345c-5.704,0-10.345-4.64-10.345-10.345v-46.161c0-6.569-2.782-12.957-7.63-17.527 c-5.307-5.003-8.229-11.778-8.229-19.078c0-14.447,11.755-26.202,26.202-26.202c14.447,0,26.202,11.755,26.202,26.202 C282.203,334.783,279.281,341.558,273.979,346.558z" fill="#FFFFFF"></path> <path d="M404.979,209.876h-36.908v-97.804C368.071,50.275,317.795,0,256.001,0C194.205,0,143.93,50.275,143.93,112.072v97.804 h-36.909c-20.353,0-36.911,16.559-36.911,36.911v228.301c0,20.353,16.558,36.911,36.911,36.911h297.958 c20.353,0,36.911-16.558,36.911-36.911V246.788C441.89,226.435,425.332,209.876,404.979,209.876z M168.536,112.072 c0-48.227,39.236-87.464,87.464-87.464c48.227,0,87.463,39.237,87.463,87.464v97.804H168.536V112.072z M417.283,475.089 L417.283,475.089c0,6.784-5.52,12.304-12.304,12.304H107.021c-6.784,0-12.304-5.519-12.304-12.304V246.788 c0-6.784,5.52-12.304,12.304-12.304h297.958c6.784,0,12.304,5.519,12.304,12.304V475.089z" fill="#FFFFFF"></path> </svg> </div>')
-                            }
-                        }).catch(function (err) {
-                            console.log(err)
-                        });
+                        getWalletAddress()
                     }
                 }
             });
