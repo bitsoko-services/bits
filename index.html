@@ -1377,62 +1377,7 @@
             }
         }
 
-        //                               fetchRates().then(function(e) {
-        //                                      if (e.status == "ok") {
-        //                                          console.log(e.data);
-        //                                          coinList = e.data.data;
-        //                                          for (i = 0; i < coinList.length; i++) {
-        //                                              var rate = coinList[i].coinRate
-        //                                              console.log(rate);
-        //                                              localStorage.setItem('kobo-current-rates', rate);
-        //                                              //swal("success!", "your order has been sent!", "success");
-        //                                          }
-        //                                      } else {
-        //                                          //swal("Cancelled", "your order is not sent", "error");
-        //                                      }
-        //                                  });
-        // end
-        //----------------------------------------------updating promotions----------------------------------------------------------------------------------
-        //      function updatePromos(){
-        //        bitsTheme()
-        //             navigator.permissions.query({name:'geolocation'}).then(function(p)
-        //     {  
-        //        doFetch({ action: 'nearbyPromos', loc: 
-        //        localStorage.getItem('bitsoko-settings-location')}).then(function(e){
-        //               if (e.status=="ok"){
-
-        //                 for(var ii = 0; ii < e.promotions.length; ++ii) { var dailyCost=(parseInt(e.promotions[ii].discount)/100)*e.promotions[ii].promoPrice
-        //     $('.promoHolder-home').append(' <li class="promoHome displayNone col s12 m6 l4 avatar bits-max promo-collection">'+'<img src="https://bitsoko.co.ke'+e.promotions[ii].promoBanner+'" data-caption="'+e.promotions[ii].promoDesc+'" alt="'+e.promotions[ii].promoDesc+'" class="materialboxed promoHome"><div class="product-card">'+'<span class="title"><span class="serviceListTitle" style="margin-left: 20px;"> '+e.promotions[ii].promoDesc+' <\/span><\/span>'+'<p id="promopriced" class="serviceListFirstline"><span id="bitsPrice" class="bits-badge bitsb left"  style="margin-left: 20px;">'+Math.ceil(dailyCost)+'<span class="localCurr">Ksh<\/span> daily<\/span><\/p><span class="secondary-content"><a class="waves-effect waves-light  btn"><i class="mdi-social-share left"><\/i> share<\/a><a class="waves-effect waves-light  btn"><i class="mdi-action-thumb-up left"><\/i>like<\/a><a class="waves-effect waves-light  btn"><i class="mdi-social-person-add right"><\/i>subscribers<\/a><\/span>'+'<div class="switch" style="width: 190px;float: right;"><i class="mdi-action-redeem"><\/i> <span style="" class="promoSubState- '+e.promotions[ii].id+'"> Not Subscribed<\/span> <label> <input type="checkbox" dailyR="'+Math.ceil(dailyCost)+'" pid="'+e.promotions[ii].id+'" class="promoSubButton promoSubButton-'+e.promotions[ii].id+'" style="background: rgb(128, 210, 147);"><span style="margin-top:2px;" class="lever right"><\/span><\/label><\/div><br><center><p style=" bottom: 0px;text-align: center;width: 70%;" class="serviceListseccondline "><i style="float: left;" class="serviceListseccondline promo-state-icon mdi-notification-sync"> 0 shares<\/i><i class="promo-state-icon mdi-action-favorite"> 0 likes <\/i><i style="float: right;" class="promo-state-icon mdi-action-receipt"> 0 sales <\/i><\/p><\/center><\/li>');
-        //                    //               subs=JSON.parse(e.promotions[ii].promoSubs);
-        //     //       for(var iii = 0,subs=subs,mDet=e; iii < subs.length; ++iii) { 
-        //     //           if(subs[iii]==localStorage.getItem('bitsoko-owner-id')){
-        //     //           console.log('im subscribed to ',e.promotions[ii]);
-        //     //               $( ".promoSubButton-"+e.promotions[ii].id ).prop( "checked", true );
-        //     //               $(".promoSubState-"+e.promotions[ii].id).html("Subscribed");
-        //     //           };
-        //     //       }
-        //     //      }; 
-        //     //   doSubscribe(); 
-
-        //                 };
-
-        //            console.log(e);
-        //               }else{
-        //             $('.promoHolder-home').append('<ul id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong>No Promotions found<\/strong><\/p><p class="collections-content"><\/p><\/div><\/li><\/ul>');
-
-        //               }
-        //            });
-
-        //     $(function(){
-        //        $("#bits-nav-bal").hide();
-
-        //     });
-
-
-        //     }).catch(function(e){
-        //        showPositionError()
-        //     })
-        //     }; 
+        
         function sendMessage(message) {
             // This wraps the message posting/response in a promise, which will resolve if the response doesn't
             // contain an error, and reject with the error if it does. If you'd prefer, it's possible to call
@@ -1459,21 +1404,12 @@
 
     </script>
     <script type="text/javascript">
-        // $('#loginModal').modal({ready: function(){
-        //  startGoogle();
-        // }});
-
-        //Initialize Side Navigation
-        $(document).ready(function() {
-            $('.sidenav').sidenav();
-        });
+        
 
         window.addEventListener('load', function() {
             //request persistent storage
             requestPersist();
-
-
-            //gDriveReady = Promise.race([]);
+		$('.sidenav').sidenav();
             startGoogle();
             Promise.all([indexDbReady, gDriveReady]).then(values => {
 
