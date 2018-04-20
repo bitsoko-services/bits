@@ -3,6 +3,7 @@ function oid() {
     //Get Token Balance
     $("#tokenBal").html(allTokens.balanceTokens.totalEarned.toFixed(2) + " tokens");
     if (window.location.hash != undefined) {
+        
         //check if hash is oid
         var type = window.location.hash.substr(1);
         // split the hash
@@ -10,6 +11,10 @@ function oid() {
         var htpe = fields[0];
         var hval = fields[1];
         if (htpe == "oid") {
+             M.toast({
+                    html: 'opening order... <div class="spinnerCheckout right" style="margin-top: 7px;line-height: normal;"> <div class="preloader-wrapper active" style="width: 20px; height: 20px; margin: 0px;"> <div class="spinner-layer spinner-white-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div></div>',
+                    displayLength: 5000,
+                });
             //get the shop and the oder details
             var shop = getBitsWinOpt('s')
             // oid
