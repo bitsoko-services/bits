@@ -232,7 +232,7 @@ function walletFunctions(uid) {
                         });
                     })
 
-                    if (allWals == 0 && result[i] == undefined) {
+                    if (allWals == 0 && result[i] == undefined && Array.isArray(result)) {
                         console.log('!INFO: creating wallet, ');
                         createWallet(uid).then(function (ee) {
                             var walAll = [];
@@ -257,11 +257,17 @@ function walletFunctions(uid) {
                                 //var infoString = 'Loaded Wallets: "' + JSON.parse(eg.responseText).publicAddress + '"Enter your password to unlock your wallets.'
 
 
-                                password = "password";
-                                //			while (password.length < 6) {
-                                //  password = prompt(infoString, "");
-
-                                //}
+                                password = "password";		
+// update wallet details to server
+                                var walDetUpd = JSON.parse(eg.responseText);
+							
+							delete walDetUpd.walletSeed;
+							delete walDetUpd.walletSalt;
+							
+							doFetch({action:'saveUserWallet', data: JSON.stringify(walDetUpd), user:localStorage.getItem('bits-user-name') }).then(function(e){
+								
+							}).catch(function(e){console.log(e)});
+	
 
                                 var randomSeed = JSON.parse(eg.responseText).walletSeed;
                                 var randomSalt = JSON.parse(eg.responseText).walletSalt;
