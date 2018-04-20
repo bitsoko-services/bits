@@ -423,10 +423,73 @@ function makeOrder(orderArrayy, orderLoc) {
                     getProdss(orderArrayy);
 
                     var payByToken = true;
+                    
+                    if (payByToken == true) {
+                        $(document).on("click", "#ConfirmO", function (e) {
+                            if (sessionStorage.getItem('walletKey')) {
+                                console.log(parseFloat($("#checkBal")[0].innerHTML), (parseFloat($("#totals")[0].innerHTML) + globalDel));
+                                if (((allTokens[enterpriseContract].balance / Math.pow(10, allTokens[enterpriseContract].decimals)) + allTokens[enterpriseContract].totalEarned) * baseX > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
+                                    $("#products").html("");
+                                    var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
+                                    transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function (res) {
+                                        console.log(res);
+                                        //sent escrow to server so complete order
+                                        doFetch({
+                                            action: 'makeOrder',
+                                            data: orderArrayy,
+                                            //EarnedKobo: totalKobo,
+                                            delPrice: globalDel,
+                                            loc: e.coords.latitude + ',' + e.coords.longitude,
+                                            user: localStorage.getItem("bits-user-name"),
+                                            pointsEarned: {
+                                                "coin": "bits",
+                                                "purchase": totalKobo
+                                            },
+                                            service: parseInt(getBitsWinOpt('s'))
+                                        }).then(function (e) {
+                                            $("#appendPushSubs").remove();
+                                            if (e.status == "ok") {
+                                                $('#modalconfirm').modal('close');
+                                                swal("success!", "your order has been sent!", "success");
+                                                $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input onclick="startPushManager();" class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
+                                                clearCart();
+                                            } else {
+                                                swal("Cancelled", "your order is not sent", "error");
+                                            }
+                                        })
+                                    }).catch(function (err) {
+                                        M.toast({
+                                            html: '<span class="toastlogin">You have insufficient funds to complete this order ',
+                                            displayLength: 6000
+                                        });
+                                        $('#modalconfirm').modal('close');
+                                        clearCart();
+                                        console.log(err)
+                                    })
 
-                    function doSendOrder() {
-
-                        var orderData = doFetch({
+                                } else {
+                                    M.toast({
+                                        html: '<span class="toastlogin">You have insufficient funds to complete this order ',
+                                        displayLength: 6000
+                                    });
+                                    $('#modalconfirm').modal('close');
+                                    clearCart();
+                                }
+                            } else {
+                                var toastHTML = '<span>Unlock wallet to checkout</span><button class="btn-flat toast-action" onclick="loadGdrive()">Unlock</button>';
+                                if ($(".unlockWalletToast").length >= 1) {
+                                    $(".unlockWalletToast").remove()
+                                } else {
+                                    M.toast({
+                                        html: toastHTML,
+                                        classes: "unlockWalletToast",
+                                        displayLength: 5000
+                                    });
+                                }
+                            }
+                        })
+                    } else {
+                        doFetch({
                             action: 'makeOrder',
                             data: orderArrayy,
                             //EarnedKobo: totalKobo,
@@ -438,79 +501,17 @@ function makeOrder(orderArrayy, orderLoc) {
                                 "purchase": totalKobo
                             },
                             service: parseInt(getBitsWinOpt('s'))
+                        }).then(function (e) {
+                            $("#appendPushSubs").remove();
+                            if (e.status == "ok") {
+                                $('#modalconfirm').modal("close");
+                                swal("success!", "your order has been sent!", "success");
+                                $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox" onclick="startmessage()"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
+                                clearCart();
+                            } else {
+                                swal("Cancelled", "your order is not sent", "error");
+                            }
                         })
-                        if (payByToken == true) {
-                            $(document).on("click", "#ConfirmO", function (e) {
-                                if (sessionStorage.getItem('walletKey')) {
-                                    console.log(parseFloat($("#checkBal")[0].innerHTML), (parseFloat($("#totals")[0].innerHTML) + globalDel));
-                                    if (((allTokens[enterpriseContract].balance / Math.pow(10, allTokens[enterpriseContract].decimals)) + allTokens[enterpriseContract].totalEarned) * baseX > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
-                                        $("#products").html("");
-                                        var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
-                                        transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function (res) {
-                                            console.log(res);
-                                            //sent escrow to server so complete order
-                                            orderData.then(function (e) {
-                                                $("#appendPushSubs").remove();
-                                                if (e.status == "ok") {
-                                                    console.log('5');
-
-                                                    document.getElementById("ConfirmO").removeEventListener("click", doSendOrder);
-
-                                                    $('#modalconfirm').modal('close');
-                                                    swal("success!", "your order has been sent!", "success");
-                                                    $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input onclick="startPushManager();" class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
-                                                    clearCart();
-                                                } else {
-                                                    swal("Cancelled", "your order is not sent", "error");
-                                                }
-                                            })
-                                        }).catch(function (err) {
-                                            M.toast({
-                                                html: '<span class="toastlogin">You have insufficient funds to complete this order ',
-                                                displayLength: 6000
-                                            });
-                                            $('#modalconfirm').modal('close');
-                                            clearCart();
-                                            console.log(err)
-                                        })
-
-                                    } else {
-                                        M.toast({
-                                            html: '<span class="toastlogin">You have insufficient funds to complete this order ',
-                                            displayLength: 6000
-                                        });
-                                        clearCart();
-                                    }
-                                } else {
-                                    var toastHTML = '<span>Unlock wallet to checkout</span><button class="btn-flat toast-action" onclick="loadGdrive()">Unlock</button>';
-                                    if ($(".unlockWalletToast").length >= 1) {
-                                        $(".unlockWalletToast").remove()
-                                    } else {
-                                        M.toast({
-                                            html: toastHTML,
-                                            classes: "unlockWalletToast",
-                                            displayLength: 5000
-                                        });
-                                    }
-                                }
-                            })
-                        } else {
-                            orderData.then(function (e) {
-                                $("#appendPushSubs").remove();
-                                if (e.status == "ok") {
-                                    console.log('5');
-
-                                    document.getElementById("ConfirmO").removeEventListener("click", doSendOrder);
-
-                                    $('#modalconfirm').modal("close");
-                                    swal("success!", "your order has been sent!", "success");
-                                    $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox" onclick="startmessage()"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
-                                    clearCart();
-                                } else {
-                                    swal("Cancelled", "your order is not sent", "error");
-                                }
-                            })
-                        }
                     }
                     $(".confirmText").html("")
                     $(".confirmText").append()
@@ -529,12 +530,9 @@ function makeOrder(orderArrayy, orderLoc) {
                         $('.star2').removeClass('animated shake')
                     }, 1000);
                     document.getElementById("CancelO").addEventListener("click", function () {
-
-                        document.getElementById("ConfirmO").removeEventListener("click", doSendOrder);
                         clearCart()
                         $("#products").html("")
                     });
-                    document.getElementById("ConfirmO").addEventListener("click", doSendOrder);
                 }).catch(function () {
                     //toast location error
 
