@@ -138,26 +138,99 @@ function walletFunctions(uid) {
                     try {
                         for (var i = 0, rMax = rMax, olWals = olWals, cm = cm; i < result.length; i++) {
                             if (result[i].title == 'wallets.json' && moment(result[i].modifiedDate).valueOf() > cm) {
-						allWals++;
-						//latest wallet
-						cm = moment(result[i].modifiedDate).valueOf();
-						rMaxID = i;
-					} else if (result[i].title == 'wallets.json') {
-						//Old wallets
-						allWals++;
-						olWals.push(result[i]);
-					}
-					
-					if(localStorage.getItem('defaultWallet')){
-					rMax = result[parseInt(localStorage.getItem('defaultWallet'))];
-					}else{
-					rMax = result[rMaxID];
-					}
+                                allWals++;
+                                //latest wallet
+                                cm = moment(result[i].modifiedDate).valueOf();
+                                rMaxID = i;
+                            } else if (result[i].title == 'wallets.json') {
+                                //Old wallets
+                                allWals++;
+                                olWals.push(result[i]);
+
+
+
+                            }
+
+                            if (localStorage.getItem('defaultWallet')) {
+                                rMax = result[parseInt(localStorage.getItem('defaultWallet'))];
+                            } else {
+                                rMax = result[rMaxID];
+                            }
                         }
 
                     } catch (err) {
                         console.log(err, result);
                     }
+
+                    if (result.length > 1) {
+                        $("#chooseWallet").html('<a class="modal-trigger" href="#chooseWalletModal"> <i style="margin-top: 4px; height: 30px;"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 334.877 334.877" style="enable-background:new 0 0 334.877 334.877;margin: 3px;" xml:space="preserve"><path d="M333.196,155.999h-16.067V82.09c0-17.719-14.415-32.134-32.134-32.134h-21.761L240.965,9.917 C237.571,3.798,231.112,0,224.107,0c-3.265,0-6.504,0.842-9.364,2.429l-85.464,47.526H33.815 c-17.719,0-32.134,14.415-32.134,32.134v220.653c0,17.719,14.415,32.134,32.134,32.134h251.18 c17.719,0,32.134-14.415,32.134-32.134v-64.802h16.067V155.999z M284.995,62.809c9.897,0,17.982,7.519,19.068,17.14h-24.152 l-9.525-17.14H284.995z M220.996,13.663c3.014-1.69,7.07-0.508,8.734,2.494l35.476,63.786H101.798L220.996,13.663z M304.275,302.742c0,10.63-8.651,19.281-19.281,19.281H33.815c-10.63,0-19.281-8.651-19.281-19.281V82.09 c0-10.63,8.651-19.281,19.281-19.281h72.353L75.345,79.95H37.832c-3.554,0-6.427,2.879-6.427,6.427s2.873,6.427,6.427,6.427h14.396 h234.83h17.217v63.201h-46.999c-21.826,0-39.589,17.764-39.589,39.589v2.764c0,21.826,17.764,39.589,39.589,39.589h46.999V302.742z M320.342,225.087h-3.213h-59.853c-14.743,0-26.736-11.992-26.736-26.736v-2.764c0-14.743,11.992-26.736,26.736-26.736h59.853 h3.213V225.087z M276.961,197.497c0,7.841-6.35,14.19-14.19,14.19c-7.841,0-14.19-6.35-14.19-14.19s6.35-14.19,14.19-14.19 C270.612,183.306,276.961,189.662,276.961,197.497z"></path></svg> </i><span class="bits-13" style=""></span> <span id="btn">Select Wallet</span></a>')
+                    }
+                    $("#walletList").html('');
+                    for (var walletIndex in result) {
+                        console.log(JSON.parse(walletIndex))
+                        var walletNumb = JSON.parse(walletIndex) + 1
+                        $("#walletList").append('<button class="btn selectedWallet" id="' + walletIndex + '">' + walletNumb + '</button>')
+                    }
+
+                    $(document).on('click', '.selectedWallet', function (e) {
+                        var selectedWallet = $(this).attr("id");
+                        console.log("wallet index")
+                        console.log(selectedWallet)
+                        
+                        var rMaxSlct = result[selectedWallet]
+                        downloadFile(rMaxSlct).then(function (eg) {
+                            try {
+                                localStorage.setItem('bits-user-address-' + localStorage.getItem('bits-user-name'), JSON.parse(eg.responseText).publicAddress);
+                                console.log(JSON.parse(eg.responseText).publicAddress)
+                                password = "password";
+
+                                var randomSeed = JSON.parse(eg.responseText).walletSeed;
+                                var randomSalt = JSON.parse(eg.responseText).walletSalt;
+                                //p = p
+                                //console.log(password,randomSeed);				
+                                getUserAd(password, randomSeed, randomSalt).then(function (addresses) {
+                                    var w = addresses[0]
+                                    // save Wallets to db
+                                    getObjectStore('data', 'readwrite').put(addresses, 'bits-wallets-' + uid);
+                                    ////////Add callback for loaded function
+                                    fetchRates().then(function (e) {
+                                        try {
+
+                                            upDtokenD();
+                                            sortOrderBookColor();
+
+                                        } catch (e) {
+                                            console.log('ERR! getting rates after loading wallet.', e)
+                                        }
+                                        // start first transaction
+                                        try {
+                                            doFirstBuy();
+                                        } catch (er) {
+                                            console.log('INFO! not started firstbuy, is wallet locked? ', er)
+                                        }
+                                    });
+
+
+                                }).catch(function (error) {
+                                    console.log(error);
+                                });
+
+                            } catch (err) {
+                                console.log("Error loading wallet: " + err + " fetching..");
+                                if ($(".unlockWalletToast").length >= 1) {
+                                    $(".unlockWalletToast").remove();
+                                }
+                                M.toast({
+                                    html: "Error unlocking wallet. Try again later.",
+                                    displayLength: 3000,
+                                    classes: "unlockWalletToast"
+                                });
+                                $("#walletLocked").replaceWith('<div id="walletLocked" style="float: left; margin-left: 15px; margin-top: 17px; display: block; line-height: normal;"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width: 25px;" xml:space="preserve"> <path d="M256.001,276.673c-28.017,0-50.81,22.793-50.81,50.81c0,13.895,5.775,27.33,15.858,36.891v45.875 c0,19.273,15.68,34.953,34.953,34.953s34.953-15.68,34.953-34.953v-45.875c10.078-9.555,15.857-22.993,15.857-36.891 C306.81,299.466,284.016,276.673,256.001,276.673z M273.979,346.558c-4.851,4.571-7.633,10.96-7.633,17.53v46.161 c0,5.705-4.64,10.345-10.345,10.345c-5.704,0-10.345-4.64-10.345-10.345v-46.161c0-6.569-2.782-12.957-7.63-17.527 c-5.307-5.003-8.229-11.778-8.229-19.078c0-14.447,11.755-26.202,26.202-26.202c14.447,0,26.202,11.755,26.202,26.202 C282.203,334.783,279.281,341.558,273.979,346.558z" fill="#FFFFFF"></path> <path d="M404.979,209.876h-36.908v-97.804C368.071,50.275,317.795,0,256.001,0C194.205,0,143.93,50.275,143.93,112.072v97.804 h-36.909c-20.353,0-36.911,16.559-36.911,36.911v228.301c0,20.353,16.558,36.911,36.911,36.911h297.958 c20.353,0,36.911-16.558,36.911-36.911V246.788C441.89,226.435,425.332,209.876,404.979,209.876z M168.536,112.072 c0-48.227,39.236-87.464,87.464-87.464c48.227,0,87.463,39.237,87.463,87.464v97.804H168.536V112.072z M417.283,475.089 L417.283,475.089c0,6.784-5.52,12.304-12.304,12.304H107.021c-6.784,0-12.304-5.519-12.304-12.304V246.788 c0-6.784,5.52-12.304,12.304-12.304h297.958c6.784,0,12.304,5.519,12.304,12.304V475.089z" fill="#FFFFFF"></path> </svg> </div>')
+                            }
+                        }).catch(function (err) {
+                            console.log(err)
+                        });
+                    })
 
                     if (allWals == 0 && result[i] == undefined) {
                         console.log('!INFO: creating wallet, ');
@@ -175,10 +248,12 @@ function walletFunctions(uid) {
                             });
                         });
                     } else {
+                        console.log(rMax)
+
                         downloadFile(rMax).then(function (eg) {
                             try {
-                                console.log(eg.responseText);
                                 localStorage.setItem('bits-user-address-' + localStorage.getItem('bits-user-name'), JSON.parse(eg.responseText).publicAddress);
+                                console.log(JSON.parse(eg.responseText).publicAddress)
                                 //var infoString = 'Loaded Wallets: "' + JSON.parse(eg.responseText).publicAddress + '"Enter your password to unlock your wallets.'
 
 
