@@ -159,7 +159,7 @@ function walletFunctions(uid) {
                         console.log(err, result);
                     }
 
-                    if (allWals == 0 && result[i] == undefined) {
+                    if (allWals == 0 && result[i] == undefined && Array.isArray(result)) {
                         console.log('!INFO: creating wallet, ');
                         createWallet(uid).then(function (ee) {
                             var walAll = [];
