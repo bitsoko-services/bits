@@ -757,16 +757,13 @@ function cop(costofItems) {
 //Wallet State
 function walletStatus() {
     if (sessionStorage.getItem('walletKey')) {
-        $("#walletUnlocked").css("display", "block");
-        $("#walletLocked").css("display", "none");
+        console.log("unlocked")
     } else {
-        $("#walletUnlocked").css("display", "none");
-        $("#walletLocked").css("display", "block")
+        $("#checkBal").html("locked")
     }
-
-    $(document).on('click', '#walletLocked', function () {
-        loadGdrive();
-        $("#walletLocked").html('<div class="preloader-wrapper active" style="width: 25px;height: 25px;margin: 0px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
-    })
 }
 walletStatus();
+
+$(document).on('click', '#userWallet', function () {
+    loadGdrive();
+})

@@ -163,9 +163,6 @@ function walletFunctions(uid) {
                         console.log(err, result);
                     }
 
-                    if (result.length > 1) {
-                        $("#chooseWallet").html('<a class="modal-trigger" href="#chooseWalletModal"> <i style="margin-top: 4px; height: 30px;"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 334.877 334.877" style="enable-background:new 0 0 334.877 334.877;margin: 3px;" xml:space="preserve"><path d="M333.196,155.999h-16.067V82.09c0-17.719-14.415-32.134-32.134-32.134h-21.761L240.965,9.917 C237.571,3.798,231.112,0,224.107,0c-3.265,0-6.504,0.842-9.364,2.429l-85.464,47.526H33.815 c-17.719,0-32.134,14.415-32.134,32.134v220.653c0,17.719,14.415,32.134,32.134,32.134h251.18 c17.719,0,32.134-14.415,32.134-32.134v-64.802h16.067V155.999z M284.995,62.809c9.897,0,17.982,7.519,19.068,17.14h-24.152 l-9.525-17.14H284.995z M220.996,13.663c3.014-1.69,7.07-0.508,8.734,2.494l35.476,63.786H101.798L220.996,13.663z M304.275,302.742c0,10.63-8.651,19.281-19.281,19.281H33.815c-10.63,0-19.281-8.651-19.281-19.281V82.09 c0-10.63,8.651-19.281,19.281-19.281h72.353L75.345,79.95H37.832c-3.554,0-6.427,2.879-6.427,6.427s2.873,6.427,6.427,6.427h14.396 h234.83h17.217v63.201h-46.999c-21.826,0-39.589,17.764-39.589,39.589v2.764c0,21.826,17.764,39.589,39.589,39.589h46.999V302.742z M320.342,225.087h-3.213h-59.853c-14.743,0-26.736-11.992-26.736-26.736v-2.764c0-14.743,11.992-26.736,26.736-26.736h59.853 h3.213V225.087z M276.961,197.497c0,7.841-6.35,14.19-14.19,14.19c-7.841,0-14.19-6.35-14.19-14.19s6.35-14.19,14.19-14.19 C270.612,183.306,276.961,189.662,276.961,197.497z"></path></svg> </i><span class="bits-13" style=""></span> <span id="btn">Select Wallet</span></a>')
-                    }
                     $("#walletList").html('');
 
                     for (var walletIndex in result) {
@@ -178,29 +175,9 @@ function walletFunctions(uid) {
                         downloadFile(rMax).then(function (eg) {
                             try {
                                 localStorage.setItem('bits-user-address-' + localStorage.getItem('bits-user-name'), JSON.parse(eg.responseText).publicAddress);
-                                console.log(JSON.parse(eg.responseText).publicAddress)
                                 //var infoString = 'Loaded Wallets: "' + JSON.parse(eg.responseText).publicAddress + '"Enter your password to unlock your wallets.'
 
                                 password = "password";
-
-                                // start update wallet details to server
-                                var walDetUpd = JSON.parse(eg.responseText);
-
-                                delete walDetUpd.walletSeed;
-                                delete walDetUpd.walletSalt;
-
-                                doFetch({
-                                    action: 'saveUserWallet',
-                                    data: JSON.stringify(walDetUpd),
-                                    user: localStorage.getItem('bits-user-name')
-                                }).then(function (e) {
-                                    if (e.status == "ok") {
-                                        $("#chooseWalletModal").modal("close");
-                                    }
-                                }).catch(function (e) {
-                                    console.log(e)
-                                });
-                                // end update wallet details to server
 
 
                                 var randomSeed = JSON.parse(eg.responseText).walletSeed;
@@ -214,8 +191,38 @@ function walletFunctions(uid) {
                                     var w = addresses[0]
                                     // toDo: add this line when getting multiple addresses
                                     //var all = JSON.parse(w)
-                                    // save Wallets to db
+                                    
+                                    
+                                    
+                                // start update wallet details to server
+                                var walDetUpd = JSON.parse(eg.responseText);
+
+                                delete walDetUpd.walletSeed;
+                                delete walDetUpd.walletSalt;
+
+                                doFetch({
+                                    action: 'saveUserWallet',
+                                    data: JSON.stringify({"publicAddress":[w],"created":new Date().getTime(),"coin":"eth"}).replace('[','"[').replace(']',']"'),
+                                    user: localStorage.getItem('bits-user-name')
+                                }).then(function (e) {
+                                    if (e.status == "ok") {
+                                        
+                                        // save Wallets to db
                                     getObjectStore('data', 'readwrite').put(addresses, 'bits-wallets-' + uid);
+                                    
+                                        //TO-DO
+                                        //close select wallet modal
+                                        
+                                    }
+                                }).catch(function (e) {
+                                    console.log(e)
+                                });
+                                // end update wallet details to server
+
+                                    
+                                    
+                                    
+                                    
                                     ////////Add callback for loaded function
                                     fetchRates().then(function (e) {
                                         try {
@@ -256,14 +263,7 @@ function walletFunctions(uid) {
                         });
                     }
 
-                    $(document).on('click', '.selectedWallet', function (e) {
-                        var selectedWallet = $(this).attr("id");
-                        console.log("wallet index")
-                        console.log(selectedWallet)
-
-                        rMax = result[selectedWallet]
-                        getWalletAddress()
-                    })
+                   
 
 
                     if (allWals == 0 && result[i] == undefined && Array.isArray(result)) {
@@ -282,7 +282,24 @@ function walletFunctions(uid) {
                             });
                         });
                     } else {
+                        
+                    if (result.length > 1) {
+                        //                        $("#chooseWallet").html('<a class="modal-trigger" href="#chooseWalletModal"> <i style="margin-top: 4px; height: 30px;"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 334.877 334.877" style="enable-background:new 0 0 334.877 334.877;margin: 3px;" xml:space="preserve"><path d="M333.196,155.999h-16.067V82.09c0-17.719-14.415-32.134-32.134-32.134h-21.761L240.965,9.917 C237.571,3.798,231.112,0,224.107,0c-3.265,0-6.504,0.842-9.364,2.429l-85.464,47.526H33.815 c-17.719,0-32.134,14.415-32.134,32.134v220.653c0,17.719,14.415,32.134,32.134,32.134h251.18 c17.719,0,32.134-14.415,32.134-32.134v-64.802h16.067V155.999z M284.995,62.809c9.897,0,17.982,7.519,19.068,17.14h-24.152 l-9.525-17.14H284.995z M220.996,13.663c3.014-1.69,7.07-0.508,8.734,2.494l35.476,63.786H101.798L220.996,13.663z M304.275,302.742c0,10.63-8.651,19.281-19.281,19.281H33.815c-10.63,0-19.281-8.651-19.281-19.281V82.09 c0-10.63,8.651-19.281,19.281-19.281h72.353L75.345,79.95H37.832c-3.554,0-6.427,2.879-6.427,6.427s2.873,6.427,6.427,6.427h14.396 h234.83h17.217v63.201h-46.999c-21.826,0-39.589,17.764-39.589,39.589v2.764c0,21.826,17.764,39.589,39.589,39.589h46.999V302.742z M320.342,225.087h-3.213h-59.853c-14.743,0-26.736-11.992-26.736-26.736v-2.764c0-14.743,11.992-26.736,26.736-26.736h59.853 h3.213V225.087z M276.961,197.497c0,7.841-6.35,14.19-14.19,14.19c-7.841,0-14.19-6.35-14.19-14.19s6.35-14.19,14.19-14.19 C270.612,183.306,276.961,189.662,276.961,197.497z"></path></svg> </i><span class="bits-13" style=""></span> <span id="btn">Select Wallet</span></a>')
+                        $("#chooseWalletModal").modal("open");
+                         $(document).on('click', '.selectedWallet', function (e) {
+                        var selectedWallet = $(this).attr("id");
+                        console.log("wallet index")
+                        console.log(selectedWallet)
+
+                        rMax = result[selectedWallet]
+                        getWalletAddress()
+                    })
+                    }else{
+                        
+                        
                         getWalletAddress();
+                    } 
+                        
                     }
                 }
             });
@@ -313,10 +330,7 @@ function walletFunctions(uid) {
             //Materialize.toast('<span class="toastlogin">your wallet is locked</span><a onclick="loadGdrive()" class="btn-flat toast-action"><span style="pointer-events:none;margin: 0px;" class="btn-flat yellow-text">Unlock</span></a>', 8000);
 
         } else {
-            M.toast({
-                displayLength: 1000000000,
-                html: '<span class="toastlogin">your wallet is locked</span><button onclick="loadGdrive()" class="btn-flat toast-action" ><span style="pointer-events:none;">Unlock</span></button>'
-            });
+            console.log("Wallet locked")
 
         }
         resolve('loaded wallets ' + uid);
@@ -995,6 +1009,9 @@ function fetchRates() {
                 action: 'getXrates',
                 country: 'default'
             }).then(function (e) {
+                if (e.status = "ok") {
+                    $("#chooseWalletModal").modal("close")
+                }
                 fetchRatesProc(e);
                 resolve({
                     "status": "ok",
@@ -1017,6 +1034,9 @@ function fetchRates() {
                 action: 'getXrates',
                 country: country
             }).then(function (e) {
+                if (e.status = "ok") {
+                    $("#chooseWalletModal").modal("close")
+                }
                 fetchRatesProc(e);
                 resolve({
                     "status": "ok",
@@ -1033,6 +1053,9 @@ function fetchRates() {
                 action: 'getXrates',
                 country: 'default'
             }).then(function (e) {
+                if (e.status = "ok") {
+                    $("#chooseWalletModal").modal("close")
+                }
                 fetchRatesProc(e);
                 resolve({
                     "status": "ok",
@@ -1077,12 +1100,8 @@ window.onload = function () {
             }).then(function (e) {
                 if (e.status == 'ok') {
                     console.log('error reported:' + msg);
-                    if (msg == 'Uncaught ReferenceError: retrievePageOfFiles is not defined') { //Check if user is signed in
-                        var toastHTML = '<span>Login to unlock wallet</span><a class="btn-flat toast-action modal-trigger" href="#loginModal">login</a>';
-                        M.toast({
-                            html: toastHTML,
-                            displayLength: 4000
-                        });
+                    if (msg == 'Uncaught ReferenceError: retrievePageOfFiles is not defined') { 
+                        $('#loginModal').modal('open');
                     }
                 }
 
