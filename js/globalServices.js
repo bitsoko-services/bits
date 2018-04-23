@@ -169,7 +169,7 @@ function walletFunctions(uid) {
                     for (var walletIndex in result) {
                         console.log(JSON.parse(walletIndex))
                         var walletNumb = JSON.parse(walletIndex) + 1
-                        $("#walletList").append('<button class="btn selectedWallet" id="' + walletIndex + '">' + walletNumb + '</button>')
+                        $("#walletList").append('<button class="btn selectedWallet" id="' + walletIndex + '" style="line-height: 1.2; padding: 4px 10px; height: auto;margin:  5px;">WALLET<BR>#' + walletNumb + '</button>')
                     }
 
                     function getWalletAddress() {
