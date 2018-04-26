@@ -24,7 +24,7 @@ function addMobiVeri() {
         ' </div>' +
         ' <div class="input-field col s4">' +
         '  <div class="input-field col s12" style="padding:0px;">' +
-        '    <button class="inp-code btn waves-effect waves-light bits" type="submit" name="action">ok</button>' +
+        '    <button class="inp-code btn waves-effect waves-light bits" type="submit" name="action" disabled>ok</button>' +
         '  </div>' +
         '  </div>' +
         ' </div>' +
@@ -64,8 +64,8 @@ function changedPhnNum(t) {
             val: val
         }).then(function (e) {
             if (e.status == 'ok') {
-                $('#inp-phone').prop('disabled', true);
-                $('#inp-code').prop('disabled', false);
+                $('.inp-phone').prop('disabled', true);
+                $(".inp-code").attr("disabled", false)
                 M.toast({
                     html: 'confirmation code sent'
                 });
