@@ -766,4 +766,7 @@ walletStatus();
 
 $(document).on('click', '#userWallet', function () {
     loadGdrive();
+    M.toast({
+        html: 'Please wait! Unlocking wallet'
+    })
 })
