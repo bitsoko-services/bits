@@ -12,7 +12,7 @@ function addMobiVeri() {
         ' </div>' +
         ' <div class="input-field col s4" style="margin-bottom:0px;">' +
         '  <div class="input-field col s12" style="padding:0px;">' +
-        '    <button class="inp-phone btn cyan waves-effect waves-light" type="submit" name="action" disabled>ok</button>' +
+        '    <button class="inp-phone btn waves-effect waves-light bits" type="submit" name="action">ok</button>' +
         '  </div>' +
         ' </div>' +
         ' </div>' +
@@ -24,7 +24,7 @@ function addMobiVeri() {
         ' </div>' +
         ' <div class="input-field col s4">' +
         '  <div class="input-field col s12" style="padding:0px;">' +
-        '    <button class="inp-code btn cyan waves-effect waves-light" type="submit" name="action" disabled>ok</button>' +
+        '    <button class="inp-code btn waves-effect waves-light bits" type="submit" name="action">ok</button>' +
         '  </div>' +
         '  </div>' +
         ' </div>' +
@@ -53,26 +53,31 @@ function changedPhnNum(t) {
     console.log($(t.target).val());
     var val = $(t.target).val();
 
-    doFetch({
-        action: 'doMobiVeri',
-        user: localStorage.getItem('bits-user-name'),
-        val: val
-    }).then(function (e) {
-        if (e.status == 'ok') {
-            $('#inp-phone').prop('disabled', true);
-            $('#inp-code').prop('disabled', false);
-            M.toast({
-                html: 'confirmation code sent'
-            });
+    if ($("#inp-phone").val().length < 10) {
+        M.toast({
+            html: 'Error! Confirm your number'
+        });
+    } else {
+        doFetch({
+            action: 'doMobiVeri',
+            user: localStorage.getItem('bits-user-name'),
+            val: val
+        }).then(function (e) {
+            if (e.status == 'ok') {
+                $('#inp-phone').prop('disabled', true);
+                $('#inp-code').prop('disabled', false);
+                M.toast({
+                    html: 'confirmation code sent'
+                });
 
-        } else {
+            } else {
 
-            $('#inp-phone').prop('disabled', false);
-            $('#inp-code').prop('disabled', true);
-            console.log(e);
-        }
-    });
-
+                $('#inp-phone').prop('disabled', false);
+                $('#inp-code').prop('disabled', true);
+                console.log(e);
+            }
+        });
+    }
 }
 
 function changedConfCode(t) {
