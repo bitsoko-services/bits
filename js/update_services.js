@@ -21,7 +21,7 @@ function serviceOpener() {
     if (getBitsWinOpt('s') != undefined) {
         /// hide menu button on shop page show back to home button................
         //$('.bitsmenuslider').addClass('displayNone');
-        if (window.location.origin == "https://bitsoko.co.ke") {
+        if (window.location.origin.includes('bitsoko')) {
             $('.bitsHome').html('');
         } else {
             $('.bitsHome').html('');
