@@ -433,12 +433,12 @@ function makeOrder(orderArrayy, orderLoc) {
                     if (payByToken == true) {
                         $(document).on("click", "#ConfirmO", function (e) {
                             if (sessionStorage.getItem('walletKey')) {
-                                console.log(parseFloat($("#checkBal")[0].innerHTML), (parseFloat($("#totals")[0].innerHTML) + globalDel));
-                                if (((allTokens[enterpriseContract].balance / Math.pow(10, allTokens[enterpriseContract].decimals)) + allTokens[enterpriseContract].totalEarned) * baseX > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
+                                //console.log(parseFloat($("#checkBal")[0].innerHTML), (parseFloat($("#totals")[0].innerHTML) + globalDel));
+                                if (((allTokens[enterpriseContract].balance / Math.pow(10, allTokens[enterpriseContract].decimals)) + allTokens[enterpriseContract].totalEarned) * allTokens[enterpriseContract].rate > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
                                     $("#products").html("");
                                     var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
                                     transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function (res) {
-                                        console.log(res);
+                                        //console.log(res);
                                         doFetch({
                                             action: 'makeOrder',
                                             data: orderArrayy,
