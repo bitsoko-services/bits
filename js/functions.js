@@ -434,7 +434,7 @@ function makeOrder(orderArrayy, orderLoc) {
                         $(document).on("click", "#ConfirmO", function (e) {
                             if (sessionStorage.getItem('walletKey')) {
                                 //console.log(parseFloat($("#checkBal")[0].innerHTML), (parseFloat($("#totals")[0].innerHTML) + globalDel));
-                                if (((allTokens[enterpriseContract].balance / Math.pow(10, allTokens[enterpriseContract].decimals)) + allTokens[enterpriseContract].totalEarned) * (allTokens[enterpriseContract].rate*baseX) > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
+                                if (((allTokens[enterpriseContract].balance / Math.pow(10, allTokens[enterpriseContract].decimals)) + allTokens[enterpriseContract].totalEarned) * (allTokens[enterpriseContract].rate * baseX) > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
                                     var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
                                     transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function (res) {
                                         //console.log(res);
@@ -453,7 +453,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                         }).then(function (e) {
                                             $("#appendPushSubs").remove();
                                             $("#products").html("");
-                                    
+
                                             if (e.status == "ok") {
                                                 $('#modalconfirm').modal('close');
                                                 swal("success!", "your order has been sent!", "success");
@@ -757,9 +757,7 @@ function cop(costofItems) {
 
 //Wallet State
 function walletStatus() {
-    if (sessionStorage.getItem('walletKey')) {
-        console.log("unlocked")
-    } else {
+    if (sessionStorage.getItem('walletKey')) {} else {
         $("#checkBal").html("locked")
     }
 }
@@ -770,5 +768,5 @@ $(document).on('click', '#userWallet', function () {
     M.toast({
         html: 'Please wait! Unlocking wallet'
     });
-    ((allTokens['0xb72627650f1149ea5e54834b2f468e5d430e67bf'].balance/Math.pow(10, allTokens['0xb72627650f1149ea5e54834b2f468e5d430e67bf'].decimals))+allTokens['0xb72627650f1149ea5e54834b2f468e5d430e67bf'].totalEarned) * baseX
+    ((allTokens[enterpriseContract].balance / Math.pow(10, allTokens[enterpriseContract].decimals)) + allTokens[enterpriseContract].totalEarned) * (allTokens[enterpriseContract].rate * baseX)
 });
