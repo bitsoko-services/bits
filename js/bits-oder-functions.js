@@ -172,6 +172,7 @@ function updateEarnedTokens(f) {
     } else {
         $('.balance-coins').html('').append(numberify(tBal, 2) + ' ' + baseCd);
     }
+    walletStatus();
 }
 
 
