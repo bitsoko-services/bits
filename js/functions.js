@@ -610,8 +610,13 @@ function getProdss(orderArrayx, costofItems) {
     new Promise(function (resolve, reject) {
         e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
         e.onsuccess = function (event) {
-            var x = JSON.parse(event.target.result);
-            resolve(x.list);
+            try {
+                var x = JSON.parse(event.target.result);
+                resolve(x.list);
+            } catch (err) {
+                var x = JSON.parse(event.target.result);
+                resolve(x.list);
+            }
         }
     }).then(function (r) {
         var costofItems = 0;
@@ -768,5 +773,9 @@ $(document).on('click', '#userWallet', function () {
     M.toast({
         html: 'Please wait! Unlocking wallet'
     });
-    ((allTokens[enterpriseContract].balance / Math.pow(10, allTokens[enterpriseContract].decimals)) + allTokens[enterpriseContract].totalEarned) * (allTokens[enterpriseContract].rate * baseX)
+    try {
+        ((allTokens[enterpriseContract].balance / Math.pow(10, allTokens[enterpriseContract].decimals)) + allTokens[enterpriseContract].totalEarned) * (allTokens[enterpriseContract].rate * baseX)
+    } catch (err) {
+        console.log(err)
+    }
 });
