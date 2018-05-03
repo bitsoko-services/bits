@@ -67,7 +67,7 @@ function servicePageLoader() {
                 populated = true;
             } catch (err) {
 
-                console.log('service not found in db. perhaps trying from DOM');
+                console.log('service not found in db. perhaps trying from DOM 1');
                 var re = /&quot;/gi;
                 var str = document.getElementById('storeMeta').innerHTML;
                 var newstr = str.replace(re, '"');
@@ -78,7 +78,7 @@ function servicePageLoader() {
         };
         svReq.onerror = function () {
 
-            console.log('service not found in db. perhaps trying from DOM');
+            console.log('service not found in db. perhaps trying from DOM 2');
             var re = /&quot;/gi;
             var str = document.getElementById('storeMeta').innerHTML;
             var newstr = str.replace(re, '"');
@@ -96,7 +96,8 @@ function servicePageLoader() {
                 svReq.onsuccess = function () {
                     try {
                         if (!populated) {
-                            populateService(e.data)
+                            populateService(e.data);
+                            populated = true;
                         }
                     } catch (err) {
                         console.log('service not found in db. perhaps try loading from server AGAIN!!')
@@ -123,7 +124,7 @@ function servicePageLoader() {
                     populateService(JSON.parse(event.target.result));
                     populated = true;
                 } catch (err) {
-                    console.log('service not found in db. perhaps trying from DOM');
+                    console.log('service not found in db. perhaps trying from DOM 3');
                     var re = /&quot;/gi;
                     var str = document.getElementById('storeMeta').innerHTML;
                     var newstr = str.replace(re, '"');
@@ -133,7 +134,7 @@ function servicePageLoader() {
                 }
             };
             svReq.onerror = function () {
-                console.log('service not found in db. perhaps trying from DOM');
+                console.log('service not found in db. perhaps trying from DOM 4');
                 var re = /&quot;/gi;
                 var str = document.getElementById('storeMeta').innerHTML;
                 var newstr = str.replace(re, '"');
