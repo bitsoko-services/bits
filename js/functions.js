@@ -74,6 +74,14 @@ function servicePageLoader() {
                 $("#preloader").fadeOut(1000);
                 populateService(JSON.parse(newstr).res);
                 populated = true;
+                
+                 var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(JSON.parse(newstr).res), 'bits-merchant-id-' + getBitsWinOpt('s'));
+                svReq.onsuccess = function () {
+                  
+                };
+                svReq.onerror = function () {
+                   console.log('err not saved store info to db')
+                }
             }
         };
         svReq.onerror = function () {
