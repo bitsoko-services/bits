@@ -117,7 +117,7 @@ walletStatus();
     }
     
     try {
-        ((allTokens[enterpriseContract].balance / Math.pow(10, allTokens[enterpriseContract].decimals)) + allTokens[enterpriseContract].totalEarned) * (allTokens[enterpriseContract].rate * baseX)
+        $(".balance-coins").html(((allTokens[enterpriseContract].balance / Math.pow(10, allTokens[enterpriseContract].decimals)) + allTokens[enterpriseContract].totalEarned) * (allTokens[enterpriseContract].rate * baseX)+" "+baseCd)
     } catch (err) {
         console.log(err)
     }
