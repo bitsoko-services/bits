@@ -33,7 +33,7 @@ function callMerchant() {
         console.log(err)
     }
 }
-callMerchant()
+//callMerchant()
 
 function rate() {
     $('#RateModal').openModal();
@@ -72,16 +72,26 @@ function servicePageLoader() {
                 var str = document.getElementById('storeMeta').innerHTML;
                 var newstr = str.replace(re, '"');
                 $("#preloader").fadeOut(1000);
-                populateService(JSON.parse(newstr).res);
-                populated = true;
-                
-                 var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(JSON.parse(newstr).res), 'bits-merchant-id-' + getBitsWinOpt('s'));
-                svReq.onsuccess = function () {
-                  
-                };
-                svReq.onerror = function () {
-                   console.log('err not saved store info to db')
+                try {
+                    populateService(JSON.parse(newstr).res);
+                    populated = true;
+
+                    var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(JSON.parse(newstr).res), 'bits-merchant-id-' + getBitsWinOpt('s'));
+                    svReq.onsuccess = function () {
+
+                    };
+                    svReq.onerror = function () {
+                        console.log('err not saved store info to db')
+                    }
+
+                } catch (err) {
+
+                    setTimeout(function () {
+                        servicePageLoader();
+                    }, 3000);
+
                 }
+
             }
         };
         svReq.onerror = function () {
@@ -147,8 +157,13 @@ function servicePageLoader() {
                 var str = document.getElementById('storeMeta').innerHTML;
                 var newstr = str.replace(re, '"');
                 $("#preloader").fadeOut(1000);
-                populateService(JSON.parse(newstr).res);
-                populated = true;
+                try {
+                    populateService(JSON.parse(newstr).res);
+                    populated = true;
+                } catch (err) {
+                    console.log(err)
+                }
+
             }
         });
         //merchants options end; 
@@ -771,20 +786,21 @@ function cop(costofItems) {
 
 //Wallet State
 function walletStatus() {
-    if (sessionStorage.getItem('walletKey')) {} else {
-        $("#checkBal").html("locked")
-    }
-}
-walletStatus();
-
-$(document).on('click', '#userWallet', function () {
-    loadGdrive();
+    if (sessionStorage.getItem('walletKey')) {
+        //Check Bal Interval 
+        window.setInterval(function () {
+            updateEarnedTokens();
+        }, 20000);
+    } else {
+        
+        $("#checkBal").html("locked");
+        
+        loadGdrive();
     M.toast({
         html: 'Please wait! Unlocking wallet'
     });
-    try {
-        ((allTokens[enterpriseContract].balance / Math.pow(10, allTokens[enterpriseContract].decimals)) + allTokens[enterpriseContract].totalEarned) * (allTokens[enterpriseContract].rate * baseX)
-    } catch (err) {
-        console.log(err)
+    
     }
-});
+}
+
+    

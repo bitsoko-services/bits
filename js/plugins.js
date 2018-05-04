@@ -5,68 +5,68 @@
   Author URL: http://www.themeforest.net/user/geekslabs
 ================================================================================*/
 
-$(function() {
+$(function () {
 
-  "use strict";
+    "use strict";
 
-  var window_width = $(window).width();
+    var window_width = $(window).width();
 
-  /*Preloader*/
-  $(window).load(function() {
-    setTimeout(function() {
-      $('body').addClass('loaded');      
-    }, 200);
-     $('.modal').modal();
-    
-  // Materialize Tabs
-  $('.tab-demo').show().tabs();
-  $('.tab-demo-active').show().tabs();
+    /*Preloader*/
+    $(window).load(function () {
+        setTimeout(function () {
+            $('body').addClass('loaded');
+        }, 200);
+        $('.modal').modal();
 
-  // Materialize Parallax
-  $('.parallax').parallax();
-  
-  // Collapsible options
-  $('.collapsible').collapsible();
-    
-  });  
+        // Materialize Tabs
+        $('.tab-demo').show().tabs();
+        $('.tab-demo-active').show().tabs();
 
-  
-  // Search class for focus
-  $('.header-search-input').focus(
-  function(){
-      $(this).parent('div').addClass('header-search-wrapper-focus');
-  }).blur(
-  function(){
-      $(this).parent('div').removeClass('header-search-wrapper-focus');
-  });  
+        // Materialize Parallax
+        $('.parallax').parallax();
 
-  // Check first if any of the task is checked
-  $('#task-card input:checkbox').each(function() {
-    checkbox_check(this);
-  });
+        // Collapsible options
+        $('.collapsible').collapsible();
 
-  // Task check box
-  $('#task-card input:checkbox').change(function() {
-    checkbox_check(this);
-  });
+    });
 
-  // Check Uncheck function
-  function checkbox_check(el){
-      if (!$(el).is(':checked')) {
-          $(el).next().css('text-decoration', 'none'); // or addClass            
-      } else {
-          $(el).next().css('text-decoration', 'line-through'); //or addClass
-      }    
-  }
 
-  /*----------------------
-  * Plugin initialization
-  ------------------------*/
-  
-  //var selElem = M.FormSelect.init(document.querySelector('select'), {});
-  //$('select').material_select();
-  // Set checkbox on forms.html to indeterminate
-  /*
+    // Search class for focus
+    $('.header-search-input').focus(
+        function () {
+            $(this).parent('div').addClass('header-search-wrapper-focus');
+        }).blur(
+        function () {
+            $(this).parent('div').removeClass('header-search-wrapper-focus');
+        });
+
+    // Check first if any of the task is checked
+    $('#task-card input:checkbox').each(function () {
+        checkbox_check(this);
+    });
+
+    // Task check box
+    $('#task-card input:checkbox').change(function () {
+        checkbox_check(this);
+    });
+
+    // Check Uncheck function
+    function checkbox_check(el) {
+        if (!$(el).is(':checked')) {
+            $(el).next().css('text-decoration', 'none'); // or addClass            
+        } else {
+            $(el).next().css('text-decoration', 'line-through'); //or addClass
+        }
+    }
+
+    /*----------------------
+    * Plugin initialization
+    ------------------------*/
+
+    //var selElem = M.FormSelect.init(document.querySelector('select'), {});
+    //$('select').material_select();
+    // Set checkbox on forms.html to indeterminate
+    /*
   var indeterminateCheckbox = document.getElementById('indeterminate-checkbox');
   if (indeterminateCheckbox !== null)
     indeterminateCheckbox.indeterminate = true;
@@ -109,8 +109,8 @@ $(function() {
     }
   );
 */
-  
-  /*
+
+    /*
   // Materialize Modal
   var modInstance = M.Modal.init(document.querySelector('.modal-trigger'), {
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
@@ -185,126 +185,122 @@ $(function() {
     suppressScrollX: true
   }); 
    */
-  
-  // Fullscreen
-  function toggleFullScreen() {
-    if ((document.fullScreenElement && document.fullScreenElement !== null) ||
-      (!document.mozFullScreen && !document.webkitIsFullScreen)) {
-      if (document.documentElement.requestFullScreen) {
-        document.documentElement.requestFullScreen();
-      }
-      else if (document.documentElement.mozRequestFullScreen) {
-        document.documentElement.mozRequestFullScreen();
-      }
-      else if (document.documentElement.webkitRequestFullScreen) {
-        document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-      }
+
+    // Fullscreen
+    function toggleFullScreen() {
+        if ((document.fullScreenElement && document.fullScreenElement !== null) ||
+            (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+            if (document.documentElement.requestFullScreen) {
+                document.documentElement.requestFullScreen();
+            } else if (document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullScreen) {
+                document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+            }
+        } else {
+            if (document.cancelFullScreen) {
+                document.cancelFullScreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitCancelFullScreen) {
+                document.webkitCancelFullScreen();
+            }
+        }
     }
-    else {
-      if (document.cancelFullScreen) {
-        document.cancelFullScreen();
-      }
-      else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-      }
-      else if (document.webkitCancelFullScreen) {
-        document.webkitCancelFullScreen();
-      }
+
+    $('.toggle-fullscreen').click(function () {
+        toggleFullScreen();
+    });
+
+
+    // Floating-Fixed table of contents (Materialize pushpin)
+    if ($('nav').length) {
+//        try {
+//            $('.toc-wrapper').pushpin({
+//                top: $('nav').height()
+//            });
+//        } catch (err) {
+//            console.log(err)
+//        }
+
+    } else if ($('#index-banner').length) {
+//        $('.toc-wrapper').pushpin({
+//            top: $('#index-banner').height()
+//        });
+    } else {
+//        $('.toc-wrapper').pushpin({
+//            top: 0
+//        });
     }
-  }
 
-  $('.toggle-fullscreen').click(function() {
-    toggleFullScreen();
-  });
-
-
-  // Floating-Fixed table of contents (Materialize pushpin)
-  if ($('nav').length) {
-    $('.toc-wrapper').pushpin({
-      top: $('nav').height()
+    // Toggle Flow Text
+    var toggleFlowTextButton = $('#flow-toggle')
+    toggleFlowTextButton.click(function () {
+        $('#flow-text-demo').children('p').each(function () {
+            $(this).toggleClass('flow-text');
+        })
     });
-  }
-  else if ($('#index-banner').length) {
-    $('.toc-wrapper').pushpin({
-      top: $('#index-banner').height()
-    });
-  }
-  else {
-    $('.toc-wrapper').pushpin({
-      top: 0
-    });
-  }
 
-  // Toggle Flow Text
-  var toggleFlowTextButton = $('#flow-toggle')
-  toggleFlowTextButton.click(function() {
-    $('#flow-text-demo').children('p').each(function() {
-      $(this).toggleClass('flow-text');
-    })
-  });
-  
-  //Alerts
-  $("#card-alert .close").click(function(){
-    $(this).closest('#card-alert').fadeOut('slow');
-  });
-  
-  //Toggle Containers on page
-  var toggleContainersButton = $('#container-toggle-button');
-  toggleContainersButton.click(function() {
-    $('body .browser-window .container, .had-container').each(function() {
-      $(this).toggleClass('had-container');
-      $(this).toggleClass('container');
-      if ($(this).hasClass('container')) {
-        toggleContainersButton.text("Turn off Containers");
-      }
-      else {
-        toggleContainersButton.text("Turn on Containers");
-      }
+    //Alerts
+    $("#card-alert .close").click(function () {
+        $(this).closest('#card-alert').fadeOut('slow');
     });
-  });
 
-  // Detect touch screen and enable scrollbar if necessary
-  function is_touch_device() {
-    try {
-      document.createEvent("TouchEvent");
-      return true;
+    //Toggle Containers on page
+    var toggleContainersButton = $('#container-toggle-button');
+    toggleContainersButton.click(function () {
+        $('body .browser-window .container, .had-container').each(function () {
+            $(this).toggleClass('had-container');
+            $(this).toggleClass('container');
+            if ($(this).hasClass('container')) {
+                toggleContainersButton.text("Turn off Containers");
+            } else {
+                toggleContainersButton.text("Turn on Containers");
+            }
+        });
+    });
+
+    // Detect touch screen and enable scrollbar if necessary
+    function is_touch_device() {
+        try {
+            document.createEvent("TouchEvent");
+            return true;
+        } catch (e) {
+            return false;
+        }
     }
-    catch (e) {
-      return false;
+    if (is_touch_device()) {
+        $('#nav-mobile').css({
+            overflow: 'auto'
+        })
     }
-  }
-  if (is_touch_device()) {
-    $('#nav-mobile').css({
-      overflow: 'auto'
-    })
-  }
 
-  //LINE CHART WITH AREA IN SIDEBAR
-  if (typeof Chartist != "undefined") {
-    new Chartist.Line('#ct2-chart', {
-        labels: [1, 2, 3, 4, 5, 6, 7, 8],
-        series: [
+    //LINE CHART WITH AREA IN SIDEBAR
+    if (typeof Chartist != "undefined") {
+        new Chartist.Line('#ct2-chart', {
+            labels: [1, 2, 3, 4, 5, 6, 7, 8],
+            series: [
             [5, 9, 7, 8, 5, 3, 5, 4]
         ]
-    }, {
-        low: 0,
-        showArea: true
-    });
-  }
-  //Trending chart for small screen
-  if(window_width <= 480){    
-    $("#trending-line-chart").attr({
-      height: '200'
-    });
-  }
-  
-  /*
-  * Advanced UI 
-  */
-  
-  
-         
-    
+        }, {
+            low: 0,
+            showArea: true
+        });
+    }
+    //Trending chart for small screen
+    if (window_width <= 480) {
+        $("#trending-line-chart").attr({
+            height: '200'
+        });
+    }
+
+    /*
+     * Advanced UI 
+     */
+
+
+
+
 
 
 

@@ -129,6 +129,7 @@ function getUserOders(f) {
 function updateEarnedTokens(f) {
 
     $('.coinlist').html('');
+    
     var at = allTokens['allContracts'];
 
     var i = 0;
@@ -172,11 +173,4 @@ function updateEarnedTokens(f) {
     } else {
         $('.balance-coins').html('').append(numberify(tBal, 2) + ' ' + baseCd);
     }
-    walletStatus();
 }
-
-
-//Check Bal Interval 
-window.setInterval(function () {
-    updateEarnedTokens();
-}, 2000);
