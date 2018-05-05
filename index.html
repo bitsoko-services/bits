@@ -1654,9 +1654,10 @@
 		<!-- CORE CSS-->
     <link href="https://bitsoko.co.ke/bitsAssets/css/materialize/materialize.min.css" rel="stylesheet" type="text/css">
     <link href="css/style.css" media="screen,projection" rel="stylesheet" type="text/css">
-    <!-- Custome CSS-->
+    <!-- Custome CSS
     <link href="js/plugins/animate-css/animate.css" media="screen,projection" rel="stylesheet" type="text/css">
     <link href="js/plugins/sweetalert/dist/sweetalert.css" media="screen,projection" rel="stylesheet" type="text/css">
+-->
     <link href="css/custom/custom.css" media="screen,projection" rel="stylesheet" type="text/css">
     <link href="css/keypad.css" media="" rel="stylesheet" type="text/css">
     <link href="css/handleCounter.css" media="" rel="stylesheet" type="text/css">
@@ -1670,20 +1671,7 @@
     <link href="js/plugins/chartist-js/chartist.min.css" media="screen,projection" rel="stylesheet" type="text/css">
     <link href="js/plugins/magnific-popup/magnific-popup.css" media="screen,projection" rel="stylesheet" type="text/css">
     </noscript>
-    <script>
-      var loadDeferredStyles = function() {
-        var addStylesNode = document.getElementById("deferred-styles");
-        var replacement = document.createElement("div");
-        replacement.innerHTML = addStylesNode.textContent;
-        document.body.appendChild(replacement)
-        addStylesNode.parentElement.removeChild(addStylesNode);
-      };
-      var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-          window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-      if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-      else window.addEventListener('load', loadDeferredStyles);
-    </script>
-	
+   
     <script>
         (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
@@ -1702,5 +1690,18 @@
 
     </script>
 </body>
-
+ <script>
+      var loadDeferredStyles = function() {
+        var addStylesNode = document.getElementById("deferred-styles");
+        var replacement = document.createElement("div");
+        replacement.innerHTML = addStylesNode.textContent;
+        document.body.appendChild(replacement)
+        addStylesNode.parentElement.removeChild(addStylesNode);
+      };
+      var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+          window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+      if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+      else window.addEventListener('load', loadDeferredStyles);
+    </script>
+	
 </html>
