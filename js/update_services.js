@@ -165,6 +165,30 @@ function doSubscribe() {
         }
     });
 }
+
+//Subscribe to shop
+$("#shopSubscribe").bind("touchstart click", function (event, ui) {
+    if (checkanon()) {
+        doFetch({
+            action: 'doSubscription',
+            sid: localStorage.getItem('bits-active-service'),
+            uid: localStorage.getItem('bits-user-name')
+        }).then(function (e) {
+            if (e.status == "ok") {
+                M.toast({
+                    html: 'Subscribed successfully'
+                })
+            } else if (e.status == "bad") {
+                M.toast({
+                    html: 'Error! Try again later'
+                })
+            }
+        })
+    } else {
+        console.log("loged out")
+    }
+
+})
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function populateService(mDet) {
     console.log(mDet.id)

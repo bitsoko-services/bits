@@ -424,7 +424,7 @@
                                     <a class="carousel-item" href="#one!"><img alt="" class="cardimage service-banner" src="" style="border-radius: 0px; height: 200px;"></a>
                                     <!--                 <a class="carousel-item" href="#two!"> <img  src="" alt="" class="cardimage service-banner "style="border-radius: 0px; height: 250px;"> </a> -->
                                 </div>
-                                <div class="min-card">
+                                <div class="min-card" style="position: relative;">
                                     <ul class="card-action-buttons left" style="margin-right: 10px;">
                                         <li>
                                             <div class="col s2"><img alt="" class="shopLogo bits-up circle btn-floating btn-large waves-effect waves-light bits-white accent-4 responsive-img valign" src=""></div>
@@ -440,6 +440,12 @@
                                         <div class="row" style=" margin-bottom: -9px !important; font-size: 12px; width: 98%; float: left;">
                                             <p class="serviceDescription" id="serviceDescription" style="min-height:45px; margin-left: 11px;">Loading....</p><span class="followbtn right" style="margin-top: -70px;"></span>
                                         </div>
+                                    </div>
+                                    <div class="switch" style="position:absolute; bottom: 41px; right: 0px;">
+                                        <label>
+                                          <input type="checkbox" id="shopSubscribe">
+                                          <span class="lever" style=""></span>
+                                        </label>
                                     </div>
                                 </div>
                                 <!--======================================================= Confirms=============================================================================================== ==
@@ -665,7 +671,7 @@
         <h5 style="text-align: center; padding: 5%; margin:0px;margin-bottom: 30px;">Select a wallet</h5>
         <div id="walletList" style="max-height: 200px; overflow: scroll; text-align: center;"></div>
     </div>
-    
+
     <!-- Modal Structure -->
     <div class="modal bits modalconfirm" id="modalconfirm" style="top:15% !important; height:82%; max-height: 800px !important;">
         <div class="bits" style="padding: 0px;width: 100%;">
@@ -716,7 +722,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Unlock Wallet Modal -->
     <div id="unlockWalletModal" class="modal" style="overflow: initial; margin-top: 30%; border-radius: 5px;z-index: 2005;">
         <div style="width:100px;display:block;margin-left:auto;margin-right:auto;margin-top:-50px;">
@@ -760,9 +766,9 @@
         </div>
         <h5 style="text-align: center; padding: 5%; margin:0px;margin-bottom: 30px;">Please unlock wallet to checkout</h5>
         <a class="waves-effect waves-light btn bits" onclick="loadGdrive()" style="display: block; margin-left: auto; margin-right: auto; width: max-content; margin-bottom: 20px;">unlock</a>
-        
+
     </div>
-    
+
     <!--=================================== Modal keypad start================================================================================-->
     <div class="modal relodeModal" id="relodeModal">
         <div class="modal-content center" style="background: url(images/3.png) no-repeat center center !important;background-size: cover !important; padding: 4px; !important background: url(images/3.png) no-repeat center center !important;background-size: cover !important;">
@@ -1150,7 +1156,7 @@
 
 
     </script>
-	
+
     <script defer src="https://bitsoko.co.ke/bitsAssets/js/web3/web3.js">
 
 
@@ -1159,7 +1165,7 @@
 
 
     </script>
-	
+
     <script async defer src="https://bitsoko.co.ke/bitsAssets/js/globalServices.js">
 
 
@@ -1319,7 +1325,6 @@
     </script> -->
 
     <script>
-   
         function reload() {
             location.reload();
 
@@ -1357,7 +1362,7 @@
             }
         }
 
-        
+
         function sendMessage(message) {
             // This wraps the message posting/response in a promise, which will resolve if the response doesn't
             // contain an error, and reject with the error if it does. If you'd prefer, it's possible to call
@@ -1381,49 +1386,46 @@
             });
         }
         //(navigator.share !== undefined)
-       
 
     </script>
     <script type="text/javascript">
-        
-
         window.addEventListener('load', function() {
-		     ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
-        if (bDet.os.name == 'Android') {
-            // ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
+            ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
+            if (bDet.os.name == 'Android') {
+                // ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
 
-            if (bDet.browser.version >= minVersionSup && bDet.browser.name == 'Chrome') {
-                console.log('compatible');
+                if (bDet.browser.version >= minVersionSup && bDet.browser.name == 'Chrome') {
+                    console.log('compatible');
+
+                } else {
+
+                    $('#updateBrowsermodal').modal({
+                        dismissible: false
+                    }).modal('open');
+
+                }
 
             } else {
 
-                $('#updateBrowsermodal').modal({
-                    dismissible: false
-                }).modal('open');
+
+                console.log('uncompatible');
+                //            $("#checkBrowser").modal({
+                //                dismissible: false
+                //            }).modal("open")
+
+
+                //      $('#updateBrowsermodal').openModal({
+                //           dismissible:false
+                //      });
+                new RegExp('mobile', 'i').test(navigator.userAgent)
 
             }
-
-        } else {
-
-
-            console.log('uncompatible');
-            //            $("#checkBrowser").modal({
-            //                dismissible: false
-            //            }).modal("open")
-
-
-            //      $('#updateBrowsermodal').openModal({
-            //           dismissible:false
-            //      });
-            new RegExp('mobile', 'i').test(navigator.userAgent)
-
-        }
 
 
 
             //request persistent storage
             requestPersist();
-		$('.sidenav').sidenav();
+            $('.sidenav').sidenav();
             startGoogle();
             Promise.all([indexDbReady, gDriveReady]).then(values => {
 
@@ -1646,9 +1648,8 @@
 
     <script type="application/json" id="storeMeta">
         #{stMeta}
-
     </script>
-	<noscript id="deferred-styles">
+    <noscript id="deferred-styles">
 		
     <link href="https://bitsoko.co.ke/bitsAssets/html/connect.html" rel="import">
 		<!-- CORE CSS-->
@@ -1671,19 +1672,22 @@
     <link href="js/plugins/magnific-popup/magnific-popup.css" media="screen,projection" rel="stylesheet" type="text/css">
     </noscript>
     <script>
-      var loadDeferredStyles = function() {
-        var addStylesNode = document.getElementById("deferred-styles");
-        var replacement = document.createElement("div");
-        replacement.innerHTML = addStylesNode.textContent;
-        document.body.appendChild(replacement)
-        addStylesNode.parentElement.removeChild(addStylesNode);
-      };
-      var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-          window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-      if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-      else window.addEventListener('load', loadDeferredStyles);
+        var loadDeferredStyles = function() {
+            var addStylesNode = document.getElementById("deferred-styles");
+            var replacement = document.createElement("div");
+            replacement.innerHTML = addStylesNode.textContent;
+            document.body.appendChild(replacement)
+            addStylesNode.parentElement.removeChild(addStylesNode);
+        };
+        var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+            window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+        if (raf) raf(function() {
+            window.setTimeout(loadDeferredStyles, 0);
+        });
+        else window.addEventListener('load', loadDeferredStyles);
+
     </script>
-	
+
     <script>
         (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
