@@ -71,6 +71,7 @@ function recoverOldWallets(olWals) {
 function starting() {
     //$('#loginModal').closeModal()
 
+	addMobiVeri();
     startGoogle();
     serviceOpener();
     //localConverter();
@@ -82,6 +83,7 @@ function starting() {
 
     loadWallet();
     initializePdf();
+
 
 
     /////////////////////////////////// update exchange rates
@@ -770,7 +772,6 @@ function updDetServ(cid, cname, cem, cimg) {
 
 }
 
-addMobiVeri();
 
 
 //move to functions
