@@ -538,10 +538,12 @@ function makeOrder(orderArrayy, orderLoc) {
                                 if (e.status == "ok") {
                                     $('#modalconfirm').modal("close");
                                     swal("success!", "your order has been sent!", "success");
+                                   M.toast({html: 'Your order has been sent!'})
                                     $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox" onclick="startmessage()"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
                                     clearCart();
                                 } else {
                                     swal("Cancelled", "your order is not sent", "error");
+                                    M.toast({html: 'Error! Try again later'})
                                 }
                             })
                         })
