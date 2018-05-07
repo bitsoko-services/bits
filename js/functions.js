@@ -456,6 +456,7 @@ function makeOrder(orderArrayy, orderLoc) {
 
                     if (payByToken == true) {
                         $(document).on("click", "#ConfirmO", function (e) {
+                            $(this).html('<div class="preloader-wrapper big active" style=" width: 20px; height: 20px; margin-top: 9px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
                             if (sessionStorage.getItem('walletKey')) {
                                 //console.log(parseFloat($("#checkBal")[0].innerHTML), (parseFloat($("#totals")[0].innerHTML) + globalDel));
                                 if (((allTokens[enterpriseContract].balance / Math.pow(10, allTokens[enterpriseContract].decimals)) + allTokens[enterpriseContract].totalEarned) * (allTokens[enterpriseContract].rate * baseX) > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
@@ -761,7 +762,8 @@ function clearCart() {
     $(".totals").append("0");
     $("#dscnt").html("");
     $("#burst-11").css("display", "none");
-    $("#products").html("")
+    $("#products").html("");
+    $("#ConfirmO").html("confirm")
 }
 var totalKobo
 
