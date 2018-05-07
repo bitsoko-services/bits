@@ -185,7 +185,8 @@ $("#shopSubscribe").bind("touchstart click", function (event, ui) {
             }
         })
     } else {
-        console.log("loged out")
+        console.log("loged out");
+        $("#loginModal").modal("open");
     }
 
 })
