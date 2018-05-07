@@ -106,23 +106,23 @@ function starting() {
         });
 
     }
-        $("#checkBal").html("locked");
-$(document).on('click', '#userWallet', function () {
-    if (checkanon()){
-        
-        
-walletStatus();
-    }else{
-        $('#loginModal').modal("open");
-    }
-    
-    try {
-        $(".balance-coins").html(((allTokens[enterpriseContract].balance / Math.pow(10, allTokens[enterpriseContract].decimals)) + allTokens[enterpriseContract].totalEarned) * (allTokens[enterpriseContract].rate * baseX)+" "+baseCd)
-    } catch (err) {
-        console.log(err)
-    }
-});
-    
+    $("#checkBal").html("locked");
+    $(document).on('click', '#userWallet', function () {
+        if (checkanon()) {
+
+
+            walletStatus();
+        } else {
+            $('#loginModal').modal("open");
+        }
+
+        try {
+            $(".balance-coins").html(((allTokens[enterpriseContract].balance / Math.pow(10, allTokens[enterpriseContract].decimals)) + allTokens[enterpriseContract].totalEarned) * (allTokens[enterpriseContract].rate * baseX) + " " + baseCd)
+        } catch (err) {
+            console.log(err)
+        }
+    });
+
     setTimeout(function () {
 
         if (navigator.serviceWorker.controller) {
