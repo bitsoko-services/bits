@@ -499,7 +499,15 @@ function makeOrder(orderArrayy, orderLoc) {
                                                     html: 'Your order is not sent!'
                                                 })
                                             }
-                                        })
+                                        }).catch(function (err) {
+                                            
+                                            //failed Order
+                                            M.toast({
+                                                    html: 'Error!! Try again later'
+                                                });
+                                            $('#modalconfirm').modal('close');
+                                        clearCart();
+                                        });
                                     }).catch(function (err) {
                                         M.toast({
                                             html: '<span class="toastlogin">You have insufficient funds to complete this order ',
