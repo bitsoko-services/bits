@@ -356,8 +356,8 @@ function tabulateTotals() {
     var addproducts = document.querySelectorAll(".bitsInputQty");
     var totals = 0;
     orderArray = [];
-    $('.floatingPrice').addClass('animated shake'), setTimeout(function () {
-        $('.floatingPrice').removeClass('animated shake')
+    $('.floatingPrice').addClass('shake'), setTimeout(function () {
+        $('.floatingPrice').removeClass('shake')
     }, 1000);
     for (var i = 0; i < addproducts.length; ++i) {
         try {
