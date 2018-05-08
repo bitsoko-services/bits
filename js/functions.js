@@ -33,7 +33,7 @@ function callMerchant() {
         console.log(err)
     }
 }
-//callMerchant()
+callMerchant()
 
 function rate() {
     $('#RateModal').openModal();
@@ -815,18 +815,20 @@ function cop(costofItems) {
 //Wallet State
 function walletStatus() {
     if (sessionStorage.getItem('walletKey')) {
-        //Check Bal Interval 
-        window.setInterval(function () {
-            updateEarnedTokens();
-        }, 20000);
-    } else {
-
-        $("#checkBal").html("locked");
-
         loadGdrive();
         M.toast({
             html: 'Please wait! Unlocking wallet'
         });
-
+    } else {
+        $("#checkBal").html("locked");
+        loadGdrive();
+        M.toast({
+            html: 'Please wait! Unlocking wallet'
+        });
     }
 }
+
+//Check Bal Interval
+window.setInterval(function () {
+    updateEarnedTokens();
+}, 20000);
