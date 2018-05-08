@@ -461,7 +461,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                 if (((allTokens[enterpriseContract].balance / Math.pow(10, allTokens[enterpriseContract].decimals)) + allTokens[enterpriseContract].totalEarned) * (allTokens[enterpriseContract].rate * baseX) > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
                                     var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
                                     transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function (res) {
-                                        //console.log(res);
+                                        console.log(res);
                                         
                                         doFetch({
                                             action: 'makeOrder',
