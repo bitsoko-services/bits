@@ -195,9 +195,6 @@ function populateService(mDet) {
     console.log(mDet.id)
     console.log(mDet);
     $("#preloader").fadeOut(1000);
-    setTimeout(function () {
-        $(".delivery").removeClass("blink");
-    }, 5000);
     getPhnNo = mDet.phone
 
     bitsTheme(mDet.theme);
