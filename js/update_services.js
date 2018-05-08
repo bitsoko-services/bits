@@ -185,15 +185,15 @@ $("#shopSubscribe").bind("touchstart click", function (event, ui) {
             }
         })
     } else {
-        console.log("loged out");
+//        console.log("loged out");
         $("#loginModal").modal("open");
     }
 
 })
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function populateService(mDet) {
-    console.log(mDet.id)
-    console.log(mDet);
+//    console.log(mDet.id)
+//    console.log(mDet);
     $("#preloader").fadeOut(1000);
     getPhnNo = mDet.phone
 
@@ -243,12 +243,12 @@ function populateService(mDet) {
     //------------------------------------------ checking if the user is a manager -------------------------------------------------------------------------------------------------------------------------------------
     try {
         if (mDet.managers.length == 0) {
-            console.log("no managers for this shop")
+//            console.log("no managers for this shop")
         } else {
-            console.log("this shop has managers", mDet.managers)
+//            console.log("this shop has managers", mDet.managers)
         }
         var x = JSON.parse(mDet.managers);
-        console.log(x);
+//        console.log(x);
         for (var iii in x) {
             if (parseInt(x[iii].id) == parseInt(localStorage.getItem('bits-user-name'))) {
                 $('#manage-store').css("display", "block");
@@ -258,11 +258,11 @@ function populateService(mDet) {
             }
         }
     } catch (err) {
-        console.log("unable to validate managers")
+//        console.log("unable to validate managers")
     }
     //------------------------------------------ checking if the user is a manager -------------------------------------------------------------------------------------------------------------------------------------
 
-    console.log(mDet.promotions);
+//    console.log(mDet.promotions);
     //localStorage.setItem('bits-merchant-'+parseInt(getBitsWinOpt('s'))+'-promotions',mDet.promotions);
     // console.log(mDet.list);
     // localStorage.setItem('bits-merchant-'+parseInt(getBitsWinOpt('s'))+'-products',mDet.list);
@@ -270,7 +270,7 @@ function populateService(mDet) {
     // console.log(localStorage.getItem('bits-merchant-'+parseInt(getBitsWinOpt('s'))+'-promotions'))
     // 		 }
     if (mDet.promotions.length == 0) {
-        console.log("no promos")
+//        console.log("no promos")
         // $('.merchproducts').addClass('displayNone')
         // $(".merchantsPromotions").removeClass("displayNone") 
         $('.merchPromo').append('<li id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong><center>No Promotions found</center></strong></p><p class="collections-content"></p></div></li></li>');
@@ -298,7 +298,7 @@ function populateService(mDet) {
                 '" class="promoSubButton bits promoSubButton-' + mDet.promotions[ii].id +
                 '" style=""> <span style="margin-top:2px;" class="lever bits right"></span></label></div></div><center><p style=" bottom: 0px;text-align: center;width: 70%;" class="displayNone serviceListseccondline "><i style="float: left;" class="serviceListseccondline promo-state-icon mdi-notification-sync"> 0 shares</i><i class="promo-state-icon mdi-action-favorite"> 0 likes </i><i style="float: right;" class="promo-state-icon mdi-action-receipt"> 0 sales </i></p></center></li>');
             subs = mDet.promotions[ii].promoSubs;
-            console.log(mDet.promotions[ii].discount)
+//            console.log(mDet.promotions[ii].discount)
             if (mDet.promotions[ii].discount == null) {
                 $(".burst-12").addClass("displayNone");
             }
@@ -388,13 +388,13 @@ function populateService(mDet) {
         //------------------------------------------ checking if the user is a manager -------------------------------------------------------------------------------------------------------------------------------------
         try {
             if (productCategory.length == 0) {
-                console.log("no categories for this shop")
+//                console.log("no categories for this shop")
                 $('.prodtabs').addClass("displayNone");
             } else {
 
 
 
-                console.log("this shop has categories")
+//                console.log("this shop has categories")
                 var x = JSON.parse(productCategory);
                 $('.prodtabs').html("");
                 $('.ptabs').html("");

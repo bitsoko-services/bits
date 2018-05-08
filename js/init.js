@@ -71,6 +71,7 @@ function recoverOldWallets(olWals) {
 function starting() {
     //$('#loginModal').closeModal()
 
+    $(".balance-coins").html("login");
 	addMobiVeri();
     startGoogle();
     serviceOpener();
@@ -83,7 +84,7 @@ function starting() {
 
     loadWallet();
     initializePdf();
-
+    callMerchant();
 
 
     /////////////////////////////////// update exchange rates
@@ -91,7 +92,25 @@ function starting() {
     fetchRates().then(function (e) {
         if (e.status == "ok") {
             tBal = 0;
+            
+            if (checkanon()) {
+
+    $(".balance-coins").html("locked");
+        walletFunctions(localStorage.getItem('bits-user-name')).then(function (e) {
+
             getUserOders(e);
+            if (sessionStorage.getItem('walletKey')) {
+   
+//Check Bal Interval
+        
+    updateEarnedTokens();
+window.setInterval(function () {
+    updateEarnedTokens();
+}, 20000);
+            }
+        });
+
+    }
             $(".conf-curr").html(e.data.baseCd);
         } else {
             console.log("error");
@@ -101,14 +120,9 @@ function starting() {
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    if (checkanon()) {
-
-        walletFunctions(localStorage.getItem('bits-user-name')).then(function (e) {
-
-        });
-
-    }
-    $("#checkBal").html("locked");
+    
+      
+    
     $(document).on('click', '#userWallet', function () {
         if (checkanon()) {
 
@@ -116,13 +130,9 @@ function starting() {
             walletStatus();
         } else {
             $('#loginModal').modal("open");
+            $(".balance-coins").html("login");
         }
 
-        try {
-            $(".balance-coins").html(((allTokens[enterpriseContract].balance / Math.pow(10, allTokens[enterpriseContract].decimals)) + allTokens[enterpriseContract].totalEarned) * (allTokens[enterpriseContract].rate * baseX) + " " + baseCd)
-        } catch (err) {
-            console.log(err)
-        }
     });
 
     setTimeout(function () {

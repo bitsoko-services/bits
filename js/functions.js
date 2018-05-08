@@ -5,10 +5,10 @@ function checkPayments() {
     actvServ().then(function (p) {
         var p = p.payments
         if (p) {
-            //console.log("payments on")
+            ////console.log("payments on")
             $("#paymentBTN").removeClass("displayNone")
         } else {
-            console.log("payments off")
+            //console.log("payments off")
             $(".chat-outs").addClass("displayNone")
             $("#paymentBTN").addClass("displayNone")
             $("#promopriced").addClass("displayNone")
@@ -30,10 +30,9 @@ function callMerchant() {
 
         });
     } catch (err) {
-        console.log(err)
+        //console.log(err)
     }
 }
-callMerchant()
 
 function rate() {
     $('#RateModal').openModal();
@@ -42,7 +41,7 @@ function rate() {
 //function service Page loader..........
 function servicePageLoader() {
     servicePageLoader.called = true
-    //console.log('servicePageLoader()..');
+    ////console.log('servicePageLoader()..');
     $(".delrow").removeClass("displayNone");
     if (parseInt(getBitsWinOpt('s')) > 5) {
         var servID = getBitsWinOpt('s');
@@ -67,7 +66,7 @@ function servicePageLoader() {
                 populated = true;
             } catch (err) {
 
-                console.log('service not found in db. perhaps trying from DOM 1');
+//                //console.log('service not found in db. perhaps trying from DOM 1');
                 var re = /&quot;/gi;
                 var str = document.getElementById('storeMeta').innerHTML;
                 var newstr = str.replace(re, '"');
@@ -81,7 +80,7 @@ function servicePageLoader() {
 
                     };
                     svReq.onerror = function () {
-                        console.log('err not saved store info to db')
+                        ////console.log('err not saved store info to db')
                     }
 
                 } catch (err) {
@@ -96,7 +95,7 @@ function servicePageLoader() {
         };
         svReq.onerror = function () {
 
-            console.log('service not found in db. perhaps trying from DOM 2');
+            ////console.log('service not found in db. perhaps trying from DOM 2');
             var re = /&quot;/gi;
             var str = document.getElementById('storeMeta').innerHTML;
             var newstr = str.replace(re, '"');
@@ -118,7 +117,7 @@ function servicePageLoader() {
                             populated = true;
                         }
                     } catch (err) {
-                        console.log('service not found in db. perhaps try loading from server AGAIN!!')
+                        ////console.log('service not found in db. perhaps try loading from server AGAIN!!')
                     }
                 };
                 svReq.onerror = function () {
@@ -135,14 +134,14 @@ function servicePageLoader() {
                 }, 3000);
             }
         }).catch(function (err) {
-            console.log('error trying to populate from sever ', err);
+            ////console.log('error trying to populate from sever ', err);
             var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
             svReq.onsuccess = function (event) {
                 try {
                     populateService(JSON.parse(event.target.result));
                     populated = true;
                 } catch (err) {
-                    console.log('service not found in db. perhaps trying from DOM 3');
+                    ////console.log('service not found in db. perhaps trying from DOM 3');
                     var re = /&quot;/gi;
                     var str = document.getElementById('storeMeta').innerHTML;
                     var newstr = str.replace(re, '"');
@@ -152,7 +151,7 @@ function servicePageLoader() {
                 }
             };
             svReq.onerror = function () {
-                console.log('service not found in db. perhaps trying from DOM 4');
+                //console.log('service not found in db. perhaps trying from DOM 4');
                 var re = /&quot;/gi;
                 var str = document.getElementById('storeMeta').innerHTML;
                 var newstr = str.replace(re, '"');
@@ -161,7 +160,7 @@ function servicePageLoader() {
                     populateService(JSON.parse(newstr).res);
                     populated = true;
                 } catch (err) {
-                    console.log(err)
+                    //console.log(err)
                 }
 
             }
@@ -172,7 +171,7 @@ function servicePageLoader() {
 
 function checkServicePageLoader() {
     if (servicePageLoader.called == true) {
-        console.log("do nothing");
+        //console.log("do nothing");
         //Check User Phone Number
         doFetch({
             action: 'userVerified',
@@ -192,10 +191,10 @@ function checkServicePageLoader() {
 // scroll function....................................................................................................................
 // $(window).scroll(function scroll (){
 // 	if($('#serviceListCard').hasClass("pin-top")){
-// console.log("not pinned")
+// //console.log("not pinned")
 // 	}
 // 	else{
-// 		console.log("pinned")
+// 		//console.log("pinned")
 // 	}
 // }  );
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -225,7 +224,7 @@ function loadoldwalletData() {
         try {
             var upDat = JSON.parse(event.target.result);
             for (var iii = 0; iii < upDat.length; ++iii) {
-                console.log("old wallets found")
+                //console.log("old wallets found")
                 //var id = upDat[iii].uid ? upDat[iii].uid : 'undefined';	
                 $('.username-addr-old').append('<span class="title"><a href="#!" id="share" class="secondary-content right"></a></span><span class ="" style="font-size: 12px;">' + upDat.user + '</span>');
             }
@@ -257,7 +256,7 @@ function showuser() {
         gtname.onsuccess = function (event) {
             try {
                 var nam = JSON.parse(event.target.result);
-                //console.log(nam.name)
+                ////console.log(nam.name)
                 M.toast({
                     html: '<span class="toastlogin">You are Signed in as: ' + nam.name,
                     displayLength: 1000,
@@ -270,26 +269,26 @@ function showuser() {
                 name: 'notifications'
             })
             .then(function (permissionStatus) {
-                console.log('geolocation permission state is ', permissionStatus.state);
+                //console.log('geolocation permission state is ', permissionStatus.state);
                 if (permissionStatus.state != "granted") {
                     //                    M.toast("Notificatons are turned off <span class='turnOnNtfn' style='color:yellow;'>Turn on</span>", 5000, "notificationToast");
                 }
 
                 permissionStatus.onchange = function () {
-                    console.log('geolocation permission state has changed to ', this.state);
+                    //console.log('geolocation permission state has changed to ', this.state);
                 };
             });
         $(document).on("click", ".turnOnNtfn", function () {
             $(".notificationToast").remove();
             Notification.requestPermission(function (result) {
                 if (result === 'denied') {
-                    console.log('Permission wasn\'t granted. Allow a retry.');
+                    //console.log('Permission wasn\'t granted. Allow a retry.');
                     return;
                 } else if (result === 'default') {
-                    console.log('The permission request was dismissed.');
+                    //console.log('The permission request was dismissed.');
                     return;
                 }
-                console.log('Permission was granted for notifications');
+                //console.log('Permission was granted for notifications');
             });
         })
 
@@ -305,7 +304,7 @@ function showuserNumber() {
         gtno.onsuccess = function (event) {
             try {
                 var no = JSON.parse(event.target.result);
-                console.log(no.tel)
+                //console.log(no.tel)
                 // 	M.toast('<span class="toastlogin">You are Signed in as: '+ nam.name, 10000);
                 if (no.tel == null) {
                     $('#MobileModal').openModal()
@@ -346,13 +345,13 @@ function showlogintoast() {
         //            html: '<span class="toastlogin">your wallet is locked</span><button id="toast-wallet-unlocker" onclick="showLogin()" class="btn-flat toast-action" ><span id="toast-wallet-unlocker-sp" style="pointer-events:none;" class="toastloginbutton">Unlock</span></button>'
         //        });
     } else { //showuser()
-        console.log("The user is signed in!")
+        //console.log("The user is signed in!")
     }
 }
 orderArray = [];
 //---------------------------------------function gets the totals of all items on a list----------------------------------------------------------------------------
 function tabulateTotals() {
-    //console.log(this);
+    ////console.log(this);
     var addproducts = document.querySelectorAll(".bitsInputQty");
     var totals = 0;
     orderArray = [];
@@ -367,12 +366,12 @@ function tabulateTotals() {
                     pid: $(addproducts[i]).attr('pid'),
                     count: itVal
                 });
-                //console.log(orderArray);
+                ////console.log(orderArray);
                 //Rewards(orderArray);
                 $('.recipt').append('');
             }
             totals = totals + (parseInt($(addproducts[i]).attr("price")) * parseInt(itVal));
-            //console.log(totals);
+            ////console.log(totals);
             $(".recipt").html("");
             //M.toast('your total is'+ totals, 1000);delivery
             // 	 $(".delivery").removeClass("displayNone");
@@ -380,7 +379,7 @@ function tabulateTotals() {
             $(".totals").html(numberify(totals));
             var xt = document.getElementById("totals").innerHTML
             // 			if (xt == 0) {
-            // 				console.log("minimum value")
+            // 				//console.log("minimum value")
             // 				$(".delivery ").removeClass("bits");
             // 				$(".delivery").addClass("pointer-events");
             // 				$(".bits-main-price").addClass("grey");
@@ -394,7 +393,7 @@ function tabulateTotals() {
 
 function makeOrder(orderArrayy, orderLoc) {
     //Rewards();
-    console.log("->", orderArrayy)
+    //console.log("->", orderArrayy)
     if (orderArrayy === undefined || orderArrayy.length == 0) {
         M.toast({
             html: "Ooops! You didn't select any product"
@@ -431,7 +430,7 @@ function makeOrder(orderArrayy, orderLoc) {
         actvServ().then(function (p) {
             //var p=p.deliveries
             // 	var p=p.payments
-            // if (p){console.log("payments are on")}else{
+            // if (p){//console.log("payments are on")}else{
             // 	swal("Sorry", "payments for this shop not available", "error");
             // 		return;
             // }
@@ -446,7 +445,7 @@ function makeOrder(orderArrayy, orderLoc) {
                     $(".createOrderToast").remove()
                 }
                 var mapLocc = orderLoc ? orderLoc : e.coords.latitude + ',' + e.coords.longitude;
-                console.log(orderLoc, e, mapLocc);
+                //console.log(orderLoc, e, mapLocc);
                 getCoordDet(mapLocc).then(function (mapData) {
                     getProdss(orderArrayy);
 
@@ -458,11 +457,11 @@ function makeOrder(orderArrayy, orderLoc) {
                         $(document).on("click", "#ConfirmO", function (e) {
                             $(this).html('<div class="preloader-wrapper big active" style=" width: 20px; height: 20px; margin-top: 9px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
                             if (sessionStorage.getItem('walletKey')) {
-                                //console.log(parseFloat($("#checkBal")[0].innerHTML), (parseFloat($("#totals")[0].innerHTML) + globalDel));
+                                ////console.log(parseFloat($("#checkBal")[0].innerHTML), (parseFloat($("#totals")[0].innerHTML) + globalDel));
                                 if (((allTokens[enterpriseContract].balance / Math.pow(10, allTokens[enterpriseContract].decimals)) + allTokens[enterpriseContract].totalEarned) * (allTokens[enterpriseContract].rate * baseX) > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
                                     var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
                                     transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function (res) {
-                                        console.log(res);
+                                        //console.log(res);
                                         
                                         doFetch({
                                             action: 'makeOrder',
@@ -508,7 +507,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                         });
                                         $('#modalconfirm').modal('close');
                                         clearCart();
-                                        console.log(err)
+                                        //console.log(err)
                                     })
 
                                 } else {
@@ -638,9 +637,9 @@ function checkmobiveri() {
 }
 
 function checkDeliveries(d) {
-    //console.log(d);
+    ////console.log(d);
     if (d == 'false') {
-        console.log("Deliveries for this shop not available");
+        //console.log("Deliveries for this shop not available");
         $(".delivery").addClass("displayNone");
     } else {
         $(".delivery").removeClass("displayNone");
@@ -649,10 +648,10 @@ function checkDeliveries(d) {
 
 function createOrder() {
     for (var o = 0; o < orderArray.length; o++) {
-        console.log(orderArray[o].pid);
+        //console.log(orderArray[o].pid);
         e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
         e.onsuccess = function (event) {
-            console.log(orderArray[o].pid);
+            //console.log(orderArray[o].pid);
         }
         e.onerror = function (e) {}
     }
@@ -672,13 +671,13 @@ function getProdss(orderArrayx, costofItems) {
         }
     }).then(function (r) {
         var costofItems = 0;
-        //console.log(r);
+        ////console.log(r);
         for (var o in r) {
             for (var oo in orderArrayx) {
-                //console.log("------------------------------------->>", r[o].id, orderArrayx[oo].count)
+                ////console.log("------------------------------------->>", r[o].id, orderArrayx[oo].count)
                 if (r[o].id == orderArrayx[oo].pid) {
                     costofItems = costofItems + (orderArrayx[oo].count * r[o].price);
-                    //console.log("match")
+                    ////console.log("match")
                     //products
                     //$("#products").html("")
                     //	$("#products").append('<div class="chip">' + '<img src="' + r[o].imagePath + '" ">' + orderArrayx[oo].count + ' ' + r[o].name + ' at '+ r[o].price+'/=</div>')
@@ -689,7 +688,7 @@ function getProdss(orderArrayx, costofItems) {
                 }
             }
         }
-        console.log('testing', costofItems);
+        //console.log('testing', costofItems);
         $(".totals").html("")
         $(".totals").append(JSON.parse(costofItems))
         finalCost(costofItems);
@@ -704,15 +703,15 @@ function buyPromo(clicked_id, promoOder) {
     promoOder = orderArray
     // 	var lipromo = $(".bpr").attr("id");
     var w = clicked_id
-    console.log(clicked_id);
+    //console.log(clicked_id);
     var numbOfPromo = $(".promoInput-" + clicked_id).val();
     $("#totals").parent().addClass("granted");
-    // 	console.log($(".bpr").attr("id"));
-    // 	//console.log($(".bpr").attr("promo"));
+    // 	//console.log($(".bpr").attr("id"));
+    // 	////console.log($(".bpr").attr("promo"));
     // 	var xx = document.getElementById(lipromo).id;
     // 	var tt = $(".bpr").attr("promo");
     new Promise(function (resolve, reject) {
-        //console.log("this is var t" + t)
+        ////console.log("this is var t" + t)
         e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
         //t = t;
         e.onsuccess = function (event) {
@@ -726,25 +725,25 @@ function buyPromo(clicked_id, promoOder) {
     }).then(function (r) {
         var pd = r.promotions;
         for (var ixi = 0; ixi < pd.length; ++ixi) {
-            console.log("=============== looping ==============================")
+            //console.log("=============== looping ==============================")
             var pitems = JSON.parse(pd[ixi].promoItems);
             var prid = pd[ixi].id;
             if (clicked_id != prid) {
                 continue;
             }
             dis = JSON.parse(pd[ixi].discount);
-            console.log("discount is >>>>>>>>>", dis);
+            //console.log("discount is >>>>>>>>>", dis);
             setTimeout(function () {
                 $("#burst-11").css("display", "block");
                 var getProdPrice = document.getElementById("totals").innerHTML;
                 promoDiscount = (dis / 100) * getProdPrice
-                console.log("this is the discount" + (dis / 100) * getProdPrice);
+                //console.log("this is the discount" + (dis / 100) * getProdPrice);
                 $("#promoDiscount").html('<span id="dscnt">' + promoDiscount + '</span><br>OFF');
             }, 2000);
 
-            //console.log(w , tt , "ww and tt");
+            ////console.log(w , tt , "ww and tt");
             if (prid == w) {
-                console.log("match");
+                //console.log("match");
                 var obj = {};
                 var p = obj
                 for (var i = 0, j = pitems.length; i < j; i++) {
@@ -752,7 +751,7 @@ function buyPromo(clicked_id, promoOder) {
                 }
                 for (var key in p) {
                     if (p.hasOwnProperty(key)) {
-                        console.log(key + " -> " + p[key]);
+                        //console.log(key + " -> " + p[key]);
                         promoOder.push({
                             pid: key,
                             count: p[key]
@@ -771,7 +770,7 @@ function buyPromo(clicked_id, promoOder) {
                 };
                 makeOrder(multiplePromo);
             } else {
-                console.log(" no match");
+                //console.log(" no match");
             }
             // cop();
         }
@@ -780,7 +779,7 @@ function buyPromo(clicked_id, promoOder) {
 }
 
 function clearCart() {
-    console.log("clear cart");
+    //console.log("clear cart");
     $(".bitsInputQty").val(0);
     $(".counter-minus").addClass("disabled");
     $(".star2content").html('');
@@ -797,7 +796,7 @@ var totalKobo
 function cop(costofItems) {
     //costItems = costofItems
     if (bp == 1) {
-        console.log("------> ", costofItems, dis, "<------------");
+        //console.log("------> ", costofItems, dis, "<------------");
         var pe = (costofItems * dis) / 100
         var rate = allTokens['bits'].rate;
         var g = Math.floor(pe);
@@ -806,30 +805,40 @@ function cop(costofItems) {
         $(".star2").removeClass("displayNone");
         $(".star2content").html('');
         $(".star2content").append(Math.floor(pe));
-        console.log(">>>", g, ">>>", rate, ">>>", kshToKobo);
+        //console.log(">>>", g, ">>>", rate, ">>>", kshToKobo);
         bp = 1
     } else {
-        console.log("------> ", "not promo", "<------------");
+        //console.log("------> ", "not promo", "<------------");
     }
 }
 
 //Wallet State
 function walletStatus() {
     if (sessionStorage.getItem('walletKey')) {
+        //wallet is unlocked
+        //get balance
         loadGdrive();
         M.toast({
             html: 'Please wait! Unlocking wallet'
         });
+        
+        
     } else {
+        
         $("#checkBal").html("locked");
         loadGdrive();
         M.toast({
             html: 'Please wait! Unlocking wallet'
         });
-    }
-}
-
+        
 //Check Bal Interval
+        
+    updateEarnedTokens();
 window.setInterval(function () {
     updateEarnedTokens();
 }, 20000);
+    }
+    
+    
+}
+

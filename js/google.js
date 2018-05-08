@@ -73,7 +73,7 @@ function handleEmailResponse(resp) {
 }
 
 function attachSignin(element) {
-    console.log(element.id);
+//    console.log(element.id);
 
     auth2.attachClickHandler(element, {},
         function (googleUser) {

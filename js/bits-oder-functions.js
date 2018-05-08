@@ -35,7 +35,7 @@ function oid() {
                         if (urloid == xid) {
                             makeOrder(JSON.parse(xx), odData[ii].location)
                         } else {
-                            console.log("no match")
+                            //console.log("no match")
                         }
                     }
                 } catch (err) {}
@@ -43,17 +43,11 @@ function oid() {
             od.onerror = function () {};
             //makeOrder(hval)
         } else {
-            console.log("we dont know this hash")
+            //console.log("we dont know this hash")
         }
     } else {}
 }
 
-function unlockWallet() {
-    walletFunctions(90).then(function (e) {
-        loadGdrive();
-        $(".walletToast").remove();
-    })
-}
 
 function getUserOders(f) {
 
@@ -75,7 +69,7 @@ function getUserOders(f) {
                 try {
                     var typeofCoin = JSON.parse(items).coin;
                 } catch (err) {
-                    console.log(err);
+                    //console.log(err);
                     continue;
                 }
                 try {
@@ -84,7 +78,7 @@ function getUserOders(f) {
                         var purchasePoints = 0;
                     }
                 } catch (err) {
-                    console.log('this order does not have any purchase rewards', err);
+                    //console.log('this order does not have any purchase rewards', err);
                     var purchasePoints = 0;
                 }
                 try {
@@ -93,18 +87,18 @@ function getUserOders(f) {
                         var deliveryPoints = 0;
                     }
                 } catch (err) {
-                    console.log('this order does not have any delivery rewards', err);
+                    //console.log('this order does not have any delivery rewards', err);
                     var deliveryPoints = 0;
                 }
                 try {
                     allTokens[typeofCoin].totalEarned = allTokens[typeofCoin].totalEarned + purchasePoints + deliveryPoints;
 
                 } catch (err) {
-                    console.log('this coin had not been included in the rewards since its currently inactive', typeofCoin);
+                    //console.log('this coin had not been included in the rewards since its currently inactive', typeofCoin);
                     continue;
                 }
 
-                console.log(typeofCoin, purchasePoints, deliveryPoints);
+                //console.log(typeofCoin, purchasePoints, deliveryPoints);
 
 
             };
@@ -113,9 +107,6 @@ function getUserOders(f) {
             setdb.onsuccess = function () {
                 oid();
             }
-            setTimeout(function () {
-                updateEarnedTokens(f)
-            }, 1500);
 
         } else {
             swal("Cancelled", "an error occcured", "error");
@@ -127,7 +118,7 @@ function getUserOders(f) {
 // 		var gtod = localStorage.getItem('bits-user-orders-'+localStorage.getItem("bits-user-name"));
 //
 function updateEarnedTokens(f) {
-
+    
     $('.coinlist').html('');
     
     var at = allTokens['allContracts'];
@@ -145,7 +136,7 @@ function updateEarnedTokens(f) {
             var coinName = allTokens[at[i]].name;
             //if i have 1000 kobos
             //var koboBalance = 1000;
-            //		console.log((rate*e.data.baseEx*koboBalance).toFixed(2)+' KES');
+            //		//console.log((rate*e.data.baseEx*koboBalance).toFixed(2)+' KES');
             var koboRate = Math.floor(rate * baseX);
             var qq = rate * baseX;
             var xx = qq.toFixed(2);
@@ -160,17 +151,17 @@ function updateEarnedTokens(f) {
             $('.coin-' + coinId + '-xrate').html('').append('1 ' + coinName + ' = ' + xx + ' ' + baseCd);
             tBal = tBal + (tA * allTokens[coinId].rate * baseX);
         } catch (e) {
-            console.log(e)
+            //console.log(e)
         }
         i++;
     }
-
+if (sessionStorage.getItem('walletKey')) {
+        
     $('.balance-coins').html('').append(numberify(tBal, 2) + ' ' + baseCd);
-
-    var checkWalletStatus = $("#walletLocked").css('display') == "block"
-    if (checkWalletStatus == true) {
-        $("#checkBal").html("locked")
+        
     } else {
-        $('.balance-coins').html('').append(numberify(tBal, 2) + ' ' + baseCd);
+      
+        $('.balance-coins').html("locked");  
     }
+
 }
