@@ -922,7 +922,7 @@
                 <h5 class="eName title center" style="text-transform: uppercase;"></h5><span class="eDesc"></span>
                 <p>
                     <!-- Terms and conditions -->
-                    wants acces to your name, age range and email address to complete your order.
+                    wants access to your name, age range and email address to complete your order.
                 </p>
                 <p>John Doe<br>20-30 years<br>johndoe@gmail.com</p>
             </div>
@@ -1418,8 +1418,12 @@
             requestPersist();
             $('.sidenav').sidenav();
             startGoogle();
+		var t0 = performance.now();
+
             Promise.all([indexDbReady, gDriveReady]).then(values => {
 
+var t1 = performance.now();
+console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.");
                 console.log('test starting');
                 starting();
             });
