@@ -66,7 +66,7 @@ function servicePageLoader() {
                 populated = true;
             } catch (err) {
 
-//                //console.log('service not found in db. perhaps trying from DOM 1');
+                //                //console.log('service not found in db. perhaps trying from DOM 1');
                 var re = /&quot;/gi;
                 var str = document.getElementById('storeMeta').innerHTML;
                 var newstr = str.replace(re, '"');
@@ -442,7 +442,9 @@ function makeOrder(orderArrayy, orderLoc) {
             // }
             getLoc().then(function showPosition(e) {
                 if ($(".createOrderToast").length >= 1) {
-                    $(".createOrderToast").remove()
+                    setTimeout(function () {
+                        $(".createOrderToast").remove()
+                    }, 1000)
                 }
                 var mapLocc = orderLoc ? orderLoc : e.coords.latitude + ',' + e.coords.longitude;
                 //console.log(orderLoc, e, mapLocc);
@@ -462,7 +464,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                     var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
                                     transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function (res) {
                                         console.log(res);
-                                        
+
                                         doFetch({
                                             action: 'makeOrder',
                                             data: orderArrayy,
@@ -500,13 +502,13 @@ function makeOrder(orderArrayy, orderLoc) {
                                                 })
                                             }
                                         }).catch(function (err) {
-                                            
+
                                             //failed Order
                                             M.toast({
-                                                    html: 'Error!! Try again later'
-                                                });
+                                                html: 'Error!! Try again later'
+                                            });
                                             $('#modalconfirm').modal('close');
-                                        clearCart();
+                                            clearCart();
                                         });
                                     }).catch(function (err) {
                                         M.toast({
@@ -829,24 +831,23 @@ function walletStatus() {
         M.toast({
             html: 'Please wait! Unlocking wallet'
         });
-        
-        
+
+
     } else {
-        
+
         $("#checkBal").html("locked");
         loadGdrive();
         M.toast({
             html: 'Please wait! Unlocking wallet'
         });
-        
-//Check Bal Interval
-        
-    updateEarnedTokens();
-window.setInterval(function () {
-    updateEarnedTokens();
-}, 20000);
-    }
-    
-    
-}
 
+        //Check Bal Interval
+
+        updateEarnedTokens();
+        window.setInterval(function () {
+            updateEarnedTokens();
+        }, 20000);
+    }
+
+
+}
