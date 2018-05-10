@@ -224,7 +224,7 @@ function populateService(mDet) {
     $(document).on("click", "#share", function () {
         navigator.share({
             title: mDet.name,
-            text: mDet.desription,
+            text: mDet.description,
             url: window.location.href
         }).then(() => console.log('Successful share')).catch(error => console.log('Error sharing:', error));
     })
