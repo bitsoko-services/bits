@@ -124,8 +124,8 @@ try {
                             action: 'cancel',
                             title: "Cancel"
 						}, {
-                            action: 'pay',
-                            title: "Pay"
+                            action: 'complete',
+                            title: "Complete"
 						}], true, true);
                     }
                     break;
