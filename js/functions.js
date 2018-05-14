@@ -691,7 +691,7 @@ function getProdss(orderArrayx, costofItems) {
                     //products
                     //$("#products").html("")
                     //	$("#products").append('<div class="chip">' + '<img src="' + r[o].imagePath + '" ">' + orderArrayx[oo].count + ' ' + r[o].name + ' at '+ r[o].price+'/=</div>')
-                    $("#products").append('<li class="collection-item avatar"style="padding: 3px;margin: 0px;background: none !important;min-height: 10px;"><div class="row" style="line-height: 30px;margin-bottom: 0px;"> <div class="col s2"><img class="circle" src="' + r[o].imagePath + '"  style="height: 30px; width: 30px;"></div><div class="col s8" style="padding:0px;"><span class="title truncate" style="width: 95%;">' + orderArrayx[oo].count + 'X ' + r[o].name + ' </span></div><div class="col s2"><div  class="right" style="font-size:0.7em;">' + r[o].price + '/=</div></div></div></li>')
+                    $("#products").append('<li class="collection-item avatar"style="padding: 3px;margin: 0px;background: none !important;min-height: 10px;"><div class="row" style="line-height: 30px;margin-bottom: 0px;"> <div class="col s2">' + orderArrayx[oo].count + 'X ' + '</div><div class="col s2"><img src="' + r[o].imagePath + '"  style="height: 30px; width: 30px;border-radius:50%;"></div><div class="col s6" style="padding:0px;"><span class="title truncate" style="width: 95%;">' + r[o].name + ' </span></div><div class="col s2"><div  class="right" style="font-size:0.7em;">' + r[o].price * orderArrayx[oo].count + '/=</div></div></div></li>')
 
 
 
