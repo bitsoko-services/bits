@@ -1,5 +1,6 @@
 ///.........................................checks if the payments option for the merchant is on or off ........................................................./////
 var promoDiscount;
+var deliveryRadius;
 
 function checkPayments() {
     actvServ().then(function (p) {
@@ -109,6 +110,7 @@ function servicePageLoader() {
             service: getBitsWinOpt('s')
         }).then(function (e) {
             if (e.status == "ok") {
+                deliveryRadius = e.data.deliveryRadius
                 var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-' + e.data.id);
                 svReq.onsuccess = function () {
                     try {
