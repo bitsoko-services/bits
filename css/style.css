@@ -3375,7 +3375,7 @@ tr.group:hover {
     margin: 0 auto;
     position: absolute;
     top: 30px;
-    left: 220px;
+    left: 45%;
     -webkit-animation: scale 2.5s ease-in-out infinite;
     animation: scale 2.5s ease-in-out infinite;
 }
@@ -3387,7 +3387,7 @@ tr.group:hover {
     border-radius: 50%;
     background: #0F5F76;
     top: 35px;
-    left: 235px;
+    left: 50%;
     -webkit-animation: move 2.5s ease-in-out infinite alternate;
     animation: move 2.5s ease-in-out infinite alternate;
 }
