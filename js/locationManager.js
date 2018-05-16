@@ -104,17 +104,29 @@ function getLoc(retDt) {
 
             } else if (p.state === 'prompt') {
                 $('#locationModal').modal({
+                    onOpenEnd: function () {
+                        $('.spinnerCheckout').css("display", "none");
+                        $('.checkoutInfo').css("display", "block");
+                    },
                     complete: function () {
                         console.log("Running")
                         myLoc();
+                        $('.spinnerCheckout').css("display", "none");
+                        $('.checkoutInfo').css("display", "block");
                     }
                 }).modal('open');
             } else {
                 reject('request not yet allowed');
                 $('#locationModal').modal({
+                    onOpenEnd: function () {
+                        $('.spinnerCheckout').css("display", "none");
+                        $('.checkoutInfo').css("display", "block");
+                    },
                     complete: function () {
                         console.log("Running")
                         myLoc();
+                        $('.spinnerCheckout').css("display", "none");
+                        $('.checkoutInfo').css("display", "block");
                     }
                 }).modal('open');
             }
@@ -218,7 +230,7 @@ function reqLoc() {
 
             } else {
                 M.toast({
-                    html: '>Your location is turned off. Enable in android settings',
+                    html: 'Your location is turned off. Enable in android settings',
                     displayLength: 3000
                 })
 

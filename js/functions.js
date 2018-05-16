@@ -847,8 +847,6 @@ function walletStatus() {
             updateEarnedTokens();
         }, 20000);
     }
-
-
 }
 
 //Select wallet
