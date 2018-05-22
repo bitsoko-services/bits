@@ -27,7 +27,8 @@ function finalCost(costofItems) {
                 console.log("calculating rates")
                 //var distance =getDistanceFromLatLonInKm(from-lat,from-long,to-lat,from-long);
                 getDistanceFromLatLonInKm(e.coords.latitude, e.coords.longitude, x, y).then(function (distance) {
-
+                    console.log("rates loaded")
+                    $("#ConfirmO").removeAttr("disabled")
                     var dist = distance
                     if (dist > deliveryRadius.max) {
                         M.toast({
