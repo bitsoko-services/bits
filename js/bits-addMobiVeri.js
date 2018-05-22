@@ -2,6 +2,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //----------------------------------------------updating addMobiVeri ---------------------------------------------------------------------------------
 function addMobiVeri() {
+    $(".MobileModal").html("");
     //----------------------------------------------append contact modal--------------------------------------------------------------------------------------
     $(".MobileModal").append('<div class="modal-content" style="padding: 24px 10px;"><p style=" text-align: center;">Please enter your phone number so we can call you to confirm your delivery location</p>' +
         ' <div class="row" style="margin-bottom:0px;">' +
