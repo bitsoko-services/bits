@@ -20,6 +20,7 @@ html(⚡='')
     script(async='', custom-element="amp-bind", src="https://cdn.ampproject.org/v0/amp-bind-0.1.js")
     script(async='', custom-template='amp-mustache', src='https://cdn.ampproject.org/v0/amp-mustache-0.1.js')
     script(async='', custom-element='amp-fx-flying-carpet', src='https://cdn.ampproject.org/v0/amp-fx-flying-carpet-0.1.js')
+    script(async custom-element="amp-web-push" src="https://cdn.ampproject.org/v0/amp-web-push-0.1.js")
 
     meta(name='viewport', content='width=device-width,minimum-scale=1,initial-scale=1')
     style(amp-boilerplate='').
@@ -1020,6 +1021,19 @@ html(⚡='')
 
 
   body.testFont
+  
+    //AMP web push configuration
+    amp-web-push(helper-iframe-url=".helper-iframe.html", permission-dialog-url="./permission-dialog.html", service-worker-url="./server.js")
+    
+    //A subscription widget
+    amp-web-push-widget(visibility="unsubscribed" layout="fixed" width="250" height="80")
+        button(on="tap:amp-web-push.subscribe") Subscribe to Notifications
+    
+    //Unsubscribe widget
+    amp-web-push-widget(visibility="subscribed" layout="fixed" width="250" height="80")
+        button(on="tap:amp-web-push.unsubscribe") Unsubscribe from Notifications
+    
+    
     amp-install-serviceworker(src="./sw.js",data-iframe-src="./bitsAssets/html/connect.html", layout="nodisplay")
     mixin listIconSection(name,icon,body)
         .col-2-sm.wwc
