@@ -458,14 +458,14 @@ function makeOrder(orderArrayy, orderLoc) {
 
                     var payByToken = true;
 
-                    if (payByToken == true) {
-                        $(document).on("click", "#ConfirmO", function (e) {
+                    function payUsingToken() {
+                        $('#ConfirmO').off('click').on('click', function () {
                             $(this).html('<div class="preloader-wrapper big active" style=" width: 20px; height: 20px; margin-top: 9px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
                             if (sessionStorage.getItem('walletKey')) {
                                 ////console.log(parseFloat($("#checkBal")[0].innerHTML), (parseFloat($("#totals")[0].innerHTML) + globalDel));
-                                if (((allTokens[enterpriseContract].balance / Math.pow(10, allTokens[enterpriseContract].decimals)) + allTokens[enterpriseContract].totalEarned) * (allTokens[enterpriseContract].rate * baseX) > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
+                                if (((allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].balance / Math.pow(10, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].decimals)) + allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].totalEarned) * (allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate * baseX) > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
                                     var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
-                                    transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', enterpriseContract, totCost, allTokens[enterpriseContract].rate).then(function (res) {
+                                    transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', "0xb72627650f1149ea5e54834b2f468e5d430e67bf", totCost, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate).then(function (res) {
                                         console.log(res);
 
                                         doFetch({
@@ -544,7 +544,13 @@ function makeOrder(orderArrayy, orderLoc) {
                                     });
                                 }
                             }
+                            return false;
                         })
+                    }
+
+                    if (payByToken == true) {
+                        payUsingToken()
+
                     } else {
                         $(document).on("click", "#ConfirmO", function (e) {
                             doFetch({
