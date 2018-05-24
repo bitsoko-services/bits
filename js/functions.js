@@ -394,7 +394,6 @@ function tabulateTotals() {
 }
 
 function makeOrder(orderArrayy, orderLoc) {
-    $(".confirmOrderFooter").append('<a class="white-text modal-action waves-effect waves-green btn-flat" id="ConfirmO" style="border: solid white 1px;" disabled>Confirm</a>')
     //Rewards();
     //console.log("->", orderArrayy)
     if (orderArrayy === undefined || orderArrayy.length == 0) {
@@ -806,7 +805,6 @@ function clearCart() {
     $("#burst-11").css("display", "none");
     $("#products").html("");
     $("#ConfirmO").html("confirm");
-    $("#ConfirmO").remove();
 }
 var totalKobo
 
