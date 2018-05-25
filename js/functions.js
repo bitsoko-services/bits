@@ -832,32 +832,34 @@ function walletStatus() {
     if (sessionStorage.getItem('walletKey')) {
         //wallet is unlocked
         //get balance
-        M.toast({
-            html: 'Please wait! Unlocking wallet'
-        });
         walletFunctions(localStorage.getItem("bits-user-name")).then(function (e) {
             if (e.status == "ok") {
                 M.toast({
                     html: 'Wallet unlocked successfully'
                 });
-            }else{
+            } else {
                 M.toast({
                     html: 'Ooops! Try again later'
                 });
             }
         })
-        loadGdrive();
 
         window.setInterval(function () {
             updateEarnedTokens();
         }, 20000);
     } else {
-
+        walletFunctions(localStorage.getItem("bits-user-name")).then(function (e) {
+            if (e.status == "ok") {
+                M.toast({
+                    html: 'Wallet unlocked successfully'
+                });
+            } else {
+                M.toast({
+                    html: 'Ooops! Try again later'
+                });
+            }
+        })
         $("#checkBal").html("locked");
-        loadGdrive();
-        M.toast({
-            html: 'Please wait! Unlocking wallet'
-        });
 
         //Check Bal Interval
 
