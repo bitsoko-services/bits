@@ -92,16 +92,11 @@ function starting() {
             if (checkanon()) {
 
                 $(".balance-coins").html("locked");
-                /*
-                walletFunctions(localStorage.getItem('bits-user-name')).then(function (e) {
-
-                    
+                                   
     /////////////////////////////////// update exchange rates
 
     fetchRates().then(function (e) {
-        if (e.status == "ok") {
-            
-            getUserOders(e);
+    getUserOders(e);
 
                         //Check Bal Interval
 
@@ -111,13 +106,7 @@ function starting() {
                         }, 20000);
                     
         $(".conf-curr").html(e.data.baseCd);
-            
-                     } else {
-            console.log("error");
-        }
     });
-                });
-                */
 
             }
           
