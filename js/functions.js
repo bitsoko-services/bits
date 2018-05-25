@@ -531,7 +531,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                     clearCart();
                                 }
                             } else {
-                                var toastHTML = '<span>Unlock wallet to checkout</span><button class="btn-flat toast-action" onclick="loadGdrive()">Unlock</button>';
+                                var toastHTML = '<span>Unlock wallet to checkout</span><button class="btn-flat toast-action walletUserUnlock">Unlock</button>';
                                 if ($(".unlockWalletToast").length >= 1) {
                                     $(".unlockWalletToast").remove()
                                 } else {
@@ -832,10 +832,21 @@ function walletStatus() {
     if (sessionStorage.getItem('walletKey')) {
         //wallet is unlocked
         //get balance
-        loadGdrive();
         M.toast({
             html: 'Please wait! Unlocking wallet'
         });
+        walletFunctions(localStorage.getItem("bits-user-name")).then(function (e) {
+            if (e.status == "ok") {
+                M.toast({
+                    html: 'Wallet unlocked successfully'
+                });
+            }else{
+                M.toast({
+                    html: 'Ooops! Try again later'
+                });
+            }
+        })
+        loadGdrive();
 
         window.setInterval(function () {
             updateEarnedTokens();
