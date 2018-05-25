@@ -87,18 +87,21 @@ function starting() {
     callMerchant();
 
 
-    /////////////////////////////////// update exchange rates
-
-    fetchRates().then(function (e) {
-        if (e.status == "ok") {
             tBal = 0;
 
             if (checkanon()) {
 
                 $(".balance-coins").html("locked");
+                /*
                 walletFunctions(localStorage.getItem('bits-user-name')).then(function (e) {
 
-                    getUserOders(e);
+                    
+    /////////////////////////////////// update exchange rates
+
+    fetchRates().then(function (e) {
+        if (e.status == "ok") {
+            
+            getUserOders(e);
 
                         //Check Bal Interval
 
@@ -107,14 +110,18 @@ function starting() {
                             updateEarnedTokens();
                         }, 20000);
                     
-                });
-
-            }
-            $(".conf-curr").html(e.data.baseCd);
-        } else {
+        $(".conf-curr").html(e.data.baseCd);
+            
+                     } else {
             console.log("error");
         }
     });
+                });
+                */
+
+            }
+          
+       
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -127,13 +134,27 @@ function starting() {
 
 walletFunctions(localStorage.getItem('bits-user-name')).then(function (e) {
 
-                    getUserOders(e);
+                        
+    /////////////////////////////////// update exchange rates
+
+    fetchRates().then(function (e) {
+        if (e.status == "ok") {
+            
+            getUserOders(e);
+
                         //Check Bal Interval
 
                         updateEarnedTokens();
                         window.setInterval(function () {
                             updateEarnedTokens();
                         }, 20000);
+                    
+      
+            
+                     } else {
+            console.log("error");
+        }
+    });
                     
                 });
             //walletStatus();

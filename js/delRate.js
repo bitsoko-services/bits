@@ -31,7 +31,25 @@ function finalCost(costofItems) {
                     console.log("rates loaded")
                     $("#ConfirmO").removeAttr("disabled")
                     var dist = distance
-                    console.log(deliveryRadius)
+                    try{
+                        
+                        deliveryRadius=JSON.parse(deliveryRadius)
+                        if(!deliveryRadius.min||!deliveryRadius.max){
+                        
+                        var deliveryRadius={}
+                        deliveryRadius.max=10;
+                        deliveryRadius.min=0.5;
+                        
+                    }
+                    }catch(e){
+                        var deliveryRadius={}
+                        deliveryRadius.max=10;
+                        deliveryRadius.min=0.5;
+                        
+                    }
+                    
+                    
+                    console.log(dist)
                     if (dist > deliveryRadius.max) {
                         M.toast({
                             html: 'Ooops! You are out of radius'
