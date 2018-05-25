@@ -72,7 +72,7 @@ function starting() {
     //$('#loginModal').closeModal()
 
     $(".balance-coins").html("login");
-	addMobiVeri();
+    addMobiVeri();
     startGoogle();
     serviceOpener();
     //localConverter();
@@ -92,25 +92,24 @@ function starting() {
     fetchRates().then(function (e) {
         if (e.status == "ok") {
             tBal = 0;
-            
+
             if (checkanon()) {
 
-    $(".balance-coins").html("locked");
-        walletFunctions(localStorage.getItem('bits-user-name')).then(function (e) {
+                $(".balance-coins").html("locked");
+                walletFunctions(localStorage.getItem('bits-user-name')).then(function (e) {
 
-            getUserOders(e);
-            if (sessionStorage.getItem('walletKey')) {
-   
-//Check Bal Interval
-        
-    updateEarnedTokens();
-window.setInterval(function () {
-    updateEarnedTokens();
-}, 20000);
+                    getUserOders(e);
+
+                        //Check Bal Interval
+
+                        updateEarnedTokens();
+                        window.setInterval(function () {
+                            updateEarnedTokens();
+                        }, 20000);
+                    
+                });
+
             }
-        });
-
-    }
             $(".conf-curr").html(e.data.baseCd);
         } else {
             console.log("error");
@@ -120,14 +119,24 @@ window.setInterval(function () {
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    
-      
-    
+
+
+
     $(document).on('click', '.walletUserUnlock', function () {
         if (checkanon()) {
 
+walletFunctions(localStorage.getItem('bits-user-name')).then(function (e) {
 
-            walletStatus();
+                    getUserOders(e);
+                        //Check Bal Interval
+
+                        updateEarnedTokens();
+                        window.setInterval(function () {
+                            updateEarnedTokens();
+                        }, 20000);
+                    
+                });
+            //walletStatus();
         } else {
             $('#loginModal').modal("open");
             $(".balance-coins").html("login");

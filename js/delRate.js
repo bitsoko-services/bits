@@ -12,6 +12,7 @@ function finalCost(costofItems) {
 
     actvServ().then(
         function (p) {
+            console.log(p)
             var d = p.deliveryRate
             console.log(d)
             var p = p.lonlat
@@ -30,13 +31,14 @@ function finalCost(costofItems) {
                     console.log("rates loaded")
                     $("#ConfirmO").removeAttr("disabled")
                     var dist = distance
+                    console.log(deliveryRadius)
                     if (dist > deliveryRadius.max) {
                         M.toast({
                             html: 'Ooops! You are out of radius'
                         })
                         $("#modalconfirm").modal("close");
                         clearCart();
-                    } else if (dist <= deliveryRadius.min) {
+                    } else if (dist < deliveryRadius.min) {
                         //--rates
                         var rates = Math.ceil(d * distance);
 
@@ -56,7 +58,7 @@ function finalCost(costofItems) {
 
                         //localStorage.setItem('bits-merchant'+parseInt(getBitsWinOpt('s'))+'-Total cost',totalCost);
                         $(".confirmText").html('Total: ' + totalCost + '<span class=""> /=</span></span>')
-                        $(".totals2").html(parseInt(divObj.innerHTML) + '<span class=""> /=</span></span>')
+                        $("#inStorePickup").html('In store pickup')
                         $(".del").html(0 + '<span class=""> /=</span></span>')
                     } else {
                         //--rates
