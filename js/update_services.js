@@ -192,6 +192,7 @@ $("#shopSubscribe").bind("touchstart click", function (event, ui) {
 })
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function populateService(mDet) {
+    checkBrowser()
     //    console.log(mDet.id)
     //    console.log(mDet);
     $("#preloader").fadeOut(1000);

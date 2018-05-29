@@ -2,6 +2,17 @@
 var promoDiscount;
 var deliveryRadius;
 
+//Check Browser Compatibility
+function checkBrowser() {
+    if (!!window.chrome) {
+        console.log("Browser compatible")
+    } else {
+        $("#checkBrowser").modal({
+            dismissible: false
+        }).modal("open")
+    }
+}
+
 function checkPayments() {
     actvServ().then(function (p) {
         var p = p.payments
