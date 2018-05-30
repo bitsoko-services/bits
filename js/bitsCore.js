@@ -279,28 +279,20 @@ function loadWallet(primWalA) {
     var stor = getObjectStore('data', 'readwrite').get('user-profile-' + localStorage.getItem('bits-user-name'));
     stor.onsuccess = function (event) {
         try {
-
             var upData = JSON.parse(event.target.result);
-            //initialisePush(JSON.stringify(upData.bitsokoUserID));
-
             $(".username-label").html(upData.name);
             $(".userProfImg").attr("src", upData.image);
         } catch (err) {
-
             $(".username-label").html('Anonymous');
             $(".userProfImg").attr("src", '');
+            localStorage.clear();
         }
     };
     stor.onerror = function () {
-
         $(".username-label").html('Anonymous');
         $(".userProfImg").attr("src", '');
+        localStorage.clear();
     };
-
-    //    	getLoc();
-
-    //updatePromos();
-
 }
 //to functions.js
 function reqLoc() {

@@ -56,6 +56,7 @@ function handleEmailResponse(resp) {
             profile.id = e.buid;
 
             localStorage.setItem("bits-user-name", e.buid);
+            localStorage.setItem("bitsoko-user-name", e.buid);
 
             if (location.pathname == "/home/community.html") {
                 alert('Thanks for joining ' + profile.name + '! Welcome to the bitsoko community. You have been succesfully subscribed to receive important updates. You can turn these notifications off from the settings menu on your wallet.');
