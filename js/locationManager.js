@@ -86,8 +86,9 @@ function getLoc(retDt) {
 
             var locButton = document.querySelector('.js-loc-button-notification');
             if (p.state === 'granted') {
-
+                
                 var latlng;
+                
                 navigator.geolocation.getCurrentPosition(function (p) {
                     showPosition(p);
                     p.ret = retDt;
@@ -100,8 +101,6 @@ function getLoc(retDt) {
                     maximumAge: 1000,
                     enableHighAccuracy: true
                 });
-
-
             } else if (p.state === 'prompt') {
                 $('#locationModal').modal({
                     onOpenEnd: function () {
@@ -109,12 +108,11 @@ function getLoc(retDt) {
                         $('.checkoutInfo').css("display", "block");
                     },
                     complete: function () {
-                        console.log("Running")
-                        myLoc();
                         $('.spinnerCheckout').css("display", "none");
                         $('.checkoutInfo').css("display", "block");
                     }
                 }).modal('open');
+                $(".createOrderToast").remove();
             } else {
                 reject('request not yet allowed');
                 $('#locationModal').modal({
@@ -123,12 +121,11 @@ function getLoc(retDt) {
                         $('.checkoutInfo').css("display", "block");
                     },
                     complete: function () {
-                        console.log("Running")
-                        myLoc();
                         $('.spinnerCheckout').css("display", "none");
                         $('.checkoutInfo').css("display", "block");
                     }
                 }).modal('open');
+                $(".createOrderToast").remove();
             }
         });
     });

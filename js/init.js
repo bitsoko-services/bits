@@ -87,30 +87,30 @@ function starting() {
     callMerchant();
 
 
-            tBal = 0;
+    tBal = 0;
 
-            if (checkanon()) {
+    if (checkanon()) {
 
-                $(".balance-coins").html("locked");
-                                   
-    /////////////////////////////////// update exchange rates
+        $(".balance-coins").html("locked");
 
-    fetchRates().then(function (e) {
-    getUserOders(e);
+        /////////////////////////////////// update exchange rates
 
-                        //Check Bal Interval
+        fetchRates().then(function (e) {
+            getUserOders(e);
 
-                        updateEarnedTokens();
-                        window.setInterval(function () {
-                            updateEarnedTokens();
-                        }, 20000);
-                    
-        $(".conf-curr").html(e.data.baseCd);
-    });
+            //Check Bal Interval
 
-            }
-          
-       
+            updateEarnedTokens();
+            window.setInterval(function () {
+                updateEarnedTokens();
+            }, 20000);
+
+            $(".conf-curr").html(e.data.baseCd);
+        });
+
+    }
+
+
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -120,26 +120,20 @@ function starting() {
 
     $(document).on('click', '.walletUserUnlock', function () {
         if (checkanon()) {
+            walletFunctions(localStorage.getItem('bits-user-name')).then(function (e) {
+                /////////////////////////////////// update exchange rates
+                fetchRates().then(function (e) {
+                    getUserOders(e);
 
-walletFunctions(localStorage.getItem('bits-user-name')).then(function (e) {
+                    //Check Bal Interval
 
-                        
-    /////////////////////////////////// update exchange rates
-
-    fetchRates().then(function (e) {
-        getUserOders(e);
-
-                        //Check Bal Interval
-
+                    updateEarnedTokens();
+                    window.setInterval(function () {
                         updateEarnedTokens();
-                        window.setInterval(function () {
-                            updateEarnedTokens();
-                        }, 20000);
-                    
-      
-    });
-                    
+                    }, 20000);
                 });
+
+            });
             //walletStatus();
         } else {
             $('#loginModal').modal("open");
