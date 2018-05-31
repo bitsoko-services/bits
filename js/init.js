@@ -81,10 +81,11 @@ function starting() {
     showuser();
     showlogintoast();
     loadProfData();
-
     loadWallet();
     initializePdf();
     callMerchant();
+    $(".collapsible").collapsible();
+    $(".modal").modal();
 
 
     tBal = 0;

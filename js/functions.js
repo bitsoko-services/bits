@@ -690,6 +690,7 @@ function getProdss(orderArrayx, costofItems) {
     new Promise(function (resolve, reject) {
         e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
         e.onsuccess = function (event) {
+            console.log(event.target.result)
             try {
                 var x = JSON.parse(event.target.result);
                 resolve(x.list);
@@ -882,6 +883,8 @@ function walletStatus() {
 }
 
 //Select wallet
-$(document).on("click", ".selectedWallet", function (e) {
-    $(this).html('<div class="preloader-wrapper active" style="width: 20px; height: 20px; margin: 5px 15px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
-})
+setTimeout(function (e) {
+    $(document).on("click", ".selectedWallet", function (e) {
+        $(this).html('<div class="preloader-wrapper active" style="width: 20px; height: 20px; margin: 5px 15px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
+    })
+}, 8000)

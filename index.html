@@ -1297,10 +1297,12 @@
 
     <!--scrollbar-->
 
+    <!--
     <script async defer src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js" type="text/javascript">
 
 
     </script>
+-->
     <script async defer src="js/bitsCore.js" type="text/javascript">
 
 
@@ -1548,7 +1550,11 @@
                         var str = document.getElementById('storeMeta').innerHTML;
 
                         var newstr = str.replace(re, '"');
-                        resolve(JSON.parse(newstr).res);
+                        try {
+                            resolve(JSON.parse(newstr).res);
+                        } catch (err) {
+                            console.log(err)
+                        }
 
                     }
 
@@ -1677,7 +1683,10 @@
 
 
     <script type="application/json" id="storeMeta">
-        #{stMeta}
+        #
+        {
+            stMeta
+        }
 
     </script>
     <style>

@@ -5,7 +5,7 @@
   Author URL: http://www.themeforest.net/user/geekslabs
 ================================================================================*/
 
-$(function () {
+setTimeout(function () {
 
     "use strict";
 
@@ -215,22 +215,22 @@ $(function () {
 
     // Floating-Fixed table of contents (Materialize pushpin)
     if ($('nav').length) {
-//        try {
-//            $('.toc-wrapper').pushpin({
-//                top: $('nav').height()
-//            });
-//        } catch (err) {
-//            console.log(err)
-//        }
+        //        try {
+        //            $('.toc-wrapper').pushpin({
+        //                top: $('nav').height()
+        //            });
+        //        } catch (err) {
+        //            console.log(err)
+        //        }
 
     } else if ($('#index-banner').length) {
-//        $('.toc-wrapper').pushpin({
-//            top: $('#index-banner').height()
-//        });
+        //        $('.toc-wrapper').pushpin({
+        //            top: $('#index-banner').height()
+        //        });
     } else {
-//        $('.toc-wrapper').pushpin({
-//            top: 0
-//        });
+        //        $('.toc-wrapper').pushpin({
+        //            top: 0
+        //        });
     }
 
     // Toggle Flow Text
@@ -304,4 +304,4 @@ $(function () {
 
 
 
-}); // end of document ready
+}, 8000); // end of document ready

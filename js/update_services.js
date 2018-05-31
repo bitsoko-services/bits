@@ -158,7 +158,9 @@ function doSubscribe() {
                         Materialize.toast('unable to subscribe ' + e.msg, 3000);
                     }
                 }).catch(function () {
-                    Materialize.toast('temporary error. please try again', 3000);
+                    M.toast({
+                        html: 'temporary error. please try again'
+                    })
                 });
                 //$( ".bitsoko-balance" ).html(infiat.toFixed(2));
             });
@@ -166,30 +168,75 @@ function doSubscribe() {
     });
 }
 
-//Subscribe to shop
-$("#shopSubscribe").bind("touchstart click", function (event, ui) {
-    if (checkanon()) {
-        doFetch({
-            action: 'doSubscription',
-            sid: localStorage.getItem('bits-active-service'),
-            uid: localStorage.getItem('bits-user-name')
-        }).then(function (e) {
-            if (e.status == "ok") {
-                M.toast({
-                    html: 'Subscribed successfully'
-                })
-            } else if (e.status == "bad") {
-                M.toast({
-                    html: 'Error! Try again later'
-                })
-            }
-        })
-    } else {
-        //        console.log("loged out");
-        $("#loginModal").modal("open");
-    }
 
-})
+setTimeout(function (e) {
+    //Subscribe to shop
+    $("#shopSubscribe").bind("touchstart click", function (event, ui) {
+        if (checkanon()) {
+            doFetch({
+                action: 'doSubscription',
+                sid: localStorage.getItem('bits-active-service'),
+                uid: localStorage.getItem('bits-user-name')
+            }).then(function (e) {
+                if (e.status == "ok") {
+                    M.toast({
+                        html: 'Subscribed successfully'
+                    })
+                } else if (e.status == "bad") {
+                    M.toast({
+                        html: 'Error! Try again later'
+                    })
+                }
+            })
+        } else {
+            //        console.log("loged out");
+            $("#loginModal").modal("open");
+        }
+
+    })
+    //Multiple promo function
+    $(document).on("click", ".promoPlusBtn ", function () {
+        var promoInput = $(this).parent().parent().find(".inputNo");
+        var newPromoVal = JSON.parse(promoInput.val()) + 1
+        var minusBtn = $(this).parent().parent().find(".promoMinusBtn")
+        console.log(minusBtn)
+
+        minusBtn.attr("disabled", false)
+        promoInput.val(newPromoVal)
+    })
+    $(document).on("click", ".promoMinusBtn ", function () {
+        var minusBtn = $(this)
+        var promoInput = $(this).parent().parent().find(".inputNo");
+        var newPromoVal = JSON.parse(promoInput.val()) - 1
+
+
+        if (promoInput.val() == 1) {
+            minusBtn.attr("disabled", true)
+        }
+        promoInput.val(newPromoVal)
+    })
+
+    $(document).on("click", ".verifyPhoneNumb ", function () {
+        $("#MobileModal").openModal()
+    })
+
+    allServices = [
+	//{name:'Merchants',id:'3',desc:'Merchant desription',cardimage:'/bits/images/merchantsBanner',cardLogo:'/bits/images/merchants',image:'mdi-maps-store-mall-directory',list:[]},
+        {
+            name: 'Contacts',
+            id: '2',
+            desc: 'Contacts desription',
+            cardimage: '/bits/images/contactsBanner',
+            cardLogo: '/bits/images/contacts',
+            image: 'mdi-social-group',
+            list: []
+	}
+]
+    for (var ii = 0; ii < allServices.length; ++ii) {
+        $('.serviceButtonsHolder').append('<li><a href="?s=' + allServices[ii].id + '" service="' + allServices[ii].id + '" class="serviceButtons btn bits  "><i class="large ' + allServices[ii].image + '"></i> ' + allServices[ii].name + '</a></li>');
+    };
+}, 8000)
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function populateService(mDet) {
     checkBrowser()
@@ -294,10 +341,10 @@ function populateService(mDet) {
                 ' <span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>' +
                 '<div class="row"> <div class="col s4"><a onclick="buyPromo(this.id)" id="' + mDet.promotions[ii].id +
                 '" class="bpr bpromo' + mDet.promotions[ii].id +
-                ' waves-effect waves-light " style=" color: ' + mDet.theme + ' !important;margin: 10px 0px;border: 2px solid ' + mDet.theme + ';padding: 2px 10px;border-radius: 20px;">Buy</a></div><div class="col s5 right"><div class="row" style="margin-bottom: 0px; padding-top: 10px;"> <div class="col s4" style="text-align: center; padding:0px;"><button style="padding:0px;border-radius: 50%; height: 30px; width: 30px; line-height: 20px; font-size: 1.2em;" class="btn bits promoMinusBtn" disabled="disabled">-</button></div><div class="col s4" style="padding:0px;"><div class="row" style="margin-bottom: 0px;"> <div class="input-field col s12" style="margin-top: 0px;"> <input value="1" type="number" class="validate inputNo promoInput-' + mDet.promotions[ii].id + '" style="text-align: center;margin-bottom: 0px; margin-top:-15px;"> <label class="active" for="inputNo"></label> </div></div></div><div class="col s4" style="text-align: center; padding:0px;"><button style="padding:0px;border-radius: 50%; height: 30px; width: 30px; line-height: 20px; font-size: 1.2em;" class="btn bits promoPlusBtn">+</button></div></div></div><div class="switch " style="width: 190px;margin-top: 15px;float: right;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-' + mDet.promotions[ii].id +
+                ' waves-effect waves-light " style=" color: ' + mDet.theme + ' !important;margin: 10px 0px;border: 2px solid ' + mDet.theme + ';padding: 2px 10px;border-radius: 20px;">Buy</a></div><div class="col s5 right"><div class="row" style="margin-bottom: 0px; padding-top: 10px;"> <div class="col s4" style="text-align: center; padding:0px;"><button style="padding:0px;border-radius: 50%; height: 30px; width: 30px; line-height: 20px; font-size: 1.2em;" class="btn bits promoMinusBtn" disabled="disabled">-</button></div><div class="col s4" style="padding:0px;"><div class="row" style="margin-bottom: 0px;"> <div class="input-field col s12" style="margin-top: 0px;"> <input value="1" type="number" class="validate inputNo promoInput-' + mDet.promotions[ii].id + '" style="text-align: center;margin-bottom: 0px; margin-top:-15px;"> <label class="active" for="inputNo"></label> </div></div></div><div class="col s4" style="text-align: center; padding:0px;"><button style="padding:0px;border-radius: 50%; height: 30px; width: 30px; line-height: 20px; font-size: 1.2em;" class="btn bits promoPlusBtn">+</button></div></div></div><div class="switch" style="width: 190px;margin-top: 15px;float: right;position:relative;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-' + mDet.promotions[ii].id +
                 '">Not Subscribed</span> <label><input type="checkbox" dailyR="' + Math.ceil(dailyCost) + '" pid="' + mDet.promotions[ii].id +
                 '" class="promoSubButton bits promoSubButton-' + mDet.promotions[ii].id +
-                '" style=""> <span style="margin-top:2px;" class="lever bits right"></span></label></div></div><center><p style=" bottom: 0px;text-align: center;width: 70%;" class="displayNone serviceListseccondline "><i style="float: left;" class="serviceListseccondline promo-state-icon mdi-notification-sync"> 0 shares</i><i class="promo-state-icon mdi-action-favorite"> 0 likes </i><i style="float: right;" class="promo-state-icon mdi-action-receipt"> 0 sales </i></p></center></li>');
+                '" style=""> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50; width:25px;position:absolute;right:0;" xml:space="preserve"><path id="likeHeart" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543 c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503 c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/></svg></label></div></div><center><p style=" bottom: 0px;text-align: center;width: 70%;" class="displayNone serviceListseccondline "><i style="float: left;" class="serviceListseccondline promo-state-icon mdi-notification-sync"> 0 shares</i><i class="promo-state-icon mdi-action-favorite"> 0 likes </i><i style="float: right;" class="promo-state-icon mdi-action-receipt"> 0 sales </i></p></center></li>');
             subs = mDet.promotions[ii].promoSubs;
             //            console.log(mDet.promotions[ii].discount)
             if (mDet.promotions[ii].discount == null) {
@@ -448,32 +495,6 @@ function populateService(mDet) {
         }
     }
 }
-
-//Multiple promo function
-$(document).on("click", ".promoPlusBtn ", function () {
-    var promoInput = $(this).parent().parent().find(".inputNo");
-    var newPromoVal = JSON.parse(promoInput.val()) + 1
-    var minusBtn = $(this).parent().parent().find(".promoMinusBtn")
-    console.log(minusBtn)
-
-    minusBtn.attr("disabled", false)
-    promoInput.val(newPromoVal)
-})
-$(document).on("click", ".promoMinusBtn ", function () {
-    var minusBtn = $(this)
-    var promoInput = $(this).parent().parent().find(".inputNo");
-    var newPromoVal = JSON.parse(promoInput.val()) - 1
-
-
-    if (promoInput.val() == 1) {
-        minusBtn.attr("disabled", true)
-    }
-    promoInput.val(newPromoVal)
-})
-
-$(document).on("click", ".verifyPhoneNumb ", function () {
-    $("#MobileModal").openModal()
-})
 //---------------------------------------------------end populateService function------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------  function handleModal---------------------------------------------------------------------------------------------------------------------------------------
 function handleModal() {
@@ -487,21 +508,7 @@ var items = [{
 }]
 for (var ii = 0; ii < items.length; ++ii) {};
 var activeService;
-allServices = [
-	//{name:'Merchants',id:'3',desc:'Merchant desription',cardimage:'/bits/images/merchantsBanner',cardLogo:'/bits/images/merchants',image:'mdi-maps-store-mall-directory',list:[]},
-    {
-        name: 'Contacts',
-        id: '2',
-        desc: 'Contacts desription',
-        cardimage: '/bits/images/contactsBanner',
-        cardLogo: '/bits/images/contacts',
-        image: 'mdi-social-group',
-        list: []
-	}
-]
-for (var ii = 0; ii < allServices.length; ++ii) {
-    $('.serviceButtonsHolder').append('<li><a href="?s=' + allServices[ii].id + '" service="' + allServices[ii].id + '" class="serviceButtons btn bits  "><i class="large ' + allServices[ii].image + '"></i> ' + allServices[ii].name + '</a></li>');
-};
+
 var bts = document.querySelectorAll(".serviceButtons");
 for (var ii = 0; ii < bts.length; ++ii) {
     bts[ii].addEventListener('touchstart', function (event) {

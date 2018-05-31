@@ -1249,13 +1249,15 @@ function localConverter() {
 
 
 
-if (localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')) == null) {
-    $('.addressClass').html("")
-    $('.addressClass').append('Log in to create wallet');
-} else {
-    $('.addressClass').html("")
-    $('.addressClass').append('0x' + localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')));
-}
+setTimeout(function (e) {
+    if (localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')) == null) {
+        $('.addressClass').html("")
+        $('.addressClass').append('Log in to create wallet');
+    } else {
+        $('.addressClass').html("")
+        $('.addressClass').append('0x' + localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')));
+    }
+}, 8000)
 
 
 
