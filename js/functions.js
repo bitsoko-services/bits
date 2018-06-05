@@ -417,7 +417,11 @@ function makeOrder(orderArrayy, orderLoc) {
     $('.delivery').addClass('animated jello');
     //checkanon();
     if (checkanon() == false) {
-        $('#loginModal').modal('open');
+        $('#loginModal').modal({
+            onCloseEnd: function () {
+                $(".delivery").click()
+            }
+        }).modal("open")
         return;
     }
     if (minimumOrder < 200) {
@@ -525,8 +529,12 @@ function makeOrder(orderArrayy, orderLoc) {
                                         });
                                     }).catch(function (err) {
                                         M.toast({
-                                            html: '<span class="toastlogin">You have insufficient funds to complete this order ',
+                                            html: '<span class="toastlogin"> ',
                                             displayLength: 6000
+                                        });
+                                        var toastHTML = '<span>Insufficient funds to complete order</span><a href="tm/?cid=' + enterpriseContract + '"><button class="btn-flat toast-action">buy</button></a>';
+                                        M.toast({
+                                            html: toastHTML
                                         });
                                         $('#modalconfirm').modal('close');
                                         clearCart();
@@ -534,10 +542,10 @@ function makeOrder(orderArrayy, orderLoc) {
                                     })
 
                                 } else {
-                                    M.toast({
-                                        html: '<span class="toastlogin">You have insufficient funds to complete this order ',
-                                        displayLength: 6000
-                                    });
+                                    var toastHTML = '<span>Insufficient funds to complete order</span><a href="tm/?cid=' + enterpriseContract + '"><button class="btn-flat toast-action">buy</button></a>';
+                                        M.toast({
+                                            html: toastHTML
+                                        });
                                     $('#modalconfirm').modal('close');
                                     clearCart();
                                 }
@@ -690,6 +698,7 @@ function getProdss(orderArrayx, costofItems) {
     new Promise(function (resolve, reject) {
         e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
         e.onsuccess = function (event) {
+            console.log(event.target.result)
             try {
                 var x = JSON.parse(event.target.result);
                 resolve(x.list);
