@@ -143,6 +143,12 @@ body {
 .spinner-layer {
     border-color: white !important;
 }
+#likeHeart:before{
+    fill: red;
+}
+#likeHeart:after{
+    fill:red;
+}
 
 .unlockWalletToast {
     padding: 3px !important;

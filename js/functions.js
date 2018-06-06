@@ -2,6 +2,17 @@
 var promoDiscount;
 var deliveryRadius;
 
+//Check Browser Compatibility
+function checkBrowser() {
+    if (!!window.chrome) {
+        console.log("Browser compatible")
+    } else {
+        $("#checkBrowser").modal({
+            dismissible: false
+        }).modal("open")
+    }
+}
+
 function checkPayments() {
     actvServ().then(function (p) {
         var p = p.payments
@@ -406,7 +417,11 @@ function makeOrder(orderArrayy, orderLoc) {
     $('.delivery').addClass('animated jello');
     //checkanon();
     if (checkanon() == false) {
-        $('#loginModal').modal('open');
+        $('#loginModal').modal({
+            onCloseEnd: function () {
+                $(".delivery").click()
+            }
+        }).modal("open")
         return;
     }
     if (minimumOrder < 200) {
@@ -514,8 +529,12 @@ function makeOrder(orderArrayy, orderLoc) {
                                         });
                                     }).catch(function (err) {
                                         M.toast({
-                                            html: '<span class="toastlogin">You have insufficient funds to complete this order ',
+                                            html: '<span class="toastlogin"> ',
                                             displayLength: 6000
+                                        });
+                                        var toastHTML = '<span>Insufficient funds to complete order</span><a href="/tm/?cid=' + enterpriseContract + '"><button class="btn-flat toast-action">topup</button></a>';
+                                        M.toast({
+                                            html: toastHTML
                                         });
                                         $('#modalconfirm').modal('close');
                                         clearCart();
@@ -523,10 +542,10 @@ function makeOrder(orderArrayy, orderLoc) {
                                     })
 
                                 } else {
-                                    M.toast({
-                                        html: '<span class="toastlogin">You have insufficient funds to complete this order ',
-                                        displayLength: 6000
-                                    });
+                                    var toastHTML = '<span>Insufficient funds to complete order</span><a href="/tm/?cid=' + enterpriseContract + '"><button class="btn-flat toast-action">topup</button></a>';
+                                        M.toast({
+                                            html: toastHTML
+                                        });
                                     $('#modalconfirm').modal('close');
                                     clearCart();
                                 }
@@ -679,6 +698,7 @@ function getProdss(orderArrayx, costofItems) {
     new Promise(function (resolve, reject) {
         e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
         e.onsuccess = function (event) {
+            console.log(event.target.result)
             try {
                 var x = JSON.parse(event.target.result);
                 resolve(x.list);
@@ -871,6 +891,8 @@ function walletStatus() {
 }
 
 //Select wallet
-$(document).on("click", ".selectedWallet", function (e) {
-    $(this).html('<div class="preloader-wrapper active" style="width: 20px; height: 20px; margin: 5px 15px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
-})
+setTimeout(function (e) {
+    $(document).on("click", ".selectedWallet", function (e) {
+        $(this).html('<div class="preloader-wrapper active" style="width: 20px; height: 20px; margin: 5px 15px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
+    })
+}, 8000)

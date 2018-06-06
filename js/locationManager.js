@@ -27,51 +27,56 @@ function showPosition(position) {
     }
 
     var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latlng + "&sensor=false";
-    $.getJSON(url, function (data) {
-            try {
-                for (var i = 0; i < data.results[0].address_components.length; i++) {
-                    //alert(JSON.stringify(data.results[0].address_components[i]));
-                    if (data.results[0].address_components[i].types[0] == 'country') {
-                        var CCode = newCount = data.results[0].address_components[i].short_name;
+    setTimeout(function (e) {
 
-                        var oldCount = localStorage.getItem('bitsoko-settings-country');
 
-                        console.log(oldCount, newCount);
-                        if (oldCount != newCount) {
-                            localStorage.setItem('bitsoko-settings-country', newCount);
+        $.getJSON(url, function (data) {
+                try {
+                    for (var i = 0; i < data.results[0].address_components.length; i++) {
+                        //alert(JSON.stringify(data.results[0].address_components[i]));
+                        if (data.results[0].address_components[i].types[0] == 'country') {
+                            var CCode = newCount = data.results[0].address_components[i].short_name;
 
-                            var req = getObjectStore('data', 'readwrite').put(newCount, 'country');
+                            var oldCount = localStorage.getItem('bitsoko-settings-country');
 
-                            req.onerror = function (e) {
-                                console.log('location error');
-                            };
-                            req.onsuccess = function (event) {
-                                //		var store = getObjectStore('images', 'readwrite');
+                            console.log(oldCount, newCount);
+                            if (oldCount != newCount) {
+                                localStorage.setItem('bitsoko-settings-country', newCount);
 
-                                console.log('updated location');
-                                document.querySelector('.js-loc-button-notification').checked = true;
-                                try {
-                                    $('#locationModal').modal("close");
-                                } catch (err) {
-                                    $('#locationModal').modal("close");
-                                }
-                            };
+                                var req = getObjectStore('data', 'readwrite').put(newCount, 'country');
 
+                                req.onerror = function (e) {
+                                    console.log('location error');
+                                };
+                                req.onsuccess = function (event) {
+                                    //		var store = getObjectStore('images', 'readwrite');
+
+                                    console.log('updated location');
+                                    document.querySelector('.js-loc-button-notification').checked = true;
+                                    try {
+                                        $('#locationModal').modal("close");
+                                    } catch (err) {
+                                        //                                        $('#locationModal').modal("close");
+                                        console.log(err)
+                                    }
+                                };
+
+                            } else {
+                                //updatePromos();
+                            }
                         } else {
-                            //updatePromos();
+                            //alert(data.results[0].address_components[i].types[0]);  
+                            //  updatePromos();
                         }
-                    } else {
-                        //alert(data.results[0].address_components[i].types[0]);  
-                        //  updatePromos();
                     }
+                } catch (er) {
+                    console.log(er)
                 }
-            } catch (er) {
-                console.log(er)
-            }
-        })
-        .always(function () {
-            // updatePromos();
-        });
+            })
+            .always(function () {
+                // updatePromos();
+            });
+    }, 8000)
 
 }
 
@@ -88,6 +93,7 @@ function getLoc(retDt) {
             if (p.state === 'granted') {
 
                 var latlng;
+
                 navigator.geolocation.getCurrentPosition(function (p) {
                     showPosition(p);
                     p.ret = retDt;
@@ -100,8 +106,6 @@ function getLoc(retDt) {
                     maximumAge: 1000,
                     enableHighAccuracy: true
                 });
-
-
             } else if (p.state === 'prompt') {
                 $('#locationModal').modal({
                     onOpenEnd: function () {
@@ -109,12 +113,11 @@ function getLoc(retDt) {
                         $('.checkoutInfo').css("display", "block");
                     },
                     complete: function () {
-                        console.log("Running")
-                        myLoc();
                         $('.spinnerCheckout').css("display", "none");
                         $('.checkoutInfo').css("display", "block");
                     }
                 }).modal('open');
+                $(".createOrderToast").remove();
             } else {
                 reject('request not yet allowed');
                 $('#locationModal').modal({
@@ -123,12 +126,11 @@ function getLoc(retDt) {
                         $('.checkoutInfo').css("display", "block");
                     },
                     complete: function () {
-                        console.log("Running")
-                        myLoc();
                         $('.spinnerCheckout').css("display", "none");
                         $('.checkoutInfo').css("display", "block");
                     }
                 }).modal('open');
+                $(".createOrderToast").remove();
             }
         });
     });
