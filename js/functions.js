@@ -532,7 +532,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                             html: '<span class="toastlogin"> ',
                                             displayLength: 6000
                                         });
-                                        var toastHTML = '<span>Insufficient funds</span><a href="/tm/?cid=' + enterpriseContract + '"><button class="btn-flat toast-action">buy</button></a>';
+                                        var toastHTML = '<span>Insufficient funds to complete order</span><a href="/tm/?cid=' + enterpriseContract + '"><button class="btn-flat toast-action">topup</button></a>';
                                         M.toast({
                                             html: toastHTML
                                         });
@@ -542,7 +542,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                     })
 
                                 } else {
-                                    var toastHTML = '<span>Insufficient funds</span><a href="/tm/?cid=' + enterpriseContract + '"><button class="btn-flat toast-action">buy</button></a>';
+                                    var toastHTML = '<span>Insufficient funds to complete order</span><a href="/tm/?cid=' + enterpriseContract + '"><button class="btn-flat toast-action">topup</button></a>';
                                         M.toast({
                                             html: toastHTML
                                         });
