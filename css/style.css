@@ -30,7 +30,10 @@ aside>ul{
 body {
     overflow-x: hidden;
 }
-
+.tabs a{
+    color: #1a1a1a !important;
+    
+}
 .modal2 {
     display: none;
     /* Hidden by default */
