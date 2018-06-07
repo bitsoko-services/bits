@@ -544,8 +544,13 @@
                         </li>
                         <li>
                             <center>
-                                <ul class="tabs prodtabs" id="tabs-swipe-demo"></ul>
-                                <div class="ptabs"></div>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <ul class="tabs prdTabs">
+                                        </ul>
+                                    </div>
+                                    <div class="prdCatCont"></div>
+                                </div>
                                 <ul class="collapsible merchantsProducts displayNone">
                                     <li class="active">
                                         <div class="collapsible-header active" style="padding: 10px 0px 5px 15px">
@@ -1683,8 +1688,12 @@
 
 
     <script type="application/json" id="storeMeta">
-        #{stMeta}
-	</script>
+        #
+        {
+            stMeta
+        }
+
+    </script>
     <style>
         .material-placeholder {
             /* margin-top: -50px; */
