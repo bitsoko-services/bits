@@ -443,14 +443,13 @@ function populateService(mDet) {
                 var x = JSON.parse(productCategory);
                 $('.prdTabs').html("");
                 $('.prdCatCont').html("");
-                $('.prdTabs').append('<li class="tab col s3" style=""><a class="active" href="#allPrds" style="">all</a></li>');
+                $('.prdTabs').append('<li class="tab col s3" style=""><a href="#allPrds" class="active">all</a></li>');
                 $('.prdCatCont').append('<div id="allPrds" class="col s12"></div>')
                 for (var iii in x) {
                     $('.prdTabs').append('<li class="tab col s3" style=""><a href="#' + x[iii].name + '" style="">' + x[iii].name + '</a></li>');
                     $('.prdCatCont').append('<div id="' + x[iii].name + '" class="col s12"></div>')
                     prodCatArray.push(x[iii].name)
                 }
-
             }
 
         } catch (err) {
@@ -475,7 +474,6 @@ function populateService(mDet) {
                 }
             }
             $('#allPrds').append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img src="https://bitsoko.co.ke' + mDet.list[ii].imagePath + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + mDet.list[ii].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + mDet.list[ii].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + mDet.list[ii].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + mDet.list[ii].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + mDet.list[ii].id + '" class="bitsInputQty" price="' + mDet.list[ii].price + '" pid="' + mDet.list[ii].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
-            $('.prdTabs').tabs();
             $('#prod-' + mDet.list[ii].id + '-counter').handleCounter()
             if (mDet.list[ii].productCategory == null) {
                 console.log("null");

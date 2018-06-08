@@ -76,7 +76,11 @@ function servicePageLoader() {
             try {
                 populateService(JSON.parse(event.target.result));
                 populated = true;
+
+                //Initialize product categories
+                $('.prdTabs').tabs();
             } catch (err) {
+                console.log(err)
 
                 //                //console.log('service not found in db. perhaps trying from DOM 1');
                 var re = /&quot;/gi;
@@ -87,6 +91,9 @@ function servicePageLoader() {
                     populateService(JSON.parse(newstr).res);
                     populated = true;
 
+                    //Initialize product categories
+                    $('.prdTabs').tabs();
+
                     var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(JSON.parse(newstr).res), 'bits-merchant-id-' + getBitsWinOpt('s'));
                     svReq.onsuccess = function () {
 
@@ -96,6 +103,7 @@ function servicePageLoader() {
                     }
 
                 } catch (err) {
+                    console.log(err)
 
                     setTimeout(function () {
                         servicePageLoader();
@@ -147,7 +155,7 @@ function servicePageLoader() {
                 }, 3000);
             }
         }).catch(function (err) {
-            ////console.log('error trying to populate from sever ', err);
+            console.log('error trying to populate from sever ', err);
             var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
             svReq.onsuccess = function (event) {
                 try {
@@ -173,7 +181,7 @@ function servicePageLoader() {
                     populateService(JSON.parse(newstr).res);
                     populated = true;
                 } catch (err) {
-                    //console.log(err)
+                    console.log(err)
                 }
 
             }
@@ -489,6 +497,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                             delPrice: globalDel,
                                             loc: locOrigin,
                                             user: localStorage.getItem("bits-user-name"),
+                                            locStr :  mapData[1].results[0].formatted_address,
                                             pointsEarned: {
                                                 "coin": "bits",
                                                 "purchase": totalKobo
@@ -543,9 +552,9 @@ function makeOrder(orderArrayy, orderLoc) {
 
                                 } else {
                                     var toastHTML = '<span>Insufficient funds to complete order</span><a href="/tm/?cid=' + enterpriseContract + '"><button class="btn-flat toast-action">topup</button></a>';
-                                        M.toast({
-                                            html: toastHTML
-                                        });
+                                    M.toast({
+                                        html: toastHTML
+                                    });
                                     $('#modalconfirm').modal('close');
                                     clearCart();
                                 }
@@ -578,6 +587,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                 delPrice: globalDel,
                                 loc: locOrigin,
                                 user: localStorage.getItem("bits-user-name"),
+                                locStr :  mapData[1].results[0].formatted_address,
                                 pointsEarned: {
                                     "coin": "bits",
                                     "purchase": totalKobo
@@ -615,6 +625,7 @@ function makeOrder(orderArrayy, orderLoc) {
                     $(".del").append()
                     $(".mapText").html("")
                     $(".mapdata").attr('src', mapData[0]);
+                    console.log(mapData[1])
                     $(".mapText").append("Pick up / Drop off :" + mapData[1].results[0].formatted_address);
                     $('#modalconfirm').modal({
                         onOpenEnd: $("#totals").parent().removeClass("granted"),
