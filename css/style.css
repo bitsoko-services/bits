@@ -39,7 +39,7 @@ body {
     /* Hidden by default */
     position: fixed;
     /* Stay in place */
-    z-index: 1040;
+    z-index: 1140;
     /* Sit on top */
     padding-top: 100px;
     /* Location of the box */
@@ -71,7 +71,8 @@ body {
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
-    animation-duration: 0.4s
+    animation-duration: 0.4s;
+    border-radius:  3px;
 }
 
 
