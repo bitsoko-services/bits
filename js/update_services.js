@@ -468,7 +468,7 @@ function populateService(mDet) {
             }
 
 		try{
-		var srcSetPth=mDet.list[ii].imagePath.replace('.webp','.jpg').replace('.jpg','-35.jpg');
+		var srcSetPth=mDet.list[ii].imagePath.replace('.png','.webp').replace('.webp','-35.webp');
 		
 		}catch(e){
 		var srcSetPth='';
