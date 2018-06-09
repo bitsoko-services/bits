@@ -74,6 +74,8 @@ function starting() {
     $(".balance-coins").html("login");
     addMobiVeri();
     startGoogle();
+	
+	handleCounterFunc();
     serviceOpener();
     //localConverter();
     checkmobiveri()

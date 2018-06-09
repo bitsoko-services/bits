@@ -1,7 +1,8 @@
 /**
  * handle counter
  */
-setTimeout(function (e) {
+//setTimeout(function (e) {
+function handleCounterFunc(){
     (function () {
         'use strict';
         $.fn.handleCounter = function (options) {
@@ -157,4 +158,5 @@ setTimeout(function (e) {
             return $handleCounter
         };
     })(jQuery)
-}, 8000)
+//}, 8000)
+    }

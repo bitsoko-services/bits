@@ -544,9 +544,14 @@
                         </li>
                         <li>
                             <center>
-                                <ul class="tabs prodtabs displayNone" id="tabs-swipe-demo"></ul>
-                                <div class="ptabs"></div>
-                                <ul class="collapsible merchantsProducts displayNone">
+                                <div class="row">
+                                    <div class="col s12">
+                                        <ul class="tabs prdTabs">
+                                        </ul>
+                                    </div>
+                                    <div class="prdCatCont"></div>
+                                </div>
+                                <ul class="collapsible merchantsProducts displayNone" style="display: none;">
                                     <li class="active">
                                         <div class="collapsible-header active" style="padding: 10px 0px 5px 15px">
                                             Products<span class="prod" style="position: absolute;right: 15px;"></span>
@@ -750,6 +755,32 @@
             </div>
             <h5 style="text-align: center; padding: 5%; margin:0px;">Select a wallet</h5>
             <div id="walletList" style="max-height: 255px; overflow: scroll; text-align: center;"></div>
+        </div>
+
+    </div>
+
+    <!-- Turn On Notifications -->
+    <div id="notificationsModal" class="modal2">
+
+        <!-- Modal content -->
+        <div class="modal-content2">
+            <div style="width: fit-content; display: block; margin-left: auto; margin-right: auto; margin-top: -50px; background: white; border-radius: 50px;">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width: 78px; box-shadow: 0px 9px 23px -5px rgba(0,0,0,0.75); border-radius: 50%;" xml:space="preserve">
+                    <circle style="fill: transparent;" cx="256" cy="256" r="256"></circle>
+                    <path style="fill: #eaeaea;" d="M506.079,310.899L285.18,90L219,308l-112.789,75.094l127.971,127.972  C241.376,511.672,248.649,512,256,512C378.538,512,480.948,425.898,506.079,310.899z"></path>
+                    <path style="fill:#5A5A5A;" d="M226.82,90v62.185h58.359V90H226.82z"></path>
+                    <rect x="256" y="90" style="fill:#444444;" width="29.18" height="62.19"></rect>
+                        <path style="fill:#FDBF00;" d="M207.367,363.641v9.727c0,3.333,0.337,6.582,0.973,9.727C212.853,405.283,232.488,422,256,422   c6.484,0,12.677-1.271,18.331-3.586c14.862-6.05,26.061-19.252,29.329-35.32c0.635-3.145,0.973-6.393,0.973-9.727v-9.727   L207.367,363.641L207.367,363.641z"></path>
+                        <path style="fill:#FDBF00;" d="M357.545,305.281h-0.389l-16.341,19.453h-172.16l-13.812-19.453h-0.389   c9.143-22.371,14.006-45.909,14.006-70.226v-14.006c0-38.803,23.713-72.995,58.359-85.652c2.347-0.862,4.747-1.621,7.198-2.276   c4.28-1.167,8.948-2.14,13.423-2.529c2.918-0.195,5.836-0.389,8.559-0.389c7.587,0,14.784,0.973,21.982,2.918   c2.451,0.616,4.85,1.336,7.198,2.153c34.646,12.022,58.359,44.943,58.359,82.468v17.313   C343.539,259.372,348.402,282.91,357.545,305.281z"></path>
+                        <path style="fill:#FF9F00;" d="M405.789,383.094H303.66c-3.268,16.068-14.467,29.271-29.329,35.32L256,383.094V130.203   c7.587,0,14.784,0.973,21.982,2.918c2.451,0.616,4.85,1.336,7.198,2.153c34.646,12.022,58.359,44.943,58.359,82.468v17.313   c0,24.316,4.863,47.855,14.006,70.226h-0.389l2.723,5.836c4.085,9.337,9.532,19.064,16.146,28.791L405.789,383.094z"></path>
+                        <path style="fill:#FF9F00;" d="M304.633,363.641v9.727c0,3.333-0.337,6.582-0.973,9.727c-3.268,16.068-14.467,29.271-29.329,35.32   C268.677,420.729,262.484,422,256,422v-58.359H304.633z"></path>
+                    <path style="fill:#FFD400;" d="M376.026,339.908c-6.614-9.727-12.061-19.453-16.146-28.791l-2.723-5.836H154.844l-2.723,5.836  c-4.085,9.337-9.532,19.064-16.146,28.791l-29.763,43.186H405.79L376.026,339.908z"></path>
+                    <path style="fill:#FDBF00;" d="M405.789,383.094H256v-77.813h101.156l2.723,5.836c4.085,9.337,9.532,19.064,16.146,28.791  L405.789,383.094z"></path>    
+                </svg>
+            </div>
+            <h5 style="text-align: center; padding: 5%; margin:0px;">Notifications</h5>
+            <p style="text-align: center;">Please turn on your notifications to track your order.</p>
+            <button class="btn activateNotifications" style="display: block; margin-left: auto; margin-right: auto; margin-bottom: 23px;" onclick="startmessage()">okay</button>
         </div>
 
     </div>
@@ -1132,6 +1163,10 @@
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>-->
 
+    <script async defer src="js/bits_number.js" type="text/javascript">
+
+
+    </script>
     <script async defer src="https://apis.google.com/js/client:platform.js?onload=startGoogle">
 
 
@@ -1244,10 +1279,6 @@
 
     </script>
     <script async defer src="js/bits-wallets-sort.js" type="text/javascript">
-
-
-    </script>
-    <script async defer src="js/bits_number.js" type="text/javascript">
 
 
     </script>
@@ -1684,7 +1715,8 @@
 
     <script type="application/json" id="storeMeta">
         #{stMeta}
-	</script>
+
+    </script>
     <style>
         .material-placeholder {
             /* margin-top: -50px; */
@@ -2596,10 +2628,12 @@
     <script>
         //Select Wallet Custome Modal
         var modal = document.getElementById('chooseWalletModal');
+        var modalNtfy = document.getElementById('notificationsModal');
         var span = document.getElementsByClassName("close")[0];
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
+                modalNtfy.style.display = "none";
             }
         }
 

@@ -238,6 +238,8 @@ setTimeout(function (e) {
 }, 8000)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var prodCatArray = new Array();
+
 function populateService(mDet) {
     checkBrowser()
     //    console.log(mDet.id)
@@ -376,7 +378,6 @@ function populateService(mDet) {
     checkPayments();
     // -------------------------------------------------loads the shops product lists --------------------------------------------------------------------------------------------------------------------------
 
-
     if (getBitsWinOpt('s') == "2") {
         //console.log("check if contact "  +mDet.name)
         $('.floatingPrice').addClass('displayNone');
@@ -439,23 +440,16 @@ function populateService(mDet) {
                 //                console.log("no categories for this shop")
                 $('.prodtabs').addClass("displayNone");
             } else {
-
-
-
-                //                console.log("this shop has categories")
                 var x = JSON.parse(productCategory);
-                $('.prodtabs').html("");
-                $('.ptabs').html("");
-                $('.prodtabs').append('<li class="tab col s3"><a href="#allproducts">All</a></li>');
-                //$('.ptabs').append('<div id="allproducts" class="col s12 blue">All</div>')
+                $('.prdTabs').html("");
+                $('.prdCatCont').html("");
+                $('.prdTabs').append('<li class="tab col s3" style=""><a href="#allPrds" class="active">all</a></li>');
+                $('.prdCatCont').append('<div id="allPrds" class="col s12"></div>')
                 for (var iii in x) {
-                    console.log(x[iii].name);
-
-
-                    $('.prodtabs').append('<li class="tab col s3"><a href="#' + x[iii].name + '">' + x[iii].name + '</a></li>');
-                    // 			 $('.ptabs').append('<div id="'+x[iii].name+'" class="col s12 blue">'+x[iii].name+'</div>')
+                    $('.prdTabs').append('<li class="tab col s3" style=""><a href="#' + x[iii].name + '" style="">' + x[iii].name + '</a></li>');
+                    $('.prdCatCont').append('<div id="' + x[iii].name + '" class="col s12"></div>')
+                    prodCatArray.push(x[iii].name)
                 }
-                $('ul.tabs').tabs();
             }
 
         } catch (err) {
@@ -473,8 +467,20 @@ function populateService(mDet) {
                 $('.first-tt').attr('data-activates', 'prod-' + mDet.list[ii].id + '-counter');
             }
 
-
-            $('.merchproducts').append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"> <div class="col s7"><img src="https://bitsoko.co.ke' + mDet.list[ii].imagePath + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + mDet.list[ii].name + ' </span></span><p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + mDet.list[ii].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + mDet.list[ii].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + mDet.list[ii].id + '-counter"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + mDet.list[ii].id + '" class="bitsInputQty" price="' + mDet.list[ii].price + '" pid="' + mDet.list[ii].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px;" >+</button></div></div></div></div></li>');
+		try{
+		var srcSetPth=mDet.list[ii].imagePath.replace('.png','.webp').replace('.webp','-35.webp');
+		
+		}catch(e){
+		var srcSetPth='';
+		
+		}
+            for (var pct = 0; pct < prodCatArray.length; ++pct) {
+                if (mDet.list[ii].productCategory == prodCatArray[pct]) {
+                    $("#" + prodCatArray[pct] + "").html("")
+                    $("#" + prodCatArray[pct] + "").append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="https://bitsoko.co.ke' + srcSetPth + ' 35w" src="https://bitsoko.co.ke' + mDet.list[ii].imagePath + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + mDet.list[ii].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + mDet.list[ii].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + mDet.list[ii].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + mDet.list[ii].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + mDet.list[ii].id + '" class="bitsInputQty" price="' + mDet.list[ii].price + '" pid="' + mDet.list[ii].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
+                }
+            }
+            $('#allPrds').append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="https://bitsoko.co.ke' + srcSetPth + ' 35w"  src="https://bitsoko.co.ke' + mDet.list[ii].imagePath + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + mDet.list[ii].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + mDet.list[ii].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + mDet.list[ii].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + mDet.list[ii].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + mDet.list[ii].id + '" class="bitsInputQty" price="' + mDet.list[ii].price + '" pid="' + mDet.list[ii].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
             $('#prod-' + mDet.list[ii].id + '-counter').handleCounter()
             if (mDet.list[ii].productCategory == null) {
                 console.log("null");
@@ -495,6 +501,7 @@ function populateService(mDet) {
         }
     }
 }
+
 //---------------------------------------------------end populateService function------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------  function handleModal---------------------------------------------------------------------------------------------------------------------------------------
 function handleModal() {
