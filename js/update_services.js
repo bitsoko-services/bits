@@ -443,13 +443,14 @@ function populateService(mDet) {
                 var x = JSON.parse(productCategory);
                 $('.prdTabs').html("");
                 $('.prdCatCont').html("");
-                $('.prdTabs').append('<li class="tab col s3" style=""><a href="#allPrds" class="active">all</a></li>');
+                $('.prdTabs').append('<li class="tab col s3" style=""><a href="#allPrds" class="active">...</a></li>');
                 $('.prdCatCont').append('<div id="allPrds" class="col s12"></div>')
                 for (var iii in x) {
-                    $('.prdTabs').append('<li class="tab col s3" style=""><a href="#' + x[iii].name + '" style="">' + x[iii].name + '</a></li>');
-                    $('.prdCatCont').append('<div id="' + x[iii].name + '" class="col s12"></div>')
+                    $('.prdTabs').prepend('<li class="tab col s3" style=""><a href="#' + x[iii].name + '" style="">' + x[iii].name + '</a></li>');
+                    $('.prdCatCont').prepend('<div id="' + x[iii].name + '" class="col s12"></div>')
                     prodCatArray.push(x[iii].name)
                 }
+		    
             }
 
         } catch (err) {
