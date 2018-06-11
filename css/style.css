@@ -34,6 +34,9 @@ body {
     color: #1a1a1a !important;
     
 }
+.merchantsProducts .collection-item{
+    padding-left: 0px !important;
+}
 .modal2 {
     display: none;
     /* Hidden by default */

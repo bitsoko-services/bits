@@ -77,8 +77,10 @@ function servicePageLoader() {
                 populateService(JSON.parse(event.target.result));
                 populated = true;
 
-                //Initialize product categories
-                $('.prdTabs').tabs();
+                setTimeout(function (e) {
+                    //Initialize product categories
+                    $('.prdTabs').tabs();
+                },300)
             } catch (err) {
                 console.log(err)
 
@@ -91,8 +93,10 @@ function servicePageLoader() {
                     populateService(JSON.parse(newstr).res);
                     populated = true;
 
-                    //Initialize product categories
-                    $('.prdTabs').tabs();
+                    setTimeout(function (e) {
+                        //Initialize product categories
+                        $('.prdTabs').tabs();
+                    },300)
 
                     var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(JSON.parse(newstr).res), 'bits-merchant-id-' + getBitsWinOpt('s'));
                     svReq.onsuccess = function () {
