@@ -477,6 +477,9 @@ function populateService(mDet) {
 		var srcSetPth='';
 		
 		}
+		if(mDet.list[ii].imagePath==null){
+		mDet.list[ii].imagePath='/bitsAssets/images/no-product.webp';
+		}
 		    var added=false;
             for (var pct = 0; pct < prodCatArray.length; ++pct) {
 		
