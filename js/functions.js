@@ -729,8 +729,8 @@ function getProdss(orderArrayx, costofItems) {
                 var x = JSON.parse(event.target.result);
                 resolve(x.list);
             } catch (err) {
-                var x = JSON.parse(event.target.result);
-                resolve(x.list);
+               console.log(err)
+                resolve([]);
             }
         }
     }).then(function (r) {
