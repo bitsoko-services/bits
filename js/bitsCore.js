@@ -1248,7 +1248,7 @@ function localConverter() {
 }
 
 
-
+/*
 setTimeout(function (e) {
     if (localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')) == null) {
         $('.addressClass').html("")
@@ -1258,7 +1258,7 @@ setTimeout(function (e) {
         $('.addressClass').append('0x' + localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')));
     }
 }, 8000)
-
+*/
 
 
 
