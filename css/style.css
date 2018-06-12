@@ -30,13 +30,19 @@ aside>ul{
 body {
     overflow-x: hidden;
 }
-.tabs a{
+
+.tabs a {
     color: #1a1a1a !important;
-    
 }
-.merchantsProducts .collection-item{
+
+.merchantsProducts .collection-item {
     padding-left: 0px !important;
 }
+
+#loginModal {
+    overflow: initial !important;
+}
+
 .modal2 {
     display: none;
     /* Hidden by default */
@@ -75,7 +81,7 @@ body {
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s;
-    border-radius:  3px;
+    border-radius: 3px;
 }
 
 
@@ -150,11 +156,13 @@ body {
 .spinner-layer {
     border-color: white !important;
 }
-#likeHeart:before{
+
+#likeHeart:before {
     fill: red;
 }
-#likeHeart:after{
-    fill:red;
+
+#likeHeart:after {
+    fill: red;
 }
 
 .unlockWalletToast {
@@ -654,7 +662,7 @@ maincard {
 
 .bits-max {
     width: 100%;
-  padding: 5px 10px;
+    padding: 5px 10px;
 }
 
 .bits-transpatent {
