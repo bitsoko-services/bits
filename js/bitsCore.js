@@ -1248,20 +1248,21 @@ function localConverter() {
 }
 
 var LocalStrgInt = setInterval(function (e) {
-    if (typeof window !== 'undefined') {
-        if (window.localStorage) {
-            if (localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')) == null) {
-                $('.addressClass').html("");
-                $('.addressClass').append('Log in to create wallet');
-            } else {
-                $('.addressClass').html("");
-                $('.addressClass').append('0x' + localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')));
-            }
-            setTimeout(function (e) {
-                servicePageLoader()
-            }, 3000)
-            clearInterval(LocalStrgInt);
+    if (typeof localStorage !== 'undefined') {
+        if (localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')) == null) {
+            $('.addressClass').html("");
+            $('.addressClass').append('Log in to create wallet');
+        } else {
+            $('.addressClass').html("");
+            $('.addressClass').append('0x' + localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')));
         }
+        var servPgLoaded = setInterval(function (e) {
+            if (typeof servicePageLoader !== 'undefined') {
+                servicePageLoader()
+                clearInterval(servPgLoaded);
+            }
+        },3000)
+        clearInterval(LocalStrgInt);
     }
 }, 3000);
 
