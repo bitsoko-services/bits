@@ -1247,8 +1247,6 @@ function localConverter() {
     });
 }
 
-var loadLocalStorage;
-
 var LocalStrgInt = setInterval(function (e) {
     if (window.localStorage) {
         if (localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')) == null) {
