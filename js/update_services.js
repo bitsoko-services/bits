@@ -452,7 +452,7 @@ function populateService(mDet) {
                     $('.prdCatCont').prepend('<div id="' + x[iii].name + '" class="col s12"></div>')
                     prodCatArray.push(x[iii].name)
                 }
-		    
+
             }
 
         } catch (err) {
@@ -470,30 +470,37 @@ function populateService(mDet) {
                 $('.first-tt').attr('data-activates', 'prod-' + mDet.list[ii].id + '-counter');
             }
 
-		try{
-		var srcSetPth=mDet.list[ii].imagePath.replace('.png','.webp').replace('.webp','-35.webp');
-		
-		}catch(e){
-		var srcSetPth='';
-		
-		}
-		if(mDet.list[ii].imagePath==null){
-		mDet.list[ii].imagePath='/bitsAssets/images/no-product.webp';
-		}
-		    var added=false;
+            try {
+                var srcSetPth = mDet.list[ii].imagePath.replace('.png', '.webp').replace('.webp', '-35.webp');
+
+            } catch (e) {
+                var srcSetPth = '';
+
+            }
+            if (mDet.list[ii].imagePath == null) {
+                mDet.list[ii].imagePath = '/bitsAssets/images/no-product.webp';
+            }
+            var added = false;
             for (var pct = 0; pct < prodCatArray.length; ++pct) {
-		
+
                 if (mDet.list[ii].productCategory == prodCatArray[pct]) {
                     $("#" + prodCatArray[pct] + "").html("")
                     $("#" + prodCatArray[pct] + "").append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="https://bitsoko.co.ke' + srcSetPth + ' 35w" src="https://bitsoko.co.ke' + mDet.list[ii].imagePath + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + mDet.list[ii].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + mDet.list[ii].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + mDet.list[ii].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + mDet.list[ii].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + mDet.list[ii].id + '" class="bitsInputQty" price="' + mDet.list[ii].price + '" pid="' + mDet.list[ii].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
-                added=true;
-		}
+                    added = true;
+                }
             }
-		if(!added){
-		$('.allPrds').append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="https://bitsoko.co.ke' + srcSetPth + ' 35w"  src="https://bitsoko.co.ke' + mDet.list[ii].imagePath.replace('.png','.webp') + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + mDet.list[ii].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + mDet.list[ii].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + mDet.list[ii].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + mDet.list[ii].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + mDet.list[ii].id + '" class="bitsInputQty" price="' + mDet.list[ii].price + '" pid="' + mDet.list[ii].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
-            
-		}
-            $('#prod-' + mDet.list[ii].id + '-counter').handleCounter()
+            if (!added) {
+                $('.allPrds').append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="https://bitsoko.co.ke' + srcSetPth + ' 35w"  src="https://bitsoko.co.ke' + mDet.list[ii].imagePath.replace('.png', '.webp') + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + mDet.list[ii].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + mDet.list[ii].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + mDet.list[ii].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + mDet.list[ii].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + mDet.list[ii].id + '" class="bitsInputQty" price="' + mDet.list[ii].price + '" pid="' + mDet.list[ii].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
+
+            }
+            var handleCounterLoaded = setInterval(function (e) {
+                try {
+                    $('#prod-' + mDet.list[ii].id + '-counter').handleCounter()
+                    clearInterval(handleCounterLoaded);
+                } catch (err) {
+                    console.log(err)
+                }
+            }, 3000)
             if (mDet.list[ii].productCategory == null) {
                 console.log("null");
                 document.getElementById("pcat").setAttribute("pcategory", "all");
