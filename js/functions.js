@@ -78,9 +78,8 @@ function servicePageLoader() {
                 populated = true;
 
                 setTimeout(function (e) {
-                    //Initialize product categories
                     $('.prdTabs').tabs();
-                },300)
+                }, 1000)
             } catch (err) {
                 console.log(err)
 
@@ -94,9 +93,8 @@ function servicePageLoader() {
                     populated = true;
 
                     setTimeout(function (e) {
-                        //Initialize product categories
                         $('.prdTabs').tabs();
-                    },300)
+                    }, 1000)
 
                     var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(JSON.parse(newstr).res), 'bits-merchant-id-' + getBitsWinOpt('s'));
                     svReq.onsuccess = function () {
@@ -729,7 +727,7 @@ function getProdss(orderArrayx, costofItems) {
                 var x = JSON.parse(event.target.result);
                 resolve(x.list);
             } catch (err) {
-               console.log(err)
+                console.log(err)
                 resolve([]);
             }
         }
