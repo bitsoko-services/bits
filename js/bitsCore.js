@@ -1256,12 +1256,6 @@ var LocalStrgInt = setInterval(function (e) {
             $('.addressClass').html("");
             $('.addressClass').append('0x' + localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')));
         }
-        var servPgLoaded = setInterval(function (e) {
-            if (typeof servicePageLoader !== 'undefined') {
-                servicePageLoader()
-                clearInterval(servPgLoaded);
-            }
-        },3000)
         clearInterval(LocalStrgInt);
     }
 }, 3000);
