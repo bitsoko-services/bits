@@ -413,6 +413,10 @@ function updateWallet(user, coinAddr, privHash, created) {
 
                             }
 
+                        }).catch(function (e) {
+                            M.toast({
+                                html: "Enable popups"
+                            })
                         });
 
                     }

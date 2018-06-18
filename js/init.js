@@ -42,6 +42,10 @@ function recoverOldWallets(olWals) {
         allPs.push(new Promise((resolve, reject) => {
             downloadFile(olWals[ii]).then(function (e) {
                 resolve(e)
+            }).catch(function (e) {
+                M.toast({
+                    html: "Enable popups"
+                })
             });
         }));
 
@@ -74,8 +78,8 @@ function starting() {
     $(".balance-coins").html("login");
     addMobiVeri();
     startGoogle();
-	
-	handleCounterFunc();
+
+    handleCounterFunc();
     serviceOpener();
     //localConverter();
     checkmobiveri()
