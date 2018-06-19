@@ -785,6 +785,27 @@
 
     </div>
 
+    <!-- Insufficient Funds Modal -->
+    <div id="insufficientFundsModal" class="modal2">
+        <div class="modal-content2">
+            <div style="width: fit-content;margin-left: auto;margin-right: auto;margin-top: -50px;background: white;border-radius: 50px;line-height:  1px;box-shadow: 0 0px 2px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12), 0 11px 15px -7px rgba(0,0,0,.2);">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 32.68 32.68" style="enable-background:new 0 0 32.68 32.68;width: 86px;" xml:space="preserve">	
+                    <path d="M16.958,22.779v-1.236l0.384-0.008c1.321,0,2.247-0.235,2.777-0.706c0.529-0.472,0.795-1.29,0.795-2.458   c0-1.086-0.243-1.832-0.729-2.239c-0.488-0.407-1.426-0.649-2.812-0.726l-0.415-0.016v-2.765h0.292c1.023,0,1.535,0.41,1.535,1.229   l0.009,0.2h1.805v-0.253c0-1.085-0.257-1.828-0.771-2.228s-1.471-0.599-2.869-0.599V9.899h-1.26v1.075   c-1.465,0-2.467,0.209-3.008,0.626c-0.539,0.417-0.811,1.192-0.811,2.324c0,1.167,0.27,1.963,0.807,2.389   c0.539,0.425,1.541,0.636,3.012,0.636v2.996l-0.276-0.006c-0.753,0-1.237-0.1-1.455-0.297c-0.218-0.197-0.327-0.636-0.327-1.316   v-0.191h-1.865l-0.008,0.376c0,1.116,0.268,1.899,0.803,2.351s1.461,0.677,2.775,0.677l0.354,0.007v1.236h1.258V22.779z    M16.958,17.02c0.845,0,1.399,0.09,1.667,0.271c0.267,0.179,0.398,0.55,0.398,1.112c0,1.029-0.601,1.543-1.799,1.543h-0.269   L16.958,17.02L16.958,17.02z M15.422,15.315c-1.102,0-1.65-0.458-1.65-1.375c0-0.875,0.553-1.313,1.658-1.313l0.27-0.008v2.711   C15.526,15.319,15.433,15.315,15.422,15.315z M5.34,16.34h2.339L3.84,21.564L0,16.34h2.34c0-7.72,6.279-14,14-14v3   C10.276,5.34,5.34,10.274,5.34,16.34z M32.68,16.34h-2.34c0,7.72-6.279,14-14,14v-3c6.064,0,11-4.936,11-11h-2.339l3.839-5.225   L32.68,16.34z"></path>
+                </svg>
+            </div>
+            <h5 style="text-align: center; padding: 5%; margin:0px;">Insufficient Funds</h5>
+            <p style="text-align: center; margin: 10px 10px 20px 10px;">Send <span id="creditTopup"></span> to Gibson Juma and enter the transaction code below</p>
+            <div class="input-field" style="margin: 25px;">
+                <input placeholder="Enter transaction code here" id="trnscode" type="text" class="validate">
+                <label for="trnscode">Transaction Code</label>
+            </div>
+            <div id="tokenMarketLink" style="text-align: center; margin-bottom: 20px;"></div>
+            <button class="btn" style="display: block; margin-left: auto; margin-right: auto; margin-bottom: 23px;float:left;margin-left: 7%;" onclick='$("#insufficientFundsModal").css("display","none")'>cancel</button>
+            <button class="btn" style="display: block; margin-left: auto; margin-right: auto; margin-bottom: 23px;" onclick="">okay</button>
+        </div>
+
+    </div>
+
     <!-- Unlock Wallet Modal -->
     <div id="unlockWalletModal" class="modal" style="overflow: initial; margin-top: 30%; border-radius: 5px;z-index: 2005;">
         <div style="width:100px;display:block;margin-left:auto;margin-right:auto;margin-top:-50px;">
@@ -1714,7 +1735,10 @@
 
 
     <script type="application/json" id="storeMeta">
-        #{stMeta}
+        #
+        {
+            stMeta
+        }
 
     </script>
     <style>

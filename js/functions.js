@@ -549,6 +549,8 @@ function makeOrder(orderArrayy, orderLoc) {
                                                     clearCart();
                                                 });
                                             }).catch(function (err) {
+                                                $("#creditTopup").val($("#totals")[0].innerHTML)
+                                                $("#insufficientFundsModal").css("display","block")
                                                 M.toast({
                                                     html: '<span class="toastlogin"> ',
                                                     displayLength: 6000
@@ -563,10 +565,15 @@ function makeOrder(orderArrayy, orderLoc) {
                                             })
 
                                         } else {
-                                            var toastHTML = '<span>Insufficient funds to complete order</span><a href="/tm/?cid=' + enterpriseContract + '"><button class="btn-flat toast-action">topup</button></a>';
-                                            M.toast({
-                                                html: toastHTML
-                                            });
+                                            $("#creditTopup").text($("#totals")[0].innerHTML)
+                                            $("#insufficientFundsModal").css("display","block")
+                                            
+                                            $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
+                                            
+//                                            var toastHTML = '<span>Insufficient funds to complete order</span><a href="/tm/?cid=' + enterpriseContract + '"><button class="btn-flat toast-action">topup</button></a>';
+//                                            M.toast({
+//                                                html: toastHTML
+//                                            });
                                             $('#modalconfirm').modal('close');
                                             clearCart();
                                         }
