@@ -1474,29 +1474,35 @@
     <script type="text/javascript">
         window.addEventListener('load', function() {
             ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
-            if (bDet.os.name == 'Android') {
-                // ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
+            var load_bDet = setInterval(function(e) {
+                if (typeof bDet !== 'undefined') {
+                    if (bDet.os.name == 'Android') {
+                        // ////////----------------------------redirect pc to soko pos ----------------------------------------------------------------------//
 
-                if (bDet.browser.version >= minVersionSup && bDet.browser.name == 'Chrome') {
-                    console.log('browser compatible');
+                        if (bDet.browser.version >= minVersionSup && bDet.browser.name == 'Chrome') {
+                            console.log('browser compatible');
 
+                        } else {
+
+                            $('#updateBrowsermodal').modal({
+                                dismissible: false
+                            }).modal('open');
+
+                        }
+
+                    } else {
+                        console.log('browser uncompatible');
+                        //      $('#updateBrowsermodal').openModal({
+                        //           dismissible:false
+                        //      });
+                        new RegExp('mobile', 'i').test(navigator.userAgent)
+
+                    }
+                    clearInterval(load_bDet);
                 } else {
-
-                    $('#updateBrowsermodal').modal({
-                        dismissible: false
-                    }).modal('open');
-
+                    console.log("defined")
                 }
-
-            } else {
-                console.log('browser uncompatible');
-                //      $('#updateBrowsermodal').openModal({
-                //           dismissible:false
-                //      });
-                new RegExp('mobile', 'i').test(navigator.userAgent)
-
-            }
-
+            }, 3000);
 
 
             //request persistent storage
@@ -1735,7 +1741,10 @@
 
 
     <script type="application/json" id="storeMeta">
-        #{stMeta}
+        #
+        {
+            stMeta
+        }
 
     </script>
     <style>

@@ -733,7 +733,7 @@ function getProdss(orderArrayx, costofItems) {
     new Promise(function (resolve, reject) {
         e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
         e.onsuccess = function (event) {
-            console.log(event.target.result)
+//            console.log(event.target.result)
             try {
                 var x = JSON.parse(event.target.result);
                 resolve(x.list);
