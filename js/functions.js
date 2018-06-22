@@ -553,14 +553,14 @@ function makeOrder(orderArrayy, orderLoc) {
                                                 $("#insufficientFundsModal").css("display", "block")
                                                 $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
 
-//                                                M.toast({
-//                                                    html: '<span class="toastlogin"> ',
-//                                                    displayLength: 6000
-//                                                });
-//                                                var toastHTML = '<span>Insufficient funds to complete order</span><a href="/tm/?cid=' + enterpriseContract + '"><button class="btn-flat toast-action">topup</button></a>';
-//                                                M.toast({
-//                                                    html: toastHTML
-//                                                });
+                                                //                                                M.toast({
+                                                //                                                    html: '<span class="toastlogin"> ',
+                                                //                                                    displayLength: 6000
+                                                //                                                });
+                                                //                                                var toastHTML = '<span>Insufficient funds to complete order</span><a href="/tm/?cid=' + enterpriseContract + '"><button class="btn-flat toast-action">topup</button></a>';
+                                                //                                                M.toast({
+                                                //                                                    html: toastHTML
+                                                //                                                });
                                                 $('#modalconfirm').modal('close');
                                                 clearCart();
                                                 //console.log(err)
@@ -733,7 +733,7 @@ function getProdss(orderArrayx, costofItems) {
     new Promise(function (resolve, reject) {
         e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
         e.onsuccess = function (event) {
-//            console.log(event.target.result)
+            //            console.log(event.target.result)
             try {
                 var x = JSON.parse(event.target.result);
                 resolve(x.list);
@@ -897,7 +897,12 @@ function walletStatus() {
                     html: 'Ooops! Try again later'
                 });
             }
-        })
+        }).catch(err) {
+            console.log(err)
+            M.toast({
+                html: 'Error unlocking wallet'
+            });
+        }
 
         window.setInterval(function () {
             updateEarnedTokens();
@@ -913,7 +918,12 @@ function walletStatus() {
                     html: 'Ooops! Try again later'
                 });
             }
-        })
+        }).catch(err) {
+            console.log(err)
+            M.toast({
+                html: 'Error unlocking wallet'
+            });
+        }
         $("#checkBal").html("locked");
 
         //Check Bal Interval
