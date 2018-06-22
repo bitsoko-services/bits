@@ -76,9 +76,13 @@ function starting() {
     //$('#loginModal').closeModal()
 
     $(".balance-coins").html("login");
-    addMobiVeri();
+    var initAddMobVeri = setInterval(function (e) {
+        if (typeof addMobiVeri !== 'undefined') {
+            addMobiVeri();
+            clearInterval(initAddMobVeri);
+        }
+    }, 3000);
     startGoogle();
-
     handleCounterFunc();
     serviceOpener();
     //localConverter();
