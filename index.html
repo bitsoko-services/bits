@@ -1220,7 +1220,7 @@
 
 
     </script>
-	<!--
+    <!--
     <script async defer src="https://bitsoko.co.ke/bitsAssets/js/lightwallet/lightwallet.min.js">
 
 
@@ -1507,35 +1507,39 @@
 
             //request persistent storage
             requestPersist();
-            $('.sidenav').sidenav();
+            try {
+                $('.sidenav').sidenav();
+            } catch (err) {
+                console.log(err)
+            }
             startGoogle();
-		
-		try{
-			
-		 starting();
-			
-		}catch(err){
-			
-		console.log('info! could not start now. ',err);
-			
-	var t0 = performance.now();
 
-            Promise.all([indexDbReady, gDriveReady, serverConnectReady]).then(values => {
+            try {
 
-                var t1 = performance.now();
-                console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.");
-                console.log('test starting');
                 starting();
-            });
-		
-			
-		}
+
+            } catch (err) {
+
+                console.log('info! could not start now. ', err);
+
+                var t0 = performance.now();
+
+                Promise.all([indexDbReady, gDriveReady, serverConnectReady]).then(values => {
+
+                    var t1 = performance.now();
+                    console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.");
+                    console.log('test starting');
+                    starting();
+                });
+
+
+            }
 
             document.querySelector(".js-push-button-notification").addEventListener('change', function(event) {
                 startPushManager();
             });
             //$(".serviceListHolder").hide();
-            $(".serviceListCard").hide();
+//            $(".serviceListCard").hide();
             // $('.carousel').carousel();
             $('.carousel.carousel-slider').carousel({
                 fullWidth: true

@@ -887,17 +887,19 @@ function walletStatus() {
     if (sessionStorage.getItem('walletKey')) {
         //wallet is unlocked
         //get balance
-        walletFunctions(localStorage.getItem("bits-user-name")).then(function (e) {
-            if (e.status == "ok") {
-                M.toast({
-                    html: 'Wallet unlocked successfully'
-                });
-            } else {
-                M.toast({
-                    html: 'Ooops! Try again later'
-                });
-            }
-        }).catch(err) {
+        try {
+            walletFunctions(localStorage.getItem("bits-user-name")).then(function (e) {
+                if (e.status == "ok") {
+                    M.toast({
+                        html: 'Wallet unlocked successfully'
+                    });
+                } else {
+                    M.toast({
+                        html: 'Ooops! Try again later'
+                    });
+                }
+            })
+        } catch (err) {
             console.log(err)
             M.toast({
                 html: 'Error unlocking wallet'
@@ -908,17 +910,19 @@ function walletStatus() {
             updateEarnedTokens();
         }, 20000);
     } else {
-        walletFunctions(localStorage.getItem("bits-user-name")).then(function (e) {
-            if (e.status == "ok") {
-                M.toast({
-                    html: 'Wallet unlocked successfully'
-                });
-            } else {
-                M.toast({
-                    html: 'Ooops! Try again later'
-                });
-            }
-        }).catch(err) {
+        try {
+            walletFunctions(localStorage.getItem("bits-user-name")).then(function (e) {
+                if (e.status == "ok") {
+                    M.toast({
+                        html: 'Wallet unlocked successfully'
+                    });
+                } else {
+                    M.toast({
+                        html: 'Ooops! Try again later'
+                    });
+                }
+            })
+        } catch (err) {
             console.log(err)
             M.toast({
                 html: 'Error unlocking wallet'
