@@ -30,7 +30,12 @@ aside>ul{
 body {
     overflow-x: hidden;
 }
-
+.handle-counter .select-dropdown{
+    display: none !important;
+}
+.handle-counter .caret{
+    display: none !important;
+}
 .tabs a {
     color: #1a1a1a !important;
 }
