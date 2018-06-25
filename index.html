@@ -63,6 +63,7 @@
                 <path d="M534 931 c-50 -23 -84 -64 -84 -102 0 -24 6 -30 38 -39 62 -18 192 -22 257 -8 57 12 60 15 63 44 4 38 -36 90 -85 110 -46 20 -140 17 -189 -5z" style="fill: #005E77;"></path>                
                 </g>    
             </svg>
+            <img src="#{img}">
             <div class="loader" style="width: 100%;">
                 <div></div>
             </div>
@@ -796,14 +797,14 @@
                 </svg>
             </div>
             <h5 style="text-align: center; padding: 5%; margin:0px;">Insufficient Funds</h5>
-            <p style="text-align: center; margin: 10px 10px 20px 10px;">Send <span id="creditTopup"></span> to Gibson Juma and enter the transaction code below</p>
+            <p style="text-align: center; margin: 10px 10px 20px 10px;">Send <span id="creditTopup"></span> to Gibson Juma @ +254 717 091 809 and confirm the transaction code below to complete order</p>
             <div class="input-field" style="margin: 25px;">
                 <input placeholder="Enter transaction code here" id="trnscode" type="text" class="validate">
                 <label for="trnscode">Transaction Code</label>
             </div>
             <div id="tokenMarketLink" style="text-align: center; margin-bottom: 20px;"></div>
-            <button class="btn" style="display: block; margin-left: auto; margin-right: auto; margin-bottom: 23px;float:left;margin-left: 7%;" onclick='$("#insufficientFundsModal").css("display","none")'>cancel</button>
-            <button class="btn" style="display: block; margin-left: auto; margin-right: auto; margin-bottom: 23px;" onclick="">okay</button>
+            <button class="btn bits" style="display: block; margin-left: auto; margin-right: auto; margin-bottom: 23px;float:left;margin-left: 7%;" onclick='$("#insufficientFundsModal").css("display","none")'>cancel</button>
+            <button id='insufficientOrder' class="btn bits" style="display: block; margin-left: auto; margin-right: auto; margin-bottom: 23px;" onclick="">confirm</button>
         </div>
 
     </div>
