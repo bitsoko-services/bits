@@ -556,7 +556,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                                         })
                                                     }
                                                 }).catch(function (err) {
-
+                                                    console.log(res);
                                                     //failed Order
                                                     M.toast({
                                                         html: 'Error!! Try again later'
@@ -565,6 +565,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                                     clearCart();
                                                 });
                                             }).catch(function (err) {
+                                                console.log(err);
                                                 $("#creditTopup").text($("#delPrdTotal")[0].innerHTML)
                                                 $("#insufficientFundsModal").css("display", "block")
                                                 $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
