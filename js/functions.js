@@ -1,6 +1,12 @@
 ///.........................................checks if the payments option for the merchant is on or off ........................................................./////
 var promoDiscount;
 var deliveryRadius;
+var get_orderArrayy;
+var get_trHash;
+var get_delPrice;
+var get_loc;
+var get_locStr;
+var get_pointsEarned;
 
 //Check Browser Compatibility
 function checkBrowser() {
@@ -485,6 +491,18 @@ function makeOrder(orderArrayy, orderLoc) {
 
                     var payByToken = true;
 
+                    var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
+                    transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', "0xb72627650f1149ea5e54834b2f468e5d430e67bf", totCost, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate).then(function (res) {
+                        get_orderArrayy = orderArrayy
+                        get_trHash = res
+                        get_delPrice = globalDel
+                        get_loc = locOrigin
+                        get_locStr = mapData[1].results[0].formatted_address
+                        get_pointsEarned = totalKobo
+                    }).catch(function (err) {
+                        console.log(err)
+                    })
+
                     function payUsingToken() {
                         $('#ConfirmO').off('click').on('click', function () {
                             $(this).html('<div class="preloader-wrapper big active" style=" width: 20px; height: 20px; margin-top: 9px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
@@ -547,7 +565,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                                     clearCart();
                                                 });
                                             }).catch(function (err) {
-                                                $("#creditTopup").text($("#totals")[0].innerHTML)
+                                                $("#creditTopup").text($("#delPrdTotal")[0].innerHTML)
                                                 $("#insufficientFundsModal").css("display", "block")
                                                 $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
 
@@ -947,9 +965,48 @@ $("#insufficientOrder").on('click', function (e) {
         action: 'insufficientOrder',
         transactionCode: $("#trnscode").val()
     }).then(function (e) {
-        if (s.status == "ok") {
-            
+        if (e.status == "ok") {
+            $("#insufficientOrderStatus").html('Transaction code confirmed successfully')
+            $("#insufficientOrderStatus").css("color","green")
+            doFetch({
+                action: 'makeOrder',
+                data: get_orderArrayy,
+                trHash: get_trHash,
+                delPrice: get_delPrice,
+                loc: get_loc,
+                user: localStorage.getItem("bits-user-name"),
+                locStr: get_locStr,
+                pointsEarned: {
+                    "coin": "bits",
+                    "purchase": get_pointsEarned
+                },
+                service: parseInt(getBitsWinOpt('s'))
+            }).then(function (e) {
+                $("#appendPushSubs").remove();
+                $("#products").html("");
+                if (e.status == "ok") {
+                    $('#modalconfirm').modal('close');
+                    var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
+                    M.toast({
+                        html: 'Your order has been sent!',
+                    });
+                    clearCart();
+                } else {
+                    M.toast({
+                        html: 'Your order is not sent!'
+                    })
+                }
+            }).catch(function (err) {
+                //failed Order
+                M.toast({
+                    html: 'Error!! Try again later'
+                });
+                $('#modalconfirm').modal('close');
+                clearCart();
+            });
         } else {
+            $("#insufficientOrderStatus").html('Error! Enter transaction code again.')
+            $("#insufficientOrderStatus").css("color","red")
             M.toast({
                 html: 'Error! Enter transaction code again'
             });
