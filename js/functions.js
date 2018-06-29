@@ -491,17 +491,17 @@ function makeOrder(orderArrayy, orderLoc) {
 
                     var payByToken = true;
 
-//                    var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
-//                    transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', "0xb72627650f1149ea5e54834b2f468e5d430e67bf", totCost, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate).then(function (res) {
-//                        get_orderArrayy = orderArrayy
-//                        get_trHash = res
-//                        get_delPrice = globalDel
-//                        get_loc = locOrigin
-//                        get_locStr = mapData[1].results[0].formatted_address
-//                        get_pointsEarned = totalKobo
-//                    }).catch(function (err) {
-//                        console.log(err)
-//                    })
+                    //                    var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
+                    //                    transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', "0xb72627650f1149ea5e54834b2f468e5d430e67bf", totCost, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate).then(function (res) {
+                    //                        get_orderArrayy = orderArrayy
+                    //                        get_trHash = res
+                    //                        get_delPrice = globalDel
+                    //                        get_loc = locOrigin
+                    //                        get_locStr = mapData[1].results[0].formatted_address
+                    //                        get_pointsEarned = totalKobo
+                    //                    }).catch(function (err) {
+                    //                        console.log(err)
+                    //                    })
 
                     function payUsingToken() {
                         $('#ConfirmO').off('click').on('click', function () {
@@ -753,11 +753,19 @@ function getProdss(orderArrayx, costofItems) {
                 ////console.log("------------------------------------->>", r[o].id, orderArrayx[oo].count)
                 if (r[o].id == orderArrayx[oo].pid) {
                     costofItems = costofItems + (orderArrayx[oo].count * r[o].price);
+
+                    try {
+                        var srcSetPth = r[o].imagePath.replace('.png', '.webp').replace('.webp', '-35.webp');
+
+                    } catch (e) {
+                        var srcSetPth = '';
+
+                    }
                     ////console.log("match")
                     //products
                     //$("#products").html("")
                     //	$("#products").append('<div class="chip">' + '<img src="' + r[o].imagePath + '" ">' + orderArrayx[oo].count + ' ' + r[o].name + ' at '+ r[o].price+'/=</div>')
-                    $("#products").append('<li class="collection-item avatar"style="padding: 3px;margin: 0px;background: none !important;min-height: 10px;"><div class="row" style="line-height: 30px;margin-bottom: 0px;"> <div class="col s2">' + orderArrayx[oo].count + 'X ' + '</div><div class="col s2"><img src="' + r[o].imagePath + '"  style="height: 30px; width: 30px;border-radius:50%;"></div><div class="col s6" style="padding:0px;"><span class="title truncate" style="width: 95%;">' + r[o].name + ' </span></div><div class="col s2"><div  class="right" style="font-size:0.7em;">' + r[o].price * orderArrayx[oo].count + '/=</div></div></div></li>')
+                    $("#products").append('<li class="collection-item avatar"style="padding: 3px;margin: 0px;background: none !important;min-height: 10px;"><div class="row" style="line-height: 30px;margin-bottom: 0px;"> <div class="col s2">' + orderArrayx[oo].count + 'X ' + '</div><div class="col s2"><img  srcset="https://bitsoko.co.ke' + srcSetPth + ' 35w" src="' + r[o].imagePath + '"  style="height: 30px; width: 30px;border-radius:50%;"></div><div class="col s6" style="padding:0px;"><span class="title truncate" style="width: 95%;">' + r[o].name + ' </span></div><div class="col s2"><div  class="right" style="font-size:0.7em;">' + r[o].price * orderArrayx[oo].count + '/=</div></div></div></li>')
                 }
             }
         }
@@ -949,46 +957,46 @@ $("#insufficientOrder").on('click', function (e) {
     }).then(function (e) {
         if (e.status == "ok") {
             $("#insufficientOrderStatus").html('Transaction code confirmed successfully')
-            $("#insufficientOrderStatus").css("color","green")
-//            doFetch({
-//                action: 'makeOrder',
-//                data: get_orderArrayy,
-//                trHash: get_trHash,
-//                delPrice: get_delPrice,
-//                loc: get_loc,
-//                user: localStorage.getItem("bits-user-name"),
-//                locStr: get_locStr,
-//                pointsEarned: {
-//                    "coin": "bits",
-//                    "purchase": get_pointsEarned
-//                },
-//                service: parseInt(getBitsWinOpt('s'))
-//            }).then(function (e) {
-//                $("#appendPushSubs").remove();
-//                $("#products").html("");
-//                if (e.status == "ok") {
-//                    $('#modalconfirm').modal('close');
-//                    var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
-//                    M.toast({
-//                        html: 'Your order has been sent!',
-//                    });
-//                    clearCart();
-//                } else {
-//                    M.toast({
-//                        html: 'Your order is not sent!'
-//                    })
-//                }
-//            }).catch(function (err) {
-//                //failed Order
-//                M.toast({
-//                    html: 'Error!! Try again later'
-//                });
-//                $('#modalconfirm').modal('close');
-//                clearCart();
-//            });
+            $("#insufficientOrderStatus").css("color", "green")
+            //            doFetch({
+            //                action: 'makeOrder',
+            //                data: get_orderArrayy,
+            //                trHash: get_trHash,
+            //                delPrice: get_delPrice,
+            //                loc: get_loc,
+            //                user: localStorage.getItem("bits-user-name"),
+            //                locStr: get_locStr,
+            //                pointsEarned: {
+            //                    "coin": "bits",
+            //                    "purchase": get_pointsEarned
+            //                },
+            //                service: parseInt(getBitsWinOpt('s'))
+            //            }).then(function (e) {
+            //                $("#appendPushSubs").remove();
+            //                $("#products").html("");
+            //                if (e.status == "ok") {
+            //                    $('#modalconfirm').modal('close');
+            //                    var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
+            //                    M.toast({
+            //                        html: 'Your order has been sent!',
+            //                    });
+            //                    clearCart();
+            //                } else {
+            //                    M.toast({
+            //                        html: 'Your order is not sent!'
+            //                    })
+            //                }
+            //            }).catch(function (err) {
+            //                //failed Order
+            //                M.toast({
+            //                    html: 'Error!! Try again later'
+            //                });
+            //                $('#modalconfirm').modal('close');
+            //                clearCart();
+            //            });
         } else {
             $("#insufficientOrderStatus").html('Error! Enter transaction code again.')
-            $("#insufficientOrderStatus").css("color","red")
+            $("#insufficientOrderStatus").css("color", "red")
             M.toast({
                 html: 'Error! Enter transaction code again'
             });
