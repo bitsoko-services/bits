@@ -133,7 +133,8 @@ function doSubscribe() {
                         } else {
                             Materialize.toast(action + 'd successfully', 5000);
                             $(".promoSubButton-" + pid).prop("checked", true);
-                            $(".promoSubState-" + pid).html("Subscribed");
+                            $(".promoSubState-" + mDet.promotions[ii].id).html("Liked");
+                            $('#likeHeart').attr('fill', 'red')
                         }
                         //---------------------------------------send promo data to db-----------------------------------------------------------------------------
                         if (action == 'subscribe') {
@@ -148,11 +149,12 @@ function doSubscribe() {
                                 }
                                 getObjectStore('data', 'readwrite').put(JSON.stringify(squashById(oold)), 'bits-mypromos');
                                 $(".promoSubButton-" + pid).prop("checked", true);
-                                $(".promoSubState-" + pid).html("Subscribed");
+                                $(".promoSubState-" + mDet.promotions[ii].id).html("Liked");
+                                $('#likeHeart').attr('fill', 'red')
                             }
                         } else {
                             $(".promoSubButton-" + pid).prop("checked", false);
-                            $(".promoSubState-" + pid).html("Not Subscribed");
+                            $(".promoSubState-" + pid).html("Like");
                         }
                     } else {
                         Materialize.toast('unable to subscribe ' + e.msg, 3000);
@@ -342,12 +344,11 @@ function populateService(mDet) {
                 '</div></div></div><div class="serviceListTitle bits-ellipsis" style="margin-top: ;width: 100%;position: relative;text-align: center;background: rgba(255, 255, 255, 0.87);"> ' + mDet.promotions[ii].promoName +
                 ' </div>' + '<span class="title"></span>' + '<p class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge displayNone bits left" style="margin-left: 20px;">' + Math.ceil(dailyCost) +
                 ' <span class="localCurr">Ksh</span> daily</span></p><span class="secondary-content"></span>' +
-                '<div class="row"> <div class="col s4"><a onclick="buyPromo(this.id)" id="' + mDet.promotions[ii].id +
-                '" class="bpr bpromo' + mDet.promotions[ii].id +
-                ' waves-effect waves-light " style=" color: ' + mDet.theme + ' !important;margin: 10px 0px;border: 2px solid ' + mDet.theme + ';padding: 2px 10px;border-radius: 20px;">Buy</a></div><div class="col s5 right"><div class="row" style="margin-bottom: 0px; padding-top: 10px;"> <div class="col s4" style="text-align: center; padding:0px;"><button style="padding:0px;border-radius: 50%; height: 30px; width: 30px; line-height: 20px; font-size: 1.2em;" class="btn bits promoMinusBtn" disabled="disabled">-</button></div><div class="col s4" style="padding:0px;"><div class="row" style="margin-bottom: 0px;"> <div class="input-field col s12" style="margin-top: 0px;"> <input value="1" type="number" class="validate inputNo promoInput-' + mDet.promotions[ii].id + '" style="text-align: center;margin-bottom: 0px; margin-top:-15px;"> <label class="active" for="inputNo"></label> </div></div></div><div class="col s4" style="text-align: center; padding:0px;"><button style="padding:0px;border-radius: 50%; height: 30px; width: 30px; line-height: 20px; font-size: 1.2em;" class="btn bits promoPlusBtn">+</button></div></div></div><div class="switch" style="width: 190px;margin-top: 15px;float: right;position:relative;"><i class="mdi-action-redeem"></i> <span style="" class="promoSubState-' + mDet.promotions[ii].id +
-                '">Not Subscribed</span> <label><input type="checkbox" dailyR="' + Math.ceil(dailyCost) + '" pid="' + mDet.promotions[ii].id +
+                '<div class="row"> <div class="col s4" style="margin-top: 13px;"><div class="switch" style="position:relative;"><p class="promoSubState-' + mDet.promotions[ii].id + '" style="float:left;">Like</p><label><input type="checkbox" dailyR="' + Math.ceil(dailyCost) + '" pid="' + mDet.promotions[ii].id +
                 '" class="promoSubButton bits promoSubButton-' + mDet.promotions[ii].id +
-                '" style=""> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50; width:25px;position:absolute;right:0;" xml:space="preserve"><path id="likeHeart" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543 c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503 c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/></svg></label></div></div><center><p style=" bottom: 0px;text-align: center;width: 70%;" class="displayNone serviceListseccondline "><i style="float: left;" class="serviceListseccondline promo-state-icon mdi-notification-sync"> 0 shares</i><i class="promo-state-icon mdi-action-favorite"> 0 likes </i><i style="float: right;" class="promo-state-icon mdi-action-receipt"> 0 sales </i></p></center></li>');
+                '" style=""> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50; width:25px;position:absolute;right:0;" xml:space="preserve"><path id="likeHeart" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543 c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503 c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/></svg></label></div></div><div class="col s3" style="text-align:center;"><a onclick="buyPromo(this.id)" id="' + mDet.promotions[ii].id +
+                '" class="bpr bpromo' + mDet.promotions[ii].id +
+                ' waves-effect waves-light " style=" color: ' + mDet.theme + ' !important;margin: 10px 0px;border: 2px solid ' + mDet.theme + ';padding: 2px 10px;border-radius: 20px;">Buy</a></div><div class="col s5 right" style="padding-left:20px;"><div class="row" style="margin-bottom: 0px; padding-top: 10px;"> <div class="col s4" style="text-align: center; padding:0px;"><button style="padding:0px;border-radius: 50%; height: 33px; width: 33px; line-height: 20px; font-size: 1.2em;" class="btn bits promoMinusBtn" disabled="disabled">-</button></div><div class="col s4" style="padding:0px;"><div class="row" style="margin-bottom: 0px;"> <div class="input-field col s12" style="margin-top: 0px;"> <input value="1" type="number" class="validate inputNo promoInput-' + mDet.promotions[ii].id + '" style="text-align: center;margin-bottom: 0px; margin-top:-3px; border-bottom: none;"> <label class="active" for="inputNo"></label> </div></div></div><div class="col s4" style="text-align: center; padding:0px;"><button style="padding:0px;border-radius: 50%; height: 33px; width: 33px; line-height: 20px; font-size: 1.2em;" class="btn bits promoPlusBtn">+</button></div></div></div></div><center><p style=" bottom: 0px;text-align: center;width: 70%;" class="displayNone serviceListseccondline "><i style="float: left;" class="serviceListseccondline promo-state-icon mdi-notification-sync"> 0 shares</i><i class="promo-state-icon mdi-action-favorite"> 0 likes </i><i style="float: right;" class="promo-state-icon mdi-action-receipt"> 0 sales </i></p></center></li></div>');
             subs = mDet.promotions[ii].promoSubs;
             //            console.log(mDet.promotions[ii].discount)
             if (mDet.promotions[ii].discount == null) {
@@ -358,7 +359,8 @@ function populateService(mDet) {
                     //console.log('im subscribed to ',mDet.promotions[ii]);
                     nnew.push(mDet.promotions[ii]);
                     $(".promoSubButton-" + mDet.promotions[ii].id).prop("checked", true);
-                    $(".promoSubState-" + mDet.promotions[ii].id).html("Subscribed");
+                    $(".promoSubState-" + mDet.promotions[ii].id).html("Liked");
+                    $('#likeHeart').attr('fill', 'red')
                 };
             }
         };
@@ -480,7 +482,7 @@ function populateService(mDet) {
                 mDet.list[ii].imagePath = '/bitsAssets/images/no-product.webp';
             }
             var added = false;
-            
+
             $("#" + prodCatArray[pct] + "").html("")
             for (var pct = 0; pct < prodCatArray.length; ++pct) {
                 if (mDet.list[ii].productCategory == prodCatArray[pct]) {
