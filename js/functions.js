@@ -1,12 +1,10 @@
 ///.........................................checks if the payments option for the merchant is on or off ........................................................./////
 var promoDiscount;
 var deliveryRadius;
-//var get_orderArrayy;
-//var get_trHash;
-//var get_delPrice;
-//var get_loc;
-//var get_locStr;
-//var get_pointsEarned;
+var get_orderArrayy;
+var get_loc;
+var get_locStr;
+var get_pointsEarned;
 
 //Check Browser Compatibility
 function checkBrowser() {
@@ -494,18 +492,11 @@ function makeOrder(orderArrayy, orderLoc) {
                     var locOrigin = e.coords.latitude + ',' + e.coords.longitude
 
                     var payByToken = true;
-
-                    //                    var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
-                    //                    transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', "0xb72627650f1149ea5e54834b2f468e5d430e67bf", totCost, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate).then(function (res) {
-                    //                        get_orderArrayy = orderArrayy
-                    //                        get_trHash = res
-                    //                        get_delPrice = globalDel
-                    //                        get_loc = locOrigin
-                    //                        get_locStr = mapData[1].results[0].formatted_address
-                    //                        get_pointsEarned = totalKobo
-                    //                    }).catch(function (err) {
-                    //                        console.log(err)
-                    //                    })
+                    
+                    get_orderArrayy = orderArrayy;
+                    get_loc = locOrigin;
+                    get_locStr = mapData[1].results[0].formatted_address;
+                    get_pointsEarned = totalKobo;
 
                     function payUsingToken() {
                         $('#ConfirmO').off('click').on('click', function () {
@@ -963,42 +954,40 @@ $("#insufficientOrder").on('click', function (e) {
         if (e.status == "ok") {
             $("#insufficientOrderStatus").html('Transaction code confirmed successfully')
             $("#insufficientOrderStatus").css("color", "green")
-            //            doFetch({
-            //                action: 'makeOrder',
-            //                data: get_orderArrayy,
-            //                trHash: get_trHash,
-            //                delPrice: get_delPrice,
-            //                loc: get_loc,
-            //                user: localStorage.getItem("bits-user-name"),
-            //                locStr: get_locStr,
-            //                pointsEarned: {
-            //                    "coin": "bits",
-            //                    "purchase": get_pointsEarned
-            //                },
-            //                service: parseInt(getBitsWinOpt('s'))
-            //            }).then(function (e) {
-            //                $("#appendPushSubs").remove();
-            //                $("#products").html("");
-            //                if (e.status == "ok") {
-            //                    $('#modalconfirm').modal('close');
-            //                    var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
-            //                    M.toast({
-            //                        html: 'Your order has been sent!',
-            //                    });
-            //                    clearCart();
-            //                } else {
-            //                    M.toast({
-            //                        html: 'Your order is not sent!'
-            //                    })
-            //                }
-            //            }).catch(function (err) {
-            //                //failed Order
-            //                M.toast({
-            //                    html: 'Error!! Try again later'
-            //                });
-            //                $('#modalconfirm').modal('close');
-            //                clearCart();
-            //            });
+            doFetch({
+                action: 'makeOrder',
+                data: get_orderArrayy,
+                loc: get_loc,
+                user: localStorage.getItem("bits-user-name"),
+                locStr: get_locStr,
+                pointsEarned: {
+                    "coin": "bits",
+                    "purchase": get_pointsEarned
+                },
+                service: parseInt(getBitsWinOpt('s'))
+            }).then(function (e) {
+                $("#appendPushSubs").remove();
+                $("#products").html("");
+                if (e.status == "ok") {
+                    $('#modalconfirm').modal('close');
+                    var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
+                    M.toast({
+                        html: 'Your order has been sent!',
+                    });
+                    clearCart();
+                } else {
+                    M.toast({
+                        html: 'Your order is not sent!'
+                    })
+                }
+            }).catch(function (err) {
+                //failed Order
+                M.toast({
+                    html: 'Error!! Try again later'
+                });
+                $('#modalconfirm').modal('close');
+                clearCart();
+            });
         } else {
             $("#insufficientOrderStatus").html('Error! Enter transaction code again.')
             $("#insufficientOrderStatus").css("color", "red")
