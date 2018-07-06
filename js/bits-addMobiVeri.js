@@ -4,7 +4,7 @@
 function addMobiVeri() {
     $(".MobileModal").html("");
     //----------------------------------------------append contact modal--------------------------------------------------------------------------------------
-    $(".MobileModal").append('<div class="modal-content" style="padding: 24px 10px;"><p style=" text-align: center;">Please enter your phone number so we can call you to confirm your delivery location</p>' +
+    $(".MobileModal").append('<div class="modal-content" style="padding: 24px 10px; padding-bottom: 0px; text-align:center;"><p style=" text-align: center;">Please enter your phone number so we can call you to confirm your delivery location</p><a id="resendCode" style="text-align:center;display: block; margin-left: auto; margin-right: auto;" onclick="resendCode()">Resend confirmation code</a>' +
         ' <div class="row" style="margin-bottom:0px;">' +
         '<div class="input-field col s8">' +
         '  <i class="mdi-hardware-phone-android prefix"></i>' +
@@ -32,7 +32,7 @@ function addMobiVeri() {
 
         '</div>' +
         ' <div class="modal-footer blue-grey lighten-5" style="height: auto; padding: 0px;">' +
-        ' <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat bits" style="padding: 0px 10px; color: white; margin-right: 10%;">Close</a>' +
+        ' <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat bits" style="padding: 0px 10px; color: white; margin-right: 10%; background-color:#00AC9A;">Close</a>' +
         '</div>');
 
     var forEach = function (array, callback, scope) {
@@ -79,6 +79,9 @@ function changedPhnNum(t) {
             }
         });
     }
+}
+function resendCode(){
+    changedPhnNum($("#inp-phone").val())
 }
 
 function changedConfCode(t) {
