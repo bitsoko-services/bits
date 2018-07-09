@@ -13,6 +13,10 @@ function bitsTheme(thm) {
 
     var bits_theme = $('.bits').css('background-color');
     $('.bits').css('background-color', p);
+    $('head').append('<style>#loaderCircle:before{background:' + p + ' !important;}</style>');
+    $('head').append('<style>#loaderCircle:after{background:' + p + ' !important;}</style>');
+    $('head').append('<style>#loaderCircle{background:' + p + ' !important;}</style>');
+    $('head').append('<style>.loader:after{background:' + p + ' !important;}</style>');
 
     //gradient fade
     var w = convertHex(p, 24);
