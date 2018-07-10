@@ -85,13 +85,20 @@
                 <div class="nav-wrapper">
                     <div class="navbar-color bits" id="bits-header" style=" background-color: #{theme} !important;">
                         <div class="left bitsHome" style="margin-left: 10px; margin-top: 7px;">
+                            <a href="#" data-target="slide-out" class="sidenav-trigger">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width: 28px;padding-top: 3px;bo;/* border: solid white 1px; */he;height: 41px;" xml:space="preserve" onclick="">
+                                    <path d="M491.318,235.318H20.682C9.26,235.318,0,244.577,0,256s9.26,20.682,20.682,20.682h470.636    c11.423,0,20.682-9.259,20.682-20.682C512,244.578,502.741,235.318,491.318,235.318z" fill="#FFFFFF"></path>
+                                    <path d="M491.318,78.439H20.682C9.26,78.439,0,87.699,0,99.121c0,11.422,9.26,20.682,20.682,20.682h470.636    c11.423,0,20.682-9.26,20.682-20.682C512,87.699,502.741,78.439,491.318,78.439z" fill="#FFFFFF"></path>
+                                    <path d="M491.318,392.197H20.682C9.26,392.197,0,401.456,0,412.879s9.26,20.682,20.682,20.682h470.636    c11.423,0,20.682-9.259,20.682-20.682S502.741,392.197,491.318,392.197z" fill="#FFFFFF"></path>
+                            </svg>
+                            </a>
                         </div>
                         <ul class="center">
                             <div class="walletUserUnlock" style="width: 95px; float: left; padding-left: 20px; position: relative;">
                                 <svg id="userWallet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 334.877 334.877" style="enable-background:new 0 0 334.877 334.877;    width: 24px; float: left; margin-top: 16px;" xml:space="preserve">
                                     <path d="M333.196,155.999h-16.067V82.09c0-17.719-14.415-32.134-32.134-32.134h-21.761L240.965,9.917 C237.571,3.798,231.112,0,224.107,0c-3.265,0-6.504,0.842-9.364,2.429l-85.464,47.526H33.815 c-17.719,0-32.134,14.415-32.134,32.134v220.653c0,17.719,14.415,32.134,32.134,32.134h251.18 c17.719,0,32.134-14.415,32.134-32.134v-64.802h16.067V155.999z M284.995,62.809c9.897,0,17.982,7.519,19.068,17.14h-24.152 l-9.525-17.14H284.995z M220.996,13.663c3.014-1.69,7.07-0.508,8.734,2.494l35.476,63.786H101.798L220.996,13.663z M304.275,302.742c0,10.63-8.651,19.281-19.281,19.281H33.815c-10.63,0-19.281-8.651-19.281-19.281V82.09 c0-10.63,8.651-19.281,19.281-19.281h72.353L75.345,79.95H37.832c-3.554,0-6.427,2.879-6.427,6.427s2.873,6.427,6.427,6.427h14.396 h234.83h17.217v63.201h-46.999c-21.826,0-39.589,17.764-39.589,39.589v2.764c0,21.826,17.764,39.589,39.589,39.589h46.999V302.742z M320.342,225.087h-3.213h-59.853c-14.743,0-26.736-11.992-26.736-26.736v-2.764c0-14.743,11.992-26.736,26.736-26.736h59.853 h3.213V225.087z M276.961,197.497c0,7.841-6.35,14.19-14.19,14.19c-7.841,0-14.19-6.35-14.19-14.19s6.35-14.19,14.19-14.19 C270.612,183.306,276.961,189.662,276.961,197.497z" style="fill: white;"></path>
                                 </svg>
-                                 <div id="checkBal" class="balance-coins" style="position: absolute; left: 55px; padding-top: 3px;width: 150px; text-align: left;"></div>
+                                <div id="checkBal" class="balance-coins" style="position: absolute; left: 55px; padding-top: 3px;width: 150px; text-align: left;"></div>
                             </div>
                             <li>
                                 <h1 class="logo-wrapper">
@@ -555,7 +562,7 @@
                             <i class="mdi-maps-local-grocery-store left" style="font-size: 24px;"></i><span style="">send</span> <span class="" style="">recieve</span><i class="mdi-maps-local-grocery-store right" style="font-size: 24px;"></i>
                         </div>
                         <div class="chip delivery white-text pointer-events bits z-depth-3" onclick="makeOrder(orderArray);" style="">
-                            <span class="checkoutTxt" style="">checkout</span> 
+                            <span class="checkoutTxt" style="">checkout</span>
                             <i class="mdi-maps-local-grocery-store right" style="width: 23px; margin-top: 6px;">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 511.999 511.999" style="enable-background:new 0 0 511.999 511.999;" xml:space="preserve">
                                     <path d="M214.685,402.828c-24.829,0-45.029,20.2-45.029,45.029c0,24.829,20.2,45.029,45.029,45.029s45.029-20.2,45.029-45.029    C259.713,423.028,239.513,402.828,214.685,402.828z M214.685,467.742c-10.966,0-19.887-8.922-19.887-19.887    c0-10.966,8.922-19.887,19.887-19.887s19.887,8.922,19.887,19.887C234.572,458.822,225.65,467.742,214.685,467.742z" fill="#FFFFFF"/>
@@ -959,7 +966,7 @@
         </div>
     </div>
     <!--modal rate-->
-<!--
+    <!--
     <div class="modal bits" id="RateModal">
         <div class="modal-content white-text">
             <span class=""></span>
@@ -1512,7 +1519,7 @@
                 startPushManager();
             });
             //$(".serviceListHolder").hide();
-//            $(".serviceListCard").hide();
+            //            $(".serviceListCard").hide();
             // $('.carousel').carousel();
             $('.carousel.carousel-slider').carousel({
                 fullWidth: true
@@ -1730,7 +1737,10 @@
 
 
     <script type="application/json" id="storeMeta">
-        #{stMeta}
+        #
+        {
+            stMeta
+        }
 
     </script>
     <style>
