@@ -533,7 +533,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                                     if (e.status == "ok") {
                                                         $('#modalconfirm').modal('close');
                                                         //swal("success!", "your order has been sent!", "success");
-                                                        var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
+//                                                        var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
                                                         M.toast({
                                                             html: 'Your order has been sent!',
                                                             completeCallback: setTimeout(function () {
@@ -619,7 +619,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                 if (e.status == "ok") {
                                     $('#modalconfirm').modal("close");
                                     //swal("success!", "your order has been sent!", "success");
-                                    var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
+//                                    var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
                                     M.toast({
                                         html: 'Your order has been sent!',
                                         completeCallback: setTimeout(function () {
@@ -970,7 +970,7 @@ $("#insufficientOrder").on('click', function (e) {
                 $("#products").html("");
                 if (e.status == "ok") {
                     $('#modalconfirm').modal('close');
-                    var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
+//                    var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
                     M.toast({
                         html: 'Your order has been sent!',
                     });
