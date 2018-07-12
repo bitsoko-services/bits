@@ -29,6 +29,10 @@ function feedback() {
                         html: 'Feed back sent successfully'
                     })
                     $("#feedbackModal").modal("close")
+                } else {
+                    M.toast({
+                        html: 'Error! Try again later'
+                    })
                 }
             })
         })
