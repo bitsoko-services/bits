@@ -634,6 +634,58 @@
     </div>
 
     <!-- Check Browser Modal -->
+    <div id="feedbackModal" class="modal">
+        <h4 style="text-align: center; padding-top: 20px;">Feedback</h4>
+        <div class="modal-content" style="padding: 10px;">
+            <div class="row">
+                <div class="col s4">Rate:</div>
+                <div class="col s8">
+                    <div class="stars">
+                        <input type="radio" id="rate-5" name="rating-1">
+                        <label for="rate-5"></label>
+                        <input type="radio" id="rate-4" name="rating-1">
+                        <label for="rate-4"></label>
+                        <input type="radio" id="rate-3" name="rating-1">
+                        <label for="rate-3"></label>
+                        <input type="radio" id="rate-2" name="rating-1">
+                        <label for="rate-2"></label>
+                        <input type="radio" id="rate-1" name="rating-1">
+                        <label for="rate-1"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s4">Speed:</div>
+                <div class="col s8">
+                    <div class="stars">
+                        <input type="radio" id="rate-05" name="rating-1">
+                        <label for="rate-05"></label>
+                        <input type="radio" id="rate-04" name="rating-1">
+                        <label for="rate-04"></label>
+                        <input type="radio" id="rate-03" name="rating-1">
+                        <label for="rate-03"></label>
+                        <input type="radio" id="rate-02" name="rating-1">
+                        <label for="rate-02"></label>
+                        <input type="radio" id="rate-01" name="rating-1">
+                        <label for="rate-01"></label>
+                    </div>
+                </div>
+            </div>
+            <form action="#">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <label for="textarea1">Textarea</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+
+    <!-- Check Browser Modal -->
     <div id="checkBrowser" class="modal open" style="overflow: initial; margin-top: 30%; border-radius: 5px;">
         <div style="width:100px;display:block;margin-left:auto;margin-right:auto;margin-top:-50px;">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
@@ -1344,6 +1396,10 @@
     <script defer src="js/init.js" type="text/javascript">
 
 
+    </script> 
+    <script defer src="js/feedback.js" type="text/javascript">
+
+
     </script>
     <!--sweetalert -->
 
@@ -1737,7 +1793,10 @@
 
 
     <script type="application/json" id="storeMeta">
-        #{stMeta}
+        #
+        {
+            stMeta
+        }
 
     </script>
     <style>

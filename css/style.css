@@ -3506,6 +3506,61 @@ tr.group:hover {
 
 
 /*----------------------------------------
+     RATING
+------------------------------------------*/
+
+.stars {
+    float: left;
+    overflow: hidden;
+    width: 100%;
+}
+
+.stars input[type=radio]:checked~label:after {
+    background: gold;
+}
+
+.stars input[type=radio] {
+    display: none;
+}
+
+.stars input[type=radio]:first-child+label {
+    padding-right: 0;
+}
+
+.stars:hover input[type=radio]:checked~label:after,
+.stars label:after {
+    background: grey;
+}
+
+.stars label {
+    box-sizing: border-box;
+    width: 20%;
+    padding-right: 2%;
+    height: 20px;
+    float: right;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.stars label:after {
+    display: block;
+    content: "";
+    height: 20px;
+    width: 20px;
+    float: right;
+    transition: all 0.25s;
+    background: grey;
+    border-radius:  50%;
+    content: 1 !important;
+}
+
+.stars label:hover:after,
+.stars label:hover~label:after {
+    background: gold !important;
+}
+
+
+/*----------------------------------------
     footer charts
 ------------------------------------------*/
 
