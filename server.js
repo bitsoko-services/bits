@@ -142,7 +142,7 @@ try {
 
                     break;
                 case 'delCheck':
-                    var tg = "bits-order-checker";
+                    var tg = "bits-order-checker-"  + dat.store;
                     var state = dat.state;
                     bitsNotification('Confirm Availability?', dat.msg, tg, 'bits/images/deliveryM.png', dat.storeImg, [{
                         action: 'yes',
