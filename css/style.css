@@ -3511,12 +3511,22 @@ tr.group:hover {
 
 .stars {
     float: left;
-    overflow: hidden;
+    overflow: show;
     width: 100%;
 }
 
 .stars input[type=radio]:checked~label:after {
-    background: gold;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 20px solid gold;
+    background:  transparent !important;
+}
+
+.stars input[type=radio]:checked~label {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid gold;
+    background:  transparent !important;
 }
 
 .stars input[type=radio] {
@@ -3529,7 +3539,7 @@ tr.group:hover {
 
 .stars:hover input[type=radio]:checked~label:after,
 .stars label:after {
-    background: grey;
+    /* background: grey; */
 }
 
 .stars label {
@@ -3539,7 +3549,16 @@ tr.group:hover {
     height: 20px;
     float: right;
     cursor: pointer;
-    border-radius: 50%;
+    /* border-radius: 50%; */
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid grey;
+    position: relative;
+    /* margin-top: 10px; */
+    padding: 0px;
+    margin: 0px 3px;
 }
 
 .stars label:after {
@@ -3549,14 +3568,23 @@ tr.group:hover {
     width: 20px;
     float: right;
     transition: all 0.25s;
-    background: grey;
-    border-radius:  50%;
+    /* background: grey; */
+    /* border-radius:  50%; */
     content: 1 !important;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 20px solid grey;
+    position: absolute;
+    content: "";
+    top: 6px;
+    left: -10px;
 }
 
 .stars label:hover:after,
 .stars label:hover~label:after {
-    background: gold !important;
+/*    background: gold !important;*/
 }
 
 
