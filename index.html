@@ -638,50 +638,50 @@
         <h4 style="text-align: center; padding-top: 20px;">Feedback</h4>
         <div class="modal-content" style="padding: 10px;">
             <div class="row">
-                <div class="col s4">Rate:</div>
+                <div class="col s4">Quality of Product:</div>
                 <div class="col s8">
-                    <div class="stars">
-                        <input type="radio" id="rate-5" name="rating-1">
+                    <div class="stars prdQty" style="padding-top: 10px;">
+                        <input type="radio" id="rate-5" name="rating-1" rate="5">
                         <label for="rate-5"></label>
-                        <input type="radio" id="rate-4" name="rating-1">
+                        <input type="radio" id="rate-4" name="rating-1" rate="4">
                         <label for="rate-4"></label>
-                        <input type="radio" id="rate-3" name="rating-1">
+                        <input type="radio" id="rate-3" name="rating-1" rate="3">
                         <label for="rate-3"></label>
-                        <input type="radio" id="rate-2" name="rating-1">
+                        <input type="radio" id="rate-2" name="rating-1" rate="2">
                         <label for="rate-2"></label>
-                        <input type="radio" id="rate-1" name="rating-1">
+                        <input type="radio" id="rate-1" name="rating-1" rate="1">
                         <label for="rate-1"></label>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col s4">Speed:</div>
+                <div class="col s4">Quality of Service:</div>
                 <div class="col s8">
-                    <div class="stars">
-                        <input type="radio" id="rate-05" name="rating-1">
+                    <div class="stars servQty" style="padding-top: 10px;">
+                        <input type="radio" id="rate-05" name="rating-01" rate="5">
                         <label for="rate-05"></label>
-                        <input type="radio" id="rate-04" name="rating-1">
+                        <input type="radio" id="rate-04" name="rating-01" rate="4">
                         <label for="rate-04"></label>
-                        <input type="radio" id="rate-03" name="rating-1">
+                        <input type="radio" id="rate-03" name="rating-01" rate="3">
                         <label for="rate-03"></label>
-                        <input type="radio" id="rate-02" name="rating-1">
+                        <input type="radio" id="rate-02" name="rating-01" rate="2">
                         <label for="rate-02"></label>
-                        <input type="radio" id="rate-01" name="rating-1">
+                        <input type="radio" id="rate-01" name="rating-01" rate="1">
                         <label for="rate-01"></label>
                     </div>
                 </div>
             </div>
             <form action="#">
-                <div class="row">
+                <div class="row" style="margin-bottom: 0px;">
                     <div class="input-field col s12">
-                        <textarea id="textarea1" class="materialize-textarea"></textarea>
-                        <label for="textarea1">Textarea</label>
+                        <textarea id="feedbackText" class="materialize-textarea"></textarea>
+                        <label for="feedbackText">Textarea</label>
                     </div>
                 </div>
             </form>
         </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        <div class="modal-footer" style="text-align: center;">
+            <a id="sendFeedback" style="color:white;" href="#!" class="waves-effect waves-green btn-flat bits">send</a>
         </div>
     </div>
 
