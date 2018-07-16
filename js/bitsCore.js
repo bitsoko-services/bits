@@ -1250,8 +1250,7 @@ function localConverter() {
         // updateSettings();
     });
 }
-
-var LocalStrgInt = setInterval(function (e) {
+window.onload = function () {
     if (typeof localStorage !== 'undefined') {
         if (localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')) == null) {
             $('.addressClass').html("");
@@ -1260,9 +1259,20 @@ var LocalStrgInt = setInterval(function (e) {
             $('.addressClass').html("");
             $('.addressClass').append('0x' + localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')));
         }
-        clearInterval(LocalStrgInt);
     }
-}, 3000);
+}
+//var LocalStrgInt = setInterval(function (e) {
+//    if (typeof localStorage !== 'undefined') {
+//        if (localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')) == null) {
+//            $('.addressClass').html("");
+//            $('.addressClass').append('Log in to create wallet');
+//        } else {
+//            $('.addressClass').html("");
+//            $('.addressClass').append('0x' + localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')));
+//        }
+//        clearInterval(LocalStrgInt);
+//    }
+//}, 3000);
 
 
 

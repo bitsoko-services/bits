@@ -31,24 +31,24 @@ function finalCost(costofItems) {
                     console.log("rates loaded")
                     $("#ConfirmO").removeAttr("disabled")
                     var dist = distance
-                    try{
-                        
-                        deliveryRadius=JSON.parse(deliveryRadius)
-                        if(!deliveryRadius.min||!deliveryRadius.max){
-                        
-                        var deliveryRadius={}
-                        deliveryRadius.max=10;
-                        deliveryRadius.min=0.5;
-                        
+                    try {
+
+                        deliveryRadius = JSON.parse(deliveryRadius)
+                        if (!deliveryRadius.min || !deliveryRadius.max) {
+
+                            var deliveryRadius = {}
+                            deliveryRadius.max = 10;
+                            deliveryRadius.min = 0.5;
+
+                        }
+                    } catch (e) {
+                        var deliveryRadius = {}
+                        deliveryRadius.max = 10;
+                        deliveryRadius.min = 0.5;
+
                     }
-                    }catch(e){
-                        var deliveryRadius={}
-                        deliveryRadius.max=10;
-                        deliveryRadius.min=0.5;
-                        
-                    }
-                    
-                    
+
+
                     console.log(dist)
                     if (dist > deliveryRadius.max) {
                         M.toast({
@@ -94,4 +94,35 @@ function finalCost(costofItems) {
                 });
             })
         })
+}
+
+
+//Delivery Settings
+function delAvail() {
+    if (checkanon() == false) {
+        $('#loginModal').modal({
+            onCloseEnd: function () {
+                $(".delivery").click()
+            }
+        }).modal("open")
+        return;
+    }
+    var delAval = $("#delAvail").is(':checked');
+    
+    doFetch({
+        action: 'manageDelAvail',
+        uid: localStorage.getItem('bits-user-name'),
+        sid: localStorage.getItem('bits-active-service'),
+        state: delAval
+    }).then(function (e) {
+        if (e.status == "ok") {
+            M.toast({
+                html: 'State changed successfully'
+            })
+        } else {
+            M.toast({
+                html: 'Error! Try again later'
+            })
+        }
+    })
 }

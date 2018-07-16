@@ -21,13 +21,13 @@ function serviceOpener() {
     if (getBitsWinOpt('s') != undefined) {
         /// hide menu button on shop page show back to home button................
         //$('.bitsmenuslider').addClass('displayNone');
-//        if (window.location.origin.includes('bitsoko')) {
-//            $('.bitsHome').html('');
-//        } else {
-//            $('.bitsHome').html('');
-//            $('.bitsHome').append('<a href="' + window.location.origin + '/"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 495.398 495.398" style="enable-background:new 0 0 495.398 495.398;width: 23px;" xml:space="preserve"> <path d="M487.083,225.514l-75.08-75.08V63.704c0-15.682-12.708-28.391-28.413-28.391c-15.669,0-28.377,12.709-28.377,28.391 v29.941L299.31,37.74c-27.639-27.624-75.694-27.575-103.27,0.05L8.312,225.514c-11.082,11.104-11.082,29.071,0,40.158 c11.087,11.101,29.089,11.101,40.172,0l187.71-187.729c6.115-6.083,16.893-6.083,22.976-0.018l187.742,187.747 c5.567,5.551,12.825,8.312,20.081,8.312c7.271,0,14.541-2.764,20.091-8.312C498.17,254.586,498.17,236.619,487.083,225.514z" fill="#FFFFFF"></path> <path d="M257.561,131.836c-5.454-5.451-14.285-5.451-19.723,0L72.712,296.913c-2.607,2.606-4.085,6.164-4.085,9.877v120.401 c0,28.253,22.908,51.16,51.16,51.16h81.754v-126.61h92.299v126.61h81.755c28.251,0,51.159-22.907,51.159-51.159V306.79 c0-3.713-1.465-7.271-4.085-9.877L257.561,131.836z" fill="#FFFFFF"></path> </svg> </a>');
-//
-//        }
+        //        if (window.location.origin.includes('bitsoko')) {
+        //            $('.bitsHome').html('');
+        //        } else {
+        //            $('.bitsHome').html('');
+        //            $('.bitsHome').append('<a href="' + window.location.origin + '/"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 495.398 495.398" style="enable-background:new 0 0 495.398 495.398;width: 23px;" xml:space="preserve"> <path d="M487.083,225.514l-75.08-75.08V63.704c0-15.682-12.708-28.391-28.413-28.391c-15.669,0-28.377,12.709-28.377,28.391 v29.941L299.31,37.74c-27.639-27.624-75.694-27.575-103.27,0.05L8.312,225.514c-11.082,11.104-11.082,29.071,0,40.158 c11.087,11.101,29.089,11.101,40.172,0l187.71-187.729c6.115-6.083,16.893-6.083,22.976-0.018l187.742,187.747 c5.567,5.551,12.825,8.312,20.081,8.312c7.271,0,14.541-2.764,20.091-8.312C498.17,254.586,498.17,236.619,487.083,225.514z" fill="#FFFFFF"></path> <path d="M257.561,131.836c-5.454-5.451-14.285-5.451-19.723,0L72.712,296.913c-2.607,2.606-4.085,6.164-4.085,9.877v120.401 c0,28.253,22.908,51.16,51.16,51.16h81.754v-126.61h92.299v126.61h81.755c28.251,0,51.159-22.907,51.159-51.159V306.79 c0-3.713-1.465-7.271-4.085-9.877L257.561,131.836z" fill="#FFFFFF"></path> </svg> </a>');
+        //
+        //        }
         checkServicePageLoader()
         if (getBitsOpt('pid') != undefined) {
             var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
@@ -260,6 +260,7 @@ function populateService(mDet) {
         slogo[i].src = mDet.icon;
     }
     document.querySelector('.eName').innerHTML = mDet.eName;
+    document.querySelector('.delAvailRate').innerHTML = mDet.deliveryRate;
     //    document.querySelector('.eDesc').innerHTML = mDet.eDesc;
     document.querySelector('.bitsWcover').src = mDet.icon;
     document.querySelector('.serviceDescription2').innerHTML = mDet.description;
@@ -271,7 +272,20 @@ function populateService(mDet) {
     setTimeout(function () {
         loadvisit();
     }, 1050);
-
+    var parsedDeliveryGuys = JSON.parse(mDet.deliveryMembers)
+    console.log(parsedDeliveryGuys)
+    for (var x = 0; x < parsedDeliveryGuys.length; ++x) {
+        console.log(parsedDeliveryGuys[x].id)
+        if (parsedDeliveryGuys[x].id == localStorage.getItem('bits-user-name')) {
+            console.log(parsedDeliveryGuys[x].id)
+            setTimeout(function () {
+                $('#deliveryModalBtn').html('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 488.8 488.8" style="enable-background:new 0 0 488.8 488.8;width: 37px;/* margin-right: 20px; *//* margin-top: 11px; */" xml:space="preserve"><path d="M467.3,172.1c-13.2-14.3-32-22.2-52.9-22.2h-50.3v-27.2c0-6.6-5.4-12-12-12H112.5c-6.6,0-12,5.4-12,12v41.8H53.8 c-6.6,0-12,5.4-12,12s5.4,12,12,12h58.4c0.1,0,0.2,0,0.3,0c0,0,0,0,0.1,0c6.6,0,12-5.4,12-12v-41.8h215.6v27.2v160.9h-113 c-0.5,0-1,0-1.5,0.1c-6-14.8-20.5-25.3-37.4-25.3c-17,0-31.5,10.6-37.4,25.5c-0.9-0.2-1.7-0.3-2.6-0.3h-23.7v-41.9 c0-6.6-5.4-12-12-12c-0.2,0-0.4,0-0.6,0s-0.3,0-0.5,0H53.8c-6.6,0-12,5.4-12,12s5.4,12,12,12h46.7v41.8c0,6.6,5.4,12,12,12h35.7 c0.3,0,0.5,0,0.8,0c4,18,20.1,31.4,39.3,31.4s35.2-13.4,39.3-31.4h124.6h19.2c4.1,17.9,20.1,31.4,39.3,31.4s35.2-13.4,39.3-31.4 h26.8c6.6,0,12-5.4,12-12V235C488.8,209.1,481.3,187.3,467.3,172.1z M188.3,354.2c-9,0-16.3-7.3-16.3-16.3s7.3-16.3,16.3-16.3 s16.3,7.3,16.3,16.3C204.6,346.9,197.3,354.2,188.3,354.2z M410.7,354.2c-9,0-16.3-7.3-16.3-16.3s7.3-16.3,16.3-16.3 s16.3,7.3,16.3,16.3C426.9,346.9,419.6,354.2,410.7,354.2z M464.8,322.8H448c-6-14.7-20.5-25.2-37.3-25.2s-31.3,10.4-37.3,25.2 h-9.2V173.9h50.3c31.5,0,50.3,22.9,50.3,61.2V322.8z" style="fill: rgb(255, 255, 255);"></path><path d="M206.1,251.2c-4.7,4.7-4.7,12.3,0,17c2.3,2.3,5.4,3.5,8.5,3.5s6.1-1.2,8.5-3.5l30.9-30.9l0.1-0.1c0.2-0.3,0.5-0.5,0.7-0.8 c0.1-0.2,0.2-0.3,0.3-0.5c0.1-0.2,0.2-0.3,0.4-0.5c0.1-0.2,0.2-0.4,0.3-0.6c0.1-0.2,0.2-0.3,0.3-0.5c0.1-0.2,0.2-0.4,0.3-0.6 c0.1-0.2,0.2-0.3,0.2-0.5c0.1-0.2,0.1-0.4,0.2-0.6c0.1-0.2,0.1-0.4,0.2-0.5c0.1-0.2,0.1-0.4,0.1-0.6c0-0.2,0.1-0.4,0.1-0.6 c0-0.2,0.1-0.4,0.1-0.7c0-0.2,0.1-0.3,0.1-0.5c0.1-0.8,0.1-1.6,0-2.4c0-0.2,0-0.3-0.1-0.5c0-0.2-0.1-0.4-0.1-0.7 c0-0.2-0.1-0.4-0.1-0.6c0-0.2-0.1-0.4-0.1-0.6c-0.1-0.2-0.1-0.4-0.2-0.5c-0.1-0.2-0.1-0.4-0.2-0.6c-0.1-0.2-0.2-0.3-0.2-0.5 c-0.1-0.2-0.2-0.4-0.3-0.6c-0.1-0.2-0.2-0.3-0.3-0.5c-0.1-0.2-0.2-0.4-0.3-0.6c-0.1-0.2-0.2-0.3-0.4-0.5c-0.1-0.2-0.2-0.3-0.3-0.5 c-0.2-0.3-0.5-0.5-0.7-0.8l-0.1-0.1l-29.4-29.4c-4.7-4.7-12.3-4.7-17,0s-4.7,12.3,0,17l8.9,8.9H12c-6.6,0-12,5.4-12,12 s5.4,12,12,12h204.4L206.1,251.2z" style="fill: rgb(255, 255, 255);"></path></svg>');
+                $("#deliveryModalBtn").click(function () {
+                    $("#deliveryGuyModal").modal("open");
+                })
+            }, 2000);
+        }
+    }
     //----------------------------------------------- enable sharing------------------------------------------//
     //web Share start
     $(document).on("click", "#share", function () {

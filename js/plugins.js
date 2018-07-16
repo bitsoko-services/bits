@@ -12,7 +12,7 @@ setTimeout(function () {
     var window_width = $(window).width();
 
     /*Preloader*/
-    $(window).load(function () {
+    $( document ).ready(function() {
         setTimeout(function () {
             $('body').addClass('loaded');
         }, 200);
