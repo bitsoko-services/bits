@@ -99,6 +99,7 @@ function finalCost(costofItems) {
 
 //Delivery Settings
 function delAvail() {
+    var delAval = $("#delAvail").is(':checked');
     if (checkanon() == false) {
         $('#loginModal').modal({
             onCloseEnd: function () {
@@ -107,22 +108,56 @@ function delAvail() {
         }).modal("open")
         return;
     }
-    var delAval = $("#delAvail").is(':checked');
-    
-    doFetch({
-        action: 'manageDelAvail',
-        uid: localStorage.getItem('bits-user-name'),
-        sid: localStorage.getItem('bits-active-service'),
-        state: delAval
-    }).then(function (e) {
-        if (e.status == "ok") {
-            M.toast({
-                html: 'State changed successfully'
-            })
-        } else {
-            M.toast({
-                html: 'Error! Try again later'
-            })
-        }
-    })
+    if ($("#delAvail").is(':checked') == true) {
+        navigator.permissions.query({
+            name: 'push',
+            userVisibleOnly: true
+        }).then(function (e) {
+            if (e.state == "granted") {
+                doFetch({
+                    action: 'manageDelAvail',
+                    uid: localStorage.getItem('bits-user-name'),
+                    sid: localStorage.getItem('bits-active-service'),
+                    state: delAval
+                }).then(function (e) {
+                    if (e.status == "ok") {
+                        M.toast({
+                            html: 'State changed successfully'
+                        })
+                    } else {
+                        M.toast({
+                            html: 'Error! Try again later'
+                        })
+                    }
+                })
+            } else {
+                document.getElementById('notificationsModal').style.display = "block";
+                if ($("#delAvail").is(':checked') == true) {
+                    $("#delAvail").prop("checked", false);
+                }
+            }
+        }).catch(function (e) {
+            document.getElementById('notificationsModal').style.display = "block";
+            if ($("#delAvail").is(':checked') == true) {
+                $("#delAvail").prop("checked", false);
+            }
+        })
+    } else {
+        doFetch({
+            action: 'manageDelAvail',
+            uid: localStorage.getItem('bits-user-name'),
+            sid: localStorage.getItem('bits-active-service'),
+            state: delAval
+        }).then(function (e) {
+            if (e.status == "ok") {
+                M.toast({
+                    html: 'State changed successfully'
+                })
+            } else {
+                M.toast({
+                    html: 'Error! Try again later'
+                })
+            }
+        })
+    }
 }
