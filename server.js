@@ -141,6 +141,18 @@ try {
 						}], true, true);
 
                     break;
+                case 'delCheck':
+                    var tg = "bits-order-checker-"  + dat.store;
+                    var state = dat.state;
+                    bitsNotification('Confirm Availability?', dat.msg, tg, 'bits/images/deliveryM.png', dat.storeImg, [{
+                        action: 'yes',
+                        title: "Im Available"
+						}, {
+                        action: 'no',
+                        title: "Not Available"
+						}], true, true);
+
+                    break;
                 case 'gotPoints':
                     bitsNotification('You have points ', 'Click to view your balance', 'PointsMsg', 'bits/images/yes.png', 'bits/images/Delivered.png', [{
                         action: '',
