@@ -1,5 +1,6 @@
 var getPhnNo;
-var showDeliverBtn
+var showDeliverBtn;
+var showSokoBtn;
 //-----------------------------------------updating service list function-------------------------------------------------------------------------------------------
 function updateServicelist() {
     activeService = $('#serviceModal').attr('service');
@@ -130,9 +131,15 @@ function doSubscribe() {
                 }).then(function (e) {
                     if (e.status == "ok") {
                         if (infiat < (dr * 1.1)) {
-                            Materialize.toast(action + 'd. Insufficient Funds', 6500);
+                            //                            Materialize.toast(action + 'd. Insufficient Funds', 6500);
+                            M.toast({
+                                html: action + 'd. Insufficient Funds'
+                            })
                         } else {
-                            Materialize.toast(action + 'd successfully', 5000);
+                            //                            Materialize.toast(action + 'd successfully', 5000);
+                            M.toast({
+                                html: action + 'd successfully'
+                            })
                             $(".promoSubButton-" + pid).prop("checked", true);
                             $(".promoSubState-" + mDet.promotions[ii].id).html("Liked");
                             $('#likeHeart').attr('fill', 'red')
@@ -158,7 +165,11 @@ function doSubscribe() {
                             $(".promoSubState-" + pid).html("Like");
                         }
                     } else {
-                        Materialize.toast('unable to subscribe ' + e.msg, 3000);
+//                        Materialize.toast('unable to subscribe ' + e.msg, 3000);
+                        M.toast({
+                            html: 'unable to subscribe ' + e.msg
+                        })
+
                     }
                 }).catch(function () {
                     M.toast({
@@ -273,14 +284,24 @@ function populateService(mDet) {
     setTimeout(function () {
         loadvisit();
     }, 1050);
-    var parsedDeliveryGuys = JSON.parse(mDet.deliveryMembers)
+    var parsedDeliveryGuys = JSON.parse(mDet.deliveryMembers);
+    var parsedSokoManagers = JSON.parse(mDet.managers);
     showDeliverBtn = function () {
         for (var x = 0; x < parsedDeliveryGuys.length; ++x) {
             if (parsedDeliveryGuys[x].id == localStorage.getItem('bits-user-name')) {
                 $('#deliveryModalBtn').html('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 488.8 488.8" style="enable-background:new 0 0 488.8 488.8;width: 37px;/* margin-right: 20px; *//* margin-top: 11px; */" xml:space="preserve"><path d="M467.3,172.1c-13.2-14.3-32-22.2-52.9-22.2h-50.3v-27.2c0-6.6-5.4-12-12-12H112.5c-6.6,0-12,5.4-12,12v41.8H53.8 c-6.6,0-12,5.4-12,12s5.4,12,12,12h58.4c0.1,0,0.2,0,0.3,0c0,0,0,0,0.1,0c6.6,0,12-5.4,12-12v-41.8h215.6v27.2v160.9h-113 c-0.5,0-1,0-1.5,0.1c-6-14.8-20.5-25.3-37.4-25.3c-17,0-31.5,10.6-37.4,25.5c-0.9-0.2-1.7-0.3-2.6-0.3h-23.7v-41.9 c0-6.6-5.4-12-12-12c-0.2,0-0.4,0-0.6,0s-0.3,0-0.5,0H53.8c-6.6,0-12,5.4-12,12s5.4,12,12,12h46.7v41.8c0,6.6,5.4,12,12,12h35.7 c0.3,0,0.5,0,0.8,0c4,18,20.1,31.4,39.3,31.4s35.2-13.4,39.3-31.4h124.6h19.2c4.1,17.9,20.1,31.4,39.3,31.4s35.2-13.4,39.3-31.4 h26.8c6.6,0,12-5.4,12-12V235C488.8,209.1,481.3,187.3,467.3,172.1z M188.3,354.2c-9,0-16.3-7.3-16.3-16.3s7.3-16.3,16.3-16.3 s16.3,7.3,16.3,16.3C204.6,346.9,197.3,354.2,188.3,354.2z M410.7,354.2c-9,0-16.3-7.3-16.3-16.3s7.3-16.3,16.3-16.3 s16.3,7.3,16.3,16.3C426.9,346.9,419.6,354.2,410.7,354.2z M464.8,322.8H448c-6-14.7-20.5-25.2-37.3-25.2s-31.3,10.4-37.3,25.2 h-9.2V173.9h50.3c31.5,0,50.3,22.9,50.3,61.2V322.8z" style="fill: rgb(255, 255, 255);"></path><path d="M206.1,251.2c-4.7,4.7-4.7,12.3,0,17c2.3,2.3,5.4,3.5,8.5,3.5s6.1-1.2,8.5-3.5l30.9-30.9l0.1-0.1c0.2-0.3,0.5-0.5,0.7-0.8 c0.1-0.2,0.2-0.3,0.3-0.5c0.1-0.2,0.2-0.3,0.4-0.5c0.1-0.2,0.2-0.4,0.3-0.6c0.1-0.2,0.2-0.3,0.3-0.5c0.1-0.2,0.2-0.4,0.3-0.6 c0.1-0.2,0.2-0.3,0.2-0.5c0.1-0.2,0.1-0.4,0.2-0.6c0.1-0.2,0.1-0.4,0.2-0.5c0.1-0.2,0.1-0.4,0.1-0.6c0-0.2,0.1-0.4,0.1-0.6 c0-0.2,0.1-0.4,0.1-0.7c0-0.2,0.1-0.3,0.1-0.5c0.1-0.8,0.1-1.6,0-2.4c0-0.2,0-0.3-0.1-0.5c0-0.2-0.1-0.4-0.1-0.7 c0-0.2-0.1-0.4-0.1-0.6c0-0.2-0.1-0.4-0.1-0.6c-0.1-0.2-0.1-0.4-0.2-0.5c-0.1-0.2-0.1-0.4-0.2-0.6c-0.1-0.2-0.2-0.3-0.2-0.5 c-0.1-0.2-0.2-0.4-0.3-0.6c-0.1-0.2-0.2-0.3-0.3-0.5c-0.1-0.2-0.2-0.4-0.3-0.6c-0.1-0.2-0.2-0.3-0.4-0.5c-0.1-0.2-0.2-0.3-0.3-0.5 c-0.2-0.3-0.5-0.5-0.7-0.8l-0.1-0.1l-29.4-29.4c-4.7-4.7-12.3-4.7-17,0s-4.7,12.3,0,17l8.9,8.9H12c-6.6,0-12,5.4-12,12 s5.4,12,12,12h204.4L206.1,251.2z" style="fill: rgb(255, 255, 255);"></path></svg>');
+                $('#deliveryModalBtn').addClass("removeExBtn")
                 $("#deliveryModalBtn").click(function () {
                     $("#deliveryGuyModal").modal("open");
                 })
+            }
+        }
+    }
+    showSokoBtn = function () {
+        for (var x = 0; x < parsedSokoManagers.length; ++x) {
+            if (parsedSokoManagers[x].id == localStorage.getItem('bits-user-name')) {
+                $('#manage-store').html('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 489.4 489.4" style="enable-background:new 0 0 489.4 489.4;width: 25px;" xml:space="preserve"><path d="M347.7,263.75h-66.5c-18.2,0-33,14.8-33,33v51c0,18.2,14.8,33,33,33h66.5c18.2,0,33-14.8,33-33v-51 C380.7,278.55,365.9,263.75,347.7,263.75z M356.7,347.75c0,5-4.1,9-9,9h-66.5c-5,0-9-4.1-9-9v-51c0-5,4.1-9,9-9h66.5 c5,0,9,4.1,9,9V347.75z" fill="#FFFFFF"/><path d="M489.4,171.05c0-2.1-0.5-4.1-1.6-5.9l-72.8-128c-2.1-3.7-6.1-6.1-10.4-6.1H84.7c-4.3,0-8.3,2.3-10.4,6.1l-72.7,128 c-1,1.8-1.6,3.8-1.6,5.9c0,28.7,17.3,53.3,42,64.2v211.1c0,6.6,5.4,12,12,12h66.3c0.1,0,0.2,0,0.3,0h93c0.1,0,0.2,0,0.3,0h221.4 c6.6,0,12-5.4,12-12v-209.6c0-0.5,0-0.9-0.1-1.3C472,224.55,489.4,199.85,489.4,171.05z M91.7,55.15h305.9l56.9,100.1H34.9 L91.7,55.15z M348.3,179.15c-3.8,21.6-22.7,38-45.4,38c-22.7,0-41.6-16.4-45.4-38H348.3z M232,179.15c-3.8,21.6-22.7,38-45.4,38 s-41.6-16.4-45.5-38H232z M24.8,179.15h90.9c-3.8,21.6-22.8,38-45.5,38C47.5,217.25,28.6,200.75,24.8,179.15z M201.6,434.35h-69 v-129.5c0-9.4,7.6-17.1,17.1-17.1h34.9c9.4,0,17.1,7.6,17.1,17.1v129.5H201.6z M423.3,434.35H225.6v-129.5 c0-22.6-18.4-41.1-41.1-41.1h-34.9c-22.6,0-41.1,18.4-41.1,41.1v129.6H66v-193.3c1.4,0.1,2.8,0.1,4.2,0.1 c24.2,0,45.6-12.3,58.2-31c12.6,18.7,34,31,58.2,31s45.5-12.3,58.2-31c12.6,18.7,34,31,58.1,31c24.2,0,45.5-12.3,58.1-31 c12.6,18.7,34,31,58.2,31c1.4,0,2.7-0.1,4.1-0.1L423.3,434.35L423.3,434.35z M419.2,217.25c-22.7,0-41.6-16.4-45.4-38h90.9 C460.8,200.75,441.9,217.25,419.2,217.25z" fill="#FFFFFF"/></svg>')
+                $('#manage-store').css("padding", "9px");
             }
         }
     }
