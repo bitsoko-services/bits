@@ -165,7 +165,7 @@ function doSubscribe() {
                             $(".promoSubState-" + pid).html("Like");
                         }
                     } else {
-//                        Materialize.toast('unable to subscribe ' + e.msg, 3000);
+                        //                        Materialize.toast('unable to subscribe ' + e.msg, 3000);
                         M.toast({
                             html: 'unable to subscribe ' + e.msg
                         })
@@ -284,8 +284,14 @@ function populateService(mDet) {
     setTimeout(function () {
         loadvisit();
     }, 1050);
-    var parsedDeliveryGuys = JSON.parse(mDet.deliveryMembers);
-    var parsedSokoManagers = JSON.parse(mDet.managers);
+    try {
+        var parsedDeliveryGuys = JSON.parse(mDet.deliveryMembers);
+        var parsedSokoManagers = JSON.parse(mDet.managers);
+    } catch (err) {
+        console.log(err);
+        var parsedDeliveryGuys = [];
+        var parsedSokoManagers = [];
+    }
     showDeliverBtn = function () {
         for (var x = 0; x < parsedDeliveryGuys.length; ++x) {
             if (parsedDeliveryGuys[x].id == localStorage.getItem('bits-user-name')) {
