@@ -132,7 +132,7 @@ try {
                 case 'delOrder':
                     var tg = "bits-order-" + dat.oid + "-(" + dat.toLoc + ")";
                     var state = dat.state;
-                    bitsNotification('New '+dat.deliveryPrice+'/= Delivery', 'order number ' + dat.oid, tg, 'bits/images/deliveryM.png', dat.orderImg, [{
+                    bitsNotification('New ' + dat.deliveryPrice + '/= Delivery', 'order number ' + dat.oid, tg, 'bits/images/deliveryM.png', dat.orderImg, [{
                         action: 'locate',
                         title: "Location"
 						}, {
@@ -142,8 +142,9 @@ try {
 
                     break;
                 case 'delCheck':
-                    var tg = "bits-order-checker-"  + dat.store;
-                    var state = dat.state;
+
+                    var tg = "bits-order-checker-" + dat.store;
+
                     bitsNotification('Confirm Availability?', dat.msg, tg, 'bits/images/deliveryM.png', dat.storeImg, [{
                         action: 'yes',
                         title: "Im Available"
