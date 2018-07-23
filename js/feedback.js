@@ -20,9 +20,10 @@ function feedback() {
             doFetch({
                 action: 'storeFeed',
                 uid: localStorage.getItem('bits-user-name'),
-                speed: productQty,
-                quality: serviceQty,
-                text: $("#feedbackText").val()
+                product: productQty,
+                service: serviceQty,
+                text: $("#feedbackText").val(),
+                sid:localStorage.getItem('bits-active-service')
             }).then(function (e) {
                 if (e.status == "ok") {
                     M.toast({
