@@ -6,6 +6,27 @@ var get_loc;
 var get_locStr;
 var get_pointsEarned;
 
+async function payUsingMobileMoney(amount) {
+
+
+    document.getElementById("insufficientFundsModal").style.display = "block";
+
+    document.getElementById('creditTopup').innerHTML = amount;
+
+    doFetch({
+        action: 'getInsufficientFundsOrderbook',
+        contract: "0xb72627650f1149ea5e54834b2f468e5d430e67bf",
+        rate: allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate * baseX,
+        total: amount,
+        countryCode: baseCd
+    }).then(function (e) {
+        document.getElementById('creditTopupNo').innerHTML = amount;
+    });
+
+    return '07000000000'
+
+}
+
 //Check Browser Compatibility
 function checkBrowser() {
     if (!!window.chrome) {
@@ -48,7 +69,7 @@ function callMerchant() {
                 $("#initFeedbackModal").css("display", "none");
                 $("#merchPhoneNo").css("display", "none");
                 showSokoBtn();
-                $("#deliveryModalBtn").css("padding-right","15px");
+                $("#deliveryModalBtn").css("padding-right", "15px");
             }
 
         });
@@ -160,6 +181,11 @@ function servicePageLoader() {
                     setTimeout(function () {
                         servicePageLoader();
                     }, 3000);
+                }
+                if (window.matchMedia('(display-mode: standalone)').matches) {
+                    console.log('display-mode is standalone');
+                } else {
+                    $("#saveStoreHomeScreen").css("display", "block");
                 }
             } else {
                 $(".serviceListHolder").hide();
@@ -305,7 +331,7 @@ function showuser() {
                     $("#initFeedbackModal").css("display", "none")
                     $("#merchPhoneNo").css("display", "none")
                     showSokoBtn();
-                    $("#deliveryModalBtn").css("padding-right","15px");
+                    $("#deliveryModalBtn").css("padding-right", "15px");
                 }
             } catch (err) {
                 console.log(err)
@@ -507,7 +533,7 @@ function makeOrder(orderArrayy, orderLoc) {
 
                     var locOrigin = e.coords.latitude + ',' + e.coords.longitude
 
-                    var payByToken = true;
+                    var payByToken = false;
 
                     get_orderArrayy = orderArrayy;
                     get_loc = locOrigin;
@@ -577,14 +603,14 @@ function makeOrder(orderArrayy, orderLoc) {
                                                 });
                                             }).catch(function (err) {
                                                 console.log(err);
-                                                $("#creditTopup").text($("#delPrdTotal")[0].innerHTML)
-                                                $("#insufficientFundsModal").css("display", "block")
+                                                // $("#creditTopup").text($("#delPrdTotal")[0].innerHTML)
+
+                                                payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
                                                 $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
                                             })
 
                                         } else {
-                                            $("#creditTopup").text($("#totals")[0].innerHTML)
-                                            $("#insufficientFundsModal").css("display", "block")
+                                            payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
                                             $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
                                         }
                                     } else {
@@ -612,49 +638,57 @@ function makeOrder(orderArrayy, orderLoc) {
                         })
                     }
 
+
+
                     if (payByToken == true) {
                         payUsingToken()
 
                     } else {
-                        $(document).on("click", "#ConfirmO", function (e) {
-                            doFetch({
-                                action: 'makeOrder',
-                                data: orderArrayy,
-                                //EarnedKobo: totalKobo,
-                                delPrice: globalDel,
-                                loc: locOrigin,
-                                user: localStorage.getItem("bits-user-name"),
-                                locStr: mapData[1].results[0].formatted_address,
-                                pointsEarned: {
-                                    "coin": "bits",
-                                    "purchase": totalKobo
-                                },
-                                service: parseInt(getBitsWinOpt('s'))
-                            }).then(function (e) {
-                                $("#appendPushSubs").remove();
-                                if (e.status == "ok") {
-                                    $('#modalconfirm').modal("close");
-                                    //swal("success!", "your order has been sent!", "success");
-                                    //                                    var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
-                                    M.toast({
-                                        html: 'Your order has been sent!',
-                                        completeCallback: setTimeout(function () {
-                                            M.toast({
-                                                html: toastHTML
-                                            })
-                                        }, 4000)
-                                    });
+                        payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel).then(function (r) {
 
-                                    //                                    $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox" onclick="startmessage()"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
-                                    clearCart();
-                                } else {
-                                    //swal("Cancelled", "your order is not sent", "error");
-                                    M.toast({
-                                        html: 'Error! Try again later'
-                                    })
-                                }
+                            console.log(r);
+
+                            $(document).on("click", "#ConfirmO", function (e) {
+                                doFetch({
+                                    action: 'makeOrder',
+                                    data: orderArrayy,
+                                    //EarnedKobo: totalKobo,
+                                    delPrice: globalDel,
+                                    loc: locOrigin,
+                                    user: localStorage.getItem("bits-user-name"),
+                                    locStr: mapData[1].results[0].formatted_address,
+                                    pointsEarned: {
+                                        "coin": "bits",
+                                        "purchase": totalKobo
+                                    },
+                                    service: parseInt(getBitsWinOpt('s'))
+                                }).then(function (e) {
+                                    $("#appendPushSubs").remove();
+                                    if (e.status == "ok") {
+                                        $('#modalconfirm').modal("close");
+                                        //swal("success!", "your order has been sent!", "success");
+                                        //                                    var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
+                                        M.toast({
+                                            html: 'Your order has been sent!',
+                                            completeCallback: setTimeout(function () {
+                                                M.toast({
+                                                    html: toastHTML
+                                                })
+                                            }, 4000)
+                                        });
+
+                                        //                                    $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox" onclick="startmessage()"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
+                                        clearCart();
+                                    } else {
+                                        //swal("Cancelled", "your order is not sent", "error");
+                                        M.toast({
+                                            html: 'Error! Try again later'
+                                        })
+                                    }
+                                })
                             })
                         })
+
                     }
                     $(".confirmText").html("")
                     $(".confirmText").append()
@@ -1013,3 +1047,14 @@ function insufficientOrder() {
         }
     })
 }
+
+//Get Tab Content 
+//document.getElementsByClassName("currentTab").click(function(){
+//     doFetch({
+//        action: 'getProducts',
+//        store: localStorage.getItem("bits-active-service"),
+//        tab: $(this).attr("tab")
+//    }).then(function (e) {})
+//})
+//$(document).on("click", ".prdTabs li", function (e) {
+//})

@@ -265,6 +265,7 @@ function populateService(mDet) {
     bitsTheme(mDet.theme);
     $(".resDisplay").html(mDet.name);
     document.querySelector('.serviceName').innerHTML = mDet.name;
+    document.querySelector('#getStoreName').innerHTML = mDet.name;
     document.querySelector('.serviceName2').innerHTML = mDet.name;
     document.querySelector('.cardimage').src = 'https://bitsoko.co.ke' + mDet.bannerPath;
     var slogo = document.querySelectorAll('.shopLogo')
@@ -488,7 +489,7 @@ function populateService(mDet) {
                 $('.prdTabs').append('<li class="tab col s3" style=""><a href="#allPrds" class="active">more</a></li>');
                 $('.prdCatCont').append('<div id="allPrds" class="col s12 allPrds"></div>')
                 for (var iii in x) {
-                    $('.prdTabs').prepend('<li class="tab col s3" style=""><a href="#' + x[iii].name + '" style="">' + x[iii].name + '</a></li>');
+                    $('.prdTabs').prepend('<li class="tab col s3 currentTab" style="" tab="' + x[iii].name + '"><a href="#' + x[iii].name + '" style="">' + x[iii].name + '</a></li>');
                     $('.prdCatCont').prepend('<div id="' + x[iii].name + '" class="col s12"></div>')
                     prodCatArray.push(x[iii].name)
                 }
