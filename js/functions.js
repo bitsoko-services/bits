@@ -111,7 +111,14 @@ function servicePageLoader() {
 
                 setTimeout(function (e) {
                     $('.prdTabs').tabs();
-                    //                    var productTabs = M.Tabs.init(document.querySelector('.prdTabs'), {});
+                    //Get Tab Content
+                    M.Tabs.getInstance(document.querySelector(".prdTabs")).options.onShow = function (e) {
+                        doFetch({
+                            action: 'getProducts',
+                            store: localStorage.getItem("bits-active-service"),
+                            tab: $(e)[0].id
+                        }).then(function (e) {})
+                    };
                 }, 3000)
             } catch (err) {
                 console.log(err)
@@ -127,7 +134,15 @@ function servicePageLoader() {
 
                     setTimeout(function (e) {
                         $('.prdTabs').tabs();
-                        //                        var productTabs = M.Tabs.init(document.querySelector('.prdTabs'), {});
+
+                        //Get Tab Content
+                        M.Tabs.getInstance(document.querySelector(".prdTabs")).options.onShow = function (e) {
+                            doFetch({
+                                action: 'getProducts',
+                                store: localStorage.getItem("bits-active-service"),
+                                tab: $(e)[0].id
+                            }).then(function (e) {})
+                        };
                     }, 3000)
 
                     var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(JSON.parse(newstr).res), 'bits-merchant-id-' + getBitsWinOpt('s'));
@@ -1047,14 +1062,3 @@ function insufficientOrder() {
         }
     })
 }
-
-//Get Tab Content 
-//document.getElementsByClassName("currentTab").click(function(){
-//     doFetch({
-//        action: 'getProducts',
-//        store: localStorage.getItem("bits-active-service"),
-//        tab: $(this).attr("tab")
-//    }).then(function (e) {})
-//})
-//$(document).on("click", ".prdTabs li", function (e) {
-//})
