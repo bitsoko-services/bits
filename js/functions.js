@@ -188,6 +188,20 @@ function servicePageLoader() {
                             populateService(e.data);
                             populated = true;
                         }
+                        setTimeout(function () {
+                            fullScreenMode()
+                        }, 3000);
+                        if (localStorage.getItem("fullScreenPermission") == null) {} else if (localStorage.getItem("fullScreenPermission") == "true") {
+                            if ($(".fullscreenToast").length >= 1) {
+                                $(".fullscreenToast").remove();
+                            }
+                            var toastHTML = '<span>Enable fullscreen mode</span><button class="btn-flat toast-action" onclick="fullScreenMode();">ok</button>';
+                            M.toast({
+                                html: toastHTML,
+                                displayLength: 5000,
+                                classes: "fullscreenToast"
+                            });
+                        }
                     } catch (err) {
                         ////console.log('service not found in db. perhaps try loading from server AGAIN!!')
                     }
