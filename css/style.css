@@ -56,6 +56,11 @@ body {
     overflow: initial !important;
 }
 
+#fullScreenPermission {
+    overflow: initial !important;
+    margin-top: 10% !important;
+}
+
 .modal2 {
     display: none;
     /* Hidden by default */
