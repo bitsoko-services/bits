@@ -212,9 +212,9 @@ function servicePageLoader() {
                     }, 3000);
                 }
                 if (window.matchMedia('(display-mode: standalone)').matches) {
-                    console.log('display-mode is standalone');
+                    $("#saveStoreHomeScreen").css("display", "none");
                 } else {
-                    $("#saveStoreHomeScreen").css("display", "block");
+                
                 }
             } else {
                 $(".serviceListHolder").hide();
