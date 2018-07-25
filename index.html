@@ -18,6 +18,8 @@
     <meta content="#{theme}" name="theme-color">
     <meta content="476194103258-98t0j7p1lrela49ispgj3jfokl2r3ils.apps.googleusercontent.com" name="google-signin-client_id">
     <link href="web-manifest.json" rel="manifest">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="/icon.png">
 
     <script async defer src="https://bitsoko.co.ke/bitsAssets/js/webcomponents.js"></script>
 
@@ -234,8 +236,7 @@
                                                                 <path d="M176.702,164.637L14.569,2.503c-3.328-3.336-8.738-3.336-12.066,0c-3.336,3.337-3.336,8.73,0,12.066l162.133,162.133    c1.664,1.664,3.849,2.5,6.033,2.5c2.185,0,4.369-0.836,6.033-2.5C180.038,173.366,180.038,167.973,176.702,164.637z"/>
                                                                 <path d="M119.469,0.003H8.535c-4.71,0-8.533,3.823-8.533,8.533V119.47c0,4.71,3.823,8.533,8.533,8.533s8.533-3.823,8.533-8.533    V17.07h102.4c4.71,0,8.533-3.823,8.533-8.533S124.179,0.003,119.469,0.003z"/>
                                                             </svg>    
-                                                        </i>
-                                                        Fullscreen
+                                                        </i> Fullscreen
                                                         <div class="switch" style="position: absolute; right: 0; top: 0px;">
                                                             <label>
                                                                 <input id="fullscreenState" type="checkbox" stitm="fullscreenState">
@@ -559,7 +560,7 @@
                                     </div>
                                     <div>
                                         <p>Add <span id="getStoreName"></span> to Home Screen</p>
-                                        <button class="btn bits" id="addToHomeScreen">add</button>
+                                        <button class="btn bits" id="addToHomeScreen" onclick="addToHomescreenPrompt();">add</button>
                                     </div>
                                 </div>
                             </center>
@@ -1551,6 +1552,43 @@
 
     </script> -->
 
+    <script>
+        let deferredPrompt;
+        var btnAdd = document.getElementById("addToHomeScreen")
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent Chrome 67 and earlier from automatically showing the prompt
+            e.preventDefault();
+            // Stash the event so it can be triggered later.
+            deferredPrompt = e;
+            // Update UI notify the user they can add to home screen
+            btnAdd.style.display = 'block';
+        });
+
+        //Show the prompt
+        function addToHomescreenPrompt() {
+            // hide our user interface that shows our A2HS button
+            btnAdd.style.display = 'none';
+            // Show the prompt
+            deferredPrompt.prompt();
+            // Wait for the user to respond to the prompt
+            deferredPrompt.userChoice
+                .then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the A2HS prompt');
+                    } else {
+                        console.log('User dismissed the A2HS prompt');
+                    }
+                    deferredPrompt = null;
+                });
+        }
+
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            console.log('display-mode is standalone');
+            $("#saveStoreHomeScreen").css("display", "none")
+        }
+
+    </script>
     <script>
         function reload() {
             location.reload();
