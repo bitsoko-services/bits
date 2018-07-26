@@ -14,28 +14,32 @@ function feedback() {
             serviceQty = $(this).attr("rate")
         })
         $("#sendFeedback").click(function (e) {
-            M.toast({
-                html: 'Sending feedback...'
-            })
-            doFetch({
-                action: 'setStoreFeed',
-                uid: localStorage.getItem('bits-user-name'),
-                product: productQty,
-                service: serviceQty,
-                text: $("#feedbackText").val(),
-                sid:localStorage.getItem('bits-active-service')
-            }).then(function (e) {
-                if (e.status == "ok") {
-                    M.toast({
-                        html: 'Feed back sent successfully'
-                    })
-                    $("#feedbackModal").modal("close")
-                } else {
-                    M.toast({
-                        html: 'Error! Try again later'
-                    })
-                }
-            })
+            if (checkanon() == false) {
+                $("#loginModal").modal("open")
+            } else {
+                M.toast({
+                    html: 'Sending feedback...'
+                })
+                doFetch({
+                    action: 'setStoreFeed',
+                    uid: localStorage.getItem('bits-user-name'),
+                    product: productQty,
+                    service: serviceQty,
+                    text: $("#feedbackText").val(),
+                    sid: localStorage.getItem('bits-active-service')
+                }).then(function (e) {
+                    if (e.status == "ok") {
+                        M.toast({
+                            html: 'Feed back sent successfully'
+                        })
+                        $("#feedbackModal").modal("close")
+                    } else {
+                        M.toast({
+                            html: 'Error! Try again later'
+                        })
+                    }
+                })
+            }
         })
     }
 }
