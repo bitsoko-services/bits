@@ -2,6 +2,7 @@ var functionRun = false;
 
 function feedback() {
     $("#feedbackModal").modal("open");
+    $("#feedbackText").characterCounter()
     if (functionRun != true) {
         functionRun = true;
         var productQty;
@@ -14,31 +15,37 @@ function feedback() {
             serviceQty = $(this).attr("rate")
         })
         $("#sendFeedback").click(function (e) {
-            if (checkanon() == false) {
-                $("#loginModal").modal("open")
-            } else {
+            if ($("#feedbackText").val().length < 40) {
                 M.toast({
-                    html: 'Sending feedback...'
+                    html: 'Text area should have at least 40 characters'
                 })
-                doFetch({
-                    action: 'setStoreFeed',
-                    uid: localStorage.getItem('bits-user-name'),
-                    product: productQty,
-                    service: serviceQty,
-                    text: $("#feedbackText").val(),
-                    sid: localStorage.getItem('bits-active-service')
-                }).then(function (e) {
-                    if (e.status == "ok") {
-                        M.toast({
-                            html: 'Feed back sent successfully'
-                        })
-                        $("#feedbackModal").modal("close")
-                    } else {
-                        M.toast({
-                            html: 'Error! Try again later'
-                        })
-                    }
-                })
+            } else {
+                if (checkanon() == false) {
+                    $("#loginModal").modal("open")
+                } else {
+                    M.toast({
+                        html: 'Sending feedback...'
+                    })
+                    doFetch({
+                        action: 'setStoreFeed',
+                        uid: localStorage.getItem('bits-user-name'),
+                        product: productQty,
+                        service: serviceQty,
+                        text: $("#feedbackText").val(),
+                        sid: localStorage.getItem('bits-active-service')
+                    }).then(function (e) {
+                        if (e.status == "ok") {
+                            M.toast({
+                                html: 'Feed back sent successfully'
+                            })
+                            $("#feedbackModal").modal("close")
+                        } else {
+                            M.toast({
+                                html: 'Error! Try again later'
+                            })
+                        }
+                    })
+                }
             }
         })
     }
