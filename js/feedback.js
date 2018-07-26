@@ -18,7 +18,7 @@ function feedback() {
                 html: 'Sending feedback...'
             })
             doFetch({
-                action: 'storeFeed',
+                action: 'setStoreFeed',
                 uid: localStorage.getItem('bits-user-name'),
                 product: productQty,
                 service: serviceQty,
