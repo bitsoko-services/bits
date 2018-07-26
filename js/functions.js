@@ -113,11 +113,13 @@ function servicePageLoader() {
                     $('.prdTabs').tabs();
                     //Get Tab Content
                     M.Tabs.getInstance(document.querySelector(".prdTabs")).options.onShow = function (e) {
-                        doFetch({
-                            action: 'getProducts',
-                            store: localStorage.getItem("bits-active-service"),
-                            tab: $(e)[0].id
-                        }).then(function (e) {})
+                        if ($(e)[0].childNodes.length == 0) {
+                            doFetch({
+                                action: 'getProducts',
+                                store: localStorage.getItem("bits-active-service"),
+                                tab: $(e)[0].id
+                            }).then(function (e) {});
+                        }
                     };
                 }, 3000)
             } catch (err) {
@@ -214,7 +216,7 @@ function servicePageLoader() {
                 if (window.matchMedia('(display-mode: standalone)').matches) {
                     $("#saveStoreHomeScreen").css("display", "none");
                 } else {
-                
+
                 }
             } else {
                 $(".serviceListHolder").hide();
