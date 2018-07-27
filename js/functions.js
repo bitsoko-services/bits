@@ -638,7 +638,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                             doMakeOrder(orderArrayy,res,globalDel,locOrigin,localStorage.getItem("bits-user-name"),mapData[1].results[0].formatted_address,{
                                                         "coin": "bits",
                                                         "purchase": totalKobo
-                                                    },parseInt(getBitsWinOpt('s')).then(function (e){
+                                                    },parseInt(getBitsWinOpt('s'))).then(function (e){
                                              console.log(e);
                                             });
                                                 
@@ -693,7 +693,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                doMakeOrder(orderArrayy,r,globalDel,locOrigin,localStorage.getItem("bits-user-name"),mapData[1].results[0].formatted_address,{
                                                         "coin": "bits",
                                                         "purchase": totalKobo
-                                                    },parseInt(getBitsWinOpt('s')).then(function (e){
+                                                    },parseInt(getBitsWinOpt('s'))).then(function (e){
                                console.log(e);
                                });
                                               
