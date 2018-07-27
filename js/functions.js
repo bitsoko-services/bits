@@ -675,11 +675,10 @@ function makeOrder(orderArrayy, orderLoc) {
                         payUsingToken()
 
                     } else {
-                        payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel).then(function (r) {
+                        $(document).on("click", "#ConfirmO", function (e) {
+                            payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel).then(function (r) {
 
-                            console.log(r);
-
-                            $(document).on("click", "#ConfirmO", function (e) {
+                                console.log(r);
                                 doFetch({
                                     action: 'makeOrder',
                                     data: orderArrayy,
