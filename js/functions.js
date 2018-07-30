@@ -6,6 +6,56 @@ var get_loc;
 var get_locStr;
 var get_pointsEarned;
 
+async function doMakeOrder(orderArrayy, res, globalDel, locOrigin, uid, addrr, points, sid) {
+
+    await doFetch({
+        action: 'makeOrder',
+        data: orderArrayy,
+        trHash: res,
+        delPrice: globalDel,
+        loc: locOrigin,
+        user: uid,
+        locStr: addrr,
+        pointsEarned: points,
+        service: sid
+    }).then(function (e) {
+        $("#appendPushSubs").remove();
+        $("#products").html("");
+
+        if (e.status == "ok") {
+            $('#modalconfirm').modal('close');
+            //swal("success!", "your order has been sent!", "success");
+            //                                                        var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
+            M.toast({
+                html: 'Your order has been sent!',
+                completeCallback: setTimeout(function () {
+                    M.toast({
+                        html: toastHTML
+                    })
+                }, 4000)
+            });
+            //                                                        $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input onclick="startPushManager();" class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
+            clearCart();
+            return;
+        } else {
+            //swal("Cancelled", "your order is not sent", "error");
+            M.toast({
+                html: 'Your order is not sent!'
+            })
+            return;
+        }
+    }).catch(function (err) {
+        console.log(res);
+        //failed Order
+        M.toast({
+            html: 'Error!! Try again later'
+        });
+        $('#modalconfirm').modal('close');
+        clearCart();
+        return;
+    });
+}
+
 async function payUsingMobileMoney(amount) {
 
 
@@ -120,7 +170,7 @@ function servicePageLoader() {
                                 store: localStorage.getItem("bits-active-service"),
                                 tab: $(e)[0].id
                             }).then(function (e) {
-                            
+
                             });
                         }
                     };
@@ -588,53 +638,13 @@ function makeOrder(orderArrayy, orderLoc) {
                                             var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
                                             transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', "0xb72627650f1149ea5e54834b2f468e5d430e67bf", totCost, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate).then(function (res) {
                                                 console.log(res);
-
-                                                doFetch({
-                                                    action: 'makeOrder',
-                                                    data: orderArrayy,
-                                                    trHash: res,
-                                                    delPrice: globalDel,
-                                                    loc: locOrigin,
-                                                    user: localStorage.getItem("bits-user-name"),
-                                                    locStr: mapData[1].results[0].formatted_address,
-                                                    pointsEarned: {
-                                                        "coin": "bits",
-                                                        "purchase": totalKobo
-                                                    },
-                                                    service: parseInt(getBitsWinOpt('s'))
-                                                }).then(function (e) {
-                                                    $("#appendPushSubs").remove();
-                                                    $("#products").html("");
-
-                                                    if (e.status == "ok") {
-                                                        $('#modalconfirm').modal('close');
-                                                        //swal("success!", "your order has been sent!", "success");
-                                                        //                                                        var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
-                                                        M.toast({
-                                                            html: 'Your order has been sent!',
-                                                            completeCallback: setTimeout(function () {
-                                                                M.toast({
-                                                                    html: toastHTML
-                                                                })
-                                                            }, 4000)
-                                                        });
-                                                        //                                                        $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input onclick="startPushManager();" class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
-                                                        clearCart();
-                                                    } else {
-                                                        //swal("Cancelled", "your order is not sent", "error");
-                                                        M.toast({
-                                                            html: 'Your order is not sent!'
-                                                        })
-                                                    }
-                                                }).catch(function (err) {
-                                                    console.log(res);
-                                                    //failed Order
-                                                    M.toast({
-                                                        html: 'Error!! Try again later'
-                                                    });
-                                                    $('#modalconfirm').modal('close');
-                                                    clearCart();
+                                                doMakeOrder(orderArrayy, res, globalDel, locOrigin, localStorage.getItem("bits-user-name"), mapData[1].results[0].formatted_address, {
+                                                    "coin": "bits",
+                                                    "purchase": totalKobo
+                                                }, parseInt(getBitsWinOpt('s'))).then(function (e) {
+                                                    console.log(e);
                                                 });
+
                                             }).catch(function (err) {
                                                 console.log(err);
                                                 // $("#creditTopup").text($("#delPrdTotal")[0].innerHTML)
@@ -679,47 +689,12 @@ function makeOrder(orderArrayy, orderLoc) {
 
                     } else {
                         $(document).on("click", "#ConfirmO", function (e) {
-                            payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel).then(function (r) {
-
-                                console.log(r);
-                                doFetch({
-                                    action: 'makeOrder',
-                                    data: orderArrayy,
-                                    //EarnedKobo: totalKobo,
-                                    delPrice: globalDel,
-                                    loc: locOrigin,
-                                    user: localStorage.getItem("bits-user-name"),
-                                    locStr: mapData[1].results[0].formatted_address,
-                                    pointsEarned: {
-                                        "coin": "bits",
-                                        "purchase": totalKobo
-                                    },
-                                    service: parseInt(getBitsWinOpt('s'))
-                                }).then(function (e) {
-                                    $("#appendPushSubs").remove();
-                                    if (e.status == "ok") {
-                                        $('#modalconfirm').modal("close");
-                                        //swal("success!", "your order has been sent!", "success");
-                                        //                                    var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
-                                        M.toast({
-                                            html: 'Your order has been sent!',
-                                            completeCallback: setTimeout(function () {
-                                                M.toast({
-                                                    html: toastHTML
-                                                })
-                                            }, 4000)
-                                        });
-
-                                        //                                    $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox" onclick="startmessage()"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
-                                        clearCart();
-                                    } else {
-                                        //swal("Cancelled", "your order is not sent", "error");
-                                        M.toast({
-                                            html: 'Error! Try again later'
-                                        })
-                                    }
-                                })
-                            })
+                            doMakeOrder(orderArrayy, r, globalDel, locOrigin, localStorage.getItem("bits-user-name"), mapData[1].results[0].formatted_address, {
+                                "coin": "bits",
+                                "purchase": totalKobo
+                            }, parseInt(getBitsWinOpt('s'))).then(function (e) {
+                                console.log(e);
+                            });
                         })
 
                     }
