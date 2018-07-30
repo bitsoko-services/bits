@@ -113,12 +113,15 @@ function servicePageLoader() {
                     $('.prdTabs').tabs();
                     //Get Tab Content
                     M.Tabs.getInstance(document.querySelector(".prdTabs")).options.onShow = function (e) {
+                        console.log($(e)[0].childNodes)
                         if ($(e)[0].childNodes.length == 0) {
                             doFetch({
                                 action: 'getProducts',
                                 store: localStorage.getItem("bits-active-service"),
                                 tab: $(e)[0].id
-                            }).then(function (e) {});
+                            }).then(function (e) {
+                            
+                            });
                         }
                     };
                 }, 3000)
@@ -564,7 +567,7 @@ function makeOrder(orderArrayy, orderLoc) {
 
                     var locOrigin = e.coords.latitude + ',' + e.coords.longitude
 
-                    var payByToken = false;
+                    var payByToken = true;
 
                     get_orderArrayy = orderArrayy;
                     get_loc = locOrigin;

@@ -91,7 +91,7 @@ function starting() {
     showuser();
     showlogintoast();
     loadProfData();
-    loadWallet();
+//    loadWallet();
     initializePdf();
     callMerchant();
     $(".collapsible").collapsible();
