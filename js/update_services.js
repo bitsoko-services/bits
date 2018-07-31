@@ -475,6 +475,7 @@ function populateService(mDet) {
         }
     } else {
         $('.merchantsProducts').removeClass('displayNone');
+//        prodCatArray = []
         // constract categories
         try {
             if (productCategory.length == 0) {
@@ -487,7 +488,8 @@ function populateService(mDet) {
                 $('.prdTabs').html("");
                 $('.prdCatCont').html("");
                 $('.prdTabs').append('<li class="tab col s3" style=""><a href="#allPrds" class="active">more</a></li>');
-                $('.prdCatCont').append('<div id="allPrds" class="col s12 allPrds"></div>')
+                $('.prdCatCont').append('<div id="allPrds" class="col s12 allPrds"></div>');
+                prodCatArray = []
                 for (var iii in x) {
                     $('.prdTabs').prepend('<li class="tab col s3 currentTab" style="" tab="' + x[iii].name + '"><a href="#' + x[iii].name + '" style="">' + x[iii].name + '</a></li>');
                     $('.prdCatCont').prepend('<div id="' + x[iii].name + '" class="col s12"></div>')
