@@ -501,6 +501,7 @@ function showuserNumber() {
 //---------------function to check if wallet is anon----------------------------------------------------------------------------------------------------
 function checkanon() {
     if (localStorage.getItem('bits-user-name') == null) {
+        sessionStorage.clear();
         return false;
     } else {
         return true;
