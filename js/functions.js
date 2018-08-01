@@ -163,15 +163,18 @@ function servicePageLoader() {
                     $('.prdTabs').tabs();
                     //Get Tab Content
                     M.Tabs.getInstance(document.querySelector(".prdTabs")).options.onShow = function (e) {
+                        var clickedTab = $(e).attr("id")
                         console.log($(e)[0].childNodes)
                         if ($(e)[0].childNodes.length == 0) {
-                            doFetch({
-                                action: 'getProducts',
-                                store: localStorage.getItem("bits-active-service"),
-                                tab: $(e)[0].id
-                            }).then(function (e) {
-
-                            });
+                            getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function (event) {
+                                var prodList = JSON.parse(event.target.result).list
+                                console.log(prodList)
+                                for (x in prodList) {
+                                    if (prodList[x].productCategory == clickedTab) {
+                                        $("#" + clickedTab + "").append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="https://bitsoko.co.ke' + prodList[x].imagePath + ' 35w" src="https://bitsoko.co.ke' + prodList[x].imagePath + '" data-caption="' + prodList[x].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + prodList[x].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + prodList[x].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + prodList[x].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + prodList[x].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + prodList[x].id + '" class="bitsInputQty" price="' + prodList[x].price + '" pid="' + prodList[x].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
+                                    }
+                                }
+                            }
                         }
                     };
                 }, 3000)
@@ -192,11 +195,19 @@ function servicePageLoader() {
 
                         //Get Tab Content
                         M.Tabs.getInstance(document.querySelector(".prdTabs")).options.onShow = function (e) {
-                            doFetch({
-                                action: 'getProducts',
-                                store: localStorage.getItem("bits-active-service"),
-                                tab: $(e)[0].id
-                            }).then(function (e) {})
+                            var clickedTab = $(e).attr("id")
+                            console.log($(e)[0].childNodes)
+                            if ($(e)[0].childNodes.length == 0) {
+                                getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function (event) {
+                                    var prodList = JSON.parse(event.target.result).list
+                                    console.log(prodList)
+                                    for (x in prodList) {
+                                        if (prodList[x].productCategory == clickedTab) {
+                                            $("#" + clickedTab + "").append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="https://bitsoko.co.ke' + prodList[x].imagePath + ' 35w" src="https://bitsoko.co.ke' + prodList[x].imagePath + '" data-caption="' + prodList[x].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + prodList[x].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + prodList[x].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + prodList[x].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + prodList[x].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + prodList[x].id + '" class="bitsInputQty" price="' + prodList[x].price + '" pid="' + prodList[x].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
+                                        }
+                                    }
+                                }
+                            }
                         };
                     }, 3000)
 
@@ -235,30 +246,38 @@ function servicePageLoader() {
             service: getBitsWinOpt('s')
         }).then(function (e) {
             if (e.status == "ok") {
+
+
+
+
                 var prdList = e.data.list
                 getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function (event) {
                     if (event.target.result == undefined) {
-
-                        var added = false;
                         setTimeout(function (e) {
+                            $('.allPrds').html('')
 
                             for (var ii = 0; ii < prdList.length; ++ii) {
-                                prdList[ii].productCategory
-
                                 for (var iii in prodCatArray) {
                                     if (prodCatArray[iii] == prdList[ii].productCategory) {
-                                        $("#" + prodCatArray[iii] + "").append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="https://bitsoko.co.ke' + prdList[ii].imagePath + ' 35w" src="https://bitsoko.co.ke' + prdList[ii].imagePath + '" data-caption="' + prdList[ii].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + prdList[ii].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + prdList[ii].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + prdList[ii].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + prdList[ii].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + prdList[ii].id + '" class="bitsInputQty" price="' + prdList[ii].price + '" pid="' + prdList[ii].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
-                                        added = true;
+                                        appendProd(prdList[ii].id);
                                     }
                                 }
-                                if (!added) {
-                                    $('.allPrds').append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="https://bitsoko.co.ke' + prdList[ii].imagePath + ' 35w"  src="https://bitsoko.co.ke' + prdList[ii].imagePath.replace('.png', '.webp') + '" data-caption="' + prdList[ii].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + prdList[ii].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + prdList[ii].productCategory + "-" + prodCatArray[iii] + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + prdList[ii].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + prdList[ii].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + prdList[ii].id + '" class="bitsInputQty" price="' + prdList[ii].price + '" pid="' + prdList[ii].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
+
+                                var getThis;
+
+                                function appendProd(e) {
+                                    getThis = e;
+                                    if (prdList[ii].id != e) {}
+                                }
+                                if (getThis != prdList[ii].id) {
+                                    $('.allPrds').append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="https://bitsoko.co.ke' + prdList[ii].imagePath + ' 35w" src="https://bitsoko.co.ke' + prdList[ii].imagePath + '" data-caption="' + prdList[ii].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + prdList[ii].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + prdList[ii].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + prdList[ii].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + prdList[ii].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + prdList[ii].id + '" class="bitsInputQty" price="' + prdList[ii].price + '" pid="' + prdList[ii].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
                                 }
                             }
                         }, 1000);
                     }
                 }
                 $(".bits").css("background-color", e.data.theme)
+
                 deliveryRadius = e.data.deliveryRadius
                 var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-' + e.data.id);
                 svReq.onsuccess = function () {
