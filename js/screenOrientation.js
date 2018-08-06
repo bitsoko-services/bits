@@ -15,7 +15,7 @@ function toggleFullScreen() {
 //Prompt user to use app on fullscreen mode
 function fullScreenMode() {
     if (localStorage.getItem("fullScreenPermission") == null) {
-        $("#fullScreenPermission").modal("open");
+//        $("#fullScreenPermission").modal("open");
     } else {
         if (localStorage.getItem("fullScreenPermission") == "true") {
             $("#fullscreenState").prop("checked", true)
