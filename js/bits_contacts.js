@@ -13,7 +13,7 @@ function contact() {
 			//------------------------------------contacts found--------------------------------------------------------------------------------------------
 			document.querySelector('.serviceName').innerHTML = "Contacts";
 			//document.querySelector('.cardimage').src = "https://bitsoko.io/app/images/contactsBanner.png";
-			document.querySelector('.cardLogo').src = "https://bitsoko.co.ke/app/images/services/contacts.png";
+			document.querySelector('.cardLogo').src = "/app/images/services/contacts.png";
 			document.querySelector('.serviceDescription').innerHTML = "All your contacts";
 			var allContacts = JSON.parse(event.target.result);
 			for (var iii = 0; iii < allContacts.length; ++iii) {
@@ -24,7 +24,7 @@ function contact() {
 					var final_url = allContacts[iii].img
 						//$('#contactsImg').removeClass("bits-dis-image");
 				} else {
-					var final_url = 'https://bitsoko.co.ke/bits/images/contacts.png' 
+					var final_url = '/bits/images/contacts.png' 
 				}
 				$('.contactsListHolder').append('<li onclick="selectContact(' + id + ')" class="collection-item waves-effect avatar" style="background-color: inherit; width: 100%;"><span class="title"><a id="contactName" class="serviceListTitle " style="margin-left: 20px;"> ' + allContacts[iii].name + ' </a><img src="' + final_url + '" alt="" id="contactsImg" class="circle bits-dis-image"><span class="title"><span class="serviceListTitle"></span></span><p class="serviceListFirstline">' + allContacts[iii].contact + ' <br class="servicelistSeccondline"> </li>');
 			}

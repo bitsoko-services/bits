@@ -6,6 +6,77 @@ var get_loc;
 var get_locStr;
 var get_pointsEarned;
 
+async function doMakeOrder(orderArrayy, res, globalDel, locOrigin, uid, addrr, points, sid) {
+
+    await doFetch({
+        action: 'makeOrder',
+        data: orderArrayy,
+        trHash: res,
+        delPrice: globalDel,
+        loc: locOrigin,
+        user: uid,
+        locStr: addrr,
+        pointsEarned: points,
+        service: sid
+    }).then(function (e) {
+        $("#appendPushSubs").remove();
+        $("#products").html("");
+
+        if (e.status == "ok") {
+            $('#modalconfirm').modal('close');
+            //swal("success!", "your order has been sent!", "success");
+            //                                                        var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
+            M.toast({
+                html: 'Your order has been sent!',
+                completeCallback: setTimeout(function () {
+                    M.toast({
+                        html: toastHTML
+                    })
+                }, 4000)
+            });
+            //                                                        $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input onclick="startPushManager();" class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
+            clearCart();
+            return;
+        } else {
+            //swal("Cancelled", "your order is not sent", "error");
+            M.toast({
+                html: 'Your order is not sent!'
+            })
+            return;
+        }
+    }).catch(function (err) {
+        console.log(res);
+        //failed Order
+        M.toast({
+            html: 'Error!! Try again later'
+        });
+        $('#modalconfirm').modal('close');
+        clearCart();
+        return;
+    });
+}
+
+async function payUsingMobileMoney(amount) {
+
+
+    document.getElementById("insufficientFundsModal").style.display = "block";
+
+    document.getElementById('creditTopup').innerHTML = amount;
+
+    doFetch({
+        action: 'getInsufficientFundsOrderbook',
+        contract: "0xb72627650f1149ea5e54834b2f468e5d430e67bf",
+        rate: allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate * baseX,
+        total: amount,
+        countryCode: baseCd
+    }).then(function (e) {
+        document.getElementById('creditTopupNo').innerHTML = amount;
+    });
+
+    return '07000000000'
+
+}
+
 //Check Browser Compatibility
 function checkBrowser() {
     if (!!window.chrome) {
@@ -48,7 +119,7 @@ function callMerchant() {
                 $("#initFeedbackModal").css("display", "none");
                 $("#merchPhoneNo").css("display", "none");
                 showSokoBtn();
-                $("#deliveryModalBtn").css("padding-right","15px");
+                $("#deliveryModalBtn").css("padding-right", "15px");
             }
 
         });
@@ -90,7 +161,24 @@ function servicePageLoader() {
 
                 setTimeout(function (e) {
                     $('.prdTabs').tabs();
-                    //                    var productTabs = M.Tabs.init(document.querySelector('.prdTabs'), {});
+                    //Get Tab Content
+                    M.Tabs.getInstance(document.querySelector(".prdTabs")).options.onShow = function (e) {
+                        var clickedTab = $(e).attr("id")
+                        console.log($(e)[0].childNodes)
+                        if ($(e)[0].childNodes.length == 0) {
+                            getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function (event) {
+                                var prodList = JSON.parse(event.target.result).list
+                                console.log(prodList)
+                                for (x in prodList) {
+                                    if (prodList[x].productCategory == clickedTab) {
+                                        $("#" + clickedTab + "").append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="https://bitsoko.io' + prodList[x].imagePath + ' 35w" src="https://bitsoko.io' + prodList[x].imagePath + '" data-caption="' + prodList[x].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + prodList[x].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + prodList[x].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + prodList[x].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + prodList[x].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + prodList[x].id + '" class="bitsInputQty" price="' + prodList[x].price + '" pid="' + prodList[x].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
+                                        
+                                        $('#prod-' + prodList[x].id + '-counter').handleCounter();
+                                    }
+                                }
+                            }
+                        }
+                    };
                 }, 3000)
             } catch (err) {
                 console.log(err)
@@ -106,7 +194,24 @@ function servicePageLoader() {
 
                     setTimeout(function (e) {
                         $('.prdTabs').tabs();
-                        //                        var productTabs = M.Tabs.init(document.querySelector('.prdTabs'), {});
+
+                        //Get Tab Content
+                        M.Tabs.getInstance(document.querySelector(".prdTabs")).options.onShow = function (e) {
+                            var clickedTab = $(e).attr("id")
+                            console.log($(e)[0].childNodes)
+                            if ($(e)[0].childNodes.length == 0) {
+                                getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function (event) {
+                                    var prodList = JSON.parse(event.target.result).list
+                                    console.log(prodList)
+                                    for (x in prodList) {
+                                        if (prodList[x].productCategory == clickedTab) {
+                                            $("#" + clickedTab + "").append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="https://bitsoko.io' + prodList[x].imagePath + ' 35w" src="https://bitsoko.io' + prodList[x].imagePath + '" data-caption="' + prodList[x].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + prodList[x].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + prodList[x].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + prodList[x].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + prodList[x].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + prodList[x].id + '" class="bitsInputQty" price="' + prodList[x].price + '" pid="' + prodList[x].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
+                                            $('#prod-' + prodList[x].id + '-counter').handleCounter();
+                                        }
+                                    }
+                                }
+                            }
+                        };
                     }, 3000)
 
                     var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(JSON.parse(newstr).res), 'bits-merchant-id-' + getBitsWinOpt('s'));
@@ -144,6 +249,39 @@ function servicePageLoader() {
             service: getBitsWinOpt('s')
         }).then(function (e) {
             if (e.status == "ok") {
+
+
+
+
+                var prdList = e.data.list
+                getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function (event) {
+                    if (event.target.result == undefined) {
+                        setTimeout(function (e) {
+                            $('.allPrds').html('')
+
+                            for (var ii = 0; ii < prdList.length; ++ii) {
+                                for (var iii in prodCatArray) {
+                                    if (prodCatArray[iii] == prdList[ii].productCategory) {
+                                        appendProd(prdList[ii].id);
+                                    }
+                                }
+
+                                var getThis;
+
+                                function appendProd(e) {
+                                    getThis = e;
+                                    if (prdList[ii].id != e) {}
+                                }
+                                if (getThis != prdList[ii].id) {
+                                    $('.allPrds').append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="https://bitsoko.io' + prdList[ii].imagePath + ' 35w" src="https://bitsoko.io' + prdList[ii].imagePath + '" data-caption="' + prdList[ii].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + prdList[ii].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + prdList[ii].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + prdList[ii].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + prdList[ii].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + prdList[ii].id + '" class="bitsInputQty" price="' + prdList[ii].price + '" pid="' + prdList[ii].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
+                                    $('#prod-' + prdList[ii].id + '-counter').handleCounter();
+                                }
+                            }
+                        }, 1000);
+                    }
+                }
+                $(".bits").css("background-color", e.data.theme)
+
                 deliveryRadius = e.data.deliveryRadius
                 var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-' + e.data.id);
                 svReq.onsuccess = function () {
@@ -151,6 +289,20 @@ function servicePageLoader() {
                         if (!populated) {
                             populateService(e.data);
                             populated = true;
+                        }
+                        setTimeout(function () {
+                            fullScreenMode()
+                        }, 3000);
+                        if (localStorage.getItem("fullScreenPermission") == null) {} else if (localStorage.getItem("fullScreenPermission") == "true") {
+                            if ($(".fullscreenToast").length >= 1) {
+                                $(".fullscreenToast").remove();
+                            }
+                            var toastHTML = '<span>Enable fullscreen mode</span><button class="btn-flat toast-action" onclick="fullScreenMode();">ok</button>';
+                            M.toast({
+                                html: toastHTML,
+                                displayLength: 5000,
+                                classes: "fullscreenToast"
+                            });
                         }
                     } catch (err) {
                         ////console.log('service not found in db. perhaps try loading from server AGAIN!!')
@@ -160,6 +312,11 @@ function servicePageLoader() {
                     setTimeout(function () {
                         servicePageLoader();
                     }, 3000);
+                }
+                if (window.matchMedia('(display-mode: standalone)').matches) {
+                    $("#saveStoreHomeScreen").css("display", "none");
+                } else {
+
                 }
             } else {
                 $(".serviceListHolder").hide();
@@ -305,7 +462,7 @@ function showuser() {
                     $("#initFeedbackModal").css("display", "none")
                     $("#merchPhoneNo").css("display", "none")
                     showSokoBtn();
-                    $("#deliveryModalBtn").css("padding-right","15px");
+                    $("#deliveryModalBtn").css("padding-right", "15px");
                 }
             } catch (err) {
                 console.log(err)
@@ -367,6 +524,7 @@ function showuserNumber() {
 //---------------function to check if wallet is anon----------------------------------------------------------------------------------------------------
 function checkanon() {
     if (localStorage.getItem('bits-user-name') == null) {
+        sessionStorage.clear();
         return false;
     } else {
         return true;
@@ -528,63 +686,23 @@ function makeOrder(orderArrayy, orderLoc) {
                                             var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
                                             transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', "0xb72627650f1149ea5e54834b2f468e5d430e67bf", totCost, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate).then(function (res) {
                                                 console.log(res);
-
-                                                doFetch({
-                                                    action: 'makeOrder',
-                                                    data: orderArrayy,
-                                                    trHash: res,
-                                                    delPrice: globalDel,
-                                                    loc: locOrigin,
-                                                    user: localStorage.getItem("bits-user-name"),
-                                                    locStr: mapData[1].results[0].formatted_address,
-                                                    pointsEarned: {
-                                                        "coin": "bits",
-                                                        "purchase": totalKobo
-                                                    },
-                                                    service: parseInt(getBitsWinOpt('s'))
-                                                }).then(function (e) {
-                                                    $("#appendPushSubs").remove();
-                                                    $("#products").html("");
-
-                                                    if (e.status == "ok") {
-                                                        $('#modalconfirm').modal('close');
-                                                        //swal("success!", "your order has been sent!", "success");
-                                                        //                                                        var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
-                                                        M.toast({
-                                                            html: 'Your order has been sent!',
-                                                            completeCallback: setTimeout(function () {
-                                                                M.toast({
-                                                                    html: toastHTML
-                                                                })
-                                                            }, 4000)
-                                                        });
-                                                        //                                                        $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input onclick="startPushManager();" class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
-                                                        clearCart();
-                                                    } else {
-                                                        //swal("Cancelled", "your order is not sent", "error");
-                                                        M.toast({
-                                                            html: 'Your order is not sent!'
-                                                        })
-                                                    }
-                                                }).catch(function (err) {
-                                                    console.log(res);
-                                                    //failed Order
-                                                    M.toast({
-                                                        html: 'Error!! Try again later'
-                                                    });
-                                                    $('#modalconfirm').modal('close');
-                                                    clearCart();
+                                                doMakeOrder(orderArrayy, res, globalDel, locOrigin, localStorage.getItem("bits-user-name"), mapData[1].results[0].formatted_address, {
+                                                    "coin": "bits",
+                                                    "purchase": totalKobo
+                                                }, parseInt(getBitsWinOpt('s'))).then(function (e) {
+                                                    console.log(e);
                                                 });
+
                                             }).catch(function (err) {
                                                 console.log(err);
-                                                $("#creditTopup").text($("#delPrdTotal")[0].innerHTML)
-                                                $("#insufficientFundsModal").css("display", "block")
+                                                // $("#creditTopup").text($("#delPrdTotal")[0].innerHTML)
+
+                                                payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
                                                 $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
                                             })
 
                                         } else {
-                                            $("#creditTopup").text($("#totals")[0].innerHTML)
-                                            $("#insufficientFundsModal").css("display", "block")
+                                            payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
                                             $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
                                         }
                                     } else {
@@ -612,49 +730,21 @@ function makeOrder(orderArrayy, orderLoc) {
                         })
                     }
 
+
+
                     if (payByToken == true) {
                         payUsingToken()
 
                     } else {
                         $(document).on("click", "#ConfirmO", function (e) {
-                            doFetch({
-                                action: 'makeOrder',
-                                data: orderArrayy,
-                                //EarnedKobo: totalKobo,
-                                delPrice: globalDel,
-                                loc: locOrigin,
-                                user: localStorage.getItem("bits-user-name"),
-                                locStr: mapData[1].results[0].formatted_address,
-                                pointsEarned: {
-                                    "coin": "bits",
-                                    "purchase": totalKobo
-                                },
-                                service: parseInt(getBitsWinOpt('s'))
-                            }).then(function (e) {
-                                $("#appendPushSubs").remove();
-                                if (e.status == "ok") {
-                                    $('#modalconfirm').modal("close");
-                                    //swal("success!", "your order has been sent!", "success");
-                                    //                                    var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
-                                    M.toast({
-                                        html: 'Your order has been sent!',
-                                        completeCallback: setTimeout(function () {
-                                            M.toast({
-                                                html: toastHTML
-                                            })
-                                        }, 4000)
-                                    });
-
-                                    //                                    $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox" onclick="startmessage()"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
-                                    clearCart();
-                                } else {
-                                    //swal("Cancelled", "your order is not sent", "error");
-                                    M.toast({
-                                        html: 'Error! Try again later'
-                                    })
-                                }
-                            })
+                            doMakeOrder(orderArrayy, r, globalDel, locOrigin, localStorage.getItem("bits-user-name"), mapData[1].results[0].formatted_address, {
+                                "coin": "bits",
+                                "purchase": totalKobo
+                            }, parseInt(getBitsWinOpt('s'))).then(function (e) {
+                                console.log(e);
+                            });
                         })
+
                     }
                     $(".confirmText").html("")
                     $(".confirmText").append()
@@ -776,7 +866,7 @@ function getProdss(orderArrayx, costofItems) {
                     //products
                     //$("#products").html("")
                     //	$("#products").append('<div class="chip">' + '<img src="' + r[o].imagePath + '" ">' + orderArrayx[oo].count + ' ' + r[o].name + ' at '+ r[o].price+'/=</div>')
-                    $("#products").append('<li class="collection-item avatar"style="padding: 3px;margin: 0px;background: none !important;min-height: 10px;"><div class="row" style="line-height: 30px;margin-bottom: 0px;"> <div class="col s2">' + orderArrayx[oo].count + 'X ' + '</div><div class="col s2"><img  srcset="https://bitsoko.co.ke' + srcSetPth + ' 35w" src="' + r[o].imagePath + '"  style="height: 30px; width: 30px;border-radius:50%;"></div><div class="col s6" style="padding:0px;"><span class="title truncate" style="width: 95%;">' + r[o].name + ' </span></div><div class="col s2"><div  class="right" style="font-size:0.7em;">' + r[o].price * orderArrayx[oo].count + '/=</div></div></div></li>')
+                    $("#products").append('<li class="collection-item avatar"style="padding: 3px;margin: 0px;background: none !important;min-height: 10px;"><div class="row" style="line-height: 30px;margin-bottom: 0px;"> <div class="col s2">' + orderArrayx[oo].count + 'X ' + '</div><div class="col s2"><img  srcset="https://bitsoko.io' + srcSetPth + ' 35w" src="' + r[o].imagePath + '"  style="height: 30px; width: 30px;border-radius:50%;"></div><div class="col s6" style="padding:0px;"><span class="title truncate" style="width: 95%;">' + r[o].name + ' </span></div><div class="col s2"><div  class="right" style="font-size:0.7em;">' + r[o].price * orderArrayx[oo].count + '/=</div></div></div></li>')
                 }
             }
         }
