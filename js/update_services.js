@@ -373,6 +373,8 @@ function populateService(mDet) {
         $(".merchantsPromotions").removeClass("displayNone")
         var nnew = [];
         for (var ii = 0, nnew = nnew, subs = subs; ii < mDet.promotions.length; ++ii) {
+            console.log("==============e.promotions[ii]=============")
+            console.log(mDet.promotions[ii])
             checkPayments();
             bitsTheme(mDet.theme);
             var dailyCost = (parseInt(mDet.promotions[ii].discount) / 100) * mDet.promotions[ii].promoPrice;
@@ -475,7 +477,7 @@ function populateService(mDet) {
         }
     } else {
         $('.merchantsProducts').removeClass('displayNone');
-//        prodCatArray = []
+        //        prodCatArray = []
         // constract categories
         try {
             if (productCategory.length == 0) {

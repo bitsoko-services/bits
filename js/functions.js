@@ -5,6 +5,7 @@ var get_orderArrayy;
 var get_loc;
 var get_locStr;
 var get_pointsEarned;
+var insufficientOrderNum;
 
 async function doMakeOrder(orderArrayy, res, globalDel, locOrigin, uid, addrr, points, sid) {
 
@@ -70,6 +71,10 @@ async function payUsingMobileMoney(amount) {
         total: amount,
         countryCode: baseCd
     }).then(function (e) {
+        if(e.status == "ok"){
+            insufficientOrderNum = e.data.num
+            $("#creditTopupNo").html(insufficientOrderNum)
+        }
         document.getElementById('creditTopupNo').innerHTML = amount;
     });
 
@@ -717,6 +722,7 @@ function makeOrder(orderArrayy, orderLoc) {
 
                                     }
                                 }).catch(function (e) {
+                                    console.log(e)
                                     document.getElementById('notificationsModal').style.display = "block";
                                 })
                             } else {
@@ -1059,8 +1065,10 @@ setTimeout(function (e) {
 
 function insufficientOrder() {
     doFetch({
-        action: 'insufficientOrder',
-        transactionCode: $("#trnscode").val()
+        action: 'setInsufficientFundsOrder',
+        transactionCode: $("#trnscode").val(),
+        uid:localStorage.getItem("bits-user-name"),
+        num: insufficientOrderNum
     }).then(function (e) {
         if (e.status == "ok") {
             $("#insufficientOrderStatus").html('Transaction code confirmed successfully')

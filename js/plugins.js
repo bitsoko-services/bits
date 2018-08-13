@@ -16,17 +16,17 @@ setTimeout(function () {
         setTimeout(function () {
             $('body').addClass('loaded');
         }, 200);
-        $('.modal').modal();
+//        $('.modal').modal();
 
         // Materialize Tabs
-        $('.tab-demo').show().tabs();
-        $('.tab-demo-active').show().tabs();
-
-        // Materialize Parallax
-        $('.parallax').parallax();
-
-        // Collapsible options
-        $('.collapsible').collapsible();
+//        $('.tab-demo').show().tabs();
+//        $('.tab-demo-active').show().tabs();
+//
+//        // Materialize Parallax
+//        $('.parallax').parallax();
+//
+//        // Collapsible options
+//        $('.collapsible').collapsible();
 
     });
 
