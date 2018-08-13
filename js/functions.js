@@ -720,17 +720,16 @@ function makeOrder(orderArrayy, orderLoc) {
                                     document.getElementById('notificationsModal').style.display = "block";
                                 })
                             } else {
-                                var toastHTML = '<span>Unlock wallet to checkout</span><button class="btn-flat toast-action walletUserUnlock unlockWalToast">Unlock</button>';
+                                var toastHTML = '<span>Unlock wallet to checkout</span><button class="btn-flat toast-action walletUserUnlock unlockWalToast" onclick="walletStatus()">Unlock</button>';
                                 if ($(".unlockWalletToast").length >= 1) {
                                     $(".unlockWalletToast").remove()
-                                } else {
-                                    M.toast({
-                                        html: toastHTML,
-                                        classes: "unlockWalletToast",
-                                        displayLength: 500000,
-                                        completeCallback: $("#ConfirmO").html("confirm")
-                                    });
                                 }
+                                M.toast({
+                                    html: toastHTML,
+                                    classes: "unlockWalletToast",
+                                    displayLength: 500000,
+                                    completeCallback: $("#ConfirmO").html("confirm")
+                                });
                             }
                             return false;
                         })
