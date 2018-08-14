@@ -71,7 +71,7 @@ async function payUsingMobileMoney(amount) {
         total: amount,
         countryCode: baseCd
     }).then(function (e) {
-        if(e.status == "ok"){
+        if (e.status == "ok") {
             insufficientOrderNum = e.data.num
             $("#creditTopupNo").html(insufficientOrderNum)
         }
@@ -1014,8 +1014,10 @@ function walletStatus() {
             M.toast({
                 html: 'Wallet unlocked successfully'
             });
-            $("#ConfirmO").html("Confirm")
-            $("#ConfirmO").removeAttr("disabled")
+            $("#ConfirmO").html("Confirm");
+            $("#ConfirmO").removeAttr("disabled");
+            $("#chooseWalletModal").css("display", "none")
+            $(".unlockWalletToast").remove();
         }).catch(function (err) {
             console.log(err)
             M.toast({
@@ -1032,6 +1034,10 @@ function walletStatus() {
             M.toast({
                 html: 'Wallet unlocked successfully'
             });
+            $("#ConfirmO").html("Confirm");
+            $("#ConfirmO").removeAttr("disabled");
+            $("#chooseWalletModal").css("display", "none");
+            $(".unlockWalletToast").remove();
         }).catch(function (err) {
             console.log(err)
             M.toast({
@@ -1067,7 +1073,7 @@ function insufficientOrder() {
     doFetch({
         action: 'setInsufficientFundsOrder',
         transactionCode: $("#trnscode").val(),
-        uid:localStorage.getItem("bits-user-name"),
+        uid: localStorage.getItem("bits-user-name"),
         num: insufficientOrderNum
     }).then(function (e) {
         if (e.status == "ok") {
