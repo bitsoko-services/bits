@@ -214,6 +214,9 @@ setTimeout(function (e) {
         var newPromoVal = JSON.parse(promoInput.val()) + 1
         var minusBtn = $(this).parent().parent().find(".promoMinusBtn")
         console.log(minusBtn)
+        var promoPercOff = $(this).parent().parent().parent().parent().parent().find(".topdataVal");
+        var percIncr = $(this).parent().parent().parent().parent().parent().find(".topdataVal").attr('percOff');
+        promoPercOff.html(JSON.parse(promoPercOff.html()) + JSON.parse(percIncr))
 
         minusBtn.attr("disabled", false)
         promoInput.val(newPromoVal)
@@ -222,9 +225,12 @@ setTimeout(function (e) {
         var minusBtn = $(this)
         var promoInput = $(this).parent().parent().find(".inputNo");
         var newPromoVal = JSON.parse(promoInput.val()) - 1
+        var promoPercOff = $(this).parent().parent().parent().parent().parent().find(".topdataVal");
+        var percIncr = $(this).parent().parent().parent().parent().parent().find(".topdataVal").attr('percOff');
+        promoPercOff.html(JSON.parse(promoPercOff.html()) - JSON.parse(percIncr))
 
 
-        if (promoInput.val() == 1) {
+        if (promoInput.val() == 2) {
             minusBtn.attr("disabled", true)
         }
         promoInput.val(newPromoVal)
@@ -372,15 +378,27 @@ function populateService(mDet) {
         $('.merchPromo').html("");
         $(".merchantsPromotions").removeClass("displayNone")
         var nnew = [];
+        var getPrdItemPrc;
         for (var ii = 0, nnew = nnew, subs = subs; ii < mDet.promotions.length; ++ii) {
             console.log("==============e.promotions[ii]=============")
-            console.log(mDet.promotions[ii])
+            var promoDiscount = mDet.promotions[ii].discount
+            var promoItems = JSON.parse(mDet.promotions[ii].promoItems)
+            var totalPrc = 0
+            for (id in promoItems) {
+                for (price in mDet.list) {
+                    if (promoItems[id] == mDet.list[price].id) {
+                        totalPrc += parseInt(mDet.list[price].price)
+                    }
+                }
+            }
+            var percOff = (totalPrc * mDet.promotions[ii].discount) / 100
+
             checkPayments();
             bitsTheme(mDet.theme);
             var dailyCost = (parseInt(mDet.promotions[ii].discount) / 100) * mDet.promotions[ii].promoPrice;
             $('.merchPromo').append('<li class="avatar bits-max promo-collection ">' +
-                '<a href="#" id="burst-12" class="waves-effect waves-light accent-2"><span style=""class="topdata">' + mDet.promotions[ii].discount +
-                ' % <br/> off</span></a><div class="container1"><img src="' + mDet.promotions[ii].promoBanner +
+                '<a href="#" id="burst-12" class="waves-effect waves-light accent-2"><span style=""class="topdata"><span class="topdataVal" percOff="' + percOff + '">' + percOff +
+                '</span><br/> off</span></a><div class="container1"><img src="' + mDet.promotions[ii].promoBanner +
                 '" style="margin-top:-50px ; height: 92px; width: 100%;" data-caption="' + mDet.promotions[ii].promoName + '" alt="' + mDet.promotions[ii].promoDesc +
                 '" class="materialboxed p' + mDet.promotions[ii].id + '"><div class="overlaypromo"><div class="text">' + mDet.promotions[ii].promoDesc +
                 '</div></div></div><div class="serviceListTitle bits-ellipsis" style="margin-top: ;width: 100%;position: relative;text-align: center;background: rgba(255, 255, 255, 0.87);"> ' + mDet.promotions[ii].promoName +
