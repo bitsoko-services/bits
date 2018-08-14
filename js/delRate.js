@@ -51,11 +51,27 @@ function finalCost(costofItems) {
 
                     console.log(dist)
                     if (dist > deliveryRadius.max) {
-//                        M.toast({
-//                            html: 'Ooops! You are out of radius'
-//                        })
-//                        $("#modalconfirm").modal("close");
-//                        clearCart();
+                        //                        M.toast({
+                        //                            html: 'Ooops! You are out of radius'
+                        //                        })
+                        //                        $("#modalconfirm").modal("close");
+                        //                        clearCart();
+                        //--rates
+                        var rates = Math.ceil(d * distance);
+
+                        globalDel = rates;
+
+                        //console.log(y);
+                        //add delivery rate to totals 
+                        var divObj = document.getElementById("totals");
+                        var totalCost = parseInt(divObj.innerHTML) + rates
+
+                        //else{Materialize.toast('your order is more than 500KSH ', 1000);}
+
+                        //localStorage.setItem('bits-merchant'+parseInt(getBitsWinOpt('s'))+'-Total cost',totalCost);
+                        $(".confirmText").html('Total: ' + totalCost + '<span class=""> /=</span></span>')
+                        $(".totals2").html(parseInt(divObj.innerHTML) + '<span class=""> /=</span></span>')
+                        $(".del").html(rates + '<span class=""> /=</span></span>')
                     } else if (dist < deliveryRadius.min) {
                         //--rates
                         var rates = Math.ceil(d * distance);
