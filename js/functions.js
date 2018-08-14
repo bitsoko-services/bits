@@ -1014,17 +1014,15 @@ function walletStatus() {
             M.toast({
                 html: 'Wallet unlocked successfully'
             });
-            $("#ConfirmO").html("Confirm");
-            $("#ConfirmO").removeAttr("disabled");
-            $("#chooseWalletModal").css("display", "none")
-            $(".unlockWalletToast").remove();
-
             setTimeout(function () {
                 fetchRates().then(function (e) {
                     updateEarnedTokens();
+                    $("#ConfirmO").html("Confirm");
+                    $("#ConfirmO").removeAttr("disabled");
+                    $("#chooseWalletModal").css("display", "none");
+                    $(".unlockWalletToast").remove();
                 })
-            }, 3000);
-
+            }, 1000);
         }).catch(function (err) {
             console.log(err)
             M.toast({
@@ -1041,16 +1039,15 @@ function walletStatus() {
             M.toast({
                 html: 'Wallet unlocked successfully'
             });
-            $("#ConfirmO").html("Confirm");
-            $("#ConfirmO").removeAttr("disabled");
-            $("#chooseWalletModal").css("display", "none");
-            $(".unlockWalletToast").remove();
-
             setTimeout(function () {
                 fetchRates().then(function (e) {
                     updateEarnedTokens();
+                    $("#ConfirmO").html("Confirm");
+                    $("#ConfirmO").removeAttr("disabled");
+                    $("#chooseWalletModal").css("display", "none");
+                    $(".unlockWalletToast").remove();
                 })
-            }, 3000);
+            }, 1000);
         }).catch(function (err) {
             console.log(err)
             M.toast({
