@@ -51,11 +51,11 @@ function finalCost(costofItems) {
 
                     console.log(dist)
                     if (dist > deliveryRadius.max) {
-                        M.toast({
-                            html: 'Ooops! You are out of radius'
-                        })
-                        $("#modalconfirm").modal("close");
-                        clearCart();
+//                        M.toast({
+//                            html: 'Ooops! You are out of radius'
+//                        })
+//                        $("#modalconfirm").modal("close");
+//                        clearCart();
                     } else if (dist < deliveryRadius.min) {
                         //--rates
                         var rates = Math.ceil(d * distance);
