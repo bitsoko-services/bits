@@ -1045,6 +1045,12 @@ function walletStatus() {
             $("#ConfirmO").removeAttr("disabled");
             $("#chooseWalletModal").css("display", "none");
             $(".unlockWalletToast").remove();
+
+            setTimeout(function () {
+                fetchRates().then(function (e) {
+                    updateEarnedTokens();
+                })
+            }, 3000);
         }).catch(function (err) {
             console.log(err)
             M.toast({
