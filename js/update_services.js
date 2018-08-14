@@ -380,7 +380,6 @@ function populateService(mDet) {
         var nnew = [];
         var getPrdItemPrc;
         for (var ii = 0, nnew = nnew, subs = subs; ii < mDet.promotions.length; ++ii) {
-            console.log("==============e.promotions[ii]=============")
             var promoDiscount = mDet.promotions[ii].discount
             var promoItems = JSON.parse(mDet.promotions[ii].promoItems)
             var totalPrc = 0
