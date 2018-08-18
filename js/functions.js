@@ -1074,15 +1074,10 @@ setTimeout(function (e) {
                     
                     // Listen for any clicks
                     wishlistButton.addEventListener('click', function (ev) {
-                        if (navigator.share !== undefined) {
+                       
             console.log('AFTER WISHLIST     ',e);
                             // Get the canonical URL from the link tag
                             
-                            // Share it!
-                            navigator.share({
-                                    title: document.title,
-                                    url: '/bits/?s='+getBitsWinOpt('s')+'&wish='+e.oid
-                                }).then(function (e) {
 $('#modalconfirm').modal('close');
             //swal("success!", "your order has been sent!", "success");
             //                                                        var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
@@ -1094,9 +1089,7 @@ $('#modalconfirm').modal('close');
 
                                
                             ev.preventDefault();
-                        } else {
-                            console.log("WEBSHARE, this feature is not supported on your browser");
-                        }
+                       
                     });
     
     
@@ -1120,8 +1113,6 @@ $('#modalconfirm').modal('close');
                                  })
                                 .catch((error) => console.log('Error sharing:', error));
 
-                             })
-                                .catch((error) => console.log('Error sharing:', error));
 
                             
 }
