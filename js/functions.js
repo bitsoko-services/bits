@@ -663,13 +663,14 @@ function makeOrder(orderArrayy, orderLoc) {
             // 	}
             // 	catch (err) {}
             // }
-            getLoc().then(function showPosition(e) {
+            getLoc(orderLoc).then(function showPosition(e) {
                 if ($(".createOrderToast").length >= 1) {
                     setTimeout(function () {
                         $(".createOrderToast").remove()
                     }, 1000)
                 }
-                var mapLocc = orderLoc ? orderLoc : e.coords.latitude + ',' + e.coords.longitude;
+                //var mapLocc = orderLoc ? orderLoc : e.coords.latitude + ',' + e.coords.longitude;
+                var mapLocc = e.coords.latitude + ',' + e.coords.longitude;
                 //console.log(orderLoc, e, mapLocc);
                 getCoordDet(mapLocc).then(function (mapData) {
                     getProdss(orderArrayy);
