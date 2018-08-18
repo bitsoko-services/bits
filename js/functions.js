@@ -1119,7 +1119,7 @@ async function getWishId(){
                                 "purchase": ''
                             }, parseInt(getBitsWinOpt('s')));
      
-    await wishShare();
+    var e=await wishShare(e);
      
      return e;
                             
