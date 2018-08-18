@@ -1114,15 +1114,14 @@ return e;
 
 async function getWishId(){
 
- await doMakeOrder(orderArray, 'wishlist', globalDel, locOrigin, localStorage.getItem("bits-user-name"), get_locStr, {
+ var e=await doMakeOrder(orderArray, 'wishlist', globalDel, locOrigin, localStorage.getItem("bits-user-name"), get_locStr, {
                                 "coin": "bits",
                                 "purchase": ''
-                            }, parseInt(getBitsWinOpt('s'))).then(function (e) {
+                            }, parseInt(getBitsWinOpt('s')));
      
     await wishShare();
      
      return e;
-                            });
                             
 }
 
