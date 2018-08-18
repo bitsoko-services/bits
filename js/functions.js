@@ -1070,16 +1070,11 @@ setTimeout(function (e) {
         $(this).html('<div class="preloader-wrapper active" style="width: 20px; height: 20px; margin: 5px 15px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
     })
     
-         var wishlistButton = document.getElementById('wishlist');
+         var wishlistButton = document.getElementById('wishlistt');
                     
                     // Listen for any clicks
                     wishlistButton.addEventListener('click', function (ev) {
                         if (navigator.share !== undefined) {
- doMakeOrder(orderArray, 'wishlist', globalDel, locOrigin, localStorage.getItem("bits-user-name"), get_locStr, {
-                                "coin": "bits",
-                                "purchase": ''
-                            }, parseInt(getBitsWinOpt('s'))).then(function (e) {
-                                
             console.log('AFTER WISHLIST     ',e);
                             // Get the canonical URL from the link tag
                             
@@ -1100,7 +1095,7 @@ $('#modalconfirm').modal('close');
                                 })
                                 .catch((error) => console.log('Error sharing:', error));
 
-                            });
+                            
                             ev.preventDefault();
                         } else {
                             console.log("WEBSHARE, this feature is not supported on your browser");
@@ -1109,14 +1104,34 @@ $('#modalconfirm').modal('close');
     
     
     
-    
-    
-    
-     $(document).on("click", "#wishlist", function (e) {
-                           
-                        })
 
 }, 8000);
+
+async function wishShare(e){
+console.log(e);
+    // Share it!
+                            navigator.share({
+                                    title: document.title,
+                                    url: '/bits/?s='+getBitsWinOpt('s')+'&wish='+e.oid
+                                }).then(function (e) {
+$('#modalconfirm').modal('close');
+            //swal("success!", "your order has been sent!", "success");
+            //                                                        var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
+            M.toast({
+                html: 'Your wishlist has been sent!'
+            });
+}
+
+async function getWishId(){
+
+ await doMakeOrder(orderArray, 'wishlist', globalDel, locOrigin, localStorage.getItem("bits-user-name"), get_locStr, {
+                                "coin": "bits",
+                                "purchase": ''
+                            }, parseInt(getBitsWinOpt('s'))).then(function (e) {
+     return e;
+                            });
+                            
+}
 
 function insufficientOrder() {
     doFetch({
