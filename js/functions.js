@@ -1074,7 +1074,7 @@ setTimeout(function (e) {
                     
                     // Listen for any clicks
                     wishlistButton.addEventListener('click', function (ev) {
-                      //  if (navigator.share !== undefined) {
+                        if (navigator.share !== undefined) {
  doMakeOrder(orderArray, 'wishlist', globalDel, locOrigin, localStorage.getItem("bits-user-name"), get_locStr, {
                                 "coin": "bits",
                                 "purchase": ''
@@ -1086,7 +1086,7 @@ setTimeout(function (e) {
                             // Share it!
                             navigator.share({
                                     title: document.title,
-                                    url: ''
+                                    url: '/bits/?s='+getBitsWinOpt('s')+'&wish='+e.oid
                                 }).then(function (e) {
 $('#modalconfirm').modal('close');
             //swal("success!", "your order has been sent!", "success");
@@ -1102,9 +1102,9 @@ $('#modalconfirm').modal('close');
 
                             });
                             ev.preventDefault();
-                        //} else {
+                        } else {
                             console.log("WEBSHARE, this feature is not supported on your browser");
-                       // }
+                        }
                     });
     
     
