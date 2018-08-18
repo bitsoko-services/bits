@@ -1104,12 +1104,7 @@ console.log(e);
                                     title: document.title,
                                     url: '/bits/?s='+getBitsWinOpt('s')+'&wish='+e.oid
                                 }).then(function (e) {
-$('#modalconfirm').modal('close');
-            //swal("success!", "your order has been sent!", "success");
-            //                                                        var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
-            M.toast({
-                html: 'Your wishlist has been sent!'
-            });
+return e;
                                  })
                                 .catch((error) => console.log('Error sharing:', error));
 
@@ -1123,6 +1118,9 @@ async function getWishId(){
                                 "coin": "bits",
                                 "purchase": ''
                             }, parseInt(getBitsWinOpt('s'))).then(function (e) {
+     
+    await wishShare();
+     
      return e;
                             });
                             
