@@ -1069,8 +1069,8 @@ setTimeout(function (e) {
     $(document).on("click", ".selectedWallet", function (e) {
         $(this).html('<div class="preloader-wrapper active" style="width: 20px; height: 20px; margin: 5px 15px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
     })
-    
-         var wishlistButton = document.getElementById('wishlistt');
+    /*
+         var wishlistButton = document.getElementById('wishlist');
                     
                     // Listen for any clicks
                     wishlistButton.addEventListener('click', function (ev) {
@@ -1092,7 +1092,7 @@ $('#modalconfirm').modal('close');
                        
                     });
     
-    
+    */
     
 
 }, 8000);
