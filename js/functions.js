@@ -675,7 +675,7 @@ function makeOrder(orderArrayy, orderLoc) {
                 getCoordDet(mapLocc).then(function (mapData) {
                     getProdss(orderArrayy);
 
-                    var locOrigin = e.coords.latitude + ',' + e.coords.longitude
+                    locOrigin = e.coords.latitude + ',' + e.coords.longitude
 
                     var payByToken = true;
 
@@ -1056,7 +1056,8 @@ function walletStatus() {
     }
 }
 
-//Select wallet
+// very delayed event listeners
+// TO-DO move to passive listeners
 setTimeout(function (e) {
     $(document).on("click", ".activateNotifications", function (e) {
         document.getElementById('notificationsModal').style.display = "none";
@@ -1068,7 +1069,16 @@ setTimeout(function (e) {
     $(document).on("click", ".selectedWallet", function (e) {
         $(this).html('<div class="preloader-wrapper active" style="width: 20px; height: 20px; margin: 5px 15px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
     })
-}, 8000)
+     $(document).on("click", "#wishlist", function (e) {
+                            doMakeOrder(orderArray, 'wishlist', globalDel, locOrigin, localStorage.getItem("bits-user-name"), mapData[1].results[0].formatted_address, {
+                                "coin": "bits",
+                                "purchase": ''
+                            }, parseInt(getBitsWinOpt('s'))).then(function (e) {
+                                console.log(e);
+                            });
+                        })
+
+}, 8000);
 
 function insufficientOrder() {
     doFetch({
