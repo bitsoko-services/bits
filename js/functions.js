@@ -1069,13 +1069,51 @@ setTimeout(function (e) {
     $(document).on("click", ".selectedWallet", function (e) {
         $(this).html('<div class="preloader-wrapper active" style="width: 20px; height: 20px; margin: 5px 15px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
     })
-     $(document).on("click", "#wishlist", function (e) {
-                            doMakeOrder(orderArray, 'wishlist', globalDel, locOrigin, localStorage.getItem("bits-user-name"), mapData[1].results[0].formatted_address, {
+    
+         var wishlistButton = document.getElementById('wishlist');
+                    
+                    // Listen for any clicks
+                    wishlistButton.addEventListener('click', function (ev) {
+                        if (navigator.share !== undefined) {
+ doMakeOrder(orderArray, 'wishlist', globalDel, locOrigin, localStorage.getItem("bits-user-name"), mapData[1].results[0].formatted_address, {
                                 "coin": "bits",
                                 "purchase": ''
                             }, parseInt(getBitsWinOpt('s'))).then(function (e) {
-                                console.log(e);
+                                
+            console.log('AFTER WISHLIST     ',e);
+                            // Get the canonical URL from the link tag
+                            
+                            // Share it!
+                            navigator.share({
+                                    title: document.title,
+                                    url: ''
+                                }).then(function (e) {
+$('#modalconfirm').modal('close');
+            //swal("success!", "your order has been sent!", "success");
+            //                                                        var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
+            M.toast({
+                html: 'Your wishlist has been sent!'
+            });
+            //                                                        $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input onclick="startPushManager();" class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
+            clearCart();
+
+                                })
+                                .catch((error) => console.log('Error sharing:', error));
+
                             });
+                            ev.preventDefault();
+                        } else {
+                            console.log("WEBSHARE, this feature is not supported on your browser");
+                        }
+                    });
+    
+    
+    
+    
+    
+    
+     $(document).on("click", "#wishlist", function (e) {
+                           
                         })
 
 }, 8000);
