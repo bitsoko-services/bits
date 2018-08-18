@@ -1074,8 +1074,8 @@ setTimeout(function (e) {
                     
                     // Listen for any clicks
                     wishlistButton.addEventListener('click', function (ev) {
-                        if (navigator.share !== undefined) {
- doMakeOrder(orderArray, 'wishlist', globalDel, locOrigin, localStorage.getItem("bits-user-name"), mapData[1].results[0].formatted_address, {
+                      //  if (navigator.share !== undefined) {
+ doMakeOrder(orderArray, 'wishlist', globalDel, locOrigin, localStorage.getItem("bits-user-name"), get_locStr, {
                                 "coin": "bits",
                                 "purchase": ''
                             }, parseInt(getBitsWinOpt('s'))).then(function (e) {
@@ -1102,9 +1102,9 @@ $('#modalconfirm').modal('close');
 
                             });
                             ev.preventDefault();
-                        } else {
+                        //} else {
                             console.log("WEBSHARE, this feature is not supported on your browser");
-                        }
+                       // }
                     });
     
     
