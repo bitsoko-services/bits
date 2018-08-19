@@ -56,13 +56,6 @@ function finalCost(costofItems) {
                         })
                         $("#modalconfirm").modal("close");
                         clearCart();
-
-                        //else{Materialize.toast('your order is more than 500KSH ', 1000);}
-
-                        //localStorage.setItem('bits-merchant'+parseInt(getBitsWinOpt('s'))+'-Total cost',totalCost);
-                        $(".confirmText").html('Total: ' + totalCost + '<span class=""> /=</span></span>')
-                        $(".totals2").html(parseInt(divObj.innerHTML) + '<span class=""> /=</span></span>')
-                        $(".del").html(rates + '<span class=""> /=</span></span>')
                     } else if (dist < deliveryRadius.min) {
                         //--rates
                         var rates = Math.ceil(d * distance);
