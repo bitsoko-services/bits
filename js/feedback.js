@@ -15,7 +15,7 @@ function feedback() {
             serviceQty = $(this).attr("rate")
         })
         $("#sendFeedback").click(function (e) {
-            if ($("#feedbackText").val().length < 40) {
+            if ($("#feedbackText").val().length < 20) {
                 M.toast({
                     html: 'Text area should have at least 40 characters'
                 })
