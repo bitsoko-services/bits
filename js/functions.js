@@ -1192,7 +1192,8 @@ function insufficientOrder() {
                         "purchase": get_pointsEarned
                     },
                     trHash: "mn-" + $("#mobileNo").val() + "-" + $("#trnscode").val(),
-                    service: parseInt(getBitsWinOpt('s'))
+                    service: parseInt(getBitsWinOpt('s')),
+                    delPrice: globalDel
                 }).then(function (e) {
                     $("#appendPushSubs").remove();
                     $("#products").html("");
