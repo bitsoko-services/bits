@@ -17,7 +17,7 @@ function feedback() {
         $("#sendFeedback").click(function (e) {
             if ($("#feedbackText").val().length < 20) {
                 M.toast({
-                    html: 'Text area should have at least 40 characters'
+                    html: 'Text area should have at least 20 characters'
                 })
             } else {
                 if (checkanon() == false) {
