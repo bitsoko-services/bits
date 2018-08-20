@@ -6,10 +6,12 @@ var get_loc;
 var get_locStr;
 var get_pointsEarned;
 var insufficientOrderNum;
+var wishShareId;
+var buywishlist;
 
 async function doMakeOrder(orderArrayy, res, globalDel, locOrigin, uid, addrr, points, sid) {
 
-    var e=await doFetch({
+    var e = await doFetch({
         action: 'makeOrder',
         data: orderArrayy,
         trHash: res,
@@ -21,21 +23,26 @@ async function doMakeOrder(orderArrayy, res, globalDel, locOrigin, uid, addrr, p
         service: sid
     });
     $("#appendPushSubs").remove();
-        $("#products").html("");
-
-         $('#modalconfirm').modal('close');
-            
-    clearCart();
-        if (e.status == "ok") {
-           
-            return e;
-        } else {
-            //swal("Cancelled", "your order is not sent", "error");
+    if (e.status == "ok") {
+        if ($('#modalconfirm').hasClass('activeWishlist') == true) {
             M.toast({
-                html: 'error creating order. please try again later!'
-            })
-            return e;
+                html: 'Wishlist added successfully.',
+            });
+        } else {
+            $('#modalconfirm').modal('close');
+            M.toast({
+                html: 'Your order has been sent!',
+            });
+            clearCart();
         }
+        return e;
+    } else {
+        //swal("Cancelled", "your order is not sent", "error");
+        M.toast({
+            html: 'error creating order. please try again later!'
+        })
+        return e;
+    }
 }
 
 async function payUsingMobileMoney(amount) {
@@ -310,6 +317,23 @@ function servicePageLoader() {
                 } else {
 
                 }
+
+                //Get wishlist
+                if (getBitsWinOpt('wish') != undefined) {
+                    buywishlist = true
+                    $(".checkoutInfo").addClass("granted");
+                    makeOrder([{
+                            pid: "15",
+                            count: "2"
+                    },
+                        {
+                            pid: "16",
+                            count: "1"
+                    }, {
+                            pid: "28",
+                            count: "1"
+                    }], "-1.1819233999999998,36.936111499999996")
+                }
             } else {
                 $(".serviceListHolder").hide();
                 $(".serviceListCard").hide();
@@ -390,10 +414,12 @@ function loadProfData() {
         try {
             var upData = JSON.parse(event.target.result);
             $(".username-label").html(upData.name);
+            $("#mobileNo").val(upData.phone);
             $(".userProfImg").attr("src", upData.image);
         } catch (err) {
             $(".username-label").html('Anonymous');
             $(".userProfImg").attr("src", '');
+            $("#mobileNo").val("");
         }
     };
     stor.onerror = function () {
@@ -603,13 +629,16 @@ function makeOrder(orderArrayy, orderLoc) {
     var minimumOrder = $("#totals")[0].innerHTML
     $('.delivery').addClass('animated jello');
     //checkanon();
-    if (checkanon() == false) {
-        $('#loginModal').modal({
-            onCloseEnd: function () {
-                $(".delivery").click()
-            }
-        }).modal("open")
-        return;
+    if (buywishlist == true) {} else {
+        if (checkanon() == false) {
+            $('#loginModal').modal({
+                onCloseEnd: function () {
+                    $(".delivery").click()
+                }
+            }).modal("open")
+            return;
+        }
+        buywishlist = false
     }
     if (minimumOrder < 200) {
         if ($("#totals").parent().hasClass("granted") == true) {} else {
@@ -965,6 +994,11 @@ function clearCart() {
     $("#burst-11").css("display", "none");
     $("#products").html("");
     $("#ConfirmO").html("confirm");
+
+    $('#shareWishlist').replaceWith('<a class="white-text modal-action waves-effect waves-green btn-flat" id="ConfirmO" style="border: solid white 1px;">Confirm</a>');
+    $('#modalconfirm').removeClass('activeWishlist');
+    $('#svgHolder').html('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;background: white;padding: 10px;width: 100px;border-radius: 50%;position: absolute;left: 0;/margin-left: auto;*margin-top: -50px; */margin-left:;right: 0;margin: auto;top: -60px;" xml:space="preserve"> <path style="fill:#2986a0;" d="M436.78,485.279C421.056,502.253,398.764,512,375.622,512H136.386 c-23.142,0-45.434-9.747-61.159-26.721c-15.724-16.974-23.732-39.946-21.962-63.028l22.872-288.189 c1.419-18.523,17.124-33.058,35.737-33.058h288.259c18.613,0,34.318,14.535,35.737,33.098l22.862,288.109 C460.512,445.333,452.505,468.305,436.78,485.279z"></path> <path style="fill:#0F5F75;" d="M436.78,485.279C421.056,502.253,398.764,512,375.622,512H255.874V101.004h144.259 c18.613,0,34.318,14.535,35.737,33.098l22.862,288.109C460.512,445.333,452.505,468.305,436.78,485.279z"></path> <path style="fill:#0F5F75;" d="M354.969,98.975v68.946c0,8.287-6.708,14.995-14.995,14.995c-8.277,0-14.995-6.708-14.995-14.995 V98.975c0-38.037-30.939-68.986-68.976-68.986h-0.13c-37.977,0.07-68.846,30.989-68.846,68.986v68.946 c0,8.287-6.718,14.995-14.995,14.995c-8.287,0-14.995-6.708-14.995-14.995V98.975c0-54.531,44.324-98.905,98.835-98.975h0.13 C310.575,0,354.969,44.404,354.969,98.975z"></path> <path style="fill:white;" d="M323.56,275.493l-67.686,67.686l-9.867,9.867c-2.929,2.929-6.768,4.398-10.606,4.398 c-3.839,0-7.677-1.469-10.606-4.398l-36.347-36.347c-5.858-5.858-5.858-15.345,0-21.203c5.858-5.858,15.355-5.858,21.203,0 l25.751,25.741l20.473-20.473l46.484-46.484c5.848-5.848,15.345-5.848,21.203,0C329.418,260.139,329.418,269.635,323.56,275.493z"></path> <path style="fill:white;" d="M323.56,254.281c5.858,5.858,5.858,15.355,0,21.213l-67.686,67.686v-42.415l46.484-46.484 C308.205,248.433,317.702,248.433,323.56,254.281z"></path> <path style="fill:#2986a0;" d="M354.969,98.975v68.946c0,8.287-6.708,14.995-14.995,14.995c-8.277,0-14.995-6.708-14.995-14.995 V98.975c0-38.037-30.939-68.986-68.976-68.986h-0.13V0h0.13C310.575,0,354.969,44.404,354.969,98.975z"></path> </svg>');
+
 }
 var totalKobo
 
@@ -998,6 +1032,7 @@ function walletStatus() {
             });
             setTimeout(function () {
                 fetchRates().then(function (e) {
+                    alert("workin 1")
                     updateEarnedTokens();
                     $("#ConfirmO").html("Confirm");
                     $("#ConfirmO").removeAttr("disabled");
@@ -1023,6 +1058,7 @@ function walletStatus() {
             });
             setTimeout(function () {
                 fetchRates().then(function (e) {
+                    alert("workin 2")
                     updateEarnedTokens();
                     $("#ConfirmO").html("Confirm");
                     $("#ConfirmO").removeAttr("disabled");
@@ -1084,96 +1120,108 @@ $('#modalconfirm').modal('close');
                     });
     
     */
-    
+
 
 }, 8000);
 
-async function wishShare(e){
-console.log(e);
-    // Share it!
-                            navigator.share({
-                                    title: document.title,
-                                    url: '/bits/?s='+getBitsWinOpt('s')+'&wish='+e
-                                }).then(function (e) {
-return e;
-                                 })
-                                .catch((error) => console.log('Error sharing:', error));
-
-
-                            
+async function wishShare(e) {
+    console.log(e);
+    wishShareId = e
 }
 
-async function getWishId(){
+async function getWishId() {
 
- var e=await doMakeOrder(orderArray, 'wishlist', globalDel, locOrigin, localStorage.getItem("bits-user-name"), get_locStr, {
-                                "coin": "bits",
-                                "purchase": ''
-                            }, parseInt(getBitsWinOpt('s')));
-                                                        var toastHTML = '<span>Your wishlist is ready to send</span><button class="btn-flat toast-action" onclick="wishShare('+e.oid+')">Share</button>';
-            M.toast({
-                html: 'Your order has been sent!',
-                completeCallback: setTimeout(function () {
-                    M.toast({
-                        html: toastHTML
-                    })
-                }, 4000)
-            });
-    var e=await wishShare(e.oid);
-     
-     return e;
-                            
+    $('#ConfirmO').html('share');
+    $('#ConfirmO').replaceWith('<button class="white-text btn-flat" id="shareWishlist" style="border: solid white 1px;" onclick="sharewishList()">share</button>');
+    $('#modalconfirm').addClass('activeWishlist');
+    $('#svgHolder').html('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" style=" width: 100px; position: absolute; left: 0;/ margin-left: auto; margin-left: auto; margin-right: auto; right: 0; top: -50px;"><linearGradient id="a" gradientTransform="matrix(1 0 0 -1 0 -12310)" gradientUnits="userSpaceOnUse" x1="0" x2="512" y1="-12566" y2="-12566"><stop offset="0" stop-color="#00f1ff"></stop><stop offset=".231" stop-color="#00d8ff"></stop><stop offset=".5138" stop-color="#00c0ff"></stop><stop offset=".7773" stop-color="#00b2ff"></stop><stop offset="1" stop-color="#00adff"></stop></linearGradient><path d="m512 256c0 141.386719-114.613281 256-256 256s-256-114.613281-256-256 114.613281-256 256-256 256 114.613281 256 256zm0 0" fill="url(#a)"></path><g fill="#fff"><path d="m337.605469 192.738281h-90.761719c-8.285156 0-15 6.714844-15 15 0 8.28125 6.714844 15 15 15h90.761719c8.285156 0 15-6.71875 15-15 0-8.285156-6.714844-15-15-15zm0 0"></path><path d="m352.605469 265.363281c0-8.285156-6.714844-15-15-15h-90.761719c-8.285156 0-15 6.714844-15 15 0 8.285157 6.714844 15 15 15h90.761719c8.285156 0 15-6.714843 15-15zm0 0"></path><path d="m278.539062 411h-103.730468c-15.558594 0-28.21875-12.660156-28.21875-28.21875v-253.5625c0-15.558594 12.660156-28.21875 28.21875-28.21875h177.125c15.558594 0 28.21875 12.660156 28.21875 28.21875v136.144531c0 8.285157 6.71875 15 15 15 8.285156 0 15-6.714843 15-15v-136.144531c0-32.101562-26.117188-58.21875-58.21875-58.21875h-177.125c-32.101563 0-58.21875 26.117188-58.21875 58.21875v253.5625c0 32.101562 26.117187 58.21875 58.21875 58.21875h103.730468c8.285157 0 15-6.714844 15-15s-6.71875-15-15-15zm0 0"></path><path d="m435.011719 321.253906c-8.449219-8.554687-20.015625-13.261718-32.566407-13.261718-13.519531 0-23.679687 4.585937-30.96875 11.128906-7.289062-6.542969-17.449218-11.128906-30.96875-11.128906-12.554687 0-24.121093 4.707031-32.566406 13.261718-8.640625 8.746094-13.402344 21.035156-13.402344 34.601563 0 28.558593 24.140626 46.554687 43.53125 61.011719 8.742188 6.519531 17 12.671874 21.722657 18.539062 2.847656 3.539062 7.144531 5.59375 11.683593 5.59375 4.539063 0 8.835938-2.054688 11.683594-5.59375 4.726563-5.867188 12.980469-12.019531 21.722656-18.539062 19.394532-14.457032 43.53125-32.453126 43.53125-61.011719-.003906-13.566407-4.761718-25.855469-13.402343-34.601563zm-48.0625 71.5625c-5.234375 3.902344-10.5625 7.875-15.472657 12.066406-4.914062-4.191406-10.242187-8.164062-15.472656-12.066406-15.46875-11.53125-31.464844-23.457031-31.464844-36.960937 0-11.019531 6.117188-17.863281 15.96875-17.863281 8.132813 0 11.265626 3.128906 13.085938 5.855468 2.246094 3.363282 2.84375 7.117188 2.933594 7.785156.433594 7.851563 6.855468 13.824219 14.738281 13.941407.070313 0 .144531.003906.21875.003906 7.820313 0 14.335937-6.238281 14.945313-14.058594.003906-.035156.5-3.695312 2.550781-7.085937 1.816406-3 4.988281-6.445313 13.460937-6.445313 9.851563 0 15.96875 6.847657 15.96875 17.867188 0 13.503906-15.996094 25.429687-31.460937 36.960937zm0 0"></path><path d="m205.0625 207.738281c0 7.957031-6.449219 14.40625-14.40625 14.40625s-14.40625-6.449219-14.40625-14.40625 6.449219-14.410156 14.40625-14.410156 14.40625 6.453125 14.40625 14.410156zm0 0"></path><path d="m337.605469 135.109375h-90.761719c-8.285156 0-15 6.714844-15 15s6.714844 15 15 15h90.761719c8.285156 0 15-6.714844 15-15s-6.714844-15-15-15zm0 0"></path><path d="m205.0625 150.109375c0 7.957031-6.449219 14.40625-14.40625 14.40625s-14.40625-6.449219-14.40625-14.40625 6.449219-14.40625 14.40625-14.40625 14.40625 6.449219 14.40625 14.40625zm0 0"></path><path d="m205.0625 265.363281c0 7.957031-6.449219 14.40625-14.40625 14.40625s-14.40625-6.449219-14.40625-14.40625 6.449219-14.40625 14.40625-14.40625 14.40625 6.449219 14.40625 14.40625zm0 0"></path><path d="m246.84375 307.992188c-8.285156 0-15 6.714843-15 15 0 8.285156 6.714844 15 15 15h21.628906c8.285156 0 15-6.714844 15-15 0-8.285157-6.714844-15-15-15zm0 0"></path><path d="m205.0625 322.992188c0 7.957031-6.449219 14.40625-14.40625 14.40625s-14.40625-6.449219-14.40625-14.40625c0-7.957032 6.449219-14.40625 14.40625-14.40625s14.40625 6.449218 14.40625 14.40625zm0 0"></path></g></svg>');
+
+    var e = await doMakeOrder(orderArray, 'wishlist', globalDel, locOrigin, localStorage.getItem("bits-user-name"), get_locStr, {
+        "coin": "bits",
+        "purchase": ''
+    }, parseInt(getBitsWinOpt('s')));
+    var e = await wishShare(e.oid);
+
+    return e;
+
+}
+
+function sharewishList() {
+    if (navigator.share) {
+        // Share it!
+        navigator.share({
+                title: document.title,
+                url: '/bits/?s=' + getBitsWinOpt('s') + '&wish=' + wishShareId
+            }).then(function (e) {
+                return e;
+                clearCart()
+
+            })
+            .catch((error) => console.log('Error sharing:', error));
+    }
 }
 
 function insufficientOrder() {
-    doFetch({
-        action: 'setInsufficientFundsOrder',
-        transactionCode: $("#trnscode").val(),
-        uid: localStorage.getItem("bits-user-name"),
-        num: insufficientOrderNum
-    }).then(function (e) {
-        if (e.status == "ok") {
-            $("#insufficientOrderStatus").html('Transaction code confirmed successfully')
-            $("#insufficientOrderStatus").css("color", "green")
-            doFetch({
-                action: 'makeOrder',
-                data: get_orderArrayy,
-                loc: get_loc,
-                user: localStorage.getItem("bits-user-name"),
-                locStr: get_locStr,
-                pointsEarned: {
-                    "coin": "bits",
-                    "purchase": get_pointsEarned
-                },
-                service: parseInt(getBitsWinOpt('s'))
-            }).then(function (e) {
-                $("#appendPushSubs").remove();
-                $("#products").html("");
-                if (e.status == "ok") {
-                    $('#modalconfirm').modal('close');
-                    //                    var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
+    if ($("#mobileNo").val() == "") {
+        M.toast({
+            html: "Please enter your mobile number"
+        })
+    }
+    if ($("#trnscode").val() == "") {
+        M.toast({
+            html: "Please enter your transaction code"
+        })
+    } else {
+        doFetch({
+            action: 'setInsufficientFundsOrder',
+            transactionCode: $("#trnscode").val(),
+            uid: localStorage.getItem("bits-user-name"),
+            num: insufficientOrderNum
+        }).then(function (e) {
+            if (e.status == "ok") {
+                $("#insufficientOrderStatus").html('Transaction code confirmed successfully')
+                $("#insufficientOrderStatus").css("color", "green")
+                doFetch({
+                    action: 'makeOrder',
+                    data: get_orderArrayy,
+                    loc: get_loc,
+                    user: localStorage.getItem("bits-user-name"),
+                    locStr: get_locStr,
+                    pointsEarned: {
+                        "coin": "bits",
+                        "purchase": get_pointsEarned
+                    },
+                    trHash: "mn-" + $("#mobileNo").val() + "-" + $("#trnscode").val(),
+                    service: parseInt(getBitsWinOpt('s'))
+                }).then(function (e) {
+                    $("#appendPushSubs").remove();
+                    $("#products").html("");
+                    if (e.status == "ok") {
+                        $('#modalconfirm').modal('close');
+                        M.toast({
+                            html: 'Your order has been sent!',
+                        });
+                        clearCart();
+                    } else {
+                        M.toast({
+                            html: 'Your order is not sent!'
+                        })
+                    }
+                }).catch(function (err) {
+                    //failed Order
                     M.toast({
-                        html: 'Your order has been sent!',
+                        html: 'Error!! Try again later'
                     });
+                    $('#modalconfirm').modal('close');
                     clearCart();
-                } else {
-                    M.toast({
-                        html: 'Your order is not sent!'
-                    })
-                }
-            }).catch(function (err) {
-                //failed Order
-                M.toast({
-                    html: 'Error!! Try again later'
                 });
-                $('#modalconfirm').modal('close');
-                clearCart();
-            });
-        } else {
-            $("#insufficientOrderStatus").html('Error! Enter transaction code again.')
-            $("#insufficientOrderStatus").css("color", "red")
-            M.toast({
-                html: 'Error! Enter transaction code again'
-            });
-        }
-    })
+            } else {
+                $("#insufficientOrderStatus").html('Error! Enter transaction code again.')
+                $("#insufficientOrderStatus").css("color", "red")
+                M.toast({
+                    html: 'Error! Enter transaction code again'
+                });
+            }
+        })
+    }
 }
