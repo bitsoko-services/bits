@@ -32,7 +32,7 @@ body {
 }
 
 .confirmOrderFooter {
-    position: relative !important;
+    position: absolute !important;
     bottom: 0px !important;
 }
 

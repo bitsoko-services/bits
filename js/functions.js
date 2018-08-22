@@ -1166,8 +1166,7 @@ function insufficientOrder() {
         M.toast({
             html: "Please enter your mobile number"
         })
-    }
-    if ($("#trnscode").val() == "") {
+    } else if ($("#trnscode").val() == "") {
         M.toast({
             html: "Please enter your transaction code"
         })
