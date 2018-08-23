@@ -1032,7 +1032,6 @@ function walletStatus() {
             });
             setTimeout(function () {
                 fetchRates().then(function (e) {
-                    alert("workin 1")
                     updateEarnedTokens();
                     $("#ConfirmO").html("Confirm");
                     $("#ConfirmO").removeAttr("disabled");
@@ -1058,7 +1057,6 @@ function walletStatus() {
             });
             setTimeout(function () {
                 fetchRates().then(function (e) {
-                    alert("workin 2")
                     updateEarnedTokens();
                     $("#ConfirmO").html("Confirm");
                     $("#ConfirmO").removeAttr("disabled");

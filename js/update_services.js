@@ -1,6 +1,7 @@
 var getPhnNo;
 var showDeliverBtn;
 var showSokoBtn;
+var deliveryRadius;
 //-----------------------------------------updating service list function-------------------------------------------------------------------------------------------
 function updateServicelist() {
     activeService = $('#serviceModal').attr('service');
@@ -274,6 +275,7 @@ function populateService(mDet) {
     document.querySelector('#getStoreName').innerHTML = mDet.name;
     document.querySelector('.serviceName2').innerHTML = mDet.name;
     document.querySelector('.cardimage').src = mDet.bannerPath;
+    deliveryRadius = mDet.deliveryRadius
     var slogo = document.querySelectorAll('.shopLogo')
     for (var i = 0; i < slogo.length; ++i) {
         slogo[i].src = mDet.icon;
@@ -634,6 +636,10 @@ function populateModal(x, y) {
         };
         document.querySelector('.btnname').innerHTML = activeService.name;
     };
+}
+
+function getDist() {
+    return deliveryRadius
 }
 
 ////----------------------------------------------------function sort list-------------------------------------------------------------------------------------

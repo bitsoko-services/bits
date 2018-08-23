@@ -33,15 +33,16 @@ function finalCost(costofItems) {
                     var dist = distance
                     try {
 
-                        deliveryRadius = JSON.parse(deliveryRadius)
-                        if (!deliveryRadius.min || !deliveryRadius.max) {
 
+                        deliveryRadius = JSON.parse(getDist())
+                        if (!deliveryRadius.min || !deliveryRadius.max) {
                             var deliveryRadius = {}
                             deliveryRadius.max = 10;
                             deliveryRadius.min = 0.5;
 
                         }
                     } catch (e) {
+                        console.log(e)
                         var deliveryRadius = {}
                         deliveryRadius.max = 10;
                         deliveryRadius.min = 0.5;
@@ -51,6 +52,8 @@ function finalCost(costofItems) {
 
                     console.log(dist)
                     if (dist > deliveryRadius.max) {
+                        console.log("distance is ", dist)
+                        console.log("max distance is ", deliveryRadius.max)
                         M.toast({
                             html: 'Ooops! You are out of radius'
                         })
