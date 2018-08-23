@@ -30,6 +30,9 @@ aside>ul{
 body {
     overflow-x: hidden;
 }
+#walletList>li {
+    margin: 0px 20px;
+}
 
 .confirmOrderFooter {
     position: absolute !important;
