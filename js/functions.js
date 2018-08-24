@@ -10,9 +10,6 @@ var wishShareId;
 var buywishlist;
 
 async function doMakeOrder(orderArrayy, res, globalDel, locOrigin, uid, addrr, points, sid) {
-    if(shopClosed == true){
-        
-    }
     var e = await doFetch({
         action: 'makeOrder',
         data: orderArrayy,
@@ -784,6 +781,12 @@ function makeOrder(orderArrayy, orderLoc) {
                         onOpenEnd: $('.checkoutInfo').css("display", "block"),
                         dismissible: false
                     }).modal("open");
+                    if (shopClosed == true) {
+                        M.toast({
+                            html: 'Items will be delivered when the shop opens',
+                            displayLength: 5000
+                        })
+                    }
                     $('.star2').addClass('animated shake'), setTimeout(function () {
                         $('.star2').removeClass('animated shake')
                     }, 1000);
