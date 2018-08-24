@@ -20,7 +20,7 @@ async function doMakeOrder(orderArrayy, res, globalDel, locOrigin, uid, addrr, p
         locStr: addrr,
         pointsEarned: points,
         service: sid,
-        proPrice: parseInt($(".totals2").html())
+        proPrice: parseInt($(".totals").html())
     });
     $("#appendPushSubs").remove();
     if (e.status == "ok") {
@@ -1197,7 +1197,7 @@ function insufficientOrder() {
                     trHash: "mn-" + $("#mobileNo").val() + "-" + $("#trnscode").val(),
                     service: parseInt(getBitsWinOpt('s')),
                     delPrice: globalDel,
-                    proPrice: parseInt($(".totals2").html())
+                    proPrice: parseInt($(".totals").html())
                 }).then(function (e) {
                     $("#appendPushSubs").remove();
                     $("#products").html("");
