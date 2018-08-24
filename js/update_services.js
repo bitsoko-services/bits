@@ -292,6 +292,11 @@ function populateService(mDet) {
     document.querySelector('.bitsWcover').src = mDet.icon;
     document.querySelector('.serviceDescription2').innerHTML = mDet.description;
     document.querySelector('.serviceDescription').innerHTML = mDet.description;
+	
+	try{
+	
+	//shop working hours
+	
     var workingHours = JSON.parse(mDet.workingHours.replace('mon-fri', 'mon_fri')).mon_fri;
     var openingHours = pad(parseInt(workingHours.substring(0, 4)), 4);
     var closingHours = pad(parseInt(workingHours.slice(-4)), 4);
@@ -305,6 +310,11 @@ function populateService(mDet) {
         $(".shopWorkingHours").css("color", "red");
         shopClosed = true;
     };
+	}catch(err){
+	
+	console.log('info! error managing working hours',err);
+	
+	}
     //    if(new Date().getHours()+""+ new Date().getMinutes() < JSON.parse(mDet.workingHours).mon_fri))
 
     $('.maincont').removeClass("displayNone");
