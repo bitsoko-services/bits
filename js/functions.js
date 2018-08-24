@@ -20,7 +20,7 @@ async function doMakeOrder(orderArrayy, res, globalDel, locOrigin, uid, addrr, p
         locStr: addrr,
         pointsEarned: points,
         service: sid,
-        proPrice: parseInt($(".totals").html())
+        proPrice: parseInt($(".totals2").html())
     });
     $("#appendPushSubs").remove();
     if (e.status == "ok") {
