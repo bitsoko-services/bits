@@ -261,6 +261,11 @@ setTimeout(function (e) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var prodCatArray = new Array();
 
+function pad(n, length) {
+    var len = length - ('' + n).length;
+    return (len > 0 ? new Array(++len).join('0') : '') + n
+}
+
 function populateService(mDet) {
     var productCategory = mDet.productCategory
     checkBrowser()
@@ -286,6 +291,20 @@ function populateService(mDet) {
     document.querySelector('.bitsWcover').src = mDet.icon;
     document.querySelector('.serviceDescription2').innerHTML = mDet.description;
     document.querySelector('.serviceDescription').innerHTML = mDet.description;
+    var workingHours = JSON.parse(mDet.workingHours.replace('mon-fri', 'mon_fri')).mon_fri;
+    var openingHours = pad(parseInt(workingHours.substring(0, 4)), 4);
+    var closingHours = pad(parseInt(workingHours.slice(-4)), 4);
+    var currentTime = pad(new Date().getHours() + "" + new Date().getMinutes(), 4);
+    if (currentTime >= openingHours && currentTime <= closingHours) {
+        console.log("Is working Hours", currentTime, openingHours)
+        $(".shopWorkingHours").html("open - closing: ", closingHours);
+        $(".shopWorkingHours").css("color","white")
+    } else {
+        $(".shopWorkingHours").html("closed - opening: ", openingHours);
+        $(".shopWorkingHours").css("color","red")
+    };
+    //    if(new Date().getHours()+""+ new Date().getMinutes() < JSON.parse(mDet.workingHours).mon_fri))
+
     $('.maincont').removeClass("displayNone");
     $('.preload').addClass("displayNone");
     $('.card-container-bits').removeClass("displayNone");
