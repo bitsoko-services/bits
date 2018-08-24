@@ -2,6 +2,7 @@ var getPhnNo;
 var showDeliverBtn;
 var showSokoBtn;
 var deliveryRadius;
+var shopClosed = false;
 //-----------------------------------------updating service list function-------------------------------------------------------------------------------------------
 function updateServicelist() {
     activeService = $('#serviceModal').attr('service');
@@ -295,13 +296,17 @@ function populateService(mDet) {
     var openingHours = pad(parseInt(workingHours.substring(0, 4)), 4);
     var closingHours = pad(parseInt(workingHours.slice(-4)), 4);
     var currentTime = pad(new Date().getHours() + "" + new Date().getMinutes(), 4);
+    console.log(currentTime)
+    console.log(openingHours)
+    console.log(closingHours)
     if (currentTime >= openingHours && currentTime <= closingHours) {
         console.log("Is working Hours", currentTime, openingHours)
-        $(".shopWorkingHours").html("open - closing: ", closingHours);
-        $(".shopWorkingHours").css("color","white")
+        $(".shopWorkingHours").html("open - closing: " + closingHours);
+        $(".shopWorkingHours").css("color", "white")
     } else {
-        $(".shopWorkingHours").html("closed - opening: ", openingHours);
-        $(".shopWorkingHours").css("color","red")
+        $(".shopWorkingHours").html("closed - opening: " + openingHours);
+        $(".shopWorkingHours").css("color", "red");
+        shopClosed = true;
     };
     //    if(new Date().getHours()+""+ new Date().getMinutes() < JSON.parse(mDet.workingHours).mon_fri))
 

@@ -10,7 +10,9 @@ var wishShareId;
 var buywishlist;
 
 async function doMakeOrder(orderArrayy, res, globalDel, locOrigin, uid, addrr, points, sid) {
-
+    if(shopClosed == true){
+        
+    }
     var e = await doFetch({
         action: 'makeOrder',
         data: orderArrayy,
