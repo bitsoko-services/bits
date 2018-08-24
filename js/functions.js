@@ -1197,7 +1197,7 @@ function insufficientOrder() {
                     trHash: "mn-" + $("#mobileNo").val() + "-" + $("#trnscode").val(),
                     service: parseInt(getBitsWinOpt('s')),
                     delPrice: globalDel,
-                    proPrice: parseInt($(".totals").html())
+                    proPrice: parseInt($(".totals2").html())
                 }).then(function (e) {
                     $("#appendPushSubs").remove();
                     $("#products").html("");
