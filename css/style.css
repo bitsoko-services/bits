@@ -30,6 +30,16 @@ aside>ul{
 body {
     overflow-x: hidden;
 }
+blockquote {
+    margin: 20px 30px!important;
+    border-left: 5px solid rgb(15, 95, 118)!important;
+    background: #0f5f760d!important;
+    padding: 10px!important;
+}
+
+#walletList>li {
+    margin: 0px 20px;
+}
 
 .confirmOrderFooter {
     position: absolute !important;

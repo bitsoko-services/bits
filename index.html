@@ -831,9 +831,17 @@
                                 <p style="margin:0px; float: left; font-size:1em;">Order Delivery</p>
                             </div>
                             <div class="col s6">
-                                <div class="star2 right" id="wishlist" style=" float: right; z-index: 1; border: solid white 1px; padding: 1px 10px;margin-top: -3px; font-size: 1 em;" onclick="getWishId()">
-                                   + wishlist
-                                </div>
+				    
+					    <!--
+					<div class="star2 right" id="wishlist" style=" float: right; z-index: 1; border: solid white 1px; padding: 1px 10px;margin-top: -3px; font-size: 1 em;" onclick="getWishId()">		 				    <div class="chip" onclick="getWishId()">
+                                    + wishlist		 					    <i id="wishlist" class="material-icons">favorite_border</i>
+                                 </div>
+					-->
+				    <div class="chip" onclick="getWishId()">
+				Wishlist
+				  	    <i id="wishlist" class="material-icons" style="font-size: 120%;color: black;">favorite_border</i>
+				    </div>
+					    
                             </div>
                         </div>
                         <div class="star2" id="burst-11" style=" float: right; position: relative;top: 38px; z-index: 1;display: none;">
@@ -910,7 +918,9 @@
                 </svg>
             </div>
             <h5 style="text-align: center; padding: 5%; margin:0px;">default wallet</h5>
-            <ul id="walletList" style="max-height: 255px; overflow: scroll; text-align: center;" class="collection"></ul>
+		<form action="#">
+            <ul id="walletList" style="max-height: 255px; overflow: scroll; text-align: center;border: none;" class="collection"></ul>
+			</form>
         </div>
 
     </div>
@@ -1177,7 +1187,7 @@
                     <!-- Terms and conditions -->
                     wants access to your name, age range and email address to complete your order.
                 </p>
-                <p>John Doe<br>20-30 years<br>johndoe@gmail.com</p>
+                <blockquote>John Doe<br>20-30 years<br>johndoe@gmail.com</blockquote>
             </div>
             <div id="qrcode" style="height:200px;width:200px;display:none;"></div>
         </div>
@@ -1559,7 +1569,7 @@
 
 
     </script>
-    <script async defer src="./js/google.js">
+    <script async defer src="https://bitsoko.co.ke/bitsAssets/js/google.js">
 
 
     </script>
