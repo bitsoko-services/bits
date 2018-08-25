@@ -755,19 +755,27 @@ function makeOrder(orderArrayy, orderLoc) {
                         })
                     }
 
+                    console.log("info! looking for wallet .... ", parseInt(localStorage.getItem('bits-active-service')));
 
-
-                    if (payByToken == true) {
+                    if (payByToken == true && parseInt(localStorage.getItem('bits-active-service')) != NaN) {
                         payUsingToken()
 
                     } else {
-                        $(document).on("click", "#ConfirmO", function (e) {
+                        $(document).off('click').on("click", "#ConfirmO", function (e) {
+                            
+                            //default action is pay with mobile money
+                            
+                                            payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
+                                            $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
+                            
+                            /*
                             doMakeOrder(orderArrayy, r, globalDel, locOrigin, localStorage.getItem("bits-user-name"), mapData[1].results[0].formatted_address, {
                                 "coin": "bits",
                                 "purchase": totalKobo
                             }, parseInt(getBitsWinOpt('s'))).then(function (e) {
                                 console.log(e);
                             });
+                            */
                         })
 
                     }
