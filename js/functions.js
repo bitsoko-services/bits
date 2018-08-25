@@ -757,7 +757,7 @@ function makeOrder(orderArrayy, orderLoc) {
 
                     console.log("info! looking for wallet .... ", parseInt(localStorage.getItem('bits-default-wallet')));
 
-                    if (payByToken == true && parseInt(localStorage.getItem('bits-default-wallet')) != NaN) {
+                    if (payByToken == true && !isNaN(parseInt(localStorage.getItem('bits-default-wallet')))) {
                         payUsingToken()
 
                     } else {
