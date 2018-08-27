@@ -468,7 +468,6 @@ function showuser() {
         gtname.onsuccess = function (event) {
             try {
                 var nam = JSON.parse(event.target.result);
-                console.log(nam)
                 M.toast({
                     html: '<span class="toastlogin">You are Signed in as: ' + nam.name,
                     displayLength: 1000,
