@@ -42,7 +42,7 @@ blockquote {
 }
 
 .confirmOrderFooter {
-    position: absolute !important;
+    position: relative !important;
     bottom: 0px !important;
 }
 
