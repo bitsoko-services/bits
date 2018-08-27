@@ -48,7 +48,8 @@ async function payUsingMobileMoney(amount) {
 
 
     document.getElementById('creditTopup').innerHTML = amount + ' ' + baseCd;
-    document.getElementById('mobileNo').innerHTML = localStorage.getItem("userNumber");
+    document.getElementById("mobileNo").value = localStorage.getItem("userNumber");
+
 
     doFetch({
         action: 'getInsufficientFundsOrderbook',
