@@ -293,28 +293,28 @@ function populateService(mDet) {
     document.querySelector('.serviceDescription2').innerHTML = mDet.description;
     document.querySelector('.serviceDescription').innerHTML = mDet.description;
 
+    var time = '{"mon_fri":"0800 - 1600}'
     try {
-
-        //shop working hours
-
         var workingHours = JSON.parse(mDet.workingHours.replace('mon-fri', 'mon_fri')).mon_fri;
-        var openingHours = pad(parseInt(workingHours.substring(0, 4)), 4);
-        var closingHours = pad(parseInt(workingHours.slice(-4)), 4);
-        var currentTime = pad(new Date().getHours() + "" + new Date().getMinutes(), 4);
-        if (currentTime >= openingHours && currentTime <= closingHours) {
-            console.log("Is working Hours", currentTime, openingHours)
-            $(".shopWorkingHours").html("open - closing: " + closingHours);
-            $(".shopWorkingHours").css("color", "white")
-        } else {
-            $(".shopWorkingHours").html("closed - opening: " + openingHours);
-            $(".shopWorkingHours").css("color", "red");
-            shopClosed = true;
-        };
     } catch (err) {
-
         console.log('info! error managing working hours', err);
-
+        var workingHours = JSON.parse(time).mon_fri;
     }
+
+    //shop working hours
+    var openingHours = pad(parseInt(workingHours.substring(0, 4)), 4);
+    var closingHours = pad(parseInt(workingHours.slice(-4)), 4);
+    var currentTime = pad(new Date().getHours() + "" + new Date().getMinutes(), 4);
+    if (currentTime >= openingHours && currentTime <= closingHours) {
+        console.log("Is working Hours", currentTime, openingHours)
+        $(".shopWorkingHours").html("open - closing: " + closingHours);
+        $(".shopWorkingHours").css("color", "white")
+    } else {
+        $(".shopWorkingHours").html("closed - opening: " + openingHours);
+        $(".shopWorkingHours").css("color", "red");
+        shopClosed = true;
+    };
+
     //    if(new Date().getHours()+""+ new Date().getMinutes() < JSON.parse(mDet.workingHours).mon_fri))
 
     $('.maincont').removeClass("displayNone");
@@ -585,7 +585,7 @@ function populateService(mDet) {
                 }
             }
             if (!added) {
-                $('.allPrds').append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="' + srcSetPth + ' 35w"  src="' + mDet.list[ii].imagePath.replace('.png', '.webp') + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + mDet.list[ii].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + mDet.list[ii].price + ' ' + baseCd +' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + mDet.list[ii].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + mDet.list[ii].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + mDet.list[ii].id + '" class="bitsInputQty" price="' + mDet.list[ii].price + '" pid="' + mDet.list[ii].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
+                $('.allPrds').append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="' + srcSetPth + ' 35w"  src="' + mDet.list[ii].imagePath.replace('.png', '.webp') + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + mDet.list[ii].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + mDet.list[ii].price + ' ' + baseCd + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + mDet.list[ii].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + mDet.list[ii].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + mDet.list[ii].id + '" class="bitsInputQty" price="' + mDet.list[ii].price + '" pid="' + mDet.list[ii].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
 
             }
             $('#prod-' + mDet.list[ii].id + '-counter').handleCounter()
