@@ -57,7 +57,7 @@ async function payUsingMobileMoney(amount) {
         rate: allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate * baseX,
         total: amount,
         countryCode: baseCd
-    }).then(function (e) {
+    }).then(function(e) {
         if (e.status == "ok") {
             document.getElementById("insufficientFundsModal").style.display = "block";
             insufficientOrderNum = e.data.num;
@@ -87,7 +87,7 @@ function checkBrowser() {
 }
 
 function checkPayments() {
-    actvServ().then(function (p) {
+    actvServ().then(function(p) {
         var p = p.payments
         if (p) {
             ////console.log("payments on")
@@ -109,7 +109,7 @@ function checkPayments() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function callMerchant() {
     try {
-        actvServ().then(function (x) {
+        actvServ().then(function(x) {
             $('#appendCallBtn').html('')
             $('#appendCallBtn').append('<a href="/soko/#s=' + localStorage.getItem("bits-active-service") + '" class="manage-store" id="manage-store" style="margin-right: 10px;display: block;float:  right;"></a><button id="share" value="Share" class="bitb noshadow" style="float: right !important; line-height: normal; margin-right: 3px; border: none; background: none; padding: 10px;"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 473.932 473.932" style="enable-background:new 0 0 473.932 473.932;width: 20px; margin-top: 10px;" xml:space="preserve"><path d="M385.513,301.214c-27.438,0-51.64,13.072-67.452,33.09l-146.66-75.002 c1.92-7.161,3.3-14.56,3.3-22.347c0-8.477-1.639-16.458-3.926-24.224l146.013-74.656c15.725,20.924,40.553,34.6,68.746,34.6 c47.758,0,86.391-38.633,86.391-86.348C471.926,38.655,433.292,0,385.535,0c-47.65,0-86.326,38.655-86.326,86.326 c0,7.809,1.381,15.229,3.322,22.412L155.892,183.74c-15.833-20.039-40.079-33.154-67.56-33.154 c-47.715,0-86.326,38.676-86.326,86.369s38.612,86.348,86.326,86.348c28.236,0,53.043-13.719,68.832-34.664l145.948,74.656 c-2.287,7.744-3.947,15.79-3.947,24.289c0,47.693,38.676,86.348,86.326,86.348c47.758,0,86.391-38.655,86.391-86.348 C471.904,339.848,433.271,301.214,385.513,301.214z" fill="#FFFFFF"></path></svg> </button><a href="tel:' + x.phone + '" id="merchPhoneNo" value="" class="bitb" style="float: right !important;line-height: normal;padding: 10px; margin-top: 7px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 480.56 480.56" style="enable-background:new 0 0 480.56 480.56;width: 23px;" xml:space="preserve"> <path d="M365.354,317.9c-15.7-15.5-35.3-15.5-50.9,0c-11.9,11.8-23.8,23.6-35.5,35.6c-3.2,3.3-5.9,4-9.8,1.8 c-7.7-4.2-15.9-7.6-23.3-12.2c-34.5-21.7-63.4-49.6-89-81c-12.7-15.6-24-32.3-31.9-51.1c-1.6-3.8-1.3-6.3,1.8-9.4 c11.9-11.5,23.5-23.3,35.2-35.1c16.3-16.4,16.3-35.6-0.1-52.1c-9.3-9.4-18.6-18.6-27.9-28c-9.6-9.6-19.1-19.3-28.8-28.8 c-15.7-15.3-35.3-15.3-50.9,0.1c-12,11.8-23.5,23.9-35.7,35.5c-11.3,10.7-17,23.8-18.2,39.1c-1.9,24.9,4.2,48.4,12.8,71.3 c17.6,47.4,44.4,89.5,76.9,128.1c43.9,52.2,96.3,93.5,157.6,123.3c27.6,13.4,56.2,23.7,87.3,25.4c21.4,1.2,40-4.2,54.9-20.9 c10.2-11.4,21.7-21.8,32.5-32.7c16-16.2,16.1-35.8,0.2-51.8C403.554,355.9,384.454,336.9,365.354,317.9z" fill="#FFFFFF"></path> <path d="M346.254,238.2l36.9-6.3c-5.8-33.9-21.8-64.6-46.1-89c-25.7-25.7-58.2-41.9-94-46.9l-5.2,37.1 c27.7,3.9,52.9,16.4,72.8,36.3C329.454,188.2,341.754,212,346.254,238.2z" fill="#FFFFFF"></path> <path d="M403.954,77.8c-42.6-42.6-96.5-69.5-156-77.8l-5.2,37.1c51.4,7.2,98,30.5,134.8,67.2c34.9,34.9,57.8,79,66.1,127.5 l36.9-6.3C470.854,169.3,444.354,118.3,403.954,77.8z" fill="#FFFFFF"></path> </svg></a><a id="initFeedbackModal" href="#feedbackModal" onclick="feedback();" style="float: right; width: 27px; padding-top: 17px; line-height: initial; margin-right: 10px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><path fill="white" d="M117.333,149.333H352c5.896,0,10.667-4.771,10.667-10.667c0-5.896-4.771-10.667-10.667-10.667H117.333     c-5.896,0-10.667,4.771-10.667,10.667C106.667,144.563,111.438,149.333,117.333,149.333z"/><path fill="white" d="M245.333,256h-128c-5.896,0-10.667,4.771-10.667,10.667c0,5.896,4.771,10.667,10.667,10.667h128     c5.896,0,10.667-4.771,10.667-10.667C256,260.771,251.229,256,245.333,256z"/><path fill="white" d="M471.167,64c-0.618,0-1.217,0.155-1.833,0.184V64c0-23.531-19.146-42.667-42.667-42.667h-384     C19.146,21.333,0,40.469,0,64v416c0,4.313,2.604,8.208,6.583,9.854c1.313,0.552,2.708,0.813,4.083,0.813     c2.771,0,5.5-1.083,7.542-3.125L121.75,384h304.917c23.521,0,42.667-19.135,42.667-42.667V164.411l30.708-30.703c0,0,0,0,0-0.01     c7.604-7.604,11.958-18.125,11.958-28.865C512,82.313,493.688,64,471.167,64z M448,341.333c0,11.76-9.563,21.333-21.333,21.333     H117.333c-2.833,0-5.542,1.125-7.542,3.125L21.333,454.25V64c0-11.76,9.563-21.333,21.333-21.333h384     C438.438,42.667,448,52.24,448,64v7.286c-2.025,1.392-3.962,2.923-5.708,4.672L326.232,192H117.333     c-5.896,0-10.667,4.771-10.667,10.667c0,5.896,4.771,10.667,10.667,10.667h191.785l-10.243,51.24     c-0.708,3.5,0.396,7.115,2.917,9.635c2.021,2.021,4.75,3.125,7.542,3.125c0.688,0,1.396-0.073,2.083-0.208l53.313-10.667     c2.083-0.417,3.979-1.427,5.458-2.917L448,185.742V341.333z M357.396,246.177l-34.458,6.896l6.896-34.5l96.828-96.828     l27.587,27.587L357.396,246.177z M484.958,118.625l-15.625,15.625l-27.589-27.589l15.63-15.63     c3.625-3.615,8.646-5.698,13.792-5.698c10.75,0,19.5,8.75,19.5,19.5C490.667,109.958,488.583,114.99,484.958,118.625z"/></svg></a><a id="deliveryModalBtn" style="float:right; padding: 10px; padding-right: 20px;"></a>');
 
@@ -147,25 +147,25 @@ function servicePageLoader() {
         contact();
     }
     if (parseInt(getBitsWinOpt('s')) > 2) {
-        //merchants options start; 
+        //merchants options start;
         $(".serviceListHolder").show();
         $(".serviceListCard").show();
         $(".promoHolder").hide();
         populated = false;
         var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
-        svReq.onsuccess = function (event) {
+        svReq.onsuccess = function(event) {
             try {
                 populateService(JSON.parse(event.target.result));
                 populated = true;
 
-                setTimeout(function (e) {
+                setTimeout(function(e) {
                     $('.prdTabs').tabs();
                     //Get Tab Content
-                    M.Tabs.getInstance(document.querySelector(".prdTabs")).options.onShow = function (e) {
+                    M.Tabs.getInstance(document.querySelector(".prdTabs")).options.onShow = function(e) {
                         var clickedTab = $(e).attr("id")
                         console.log($(e)[0].childNodes)
                         if ($(e)[0].childNodes.length == 0) {
-                            getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function (event) {
+                            getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function(event) {
                                 var prodList = JSON.parse(event.target.result).list
                                 console.log(prodList)
                                 for (x in prodList) {
@@ -197,15 +197,15 @@ function servicePageLoader() {
                     populateService(JSON.parse(newstr).res);
                     populated = true;
 
-                    setTimeout(function (e) {
+                    setTimeout(function(e) {
                         $('.prdTabs').tabs();
 
                         //Get Tab Content
-                        M.Tabs.getInstance(document.querySelector(".prdTabs")).options.onShow = function (e) {
+                        M.Tabs.getInstance(document.querySelector(".prdTabs")).options.onShow = function(e) {
                             var clickedTab = $(e).attr("id")
                             console.log($(e)[0].childNodes)
                             if ($(e)[0].childNodes.length == 0) {
-                                getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function (event) {
+                                getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function(event) {
                                     var prodList = JSON.parse(event.target.result).list
                                     console.log(prodList)
                                     for (x in prodList) {
@@ -220,17 +220,17 @@ function servicePageLoader() {
                     }, 3000)
 
                     var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(JSON.parse(newstr).res), 'bits-merchant-id-' + getBitsWinOpt('s'));
-                    svReq.onsuccess = function () {
+                    svReq.onsuccess = function() {
 
                     };
-                    svReq.onerror = function () {
+                    svReq.onerror = function() {
                         ////console.log('err not saved store info to db')
                     }
 
                 } catch (err) {
                     console.log(err)
 
-                    setTimeout(function () {
+                    setTimeout(function() {
                         servicePageLoader();
                     }, 3000);
 
@@ -238,7 +238,7 @@ function servicePageLoader() {
 
             }
         };
-        svReq.onerror = function () {
+        svReq.onerror = function() {
 
             ////console.log('service not found in db. perhaps trying from DOM 2');
             var re = /&quot;/gi;
@@ -252,16 +252,16 @@ function servicePageLoader() {
             action: 'serviceProfile',
             id: servID,
             service: getBitsWinOpt('s')
-        }).then(function (e) {
+        }).then(function(e) {
             if (e.status == "ok") {
 
 
 
 
                 var prdList = e.data.list
-                getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function (event) {
+                getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function(event) {
                     if (event.target.result == undefined) {
-                        setTimeout(function (e) {
+                        setTimeout(function(e) {
                             $('.allPrds').html('')
 
                             for (var ii = 0; ii < prdList.length; ++ii) {
@@ -289,13 +289,13 @@ function servicePageLoader() {
 
                 deliveryRadius = e.data.deliveryRadius
                 var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-' + e.data.id);
-                svReq.onsuccess = function () {
+                svReq.onsuccess = function() {
                     try {
                         if (!populated) {
                             populateService(e.data);
                             populated = true;
                         }
-                        setTimeout(function () {
+                        setTimeout(function() {
                             fullScreenMode()
                         }, 3000);
                         if (localStorage.getItem("fullScreenPermission") == null) {} else if (localStorage.getItem("fullScreenPermission") == "true") {
@@ -313,8 +313,8 @@ function servicePageLoader() {
                         ////console.log('service not found in db. perhaps try loading from server AGAIN!!')
                     }
                 };
-                svReq.onerror = function () {
-                    setTimeout(function () {
+                svReq.onerror = function() {
+                    setTimeout(function() {
                         servicePageLoader();
                     }, 3000);
                 }
@@ -331,27 +331,46 @@ function servicePageLoader() {
                     makeOrder([{
                             pid: "15",
                             count: "2"
-                    },
+                        },
                         {
                             pid: "16",
                             count: "1"
-                    }, {
+                        }, {
                             pid: "28",
                             count: "1"
-                    }], "-1.1819233999999998,36.936111499999996")
+                        }
+                    ], "-1.1819233999999998,36.936111499999996")
                 }
+
+                //Check Tab To activate
+
+                // if (getBitsOpt("service") == undefined) {
+                //
+                // } else {
+                //     var activeTab = getBitsOpt("service");
+                //     var allTabs = $("#prdTabs")[0].childNodes
+                //
+                //
+                //     for (catName in allTabs) {
+                //         if(allTabs[catName].innerText == activeTab){
+                //             $("#"+activeTab).tab()
+                //         }
+                //         console.log(allTabs[catName].innerText)
+                //     }
+                // }
+
             } else {
                 $(".serviceListHolder").hide();
                 $(".serviceListCard").hide();
                 $(".promoHolder").show();
-                setTimeout(function () {
+                setTimeout(function() {
                     servicePageLoader();
                 }, 3000);
             }
-        }).catch(function (err) {
+        }).catch(function(err) {
             console.log('error trying to populate from sever ', err);
             var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
-            svReq.onsuccess = function (event) {
+            svReq.onsuccess = function(event) {
                 try {
                     populateService(JSON.parse(event.target.result));
                     populated = true;
@@ -365,7 +384,7 @@ function servicePageLoader() {
                     populated = true;
                 }
             };
-            svReq.onerror = function () {
+            svReq.onerror = function() {
                 //console.log('service not found in db. perhaps trying from DOM 4');
                 var re = /&quot;/gi;
                 var str = document.getElementById('storeMeta').innerHTML;
@@ -380,7 +399,7 @@ function servicePageLoader() {
 
             }
         });
-        //merchants options end; 
+        //merchants options end;
     }
 }
 
@@ -391,7 +410,7 @@ function checkServicePageLoader() {
         doFetch({
             action: 'userVerified',
             uid: localStorage.getItem("bits-user-name")
-        }).then(function (e) {
+        }).then(function(e) {
             if (e.status == "ok") {
                 localStorage.setItem('userNumber', e.phone);
             } else if (e.status == "bad") {
@@ -418,7 +437,7 @@ function checkServicePageLoader() {
 //------------------------------load name and image of user profile---------------------------------------------------------------------
 function loadProfData() {
     var stor = getObjectStore('data', 'readwrite').get('user-profile-' + localStorage.getItem('bits-user-name'));
-    stor.onsuccess = function (event) {
+    stor.onsuccess = function(event) {
         try {
             var upData = JSON.parse(event.target.result);
             $(".username-label").html(upData.name);
@@ -430,7 +449,7 @@ function loadProfData() {
             $("#mobileNo").val("");
         }
     };
-    stor.onerror = function () {
+    stor.onerror = function() {
         $(".username-label").html('Anonymous');
         $(".userProfImg").attr("src", '');
     };
@@ -439,17 +458,17 @@ function loadProfData() {
 //------------------------------load old wallets of user---------------------------------------------------------------------
 function loadoldwalletData() {
     var ol = getObjectStore('data', 'readwrite').get('bits-wallets-old-' + localStorage.getItem('bits-user-name'));
-    ol.onsuccess = function (event) {
+    ol.onsuccess = function(event) {
         try {
             var upDat = JSON.parse(event.target.result);
             for (var iii = 0; iii < upDat.length; ++iii) {
                 //console.log("old wallets found")
-                //var id = upDat[iii].uid ? upDat[iii].uid : 'undefined';	
+                //var id = upDat[iii].uid ? upDat[iii].uid : 'undefined';
                 $('.username-addr-old').append('<span class="title"><a href="#!" id="share" class="secondary-content right"></a></span><span class ="" style="font-size: 12px;">' + upDat.user + '</span>');
             }
         } catch (err) {}
     };
-    ol.onerror = function () {};
+    ol.onerror = function() {};
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -472,7 +491,7 @@ function showuser() {
     $(".signedAsToast").remove()
     if (checkanon() == true) {
         var gtname = getObjectStore('data', 'readwrite').get('user-profile-' + localStorage.getItem('bits-user-name'));
-        gtname.onsuccess = function (event) {
+        gtname.onsuccess = function(event) {
             try {
                 var nam = JSON.parse(event.target.result);
                 M.toast({
@@ -499,19 +518,19 @@ function showuser() {
         navigator.permissions.query({
                 name: 'notifications'
             })
-            .then(function (permissionStatus) {
+            .then(function(permissionStatus) {
                 //console.log('geolocation permission state is ', permissionStatus.state);
                 if (permissionStatus.state != "granted") {
                     //                    M.toast("Notificatons are turned off <span class='turnOnNtfn' style='color:yellow;'>Turn on</span>", 5000, "notificationToast");
                 }
 
-                permissionStatus.onchange = function () {
+                permissionStatus.onchange = function() {
                     //console.log('geolocation permission state has changed to ', this.state);
                 };
             });
-        $(document).on("click", ".turnOnNtfn", function () {
+        $(document).on("click", ".turnOnNtfn", function() {
             $(".notificationToast").remove();
-            Notification.requestPermission(function (result) {
+            Notification.requestPermission(function(result) {
                 if (result === 'denied') {
                     //console.log('Permission wasn\'t granted. Allow a retry.');
                     return;
@@ -532,7 +551,7 @@ function showuser() {
 function showuserNumber() {
     if (checkanon()) {
         var gtno = getObjectStore('data', 'readwrite').get('user-profile-' + localStorage.getItem('bits-user-name'));
-        gtno.onsuccess = function (event) {
+        gtno.onsuccess = function(event) {
             try {
                 var no = JSON.parse(event.target.result);
                 //console.log(no.tel)
@@ -557,7 +576,7 @@ function checkanon() {
         return true;
     }
 }
-//--------------------------------------end if popup login----------------------------------------------------------------------------------------- 
+//--------------------------------------end if popup login-----------------------------------------------------------------------------------------
 //----------------------------------------------if ststements for popup login modal if user is on anon mode----------------------------------------
 //----------------------------------------------function to pop up login modal---------------------------------------------------------------------
 function showLogin() {
@@ -587,7 +606,7 @@ function tabulateTotals() {
     var addproducts = document.querySelectorAll(".bitsInputQty");
     var totals = 0;
     orderArray = [];
-    $('.floatingPrice').addClass('shake'), setTimeout(function () {
+    $('.floatingPrice').addClass('shake'), setTimeout(function() {
         $('.floatingPrice').removeClass('shake')
     }, 1000);
     for (var i = 0; i < addproducts.length; ++i) {
@@ -617,7 +636,7 @@ function tabulateTotals() {
             // 				$(".bits-main-price").addClass("grey");
             // 				$(".localCurr").addClass("displayNone");
             // 				$(".bits-main-price ").removeClass("bits");
-            // 										} 
+            // 										}
             //localStorage.setItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')),totals);
         } catch (err) {}
     }
@@ -641,7 +660,7 @@ function makeOrder(orderArrayy, orderLoc) {
     if (buywishlist == true) {} else {
         if (checkanon() == false) {
             $('#loginModal').modal({
-                onCloseEnd: function () {
+                onCloseEnd: function() {
                     $(".delivery").click()
                 }
             }).modal("open")
@@ -669,7 +688,7 @@ function makeOrder(orderArrayy, orderLoc) {
             classes: "createOrderToast"
         });
 
-        actvServ().then(function (p) {
+        actvServ().then(function(p) {
             //var p=p.deliveries
             // 	var p=p.payments
             // if (p){//console.log("payments are on")}else{
@@ -684,14 +703,14 @@ function makeOrder(orderArrayy, orderLoc) {
             // }
             getLoc(orderLoc).then(function showPosition(e) {
                 if ($(".createOrderToast").length >= 1) {
-                    setTimeout(function () {
+                    setTimeout(function() {
                         $(".createOrderToast").remove()
                     }, 1000)
                 }
                 //var mapLocc = orderLoc ? orderLoc : e.coords.latitude + ',' + e.coords.longitude;
                 var mapLocc = e.coords.latitude + ',' + e.coords.longitude;
                 //console.log(orderLoc, e, mapLocc);
-                getCoordDet(mapLocc).then(function (mapData) {
+                getCoordDet(mapLocc).then(function(mapData) {
                     getProdss(orderArrayy);
 
                     locOrigin = e.coords.latitude + ',' + e.coords.longitude
@@ -704,27 +723,27 @@ function makeOrder(orderArrayy, orderLoc) {
                     get_pointsEarned = totalKobo;
 
                     function payUsingToken() {
-                        $('#ConfirmO').off('click').on('click', function () {
+                        $('#ConfirmO').off('click').on('click', function() {
                             $(this).html('<div class="preloader-wrapper big active" style=" width: 20px; height: 20px; margin-top: 9px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
                             if (sessionStorage.getItem('walletKey')) {
                                 navigator.permissions.query({
                                     name: 'push',
                                     userVisibleOnly: true
-                                }).then(function (e) {
+                                }).then(function(e) {
                                     if (e.state == "granted") {
                                         //
                                         if (((allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].balance / Math.pow(10, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].decimals)) + allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].totalEarned) * (allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate * baseX) > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
                                             var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
-                                            transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', "0xb72627650f1149ea5e54834b2f468e5d430e67bf", totCost, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate).then(function (res) {
+                                            transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', "0xb72627650f1149ea5e54834b2f468e5d430e67bf", totCost, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate).then(function(res) {
                                                 console.log(res);
                                                 doMakeOrder(orderArrayy, res, globalDel, locOrigin, localStorage.getItem("bits-user-name"), mapData[1].results[0].formatted_address, {
                                                     "coin": "bits",
                                                     "purchase": totalKobo
-                                                }, parseInt(getBitsWinOpt('s'))).then(function (e) {
+                                                }, parseInt(getBitsWinOpt('s'))).then(function(e) {
                                                     console.log(e);
                                                 });
 
-                                            }).catch(function (err) {
+                                            }).catch(function(err) {
                                                 console.log(err);
                                                 // $("#creditTopup").text($("#delPrdTotal")[0].innerHTML)
 
@@ -741,7 +760,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                         ////console.log(parseFloat($("#checkBal")[0].innerHTML), (parseFloat($("#totals")[0].innerHTML) + globalDel));
 
                                     }
-                                }).catch(function (e) {
+                                }).catch(function(e) {
                                     console.log(e)
                                     document.getElementById('notificationsModal').style.display = "block";
                                 })
@@ -767,7 +786,7 @@ function makeOrder(orderArrayy, orderLoc) {
                         payUsingToken()
 
                     } else {
-                        $(document).off('click').on("click", "#ConfirmO", function (e) {
+                        $(document).off('click').on("click", "#ConfirmO", function(e) {
 
                             //default action is pay with mobile money
 
@@ -805,14 +824,14 @@ function makeOrder(orderArrayy, orderLoc) {
                             displayLength: 5000
                         })
                     }
-                    $('.star2').addClass('animated shake'), setTimeout(function () {
+                    $('.star2').addClass('animated shake'), setTimeout(function() {
                         $('.star2').removeClass('animated shake')
                     }, 1000);
-                    document.getElementById("CancelO").addEventListener("click", function () {
+                    document.getElementById("CancelO").addEventListener("click", function() {
                         clearCart()
                         $("#products").html("")
                     });
-                }).catch(function (err) {
+                }).catch(function(err) {
                     console.log(err)
                     //toast location error
 
@@ -834,7 +853,7 @@ function sendratings() {
         review: $('#textareaRating').val(),
         user: localStorage.getItem("bits-user-name"),
         service: parseInt(getBitsWinOpt('s'))
-    }).then(function (s) {
+    }).then(function(s) {
         if (s.status == "ok") {
             // $('#ratingId').val("");
             //$('#textareaRating').val("");
@@ -871,17 +890,17 @@ function createOrder() {
     for (var o = 0; o < orderArray.length; o++) {
         //console.log(orderArray[o].pid);
         e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
-        e.onsuccess = function (event) {
+        e.onsuccess = function(event) {
             //console.log(orderArray[o].pid);
         }
-        e.onerror = function (e) {}
+        e.onerror = function(e) {}
     }
 }
 
 function getProdss(orderArrayx, costofItems) {
-    new Promise(function (resolve, reject) {
+    new Promise(function(resolve, reject) {
         e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
-        e.onsuccess = function (event) {
+        e.onsuccess = function(event) {
             //            console.log(event.target.result)
             try {
                 var x = JSON.parse(event.target.result);
@@ -891,7 +910,7 @@ function getProdss(orderArrayx, costofItems) {
                 resolve([]);
             }
         }
-    }).then(function (r) {
+    }).then(function(r) {
         var costofItems = 0;
         ////console.log(r);
         for (var o in r) {
@@ -937,11 +956,11 @@ function buyPromo(clicked_id, promoOder) {
     // 	////console.log($(".bpr").attr("promo"));
     // 	var xx = document.getElementById(lipromo).id;
     // 	var tt = $(".bpr").attr("promo");
-    new Promise(function (resolve, reject) {
+    new Promise(function(resolve, reject) {
         ////console.log("this is var t" + t)
         e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
         //t = t;
-        e.onsuccess = function (event) {
+        e.onsuccess = function(event) {
             var x = JSON.parse(event.target.result);
             resolve({
                 promotions: x.promotions,
@@ -949,7 +968,7 @@ function buyPromo(clicked_id, promoOder) {
                 //discount: x.discount
             });
         }
-    }).then(function (r) {
+    }).then(function(r) {
         var pd = r.promotions;
         for (var ixi = 0; ixi < pd.length; ++ixi) {
             //console.log("=============== looping ==============================")
@@ -960,7 +979,7 @@ function buyPromo(clicked_id, promoOder) {
             }
             dis = JSON.parse(pd[ixi].discount);
             //console.log("discount is >>>>>>>>>", dis);
-            setTimeout(function () {
+            setTimeout(function() {
                 $("#burst-11").css("display", "block");
                 var getProdPrice = document.getElementById("totals").innerHTML;
                 promoDiscount = (dis / 100) * getProdPrice
@@ -1049,12 +1068,12 @@ function walletStatus() {
     if (sessionStorage.getItem('walletKey')) {
         //wallet is unlocked
         //get balance
-        walletFunctions(localStorage.getItem("bits-user-name")).then(function (e) {
+        walletFunctions(localStorage.getItem("bits-user-name")).then(function(e) {
             M.toast({
                 html: 'Wallet unlocked successfully'
             });
-            setTimeout(function () {
-                fetchRates().then(function (e) {
+            setTimeout(function() {
+                fetchRates().then(function(e) {
                     updateEarnedTokens();
                     $("#ConfirmO").html("Confirm");
                     $("#ConfirmO").removeAttr("disabled");
@@ -1062,7 +1081,7 @@ function walletStatus() {
                     $(".unlockWalletToast").remove();
                 })
             }, 1000);
-        }).catch(function (err) {
+        }).catch(function(err) {
             console.log(err)
             M.toast({
                 html: 'Error unlocking wallet'
@@ -1070,16 +1089,16 @@ function walletStatus() {
         })
 
 
-        window.setInterval(function () {
+        window.setInterval(function() {
             updateEarnedTokens();
         }, 20000);
     } else {
-        walletFunctions(localStorage.getItem("bits-user-name")).then(function (e) {
+        walletFunctions(localStorage.getItem("bits-user-name")).then(function(e) {
             M.toast({
                 html: 'Wallet unlocked successfully'
             });
-            setTimeout(function () {
-                fetchRates().then(function (e) {
+            setTimeout(function() {
+                fetchRates().then(function(e) {
                     updateEarnedTokens();
                     $("#ConfirmO").html("Confirm");
                     $("#ConfirmO").removeAttr("disabled");
@@ -1087,7 +1106,7 @@ function walletStatus() {
                     $(".unlockWalletToast").remove();
                 })
             }, 1000);
-        }).catch(function (err) {
+        }).catch(function(err) {
             console.log(err)
             M.toast({
                 html: 'Error unlocking wallet'
@@ -1098,7 +1117,7 @@ function walletStatus() {
         //Check Bal Interval
 
         updateEarnedTokens();
-        window.setInterval(function () {
+        window.setInterval(function() {
             updateEarnedTokens();
         }, 20000);
     }
@@ -1106,26 +1125,26 @@ function walletStatus() {
 
 // very delayed event listeners
 // TO-DO move to passive listeners
-setTimeout(function (e) {
-    $(document).on("click", ".activateNotifications", function (e) {
+setTimeout(function(e) {
+    $(document).on("click", ".activateNotifications", function(e) {
         document.getElementById('notificationsModal').style.display = "none";
         $("#ConfirmO").html("confirm");
         //        M.toast({
         //            html: 'Hit confirm to complete order'
         //        });
     });
-    $(document).on("click", ".selectedWallet", function (e) {
+    $(document).on("click", ".selectedWallet", function(e) {
         $(this).html('<div class="preloader-wrapper active" style="width: 20px; height: 20px; margin: 5px 15px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
     })
     /*
          var wishlistButton = document.getElementById('wishlist');
-                    
+
                     // Listen for any clicks
                     wishlistButton.addEventListener('click', function (ev) {
-                       
+
             console.log('AFTER WISHLIST     ',e);
                             // Get the canonical URL from the link tag
-                            
+
 $('#modalconfirm').modal('close');
             //swal("success!", "your order has been sent!", "success");
             //                                                        var toastHTML = '<span>Turn on notifications</span><button class="btn-flat toast-action" onclick="startmessage()">Activate</button>';
@@ -1135,11 +1154,11 @@ $('#modalconfirm').modal('close');
             //                                                        $(".sweet-alert .sa-button-container").prepend('<div id="appendPushSubs"><div class="switch"> <span class="js-push-button-notification-title bits-13" style="">Activate notifications to track your order</span> <label><input onclick="startPushManager();" class="js-push-button-notification" style="background: rgb(128, 210, 147);" type="checkbox"> <span class="lever right" style=" margin-top: 4px; margin-right: 5%;"></span></label> </div><br></div>')
             clearCart();
 
-                               
+
                             ev.preventDefault();
-                       
+
                     });
-    
+
     */
 
 
@@ -1175,7 +1194,7 @@ function sharewishList() {
         navigator.share({
                 title: document.title,
                 url: '/bits/?s=' + getBitsWinOpt('s') + '&wish=' + wishShareId
-            }).then(function (e) {
+            }).then(function(e) {
                 clearCart();
                 $('#modalconfirm').modal('close');
                 return e;
@@ -1200,7 +1219,7 @@ function insufficientOrder() {
             transactionCode: $("#trnscode").val(),
             uid: localStorage.getItem("bits-user-name"),
             num: insufficientOrderNum
-        }).then(function (e) {
+        }).then(function(e) {
             if (e.status == "ok") {
                 $("#insufficientOrderStatus").html('Transaction code confirmed successfully')
                 $("#insufficientOrderStatus").css("color", "green")
@@ -1218,7 +1237,7 @@ function insufficientOrder() {
                     service: parseInt(getBitsWinOpt('s')),
                     delPrice: globalDel,
                     proPrice: parseInt($(".totals2").html())
-                }).then(function (e) {
+                }).then(function(e) {
                     $("#appendPushSubs").remove();
                     $("#products").html("");
                     if (e.status == "ok") {
@@ -1232,7 +1251,7 @@ function insufficientOrder() {
                             html: 'Your order is not sent!'
                         })
                     }
-                }).catch(function (err) {
+                }).catch(function(err) {
                     //failed Order
                     M.toast({
                         html: 'Error!! Try again later'
