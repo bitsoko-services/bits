@@ -10,7 +10,7 @@ function updateServicelist() {
         action: 'serviceList',
         data: activeService,
         user: localStorage.getItem("bits-user-name")
-    }).then(function (e) {
+    }).then(function(e) {
         if (e.status == "ok") {
             serviceList = e.data;
             for (var ii = 0; ii < serviceList.length; ++ii) {
@@ -35,7 +35,7 @@ function serviceOpener() {
         checkServicePageLoader()
         if (getBitsOpt('pid') != undefined) {
             var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
-            svReq.onsuccess = function (event) {
+            svReq.onsuccess = function(event) {
                 try {
                     var x = JSON.parse(event.target.result)
                     var xc = x.promotions
@@ -51,10 +51,10 @@ function serviceOpener() {
                             var c = xc[ixc].promoDesc
                             $(".materialbox-caption").html('')
                             $(".collapsible-header").trigger("click");
-                            setTimeout(function () {
+                            setTimeout(function() {
                                 $(".p" + getBitsOpt('pid')).trigger("click");
                             }, 1000);
-                            setTimeout(function () {
+                            setTimeout(function() {
                                 var clid = getBitsOpt('pid');
 
                                 $(".materialbox-caption").css('height', '150px').css('margin-bottom', '50px').html('<span style="font-size: 14px;">' + p + '</span><br><span  style="font-size: 12px;">' + c + '</span><br><a onclick="buyPromo(' + getBitsOpt('pid') + ')" id="267" class="bpr btn-floating  bits waves-effect waves-light btn" style="font-size: 11px; padding: 2px; background-color: rgb(15, 95, 118);">Buy</a>');
@@ -83,12 +83,12 @@ function serviceOpener() {
                 vid: getBitsOpt('vid').replace('!', ''),
                 service: getBitsWinOpt('s'),
                 user: localStorage.getItem('bits-user-name')
-            }).then(function (e) {
+            }).then(function(e) {
                 console.log(e);
             });
         }
     } else {
-        //restore theme to default 
+        //restore theme to default
         //document.getElementByClass("bits").style.backgroundColor  = "#0f5f76";
         $('.bits').css("background-color", "");
         $('.bits').css("background-color", "#0f5f76");
@@ -101,9 +101,9 @@ function serviceOpener() {
     closestShop();
 }
 //------------------------------------------end save--------------------------------------------------------------------------------------
-//---------------------------------------- subscription function--------------------------------------------------------------------------	    
+//---------------------------------------- subscription function--------------------------------------------------------------------------
 function doSubscribe() {
-    $(".promoSubButton").bind("touchstart click", function (event, ui) {
+    $(".promoSubButton").bind("touchstart click", function(event, ui) {
         checkanon();
         showLogin();
         event.preventDefault();
@@ -111,10 +111,10 @@ function doSubscribe() {
         var dr = $(this).attr('dailyR');
         if (!flag) {
             flag = true;
-            setTimeout(function () {
+            setTimeout(function() {
                 flag = false;
             }, 100);
-            localConverter().then(function (e) {
+            localConverter().then(function(e) {
                 var infiat = parseInt(localStorage.getItem('bitsoko-wallets-bal')) / 100000000;
                 var infiat = infiat * parseInt(e.xrate) * parseInt(e.rate);
                 console.log(infiat);
@@ -130,7 +130,7 @@ function doSubscribe() {
                     todo: action,
                     pid: pid,
                     uid: localStorage.getItem('bits-user-name')
-                }).then(function (e) {
+                }).then(function(e) {
                     if (e.status == "ok") {
                         if (infiat < (dr * 1.1)) {
                             //                            Materialize.toast(action + 'd. Insufficient Funds', 6500);
@@ -149,7 +149,7 @@ function doSubscribe() {
                         //---------------------------------------send promo data to db-----------------------------------------------------------------------------
                         if (action == 'subscribe') {
                             var walsvar = getObjectStore('data', 'readwrite').get('bits-mypromos');
-                            walsvar.onsuccess = function (event) {
+                            walsvar.onsuccess = function(event) {
                                 try {
                                     var oold = JSON.parse(event.target.result);
                                     oold.push(e.prom);
@@ -173,7 +173,7 @@ function doSubscribe() {
                         })
 
                     }
-                }).catch(function () {
+                }).catch(function() {
                     M.toast({
                         html: 'temporary error. please try again'
                     })
@@ -185,15 +185,15 @@ function doSubscribe() {
 }
 
 
-setTimeout(function (e) {
+setTimeout(function(e) {
     //Subscribe to shop
-    $("#shopSubscribe").bind("touchstart click", function (event, ui) {
+    $("#shopSubscribe").bind("touchstart click", function(event, ui) {
         if (checkanon()) {
             doFetch({
                 action: 'doSubscription',
                 sid: localStorage.getItem('bits-active-service'),
                 uid: localStorage.getItem('bits-user-name')
-            }).then(function (e) {
+            }).then(function(e) {
                 if (e.status == "ok") {
                     M.toast({
                         html: 'Subscribed successfully'
@@ -211,7 +211,7 @@ setTimeout(function (e) {
 
     })
     //Multiple promo function
-    $(document).on("click", ".promoPlusBtn ", function () {
+    $(document).on("click", ".promoPlusBtn ", function() {
         var promoInput = $(this).parent().parent().find(".inputNo");
         var newPromoVal = JSON.parse(promoInput.val()) + 1
         var minusBtn = $(this).parent().parent().find(".promoMinusBtn")
@@ -223,7 +223,7 @@ setTimeout(function (e) {
         minusBtn.attr("disabled", false)
         promoInput.val(newPromoVal)
     })
-    $(document).on("click", ".promoMinusBtn ", function () {
+    $(document).on("click", ".promoMinusBtn ", function() {
         var minusBtn = $(this)
         var promoInput = $(this).parent().parent().find(".inputNo");
         var newPromoVal = JSON.parse(promoInput.val()) - 1
@@ -238,12 +238,12 @@ setTimeout(function (e) {
         promoInput.val(newPromoVal)
     })
 
-    $(document).on("click", ".verifyPhoneNumb ", function () {
+    $(document).on("click", ".verifyPhoneNumb ", function() {
         $("#MobileModal").openModal()
     })
 
     allServices = [
-	//{name:'Merchants',id:'3',desc:'Merchant desription',cardimage:'/bits/images/merchantsBanner',cardLogo:'/bits/images/merchants',image:'mdi-maps-store-mall-directory',list:[]},
+        //{name:'Merchants',id:'3',desc:'Merchant desription',cardimage:'/bits/images/merchantsBanner',cardLogo:'/bits/images/merchants',image:'mdi-maps-store-mall-directory',list:[]},
         {
             name: 'Contacts',
             id: '2',
@@ -252,8 +252,8 @@ setTimeout(function (e) {
             cardLogo: '/bits/images/contacts',
             image: 'mdi-social-group',
             list: []
-	}
-]
+        }
+    ]
     for (var ii = 0; ii < allServices.length; ++ii) {
         $('.serviceButtonsHolder').append('<li><a href="?s=' + allServices[ii].id + '" service="' + allServices[ii].id + '" class="serviceButtons btn bits  "><i class="large ' + allServices[ii].image + '"></i> ' + allServices[ii].name + '</a></li>');
     };
@@ -292,36 +292,36 @@ function populateService(mDet) {
     document.querySelector('.bitsWcover').src = mDet.icon;
     document.querySelector('.serviceDescription2').innerHTML = mDet.description;
     document.querySelector('.serviceDescription').innerHTML = mDet.description;
-	
-	try{
-	
-	//shop working hours
-	
-    var workingHours = JSON.parse(mDet.workingHours.replace('mon-fri', 'mon_fri')).mon_fri;
-    var openingHours = pad(parseInt(workingHours.substring(0, 4)), 4);
-    var closingHours = pad(parseInt(workingHours.slice(-4)), 4);
-    var currentTime = pad(new Date().getHours() + "" + new Date().getMinutes(), 4);
-    if (currentTime >= openingHours && currentTime <= closingHours) {
-        console.log("Is working Hours", currentTime, openingHours)
-        $(".shopWorkingHours").html("open - closing: " + closingHours);
-        $(".shopWorkingHours").css("color", "white")
-    } else {
-        $(".shopWorkingHours").html("closed - opening: " + openingHours);
-        $(".shopWorkingHours").css("color", "red");
-        shopClosed = true;
-    };
-	}catch(err){
-	
-	console.log('info! error managing working hours',err);
-	
-	}
+
+    try {
+
+        //shop working hours
+
+        var workingHours = JSON.parse(mDet.workingHours.replace('mon-fri', 'mon_fri')).mon_fri;
+        var openingHours = pad(parseInt(workingHours.substring(0, 4)), 4);
+        var closingHours = pad(parseInt(workingHours.slice(-4)), 4);
+        var currentTime = pad(new Date().getHours() + "" + new Date().getMinutes(), 4);
+        if (currentTime >= openingHours && currentTime <= closingHours) {
+            console.log("Is working Hours", currentTime, openingHours)
+            $(".shopWorkingHours").html("open - closing: " + closingHours);
+            $(".shopWorkingHours").css("color", "white")
+        } else {
+            $(".shopWorkingHours").html("closed - opening: " + openingHours);
+            $(".shopWorkingHours").css("color", "red");
+            shopClosed = true;
+        };
+    } catch (err) {
+
+        console.log('info! error managing working hours', err);
+
+    }
     //    if(new Date().getHours()+""+ new Date().getMinutes() < JSON.parse(mDet.workingHours).mon_fri))
 
     $('.maincont').removeClass("displayNone");
     $('.preload').addClass("displayNone");
     $('.card-container-bits').removeClass("displayNone");
     //convertHex( mDet.theme,opacity)
-    setTimeout(function () {
+    setTimeout(function() {
         loadvisit();
     }, 1050);
     try {
@@ -332,18 +332,18 @@ function populateService(mDet) {
         var parsedDeliveryGuys = [];
         var parsedSokoManagers = [];
     }
-    showDeliverBtn = function () {
+    showDeliverBtn = function() {
         for (var x = 0; x < parsedDeliveryGuys.length; ++x) {
             if (parsedDeliveryGuys[x].id == localStorage.getItem('bits-user-name')) {
                 $('#deliveryModalBtn').html('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 488.8 488.8" style="enable-background:new 0 0 488.8 488.8;width: 37px;/* margin-right: 20px; *//* margin-top: 11px; */" xml:space="preserve"><path d="M467.3,172.1c-13.2-14.3-32-22.2-52.9-22.2h-50.3v-27.2c0-6.6-5.4-12-12-12H112.5c-6.6,0-12,5.4-12,12v41.8H53.8 c-6.6,0-12,5.4-12,12s5.4,12,12,12h58.4c0.1,0,0.2,0,0.3,0c0,0,0,0,0.1,0c6.6,0,12-5.4,12-12v-41.8h215.6v27.2v160.9h-113 c-0.5,0-1,0-1.5,0.1c-6-14.8-20.5-25.3-37.4-25.3c-17,0-31.5,10.6-37.4,25.5c-0.9-0.2-1.7-0.3-2.6-0.3h-23.7v-41.9 c0-6.6-5.4-12-12-12c-0.2,0-0.4,0-0.6,0s-0.3,0-0.5,0H53.8c-6.6,0-12,5.4-12,12s5.4,12,12,12h46.7v41.8c0,6.6,5.4,12,12,12h35.7 c0.3,0,0.5,0,0.8,0c4,18,20.1,31.4,39.3,31.4s35.2-13.4,39.3-31.4h124.6h19.2c4.1,17.9,20.1,31.4,39.3,31.4s35.2-13.4,39.3-31.4 h26.8c6.6,0,12-5.4,12-12V235C488.8,209.1,481.3,187.3,467.3,172.1z M188.3,354.2c-9,0-16.3-7.3-16.3-16.3s7.3-16.3,16.3-16.3 s16.3,7.3,16.3,16.3C204.6,346.9,197.3,354.2,188.3,354.2z M410.7,354.2c-9,0-16.3-7.3-16.3-16.3s7.3-16.3,16.3-16.3 s16.3,7.3,16.3,16.3C426.9,346.9,419.6,354.2,410.7,354.2z M464.8,322.8H448c-6-14.7-20.5-25.2-37.3-25.2s-31.3,10.4-37.3,25.2 h-9.2V173.9h50.3c31.5,0,50.3,22.9,50.3,61.2V322.8z" style="fill: rgb(255, 255, 255);"></path><path d="M206.1,251.2c-4.7,4.7-4.7,12.3,0,17c2.3,2.3,5.4,3.5,8.5,3.5s6.1-1.2,8.5-3.5l30.9-30.9l0.1-0.1c0.2-0.3,0.5-0.5,0.7-0.8 c0.1-0.2,0.2-0.3,0.3-0.5c0.1-0.2,0.2-0.3,0.4-0.5c0.1-0.2,0.2-0.4,0.3-0.6c0.1-0.2,0.2-0.3,0.3-0.5c0.1-0.2,0.2-0.4,0.3-0.6 c0.1-0.2,0.2-0.3,0.2-0.5c0.1-0.2,0.1-0.4,0.2-0.6c0.1-0.2,0.1-0.4,0.2-0.5c0.1-0.2,0.1-0.4,0.1-0.6c0-0.2,0.1-0.4,0.1-0.6 c0-0.2,0.1-0.4,0.1-0.7c0-0.2,0.1-0.3,0.1-0.5c0.1-0.8,0.1-1.6,0-2.4c0-0.2,0-0.3-0.1-0.5c0-0.2-0.1-0.4-0.1-0.7 c0-0.2-0.1-0.4-0.1-0.6c0-0.2-0.1-0.4-0.1-0.6c-0.1-0.2-0.1-0.4-0.2-0.5c-0.1-0.2-0.1-0.4-0.2-0.6c-0.1-0.2-0.2-0.3-0.2-0.5 c-0.1-0.2-0.2-0.4-0.3-0.6c-0.1-0.2-0.2-0.3-0.3-0.5c-0.1-0.2-0.2-0.4-0.3-0.6c-0.1-0.2-0.2-0.3-0.4-0.5c-0.1-0.2-0.2-0.3-0.3-0.5 c-0.2-0.3-0.5-0.5-0.7-0.8l-0.1-0.1l-29.4-29.4c-4.7-4.7-12.3-4.7-17,0s-4.7,12.3,0,17l8.9,8.9H12c-6.6,0-12,5.4-12,12 s5.4,12,12,12h204.4L206.1,251.2z" style="fill: rgb(255, 255, 255);"></path></svg>');
                 $('#deliveryModalBtn').addClass("removeExBtn")
-                $("#deliveryModalBtn").click(function () {
+                $("#deliveryModalBtn").click(function() {
                     $("#deliveryGuyModal").modal("open");
                 })
             }
         }
     }
-    showSokoBtn = function () {
+    showSokoBtn = function() {
         for (var x = 0; x < parsedSokoManagers.length; ++x) {
             if (parsedSokoManagers[x].id == localStorage.getItem('bits-user-name')) {
                 $('#manage-store').html('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 489.4 489.4" style="enable-background:new 0 0 489.4 489.4;width: 25px;" xml:space="preserve"><path d="M347.7,263.75h-66.5c-18.2,0-33,14.8-33,33v51c0,18.2,14.8,33,33,33h66.5c18.2,0,33-14.8,33-33v-51 C380.7,278.55,365.9,263.75,347.7,263.75z M356.7,347.75c0,5-4.1,9-9,9h-66.5c-5,0-9-4.1-9-9v-51c0-5,4.1-9,9-9h66.5 c5,0,9,4.1,9,9V347.75z" fill="#FFFFFF"/><path d="M489.4,171.05c0-2.1-0.5-4.1-1.6-5.9l-72.8-128c-2.1-3.7-6.1-6.1-10.4-6.1H84.7c-4.3,0-8.3,2.3-10.4,6.1l-72.7,128 c-1,1.8-1.6,3.8-1.6,5.9c0,28.7,17.3,53.3,42,64.2v211.1c0,6.6,5.4,12,12,12h66.3c0.1,0,0.2,0,0.3,0h93c0.1,0,0.2,0,0.3,0h221.4 c6.6,0,12-5.4,12-12v-209.6c0-0.5,0-0.9-0.1-1.3C472,224.55,489.4,199.85,489.4,171.05z M91.7,55.15h305.9l56.9,100.1H34.9 L91.7,55.15z M348.3,179.15c-3.8,21.6-22.7,38-45.4,38c-22.7,0-41.6-16.4-45.4-38H348.3z M232,179.15c-3.8,21.6-22.7,38-45.4,38 s-41.6-16.4-45.5-38H232z M24.8,179.15h90.9c-3.8,21.6-22.8,38-45.5,38C47.5,217.25,28.6,200.75,24.8,179.15z M201.6,434.35h-69 v-129.5c0-9.4,7.6-17.1,17.1-17.1h34.9c9.4,0,17.1,7.6,17.1,17.1v129.5H201.6z M423.3,434.35H225.6v-129.5 c0-22.6-18.4-41.1-41.1-41.1h-34.9c-22.6,0-41.1,18.4-41.1,41.1v129.6H66v-193.3c1.4,0.1,2.8,0.1,4.2,0.1 c24.2,0,45.6-12.3,58.2-31c12.6,18.7,34,31,58.2,31s45.5-12.3,58.2-31c12.6,18.7,34,31,58.1,31c24.2,0,45.5-12.3,58.1-31 c12.6,18.7,34,31,58.2,31c1.4,0,2.7-0.1,4.1-0.1L423.3,434.35L423.3,434.35z M419.2,217.25c-22.7,0-41.6-16.4-45.4-38h90.9 C460.8,200.75,441.9,217.25,419.2,217.25z" fill="#FFFFFF"/></svg>')
@@ -353,7 +353,7 @@ function populateService(mDet) {
     }
     //----------------------------------------------- enable sharing------------------------------------------//
     //web Share start
-    $(document).on("click", "#share", function () {
+    $(document).on("click", "#share", function() {
         navigator.share({
             title: mDet.name,
             text: mDet.description,
@@ -404,7 +404,7 @@ function populateService(mDet) {
     if (mDet.promotions.length == 0) {
         //        console.log("no promos")
         // $('.merchproducts').addClass('displayNone')
-        // $(".merchantsPromotions").removeClass("displayNone") 
+        // $(".merchantsPromotions").removeClass("displayNone")
         $('.merchPromo').append('<li id="issues-collection" class=" soko-sales-list chStoreUpdate"> <li class="collection-item avatar" style="opacity: 0.6;"><div class="row"><p class="collections-title"><strong><center>No Promotions found</center></strong></p><p class="collections-content"></p></div></li></li>');
     } else {
         $('.pro').html('<span class="new badge bits" data-badge-caption="">' + mDet.promotions.length + '</span>');
@@ -457,7 +457,7 @@ function populateService(mDet) {
             }
         };
         if (nnew.length > 0) {
-            getObjectStore('data', 'readwrite').get('bits-mypromos').onsuccess = function (event) {
+            getObjectStore('data', 'readwrite').get('bits-mypromos').onsuccess = function(event) {
                 try {
                     var oold = JSON.parse(event.target.result);
                     var oold = oold.concat(nnew);
@@ -487,7 +487,7 @@ function populateService(mDet) {
             $('.userContacts').removeClass('displayNone');
 
             if (mDet.list[ii].metric == null) {
-                // console.log("no metrics set") 
+                // console.log("no metrics set")
                 mDet.list[ii].metric = "piece";
             }
             if (ii == 0) {
@@ -501,23 +501,23 @@ function populateService(mDet) {
             $('#user-' + mDet.list[ii].id + '-opener').html("Subscribed");
 
             /*
-			
+
 			var addproducts = document.querySelectorAll('#user-' + mDet.list[ii].id + '-opener');
-			
+
 		for (var i in addproducts) {
-			
+
 			addproducts[i].addEventListener("touchstart", function(){
-				
+
 			history.pushState({page: 1}, "", "?s=2&a="+mDet.list[ii].id);
-			
+
 			}, false);
 		}
 			*/
 
         };
-        // 	 for(var ii = 0; ii < mDet.list.length; ++ii) { 		
+        // 	 for(var ii = 0; ii < mDet.list.length; ++ii) {
         //  	 	console.log(mDet.promotions[ii].promoName)
-        //  	 	console.log(mDet.list[ii].name)	
+        //  	 	console.log(mDet.list[ii].name)
         // 	 };
         bitsTheme(mDet.theme);
         $('.materialboxed').materialbox();
@@ -558,7 +558,7 @@ function populateService(mDet) {
         $('.merchproducts').html("");
         for (var ii = 0; ii < mDet.list.length; ++ii) {
             if (mDet.list[ii].metric == null) {
-                // console.log("no metrics set") 
+                // console.log("no metrics set")
                 mDet.list[ii].metric = "piece";
             }
             if (ii == 0) {
@@ -580,12 +580,12 @@ function populateService(mDet) {
             $("#" + prodCatArray[pct] + "").html("")
             for (var pct = 0; pct < prodCatArray.length; ++pct) {
                 if (mDet.list[ii].productCategory == prodCatArray[pct]) {
-                    $("#" + prodCatArray[pct] + "").append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="' + srcSetPth + ' 35w" src="' + mDet.list[ii].imagePath + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + mDet.list[ii].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + mDet.list[ii].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + mDet.list[ii].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + mDet.list[ii].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + mDet.list[ii].id + '" class="bitsInputQty" price="' + mDet.list[ii].price + '" pid="' + mDet.list[ii].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
+                    $("#" + prodCatArray[pct] + "").append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="' + srcSetPth + ' 35w" src="' + mDet.list[ii].imagePath + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + mDet.list[ii].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + mDet.list[ii].price + ' ' + baseCd + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + mDet.list[ii].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + mDet.list[ii].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + mDet.list[ii].id + '" class="bitsInputQty" price="' + mDet.list[ii].price + '" pid="' + mDet.list[ii].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
                     added = true;
                 }
             }
             if (!added) {
-                $('.allPrds').append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="' + srcSetPth + ' 35w"  src="' + mDet.list[ii].imagePath.replace('.png', '.webp') + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + mDet.list[ii].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + mDet.list[ii].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + mDet.list[ii].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + mDet.list[ii].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + mDet.list[ii].id + '" class="bitsInputQty" price="' + mDet.list[ii].price + '" pid="' + mDet.list[ii].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
+                $('.allPrds').append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="' + srcSetPth + ' 35w"  src="' + mDet.list[ii].imagePath.replace('.png', '.webp') + '" data-caption="' + mDet.list[ii].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + mDet.list[ii].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + mDet.list[ii].price + ' ' + baseCd +' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + mDet.list[ii].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + mDet.list[ii].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + mDet.list[ii].id + '" class="bitsInputQty" price="' + mDet.list[ii].price + '" pid="' + mDet.list[ii].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
 
             }
             $('#prod-' + mDet.list[ii].id + '-counter').handleCounter()
@@ -594,9 +594,9 @@ function populateService(mDet) {
 
             }
         };
-        // 	 for(var ii = 0; ii < mDet.list.length; ++ii) { 		
+        // 	 for(var ii = 0; ii < mDet.list.length; ++ii) {
         //  	 	console.log(mDet.promotions[ii].promoName)
-        //  	 	console.log(mDet.list[ii].name)	
+        //  	 	console.log(mDet.list[ii].name)
         // 	 };
         bitsTheme(mDet.theme);
         sortListDir();
@@ -624,7 +624,7 @@ var activeService;
 
 var bts = document.querySelectorAll(".serviceButtons");
 for (var ii = 0; ii < bts.length; ++ii) {
-    bts[ii].addEventListener('touchstart', function (event) {
+    bts[ii].addEventListener('touchstart', function(event) {
         console.log($(this).attr('service'));
         if ($(this).attr('service') == '2') {
             contact();
