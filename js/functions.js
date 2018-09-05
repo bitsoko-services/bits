@@ -49,13 +49,18 @@ async function payUsingMobileMoney(amount) {
 
     document.getElementById('creditTopup').innerHTML = amount + ' ' + baseCd;
     document.getElementById("mobileNo").value = localStorage.getItem("userNumber");
-
+    if (shopCategory == '7') {
+        actii = 'sell'
+    } else {
+        actii = 'buy'
+    }
 
     doFetch({
         action: 'getInsufficientFundsOrderbook',
         contract: "0xb72627650f1149ea5e54834b2f468e5d430e67bf",
         rate: allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate * baseX,
         total: amount,
+        act: actii,
         countryCode: baseCd
     }).then(function(e) {
         if (e.status == "ok") {
@@ -1083,6 +1088,7 @@ function walletStatus() {
                     $("#ConfirmO").removeAttr("disabled");
                     $("#chooseWalletModal").css("display", "none");
                     $(".unlockWalletToast").remove();
+                    $(".localCurr").html(baseCd+ " ");
                 })
             }, 1000);
         }).catch(function(err) {
@@ -1108,6 +1114,7 @@ function walletStatus() {
                     $("#ConfirmO").removeAttr("disabled");
                     $("#chooseWalletModal").css("display", "none");
                     $(".unlockWalletToast").remove();
+                    $(".localCurr").html(baseCd+ " ");
                 })
             }, 1000);
         }).catch(function(err) {

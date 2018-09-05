@@ -14,23 +14,23 @@ function recoverOldWallets(olWals) {
     /*
     var oldWalsSv=[];
         for( var i=0,oldWalsSv=oldWalsSv; i < olWals.length; i++ ){
-    	    
-    	
+
+
         downloadFile(olWals[i], function(eg){
-              try{               
-      		  
-            oldWalsSv.push(eg.responseText); 
+              try{
+
+            oldWalsSv.push(eg.responseText);
     		  if(olWals.length==oldWalsSv.length){
-    getObjectStore('data', 'readwrite').put(JSON.stringify(oldWalsSv), 'bits-wallets-old');		  
-    		  }	
+    getObjectStore('data', 'readwrite').put(JSON.stringify(oldWalsSv), 'bits-wallets-old');
+    		  }
               }catch(err){
-    		  
+
     Materialize.toast('Error loading old wallets', 10000);
                       console.log("Error loading old wallet: "+err+" fetching..");
-    		                   
+
                   }
-                    });    
-        } 
+                    });
+        }
     	*/
     console.log(olWals);
     // start loading old wallets
@@ -40,9 +40,9 @@ function recoverOldWallets(olWals) {
     for (var ii = 0, allPs = allPs; ii < olWals.length; ii++) {
 
         allPs.push(new Promise((resolve, reject) => {
-            downloadFile(olWals[ii]).then(function (e) {
+            downloadFile(olWals[ii]).then(function(e) {
                 resolve(e)
-            }).catch(function (e) {
+            }).catch(function(e) {
                 M.toast({
                     html: "Enable popups"
                 })
@@ -53,9 +53,9 @@ function recoverOldWallets(olWals) {
 
 
     Promise.all(allPs).then(olWalss => {
-        // [3, 1337, "foo"] 
+        // [3, 1337, "foo"]
 
-        getObjectStore('data', 'readwrite').get('bits-wallets-old-' + localStorage.getItem('bits-user-name')).onsuccess = function (event) {
+        getObjectStore('data', 'readwrite').get('bits-wallets-old-' + localStorage.getItem('bits-user-name')).onsuccess = function(event) {
 
             try {
                 var oold = JSON.parse(event.target.result);
@@ -76,7 +76,7 @@ function starting() {
     //$('#loginModal').closeModal()
 
     $(".balance-coins").html("login");
-    var initAddMobVeri = setInterval(function (e) {
+    var initAddMobVeri = setInterval(function(e) {
         if (typeof addMobiVeri !== 'undefined') {
             addMobiVeri();
             clearInterval(initAddMobVeri);
@@ -106,17 +106,18 @@ function starting() {
 
         /////////////////////////////////// update exchange rates
 
-        fetchRates().then(function (e) {
+        fetchRates().then(function(e) {
             getUserOders(e);
 
             //Check Bal Interval
 
             updateEarnedTokens();
-            window.setInterval(function () {
+            window.setInterval(function() {
                 updateEarnedTokens();
             }, 20000);
 
             $(".conf-curr").html(e.data.baseCd);
+            $(".localCurr").html(baseCd + " ");
         });
 
     }
@@ -129,24 +130,25 @@ function starting() {
 
 
 
-    $(document).on('click', '.walletUserUnlock', function () {
+    $(document).on('click', '.walletUserUnlock', function() {
         $(".walletUserUnlock").html('<div class="preloader-wrapper active" style="width: 20px; height: 20px; margin: 5px 15px; margin-top: 20px; margin-left: -35px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
         if (checkanon()) {
-            walletFunctions(localStorage.getItem('bits-user-name')).then(function (e) {
+            walletFunctions(localStorage.getItem('bits-user-name')).then(function(e) {
                 /////////////////////////////////// update exchange rates
-                fetchRates().then(function (e) {
+                fetchRates().then(function(e) {
                     getUserOders(e);
 
                     //Check Bal Interval
 
                     updateEarnedTokens();
-                    window.setInterval(function () {
+                    window.setInterval(function() {
                         updateEarnedTokens();
                     }, 20000);
                     $(".walletUserUnlock").html('<svg id="userWallet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 334.877 334.877" style="enable-background:new 0 0 334.877 334.877; width: 24px; float: left; margin-top: 16px;" xml:space="preserve"> <path d="M333.196,155.999h-16.067V82.09c0-17.719-14.415-32.134-32.134-32.134h-21.761L240.965,9.917 C237.571,3.798,231.112,0,224.107,0c-3.265,0-6.504,0.842-9.364,2.429l-85.464,47.526H33.815 c-17.719,0-32.134,14.415-32.134,32.134v220.653c0,17.719,14.415,32.134,32.134,32.134h251.18 c17.719,0,32.134-14.415,32.134-32.134v-64.802h16.067V155.999z M284.995,62.809c9.897,0,17.982,7.519,19.068,17.14h-24.152 l-9.525-17.14H284.995z M220.996,13.663c3.014-1.69,7.07-0.508,8.734,2.494l35.476,63.786H101.798L220.996,13.663z M304.275,302.742c0,10.63-8.651,19.281-19.281,19.281H33.815c-10.63,0-19.281-8.651-19.281-19.281V82.09 c0-10.63,8.651-19.281,19.281-19.281h72.353L75.345,79.95H37.832c-3.554,0-6.427,2.879-6.427,6.427s2.873,6.427,6.427,6.427h14.396 h234.83h17.217v63.201h-46.999c-21.826,0-39.589,17.764-39.589,39.589v2.764c0,21.826,17.764,39.589,39.589,39.589h46.999V302.742z M320.342,225.087h-3.213h-59.853c-14.743,0-26.736-11.992-26.736-26.736v-2.764c0-14.743,11.992-26.736,26.736-26.736h59.853 h3.213V225.087z M276.961,197.497c0,7.841-6.35,14.19-14.19,14.19c-7.841,0-14.19-6.35-14.19-14.19s6.35-14.19,14.19-14.19 C270.612,183.306,276.961,189.662,276.961,197.497z" style="fill: white;"></path> </svg> <div id="checkBal" class="balance-coins" style="position: absolute; left: 55px; padding-top: 3px;width: fit-content !important; text-align: left;"><div class="preloader-wrapper active" style="width: 20px; height: 20px; margin: 5px 15px; top:10px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div></div>');
-                    $("#ConfirmO").html("Confirm")
+                    $("#ConfirmO").html("Confirm");
+                    $(".localCurr").html(baseCd + " ");
                 });
-            }).catch(function (err) {
+            }).catch(function(err) {
                 console.log(err)
                 //                M.toast({
                 //                    html: 'Error unlocking wallet'
@@ -163,7 +165,7 @@ function starting() {
 
     });
 
-    setTimeout(function () {
+    setTimeout(function() {
 
         if (navigator.serviceWorker.controller) {
 
@@ -172,7 +174,7 @@ function starting() {
                     app: 'bits',
                     req: 'appVersion'
                 },
-            }).then(function (version) {
+            }).then(function(version) {
                 // If the promise resolves, show the version number.
                 console.log(version);
                 $("#bv").html(version);
@@ -184,7 +186,7 @@ function starting() {
     }, 850);
 
 
-    var LocalStrgInt = setInterval(function (e) {
+    var LocalStrgInt = setInterval(function(e) {
         if (typeof localStorage !== 'undefined') {
             if (localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')) == null) {
                 $('.addressClass').html("");
@@ -204,26 +206,26 @@ function startUser(user){
      return new Promise(function(resolve, reject) {
     if(user==undefined){
     user=anon;
-    }    
-console.log(user);  
+    }
+console.log(user);
 		    var walsvar = getObjectStore('data', 'readwrite').get('user-profile-'+ localStorage.getItem('bits-user-name'));
 	walsvar.onsuccess = function (event) {
         try{
 		var pFl=JSON.parse(event.target.result);
-        	
-    
-	}catch(err){	
+
+
+	}catch(err){
 		reject(err);
 	}
 
 
 
-    
-}   
+
+}
     walsvar.onerror = function (event) {
         console.log('access error');
 	    reject('no wallet functions');
-    }	     
+    }
      });
 }
 */
@@ -241,11 +243,11 @@ function log(data) {
 
 
 
-var Plugin = function (name, settings) {
+var Plugin = function(name, settings) {
     this.name = name;
     this.children = ko.observableArray(settings);
     this.settings = settings;
-    this.addChild = function () {
+    this.addChild = function() {
         this.children.push("New child");
     }.bind(this);
 
@@ -275,7 +277,7 @@ function signT() {
 function doFetch (data){
 
         console.log(window.location);
-        
+
  document.querySelector("iframe[bits]").contentWindow.postMessage(data, window.location.origin);
 
 }
@@ -361,12 +363,12 @@ var servdummy = ko.observable().extend({ notify: 'always' });
 
 function get(url) {
     // Return a new promise.
-    return new Promise(function (resolve, reject) {
+    return new Promise(function(resolve, reject) {
         // Do the usual XHR stuff
         var req = new XMLHttpRequest();
         req.open('GET', url);
 
-        req.onload = function () {
+        req.onload = function() {
             // This is called even on 404 etc
             // so check the status
             if (req.status == 200) {
@@ -380,7 +382,7 @@ function get(url) {
         };
 
         // Handle network errors
-        req.onerror = function () {
+        req.onerror = function() {
             reject(Error("Network Error"));
         };
 
@@ -393,11 +395,11 @@ function get(url) {
 function listServices(sel) {
     // Return a new promise.
 
-    return new Promise(function (resolve, reject) {
+    return new Promise(function(resolve, reject) {
 
         sel = sel;
         var store = getObjectStore('data', 'readwrite').get("services");
-        store.onsuccess = function (event) {
+        store.onsuccess = function(event) {
             console.log('looking for ' + sel);
             // var activePlugs=[];
             //if (sel == 'all'){
@@ -437,14 +439,14 @@ function listServices(sel) {
                      }else{
                          plugins[i].def='defplug';
                      }
-        
+
                     //}
-        
+
                     if(plugins[i].enabled=='1'){
                     activePlugs.push(plugins[i]);
                        //console.log(plugins[i]);
                     }else{
-        
+
                     }
                     console.log(plugins[i]);
                     */
@@ -457,7 +459,7 @@ function listServices(sel) {
 
 
         }
-        store.onerror = function (event) {
+        store.onerror = function(event) {
 
             reject('unable to fetch installed services', event);
 
@@ -471,14 +473,14 @@ function listServices(sel) {
 /*
     viewModel = {
      self : this,
-      
+
     payEntry: ko.observable(),
     currCharge: ko.observable(),
     //currPass: ko.observable(),
     currPass: ko.computed(function() {
-		
+
 		return currPass();
-		
+
 	}).extend({ notify: 'always' }),
     servInfoImg: ko.observable(),
     servInfoName: ko.observable(),
@@ -491,7 +493,7 @@ function listServices(sel) {
     actvServName: ko.computed(function(){
         var returns;
          try{ returns=self.activeServ().name}catch(err){console.log('no plug name')};
-    
+
         //alert(returns);
         return returns;
     }),
@@ -502,28 +504,28 @@ function listServices(sel) {
     }),
     itemList: ko.observableArray(),
     allTrans: ko.observableArray(),
-    
+
         mngServList: ko.computed(function() {
-	
-   	 $('#manserv-noserv').css('display','block');	
+
+   	 $('#manserv-noserv').css('display','block');
     var allServices = JSON.parse('[]');
-       try{     
+       try{
         for(var i = 0; i < defaultPlugins.length; ++i) {
-		
+
 		allServices.push(defaultPlugins[i]);
-			
+
 		}
     var installedServ=JSON.parse(localStorage.getItem('bitsoko-wallet-plugins'));
-    
-   
-    // console.log(manServSearch()) 
+
+
+    // console.log(manServSearch())
    var searchedServ=JSON.parse(manServSearch());
-     
-    // console.log(searchedServ,allServices)        
-   var i=0;             
+
+    // console.log(searchedServ,allServices)
+   var i=0;
    for(var i = 0; i < searchedServ.length; ++i) {
       // console.log(searchedServ[i].name);
-                           
+
        searchedServ[i].status="not active";
        searchedServ[i].statuscs="inactv-plug";
    for(var j = 0; j < installedServ.length; ++j) {
@@ -531,15 +533,15 @@ function listServices(sel) {
        if(searchedServ[i].id==installedServ[j].id){
        searchedServ[i].status="active";
        searchedServ[i].statuscs="actv-plug";
-       
+
        }
    }
-     
+
 	   //var services=allServices;
-	       
+
           //  }
             //console.log(mode,returns);
-		
+
    //for(var i = 0; i < allServices.length; ++i) {
        searchedServ[i].plugowner="";
        searchedServ[i].accno="";
@@ -547,54 +549,54 @@ function listServices(sel) {
        searchedServ[i].plugowner="myplugin";
        }else{searchedServ[i].plugowner="nomyplugin";
        }
-       
-       
+
+
     //returns.push(services[i]);
-       
+
   // }
-   
-        
-            
+
+
+
        if (searchedServ[i].def=='yes'){
        searchedServ[i].manhidden="hiddenplug";
        searchedServ[i].status="default";
        searchedServ[i].statuscs="def-plug";
        }else {
        searchedServ[i].manhidden="";
-       
+
            allServices.push(searchedServ[i]);
        }
-            
-   } 
+
+   }
                 if (i==0){
-              
+
     for(var j = 0; j < installedServ.length; ++j) {
        installedServ[j].status="active";
        installedServ[j].statuscs="actv-plug";
-        
+
            allServices.push(installedServ[j]);
    }
        }
                     if (allServices.length>defaultPlugins.length){
                 $('#manserv-noserv').css('display','none');
        }
-            
+
        }catch (err){
        localStorage.setItem('bitsoko-wallet-plugins','[]')
        }
-  return allServices;    
+  return allServices;
     }),
         recalcplug : function() {
             dummy.notifySubscribers();
             console.log('subs notified');
-        }, 
+        },
         allTransrem : function() {
             allTrans.removeAll();
-        } 
+        }
 };
         //viewModel = new viewModel();
         //ko.applyBindings(sokoModel);
-  ko.applyBindings(viewModel);  
+  ko.applyBindings(viewModel);
      */
 var confVeriTimer;
 var reCovering;
@@ -623,9 +625,9 @@ var activedc;
 
 var pc1icedone = false;
 
-var RTCMultiSession = function (options) {
+var RTCMultiSession = function(options) {
     return {
-        send: function (message) {
+        send: function(message) {
             if (moz && message.file)
                 data = message.file;
             else
@@ -645,12 +647,12 @@ function setupDC1() {
         });
         activedc = dc1;
         console.log("Created datachannel (pc1)");
-        dc1.onopen = function (e) {
+        dc1.onopen = function(e) {
             console.log('data channel connect');
             // $('#waitForConnection').modal('hide');
             //$('#waitForConnection').remove();
         }
-        dc1.onmessage = function (e) {
+        dc1.onmessage = function(e) {
             console.log("Got message (pc1)", e.data);
             if (e.data.size) {
                 fileReceiver1.receive(e.data, {});
@@ -682,39 +684,39 @@ function setupDC1() {
 window.addEventListener('load', function(e) {
 
      bc.addEventListener('message', function(e) {
-  
+
         var dt =e.data;
         var pl =dt.transaction;
     switch (dt.cast) {
-      case 'sent': 
+      case 'sent':
    doFetch({action:'updBal', data: pl.address}).then(function(e){
-       
-      alert(e); 
-       
+
+      alert(e);
+
    });
-    
-            
+
+
             console.log(pl);
       break;
-		case 'received': 
+		case 'received':
         alert('received');
-            
+
             console.log(pl);
       break;
-		}  
-});  
-	
+		}
+});
+
 window.addEventListener('beforeunload', function(event, ui) {
 
          window.location.hash='';
-        
+
 });
 
            var shroot = document.querySelectorAll(".keypad");
              for(var i = 0; i < shroot.length; ++i) {
-                 
+
                  shroot[i].addEventListener("touchstart", function(){
-                 
+
                if (!flag) {
     flag = true;
     setTimeout(function(){ flag = false; }, 250);
@@ -741,25 +743,25 @@ var keyelm=$(this);
         addDigit('0')
     } else if(keyelm.hasClass( "fa-times-circle" )){
         try{document.getElementById('payPop').close()}catch(err){};
-        
-    } 
-         
+
+    }
+
          if(currAmt() > 0){
-         
+
    $("#payer").css('opacity','1').css('pointer-events','all');
          }else {
-         
+
    $("#payer").css('opacity','0.3').css('pointer-events','none');
          }
-         
-     }  
-                 
-                 
-                 }, false); 
-                 
+
+     }
+
+
+                 }, false);
+
              };
   //  bindPlugins();
-}, false);   
+}, false);
 
 */
 function updDetServ(cid, cname, cem, cimg) {
@@ -774,7 +776,7 @@ function updDetServ(cid, cname, cem, cimg) {
 
 
     viewModel.servInfoVeri('Not Verified');
-    //viewModel.servInfoAddr(paro.attr('cem'));  
+    //viewModel.servInfoAddr(paro.attr('cem'));
 
     currPayName(cname);
     currPayRecp(cem); // Supposed to be the bitcoin address but will be processed serverside
@@ -804,7 +806,7 @@ function updDetServ(cid, cname, cem, cimg) {
 
     //$( ".serv-action" ).css("opacity","1").css("pointer-events","all");
 
-    setTimeout(function () {
+    setTimeout(function() {
         elmSTOne.querySelector("all-transactions").setAttribute("tacc", cem);
         elmSTOne.querySelector("all-transactions").setAttribute("tserv", viewModel.activeServ().id);
         elmSTOne.querySelector("all-transactions").style.display = "block";
@@ -826,7 +828,7 @@ function updDetServ(cid, cname, cem, cimg) {
 
 
 //move to functions
-window.addEventListener("offline", function (e) {
+window.addEventListener("offline", function(e) {
     // alert("offline");
     //showNotices('Offline!');
     // doNotification('You are Offline!', 'transactions will be saved after you reconnect', 0, '../bitsAssets/images/icon-offline.png');
@@ -835,26 +837,26 @@ window.addEventListener("offline", function (e) {
 
 }, false);
 
-window.addEventListener("online", function (e) {
+window.addEventListener("online", function(e) {
     //loadWallet();
 
     //$('.info2').css('background-image',"url('../images/bitsoko-off.png')");
 }, false);
 
 // move to init
-$(document).on("pageinit", function (event) {
+$(document).on("pageinit", function(event) {
 
     $.mobile.page.prototype.options.keepNative = "select, input";
-    $(".js-push-button-notification").bind("touchstart click", function (event, ui) {
+    $(".js-push-button-notification").bind("touchstart click", function(event, ui) {
         console.log(flag)
         if (flag != true) {
             flag = true;
             console.log(flag)
-            setTimeout(function () {
+            setTimeout(function() {
                 flag = false;
             }, 100);
             if (isPushEnabled) {
-                //unsubscribe();  
+                //unsubscribe();
             } else {
                 //subscribe();
                 startPushManager();
@@ -863,11 +865,11 @@ $(document).on("pageinit", function (event) {
 
     });
 
-    $(".js-loc-button-notification").bind("touchstart click", function (event, ui) {
+    $(".js-loc-button-notification").bind("touchstart click", function(event, ui) {
 
         if (!flag) {
             flag = true;
-            setTimeout(function () {
+            setTimeout(function() {
                 flag = false;
             }, 100);
 
@@ -883,12 +885,12 @@ $(document).on("pageinit", function (event) {
                 var store = getObjectStore('data', 'readwrite');
                 var req = store.put('default', 'country');
 
-                req.onsuccess = function (event) {
+                req.onsuccess = function(event) {
                     //		var store = getObjectStore('images', 'readwrite');
 
                     localStorage.setItem('bitsoko-settings-country', 'default');
-                    fetchRates().then(function (e) {
-
+                    fetchRates().then(function(e) {
+                        $(".localCurr").html(baseCd + " ");
                         //updateWallpaper();
                         //setWallpaper();
                     });
@@ -910,15 +912,15 @@ $(document).on("pageinit", function (event) {
 
     });
 
-    $(".keypad").bind("touchstart click", function (event, ui) {
+    $(".keypad").bind("touchstart click", function(event, ui) {
 
     });
 
 
-    $(".confinp").bind("touchstart click", function (event, ui) {
+    $(".confinp").bind("touchstart click", function(event, ui) {
         if (!flag) {
             flag = true;
-            setTimeout(function () {
+            setTimeout(function() {
                 flag = false;
             }, 100);
             var keyelm = $(this);
@@ -939,11 +941,11 @@ $(document).on("pageinit", function (event) {
 });
 
 
-$(".servsearch").bind('touchstart click', function (e) {
+$(".servsearch").bind('touchstart click', function(e) {
     //console.log($( this ).attr('id'));
     if (!flag) {
         flag = true;
-        setTimeout(function () {
+        setTimeout(function() {
             flag = false;
         }, 100);
         $('.meta').focus();
@@ -952,11 +954,11 @@ $(".servsearch").bind('touchstart click', function (e) {
 });
 
 
-$("#doDelete").bind('touchstart click', function (e) {
+$("#doDelete").bind('touchstart click', function(e) {
     //console.log($( this ).attr('id'));
     if (!flag) {
         flag = true;
-        setTimeout(function () {
+        setTimeout(function() {
             flag = false;
         }, 100);
 
@@ -974,11 +976,11 @@ $("#doDelete").bind('touchstart click', function (e) {
 });
 
 
-$("#payer").bind('touchstart click', function (e) {
+$("#payer").bind('touchstart click', function(e) {
     //console.log($( this ).attr('id'));
     if (!flag) {
         flag = true;
-        setTimeout(function () {
+        setTimeout(function() {
             flag = false;
         }, 1000);
 
@@ -997,11 +999,11 @@ $("#payer").bind('touchstart click', function (e) {
 });
 
 
-$("#recover-panel-but").bind('touchstart click', function (e) {
+$("#recover-panel-but").bind('touchstart click', function(e) {
     //console.log($( this ).attr('id'));
     if (!flag) {
         flag = true;
-        setTimeout(function () {
+        setTimeout(function() {
             flag = false;
         }, 100);
 
@@ -1014,11 +1016,11 @@ $("#recover-panel-but").bind('touchstart click', function (e) {
 });
 
 
-$("#create-panel-but").bind('touchstart click', function (e) {
+$("#create-panel-but").bind('touchstart click', function(e) {
     //console.log($( this ).attr('id'));
     if (!flag) {
         flag = true;
-        setTimeout(function () {
+        setTimeout(function() {
             flag = false;
         }, 100);
 
@@ -1030,11 +1032,11 @@ $("#create-panel-but").bind('touchstart click', function (e) {
     return false
 });
 
-$("#rec-panel-bk").bind('touchstart click', function (e) {
+$("#rec-panel-bk").bind('touchstart click', function(e) {
     //console.log($( this ).attr('id'));
     if (!flag) {
         flag = true;
-        setTimeout(function () {
+        setTimeout(function() {
             flag = false;
         }, 100);
 
@@ -1047,7 +1049,7 @@ $("#rec-panel-bk").bind('touchstart click', function (e) {
     return false
 });
 
-$("#serv-type-ui-panel-inner").bind('scroll', function (e) {
+$("#serv-type-ui-panel-inner").bind('scroll', function(e) {
     //console.log();
     //notSigned();
     //  setTimeout(function(){ signed() }, 2500);
@@ -1056,11 +1058,11 @@ $("#serv-type-ui-panel-inner").bind('scroll', function (e) {
 
 });
 
-$("core-icon-button").bind('touchstart click', function (e) {
+$("core-icon-button").bind('touchstart click', function(e) {
     //console.log($( this ).attr('id'));
     if (!flag) {
         flag = true;
-        setTimeout(function () {
+        setTimeout(function() {
             flag = false;
         }, 100);
         if ($(this).attr('action') == "open-panel") {
@@ -1073,11 +1075,11 @@ $("core-icon-button").bind('touchstart click', function (e) {
     return false
 });
 
-$("#rec-panel-fwa").bind('touchstart click', function (e) {
+$("#rec-panel-fwa").bind('touchstart click', function(e) {
     //console.log($( this ).attr('id'));
     if (!flag) {
         flag = true;
-        setTimeout(function () {
+        setTimeout(function() {
             flag = false;
         }, 400);
         $("#rec-panel-loader").css('display', 'block');
@@ -1088,16 +1090,16 @@ $("#rec-panel-fwa").bind('touchstart click', function (e) {
     return false
 });
 
-$(".curr-toggle").bind('touchstart click', function (e) {
+$(".curr-toggle").bind('touchstart click', function(e) {
     //console.log($( this ).attr('id'));
     e.preventDefault();
 });
 
-$(".notify-cancel").bind('touchstart click', function (e) {
+$(".notify-cancel").bind('touchstart click', function(e) {
     document.getElementById('notify').close();
 });
 
-$("#recover-panel").on("panelopen", function (event, ui) {
+$("#recover-panel").on("panelopen", function(event, ui) {
 
     //var data=data.replace("%3A", ":");
     $('#rec-user').focus();
@@ -1105,7 +1107,7 @@ $("#recover-panel").on("panelopen", function (event, ui) {
 });
 
 
-$("#about-panel").on("panelopen", function (event, ui) {
+$("#about-panel").on("panelopen", function(event, ui) {
 
     $("#helptel").attr('href', 'tel:' + $.parseJSON(localStorage.getItem('bitsoko-settings-global')).helptel);
 
@@ -1115,12 +1117,12 @@ $("#about-panel").on("panelopen", function (event, ui) {
 });
 
 
-$("#serv-opts-panel").on("panelclose", function (event, ui) {
+$("#serv-opts-panel").on("panelclose", function(event, ui) {
     manServSearch('[]');
 
 });
 
-$("#curr-panel").on("panelclose", function (event, ui) {
+$("#curr-panel").on("panelclose", function(event, ui) {
 
     document.getElementById("menuPanel-inner").style.display = "block";
     //  window.location.hash = window.location.hash.slice(0,-9)
@@ -1137,7 +1139,7 @@ $("#curr-panel").on("panelclose", function (event, ui) {
 
 //});
 
-$("#serv-panel").on("panelopen", function (event, ui) {
+$("#serv-panel").on("panelopen", function(event, ui) {
     //console.log('closed..');
 
     var url = '#p=' + sequence.currentFrameID + "&s=" + viewModel.activeServ().id;
@@ -1159,7 +1161,7 @@ $("#serv-panel").on("panelopen", function (event, ui) {
             data: getBitsWinOpt('a'),
             service: getBitsWinOpt('s'),
             origin: 'service'
-        }).then(function (e) {
+        }).then(function(e) {
             console.log(e);
             if (e.data.length > 0) {
 
@@ -1190,7 +1192,7 @@ $("#serv-panel").on("panelopen", function (event, ui) {
 });
 
 
-$("#serv-panel").on("panelclose", function (event, ui) {
+$("#serv-panel").on("panelclose", function(event, ui) {
     //console.log('closed..');
 
     currPayMeta('');
@@ -1272,7 +1274,7 @@ function processContacts() {
         action: 'procontacts',
         user: localStorage.getItem('bits-user-name'),
         data: JSON.stringify(numbs)
-    }).then(function (data) {
+    }).then(function(data) {
         //localStorage.setItem('bitsoko-all-trns',data);
 
         var data = JSON.parse(data);
@@ -1289,7 +1291,7 @@ function processContacts() {
                     conts[ii].name = data[i].name;
                     conts[ii].address = data[i].address;
                 }
-                //numbs.push(conts[i].Numb[ii]);  
+                //numbs.push(conts[i].Numb[ii]);
                 //conts.splice(ii-1, 1, wallets[i]);
             }
         }
@@ -1328,16 +1330,16 @@ $.ajax({
   .done(function( data ) {
       localStorage.setItem('bitsoko-trns-meta',data);
       //console.log(data);
-      
-    
+
+
   })
  .error(function() {
-  
-     
+
+
   })
 .always(function() {
-    updateTransactions(); 
-  }); 	
+    updateTransactions();
+  });
 	}
 */
 // to functions
@@ -1363,7 +1365,7 @@ function updateContacts() {
     $.ajax({
         url: "https://www.google.com/m8/feeds/contacts/default/thin?access_token=" + localStorage.getItem('bits-token-google') + "&max-results=700&alt=json",
         dataType: "jsonp",
-        success: function (data) {
+        success: function(data) {
             var e = data.feed.entry
             allconts = [];
             var contUpd = [];
@@ -1403,7 +1405,7 @@ function updateContacts() {
             doFetch({
                 action: 'updContDet',
                 data: contUpd
-            }, allconts).then(function (e) {
+            }, allconts).then(function(e) {
                 //allconts = e.setMeta;
                 var allconts = e.connectRet;
                 var matches = e.data;
@@ -1444,12 +1446,12 @@ function updateMerchants() {
     doFetch({
         action: 'getMerchs',
         user: localStorage.getItem('bits-user-name')
-    }).then(function (e) {
+    }).then(function(e) {
 
         if (e.status == 'ok') {
 
 
-            getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchants').onsuccess = function (event) {
+            getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchants').onsuccess = function(event) {
 
                 // cont.code = e[i].id;
                 // cont.name = e[i].name;
