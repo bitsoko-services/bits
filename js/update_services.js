@@ -538,7 +538,7 @@ function populateService(mDet) {
                 $(".merchantsProducts").css("display", "block")
                 $(".prdctTabs").css("display", "none")
             } else {
-                var x = JSON.parse(productCategory);
+                var x = productCategory;
                 $('.prdTabs').html("");
                 $('.prdCatCont').html("");
                 $('.prdTabs').append('<li class="tab col s3" style=""><a href="#allPrds" class="active">more</a></li>');
