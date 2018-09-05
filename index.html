@@ -1839,7 +1839,7 @@
                 e.onsuccess = function(event) {
                     console.log(e, "***")
                     try {
-                        var e = JSON.parse(event.target.result);
+                        var e = event.target.result;
                         resolve(e);
                     } catch (err) {
                         console.log('this service is not in the indexdb!!!! try dom?');

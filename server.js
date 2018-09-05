@@ -20,7 +20,7 @@ try {
                 client.postMessage('notification clicked');
                 var requestURL = new URL(client.url);
                 if (requestURL.pathname.split("/")[1] == opserv) {
-                    //if (client.url == 'https://bitsoko.co.ke/app/index.html?web=1' && 'focus' in client) 
+                    //if (client.url == 'https://bitsoko.co.ke/app/index.html?web=1' && 'focus' in client)
                     client.focus();
                     return client.postMessage('notification clicked');
                 }
@@ -35,7 +35,7 @@ try {
             // that serve as keys for the current cache.
             // This command adds a new request/response pair to the cache.
             case 'createBackup':
-                //do backup  
+                //do backup
                 bitsNotification('Wallet Backed Up', 'Thank you for backing up your wallet you are one step closer to saving the world', '', 'bits/images/no.png', [{
                     action: '',
                     title: "Backed up"
@@ -182,7 +182,7 @@ try {
                                 ddat = pdata[i];
                                 getObjectStore('data', 'readwrite').get('bits-merchant-id-' + pdata[i].promoOwner).onsuccess = function (event) {
                                     var data = event.target.result;
-                                    data = JSON.parse(data);
+                                
                                     butArr = [];
                                     if (data.payments == "true") {
                                         butArr.push({
@@ -210,7 +210,7 @@ try {
                     store.onsuccess = function (event) {
                     	   var data = event.target.result;
                     	   data= JSON.parse(data);
-                    	  
+
                          getObjectStore('data', 'readwrite').get('bits-merchant-id-'+e.data.id).onsuccess = function (event) {
                     	   var data = event.target.result;
                     	   data= JSON.parse(data);
@@ -219,10 +219,10 @@ try {
                     	   	butArr.push({action: 'bits-redeem-'+dat.pid, title: "Buy Offer"});
                     	   }
                     	   	butArr.push({action: 'bits-unsubscribe-'+dat.pid, title: "Unsubscribe"});
-                    	  
+
                     	 //console.log(data.discount+"% off" +data.name,dat.msg,"bits-promo-"+dat.pid,'bits/images/no.png',data.imagePath,[{action: 'createBackup', title: "Back up"}],true,true);
                           bitsNotification(data.discount+"% off " +data.name+" @ "+dat.sNm,dat.msg,"bits-promo-"+dat.pid,dat.sImg,dat.pImg,butArr,true,false);
-                         
+
                     }
                          */
                     //console.log(data.discount+"% off" +data.name,dat.msg,"bits-promo-"+dat.pid,'bits/images/no.png',data.imagePath,[{action: 'createBackup', title: "Back up"}],true,true);
@@ -262,7 +262,7 @@ try {
         // //..................................................................................................
         // messaging.setBackgroundMessageHandler(function(payload) {
         //   console.log('[firebase-messaging-sw.js] Received background message ', payload);
-        //   // Customize notification here dummy data for testng 
+        //   // Customize notification here dummy data for testng
         //   const notificationTitle = 'Message Title';
         //   const notificationOptions = {
         //     body: ' Message body.',
@@ -288,14 +288,14 @@ try {
         //console.log(resolve);
         //var orReq=event.request.clone();
         var url = new URL(event.request.clone().url);
-        /*		
+        /*
         if (url.pathname.substring(0, 2) == '/p' && url.hostname == location.hostname) {
-        	
+
         		console.log('physical web url!!');
         		var bid=url.pathname.substring(2, 5);
         		//resolve(Response.redirect('http://bitsoko.co.ke/bits/#m='+bid));
         //orReq.url='https://bitsoko.co.ke/p'+bid+'?f=j';
-        	 
+
         	 	      var text = "";
             var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             for(var i = 0; i < 60; i++) {
@@ -303,10 +303,10 @@ try {
             }
 
           return cache.match(event.request.clone()).then(function (response) {
-        	  
+
         console.log(response);
         	  var sendUrl='https://bitsoko.co.ke/p'+bid+'?f=j&p='+text;
-        	  
+
          return response || fetch(sendUrl).then(function(response) {
         //response=Response.redirect('https://bitsoko.co.ke/p='+bid+'?format=json');
 
@@ -316,7 +316,7 @@ try {
         if(response.clone().url==sendUrl ){
         	console.log(response.clone().text());
         return response.clone().text().then(function(d){
-         	
+
         var respJ = JSON.parse(d);
           console.log(respJ);
         	if(respJ.a=='0'&&respJ.s=='3'){
@@ -324,43 +324,43 @@ try {
         url = location.origin+'/soko/';
         var trResp=Response.redirect(url);
 
-        return trResp;	   
+        return trResp;
         	   }else if(respJ.s=='3'){
-         
+
         url = location.origin+'/bits/?s='+respJ.a+'&p='+respJ.p;
         var trResp=Response.redirect(url);
         cache.put(event.request.clone(), trResp.clone());
 
         return trResp;
-        	   
+
         	   }else{
-         
+
         url = location.origin+'/bits/?s='+respJ.s+'&p='+respJ.p;
         var trResp=Response.redirect(url);
         cache.put(event.request.clone(), trResp.clone());
 
         return trResp;
-        	   
+
         	   }
 
-         	
-         });	
-        	
+
+         });
+
         }
 
 
           }).catch(function(err){
 
-          	
+
         //url = 'https://bitsoko.co.ke/bits/index.html#s=3&a=404';
         return Response.redirect('https://bitsoko.co.ke/bits/index.html?s=3&a=404');
-          });	
+          });
         //cache.put(orReq, response.clone());
         //  console.log(resp.clone());
 
           });
 
-        } 
+        }
         else if (url.pathname.substring(0, 2) == '/w' && url.hostname == location.hostname) {
         	*/
         if (url.pathname.substring(0, 2) == '/w' && url.hostname == location.hostname) {

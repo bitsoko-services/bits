@@ -38,7 +38,7 @@ function serviceOpener() {
             var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
             svReq.onsuccess = function(event) {
                 try {
-                    var x = JSON.parse(event.target.result)
+                    var x = event.target.result;
                     var xc = x.promotions
 
                     for (var ixc = 0; ixc < xc.length; ++ixc) {

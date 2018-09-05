@@ -164,7 +164,7 @@ function servicePageLoader() {
         var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
         svReq.onsuccess = function(event) {
             try {
-                populateService(JSON.parse(event.target.result));
+                populateService(event.target.result);
                 populated = true;
 
                 setTimeout(function(e) {
@@ -175,7 +175,7 @@ function servicePageLoader() {
                         console.log($(e)[0].childNodes)
                         if ($(e)[0].childNodes.length == 0) {
                             getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function(event) {
-                                var prodList = JSON.parse(event.target.result).list
+                                var prodList = event.target.result.list
                                 console.log(prodList)
                                 for (x in prodList) {
                                     if (prodList[x].productCategory == clickedTab) {
@@ -215,7 +215,7 @@ function servicePageLoader() {
                             console.log($(e)[0].childNodes)
                             if ($(e)[0].childNodes.length == 0) {
                                 getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function(event) {
-                                    var prodList = JSON.parse(event.target.result).list
+                                    var prodList = event.target.result.list
                                     console.log(prodList)
                                     for (x in prodList) {
                                         if (prodList[x].productCategory == clickedTab) {
@@ -228,7 +228,7 @@ function servicePageLoader() {
                         };
                     }, 3000)
 
-                    var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(JSON.parse(newstr).res), 'bits-merchant-id-' + getBitsWinOpt('s'));
+                    var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(newstr.res), 'bits-merchant-id-' + getBitsWinOpt('s'));
                     svReq.onsuccess = function() {
 
                     };
@@ -297,7 +297,7 @@ function servicePageLoader() {
                 $(".bits").css("background-color", e.data.theme)
 
                 deliveryRadius = e.data.deliveryRadius
-                var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-' + e.data.id);
+                var svReq = getObjectStore('data', 'readwrite').put(e.data, 'bits-merchant-id-' + e.data.id);
                 svReq.onsuccess = function() {
                     try {
                         if (!populated) {
@@ -381,7 +381,7 @@ function servicePageLoader() {
             var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
             svReq.onsuccess = function(event) {
                 try {
-                    populateService(JSON.parse(event.target.result));
+                    populateService(event.target.result);
                     populated = true;
                 } catch (err) {
                     ////console.log('service not found in db. perhaps trying from DOM 3');
@@ -912,7 +912,7 @@ function getProdss(orderArrayx, costofItems) {
         e.onsuccess = function(event) {
             //            console.log(event.target.result)
             try {
-                var x = JSON.parse(event.target.result);
+                var x = event.target.result;
                 resolve(x.list);
             } catch (err) {
                 console.log(err)
@@ -970,7 +970,7 @@ function buyPromo(clicked_id, promoOder) {
         e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
         //t = t;
         e.onsuccess = function(event) {
-            var x = JSON.parse(event.target.result);
+            var x = event.target.result;
             resolve({
                 promotions: x.promotions,
                 //list: x.list,
