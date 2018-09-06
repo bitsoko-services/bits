@@ -258,7 +258,12 @@ function pad(n, length) {
 }
 
 function populateService(mDet) {
-    shopCategory = mDet.category;
+    try {
+        shopCategory = mDet.category
+    } catch (err) {
+        console.log(err)
+        shopCategory = "1"
+    };
     var productCategory = mDet.productCategory
     checkBrowser()
     //    console.log(mDet.id)
