@@ -66,7 +66,7 @@ function finalCost(costofItems) {
                         globalDel = rates;
 
                         //console.log(y);
-                        //add delivery rate to totals 
+                        //add delivery rate to totals
                         var divObj = document.getElementById("totals");
                         var totalCost = parseInt(divObj.innerHTML) + 0
 
@@ -79,12 +79,12 @@ function finalCost(costofItems) {
                         $(".del").html(0 + '<span class=""> /=</span>')
                     } else {
                         //--rates
-                        var rates = Math.ceil(d * distance);
+                        var rates = Math.ceil(d * distance) + 50;
 
                         globalDel = rates;
 
                         //console.log(y);
-                        //add delivery rate to totals 
+                        //add delivery rate to totals
                         var divObj = document.getElementById("totals");
                         var totalCost = parseInt(divObj.innerHTML) + rates
 
