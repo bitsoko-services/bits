@@ -264,9 +264,11 @@ function populateService(mDet) {
         console.log(err)
         shopCategory = "1"
     };
-    var productCategory = mDet.productCategory
-    console.log("product category===========================")
-    console.log(productCategory)
+    try {
+        var productCategory = JSON.parse(mDet.productCategory)
+    } catch (err) {
+        var productCategory = mDet.productCategory
+    }
     checkBrowser()
     //    console.log(mDet.id)
     //    console.log(mDet);
