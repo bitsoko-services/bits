@@ -269,6 +269,8 @@ function populateService(mDet) {
     } catch (err) {
         var productCategory = mDet.productCategory
     }
+    console.log("productCategory===============================")
+    console.log(productCategory)
     checkBrowser()
     //    console.log(mDet.id)
     //    console.log(mDet);
