@@ -263,9 +263,7 @@ function servicePageLoader() {
             service: getBitsWinOpt('s')
         }).then(function(e) {
             if (e.status == "ok") {
-
-
-
+                checkServicePageLoader();
 
                 var prdList = e.data.list
                 getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function(event) {

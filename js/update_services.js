@@ -24,7 +24,6 @@ function updateServicelist() {
 function serviceOpener() {
     console.log('serviceOpener()..');
     if (getBitsWinOpt('s') != undefined) {
-        checkServicePageLoader()
         if (getBitsOpt('pid') != undefined) {
             var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
             svReq.onsuccess = function(event) {
