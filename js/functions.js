@@ -139,6 +139,32 @@ function callMerchant() {
 function rate() {
     $('#RateModal').openModal();
 }
+
+function initializeTabs() {
+    M.Tabs.getInstance(document.querySelector(".prdTabs")).options.onShow = function(e) {
+        var clickedTab = $(e).attr("id")
+        console.log($(e)[0].childNodes)
+        if ($(e)[0].childNodes.length == 0) {
+            getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function(event) {
+                var prodList = event.target.result.list
+                console.log(prodList)
+                for (x in prodList) {
+                    if (prodList[x].productCategory == clickedTab) {
+                        try {
+                            var srcSetPth = prodList[x].imagePath.replace('.png', '-35.webp');
+
+                        } catch (e) {
+                            var srcSetPth = '';
+
+                        }
+                        $("#" + clickedTab + "").append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="/' + srcSetPth + ' 35w" src="https://bitsoko.io' + prodList[x].imagePath + '" data-caption="' + prodList[x].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + prodList[x].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + prodList[x].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + prodList[x].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + prodList[x].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + prodList[x].id + '" class="bitsInputQty" price="' + prodList[x].price + '" pid="' + prodList[x].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
+                        $('#prod-' + prodList[x].id + '-counter').handleCounter();
+                    }
+                }
+            }
+        }
+    };
+}
 //...........................URL check end//.................................................................................................................................................
 //function service Page loader..........
 function servicePageLoader() {
@@ -169,30 +195,9 @@ function servicePageLoader() {
 
                 setTimeout(function(e) {
                     $('.prdTabs').tabs();
+
                     //Get Tab Content
-                    M.Tabs.getInstance(document.querySelector(".prdTabs")).options.onShow = function(e) {
-                        var clickedTab = $(e).attr("id")
-                        console.log($(e)[0].childNodes)
-                        if ($(e)[0].childNodes.length == 0) {
-                            getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function(event) {
-                                var prodList = event.target.result.list
-                                console.log(prodList)
-                                for (x in prodList) {
-                                    if (prodList[x].productCategory == clickedTab) {
-                                        try {
-                                            var srcSetPth = prodList[x].imagePath.replace('.png', '-35.webp');
-
-                                        } catch (e) {
-                                            var srcSetPth = '';
-
-                                        }
-                                        $("#" + clickedTab + "").append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="/' + srcSetPth + ' 35w" src="https://bitsoko.io' + prodList[x].imagePath + '" data-caption="' + prodList[x].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + prodList[x].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + prodList[x].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + prodList[x].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + prodList[x].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + prodList[x].id + '" class="bitsInputQty" price="' + prodList[x].price + '" pid="' + prodList[x].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
-                                        $('#prod-' + prodList[x].id + '-counter').handleCounter();
-                                    }
-                                }
-                            }
-                        }
-                    };
+                    initializeTabs();
                 }, 3000)
             } catch (err) {
                 console.log(err)
@@ -206,31 +211,14 @@ function servicePageLoader() {
                     populateService(JSON.parse(newstr).res);
                     populated = true;
 
-                    setTimeout(function(e) {
-                        $('.prdTabs').tabs();
-
-                        //Get Tab Content
-                        M.Tabs.getInstance(document.querySelector(".prdTabs")).options.onShow = function(e) {
-                            var clickedTab = $(e).attr("id")
-                            console.log($(e)[0].childNodes)
-                            if ($(e)[0].childNodes.length == 0) {
-                                getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function(event) {
-                                    var prodList = event.target.result.list
-                                    console.log(prodList)
-                                    for (x in prodList) {
-                                        if (prodList[x].productCategory == clickedTab) {
-                                            $("#" + clickedTab + "").append('<li class="collection-item avatar bits-max "><div class="row" style="margin-bottom:0px;"><div class="col s2"><img srcset="' + prodList[x].imagePath + ' 35w" src="' + prodList[x].imagePath + '" data-caption="' + prodList[x].description + '" alt="" class="circle materialboxed" style="width:35px; height:35px;"></div> <div class="col s5" style="text-align:left;"><span class="title"><span class="serviceListTitle" id="pcat" pcategory""> ' + prodList[x].name + ' </span></span><p style="margin:0px;" class="serviceListFirstline"> <span id="bitsPrice" class="bits-badge bits left">' + prodList[x].price + ' <span class="localCurr"><span class="conf-curr"></span> </span>per ' + prodList[x].metric + ' </span></p></div><div class="col s5" style="padding:0px;"><div class="handle-counter" data-step="1" data-intro=" Add products to cart here" id="prod-' + prodList[x].id + '-counter" style="width:100% !important;"><div class="row" style="padding: 0 15px;margin-bottom:0px;"> <div class="col s4"><button class="counter-minus bits btn btn-primary btn-floating btn-f pulse"  style="line-height: 5px;margin-top:7px; width: 35px; height: 35px; margin-top: 10px;">-</button></div><div class="col s4"><input id= "bitsInputQty' + prodList[x].id + '" class="bitsInputQty" price="' + prodList[x].price + '" pid="' + prodList[x].id + '" type="text" value="0" min="" style="border-bottom: none;margin-top:6px;"></div><div class="col s4"><button class="counter-plus js--triggerAnimation bits btn btn-primary btn-floating btn-f pulse" style="line-height: 5px; float:right; margin-top: 7px; width: 35px; height: 35px; margin-top: 10px;" >+</button></div></div></div></div></li>');
-                                            $('#prod-' + prodList[x].id + '-counter').handleCounter();
-                                        }
-                                    }
-                                }
-                            }
-                        };
-                    }, 3000)
-
                     var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(newstr.res), 'bits-merchant-id-' + getBitsWinOpt('s'));
                     svReq.onsuccess = function() {
+                        setTimeout(function(e) {
+                            $('.prdTabs').tabs();
 
+                            //Get Tab Content
+                            initializeTabs();
+                        }, 3000)
                     };
                     svReq.onerror = function() {
                         ////console.log('err not saved store info to db')
@@ -263,7 +251,9 @@ function servicePageLoader() {
             service: getBitsWinOpt('s')
         }).then(function(e) {
             if (e.status == "ok") {
-                checkServicePageLoader();
+
+
+
 
                 var prdList = e.data.list
                 getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function(event) {
@@ -1086,7 +1076,7 @@ function walletStatus() {
                     $("#ConfirmO").removeAttr("disabled");
                     $("#chooseWalletModal").css("display", "none");
                     $(".unlockWalletToast").remove();
-                    $(".localCurr").html(baseCd+ " ");
+                    $(".localCurr").html(baseCd + " ");
                 })
             }, 1000);
         }).catch(function(err) {
@@ -1112,7 +1102,7 @@ function walletStatus() {
                     $("#ConfirmO").removeAttr("disabled");
                     $("#chooseWalletModal").css("display", "none");
                     $(".unlockWalletToast").remove();
-                    $(".localCurr").html(baseCd+ " ");
+                    $(".localCurr").html(baseCd + " ");
                 })
             }, 1000);
         }).catch(function(err) {
