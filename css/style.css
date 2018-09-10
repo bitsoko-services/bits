@@ -34,12 +34,12 @@ blockquote {
 }
 
 #serviceDescription {
-    min-height: 30px;
+    /* min-height: 5px; */
     margin-left: 11px;
     white-space: nowrap;
     width: 100%;
     overflow: hidden;
-    text-overflow: ellipsis
+    text-overflow: ellipsis;
 }
 
 .confirmOrderFooter {

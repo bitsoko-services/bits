@@ -215,6 +215,23 @@ function pad(n, length) {
     return (len > 0 ? new Array(++len).join('0') : '') + n
 }
 
+//Convert 24 hour to 12 Hours
+function convertTo12Hour(time) {
+    var timeString = time;
+    var H = +timeString.substr(0, 2);
+    var h = (H % 12) || 12;
+    var ampm = H < 12 ? " am" : " pm";
+    timeString = h + timeString.substr(2, 3) + ampm;
+
+    var startTime = moment();
+    var endTime = moment(timeString, "HH:mm a");
+    var duration = moment.duration(endTime.diff(startTime));
+    var hours = parseInt(duration.asHours());
+
+    $(".shopWorkingHours").html("Closed! > Opening in " + hours + ' hours');
+    $(".shopWorkingHours").css("color", "red");
+}
+
 function populateService(mDet) {
     try {
         shopCategory = mDet.category
@@ -268,8 +285,16 @@ function populateService(mDet) {
         $(".shopWorkingHours").html("open - closing: " + closingHours);
         $(".shopWorkingHours").css("color", "white")
     } else {
-        $(".shopWorkingHours").html("closed - opening: " + openingHours);
-        $(".shopWorkingHours").css("color", "red");
+        String.prototype.insert = function(index, string) {
+            if (index > 0)
+                return this.substring(0, index) + string + this.substring(index, this.length);
+            else
+                return string + this;
+        };
+
+        var formatedTime = openingHours;
+        formatedTime = formatedTime.insert(2, ":");
+        convertTo12Hour(formatedTime)
         shopClosed = true;
     };
 
