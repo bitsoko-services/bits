@@ -232,7 +232,7 @@ function servicePageLoader() {
                     svReq.onsuccess = function(e) {
                         console.log("e =======================");
                         console.log(e);
-                        // checkPromoBuy(JSON.parse(newstr).res)
+                        checkPromoBuy(JSON.parse(newstr).res)
                         setTimeout(function(e) {
                             $('.prdTabs').tabs();
 
