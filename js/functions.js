@@ -8,6 +8,7 @@ var get_pointsEarned;
 var insufficientOrderNum;
 var wishShareId;
 var buywishlist;
+var promoCheckoutModal = false;
 
 async function doMakeOrder(orderArrayy, res, globalDel, locOrigin, uid, addrr, points, sid) {
     var e = await doFetch({
@@ -165,6 +166,21 @@ function initializeTabs() {
         }
     };
 }
+
+function checkPromoBuy(e) {
+    var promotions = e.promotions
+    var promoLength = promotions.length
+    if (promoLength => 1) {
+        for (id in promotions) {
+            if (getBitsOpt('pid') == promotions[id].id) {
+                buyPromo(promotions[id].id);
+                promoCheckoutModal = true;
+                promoToBuy = promotions[id].id;
+            }
+        }
+    }
+}
+
 //...........................URL check end//.................................................................................................................................................
 //function service Page loader..........
 function servicePageLoader() {
@@ -192,6 +208,7 @@ function servicePageLoader() {
             try {
                 populateService(event.target.result);
                 populated = true;
+                checkPromoBuy(event.target.result);
 
                 setTimeout(function(e) {
                     $('.prdTabs').tabs();
@@ -210,6 +227,7 @@ function servicePageLoader() {
                 try {
                     populateService(JSON.parse(newstr).res);
                     populated = true;
+                    checkPromoBuy(JSON.parse(newstr).res)
 
                     var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(newstr.res), 'bits-merchant-id-' + getBitsWinOpt('s'));
                     svReq.onsuccess = function() {
@@ -542,6 +560,9 @@ function showuser() {
     } else {
         //showlogintoast()
     }
+    if(promoCheckoutModal == true){
+        buyPromo(promoToBuy)
+    }
 }
 //------------------end function -------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------------
@@ -656,11 +677,7 @@ function makeOrder(orderArrayy, orderLoc) {
     //checkanon();
     if (buywishlist == true) {} else {
         if (checkanon() == false) {
-            $('#loginModal').modal({
-                onCloseEnd: function() {
-                    $(".delivery").click()
-                }
-            }).modal("open")
+            $('#loginModal').modal("open")
             return;
         }
         buywishlist = false
@@ -942,6 +959,7 @@ bp = 0
 dis = 0
 
 function buyPromo(clicked_id, promoOder) {
+    clearCart();
     bp = 1
     promoOder = orderArray
     // 	var lipromo = $(".bpr").attr("id");

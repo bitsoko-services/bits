@@ -25,48 +25,6 @@ function serviceOpener() {
     console.log('serviceOpener()..');
     if (getBitsWinOpt('s') != undefined) {
         checkServicePageLoader()
-        if (getBitsOpt('pid') != undefined) {
-            var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
-            svReq.onsuccess = function(event) {
-                try {
-                    var x = event.target.result;
-                    var xc = x.promotions
-
-                    for (var ixc = 0; ixc < xc.length; ++ixc) {
-                        var ttx = xc[ixc].id;
-                        var pids = getBitsOpt('pid');
-                        if (ttx == pids) {
-                            console.log(xc[ixc].promoName, xc[ixc].promoDesc)
-                            var p = xc[ixc].promoName
-                            var c = xc[ixc].promoDesc
-                            $(".materialbox-caption").html('')
-                            $(".collapsible-header").trigger("click");
-                            setTimeout(function() {
-                                $(".p" + getBitsOpt('pid')).trigger("click");
-                            }, 1000);
-                            setTimeout(function() {
-                                var clid = getBitsOpt('pid');
-
-                                $(".materialbox-caption").css('height', '150px').css('margin-bottom', '50px').html('<span style="font-size: 14px;">' + p + '</span><br><span  style="font-size: 12px;">' + c + '</span><br><a onclick="buyPromo(' + getBitsOpt('pid') + ')" id="267" class="bpr btn-floating  bits waves-effect waves-light btn" style="font-size: 11px; padding: 2px; background-color: rgb(15, 95, 118);">Buy</a>');
-
-
-                            }, 1000);
-                        } else {
-                            console.log("not match")
-                        }
-
-                    }
-
-
-
-
-
-
-                } catch (err) {
-                    console.log('service not found in db. perhaps try loading from server AGAIN!!')
-                }
-            };
-        }
         if (getBitsOpt('vid') != undefined) {
             doFetch({
                 action: 'addVisit',
