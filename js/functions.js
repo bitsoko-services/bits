@@ -230,9 +230,6 @@ function servicePageLoader() {
 
                     var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(newstr.res), 'bits-merchant-id-' + getBitsWinOpt('s'));
                     svReq.onsuccess = function(e) {
-                        console.log("e =======================");
-                        console.log(newstr.res);
-                        // checkPromoBuy(JSON.parse(newstr).res)
                         setTimeout(function(e) {
                             $('.prdTabs').tabs();
 
@@ -242,6 +239,12 @@ function servicePageLoader() {
                     };
                     svReq.onerror = function() {
                         ////console.log('err not saved store info to db')
+                    }
+                    getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function(event) {
+                        console.log(event.target.result.productCategory)
+                        console.log("e =======================");
+                        // console.log(newstr.res);
+                        // checkPromoBuy(JSON.parse(newstr).res)
                     }
 
                 } catch (err) {
@@ -562,7 +565,7 @@ function showuser() {
     } else {
         //showlogintoast()
     }
-    if(promoCheckoutModal == true){
+    if (promoCheckoutModal == true) {
         buyPromo(promoToBuy)
     }
 }
