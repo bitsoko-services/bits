@@ -208,7 +208,6 @@ function servicePageLoader() {
             try {
                 populateService(event.target.result);
                 populated = true;
-                checkPromoBuy(event.target.result);
 
                 setTimeout(function(e) {
                     $('.prdTabs').tabs();
@@ -240,12 +239,6 @@ function servicePageLoader() {
                     svReq.onerror = function() {
                         ////console.log('err not saved store info to db')
                     }
-                    getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function(event) {
-                        console.log(event.target.result.productCategory)
-                        console.log("e =======================");
-                        // console.log(newstr.res);
-                        // checkPromoBuy(JSON.parse(newstr).res)
-                    }
 
                 } catch (err) {
                     console.log(err)
@@ -274,9 +267,7 @@ function servicePageLoader() {
             service: getBitsWinOpt('s')
         }).then(function(e) {
             if (e.status == "ok") {
-
-
-
+                checkPromoBuy(e.data)
 
                 var prdList = e.data.list
                 getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function(event) {
@@ -982,8 +973,6 @@ function buyPromo(clicked_id, promoOder) {
         //t = t;
         e.onsuccess = function(event) {
             var x = event.target.result;
-            console.log("x=============================")
-            console.log(x)
             resolve({
                 promotions: x.promotions,
                 //list: x.list,
