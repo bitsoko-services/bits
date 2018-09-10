@@ -227,10 +227,12 @@ function servicePageLoader() {
                 try {
                     populateService(JSON.parse(newstr).res);
                     populated = true;
-                    checkPromoBuy(JSON.parse(newstr).res)
 
                     var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(newstr.res), 'bits-merchant-id-' + getBitsWinOpt('s'));
-                    svReq.onsuccess = function() {
+                    svReq.onsuccess = function(e) {
+                        console.log("e =======================");
+                        console.log(e);
+                        // checkPromoBuy(JSON.parse(newstr).res)
                         setTimeout(function(e) {
                             $('.prdTabs').tabs();
 
