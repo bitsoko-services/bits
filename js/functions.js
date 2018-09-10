@@ -231,8 +231,8 @@ function servicePageLoader() {
                     var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(newstr.res), 'bits-merchant-id-' + getBitsWinOpt('s'));
                     svReq.onsuccess = function(e) {
                         console.log("e =======================");
-                        console.log(e);
-                        checkPromoBuy(JSON.parse(newstr).res)
+                        console.log(newstr.res);
+                        // checkPromoBuy(JSON.parse(newstr).res)
                         setTimeout(function(e) {
                             $('.prdTabs').tabs();
 
