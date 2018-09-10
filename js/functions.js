@@ -267,6 +267,7 @@ function servicePageLoader() {
             service: getBitsWinOpt('s')
         }).then(function(e) {
             if (e.status == "ok") {
+                shopData = e.data
                 checkPromoBuy(e.data)
 
                 var prdList = e.data.list
@@ -967,71 +968,57 @@ function buyPromo(clicked_id, promoOder) {
     // 	////console.log($(".bpr").attr("promo"));
     // 	var xx = document.getElementById(lipromo).id;
     // 	var tt = $(".bpr").attr("promo");
-    new Promise(function(resolve, reject) {
-        ////console.log("this is var t" + t)
-        e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
-        //t = t;
-        e.onsuccess = function(event) {
-            var x = event.target.result;
-            resolve({
-                promotions: x.promotions,
-                //list: x.list,
-                //discount: x.discount
-            });
+    var pd = shopData.promotions;
+    for (var ixi = 0; ixi < pd.length; ++ixi) {
+        //console.log("=============== looping ==============================")
+        var pitems = JSON.parse(pd[ixi].promoItems);
+        var prid = pd[ixi].id;
+        if (clicked_id != prid) {
+            continue;
         }
-    }).then(function(r) {
-        var pd = r.promotions;
-        for (var ixi = 0; ixi < pd.length; ++ixi) {
-            //console.log("=============== looping ==============================")
-            var pitems = JSON.parse(pd[ixi].promoItems);
-            var prid = pd[ixi].id;
-            if (clicked_id != prid) {
-                continue;
-            }
-            dis = JSON.parse(pd[ixi].discount);
-            //console.log("discount is >>>>>>>>>", dis);
-            setTimeout(function() {
-                $("#burst-11").css("display", "block");
-                var getProdPrice = document.getElementById("totals").innerHTML;
-                promoDiscount = (dis / 100) * getProdPrice
-                //console.log("this is the discount" + (dis / 100) * getProdPrice);
-                $("#promoDiscount").html('<span id="dscnt">' + promoDiscount + '</span><br>OFF');
-            }, 2000);
+        dis = JSON.parse(pd[ixi].discount);
+        //console.log("discount is >>>>>>>>>", dis);
+        setTimeout(function() {
+            $("#burst-11").css("display", "block");
+            var getProdPrice = document.getElementById("totals").innerHTML;
+            promoDiscount = (dis / 100) * getProdPrice
+            //console.log("this is the discount" + (dis / 100) * getProdPrice);
+            $("#promoDiscount").html('<span id="dscnt">' + promoDiscount + '</span><br>OFF');
+        }, 2000);
 
-            ////console.log(w , tt , "ww and tt");
-            if (prid == w) {
-                //console.log("match");
-                var obj = {};
-                var p = obj
-                for (var i = 0, j = pitems.length; i < j; i++) {
-                    obj[pitems[i]] = (obj[pitems[i]] || 0) + 1;
-                }
-                for (var key in p) {
-                    if (p.hasOwnProperty(key)) {
-                        //console.log(key + " -> " + p[key]);
-                        promoOder.push({
-                            pid: key,
-                            count: p[key]
-                        });
-                        // loop to get product price
-                        for (var iix = 0, j = pitems.length; iix < j; iix++) {}
-                    }
-                }
-                var hashmap = promoOder
-                var multiplePromo = []
-
-                for (var i = 0, l = hashmap.length; i < l; i++) {
-                    var newHashmap = hashmap[i];
-                    newHashmap["count"] = newHashmap["count"] * numbOfPromo
-                    multiplePromo.push(newHashmap)
-                };
-                makeOrder(multiplePromo);
-            } else {
-                //console.log(" no match");
+        ////console.log(w , tt , "ww and tt");
+        if (prid == w) {
+            //console.log("match");
+            var obj = {};
+            var p = obj
+            for (var i = 0, j = pitems.length; i < j; i++) {
+                obj[pitems[i]] = (obj[pitems[i]] || 0) + 1;
             }
-            // cop();
+            for (var key in p) {
+                if (p.hasOwnProperty(key)) {
+                    //console.log(key + " -> " + p[key]);
+                    promoOder.push({
+                        pid: key,
+                        count: p[key]
+                    });
+                    // loop to get product price
+                    for (var iix = 0, j = pitems.length; iix < j; iix++) {}
+                }
+            }
+            var hashmap = promoOder
+            var multiplePromo = []
+
+            for (var i = 0, l = hashmap.length; i < l; i++) {
+                var newHashmap = hashmap[i];
+                newHashmap["count"] = newHashmap["count"] * numbOfPromo
+                multiplePromo.push(newHashmap)
+            };
+            makeOrder(multiplePromo);
+        } else {
+            //console.log(" no match");
         }
-    });
+        // cop();
+    }
     //$(".bpromo").attr("id")
 }
 
