@@ -11,7 +11,7 @@ function finalCost(costofItems) {
     //--geting the user location details---------------------------------------------------------------------------------------//
 
     actvServ().then(
-        function (p) {
+        function(p) {
             console.log(p)
             var d = p.deliveryRate
             console.log(d)
@@ -27,7 +27,7 @@ function finalCost(costofItems) {
                 //--geting the shop delivery Rates---------------------------------------------------------------------------------------//
                 console.log("calculating rates")
                 //var distance =getDistanceFromLatLonInKm(from-lat,from-long,to-lat,from-long);
-                getDistanceFromLatLonInKm(e.coords.latitude, e.coords.longitude, x, y).then(function (distance) {
+                getDistanceFromLatLonInKm(e.coords.latitude, e.coords.longitude, x, y).then(function(distance) {
                     console.log("rates loaded")
                     $("#ConfirmO").removeAttr("disabled")
                     var dist = distance
@@ -79,7 +79,10 @@ function finalCost(costofItems) {
                         $(".del").html(0 + '<span class=""> /=</span>')
                     } else {
                         //--rates
-                        var rates = Math.ceil(d * distance) + 50;
+                        var rates = Math.ceil(d * distance);
+                        if (rates < 100) {
+                            rates = 100
+                        }
 
                         globalDel = rates;
 
@@ -106,7 +109,7 @@ function delAvail() {
     var delAval = $("#delAvail").is(':checked');
     if (checkanon() == false) {
         $('#loginModal').modal({
-            onCloseEnd: function () {
+            onCloseEnd: function() {
                 $(".delivery").click()
             }
         }).modal("open")
@@ -116,14 +119,14 @@ function delAvail() {
         navigator.permissions.query({
             name: 'push',
             userVisibleOnly: true
-        }).then(function (e) {
+        }).then(function(e) {
             if (e.state == "granted") {
                 doFetch({
                     action: 'manageDelAvail',
                     uid: localStorage.getItem('bits-user-name'),
                     sid: localStorage.getItem('bits-active-service'),
                     state: delAval
-                }).then(function (e) {
+                }).then(function(e) {
                     if (e.status == "ok") {
                         M.toast({
                             html: 'State changed successfully'
@@ -140,7 +143,7 @@ function delAvail() {
                     $("#delAvail").prop("checked", false);
                 }
             }
-        }).catch(function (e) {
+        }).catch(function(e) {
             document.getElementById('notificationsModal').style.display = "block";
             if ($("#delAvail").is(':checked') == true) {
                 $("#delAvail").prop("checked", false);
@@ -152,7 +155,7 @@ function delAvail() {
             uid: localStorage.getItem('bits-user-name'),
             sid: localStorage.getItem('bits-active-service'),
             state: delAval
-        }).then(function (e) {
+        }).then(function(e) {
             if (e.status == "ok") {
                 M.toast({
                     html: 'State changed successfully'
