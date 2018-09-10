@@ -977,6 +977,8 @@ function buyPromo(clicked_id, promoOder) {
         //t = t;
         e.onsuccess = function(event) {
             var x = event.target.result;
+            console.log("x=============================")
+            console.log(x)
             resolve({
                 promotions: x.promotions,
                 //list: x.list,
