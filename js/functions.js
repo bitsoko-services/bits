@@ -9,6 +9,7 @@ var insufficientOrderNum;
 var wishShareId;
 var buywishlist;
 var promoCheckoutModal = false;
+var promoModalActive = false;
 
 async function doMakeOrder(orderArrayy, res, globalDel, locOrigin, uid, addrr, points, sid) {
     var e = await doFetch({
@@ -660,6 +661,15 @@ function tabulateTotals() {
 function makeOrder(orderArrayy, orderLoc) {
     //Rewards();
     //console.log("->", orderArrayy)
+    if(promoModalActive == true){
+        setTimeout(function(e){
+            $('.wishlistChip').css('display', 'none');
+        },300)
+        promoModalActive = false
+    }else{
+        $('.wishlistChip').css('display', 'block');
+    }
+    $('.wishlistChip').css('display', 'block');
     if (orderArrayy === undefined || orderArrayy.length == 0) {
         M.toast({
             html: "Ooops! You didn't select any product"
@@ -956,6 +966,7 @@ bp = 0
 dis = 0
 
 function buyPromo(clicked_id, promoOder) {
+    promoModalActive = true
     clearCart();
     bp = 1
     promoOder = orderArray
