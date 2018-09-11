@@ -661,12 +661,12 @@ function tabulateTotals() {
 function makeOrder(orderArrayy, orderLoc) {
     //Rewards();
     //console.log("->", orderArrayy)
-    if(promoModalActive == true){
-        setTimeout(function(e){
+    if (promoModalActive == true) {
+        setTimeout(function(e) {
             $('.wishlistChip').css('display', 'none');
-        },300)
+        }, 300)
         promoModalActive = false
-    }else{
+    } else {
         $('.wishlistChip').css('display', 'block');
     }
     $('.wishlistChip').css('display', 'block');
@@ -989,13 +989,7 @@ function buyPromo(clicked_id, promoOder) {
         }
         dis = JSON.parse(pd[ixi].discount);
         //console.log("discount is >>>>>>>>>", dis);
-        setTimeout(function() {
-            $("#burst-11").css("display", "block");
-            var getProdPrice = document.getElementById("totals").innerHTML;
-            promoDiscount = (dis / 100) * getProdPrice
-            //console.log("this is the discount" + (dis / 100) * getProdPrice);
-            $("#promoDiscount").html('<span id="dscnt">' + promoDiscount + '</span><br>OFF');
-        }, 2000);
+        $("#burst-11").css("display", "block");
 
         ////console.log(w , tt , "ww and tt");
         if (prid == w) {

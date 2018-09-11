@@ -29,7 +29,14 @@ function finalCost(costofItems) {
                 //var distance =getDistanceFromLatLonInKm(from-lat,from-long,to-lat,from-long);
                 getDistanceFromLatLonInKm(e.coords.latitude, e.coords.longitude, x, y).then(function(distance) {
                     console.log("rates loaded")
-                    $("#ConfirmO").removeAttr("disabled")
+                    $("#ConfirmO").removeAttr("disabled");
+
+
+                    //Calculate Promo Discount
+                    var getProdPrice = document.getElementById("totals").innerHTML;
+                    promoDiscount = (dis / 100) * getProdPrice
+                    $("#promoDiscount").html('<span id="dscnt" style="font-size:2em;">' + promoDiscount + '</span><br>money <br> back');
+
                     var dist = distance
                     try {
 

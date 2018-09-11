@@ -7,7 +7,8 @@
     <meta content="#{name}" name="og:title">
     <meta content="https://bitsoko.co.ke/app" name="og:url">
     <meta content="#{img}" name="og:image">
-    <meta content="AmhVefTF40eyTfFt5ZHxLSoKVazcEs/9vGgan3XHC/BIk1f2i3FEkF0VdA/oxRRA0jQvIBD+431GPVLADBVaGAoAAABfeyJvcmlnaW4iOiJodHRwczovL2JpdHNva28uaW86NDQzIiwiZmVhdHVyZSI6IldlYlNoYXJlIiwiZXhwaXJ5IjoxNDkwOTczMDU4LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=" data-expires="2017-03-31" data-feature="Web Share" http-equiv="origin-trial">
+    <meta content="AmhVefTF40eyTfFt5ZHxLSoKVazcEs/9vGgan3XHC/BIk1f2i3FEkF0VdA/oxRRA0jQvIBD+431GPVLADBVaGAoAAABfeyJvcmlnaW4iOiJodHRwczovL2JpdHNva28uaW86NDQzIiwiZmVhdHVyZSI6IldlYlNoYXJlIiwiZXhwaXJ5IjoxNDkwOTczMDU4LCJpc1N1YmRvbWFpbiI6dHJ1ZX0="
+        data-expires="2017-03-31" data-feature="Web Share" http-equiv="origin-trial">
     <meta content="#{desc}" name="og:description">
     <meta content="#{desc}" name="description">
     <meta content="" name="keywords">
@@ -673,6 +674,7 @@
         <form action="#" style="margin: 0px 10%; margin-bottom: 10%;">
             <p class="range-field">
                 <input type="range" id="setGasPrice" min="0" max="14" />
+
             </p>
         </form>
     </div>
@@ -853,8 +855,8 @@
                             </div>
                         </div>
                         <div class="star2" id="burst-11" style=" float: right; position: relative;top: -30px; right: 35px; z-index: 1;display: none;">
-                            <div class="star2content" style=" position: absolute; z-index: 1; font-size: 17px !important; background: #dabb12; height: 40px; width: 40px; text-align: center; margin-left: 2px;"></div>
-                            <div id="promoDiscount" class="star2cur" style="font-size: 0.75em; z-index: 7; position: absolute; line-height: 1; width: 100%; text-align: center; padding:3px;">
+                            <div class="star2content" style=" position: absolute; z-index: 1; font-size: 17px !important; background: #dabb12; height: 50px; width: 50px; text-align: center; margin-left: 2px;"></div>
+                            <div id="promoDiscount" class="star2cur" style="font-size: 0.5em; z-index: 7; position: absolute; line-height: 1; width: 50px; text-align: center; padding:4px;">
                                 kes
                             </div>
                         </div>
@@ -979,7 +981,7 @@
                 <input placeholder="Enter transaction code here" id="trnscode" type="text" class="validate">
                 <label for="trnscode">Transaction Code</label>
             </div>
-<!--            <div id="tokenMarketLink" style="text-align: center; margin-bottom: 20px;"></div>-->
+            <!--            <div id="tokenMarketLink" style="text-align: center; margin-bottom: 20px;"></div>-->
             <p id="insufficientOrderStatus" style="text-align: center;"></p>
             <button class="btn bits" style="display: block; margin-left: auto; margin-right: auto; margin-bottom: 23px;float:left;margin-left: 7%;" onclick='$("#insufficientFundsModal").css("display","none"); $("#modalconfirm").modal("close"); clearCart();'>cancel</button>
             <button onclick="insufficientOrder()" id='insufficientOrder' class="btn bits" style="display: block; margin-left: auto; margin-right: auto; margin-bottom: 23px;" onclick="">confirm</button>
@@ -1108,7 +1110,8 @@
                 <button class="btn" onclick="switchOnWallet();" value="">click to load wallets</button>
             </div>
             <div class="row walls">
-                <span style=""><span class="badge chip" style="right: 20% !important;"><span class="totalamts" id="totalamts"><span class="bitsoko-xrate user-roal store-desc" style="text-align:left;"></span></span><span></span></span> Your Wallet Address</span><br>
+                <span style=""><span class="badge chip" style="right: 20% !important;"><span class="totalamts" id="totalamts"><span class="bitsoko-xrate user-roal store-desc" style="text-align:left;"></span></span><span></span></span> Your Wallet
+                Address</span><br>
                 <br>
                 <ul class="collapsible collapsible-accordion" data-collapsible="accordion" style="border-top: 1px solid #ddd;">
                     <li>
@@ -1631,7 +1634,6 @@
             console.log('display-mode is standalone');
             $("#saveStoreHomeScreen").css("display", "none")
         }
-
     </script>
     <script>
         function reload() {
@@ -1695,7 +1697,6 @@
             });
         }
         //(navigator.share !== undefined)
-
     </script>
     <script type="text/javascript">
         window.addEventListener('load', function() {
@@ -1971,7 +1972,6 @@
 
 
         //------------------------------------------------makeOrder--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
     </script>
     <script async defer src="js/screenOrientation.js" type="text/javascript">
 
@@ -1985,8 +1985,10 @@
 
 
     <script type="application/json" id="storeMeta">
-        #{stMeta}
-
+        #
+        {
+            stMeta
+        }
     </script>
     <style>
         .material-placeholder {
@@ -2053,6 +2055,7 @@
                 -webkit-transform: translateX(-200px);
                 transform: translateX(-200px);
             }
+
             100% {
                 -webkit-transform: translateX(100px);
                 transform: translateX(100px);
@@ -2064,6 +2067,7 @@
                 -webkit-transform: translateX(-120px);
                 transform: translateX(-120px);
             }
+
             100% {
                 -webkit-transform: translateX(100px);
                 transform: translateX(100px);
@@ -2075,10 +2079,12 @@
                 -webkit-transform: scale(1);
                 transform: scale(1);
             }
+
             50% {
                 -webkit-transform: scale(1.25);
                 transform: scale(1.25);
             }
+
             90% {
                 -webkit-transform: scale(1);
                 transform: scale(1);
@@ -2090,10 +2096,12 @@
                 -webkit-transform: scale(1);
                 transform: scale(1);
             }
+
             50% {
                 -webkit-transform: scale(1.25);
                 transform: scale(1.25);
             }
+
             90% {
                 -webkit-transform: scale(1);
                 transform: scale(1);
@@ -2191,12 +2199,14 @@
         .card.small {
             height: auto !important;
         }
+
         /* make keyframes that tell the start state and the end state of our object */
 
         @-webkit-keyframes fadeIn {
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
@@ -2206,6 +2216,7 @@
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
@@ -2215,6 +2226,7 @@
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
@@ -2250,12 +2262,12 @@
 
         .promoHolder-home.collection {
             border: 0px solid #f9f9f9;
-            !important
+             !important
         }
 
         .serviceListHolder.collection.popup-gallery {
             border: 0px solid #f9f9f9;
-            !important
+             !important
         }
 
         .card .card-reveal {
@@ -2309,7 +2321,7 @@
             font-family: 'Material Icons';
             font-style: normal;
             font-weight: 40;
-            src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v7/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2) format('woff2'), url(https://fonts.gstatic.com/s/materialicons/v7/2fcrYFNaTjcS6g4U3t-Y5RV6cRhDpPC5P4GCEJpqGoc.woff) format('woff');
+            src: local('Material Icons'), local('MaterialIcons-Regular'), url(https: //fonts.gstatic.com/s/materialicons/v7/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2) format('woff2'), url(https://fonts.gstatic.com/s/materialicons/v7/2fcrYFNaTjcS6g4U3t-Y5RV6cRhDpPC5P4GCEJpqGoc.woff) format('woff');
         }
 
         .material-icons {
@@ -2465,10 +2477,10 @@
             position: absolute;
             top: 0;
             left: 0;
-            height: 40px;
-            width: 40px;
-            border: 5px solid #dabb12;
-            /* background: #ffd700; */
+            height: 50px;
+            width: 50px;
+            border: 10px solid #dabb12;
+            background: #ffd700;
         }
 
         #burst-11:before {
@@ -2694,6 +2706,7 @@
             color: #757575 !important;
             z-index: 100;
         }
+
         /***************
                  PRE LOADER
 ***************/
@@ -2757,6 +2770,7 @@
                 -webkit-transform: translateX(-200px);
                 transform: translateX(-200px);
             }
+
             100% {
                 -webkit-transform: translateX(100px);
                 transform: translateX(100px);
@@ -2768,6 +2782,7 @@
                 -webkit-transform: translateX(-120px);
                 transform: translateX(-120px);
             }
+
             100% {
                 -webkit-transform: translateX(100px);
                 transform: translateX(100px);
@@ -2779,10 +2794,12 @@
                 -webkit-transform: scale(1);
                 transform: scale(1);
             }
+
             50% {
                 -webkit-transform: scale(1.25);
                 transform: scale(1.25);
             }
+
             90% {
                 -webkit-transform: scale(1);
                 transform: scale(1);
@@ -2794,10 +2811,12 @@
                 -webkit-transform: scale(1);
                 transform: scale(1);
             }
+
             50% {
                 -webkit-transform: scale(1.25);
                 transform: scale(1.25);
             }
+
             90% {
                 -webkit-transform: scale(1);
                 transform: scale(1);
@@ -2825,7 +2844,7 @@
             overflow: hidden;
             /* float: right; */
             /* margin-top: -16px; */
-            width: 150px!important;
+            width: 150px !important;
             /* margin-right: -20px; */
         }
 
@@ -2878,21 +2897,20 @@
         }
 
         #loaderCircle::before {
-            background:#{theme}!important
+            background:#{theme} !important
         }
 
         #loaderCircle::after {
-            background:#{theme}!important
+            background:#{theme} !important
         }
 
         #loaderCircle {
-            background:#{theme}!important
+            background:#{theme} !important
         }
 
         .loader::after {
-            background:#{theme}!important
+            background:#{theme} !important
         }
-
     </style>
 
     <script>
@@ -2910,7 +2928,6 @@
 
         ga('create', 'UA-60165544-1', 'auto');
         ga('send', 'pageview');
-
     </script>
     <script>
         //Select Wallet Custome Modal
@@ -2923,7 +2940,6 @@
                 modalNtfy.style.display = "none";
             }
         }
-
     </script>
 </body>
 <script>
@@ -2940,7 +2956,6 @@
         window.setTimeout(loadDeferredStyles, 0);
     });
     else window.addEventListener('load', loadDeferredStyles);
-
 </script>
 
 </html>
