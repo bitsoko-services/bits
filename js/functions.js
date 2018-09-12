@@ -56,30 +56,50 @@ async function payUsingMobileMoney(amount) {
     } else {
         actii = 'buy'
     }
+    if (actii == 'sell') {
+        doFetch({
+            action: 'getInsufficientFundsOrderbook',
+            contract: "0xb72627650f1149ea5e54834b2f468e5d430e67bf",
+            rate: allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate * baseX,
+            total: amount - globalDel,
+            act: actii,
+            countryCode: baseCd
+        }).then(function(e) {
+            if (e.status == "ok") {
+                document.getElementById("insufficientFundsModal").style.display = "block";
+                insufficientOrderNum = e.data.num;
+                $("#creditTopupNo").html(insufficientOrderNum);
+                return insufficientOrderNum;
+            } else {
+                M.toast({
+                    html: "Unable to complete transaction"
+                });
+                clearCart();
+            }
+        });
 
-    doFetch({
-        action: 'getInsufficientFundsOrderbook',
-        contract: "0xb72627650f1149ea5e54834b2f468e5d430e67bf",
-        rate: allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate * baseX,
-        total: amount,
-        act: actii,
-        countryCode: baseCd
-    }).then(function(e) {
-        if (e.status == "ok") {
-            document.getElementById("insufficientFundsModal").style.display = "block";
-            insufficientOrderNum = e.data.num;
-            $("#creditTopupNo").html(insufficientOrderNum);
-            return insufficientOrderNum;
-        } else {
-            M.toast({
-                html: "Unable to complete transaction"
-            });
-            clearCart();
-        }
-    });
-
-
-
+    } else {
+        doFetch({
+            action: 'getInsufficientFundsOrderbook',
+            contract: "0xb72627650f1149ea5e54834b2f468e5d430e67bf",
+            rate: allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate * baseX,
+            total: amount,
+            act: actii,
+            countryCode: baseCd
+        }).then(function(e) {
+            if (e.status == "ok") {
+                document.getElementById("insufficientFundsModal").style.display = "block";
+                insufficientOrderNum = e.data.num;
+                $("#creditTopupNo").html(insufficientOrderNum);
+                return insufficientOrderNum;
+            } else {
+                M.toast({
+                    html: "Unable to complete transaction"
+                });
+                clearCart();
+            }
+        });
+    }
 }
 
 //Check Browser Compatibility
