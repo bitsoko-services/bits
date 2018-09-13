@@ -977,7 +977,7 @@ function getProdss(orderArrayx, costofItems) {
         }
         //console.log('testing', costofItems);
         $(".totals").html("")
-        $(".totals").append(JSON.parse(costofItems))
+        $(".totals").append(parseInt(costofItems))
         finalCost(costofItems);
         //cop(costofItems);
     })
