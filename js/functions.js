@@ -169,6 +169,10 @@ function initializeTabs() {
             getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function(event) {
                 var prodList = event.target.result.list
                 for (x in prodList) {
+                    if (prodList[x].metric == null) {
+                        // console.log("no metrics set")
+                        prodList[x].metric = "piece";
+                    }
                     if (prodList[x].productCategory == clickedTab) {
                         try {
                             var srcSetPth = prodList[x].imagePath.replace('.png', '-35.webp');
