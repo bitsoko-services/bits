@@ -165,11 +165,9 @@ function rate() {
 function initializeTabs() {
     M.Tabs.getInstance(document.querySelector(".prdTabs")).options.onShow = function(e) {
         var clickedTab = $(e).attr("id")
-        console.log($(e)[0].childNodes)
         if ($(e)[0].childNodes.length == 0) {
             getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function(event) {
                 var prodList = event.target.result.list
-                console.log(prodList)
                 for (x in prodList) {
                     if (prodList[x].productCategory == clickedTab) {
                         try {
