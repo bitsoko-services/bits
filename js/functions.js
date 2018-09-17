@@ -452,6 +452,10 @@ function checkServicePageLoader() {
             uid: localStorage.getItem("bits-user-name")
         }).then(function(e) {
             if (e.status == "ok") {
+                if(openCheckoutModal == true){
+                    $('.checkoutTrigger').click();
+                    openCheckoutModal = false
+                }
                 localStorage.setItem('userNumber', e.phone);
             } else if (e.status == "bad") {
                 $(".MobileModal").modal("open");
@@ -711,7 +715,8 @@ function makeOrder(orderArrayy, orderLoc) {
     //checkanon();
     if (buywishlist == true) {} else {
         if (checkanon() == false) {
-            $('#loginModal').modal("open")
+            $('#loginModal').modal("open");
+            openCheckoutModal = true;
             return;
         }
         buywishlist = false
