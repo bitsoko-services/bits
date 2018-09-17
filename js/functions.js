@@ -1301,3 +1301,11 @@ function insufficientOrder() {
         })
     }
 }
+
+function selectPaymentMethod() {
+    if (checkanon() == false) {
+        $('#loginModal').modal("open")
+    } else {
+        document.getElementById("chooseWalletModal").style.display = "block";
+    }
+}
