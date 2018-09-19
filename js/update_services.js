@@ -308,8 +308,8 @@ function populateService(mDet) {
         loadvisit();
     }, 1050);
     try {
-        var parsedDeliveryGuys = JSON.parse(mDet.deliveryMembers);
-        var parsedSokoManagers = JSON.parse(mDet.managers);
+        var parsedDeliveryGuys = mDet.deliveryMembers;
+        var parsedSokoManagers = mDet.managers;
     } catch (err) {
         console.log(err);
         var parsedDeliveryGuys = [];
