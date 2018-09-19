@@ -452,7 +452,7 @@ function checkServicePageLoader() {
             uid: localStorage.getItem("bits-user-name")
         }).then(function(e) {
             if (e.status == "ok") {
-                if(openCheckoutModal == true){
+                if (openCheckoutModal == true) {
                     $('.checkoutTrigger').click();
                     openCheckoutModal = false
                 }
@@ -843,8 +843,17 @@ function makeOrder(orderArrayy, orderLoc) {
 
                             //default action is pay with mobile money
 
-                            payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
-                            $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
+                            navigator.permissions.query({
+                                name: 'push',
+                                userVisibleOnly: true
+                            }).then(function(e) {
+                                if (e.state == "granted") {
+                                    payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
+                                    $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
+                                }else{
+                                    document.getElementById('notificationsModal').style.display = "block";
+                                }
+                            })
 
                             /*
                             doMakeOrder(orderArrayy, r, globalDel, locOrigin, localStorage.getItem("bits-user-name"), mapData[1].results[0].formatted_address, {
