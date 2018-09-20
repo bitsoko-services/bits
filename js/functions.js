@@ -721,10 +721,10 @@ function makeOrder(orderArrayy, orderLoc) {
         }
         buywishlist = false
     }
-    if (minimumOrder < 100) {
+    if (minimumOrder < 200) {
         if ($("#totals").parent().hasClass("granted") == true) {} else {
             M.toast({
-                html: "Ooops! Minimum order is Ksh. 100"
+                html: "Ooops! Minimum order is Ksh. 200"
             });
         }
 
@@ -779,29 +779,44 @@ function makeOrder(orderArrayy, orderLoc) {
                         $('#ConfirmO').off('click').on('click', function() {
                             $(this).html('<div class="preloader-wrapper big active" style=" width: 20px; height: 20px; margin-top: 9px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
                             if (sessionStorage.getItem('walletKey')) {
-                                if (((allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].balance / Math.pow(10, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].decimals)) + allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].totalEarned) * (allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate * baseX) > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
-                                    var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
-                                    transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', "0xb72627650f1149ea5e54834b2f468e5d430e67bf", totCost, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate).then(function(res) {
-                                        console.log(res);
-                                        doMakeOrder(orderArrayy, res, globalDel, locOrigin, localStorage.getItem("bits-user-name"), mapData[1].results[0].formatted_address, {
-                                            "coin": "bits",
-                                            "purchase": totalKobo
-                                        }, parseInt(getBitsWinOpt('s'))).then(function(e) {
-                                            console.log(e);
-                                        });
+                                navigator.permissions.query({
+                                    name: 'push',
+                                    userVisibleOnly: true
+                                }).then(function(e) {
+                                    if (e.state == "granted") {
+                                        //
+                                        if (((allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].balance / Math.pow(10, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].decimals)) + allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].totalEarned) * (allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate * baseX) > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
+                                            var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
+                                            transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', "0xb72627650f1149ea5e54834b2f468e5d430e67bf", totCost, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate).then(function(res) {
+                                                console.log(res);
+                                                doMakeOrder(orderArrayy, res, globalDel, locOrigin, localStorage.getItem("bits-user-name"), mapData[1].results[0].formatted_address, {
+                                                    "coin": "bits",
+                                                    "purchase": totalKobo
+                                                }, parseInt(getBitsWinOpt('s'))).then(function(e) {
+                                                    console.log(e);
+                                                });
 
-                                    }).catch(function(err) {
-                                        console.log(err);
-                                        // $("#creditTopup").text($("#delPrdTotal")[0].innerHTML)
+                                            }).catch(function(err) {
+                                                console.log(err);
+                                                // $("#creditTopup").text($("#delPrdTotal")[0].innerHTML)
 
-                                        payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
-                                        $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
-                                    })
+                                                payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
+                                                $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
+                                            })
 
-                                } else {
-                                    payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
-                                    $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
-                                }
+                                        } else {
+                                            payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
+                                            $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
+                                        }
+                                    } else {
+                                        document.getElementById('notificationsModal').style.display = "block";
+                                        ////console.log(parseFloat($("#checkBal")[0].innerHTML), (parseFloat($("#totals")[0].innerHTML) + globalDel));
+
+                                    }
+                                }).catch(function(e) {
+                                    console.log(e)
+                                    document.getElementById('notificationsModal').style.display = "block";
+                                })
                             } else {
                                 var toastHTML = '<span>Unlock wallet to checkout</span><button class="btn-flat toast-action walletUserUnlock unlockWalToast" onclick="walletStatus()">Unlock</button>';
                                 if ($(".unlockWalletToast").length >= 1) {
