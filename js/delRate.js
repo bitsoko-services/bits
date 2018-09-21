@@ -12,16 +12,12 @@ function finalCost(costofItems) {
 
     actvServ().then(
         function(p) {
-            console.log(p)
+            var shopDeliveryRadius = p.deliveryRadius
             var d = p.deliveryRate
-            console.log(d)
             var p = p.lonlat
-            console.log(p)
             var str = p;
             x = str.split(",")[0];
-            console.log("x=" + x)
             y = str.split(",")[1];
-            console.log("y=" + y);
             getLoc().then(function showPosition(e) {
 
                 //--geting the shop delivery Rates---------------------------------------------------------------------------------------//
@@ -39,25 +35,23 @@ function finalCost(costofItems) {
 
                     var dist = distance
                     try {
-
-
-                        deliveryRadius = JSON.parse(getDist())
-                        if (!deliveryRadius.min || !deliveryRadius.max) {
-                            var deliveryRadius = {}
-                            deliveryRadius.max = 10;
-                            deliveryRadius.min = 0.5;
-
-                        }
+                        //
+                        //
+                        // deliveryRadius = JSON.parse(getDist())
+                        // if (!deliveryRadius.min || !deliveryRadius.max) {
+                        //     var deliveryRadius = {}
+                        //     deliveryRadius.max = p.deliveryRadius.max;
+                        //     deliveryRadius.min = p.deliveryRadius.min;
+                        //
+                        // }
+                        deliveryRadius.max = shopDeliveryRadius.max;
+                        deliveryRadius.min =shopDeliveryRadius.min;
                     } catch (e) {
                         console.log(e)
-                        var deliveryRadius = {}
                         deliveryRadius.max = 10;
                         deliveryRadius.min = 0.5;
 
                     }
-
-
-                    console.log(dist)
                     if (dist > deliveryRadius.max) {
                         console.log("distance is ", dist)
                         console.log("max distance is ", deliveryRadius.max)
