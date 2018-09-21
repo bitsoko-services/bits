@@ -398,7 +398,7 @@ function servicePageLoader() {
                 //         console.log(allTabs[catName].innerText)
                 //     }
                 // }
-
+                callMerchant();
             } else {
                 $(".serviceListHolder").hide();
                 $(".serviceListCard").hide();
@@ -850,7 +850,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                 if (e.state == "granted") {
                                     payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
                                     $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
-                                }else{
+                                } else {
                                     document.getElementById('notificationsModal').style.display = "block";
                                 }
                             })
