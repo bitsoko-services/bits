@@ -721,10 +721,10 @@ function makeOrder(orderArrayy, orderLoc) {
         }
         buywishlist = false
     }
-    if (minimumOrder < 200) {
+    if (minimumOrder < 100) {
         if ($("#totals").parent().hasClass("granted") == true) {} else {
             M.toast({
-                html: "Ooops! Minimum order is Ksh. 200"
+                html: "Ooops! Minimum order is Ksh. 100"
             });
         }
 
