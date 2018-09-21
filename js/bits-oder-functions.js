@@ -23,7 +23,7 @@ function oid() {
             $(".of").html("");
             //var uid = JSON.parseInt(hval)
             var od = getObjectStore('data', 'readwrite').get('bits-user-orders-' + localStorage.getItem("bits-user-name"));
-            od.onsuccess = function (event) {
+            od.onsuccess = function(event) {
                 try {
                     var odData = JSON.parse(event.target.result);
                     for (var ii = 0; ii < odData.length; ++ii) {
@@ -40,7 +40,7 @@ function oid() {
                     }
                 } catch (err) {}
             };
-            od.onerror = function () {};
+            od.onerror = function() {};
             //makeOrder(hval)
         } else {
             //console.log("we dont know this hash")
@@ -54,7 +54,7 @@ function getUserOders(f) {
     doFetch({
         action: 'getAllOrders',
         uid: localStorage.getItem("bits-user-name")
-    }).then(function (e) {
+    }).then(function(e) {
         if (e.status == "ok") {
             xx = e.data;
             //var earnedPoints = 0;
@@ -104,7 +104,7 @@ function getUserOders(f) {
             };
 
             var setdb = getObjectStore('data', 'readwrite').put(JSON.stringify(xx), 'bits-user-orders-' + localStorage.getItem("bits-user-name"));
-            setdb.onsuccess = function () {
+            setdb.onsuccess = function() {
                 oid();
             }
 
@@ -129,9 +129,9 @@ function updateEarnedTokens(f) {
     for (var i in at) {
 
         try {
-            if (!(location.origin + '/').includes(allTokens[at[i]].webpage)) {
-                continue;
-            }
+            // if (!(location.origin + '/').includes(allTokens[at[i]].webpage)) {
+            //     continue;
+            // }
             var rate = allTokens[at[i]].rate;
             var coinName = allTokens[at[i]].name;
             //if i have 1000 kobos
