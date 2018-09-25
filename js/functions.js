@@ -1264,7 +1264,7 @@ function insufficientOrder() {
             action: 'setInsufficientFundsOrder',
             transactionCode: $("#trnscode").val(),
             uid: localStorage.getItem("bits-user-name"),
-            num: $("#mobileNo").val();
+            num: $("#mobileNo").val()
         }).then(function(e) {
             if (e.status == "ok") {
                 $("#insufficientOrderStatus").html('Transaction code confirmed successfully')
