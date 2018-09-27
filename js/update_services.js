@@ -283,6 +283,7 @@ function populateService(mDet) {
     console.log('Opening hours - ' + openingHours)
     console.log('Closing hours - ' + closingHours)
     var currentTime = pad(new Date().getHours() + "" + new Date().getMinutes(), 4);
+    console.log('currentTime - ' + currentTime)
     if (currentTime >= openingHours && currentTime <= closingHours) {
         console.log("Is working Hours", currentTime, openingHours)
         $(".shopWorkingHours").html("open - closing: " + closingHours);
