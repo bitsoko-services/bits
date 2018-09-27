@@ -1314,7 +1314,6 @@ function insufficientOrder() {
                 document.getElementById('insufficientFundsModal').style.display = 'none';
                 $("#insufficientOrderStatus").css("display", "none");
             } else {
-                $("#insufficientOrderStatus").css("color", "red");
                 $("#insufficientOrderStatus").css("display", "none");
                 M.toast({
                     html: 'Error! Enter transaction code again'
