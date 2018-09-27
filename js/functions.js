@@ -1267,6 +1267,7 @@ function insufficientOrder() {
             html: "Please enter your transaction code"
         })
     } else {
+        $("#insufficientOrderStatus").css("display", "block");
         doFetch({
             action: 'setInsufficientFundsOrder',
             transactionCode: $("#trnscode").val(),
@@ -1274,8 +1275,6 @@ function insufficientOrder() {
             num: $("#mobileNo").val()
         }).then(function(e) {
             if (e.status == "ok") {
-                $("#insufficientOrderStatus").html('Transaction code confirmed successfully')
-                $("#insufficientOrderStatus").css("color", "green")
                 doFetch({
                     action: 'makeOrder',
                     data: get_orderArrayy,
@@ -1301,7 +1300,7 @@ function insufficientOrder() {
                         clearCart();
                     } else {
                         M.toast({
-                            html: 'Your order is not sent!'
+                            html: 'Error try again later!'
                         })
                     }
                 }).catch(function(err) {
@@ -1312,9 +1311,12 @@ function insufficientOrder() {
                     $('#modalconfirm').modal('close');
                     clearCart();
                 });
+                document.getElementById('insufficientFundsModal').style.display = 'none';
+                $("#insufficientOrderStatus").css("display", "none");
             } else {
-                $("#insufficientOrderStatus").html('Error! Enter transaction code again.')
-                $("#insufficientOrderStatus").css("color", "red")
+                $("#insufficientOrderStatus").html('Error! Enter transaction code again.');
+                $("#insufficientOrderStatus").css("color", "red");
+                $("#insufficientOrderStatus").css("display", "none");
                 M.toast({
                     html: 'Error! Enter transaction code again'
                 });

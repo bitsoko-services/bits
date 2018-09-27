@@ -33,6 +33,71 @@ blockquote {
     margin: 0px 20px;
 }
 
+@-webkit-keyframes dot-keyframes {
+    0% {
+        opacity: .4;
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+    }
+
+    50% {
+        opacity: 1;
+        -webkit-transform: scale(1.2, 1.2);
+        transform: scale(1.2, 1.2);
+    }
+
+    100% {
+        opacity: .4;
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+    }
+}
+
+@keyframes dot-keyframes {
+    0% {
+        opacity: .4;
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+    }
+
+    50% {
+        opacity: 1;
+        -webkit-transform: scale(1.2, 1.2);
+        transform: scale(1.2, 1.2);
+    }
+
+    100% {
+        opacity: .4;
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+    }
+}
+
+.loading-dots {
+    text-align: center;
+    width: 100%;
+}
+
+.loading-dots--dot {
+    -webkit-animation: dot-keyframes 1.5s infinite ease-in-out;
+    animation: dot-keyframes 1.5s infinite ease-in-out;
+    background-color: green;
+    border-radius: 10px;
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+}
+
+.loading-dots--dot:nth-child(2) {
+    -webkit-animation-delay: .5s;
+    animation-delay: .5s;
+}
+
+.loading-dots--dot:nth-child(3) {
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
 #serviceDescription {
     /* min-height: 5px; */
     margin-left: 11px;

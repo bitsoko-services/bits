@@ -675,6 +675,20 @@
             <p class="range-field">
                 <input type="range" id="setGasPrice" min="0" max="14" />
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </p>
         </form>
     </div>
@@ -977,12 +991,19 @@
                 <input placeholder="Enter mobile number here" id="mobileNo" type="text" class="validate">
                 <label for="trnscode">Mobile No.</label>
             </div>
-            <div class="input-field" style="margin: 25px;">
+            <div class="input-field" style="margin: 25px; margin-bottom: 5px;">
                 <input placeholder="Enter transaction code here" id="trnscode" type="text" class="validate">
                 <label for="trnscode">Transaction Code</label>
             </div>
             <!--            <div id="tokenMarketLink" style="text-align: center; margin-bottom: 20px;"></div>-->
-            <p id="insufficientOrderStatus" style="text-align: center;"></p>
+            <div id="insufficientOrderStatus" style="text-align: center; margin-bottom: 20px; text-transform: uppercase; font-weight: bold; color: #5c5c5c; display: none;">
+                Please Wait!
+                <div class="loading-dots">
+                    <div class="loading-dots--dot"></div>
+                    <div class="loading-dots--dot"></div>
+                    <div class="loading-dots--dot"></div>
+                </div>
+            </div>
             <button class="btn bits" style="display: block; margin-left: auto; margin-right: auto; margin-bottom: 23px;float:left;margin-left: 7%;" onclick='$("#insufficientFundsModal").css("display","none"); $("#modalconfirm").modal("close"); clearCart();'>cancel</button>
             <button onclick="insufficientOrder()" id='insufficientOrder' class="btn bits" style="display: block; margin-left: auto; margin-right: auto; margin-bottom: 23px;" onclick="">confirm</button>
         </div>
@@ -1200,7 +1221,8 @@
                     <!-- Terms and conditions -->
                     wants access to your name, age range and email address to continue
                 </p>
-                <blockquote><pre>John Doe<br>20-30 years<br>johndoe@gmail.com</pre></blockquote>
+                <blockquote><pre>John Doe<br>20-30 years<br>johndoe@gmail.com</pre>
+                </blockquote>
             </div>
             <div id="qrcode" style="height:200px;width:200px;display:none;"></div>
         </div>
@@ -1985,7 +2007,10 @@
 
 
     <script type="application/json" id="storeMeta">
-        #{stMeta}
+        #
+        {
+            stMeta
+        }
     </script>
     <style>
         .material-placeholder {
