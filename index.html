@@ -689,6 +689,61 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </p>
         </form>
     </div>
@@ -977,6 +1032,49 @@
 
     </div>
 
+    <!-- Verify Phone Number Modal -->
+    <div id="mobileVerificationModal" class="modal2">
+
+        <!-- Modal content -->
+        <div class="modal-content2">
+            <div style="width: fit-content; display: block; margin-left: auto; margin-right: auto; margin-top: -50px; background: white; border-radius: 50px;">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width: 78px; box-shadow: 0px 9px 23px -5px rgba(0,0,0,0.75); border-radius: 50%;" xml:space="preserve">
+                    <circle style="fill: transparent;" cx="256" cy="256" r="256"></circle>
+                    <path style="fill: #eaeaea;" d="M506.079,310.899L285.18,90L219,308l-112.789,75.094l127.971,127.972  C241.376,511.672,248.649,512,256,512C378.538,512,480.948,425.898,506.079,310.899z"></path>
+                    <path style="fill:#5A5A5A;" d="M226.82,90v62.185h58.359V90H226.82z"></path>
+                    <rect x="256" y="90" style="fill:#444444;" width="29.18" height="62.19"></rect>
+                        <path style="fill:#FDBF00;" d="M207.367,363.641v9.727c0,3.333,0.337,6.582,0.973,9.727C212.853,405.283,232.488,422,256,422   c6.484,0,12.677-1.271,18.331-3.586c14.862-6.05,26.061-19.252,29.329-35.32c0.635-3.145,0.973-6.393,0.973-9.727v-9.727   L207.367,363.641L207.367,363.641z"></path>
+                        <path style="fill:#FDBF00;" d="M357.545,305.281h-0.389l-16.341,19.453h-172.16l-13.812-19.453h-0.389   c9.143-22.371,14.006-45.909,14.006-70.226v-14.006c0-38.803,23.713-72.995,58.359-85.652c2.347-0.862,4.747-1.621,7.198-2.276   c4.28-1.167,8.948-2.14,13.423-2.529c2.918-0.195,5.836-0.389,8.559-0.389c7.587,0,14.784,0.973,21.982,2.918   c2.451,0.616,4.85,1.336,7.198,2.153c34.646,12.022,58.359,44.943,58.359,82.468v17.313   C343.539,259.372,348.402,282.91,357.545,305.281z"></path>
+                        <path style="fill:#FF9F00;" d="M405.789,383.094H303.66c-3.268,16.068-14.467,29.271-29.329,35.32L256,383.094V130.203   c7.587,0,14.784,0.973,21.982,2.918c2.451,0.616,4.85,1.336,7.198,2.153c34.646,12.022,58.359,44.943,58.359,82.468v17.313   c0,24.316,4.863,47.855,14.006,70.226h-0.389l2.723,5.836c4.085,9.337,9.532,19.064,16.146,28.791L405.789,383.094z"></path>
+                        <path style="fill:#FF9F00;" d="M304.633,363.641v9.727c0,3.333-0.337,6.582-0.973,9.727c-3.268,16.068-14.467,29.271-29.329,35.32   C268.677,420.729,262.484,422,256,422v-58.359H304.633z"></path>
+                    <path style="fill:#FFD400;" d="M376.026,339.908c-6.614-9.727-12.061-19.453-16.146-28.791l-2.723-5.836H154.844l-2.723,5.836  c-4.085,9.337-9.532,19.064-16.146,28.791l-29.763,43.186H405.79L376.026,339.908z"></path>
+                    <path style="fill:#FDBF00;" d="M405.789,383.094H256v-77.813h101.156l2.723,5.836c4.085,9.337,9.532,19.064,16.146,28.791  L405.789,383.094z"></path>
+                </svg>
+            </div>
+            <div style="padding: 10px;">
+                <p style=" text-align: center;">Please enter your phone number to complete your order.</p><a id="resendCode" style="text-align:center;display: block; margin-left: auto; margin-right: auto;" onclick="resendCode()">Resend confirmation code</a>
+                <div class="row" style="margin-bottom:0px;">
+                    <div class="input-field col s8"> <i class="mdi-hardware-phone-android prefix"></i> <input id="inp-phone" type="number" class="validate" style="margin-left:0px;width:100%;"> <label for="inp-phone" class="" style="margin-left:0px;">Phone number</label>
+                    </div>
+                    <div class="input-field col s4" style="margin-bottom:0px;">
+                        <div class="input-field col s12" style="padding:0px;"> <button class="inp-phone btn waves-effect waves-light bits" type="submit" name="action">ok</button> </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s8"> <i class="mdi-action-lock-outline prefix"></i> <input id="inp-code" type="number" class="validate" style="margin-left:0px;width:100%;"> <label for="inp-code" class="" style="margin-left:0px;width:100%;">confirmation code</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <div class="input-field col s12" style="padding:0px;"> <button class="inp-code btn waves-effect waves-light bits" type="submit" name="action" disabled="">ok</button> </div>
+                    </div>
+                </div>
+                <div class="row" style="text-align: center;">
+                    <button class="btn bits" onclick="document.getElementById('mobileVerificationModal').style.display = 'none'">close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <!-- Insufficient Funds Modal -->
     <div id="insufficientFundsModal" class="modal2">
         <div class="modal-content2">
@@ -1131,7 +1229,8 @@
                 <button class="btn" onclick="switchOnWallet();" value="">click to load wallets</button>
             </div>
             <div class="row walls">
-                <span style=""><span class="badge chip" style="right: 20% !important;"><span class="totalamts" id="totalamts"><span class="bitsoko-xrate user-roal store-desc" style="text-align:left;"></span></span><span></span></span> Your Wallet
+                <span style=""><span class="badge chip" style="right: 20% !important;"><span class="totalamts" id="totalamts"><span class="bitsoko-xrate user-roal store-desc" style="text-align:left;"></span></span><span></span></span> Your
+                Wallet
                 Address</span><br>
                 <br>
                 <ul class="collapsible collapsible-accordion" data-collapsible="accordion" style="border-top: 1px solid #ddd;">

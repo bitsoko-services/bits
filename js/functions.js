@@ -596,21 +596,10 @@ function showuser() {
 //------------------end function -------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------------
 function showuserNumber() {
-    if (checkanon()) {
-        var gtno = getObjectStore('data', 'readwrite').get('user-profile-' + localStorage.getItem('bits-user-name'));
-        gtno.onsuccess = function(event) {
-            try {
-                var no = JSON.parse(event.target.result);
-                //console.log(no.tel)
-                // 	M.toast('<span class="toastlogin">You are Signed in as: '+ nam.name, 10000);
-                if (no.tel == null) {
-                    $('#MobileModal').openModal()
-                }
-            } catch (err) {}
-        };
-    } else {
-        showLogin();
+    if (shopData.phone == null || shopData.phone == '' || shopData.phone == undefined) {
         return false;
+    } else {
+        return true;
     }
 }
 //------------------end function -------------------------------------------------------------------------------------
@@ -719,13 +708,18 @@ function makeOrder(orderArrayy, orderLoc) {
         var minimumOrder = $("#totals")[0].innerHTML
         $('.delivery').addClass('animated jello');
         //checkanon();
-        if (buywishlist == true) {} else {
+        if (buywishlist == true) {
+            buywishlist = false;
+        } else {
             if (checkanon() == false) {
                 $('#loginModal').modal("open");
                 openCheckoutModal = true;
                 return;
             }
-            buywishlist = false
+            if(showuserNumber() == false){
+                $('#MobileModal').modal('open');
+                return;
+            }
         }
         if (minimumOrder < 100) {
             if ($("#totals").parent().hasClass("granted") == true) {} else {
