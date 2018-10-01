@@ -680,6 +680,7 @@ function tabulateTotals() {
 }
 
 function makeOrder(orderArrayy, orderLoc) {
+    instorePickup = true;
     if (shopClosed == true) {
         M.toast({
             html: 'Shop closed! Try again later',
@@ -744,133 +745,232 @@ function makeOrder(orderArrayy, orderLoc) {
                     displayLength: 100000,
                     classes: "createOrderToast"
                 });
+                var payByToken = true;
 
-                actvServ().then(function(p) {
-                    //var p=p.deliveries
-                    // 	var p=p.payments
-                    // if (p){//console.log("payments are on")}else{
-                    // 	swal("Sorry", "payments for this shop not available", "error");
-                    // 		return;
-                    // }
-                    // var t=document.querySelectorAll(".bitsInputQty");
-                    // for(var i = 0; i< t.length; ++i){
-                    // 	try{
-                    // 	}
-                    // 	catch (err) {}
-                    // }
-                    getLoc(orderLoc).then(function showPosition(e) {
-                        if ($(".createOrderToast").length >= 1) {
-                            setTimeout(function() {
-                                $(".createOrderToast").remove()
-                            }, 1000)
-                        }
-                        //var mapLocc = orderLoc ? orderLoc : e.coords.latitude + ',' + e.coords.longitude;
-                        var mapLocc = e.coords.latitude + ',' + e.coords.longitude;
-                        //console.log(orderLoc, e, mapLocc);
-                        getCoordDet(mapLocc).then(function(mapData) {
-                            getProdss(orderArrayy);
+                if (instorePickup == true) {
+                    if ($(".createOrderToast").length >= 1) {
+                        setTimeout(function() {
+                            $(".createOrderToast").remove()
+                        }, 1000)
+                    }
+                    getProdss(orderArrayy);
 
-                            locOrigin = e.coords.latitude + ',' + e.coords.longitude
+                    get_orderArrayy = orderArrayy;
+                    get_pointsEarned = totalKobo;
 
-                            var payByToken = true;
+                    deliverItems = function() {
+                        instorePickup = false;
+                        $("#products").html("");
+                        actvServ().then(function(p) {
+                            getLoc(orderLoc).then(function showPosition(e) {
+                                if ($(".createOrderToast").length >= 1) {
+                                    setTimeout(function() {
+                                        $(".createOrderToast").remove()
+                                    }, 1000)
+                                }
+                                //var mapLocc = orderLoc ? orderLoc : e.coords.latitude + ',' + e.coords.longitude;
+                                var mapLocc = e.coords.latitude + ',' + e.coords.longitude;
+                                //console.log(orderLoc, e, mapLocc);
+                                getCoordDet(mapLocc).then(function(mapData) {
+                                    getProdss(orderArrayy);
 
-                            get_orderArrayy = orderArrayy;
-                            get_loc = locOrigin;
-                            get_locStr = mapData[1].results[0].formatted_address;
-                            get_pointsEarned = totalKobo;
+                                    locOrigin = e.coords.latitude + ',' + e.coords.longitude
 
-                            function payUsingToken() {
-                                $('#ConfirmO').off('click').on('click', function() {
-                                    $(this).html('<div class="preloader-wrapper big active" style=" width: 20px; height: 20px; margin-top: 9px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
-                                    if (sessionStorage.getItem('walletKey')) {
-                                        //
-                                        if (((allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].balance / Math.pow(10, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].decimals)) + allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].totalEarned) * (allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate * baseX) > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
-                                            var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
-                                            transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', "0xb72627650f1149ea5e54834b2f468e5d430e67bf", totCost, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate).then(function(res) {
-                                                console.log(res);
-                                                doMakeOrder(orderArrayy, res, globalDel, locOrigin, localStorage.getItem("bits-user-name"), mapData[1].results[0].formatted_address, {
-                                                    "coin": "bits",
-                                                    "purchase": totalKobo
-                                                }, parseInt(getBitsWinOpt('s'))).then(function(e) {
-                                                    console.log(e);
+                                    get_orderArrayy = orderArrayy;
+                                    get_loc = locOrigin;
+                                    get_locStr = mapData[1].results[0].formatted_address;
+                                    get_pointsEarned = totalKobo;
+
+                                    function payUsingToken() {
+                                        $('#ConfirmO').off('click').on('click', function() {
+                                            $(this).html('<div class="preloader-wrapper big active" style=" width: 20px; height: 20px; margin-top: 9px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
+                                            if (sessionStorage.getItem('walletKey')) {
+                                                //
+                                                if (((allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].balance / Math.pow(10, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].decimals)) + allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].totalEarned) * (allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate * baseX) > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
+                                                    var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
+                                                    transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', "0xb72627650f1149ea5e54834b2f468e5d430e67bf", totCost, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate).then(function(res) {
+                                                        console.log(res);
+                                                        doMakeOrder(orderArrayy, res, globalDel, locOrigin, localStorage.getItem("bits-user-name"), mapData[1].results[0].formatted_address, {
+                                                            "coin": "bits",
+                                                            "purchase": totalKobo
+                                                        }, parseInt(getBitsWinOpt('s'))).then(function(e) {
+                                                            console.log(e);
+                                                        });
+
+                                                    }).catch(function(err) {
+                                                        console.log(err);
+                                                        // $("#creditTopup").text($("#delPrdTotal")[0].innerHTML)
+
+                                                        payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
+                                                        $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
+                                                    })
+
+                                                } else {
+                                                    payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
+                                                    $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
+                                                }
+                                            } else {
+                                                var toastHTML = '<span>Unlock wallet to checkout</span><button class="btn-flat toast-action walletUserUnlock unlockWalToast" onclick="walletStatus()">Unlock</button>';
+                                                if ($(".unlockWalletToast").length >= 1) {
+                                                    $(".unlockWalletToast").remove()
+                                                }
+                                                M.toast({
+                                                    html: toastHTML,
+                                                    classes: "unlockWalletToast",
+                                                    displayLength: 500000,
+                                                    completeCallback: $("#ConfirmO").html("confirm")
                                                 });
-
-                                            }).catch(function(err) {
-                                                console.log(err);
-                                                // $("#creditTopup").text($("#delPrdTotal")[0].innerHTML)
-
-                                                payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
-                                                $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
-                                            })
-
-                                        } else {
-                                            payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
-                                            $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
-                                        }
-                                    } else {
-                                        var toastHTML = '<span>Unlock wallet to checkout</span><button class="btn-flat toast-action walletUserUnlock unlockWalToast" onclick="walletStatus()">Unlock</button>';
-                                        if ($(".unlockWalletToast").length >= 1) {
-                                            $(".unlockWalletToast").remove()
-                                        }
-                                        M.toast({
-                                            html: toastHTML,
-                                            classes: "unlockWalletToast",
-                                            displayLength: 500000,
-                                            completeCallback: $("#ConfirmO").html("confirm")
-                                        });
+                                            }
+                                            return false;
+                                        })
                                     }
-                                    return false;
-                                })
-                            }
 
-                            console.log("info! looking for wallet .... ", parseInt(localStorage.getItem('bits-default-wallet')));
+                                    console.log("info! looking for wallet .... ", parseInt(localStorage.getItem('bits-default-wallet')));
 
-                            if (payByToken == true && !isNaN(parseInt(localStorage.getItem('bits-default-wallet')))) {
-                                payUsingToken()
+                                    if (payByToken == true && !isNaN(parseInt(localStorage.getItem('bits-default-wallet')))) {
+                                        payUsingToken()
 
+                                    } else {
+                                        $('#ConfirmO').off('click').on('click', function() {
+                                            navigator.permissions.query({
+                                                name: 'push',
+                                                userVisibleOnly: true
+                                            }).then(function(e) {
+                                                if (e.state == "granted") {
+                                                    payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel);
+                                                } else {
+                                                    document.getElementById('notificationsModal').style.display = "block";
+                                                }
+                                            })
+                                        });
+
+                                    }
+                                    $(".confirmText").html("")
+                                    $(".confirmText").append()
+                                    $(".del").html("")
+                                    $(".del").append()
+                                    $(".mapText").html("")
+                                    $(".orderModalMap").html('<img class="mapdata" src="' + mapData[0] + '" style="width:100%;height: 200px; object-fit: cover;">');
+                                    console.log(mapData[1])
+                                    $(".mapText").append("Pick up / Drop off :" + mapData[1].results[0].formatted_address);
+                                    $('#modalconfirm').modal({
+                                        onOpenEnd: $("#totals").parent().removeClass("granted"),
+                                        onOpenEnd: $('.spinnerCheckout').css("display", "none"),
+                                        onOpenEnd: $('.checkoutInfo').css("display", "block"),
+                                        dismissible: false
+                                    }).modal("open");
+                                    if (shopClosed == true) {
+                                        M.toast({
+                                            html: 'Items will be delivered when the shop opens',
+                                            displayLength: 5000
+                                        })
+                                    }
+                                    $('.star2').addClass('animated shake'), setTimeout(function() {
+                                        $('.star2').removeClass('animated shake')
+                                    }, 1000);
+                                    document.getElementById("CancelO").addEventListener("click", function() {
+                                        clearCart()
+                                        $("#products").html("")
+                                    });
+                                }).catch(function(err) {
+                                    console.log(err)
+                                    //toast location error
+
+                                    M.toast({
+                                        html: "Turn on your location!"
+                                    });
+
+                                });
+                            });
+                        })
+                    }
+
+                    function payUsingToken() {
+                        $('#ConfirmO').off('click').on('click', function() {
+                            $(this).html('<div class="preloader-wrapper big active" style=" width: 20px; height: 20px; margin-top: 9px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
+                            if (sessionStorage.getItem('walletKey')) {
+                                //
+                                if (((allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].balance / Math.pow(10, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].decimals)) + allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].totalEarned) * (allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate * baseX) > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
+                                    var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
+                                    transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', "0xb72627650f1149ea5e54834b2f468e5d430e67bf", totCost, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate).then(function(res) {
+                                        console.log(res);
+                                        doMakeOrder(orderArrayy, res, globalDel, locOrigin, localStorage.getItem("bits-user-name"), shopData.lonlat, {
+                                            "coin": "bits",
+                                            "purchase": totalKobo
+                                        }, parseInt(getBitsWinOpt('s'))).then(function(e) {
+                                            console.log(e);
+                                        });
+
+                                    }).catch(function(err) {
+                                        console.log(err);
+                                        // $("#creditTopup").text($("#delPrdTotal")[0].innerHTML)
+
+                                        payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
+                                        $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
+                                    })
+
+                                } else {
+                                    payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
+                                    $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
+                                }
                             } else {
-                                payUsingToken()
-
-                            }
-                            $(".confirmText").html("")
-                            $(".confirmText").append()
-                            $(".del").html("")
-                            $(".del").append()
-                            $(".mapText").html("")
-                            $(".mapdata").attr('src', mapData[0]);
-                            console.log(mapData[1])
-                            $(".mapText").append("Pick up / Drop off :" + mapData[1].results[0].formatted_address);
-                            $('#modalconfirm').modal({
-                                onOpenEnd: $("#totals").parent().removeClass("granted"),
-                                onOpenEnd: $('.spinnerCheckout').css("display", "none"),
-                                onOpenEnd: $('.checkoutInfo').css("display", "block"),
-                                dismissible: false
-                            }).modal("open");
-                            if (shopClosed == true) {
+                                var toastHTML = '<span>Unlock wallet to checkout</span><button class="btn-flat toast-action walletUserUnlock unlockWalToast" onclick="walletStatus()">Unlock</button>';
+                                if ($(".unlockWalletToast").length >= 1) {
+                                    $(".unlockWalletToast").remove()
+                                }
                                 M.toast({
-                                    html: 'Items will be delivered when the shop opens',
-                                    displayLength: 5000
-                                })
+                                    html: toastHTML,
+                                    classes: "unlockWalletToast",
+                                    displayLength: 500000,
+                                    completeCallback: $("#ConfirmO").html("confirm")
+                                });
                             }
-                            $('.star2').addClass('animated shake'), setTimeout(function() {
-                                $('.star2').removeClass('animated shake')
-                            }, 1000);
-                            document.getElementById("CancelO").addEventListener("click", function() {
-                                clearCart()
-                                $("#products").html("")
-                            });
-                        }).catch(function(err) {
-                            console.log(err)
-                            //toast location error
+                            return false;
+                        })
+                    }
 
-                            M.toast({
-                                html: "Turn on your location!"
-                            });
+                    console.log("info! looking for wallet .... ", parseInt(localStorage.getItem('bits-default-wallet')));
 
+                    if (payByToken == true && !isNaN(parseInt(localStorage.getItem('bits-default-wallet')))) {
+                        payUsingToken()
+
+                    } else {
+                        $('#ConfirmO').off('click').on('click', function() {
+                            navigator.permissions.query({
+                                name: 'push',
+                                userVisibleOnly: true
+                            }).then(function(e) {
+                                if (e.state == "granted") {
+                                    payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel);
+                                } else {
+                                    document.getElementById('notificationsModal').style.display = "block";
+                                }
+                            })
                         });
+
+                    }
+                    $(".confirmText").html("")
+                    $(".confirmText").append()
+                    $(".del").html("")
+                    $(".del").append()
+                    $(".mapText").html("")
+                    $(".orderModalMap").html('<p onclick="deliverItems()" style="text-align: center; vertical-align: middle; line-height: 160px; padding: 2%; display: block; margin-left: auto; margin-right: auto; color: white; background: #8c8c8c;">Click here to deliver the items to your location</p>');
+                    $(".mapText").append("Instore Pick up");
+                    $('#modalconfirm').modal({
+                        onOpenEnd: $("#totals").parent().removeClass("granted"),
+                        onOpenEnd: $('.spinnerCheckout').css("display", "none"),
+                        onOpenEnd: $('.checkoutInfo').css("display", "block"),
+                        dismissible: false
+                    }).modal("open");
+                    $('.star2').addClass('animated shake'), setTimeout(function() {
+                        $('.star2').removeClass('animated shake')
+                    }, 1000);
+                    document.getElementById("CancelO").addEventListener("click", function() {
+                        clearCart()
+                        $("#products").html("")
                     });
-                    //function showPosition(e){getCoordDet(e.coords.latitude+','+e.coords.longitude).then(function(mapData){$(".mapdata").attr('src',mapData[0]);$(".mapText").append(mapData[1].results[0].formatted_address); })}getLoc()
-                })
+
+                }
             }
         }
     }
