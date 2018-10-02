@@ -1,4 +1,4 @@
-var pedingOrders = false;
+var pendingOrders = false;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function oid() {
     //Get Token Balance
@@ -65,8 +65,8 @@ function getUserOders(f) {
         if (e.status == "ok") {
             userOrders = e.data;
             for (ordersPending in userOrders) {
-                if (userOrders[ordersPending].state != 'complete') {
-                    pedingOrders = true
+                if (userOrders[ordersPending].state != 'complete' && userOrders[ordersPending].state != 'wishlist') {
+                    pendingOrders = true;
                 }
             }
             xx = e.data;

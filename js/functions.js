@@ -723,7 +723,7 @@ function makeOrder(orderArrayy, orderLoc) {
                 return;
             }
         }
-        if (pedingOrders == true) {
+        if (pendingOrders == true) {
             $('#pendingOrderModal').modal('open');
         } else {
             if (minimumOrder < 100) {
