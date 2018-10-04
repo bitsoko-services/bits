@@ -689,6 +689,105 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </p>
         </form>
     </div>
@@ -833,6 +932,21 @@
             </p>
         </div>
     </div>
+    <!-- Pending orderArrayy Modal -->
+    <div id="pendingOrderModal" class="modal open" style="overflow: initial; border-radius: 5px;">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 507.2 507.2" style="enable-background:new 0 0 507.2 507.2; -webkit-box-shadow: 0 24px 38px 3px rgba(0,0,0,0.14), 0 9px 46px 8px rgba(0,0,0,0.12), 0 11px 15px -7px rgba(0,0,0,0.2); box-shadow: 0 24px 38px 3px rgba(0,0,0,0.14), 0 9px 46px 8px rgba(0,0,0,0.12), 0 11px 15px -7px rgba(0,0,0,0.2); width: 100px; height: 100px; display: block; margin-left: auto; margin-right: auto; margin-top: -50px; border-radius: 50%;" xml:space="preserve">
+            <circle style="fill:#F15249;" cx="253.6" cy="253.6" r="253.6"/>
+            <path style="fill:#AD0E0E;" d="M147.2,368L284,504.8c115.2-13.6,206.4-104,220.8-219.2L367.2,148L147.2,368z"/>
+            <path style="fill:#FFFFFF;" d="M373.6,309.6c11.2,11.2,11.2,30.4,0,41.6l-22.4,22.4c-11.2,11.2-30.4,11.2-41.6,0l-176-176  c-11.2-11.2-11.2-30.4,0-41.6l23.2-23.2c11.2-11.2,30.4-11.2,41.6,0L373.6,309.6z"/>
+            <path style="fill:#D6D6D6;" d="M280.8,216L216,280.8l93.6,92.8c11.2,11.2,30.4,11.2,41.6,0l23.2-23.2c11.2-11.2,11.2-30.4,0-41.6  L280.8,216z"/>
+            <path style="fill:#FFFFFF;" d="M309.6,133.6c11.2-11.2,30.4-11.2,41.6,0l23.2,23.2c11.2,11.2,11.2,30.4,0,41.6L197.6,373.6  c-11.2,11.2-30.4,11.2-41.6,0l-22.4-22.4c-11.2-11.2-11.2-30.4,0-41.6L309.6,133.6z"/>
+
+        </svg>
+        <h5 style="text-align: center; padding: 5%; margin:0px;">Pending Orders</h5>
+        <div class="row" style="width: 90%; color: #2b2b2b;">
+            <p style="text-align: center;"> You have pending oreders! Please complete your previous orders to checkout.</p>
+        </div>
+    </div>
 
     <!-- Modal Structure -->
     <div class="modal modalconfirm bits" id="modalconfirm" style="top:15% !important; height:82%; max-height: 800px !important;">
@@ -903,10 +1017,10 @@
                     </div>
                 </div>
                 <div class="mapText" style="background: rgb(240, 237, 229);"></div>
-                <div class="card-image" style="height: 200px;"><img class="mapdata" src="" style="width:100%;height: 200px; object-fit: cover;"></div>
+                <div class="card-image orderModalMap" style="height: 160px;"></div>
             </div>
         </div>
-        <div class="modal-footer bits of confirmOrderFooter" style=" position: fixed; bottom: 0px; height: quto; margin-top: -35px;">
+        <div class="modal-footer bits of confirmOrderFooter" style=" position: fixed; bottom: 0px; height: quto;">
             <a class="white-text modal-action modal-close waves-effect waves-green btn-flat" id="CancelO" style="float:left;border: solid white 1px;">Cancel</a>
             <a class="white-text modal-action waves-effect waves-green btn-flat" id="ConfirmO" style="border: solid white 1px;" disabled>Confirm</a>
         </div>
@@ -977,6 +1091,49 @@
 
     </div>
 
+    <!-- Verify Phone Number Modal -->
+    <div id="mobileVerificationModal" class="modal2">
+
+        <!-- Modal content -->
+        <div class="modal-content2">
+            <div style="width: fit-content; display: block; margin-left: auto; margin-right: auto; margin-top: -50px; background: white; border-radius: 50px;">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width: 78px; box-shadow: 0px 9px 23px -5px rgba(0,0,0,0.75); border-radius: 50%;" xml:space="preserve">
+                    <circle style="fill: transparent;" cx="256" cy="256" r="256"></circle>
+                    <path style="fill: #eaeaea;" d="M506.079,310.899L285.18,90L219,308l-112.789,75.094l127.971,127.972  C241.376,511.672,248.649,512,256,512C378.538,512,480.948,425.898,506.079,310.899z"></path>
+                    <path style="fill:#5A5A5A;" d="M226.82,90v62.185h58.359V90H226.82z"></path>
+                    <rect x="256" y="90" style="fill:#444444;" width="29.18" height="62.19"></rect>
+                        <path style="fill:#FDBF00;" d="M207.367,363.641v9.727c0,3.333,0.337,6.582,0.973,9.727C212.853,405.283,232.488,422,256,422   c6.484,0,12.677-1.271,18.331-3.586c14.862-6.05,26.061-19.252,29.329-35.32c0.635-3.145,0.973-6.393,0.973-9.727v-9.727   L207.367,363.641L207.367,363.641z"></path>
+                        <path style="fill:#FDBF00;" d="M357.545,305.281h-0.389l-16.341,19.453h-172.16l-13.812-19.453h-0.389   c9.143-22.371,14.006-45.909,14.006-70.226v-14.006c0-38.803,23.713-72.995,58.359-85.652c2.347-0.862,4.747-1.621,7.198-2.276   c4.28-1.167,8.948-2.14,13.423-2.529c2.918-0.195,5.836-0.389,8.559-0.389c7.587,0,14.784,0.973,21.982,2.918   c2.451,0.616,4.85,1.336,7.198,2.153c34.646,12.022,58.359,44.943,58.359,82.468v17.313   C343.539,259.372,348.402,282.91,357.545,305.281z"></path>
+                        <path style="fill:#FF9F00;" d="M405.789,383.094H303.66c-3.268,16.068-14.467,29.271-29.329,35.32L256,383.094V130.203   c7.587,0,14.784,0.973,21.982,2.918c2.451,0.616,4.85,1.336,7.198,2.153c34.646,12.022,58.359,44.943,58.359,82.468v17.313   c0,24.316,4.863,47.855,14.006,70.226h-0.389l2.723,5.836c4.085,9.337,9.532,19.064,16.146,28.791L405.789,383.094z"></path>
+                        <path style="fill:#FF9F00;" d="M304.633,363.641v9.727c0,3.333-0.337,6.582-0.973,9.727c-3.268,16.068-14.467,29.271-29.329,35.32   C268.677,420.729,262.484,422,256,422v-58.359H304.633z"></path>
+                    <path style="fill:#FFD400;" d="M376.026,339.908c-6.614-9.727-12.061-19.453-16.146-28.791l-2.723-5.836H154.844l-2.723,5.836  c-4.085,9.337-9.532,19.064-16.146,28.791l-29.763,43.186H405.79L376.026,339.908z"></path>
+                    <path style="fill:#FDBF00;" d="M405.789,383.094H256v-77.813h101.156l2.723,5.836c4.085,9.337,9.532,19.064,16.146,28.791  L405.789,383.094z"></path>
+                </svg>
+            </div>
+            <div style="padding: 10px;">
+                <p style=" text-align: center;">Please enter your phone number to complete your order.</p><a id="resendCode" style="text-align:center;display: block; margin-left: auto; margin-right: auto;" onclick="resendCode()">Resend confirmation code</a>
+                <div class="row" style="margin-bottom:0px;">
+                    <div class="input-field col s8"> <i class="mdi-hardware-phone-android prefix"></i> <input type="number" class="validate verifyPhoneNumber" style="margin-left:0px;width:100%;"> <label for="inp-phone" class="" style="margin-left:0px;">Phone number</label>
+                    </div>
+                    <div class="input-field col s4" style="margin-bottom:0px;">
+                        <div class="input-field col s12" style="padding:0px;"> <button class="inp-phone btn waves-effect waves-light bits" type="submit" name="action">ok</button> </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s8"> <i class="mdi-action-lock-outline prefix"></i> <input id="inp-code" type="number" class="validate" style="margin-left:0px;width:100%;"> <label for="inp-code" class="" style="margin-left:0px;width:100%;">confirmation code</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <div class="input-field col s12" style="padding:0px;"> <button class="inp-code btn waves-effect waves-light bits" type="submit" name="action" disabled="">ok</button> </div>
+                    </div>
+                </div>
+                <div class="row" style="text-align: center;">
+                    <button class="btn bits" onclick="document.getElementById('mobileVerificationModal').style.display = 'none'">close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <!-- Insufficient Funds Modal -->
     <div id="insufficientFundsModal" class="modal2">
         <div class="modal-content2">
@@ -986,23 +1143,67 @@
                 </svg>
             </div>
             <h5 style="text-align: center; padding: 5%; margin:0px;">Insufficient Funds</h5>
-            <p style="text-align: center; margin: 10px 10px 20px 10px;">Send <span id="creditTopup"></span> to <span id="creditTopupNo"></span> and confirm the transaction code below to complete order</p>
-            <div class="input-field" style="margin: 25px;">
-                <input placeholder="Enter mobile number here" id="mobileNo" type="text" class="validate">
-                <label for="trnscode">Mobile No.</label>
+            <div class="col s12">
+                <ul class="tabs">
+                    <li class="tab col s3 disabled" style="width: 33%">
+                        <a href="#ethPayment">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 507.312 507.312" style="enable-background:new 0 0 507.312 507.312;width:20px;" xml:space="preserve">
+                                    <rect x="237.656" y="160.64" width="32" height="32"></rect>
+                                    <rect x="237.656" y="224.64" width="32" height="32"></rect>
+                                    <path d="M253.656,0L90.6,289.888l163.056,217.424l163.056-217.424L253.656,0z M237.656,432.64l-78.304-104.4l78.304,34.8V432.64z      M237.656,288.64v39.376l-105.44-46.848l105.44-187.456v34.928h32V93.712l105.44,187.456l-105.44,46.848V288.64H237.656z      M269.656,432.64v-69.6l78.304-34.8L269.656,432.64z"></path>
+                                </svg>
+                            </a>
+                    </li>
+                    <li class="tab col s3" style="width: 33%">
+                        <a class="active" href="#mobilePayment">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width: 20px;" xml:space="preserve">
+                                    <path d="M196.233,71.841h-39.844c-11.003,0-19.922,8.919-19.922,19.922s8.919,19.922,19.922,19.922h39.844     c11.003,0,19.922-8.919,19.922-19.922S207.237,71.841,196.233,71.841z"></path>
+                                    <circle cx="176.311" cy="420.479" r="19.922"></circle>
+                                    <path d="M352.623,90.924V80.685c0-43.94-35.748-79.689-79.689-79.689H79.689C35.748,0.996,0,36.744,0,80.685v350.63     c0,43.94,35.748,79.689,79.689,79.689h193.245c43.94,0,79.689-35.748,79.689-79.689v-8.013     c24.767-1.044,49.161-7.61,70.952-19.182c9.718-5.161,13.413-17.222,8.252-26.939s-17.222-13.412-26.939-8.252     c-18.101,9.612-38.586,14.694-59.238,14.694c-69.755,0-126.506-56.75-126.506-126.506s56.75-126.506,126.506-126.506     s126.506,56.75,126.506,126.506c0,17.842-3.633,35.08-10.8,51.233c-4.461,10.058,0.075,21.829,10.132,26.29     c10.06,4.459,21.829-0.075,26.29-10.132C507.215,303.235,512,280.561,512,257.118C512,167.729,441.126,94.592,352.623,90.924z      M312.778,94.036C236.743,109.337,179.3,176.642,179.3,257.118S236.743,404.898,312.778,420.2v11.116     c0,21.97-17.874,39.844-39.844,39.844H79.689c-21.97,0-39.844-17.874-39.844-39.844V80.685c0-21.97,17.874-39.844,39.844-39.844     h193.245c21.97,0,39.844,17.874,39.844,39.844V94.036z"></path>
+                                    <path d="M345.65,356.729c11.003,0,19.922-8.919,19.922-19.922v-3.399c20.013-5.042,34.864-23.086,34.864-44.513v-7.986     c0-25.265-20.735-45.821-46.221-45.821H340.96c-3.355,0-6.297-3.204-6.297-6.857v-0.841c0-3.496,2.707-6.132,6.297-6.132h24.612     c11.003,0,19.922-8.919,19.922-19.922c0-11.003-8.919-19.922-19.922-19.922v-2.988c0-11.003-8.919-19.922-19.922-19.922     c-11.003,0-19.922,8.919-19.922,19.922v5.574c-17.979,6.285-30.909,23.357-30.909,43.391v0.841     c0,25.751,20.699,46.702,46.142,46.702h13.254c3.636,0,6.377,2.57,6.377,5.977v7.986c0,3.464-2.741,6.076-6.377,6.076h-40.44     c-11.003,0-19.922,8.919-19.922,19.922s8.919,19.922,19.922,19.922h11.953v1.992C325.728,347.809,334.647,356.729,345.65,356.729     z"></path>
+                                </svg>
+                            </a>
+                    </li>
+                    <li class="tab col s3 disabled" style="width: 33%">
+                        <a href="#creditCardPayment">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 459.669 459.669" style="enable-background:new 0 0 459.669 459.669; width: 20px;" xml:space="preserve">
+                                    <path style="fill: grey;" d="M404.723,76.087H54.948C24.649,76.087,0,100.735,0,131.035v197.599c0,30.298,24.649,54.948,54.948,54.948h349.774    c30.298,0,54.947-24.65,54.947-54.948V131.035C459.67,100.735,435.021,76.087,404.723,76.087z M429.267,328.633    c0,13.534-11.011,24.544-24.544,24.544H54.948c-13.534,0-24.545-11.01-24.545-24.544V196.214h398.863L429.267,328.633    L429.267,328.633z M429.267,152.839l-398.863,0.029v-21.834c0-13.534,11.011-24.545,24.545-24.545h349.774    c13.533,0,24.544,11.011,24.544,24.545V152.839z"></path>
+                                    <path style="fill: grey;" d="M68.136,324.98h83.23c2.98,0,5.398-2.416,5.398-5.396v-16.421c0-2.981-2.418-5.397-5.398-5.397h-83.23    c-2.981,0-5.398,2.416-5.398,5.397v16.421C62.737,322.564,65.154,324.98,68.136,324.98z"></path>
+                                    <path style="fill: grey;" d="M337.963,324.98h24.756c14.288,0,25.87-11.582,25.87-25.869v-24.756c0-14.287-11.582-25.869-25.87-25.869h-24.756    c-14.287,0-25.869,11.582-25.869,25.869v24.756C312.094,313.398,323.676,324.98,337.963,324.98z"></path>
+                                </svg>
+                            </a>
+                    </li>
+                    <li class="indicator bits" style="left: 0px; right: 0px;"></li>
+                </ul>
             </div>
-            <div class="input-field" style="margin: 25px; margin-bottom: 5px;">
-                <input placeholder="Enter transaction code here" id="trnscode" type="text" class="validate">
-                <label for="trnscode">Transaction Code</label>
-            </div>
-            <!--            <div id="tokenMarketLink" style="text-align: center; margin-bottom: 20px;"></div>-->
-            <div id="insufficientOrderStatus" style="text-align: center; margin-bottom: 20px; text-transform: uppercase; font-weight: bold; color: #5c5c5c; display: none;">
-                Please Wait!
-                <div class="loading-dots">
-                    <div class="loading-dots--dot"></div>
-                    <div class="loading-dots--dot"></div>
-                    <div class="loading-dots--dot"></div>
+            <div id="ethPayment" class="col s12">
+                <div style="">
+                    <svg id="userWallet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 334.877 334.877" style="enable-background:new 0 0 334.877 334.877;margin: 3px;width: 27px;/* float:  left; *//* margin-top: 16px; *//* margin-left:  15px; */" xml:space="preserve" class="walletUserUnlock"><path d="M333.196,155.999h-16.067V82.09c0-17.719-14.415-32.134-32.134-32.134h-21.761L240.965,9.917 C237.571,3.798,231.112,0,224.107,0c-3.265,0-6.504,0.842-9.364,2.429l-85.464,47.526H33.815 c-17.719,0-32.134,14.415-32.134,32.134v220.653c0,17.719,14.415,32.134,32.134,32.134h251.18 c17.719,0,32.134-14.415,32.134-32.134v-64.802h16.067V155.999z M284.995,62.809c9.897,0,17.982,7.519,19.068,17.14h-24.152 l-9.525-17.14H284.995z M220.996,13.663c3.014-1.69,7.07-0.508,8.734,2.494l35.476,63.786H101.798L220.996,13.663z M304.275,302.742c0,10.63-8.651,19.281-19.281,19.281H33.815c-10.63,0-19.281-8.651-19.281-19.281V82.09 c0-10.63,8.651-19.281,19.281-19.281h72.353L75.345,79.95H37.832c-3.554,0-6.427,2.879-6.427,6.427s2.873,6.427,6.427,6.427h14.396 h234.83h17.217v63.201h-46.999c-21.826,0-39.589,17.764-39.589,39.589v2.764c0,21.826,17.764,39.589,39.589,39.589h46.999V302.742z M320.342,225.087h-3.213h-59.853c-14.743,0-26.736-11.992-26.736-26.736v-2.764c0-14.743,11.992-26.736,26.736-26.736h59.853 h3.213V225.087z M276.961,197.497c0,7.841-6.35,14.19-14.19,14.19c-7.841,0-14.19-6.35-14.19-14.19s6.35-14.19,14.19-14.19 C270.612,183.306,276.961,189.662,276.961,197.497z" style="fill: black;"></path></svg>
+                    <span id="getEthBal" style="line-height: 50px;width: 100px;color: black;">203.49 KES</span>
                 </div>
+            </div>
+            <div id="mobilePayment" class="col s12">
+                <p style="text-align: center; margin: 10px 10px 20px 10px;">Send <span id="creditTopup"></span> to <span id="creditTopupNo"></span> and confirm the transaction code below to complete order</p>
+                <div class="input-field" style="margin: 25px;">
+                    <input placeholder="Enter mobile number here" id="mobileNo" type="text" class="validate">
+                    <label for="trnscode">Sender No.</label>
+                </div>
+                <div class="input-field" style="margin: 25px; margin-bottom: 5px;">
+                    <input placeholder="Enter transaction code here" id="trnscode" type="text" class="validate">
+                    <label for="trnscode">Transaction Code</label>
+                </div>
+                <!--            <div id="tokenMarketLink" style="text-align: center; margin-bottom: 20px;"></div>-->
+                <div id="insufficientOrderStatus" style="text-align: center; margin-bottom: 20px; text-transform: uppercase; font-weight: bold; color: #5c5c5c; display: none;">
+                    Please Wait!
+                    <div class="loading-dots">
+                        <div class="loading-dots--dot"></div>
+                        <div class="loading-dots--dot"></div>
+                        <div class="loading-dots--dot"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="creditCardPayment" class="col s12">
+
             </div>
             <button class="btn bits" style="display: block; margin-left: auto; margin-right: auto; margin-bottom: 23px;float:left;margin-left: 7%;" onclick='$("#insufficientFundsModal").css("display","none"); $("#modalconfirm").modal("close"); clearCart();'>cancel</button>
             <button onclick="insufficientOrder()" id='insufficientOrder' class="btn bits" style="display: block; margin-left: auto; margin-right: auto; margin-bottom: 23px;" onclick="">confirm</button>
@@ -1131,7 +1332,8 @@
                 <button class="btn" onclick="switchOnWallet();" value="">click to load wallets</button>
             </div>
             <div class="row walls">
-                <span style=""><span class="badge chip" style="right: 20% !important;"><span class="totalamts" id="totalamts"><span class="bitsoko-xrate user-roal store-desc" style="text-align:left;"></span></span><span></span></span> Your Wallet
+                <span style=""><span class="badge chip" style="right: 20% !important;"><span class="totalamts" id="totalamts"><span class="bitsoko-xrate user-roal store-desc" style="text-align:left;"></span></span><span></span></span> Your
+                Wallet
                 Address</span><br>
                 <br>
                 <ul class="collapsible collapsible-accordion" data-collapsible="accordion" style="border-top: 1px solid #ddd;">
@@ -1221,7 +1423,7 @@
                     <!-- Terms and conditions -->
                     wants access to your name, age range and email address to continue
                 </p>
-                <blockquote><pre>John Doe<br>20-30 years<br>johndoe@gmail.com</pre>
+                <blockquote>John Doe<br>20-30 years<br>johndoe@gmail.com
                 </blockquote>
             </div>
             <div id="qrcode" style="height:200px;width:200px;display:none;"></div>
@@ -2007,10 +2209,7 @@
 
 
     <script type="application/json" id="storeMeta">
-        #
-        {
-            stMeta
-        }
+        #{stMeta}
     </script>
     <style>
         .material-placeholder {

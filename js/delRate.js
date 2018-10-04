@@ -45,7 +45,7 @@ function finalCost(costofItems) {
                         //
                         // }
                         deliveryRadius.max = shopDeliveryRadius.max;
-                        deliveryRadius.min =shopDeliveryRadius.min;
+                        deliveryRadius.min = shopDeliveryRadius.min;
                     } catch (e) {
                         console.log(e)
                         deliveryRadius.max = 10;
@@ -82,7 +82,11 @@ function finalCost(costofItems) {
                         //--rates
                         var rates = Math.ceil(d * distance);
                         if (rates < 100) {
-                            rates = 100
+                            if (instorePickup == true) {
+                                rates = 0
+                            } else {
+                                rates = 100
+                            }
                         }
 
                         globalDel = rates;

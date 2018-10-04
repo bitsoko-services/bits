@@ -54,9 +54,9 @@ function changedPhnNum(t) {
     console.log($(t.target).val());
     var val = $(t.target).val();
 
-    if ($("#inp-phone").val().length < 10) {
+    if ($("#inp-phone").val() == '') {
         M.toast({
-            html: 'Error! Confirm your number'
+            html: 'Error! Input your number'
         });
     } else {
         doFetch({
