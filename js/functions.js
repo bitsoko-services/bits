@@ -607,7 +607,7 @@ function showuser() {
 //------------------end function -------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------------
 function showuserNumber() {
-    if (shopData.phone == null || shopData.phone == '' || shopData.phone == undefined) {
+    if (shopData == undefined || shopData.phone == null || shopData.phone == '' || shopData.phone == undefined) {
         return false;
     } else {
         return true;
