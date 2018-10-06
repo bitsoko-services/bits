@@ -240,9 +240,20 @@ function populateService(mDet) {
         shopCategory = "1"
     };
     try {
-        var productCategory = JSON.parse(mDet.productCategory)
+	    
+if(window.origin=="https://supplies.bitsoko.co.ke"){
+var productCategory = JSON.parse(mDet.inventoryCategory);
+}else{
+var productCategory = JSON.parse(mDet.productCategory);
+}
+        
     } catch (err) {
-        var productCategory = mDet.productCategory
+     	    
+if(window.origin=="https://supplies.bitsoko.co.ke"){
+var productCategory = mDet.inventoryCategory;
+}else{
+var productCategory = mDet.productCategory;
+}
     }
     checkBrowser()
     //    console.log(mDet.id)
