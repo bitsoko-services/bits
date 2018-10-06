@@ -287,7 +287,7 @@ function populateService(mDet) {
     if (currentTime >= openingHours && currentTime <= closingHours) {
         console.log("Is working Hours", currentTime, openingHours)
         $(".shopWorkingHours").html("open - closing: " + closingHours);
-        $(".shopWorkingHours").css("color", "white")
+        $(".shopWorkingHours").css("color", "green")
     } else {
         String.prototype.insert = function(index, string) {
             if (index > 0)
