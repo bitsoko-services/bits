@@ -659,10 +659,10 @@ function tabulateTotals() {
     }, 1000);
     for (var i = 0; i < addproducts.length; ++i) {
         try {
-            var itVal = $(addproducts[i]).val() ? $(addproducts[i]).val() : 0;
+            var itVal = addproducts[i].value ? $(addproducts[i]).val() : 0;
             if (itVal > 0) {
                 orderArray.push({
-                    pid: $(addproducts[i]).attr('pid'),
+                    pid: addproducts[i].getAttribute('pid'),
                     count: itVal
                 });
                 ////console.log(orderArray);
