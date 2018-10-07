@@ -729,7 +729,7 @@ function makeOrder(orderArrayy, orderLoc) {
                 openCheckoutModal = true;
                 return;
             }
-            if (showuserNumber() == false) {
+            if (localStorage.getItem('userVerifiedNumber') == 'false') {
                 $('#MobileModal').modal('open');
                 return;
             }
