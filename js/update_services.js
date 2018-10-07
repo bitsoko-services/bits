@@ -23,6 +23,20 @@ function updateServicelist() {
 //-----------------------------------------------save to local storage------------------------------------------------------------------
 function serviceOpener() {
     console.log('serviceOpener()..');
+	  //Check User Phone Number
+        doFetch({
+            action: 'userVerified',
+            uid: localStorage.getItem("bits-user-name")
+        }).then(function(e) {
+            if (e.status == "ok") {
+               
+                localStorage.setItem('userVerifiedNumber', e.phone);
+            } else {
+                localStorage.setItem('userVerifiedNumber', 'false');
+		    
+            }
+        })
+	
     if (getBitsWinOpt('s') != undefined) {
         checkServicePageLoader()
         if (getBitsOpt('vid') != undefined) {
