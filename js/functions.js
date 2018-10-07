@@ -759,6 +759,7 @@ function makeOrder(orderArrayy, orderLoc) {
                 var payByToken = true;
 
                 if (instorePickup == true) {
+                    $(".del").html(0 + '<span class=""> /=</span>');
                     if ($(".createOrderToast").length >= 1) {
                         setTimeout(function() {
                             $(".createOrderToast").remove()
