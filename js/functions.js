@@ -10,6 +10,7 @@ var wishShareId;
 var buywishlist;
 var promoCheckoutModal = false;
 var promoModalActive = false;
+var openCheckoutModal = false;
 
 async function doMakeOrder(orderArrayy, res, globalDel, locOrigin, uid, addrr, points, sid) {
     var e = await doFetch({
