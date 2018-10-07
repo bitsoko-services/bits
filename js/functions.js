@@ -1097,7 +1097,7 @@ dis = 0
 
 function buyPromo(clicked_id, promoOder) {
     promoModalActive = true
-    clearCart();
+    //clearCart();
     bp = 1
     promoOder = orderArray
     // 	var lipromo = $(".bpr").attr("id");
