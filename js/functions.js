@@ -769,6 +769,11 @@ function makeOrder(orderArrayy, orderLoc) {
 
                     get_orderArrayy = orderArrayy;
                     get_pointsEarned = totalKobo;
+                    
+                                    locOrigin = 'instore';
+
+                                    locString = 'instore';
+                                    
 
                     deliverItems = function() {
                         instorePickup = false;
@@ -786,11 +791,15 @@ function makeOrder(orderArrayy, orderLoc) {
                                 getCoordDet(mapLocc).then(function(mapData) {
                                     getProdss(orderArrayy);
 
-                                    locOrigin = e.coords.latitude + ',' + e.coords.longitude
+                                    locOrigin = e.coords.latitude + ',' + e.coords.longitude;
+
+                                    locString = mapData[1].results[0].formatted_address;
+                                    
+                                    console.log(mapData);
 
                                     get_orderArrayy = orderArrayy;
                                     get_loc = locOrigin;
-                                    get_locStr = mapData[1].results[0].formatted_address;
+                                    get_locStr = locString;
                                     get_pointsEarned = totalKobo;
 
                                     function payUsingToken() {
@@ -801,8 +810,8 @@ function makeOrder(orderArrayy, orderLoc) {
                                                 if (((allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].balance / Math.pow(10, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].decimals)) + allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].totalEarned) * (allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate * baseX) > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
                                                     var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
                                                     transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', "0xb72627650f1149ea5e54834b2f468e5d430e67bf", totCost, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate).then(function(res) {
-                                                        console.log(res);
-                                                        doMakeOrder(orderArrayy, res, globalDel, locOrigin, localStorage.getItem("bits-user-name"), mapData[1].results[0].formatted_address, {
+                                                        //console.log(res);
+                                                        doMakeOrder(orderArrayy, res, globalDel, locOrigin, localStorage.getItem("bits-user-name"), locString, {
                                                             "coin": "bits",
                                                             "purchase": totalKobo
                                                         }, parseInt(getBitsWinOpt('s'))).then(function(e) {
