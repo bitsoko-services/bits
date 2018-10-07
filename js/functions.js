@@ -10,6 +10,7 @@ var wishShareId;
 var buywishlist;
 var promoCheckoutModal = false;
 var promoModalActive = false;
+var openCheckoutModal = false;
 
 async function doMakeOrder(orderArrayy, res, globalDel, locOrigin, uid, addrr, points, sid) {
     var e = await doFetch({
@@ -115,7 +116,13 @@ function checkBrowser() {
 
 function checkPayments() {
     actvServ().then(function(p) {
-        var p = p.payments
+        try{
+        
+        var p = p.payments;
+        }catch(e){
+            console.log(e);
+        var p=false;
+        }
         if (p) {
             ////console.log("payments on")
             $("#paymentBTN").removeClass("displayNone")
@@ -137,9 +144,13 @@ function checkPayments() {
 function callMerchant() {
     try {
         actvServ().then(function(x) {
-            $('#appendCallBtn').html('')
-            $('#appendCallBtn').append('<a href="/soko/#s=' + localStorage.getItem("bits-active-service") + '" class="manage-store" id="manage-store" style="margin-right: 10px;display: block;float:  right;"></a><button id="share" value="Share" class="bitb noshadow" style="float: right !important; line-height: normal; margin-right: 3px; border: none; background: none; padding: 10px;"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 473.932 473.932" style="enable-background:new 0 0 473.932 473.932;width: 20px; margin-top: 10px;" xml:space="preserve"><path d="M385.513,301.214c-27.438,0-51.64,13.072-67.452,33.09l-146.66-75.002 c1.92-7.161,3.3-14.56,3.3-22.347c0-8.477-1.639-16.458-3.926-24.224l146.013-74.656c15.725,20.924,40.553,34.6,68.746,34.6 c47.758,0,86.391-38.633,86.391-86.348C471.926,38.655,433.292,0,385.535,0c-47.65,0-86.326,38.655-86.326,86.326 c0,7.809,1.381,15.229,3.322,22.412L155.892,183.74c-15.833-20.039-40.079-33.154-67.56-33.154 c-47.715,0-86.326,38.676-86.326,86.369s38.612,86.348,86.326,86.348c28.236,0,53.043-13.719,68.832-34.664l145.948,74.656 c-2.287,7.744-3.947,15.79-3.947,24.289c0,47.693,38.676,86.348,86.326,86.348c47.758,0,86.391-38.655,86.391-86.348 C471.904,339.848,433.271,301.214,385.513,301.214z" fill="#FFFFFF"></path></svg> </button><a href="tel:' + x.phone + '" id="merchPhoneNo" value="" class="bitb" style="float: right !important;line-height: normal;padding: 10px; margin-top: 7px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 480.56 480.56" style="enable-background:new 0 0 480.56 480.56;width: 23px;" xml:space="preserve"> <path d="M365.354,317.9c-15.7-15.5-35.3-15.5-50.9,0c-11.9,11.8-23.8,23.6-35.5,35.6c-3.2,3.3-5.9,4-9.8,1.8 c-7.7-4.2-15.9-7.6-23.3-12.2c-34.5-21.7-63.4-49.6-89-81c-12.7-15.6-24-32.3-31.9-51.1c-1.6-3.8-1.3-6.3,1.8-9.4 c11.9-11.5,23.5-23.3,35.2-35.1c16.3-16.4,16.3-35.6-0.1-52.1c-9.3-9.4-18.6-18.6-27.9-28c-9.6-9.6-19.1-19.3-28.8-28.8 c-15.7-15.3-35.3-15.3-50.9,0.1c-12,11.8-23.5,23.9-35.7,35.5c-11.3,10.7-17,23.8-18.2,39.1c-1.9,24.9,4.2,48.4,12.8,71.3 c17.6,47.4,44.4,89.5,76.9,128.1c43.9,52.2,96.3,93.5,157.6,123.3c27.6,13.4,56.2,23.7,87.3,25.4c21.4,1.2,40-4.2,54.9-20.9 c10.2-11.4,21.7-21.8,32.5-32.7c16-16.2,16.1-35.8,0.2-51.8C403.554,355.9,384.454,336.9,365.354,317.9z" fill="#FFFFFF"></path> <path d="M346.254,238.2l36.9-6.3c-5.8-33.9-21.8-64.6-46.1-89c-25.7-25.7-58.2-41.9-94-46.9l-5.2,37.1 c27.7,3.9,52.9,16.4,72.8,36.3C329.454,188.2,341.754,212,346.254,238.2z" fill="#FFFFFF"></path> <path d="M403.954,77.8c-42.6-42.6-96.5-69.5-156-77.8l-5.2,37.1c51.4,7.2,98,30.5,134.8,67.2c34.9,34.9,57.8,79,66.1,127.5 l36.9-6.3C470.854,169.3,444.354,118.3,403.954,77.8z" fill="#FFFFFF"></path> </svg></a><a id="initFeedbackModal" href="#feedbackModal" onclick="feedback();" style="float: right; width: 27px; padding-top: 17px; line-height: initial; margin-right: 10px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><path fill="white" d="M117.333,149.333H352c5.896,0,10.667-4.771,10.667-10.667c0-5.896-4.771-10.667-10.667-10.667H117.333     c-5.896,0-10.667,4.771-10.667,10.667C106.667,144.563,111.438,149.333,117.333,149.333z"/><path fill="white" d="M245.333,256h-128c-5.896,0-10.667,4.771-10.667,10.667c0,5.896,4.771,10.667,10.667,10.667h128     c5.896,0,10.667-4.771,10.667-10.667C256,260.771,251.229,256,245.333,256z"/><path fill="white" d="M471.167,64c-0.618,0-1.217,0.155-1.833,0.184V64c0-23.531-19.146-42.667-42.667-42.667h-384     C19.146,21.333,0,40.469,0,64v416c0,4.313,2.604,8.208,6.583,9.854c1.313,0.552,2.708,0.813,4.083,0.813     c2.771,0,5.5-1.083,7.542-3.125L121.75,384h304.917c23.521,0,42.667-19.135,42.667-42.667V164.411l30.708-30.703c0,0,0,0,0-0.01     c7.604-7.604,11.958-18.125,11.958-28.865C512,82.313,493.688,64,471.167,64z M448,341.333c0,11.76-9.563,21.333-21.333,21.333     H117.333c-2.833,0-5.542,1.125-7.542,3.125L21.333,454.25V64c0-11.76,9.563-21.333,21.333-21.333h384     C438.438,42.667,448,52.24,448,64v7.286c-2.025,1.392-3.962,2.923-5.708,4.672L326.232,192H117.333     c-5.896,0-10.667,4.771-10.667,10.667c0,5.896,4.771,10.667,10.667,10.667h191.785l-10.243,51.24     c-0.708,3.5,0.396,7.115,2.917,9.635c2.021,2.021,4.75,3.125,7.542,3.125c0.688,0,1.396-0.073,2.083-0.208l53.313-10.667     c2.083-0.417,3.979-1.427,5.458-2.917L448,185.742V341.333z M357.396,246.177l-34.458,6.896l6.896-34.5l96.828-96.828     l27.587,27.587L357.396,246.177z M484.958,118.625l-15.625,15.625l-27.589-27.589l15.63-15.63     c3.625-3.615,8.646-5.698,13.792-5.698c10.75,0,19.5,8.75,19.5,19.5C490.667,109.958,488.583,114.99,484.958,118.625z"/></svg></a><a id="deliveryModalBtn" style="float:right; padding: 10px; padding-right: 20px;"></a>');
-
+            $('#appendCallBtn').html('');
+            try{
+            $('#appendCallBtn').append('<a href="/soko/#s=' + localStorage.getItem("bits-active-service") + '" class="manage-store" id="manage-store" style="margin-right: 10px;display: block;float:  right;"></a><button id="share" value="Share" class="bitb noshadow" style="float: right !important; line-height: normal; margin-right: 3px; border: none; background: none; padding: 10px;"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 473.932 473.932" style="enable-background:new 0 0 473.932 473.932;width: 20px; margin-top: 10px;" xml:space="preserve"><path d="M385.513,301.214c-27.438,0-51.64,13.072-67.452,33.09l-146.66-75.002 c1.92-7.161,3.3-14.56,3.3-22.347c0-8.477-1.639-16.458-3.926-24.224l146.013-74.656c15.725,20.924,40.553,34.6,68.746,34.6 c47.758,0,86.391-38.633,86.391-86.348C471.926,38.655,433.292,0,385.535,0c-47.65,0-86.326,38.655-86.326,86.326 c0,7.809,1.381,15.229,3.322,22.412L155.892,183.74c-15.833-20.039-40.079-33.154-67.56-33.154 c-47.715,0-86.326,38.676-86.326,86.369s38.612,86.348,86.326,86.348c28.236,0,53.043-13.719,68.832-34.664l145.948,74.656 c-2.287,7.744-3.947,15.79-3.947,24.289c0,47.693,38.676,86.348,86.326,86.348c47.758,0,86.391-38.655,86.391-86.348 C471.904,339.848,433.271,301.214,385.513,301.214z" fill="#FFFFFF"></path></svg> </button>'+
+                                       '<a href="tel:' + x.phone + '" id="merchPhoneNo" value="" class="bitb" style="float: right !important;line-height: normal;padding: 10px; margin-top: 7px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 480.56 480.56" style="enable-background:new 0 0 480.56 480.56;width: 23px;" xml:space="preserve"> <path d="M365.354,317.9c-15.7-15.5-35.3-15.5-50.9,0c-11.9,11.8-23.8,23.6-35.5,35.6c-3.2,3.3-5.9,4-9.8,1.8 c-7.7-4.2-15.9-7.6-23.3-12.2c-34.5-21.7-63.4-49.6-89-81c-12.7-15.6-24-32.3-31.9-51.1c-1.6-3.8-1.3-6.3,1.8-9.4 c11.9-11.5,23.5-23.3,35.2-35.1c16.3-16.4,16.3-35.6-0.1-52.1c-9.3-9.4-18.6-18.6-27.9-28c-9.6-9.6-19.1-19.3-28.8-28.8 c-15.7-15.3-35.3-15.3-50.9,0.1c-12,11.8-23.5,23.9-35.7,35.5c-11.3,10.7-17,23.8-18.2,39.1c-1.9,24.9,4.2,48.4,12.8,71.3 c17.6,47.4,44.4,89.5,76.9,128.1c43.9,52.2,96.3,93.5,157.6,123.3c27.6,13.4,56.2,23.7,87.3,25.4c21.4,1.2,40-4.2,54.9-20.9 c10.2-11.4,21.7-21.8,32.5-32.7c16-16.2,16.1-35.8,0.2-51.8C403.554,355.9,384.454,336.9,365.354,317.9z" fill="#FFFFFF"></path> <path d="M346.254,238.2l36.9-6.3c-5.8-33.9-21.8-64.6-46.1-89c-25.7-25.7-58.2-41.9-94-46.9l-5.2,37.1 c27.7,3.9,52.9,16.4,72.8,36.3C329.454,188.2,341.754,212,346.254,238.2z" fill="#FFFFFF"></path> <path d="M403.954,77.8c-42.6-42.6-96.5-69.5-156-77.8l-5.2,37.1c51.4,7.2,98,30.5,134.8,67.2c34.9,34.9,57.8,79,66.1,127.5 l36.9-6.3C470.854,169.3,444.354,118.3,403.954,77.8z" fill="#FFFFFF"></path> </svg></a><a id="initFeedbackModal" href="#feedbackModal" onclick="feedback();" style="float: right; width: 27px; padding-top: 17px; line-height: initial; margin-right: 10px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><path fill="white" d="M117.333,149.333H352c5.896,0,10.667-4.771,10.667-10.667c0-5.896-4.771-10.667-10.667-10.667H117.333     c-5.896,0-10.667,4.771-10.667,10.667C106.667,144.563,111.438,149.333,117.333,149.333z"/><path fill="white" d="M245.333,256h-128c-5.896,0-10.667,4.771-10.667,10.667c0,5.896,4.771,10.667,10.667,10.667h128     c5.896,0,10.667-4.771,10.667-10.667C256,260.771,251.229,256,245.333,256z"/><path fill="white" d="M471.167,64c-0.618,0-1.217,0.155-1.833,0.184V64c0-23.531-19.146-42.667-42.667-42.667h-384     C19.146,21.333,0,40.469,0,64v416c0,4.313,2.604,8.208,6.583,9.854c1.313,0.552,2.708,0.813,4.083,0.813     c2.771,0,5.5-1.083,7.542-3.125L121.75,384h304.917c23.521,0,42.667-19.135,42.667-42.667V164.411l30.708-30.703c0,0,0,0,0-0.01     c7.604-7.604,11.958-18.125,11.958-28.865C512,82.313,493.688,64,471.167,64z M448,341.333c0,11.76-9.563,21.333-21.333,21.333     H117.333c-2.833,0-5.542,1.125-7.542,3.125L21.333,454.25V64c0-11.76,9.563-21.333,21.333-21.333h384     C438.438,42.667,448,52.24,448,64v7.286c-2.025,1.392-3.962,2.923-5.708,4.672L326.232,192H117.333     c-5.896,0-10.667,4.771-10.667,10.667c0,5.896,4.771,10.667,10.667,10.667h191.785l-10.243,51.24     c-0.708,3.5,0.396,7.115,2.917,9.635c2.021,2.021,4.75,3.125,7.542,3.125c0.688,0,1.396-0.073,2.083-0.208l53.313-10.667     c2.083-0.417,3.979-1.427,5.458-2.917L448,185.742V341.333z M357.396,246.177l-34.458,6.896l6.896-34.5l96.828-96.828     l27.587,27.587L357.396,246.177z M484.958,118.625l-15.625,15.625l-27.589-27.589l15.63-15.63     c3.625-3.615,8.646-5.698,13.792-5.698c10.75,0,19.5,8.75,19.5,19.5C490.667,109.958,488.583,114.99,484.958,118.625z"/></svg></a><a id="deliveryModalBtn" style="float:right; padding: 10px; padding-right: 20px;"></a>');
+            }catch(e){
+            console.log(e);
+            }
             try {
                 showDeliverBtn();
             } catch (err) {
@@ -597,7 +608,7 @@ function showuser() {
 //------------------end function -------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------------
 function showuserNumber() {
-    if (shopData.phone == null || shopData.phone == '' || shopData.phone == undefined) {
+    if (shopData == undefined || shopData.phone == null || shopData.phone == '' || shopData.phone == undefined) {
         return false;
     } else {
         return true;
@@ -648,10 +659,10 @@ function tabulateTotals() {
     }, 1000);
     for (var i = 0; i < addproducts.length; ++i) {
         try {
-            var itVal = $(addproducts[i]).val() ? $(addproducts[i]).val() : 0;
+            var itVal = addproducts[i].value ? $(addproducts[i]).val() : 0;
             if (itVal > 0) {
                 orderArray.push({
-                    pid: $(addproducts[i]).attr('pid'),
+                    pid: addproducts[i].getAttribute('pid'),
                     count: itVal
                 });
                 ////console.log(orderArray);
@@ -718,7 +729,7 @@ function makeOrder(orderArrayy, orderLoc) {
                 openCheckoutModal = true;
                 return;
             }
-            if (showuserNumber() == false) {
+            if (localStorage.getItem('userVerifiedNumber') == 'false') {
                 $('#MobileModal').modal('open');
                 return;
             }
@@ -748,6 +759,7 @@ function makeOrder(orderArrayy, orderLoc) {
                 var payByToken = true;
 
                 if (instorePickup == true) {
+                    $(".del").html(0 + '<span class=""> /=</span>');
                     if ($(".createOrderToast").length >= 1) {
                         setTimeout(function() {
                             $(".createOrderToast").remove()
@@ -757,6 +769,11 @@ function makeOrder(orderArrayy, orderLoc) {
 
                     get_orderArrayy = orderArrayy;
                     get_pointsEarned = totalKobo;
+                    
+                                    locOrigin = 'instore';
+
+                                    locString = 'instore';
+                                    
 
                     deliverItems = function() {
                         instorePickup = false;
@@ -774,11 +791,15 @@ function makeOrder(orderArrayy, orderLoc) {
                                 getCoordDet(mapLocc).then(function(mapData) {
                                     getProdss(orderArrayy);
 
-                                    locOrigin = e.coords.latitude + ',' + e.coords.longitude
+                                    locOrigin = e.coords.latitude + ',' + e.coords.longitude;
+
+                                    locString = mapData[1].results[0].formatted_address;
+                                    
+                                    console.log(mapData);
 
                                     get_orderArrayy = orderArrayy;
                                     get_loc = locOrigin;
-                                    get_locStr = mapData[1].results[0].formatted_address;
+                                    get_locStr = locString;
                                     get_pointsEarned = totalKobo;
 
                                     function payUsingToken() {
@@ -789,8 +810,8 @@ function makeOrder(orderArrayy, orderLoc) {
                                                 if (((allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].balance / Math.pow(10, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].decimals)) + allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].totalEarned) * (allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate * baseX) > (parseFloat($("#totals")[0].innerHTML) + globalDel)) {
                                                     var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
                                                     transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', "0xb72627650f1149ea5e54834b2f468e5d430e67bf", totCost, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate).then(function(res) {
-                                                        console.log(res);
-                                                        doMakeOrder(orderArrayy, res, globalDel, locOrigin, localStorage.getItem("bits-user-name"), mapData[1].results[0].formatted_address, {
+                                                        //console.log(res);
+                                                        doMakeOrder(orderArrayy, res, globalDel, locOrigin, localStorage.getItem("bits-user-name"), locString, {
                                                             "coin": "bits",
                                                             "purchase": totalKobo
                                                         }, parseInt(getBitsWinOpt('s'))).then(function(e) {
@@ -1076,7 +1097,7 @@ dis = 0
 
 function buyPromo(clicked_id, promoOder) {
     promoModalActive = true
-    clearCart();
+    //clearCart();
     bp = 1
     promoOder = orderArray
     // 	var lipromo = $(".bpr").attr("id");
@@ -1288,7 +1309,7 @@ async function getWishId() {
     $('#ConfirmO').html('share');
     $('#ConfirmO').replaceWith('<button class="white-text btn-flat" id="shareWishlist" style="border: solid white 1px;" onclick="sharewishList()">share</button>');
     $('#shareWishlist').html('<div class="preloader-wrapper big active" style=" width: 20px; height: 20px; margin-top: 9px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
-
+    $(".wishlistChip").css("display", "none");
     $('#modalconfirm').addClass('activeWishlist');
     $('#svgHolder').html('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" style=" width: 100px; position: absolute; left: 0;/ margin-left: auto; margin-left: auto; margin-right: auto; right: 0; top: -50px;"><linearGradient id="a" gradientTransform="matrix(1 0 0 -1 0 -12310)" gradientUnits="userSpaceOnUse" x1="0" x2="512" y1="-12566" y2="-12566"><stop offset="0" stop-color="#00f1ff"></stop><stop offset=".231" stop-color="#00d8ff"></stop><stop offset=".5138" stop-color="#00c0ff"></stop><stop offset=".7773" stop-color="#00b2ff"></stop><stop offset="1" stop-color="#00adff"></stop></linearGradient><path d="m512 256c0 141.386719-114.613281 256-256 256s-256-114.613281-256-256 114.613281-256 256-256 256 114.613281 256 256zm0 0" fill="url(#a)"></path><g fill="#fff"><path d="m337.605469 192.738281h-90.761719c-8.285156 0-15 6.714844-15 15 0 8.28125 6.714844 15 15 15h90.761719c8.285156 0 15-6.71875 15-15 0-8.285156-6.714844-15-15-15zm0 0"></path><path d="m352.605469 265.363281c0-8.285156-6.714844-15-15-15h-90.761719c-8.285156 0-15 6.714844-15 15 0 8.285157 6.714844 15 15 15h90.761719c8.285156 0 15-6.714843 15-15zm0 0"></path><path d="m278.539062 411h-103.730468c-15.558594 0-28.21875-12.660156-28.21875-28.21875v-253.5625c0-15.558594 12.660156-28.21875 28.21875-28.21875h177.125c15.558594 0 28.21875 12.660156 28.21875 28.21875v136.144531c0 8.285157 6.71875 15 15 15 8.285156 0 15-6.714843 15-15v-136.144531c0-32.101562-26.117188-58.21875-58.21875-58.21875h-177.125c-32.101563 0-58.21875 26.117188-58.21875 58.21875v253.5625c0 32.101562 26.117187 58.21875 58.21875 58.21875h103.730468c8.285157 0 15-6.714844 15-15s-6.71875-15-15-15zm0 0"></path><path d="m435.011719 321.253906c-8.449219-8.554687-20.015625-13.261718-32.566407-13.261718-13.519531 0-23.679687 4.585937-30.96875 11.128906-7.289062-6.542969-17.449218-11.128906-30.96875-11.128906-12.554687 0-24.121093 4.707031-32.566406 13.261718-8.640625 8.746094-13.402344 21.035156-13.402344 34.601563 0 28.558593 24.140626 46.554687 43.53125 61.011719 8.742188 6.519531 17 12.671874 21.722657 18.539062 2.847656 3.539062 7.144531 5.59375 11.683593 5.59375 4.539063 0 8.835938-2.054688 11.683594-5.59375 4.726563-5.867188 12.980469-12.019531 21.722656-18.539062 19.394532-14.457032 43.53125-32.453126 43.53125-61.011719-.003906-13.566407-4.761718-25.855469-13.402343-34.601563zm-48.0625 71.5625c-5.234375 3.902344-10.5625 7.875-15.472657 12.066406-4.914062-4.191406-10.242187-8.164062-15.472656-12.066406-15.46875-11.53125-31.464844-23.457031-31.464844-36.960937 0-11.019531 6.117188-17.863281 15.96875-17.863281 8.132813 0 11.265626 3.128906 13.085938 5.855468 2.246094 3.363282 2.84375 7.117188 2.933594 7.785156.433594 7.851563 6.855468 13.824219 14.738281 13.941407.070313 0 .144531.003906.21875.003906 7.820313 0 14.335937-6.238281 14.945313-14.058594.003906-.035156.5-3.695312 2.550781-7.085937 1.816406-3 4.988281-6.445313 13.460937-6.445313 9.851563 0 15.96875 6.847657 15.96875 17.867188 0 13.503906-15.996094 25.429687-31.460937 36.960937zm0 0"></path><path d="m205.0625 207.738281c0 7.957031-6.449219 14.40625-14.40625 14.40625s-14.40625-6.449219-14.40625-14.40625 6.449219-14.410156 14.40625-14.410156 14.40625 6.453125 14.40625 14.410156zm0 0"></path><path d="m337.605469 135.109375h-90.761719c-8.285156 0-15 6.714844-15 15s6.714844 15 15 15h90.761719c8.285156 0 15-6.714844 15-15s-6.714844-15-15-15zm0 0"></path><path d="m205.0625 150.109375c0 7.957031-6.449219 14.40625-14.40625 14.40625s-14.40625-6.449219-14.40625-14.40625 6.449219-14.40625 14.40625-14.40625 14.40625 6.449219 14.40625 14.40625zm0 0"></path><path d="m205.0625 265.363281c0 7.957031-6.449219 14.40625-14.40625 14.40625s-14.40625-6.449219-14.40625-14.40625 6.449219-14.40625 14.40625-14.40625 14.40625 6.449219 14.40625 14.40625zm0 0"></path><path d="m246.84375 307.992188c-8.285156 0-15 6.714843-15 15 0 8.285156 6.714844 15 15 15h21.628906c8.285156 0 15-6.714844 15-15 0-8.285157-6.714844-15-15-15zm0 0"></path><path d="m205.0625 322.992188c0 7.957031-6.449219 14.40625-14.40625 14.40625s-14.40625-6.449219-14.40625-14.40625c0-7.957032 6.449219-14.40625 14.40625-14.40625s14.40625 6.449218 14.40625 14.40625zm0 0"></path></g></svg>');
 
