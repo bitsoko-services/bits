@@ -802,7 +802,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                     get_loc = locOrigin;
                                     get_locStr = locString;
                                     get_pointsEarned = totalKobo;
-
+                                    /*
                                     function payUsingToken() {
                                         $('#ConfirmO').off('click').on('click', function() {
                                             $(this).html('<div class="preloader-wrapper big active" style=" width: 20px; height: 20px; margin-top: 9px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
@@ -846,6 +846,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                             return false;
                                         })
                                     }
+                                    */
                                      payUsingToken();
                                     //console.log("info! looking for wallet .... ", parseInt(localStorage.getItem('bits-default-wallet')));
                                    
@@ -953,8 +954,9 @@ function makeOrder(orderArrayy, orderLoc) {
                         })
                     }
 
-                    console.log("info! looking for wallet .... ", parseInt(localStorage.getItem('bits-default-wallet')));
-
+                    
+                    payUsingToken();
+                    /*
                     if (payByToken == true && !isNaN(parseInt(localStorage.getItem('bits-default-wallet')))) {
                         payUsingToken()
 
@@ -973,6 +975,7 @@ function makeOrder(orderArrayy, orderLoc) {
                         });
 
                     }
+                    */
                     $(".confirmText").html("")
                     $(".confirmText").append()
                     $(".del").html("")
