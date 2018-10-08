@@ -847,7 +847,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                         })
                                     }
                                     */
-                                     payUsingToken();
+                                     payUsingToken(locOrigin,locString);
                                     //console.log("info! looking for wallet .... ", parseInt(localStorage.getItem('bits-default-wallet')));
                                    
                             /*
@@ -910,7 +910,7 @@ function makeOrder(orderArrayy, orderLoc) {
                         })
                     }
 
-                    function payUsingToken() {
+                    function payUsingToken(locOrigin,locString) {
                         $('#ConfirmO').off('click').on('click', function() {
                             $(this).html('<div class="preloader-wrapper big active" style=" width: 20px; height: 20px; margin-top: 9px;"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>')
                             if (sessionStorage.getItem('walletKey')) {
@@ -946,7 +946,7 @@ function makeOrder(orderArrayy, orderLoc) {
                     }
 
                     
-                    payUsingToken();
+                    payUsingToken('instore','instore');
                     /*
                     if (payByToken == true && !isNaN(parseInt(localStorage.getItem('bits-default-wallet')))) {
                         payUsingToken()
