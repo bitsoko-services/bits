@@ -701,6 +701,8 @@ function tabulateTotals() {
 
 function makeOrder(orderArrayy, orderLoc) {
     instorePickup = true;
+    locOrigin = 'instore';
+    locString = 'instore';
     
     if (shopClosed == true) {
         M.toast({
