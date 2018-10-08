@@ -931,24 +931,15 @@ function makeOrder(orderArrayy, orderLoc) {
                                         // $("#creditTopup").text($("#delPrdTotal")[0].innerHTML)
 
                                         payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
-                                        $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
+                                        //$("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
                                     })
 
                                 } else {
                                     payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
-                                    $("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
+                                    //$("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
                                 }
                             } else {
-                                var toastHTML = '<span>Unlock wallet to checkout</span><button class="btn-flat toast-action walletUserUnlock unlockWalToast" onclick="walletStatus()">Unlock</button>';
-                                if ($(".unlockWalletToast").length >= 1) {
-                                    $(".unlockWalletToast").remove()
-                                }
-                                M.toast({
-                                    html: toastHTML,
-                                    classes: "unlockWalletToast",
-                                    displayLength: 500000,
-                                    completeCallback: $("#ConfirmO").html("confirm")
-                                });
+                                payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
                             }
                             return false;
                         })
