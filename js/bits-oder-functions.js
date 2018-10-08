@@ -86,8 +86,8 @@ function getUserOders(f) {
                 if(parseInt(getBitsWinOpt('s'))==userOrders[ordersPending].toservice){
        $(".allUserOrders").html('<li class="collection-item avatar">'+
       '<i class="material-icons circle">'+typeIcn+'</i>'+
-      '<span class="title">Title</span>'+
-      '<p>First Line <br>Second Line</p>'+
+      '<span class="title">'+moment(userOrders[ordersPending].date).fromNow()+'</span>'+
+      '<p>'+userOrders[ordersPending].items+'<br>'+userOrders[ordersPending].state+'</p>'+
       '<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>'+
     '</li>');
                     }
