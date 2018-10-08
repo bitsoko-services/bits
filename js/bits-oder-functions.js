@@ -65,10 +65,46 @@ function getUserOders(f) {
         if (e.status == "ok") {
             userOrders = e.data;
             for (ordersPending in userOrders) {
-                if (userOrders[ordersPending].state != 'complete' && userOrders[ordersPending].state != 'wishlist') {
+                
+                if (userOrders[ordersPending].state != 'cancelled'){
+                    var typeIcn='cancel';
+                }else if(userOrders[ordersPending].state != 'wishlist') {
+                     var typeIcn='loyalty';
+                }else if(userOrders[ordersPending].state != 'pending') {
                     pendingOrders = true;
+                    var typeIcn='schedule';
+                }else if(userOrders[ordersPending].state != 'delivering') {
+                     var typeIcn='motorcycle';
+                    pendingOrders = true;
+                }else if(userOrders[ordersPending].state != 'complete') {
+                    var typeIcn='done_all';
                 }
+                
+                //list orders for this service
+                //
+                
+                if(parseInt(getBitsWinOpt('s'))==userOrders[ordersPending].toservice){
+       $(".allUserOrders").html('<li class="collection-item avatar">'+
+      '<i class="material-icons circle">'+typeIcn+'</i>'+
+      '<span class="title">Title</span>'+
+      '<p>First Line <br>Second Line</p>'+
+      '<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>'+
+    '</li>');
+                    }
+                
             }
+            
+            Notification.requestPermission().then(function(result) {
+                
+  if (result === 'denied' || result === 'default') {
+    $(".allUserOrdersNote").html('notifications are disabled!, turn on to easily manage your orders.');
+   // return;
+  }else{
+    $(".allUserOrdersNote").html('complete pending orders to make new orders');
+   // return;
+  }
+  // Do something with the granted permission.
+});
             xx = e.data;
             //var earnedPoints = 0;
 
