@@ -694,8 +694,6 @@ function tabulateTotals() {
 
 function makeOrder(orderArrayy, orderLoc) {
     instorePickup = true;
-    locOrigin = 'instore';
-    locString = 'instore';
     
     if (shopClosed == true) {
         M.toast({
@@ -919,6 +917,11 @@ function makeOrder(orderArrayy, orderLoc) {
                                     var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
                                     transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', "0xb72627650f1149ea5e54834b2f468e5d430e67bf", totCost, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate).then(function(res) {
                                         console.log(res);
+                                        if(locOrigin==undefined || locOrigin=='instore'){
+                                            
+                                            locOrigin = 'instore';
+                                            locString = 'instore';
+                                        }
                                         doMakeOrder(orderArrayy, res, globalDel, locOrigin, localStorage.getItem("bits-user-name"), locString, {
                                             "coin": "bits",
                                             "purchase": totalKobo
