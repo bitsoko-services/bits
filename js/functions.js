@@ -12,7 +12,7 @@ var promoCheckoutModal = false;
 var promoModalActive = false;
 var openCheckoutModal = false;
 
-async function doMakeOrder(orderArrayy, res, globalDel, locOrigin, uid, addrr, points, sid) {
+async function doMakeOrder(orderArrayy, res, globalDel, locOrigin, uid, addrr, sid) {
     if(locOrigin==undefined || locOrigin=='instore'){
                                             
                                             locOrigin = 'instore';
@@ -28,7 +28,12 @@ async function doMakeOrder(orderArrayy, res, globalDel, locOrigin, uid, addrr, p
         loc: locOrigin,
         user: uid,
         locStr: addrr,
-        pointsEarned: points,
+        pointsEarned: {                     
+            "contract": enterpriseContract,
+            "coins": document.querySelectorAll("#dscnt")[0].innerHTML/(allTokens[enterpriseContract].rate*baseX),
+            "rate": allTokens[enterpriseContract].rate*baseX,
+            "action": "purchase"
+        },
         service: sid,
         proPrice: parseInt($(".totals2").html())
     });
@@ -926,10 +931,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                     var totCost = parseFloat($("#totals")[0].innerHTML) + globalDel;
                                     transferTokenValue('0x7D1Ce470c95DbF3DF8a3E87DCEC63c98E567d481', "0xb72627650f1149ea5e54834b2f468e5d430e67bf", totCost, allTokens["0xb72627650f1149ea5e54834b2f468e5d430e67bf"].rate).then(function(res) {
                                         console.log(res);
-                                        doMakeOrder(orderArrayy, res, globalDel, locOrigin, localStorage.getItem("bits-user-name"), locString, {
-                                            "coin": "bits",
-                                            "purchase": totalKobo
-                                        }, parseInt(getBitsWinOpt('s'))).then(function(e) {
+                                        doMakeOrder(orderArrayy, res, globalDel, locOrigin, localStorage.getItem("bits-user-name"), locString, parseInt(getBitsWinOpt('s'))).then(function(e) {
                                             console.log(e);
                                         });
 
@@ -1317,10 +1319,7 @@ async function getWishId() {
     $('#modalconfirm').addClass('activeWishlist');
     $('#svgHolder').html('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" style=" width: 100px; position: absolute; left: 0;/ margin-left: auto; margin-left: auto; margin-right: auto; right: 0; top: -50px;"><linearGradient id="a" gradientTransform="matrix(1 0 0 -1 0 -12310)" gradientUnits="userSpaceOnUse" x1="0" x2="512" y1="-12566" y2="-12566"><stop offset="0" stop-color="#00f1ff"></stop><stop offset=".231" stop-color="#00d8ff"></stop><stop offset=".5138" stop-color="#00c0ff"></stop><stop offset=".7773" stop-color="#00b2ff"></stop><stop offset="1" stop-color="#00adff"></stop></linearGradient><path d="m512 256c0 141.386719-114.613281 256-256 256s-256-114.613281-256-256 114.613281-256 256-256 256 114.613281 256 256zm0 0" fill="url(#a)"></path><g fill="#fff"><path d="m337.605469 192.738281h-90.761719c-8.285156 0-15 6.714844-15 15 0 8.28125 6.714844 15 15 15h90.761719c8.285156 0 15-6.71875 15-15 0-8.285156-6.714844-15-15-15zm0 0"></path><path d="m352.605469 265.363281c0-8.285156-6.714844-15-15-15h-90.761719c-8.285156 0-15 6.714844-15 15 0 8.285157 6.714844 15 15 15h90.761719c8.285156 0 15-6.714843 15-15zm0 0"></path><path d="m278.539062 411h-103.730468c-15.558594 0-28.21875-12.660156-28.21875-28.21875v-253.5625c0-15.558594 12.660156-28.21875 28.21875-28.21875h177.125c15.558594 0 28.21875 12.660156 28.21875 28.21875v136.144531c0 8.285157 6.71875 15 15 15 8.285156 0 15-6.714843 15-15v-136.144531c0-32.101562-26.117188-58.21875-58.21875-58.21875h-177.125c-32.101563 0-58.21875 26.117188-58.21875 58.21875v253.5625c0 32.101562 26.117187 58.21875 58.21875 58.21875h103.730468c8.285157 0 15-6.714844 15-15s-6.71875-15-15-15zm0 0"></path><path d="m435.011719 321.253906c-8.449219-8.554687-20.015625-13.261718-32.566407-13.261718-13.519531 0-23.679687 4.585937-30.96875 11.128906-7.289062-6.542969-17.449218-11.128906-30.96875-11.128906-12.554687 0-24.121093 4.707031-32.566406 13.261718-8.640625 8.746094-13.402344 21.035156-13.402344 34.601563 0 28.558593 24.140626 46.554687 43.53125 61.011719 8.742188 6.519531 17 12.671874 21.722657 18.539062 2.847656 3.539062 7.144531 5.59375 11.683593 5.59375 4.539063 0 8.835938-2.054688 11.683594-5.59375 4.726563-5.867188 12.980469-12.019531 21.722656-18.539062 19.394532-14.457032 43.53125-32.453126 43.53125-61.011719-.003906-13.566407-4.761718-25.855469-13.402343-34.601563zm-48.0625 71.5625c-5.234375 3.902344-10.5625 7.875-15.472657 12.066406-4.914062-4.191406-10.242187-8.164062-15.472656-12.066406-15.46875-11.53125-31.464844-23.457031-31.464844-36.960937 0-11.019531 6.117188-17.863281 15.96875-17.863281 8.132813 0 11.265626 3.128906 13.085938 5.855468 2.246094 3.363282 2.84375 7.117188 2.933594 7.785156.433594 7.851563 6.855468 13.824219 14.738281 13.941407.070313 0 .144531.003906.21875.003906 7.820313 0 14.335937-6.238281 14.945313-14.058594.003906-.035156.5-3.695312 2.550781-7.085937 1.816406-3 4.988281-6.445313 13.460937-6.445313 9.851563 0 15.96875 6.847657 15.96875 17.867188 0 13.503906-15.996094 25.429687-31.460937 36.960937zm0 0"></path><path d="m205.0625 207.738281c0 7.957031-6.449219 14.40625-14.40625 14.40625s-14.40625-6.449219-14.40625-14.40625 6.449219-14.410156 14.40625-14.410156 14.40625 6.453125 14.40625 14.410156zm0 0"></path><path d="m337.605469 135.109375h-90.761719c-8.285156 0-15 6.714844-15 15s6.714844 15 15 15h90.761719c8.285156 0 15-6.714844 15-15s-6.714844-15-15-15zm0 0"></path><path d="m205.0625 150.109375c0 7.957031-6.449219 14.40625-14.40625 14.40625s-14.40625-6.449219-14.40625-14.40625 6.449219-14.40625 14.40625-14.40625 14.40625 6.449219 14.40625 14.40625zm0 0"></path><path d="m205.0625 265.363281c0 7.957031-6.449219 14.40625-14.40625 14.40625s-14.40625-6.449219-14.40625-14.40625 6.449219-14.40625 14.40625-14.40625 14.40625 6.449219 14.40625 14.40625zm0 0"></path><path d="m246.84375 307.992188c-8.285156 0-15 6.714843-15 15 0 8.285156 6.714844 15 15 15h21.628906c8.285156 0 15-6.714844 15-15 0-8.285157-6.714844-15-15-15zm0 0"></path><path d="m205.0625 322.992188c0 7.957031-6.449219 14.40625-14.40625 14.40625s-14.40625-6.449219-14.40625-14.40625c0-7.957032 6.449219-14.40625 14.40625-14.40625s14.40625 6.449218 14.40625 14.40625zm0 0"></path></g></svg>');
 
-    var e = await doMakeOrder(orderArray, 'wishlist', globalDel, locOrigin, localStorage.getItem("bits-user-name"), get_locStr, {
-        "coin": "bits",
-        "purchase": ''
-    }, parseInt(getBitsWinOpt('s')));
+    var e = await doMakeOrder(orderArray, 'wishlist', globalDel, locOrigin, localStorage.getItem("bits-user-name"), get_locStr, parseInt(getBitsWinOpt('s')));
     var e = await wishShare(e.oid);
 
     return e;
