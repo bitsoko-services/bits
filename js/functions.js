@@ -17,6 +17,7 @@ async function doMakeOrder(orderArrayy, res, globalDel, locOrigin, uid, addrr, p
                                             
                                             locOrigin = 'instore';
                                             addrr = 'instore';
+                                            globalDel = 0;
                                         }
                                         
     var e = await doFetch({
@@ -1358,21 +1359,16 @@ function insufficientOrder() {
             num: $("#mobileNo").val()
         }).then(function(e) {
             if (e.status == "ok") {
-                doFetch({
-                    action: 'makeOrder',
-                    data: get_orderArrayy,
-                    loc: get_loc,
-                    user: localStorage.getItem("bits-user-name"),
-                    locStr: get_locStr,
-                    pointsEarned: {
-                        "coin": "bits",
-                        "purchase": get_pointsEarned
-                    },
-                    trHash: "mn-" + $("#mobileNo").val() + "-" + $("#trnscode").val(),
-                    service: parseInt(getBitsWinOpt('s')),
-                    delPrice: globalDel,
-                    proPrice: parseInt($(".totals2").html())
-                }).then(function(e) {
+                doMakeOrder(get_orderArrayy,
+                            "mn-" + $("#mobileNo").val() + "-" + $("#trnscode").val(),
+                            globalDel,
+                            locOrigin,
+                            localStorage.getItem("bits-user-name"),
+                            locString,
+                            {   "coin": "bits",
+                                "purchase": totalKobo
+                            },
+                            parseInt(getBitsWinOpt('s'))).then(function(e) {
                     $("#appendPushSubs").remove();
                     $("#products").html("");
                     if (e.status == "ok") {
@@ -1394,6 +1390,7 @@ function insufficientOrder() {
                     $('#modalconfirm').modal('close');
                     clearCart();
                 });
+
                 document.getElementById('insufficientFundsModal').style.display = 'none';
                 $("#insufficientOrderStatus").css("display", "none");
             } else {
