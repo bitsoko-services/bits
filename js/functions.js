@@ -1366,9 +1366,6 @@ function insufficientOrder() {
                             locOrigin,
                             localStorage.getItem("bits-user-name"),
                             locString,
-                            {   "coin": "bits",
-                                "purchase": totalKobo
-                            },
                             parseInt(getBitsWinOpt('s'))).then(function(e) {
                     $("#appendPushSubs").remove();
                     $("#products").html("");
