@@ -32,6 +32,7 @@ async function doMakeOrder(orderArrayy, res, globalDel, locOrigin, uid, addrr, s
             "contract": enterpriseContract,
             "coins": document.querySelectorAll("#dscnt")[0].innerHTML/(allTokens[enterpriseContract].rate*baseX),
             "rate": allTokens[enterpriseContract].rate*baseX,
+            "fiat": baseCd,
             "action": "purchase"
         },
         service: sid,
