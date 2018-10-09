@@ -64,6 +64,7 @@ function getUserOders(f) {
     }).then(function(e) {
         if (e.status == "ok") {
             userOrders = e.data;
+            var pendingCount=0;
             for (ordersPending in userOrders) {
                 
                 if (userOrders[ordersPending].state == 'cancelled'){
@@ -71,11 +72,13 @@ function getUserOders(f) {
                 }else if(userOrders[ordersPending].state == 'wishlist') {
                      var typeIcn='loyalty';
                 }else if(userOrders[ordersPending].state == 'pending') {
-                    pendingOrders = true;
+                   
+                    pendingCount++;
                     var typeIcn='schedule';
                 }else if(userOrders[ordersPending].state == 'delivering') {
                      var typeIcn='motorcycle';
-                    pendingOrders = true;
+                    
+                    pendingCount++;
                 }else if(userOrders[ordersPending].state == 'complete') {
                     var typeIcn='done_all';
                 }
@@ -92,6 +95,14 @@ function getUserOders(f) {
     '</li>');
                     }
                 
+            }
+            if(pendingCount > 1){
+            pendingOrders = true;
+            
+            }else{
+            
+            pendingOrders = false;
+            
             }
             
             Notification.requestPermission().then(function(result) {
