@@ -66,17 +66,17 @@ function getUserOders(f) {
             userOrders = e.data;
             for (ordersPending in userOrders) {
                 
-                if (userOrders[ordersPending].state != 'cancelled'){
+                if (userOrders[ordersPending].state == 'cancelled'){
                     var typeIcn='cancel';
-                }else if(userOrders[ordersPending].state != 'wishlist') {
+                }else if(userOrders[ordersPending].state == 'wishlist') {
                      var typeIcn='loyalty';
-                }else if(userOrders[ordersPending].state != 'pending') {
+                }else if(userOrders[ordersPending].state == 'pending') {
                     pendingOrders = true;
                     var typeIcn='schedule';
-                }else if(userOrders[ordersPending].state != 'delivering') {
+                }else if(userOrders[ordersPending].state == 'delivering') {
                      var typeIcn='motorcycle';
                     pendingOrders = true;
-                }else if(userOrders[ordersPending].state != 'complete') {
+                }else if(userOrders[ordersPending].state == 'complete') {
                     var typeIcn='done_all';
                 }
                 
@@ -86,8 +86,8 @@ function getUserOders(f) {
                 if(parseInt(getBitsWinOpt('s'))==userOrders[ordersPending].toservice){
        $(".allUserOrders").html('<li class="collection-item avatar">'+
       '<i class="material-icons circle">'+typeIcn+'</i>'+
-      '<span class="title">'+moment(userOrders[ordersPending].date).fromNow()+'</span>'+
-      '<p>'+userOrders[ordersPending].items+'<br>'+userOrders[ordersPending].state+'</p>'+
+      '<span class="title">'+(parseInt(userOrders[ordersPending].delPrice)+parseInt(userOrders[ordersPending].proPrice))+'/= '+baseCd.toUpperCase()+'</span>'+
+      '<p>'+userOrders[ordersPending].items+'<br>'+userOrders[ordersPending].state+' - '+moment(userOrders[ordersPending].date).fromNow()+'</p>'+
       '<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>'+
     '</li>');
                     }
