@@ -86,7 +86,7 @@ function getUserOders(f) {
                 if(parseInt(getBitsWinOpt('s'))==userOrders[ordersPending].toservice){
        $(".allUserOrders").html('<li class="collection-item avatar">'+
       '<i class="material-icons circle">'+typeIcn+'</i>'+
-      '<span class="title">'+(parseInt(userOrders[ordersPending].delPrice)+parseInt(userOrders[ordersPending].proPrice))+'/= '+baseCd.toUpperCase()+'</span>'+
+      '<span class="title">'+(parseInt(userOrders[ordersPending].delPrice)+parseInt(userOrders[ordersPending].proPrice))+'/= '</span>'+
       '<p>'+userOrders[ordersPending].items+'<br>'+userOrders[ordersPending].state+' - '+moment(userOrders[ordersPending].date).fromNow()+'</p>'+
       '<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>'+
     '</li>');
