@@ -65,6 +65,7 @@ function getUserOders(f) {
         if (e.status == "ok") {
             userOrders = e.data;
             var pendingCount=0;
+            $(".allUserOrders").html('');
             for (ordersPending in userOrders) {
                 
                 if (userOrders[ordersPending].state == 'cancelled'){
@@ -87,6 +88,7 @@ function getUserOders(f) {
                 //
                 
                 if(parseInt(getBitsWinOpt('s'))==userOrders[ordersPending].toservice){
+       
        $(".allUserOrders").html('<li class="collection-item avatar">'+
       '<i class="material-icons circle">'+typeIcn+'</i>'+
       '<span class="title">'+(parseInt(userOrders[ordersPending].delPrice)+parseInt(userOrders[ordersPending].proPrice))+'/= </span>'+
