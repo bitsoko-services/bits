@@ -307,7 +307,7 @@ var productCategory = mDet.productCategory;
     var closingHours = pad(parseInt(workingHours.slice(-4)), 4);
     console.log('Opening hours - ' + openingHours)
     console.log('Closing hours - ' + closingHours)
-    var currentTime = pad(new Date().getHours() + "" + new Date().getMinutes(), 4);
+    var currentTime = pad(new Date().getHours(), 2) + "" + pad(new Date().getMinutes(), 2);
     console.log('currentTime - ' + currentTime)
     if (currentTime >= openingHours && currentTime <= closingHours) {
         console.log("Is working Hours", currentTime, openingHours)
