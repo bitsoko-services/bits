@@ -3,7 +3,7 @@ var showDeliverBtn;
 var showSokoBtn;
 var deliveryRadius;
 var shopCategory;
-var shopClosed = false;
+var shopClosed = true;
 //-----------------------------------------updating service list function-------------------------------------------------------------------------------------------
 function updateServicelist() {
     activeService = $('#serviceModal').attr('service');
@@ -312,7 +312,8 @@ var productCategory = mDet.productCategory;
     if (currentTime >= openingHours && currentTime <= closingHours) {
         console.log("Is working Hours", currentTime, openingHours)
         $(".shopWorkingHours").html("open - closing: " + closingHours);
-        $(".shopWorkingHours").css("color", "green")
+        $(".shopWorkingHours").css("color", "green");
+	      shopClosed = false;
     } else {
         String.prototype.insert = function(index, string) {
             if (index > 0)
