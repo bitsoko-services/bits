@@ -704,6 +704,7 @@ function tabulateTotals() {
 }
 
 function makeOrder(orderArrayy, orderLoc) {
+    console.log(orderArrayy)
     instorePickup = true;
     locOrigin = 'instore';
     locString = 'instore';
@@ -738,7 +739,7 @@ function makeOrder(orderArrayy, orderLoc) {
         $('.delivery').addClass('animated jello');
         //checkanon();
         if (buywishlist == true) {
-            buywishlist = false;
+            buywishlist = false;orderArrayy
         } else {
             if (checkanon() == false) {
                 $('#loginModal').modal("open");
@@ -1086,6 +1087,7 @@ function getProdss(orderArrayx, costofItems) {
                     //products
                     //$("#products").html("")
                     //	$("#products").append('<div class="chip">' + '<img src="' + r[o].imagePath + '" ">' + orderArrayx[oo].count + ' ' + r[o].name + ' at '+ r[o].price+'/=</div>')
+                    console.log(r[o])
                     $("#products").append('<li class="collection-item avatar"style="padding: 3px;margin: 0px;background: none !important;min-height: 10px;"><div class="row" style="line-height: 30px;margin-bottom: 0px;"> <div class="col s2">' + orderArrayx[oo].count + 'X ' + '</div><div class="col s2"><img  srcset="' + srcSetPth + ' 35w" src="' + r[o].imagePath + '"  style="height: 30px; width: 30px;border-radius:50%;"></div><div class="col s6" style="padding:0px;"><span class="title truncate" style="width: 95%;">' + r[o].name + ' </span></div><div class="col s2"><div  class="right" style="font-size:0.7em;">' + r[o].price * orderArrayx[oo].count + '/=</div></div></div></li>')
                 }
             }
