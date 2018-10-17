@@ -19,7 +19,6 @@ function finalCost(costofItems) {
             x = str.split(",")[0];
             y = str.split(",")[1];
             getLoc().then(function showPosition(e) {
-
                 //--geting the shop delivery Rates---------------------------------------------------------------------------------------//
                 console.log("calculating rates")
                 //var distance =getDistanceFromLatLonInKm(from-lat,from-long,to-lat,from-long);
@@ -60,24 +59,6 @@ function finalCost(costofItems) {
                         })
                         $("#modalconfirm").modal("close");
                         clearCart();
-                    } else if (dist < deliveryRadius.min) {
-                        //--rates
-                        var rates = Math.ceil(d * distance);
-
-                        globalDel = rates;
-
-                        //console.log(y);
-                        //add delivery rate to totals
-                        var divObj = document.getElementById("totals");
-                        var totalCost = parseInt(divObj.innerHTML) + 0
-
-                        //else{Materialize.toast('your order is more than 500KSH ', 1000);}
-
-                        //localStorage.setItem('bits-merchant'+parseInt(getBitsWinOpt('s'))+'-Total cost',totalCost);
-                        $(".confirmText").html('Total: <span id="delPrdTotal">' + totalCost + '</span><span class=""> /=</span>');
-                        $(".totals2").html(parseInt(divObj.innerHTML) + '<span class=""> /=</span></span>');
-                        $("#inStorePickup").html('In store pickup')
-                        $(".del").html(0 + '<span class=""> /=</span>')
                     } else {
                         //--rates
                         var rates = Math.ceil(d * distance);
@@ -102,6 +83,7 @@ function finalCost(costofItems) {
                         $(".confirmText").html('Total: ' + totalCost + '<span class=""> /=</span></span>')
                         $(".totals2").html(parseInt(divObj.innerHTML) + '<span class=""> /=</span></span>')
                         $(".del").html(rates + '<span class=""> /=</span></span>')
+                        if(instorePickup == true){$("#inStorePickup").html('Instore Pickup')}else{$("#inStorePickup").html(rates + '<span class=""> /=</span></span>')}
                     }
                 });
             })
