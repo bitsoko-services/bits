@@ -1994,9 +1994,13 @@
             //$(".serviceListHolder").hide();
             //            $(".serviceListCard").hide();
             // $('.carousel').carousel();
-            $('.carousel.carousel-slider').carousel({
-                fullWidth: true
-            });
+           // $('.carousel.carousel-slider').carousel({
+            //    fullWidth: true
+           //});
+   
+carouselInstances = M.Carousel.init(document.querySelectorAll('.carousel'), {
+    indicators:true
+    });
             $(".promoHolder").hide();
 
             //$('.delivery').addClass('animated jello');
