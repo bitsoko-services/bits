@@ -45,7 +45,7 @@ async function doMakeOrder(orderArrayy, res, globalDel, locOrigin, uid, addrr, s
             $('#shareWishlist').html('share');
 
         } else {
-            $('#modalconfirm').modal('close');
+            M.Modal.init(document.getElementById('modalconfirm')).close();
             M.toast({
                 html: 'Your order has been sent!',
             });
@@ -122,9 +122,8 @@ function checkBrowser() {
     if (!!window.chrome) {
         console.log("Browser compatible")
     } else {
-        $("#checkBrowser").modal({
-            dismissible: false
-        }).modal("open")
+        M.Modal.init(document.getElementById('checkBrowser')).options.dismissible = false
+        M.Modal.init(document.getElementById('checkBrowser')).open()
     }
 }
 
@@ -482,9 +481,9 @@ function checkServicePageLoader() {
                 }
                 localStorage.setItem('userNumber', e.phone);
             } else if (e.status == "bad") {
-                $(".MobileModal").modal("open");
+                M.Modal.init(document.getElementById('MobileModal')).open();
             } else {
-                $(".MobileModal").modal("open");
+                M.Modal.init(document.getElementById('MobileModal')).open();
             }
         })
     } else {
@@ -643,7 +642,7 @@ function checkanon() {
 function showLogin() {
     startGoogle();
     if (checkanon() == false) {
-        $('#loginModal').modal('open');
+        M.Modal.init(document.getElementById('loginModal')).open()
     }
     return;
 }
@@ -739,20 +738,21 @@ function makeOrder(orderArrayy, orderLoc) {
         $('.delivery').addClass('animated jello');
         //checkanon();
         if (buywishlist == true) {
-            buywishlist = false;orderArrayy
+            buywishlist = false;
+            orderArrayy
         } else {
             if (checkanon() == false) {
-                $('#loginModal').modal("open");
+                M.Modal.init(document.getElementById('loginModal')).open();
                 openCheckoutModal = true;
                 return;
             }
             if (localStorage.getItem('userVerifiedNumber') == 'false') {
-                $('#MobileModal').modal('open');
+                M.Modal.init(document.getElementById('MobileModal')).open();
                 return;
             }
         }
         if (pendingOrders == true) {
-            $('#pendingOrderModal').modal('open');
+            M.Modal.init(document.getElementById('pendingOrderModal')).open()
         } else {
             if (minimumOrder < 100) {
                 if ($("#totals").parent().hasClass("granted") == true) {} else {
@@ -890,12 +890,12 @@ function makeOrder(orderArrayy, orderLoc) {
                                     $(".orderModalMap").html('<img class="mapdata" src="' + mapData[0] + '" style="width:100%;height: 200px; object-fit: cover;">');
                                     console.log(mapData[1])
                                     $(".mapText").append("Pick up / Drop off :" + mapData[1].results[0].formatted_address);
-                                    $('#modalconfirm').modal({
+                                    M.Modal.init(document.getElementById('modalconfirm'), {
                                         onOpenEnd: $("#totals").parent().removeClass("granted"),
                                         onOpenEnd: $('.spinnerCheckout').css("display", "none"),
                                         onOpenEnd: $('.checkoutInfo').css("display", "block"),
                                         dismissible: false
-                                    }).modal("open");
+                                    }).open()
                                     if (shopClosed == true) {
                                         M.toast({
                                             html: 'Items will be delivered when the shop opens',
@@ -983,12 +983,12 @@ function makeOrder(orderArrayy, orderLoc) {
                     $(".mapText").html("")
                     $(".orderModalMap").html('<p onclick="deliverItems()" style="text-align: center; vertical-align: middle; line-height: 160px; padding: 2%; display: block; margin-left: auto; margin-right: auto; color: white; background: #8c8c8c;">Click here to deliver the items to your location</p>');
                     $(".mapText").append("Instore Pick up");
-                    $('#modalconfirm').modal({
+                    M.Modal.init(document.getElementById('modalconfirm'), {
                         onOpenEnd: $("#totals").parent().removeClass("granted"),
                         onOpenEnd: $('.spinnerCheckout').css("display", "none"),
                         onOpenEnd: $('.checkoutInfo').css("display", "block"),
                         dismissible: false
-                    }).modal("open");
+                    }).open()
                     $('.star2').addClass('animated shake'), setTimeout(function() {
                         $('.star2').removeClass('animated shake')
                     }, 1000);
@@ -1335,7 +1335,7 @@ function sharewishList() {
                 url: '/bits/?s=' + getBitsWinOpt('s') + '&wish=' + wishShareId
             }).then(function(e) {
                 clearCart();
-                $('#modalconfirm').modal('close');
+                M.Modal.init(document.getElementById('modalconfirm')).close()
                 return e;
 
             })
@@ -1371,7 +1371,7 @@ function insufficientOrder() {
                     $("#appendPushSubs").remove();
                     $("#products").html("");
                     if (e.status == "ok") {
-                        $('#modalconfirm').modal('close');
+                        M.Modal.init(document.getElementById('modalconfirm')).close()
                         M.toast({
                             html: 'Your order has been sent!',
                         });
@@ -1386,7 +1386,7 @@ function insufficientOrder() {
                     M.toast({
                         html: 'Error!! Try again later'
                     });
-                    $('#modalconfirm').modal('close');
+                    M.Modal.init(document.getElementById('modalconfirm')).close()
                     clearCart();
                 });
 
@@ -1404,7 +1404,7 @@ function insufficientOrder() {
 
 function selectPaymentMethod() {
     if (checkanon() == false) {
-        $('#loginModal').modal("open")
+        M.Modal.init(document.getElementById('loginModal')).open();
     } else {
         document.getElementById("chooseWalletModal").style.display = "block";
     }
