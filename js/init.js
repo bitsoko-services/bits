@@ -94,9 +94,8 @@ function starting() {
     //    loadWallet();
     initializePdf();
     callMerchant();
-    M.Collapsible.init(document.querySelectorAll('.collapsible'));
+    M.Collapsible.init(document.querySelectorAll('.collapsible'),{accordion:true});
     M.Modal.init(document.querySelectorAll('.modal'));
-
 
     tBal = 0;
 
