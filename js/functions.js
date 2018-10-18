@@ -560,6 +560,7 @@ function showuser() {
         var gtname = getObjectStore('data', 'readwrite').get('user-profile-' + localStorage.getItem('bits-user-name'));
         gtname.onsuccess = function(event) {
             try {
+                M.Modal.init(document.getElementById('loginModal')).close();
                 var nam = JSON.parse(event.target.result);
                 M.toast({
                     html: '<span class="toastlogin">You are Signed in as: ' + nam.name,
@@ -1070,6 +1071,7 @@ function getProdss(orderArrayx, costofItems) {
     }).then(function(r) {
         var costofItems = 0;
         ////console.log(r);
+        $('#products').html('');
         for (var o in r) {
             for (var oo in orderArrayx) {
                 ////console.log("------------------------------------->>", r[o].id, orderArrayx[oo].count)
@@ -1103,7 +1105,6 @@ bp = 0
 dis = 0
 
 function buyPromo(clicked_id, promoOder) {
-    clearCart();
     promoModalActive = true
     //clearCart();
     bp = 1
