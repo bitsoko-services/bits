@@ -57,20 +57,23 @@ function finalCost(costofItems) {
                         M.toast({
                             html: 'Ooops! You are out of radius'
                         })
-                        $("#modalconfirm").modal("close");
+                        M.Modal.init(document.getElementById('modalconfirm')).close();
                         clearCart();
                     } else {
                         //--rates
                         var rates = Math.ceil(d * distance);
                         if (rates < 100) {
-                            if (instorePickup == true) {
-                                rates = 0
-                            } else {
-                                rates = 100
-                            }
+                            rates = 100
                         }
 
                         globalDel = rates;
+
+                        if (instorePickup == true) {
+                            $("#inStorePickup").html('Instore Pickup')
+                            rates = 0
+                        } else {
+                            $("#inStorePickup").html(rates + '<span class=""> /=</span></span>')
+                        }
 
                         //console.log(y);
                         //add delivery rate to totals
@@ -83,7 +86,6 @@ function finalCost(costofItems) {
                         $(".confirmText").html('Total: ' + totalCost + '<span class=""> /=</span></span>')
                         $(".totals2").html(parseInt(divObj.innerHTML) + '<span class=""> /=</span></span>')
                         $(".del").html(rates + '<span class=""> /=</span></span>')
-                        if(instorePickup == true){$("#inStorePickup").html('Instore Pickup')}else{$("#inStorePickup").html(rates + '<span class=""> /=</span></span>')}
                     }
                 });
             })

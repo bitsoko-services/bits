@@ -302,17 +302,12 @@ function populateService(mDet) {
         console.log('info! error managing working hours', err);
         var workingHours = JSON.parse(time).mon_fri;
     }
-    console.log("working hours - " + workingHours)
 
     //shop working hours
     var openingHours = pad(parseInt(workingHours.substring(0, 4)), 4);
     var closingHours = pad(parseInt(workingHours.slice(-4)), 4);
-    console.log('Opening hours - ' + openingHours)
-    console.log('Closing hours - ' + closingHours)
     var currentTime = pad(new Date().getHours(), 2) + "" + pad(new Date().getMinutes(), 2);
-    console.log('currentTime - ' + currentTime)
     if (currentTime >= openingHours && currentTime <= closingHours) {
-        console.log("Is working Hours", currentTime, openingHours)
         $(".shopWorkingHours").html("open - closing: " + closingHours);
         $(".shopWorkingHours").css("color", "green");
         shopClosed = false;

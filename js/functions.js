@@ -255,11 +255,11 @@ function servicePageLoader() {
         var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
         svReq.onsuccess = function(event) {
             try {
-                populateService(event.target.result);
+                populateService(JSON.parse(event.target.result));
                 populated = true;
 
                 setTimeout(function(e) {
-                    $('.prdTabs').tabs();
+                    M.Tabs.init(document.querySelectorAll('.prdTabs'))
 
                     //Get Tab Content
                     initializeTabs();
@@ -272,10 +272,10 @@ function servicePageLoader() {
                         populateService(e.data);
                         populated = true;
 
-                        var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-' + getBitsWinOpt('s'));
+                        var svReq = getObjectStore('data', 'readwrite').put(e.data, 'bits-merchant-id-' + getBitsWinOpt('s'));
                         svReq.onsuccess = function(e) {
                             setTimeout(function(e) {
-                                $('.prdTabs').tabs();
+                                M.Tabs.init(document.querySelectorAll('.prdTabs'))
 
                                 //Get Tab Content
                                 initializeTabs();
@@ -708,7 +708,6 @@ function tabulateTotals() {
 }
 
 function makeOrder(orderArrayy, orderLoc) {
-    console.log(orderArrayy)
     instorePickup = true;
     locOrigin = 'instore';
     locString = 'instore';
@@ -744,7 +743,6 @@ function makeOrder(orderArrayy, orderLoc) {
         //checkanon();
         if (buywishlist == true) {
             buywishlist = false;
-            orderArrayy
         } else {
             if (checkanon() == false) {
                 M.Modal.init(document.getElementById('loginModal')).open();
@@ -781,13 +779,13 @@ function makeOrder(orderArrayy, orderLoc) {
                 var payByToken = true;
 
                 if (instorePickup == true) {
+                    getProdss(orderArrayy);
                     $(".del").html(0 + '<span class=""> /=</span>');
                     if ($(".createOrderToast").length >= 1) {
                         setTimeout(function() {
                             $(".createOrderToast").remove()
                         }, 1000)
                     }
-                    getProdss(orderArrayy);
 
                     get_orderArrayy = orderArrayy;
                     get_pointsEarned = totalKobo;
@@ -1076,9 +1074,17 @@ function getProdss(orderArrayx, costofItems) {
         var costofItems = 0;
         ////console.log(r);
         for (var o in r) {
+            var prdName = r[o].name
+            var prdId = r[o].id
+            var prdPrice = r[o].price
             for (var oo in orderArrayx) {
                 ////console.log("------------------------------------->>", r[o].id, orderArrayx[oo].count)
-                if (r[o].id == orderArrayx[oo].pid) {
+                if (prdId == orderArrayx[oo].pid) {
+                    var prdCount = orderArrayx[oo].count
+                    if (isNaN(prdCount)) {
+                        orderArrayx[oo].count = 1
+                    }
+                    // console.log(prdName,prdId,prdPrice,orderArrayx[oo].count)
                     costofItems = costofItems + (orderArrayx[oo].count * r[o].price);
 
                     try {
@@ -1092,8 +1098,7 @@ function getProdss(orderArrayx, costofItems) {
                     //products
                     //$("#products").html("")
                     //	$("#products").append('<div class="chip">' + '<img src="' + r[o].imagePath + '" ">' + orderArrayx[oo].count + ' ' + r[o].name + ' at '+ r[o].price+'/=</div>')
-                    console.log(r[o])
-                    $("#products").append('<li class="collection-item avatar"style="padding: 3px;margin: 0px;background: none !important;min-height: 10px;"><div class="row" style="line-height: 30px;margin-bottom: 0px;"> <div class="col s2">' + orderArrayx[oo].count + 'X ' + '</div><div class="col s2"><img  srcset="' + srcSetPth + ' 35w" src="' + r[o].imagePath + '"  style="height: 30px; width: 30px;border-radius:50%;"></div><div class="col s6" style="padding:0px;"><span class="title truncate" style="width: 95%;">' + r[o].name + ' </span></div><div class="col s2"><div  class="right" style="font-size:0.7em;">' + r[o].price * orderArrayx[oo].count + '/=</div></div></div></li>')
+                    $("#products").append('<li class="collection-item avatar"style="padding: 3px;margin: 0px;background: none !important;min-height: 10px;"><div class="row" style="line-height: 30px;margin-bottom: 0px;"> <div class="col s2">' + orderArrayx[oo].count + 'X ' + '</div><div class="col s2"><img  srcset="' + srcSetPth + ' 35w" src="' + r[o].imagePath + '"  style="height: 30px; width: 30px;border-radius:50%;"></div><div class="col s6" style="padding:0px;"><span class="title truncate" style="width: 95%;">' + prdName + ' </span></div><div class="col s2"><div  class="right" style="font-size:0.7em;">' + prdPrice * orderArrayx[oo].count + '/=</div></div></div></li>')
                 }
             }
         }
@@ -1108,7 +1113,6 @@ bp = 0
 dis = 0
 
 function buyPromo(clicked_id, promoOder) {
-    console.log(promoOder)
     promoModalActive = true
     //clearCart();
     bp = 1

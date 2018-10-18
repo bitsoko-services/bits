@@ -158,7 +158,7 @@ function starting() {
             });
             //walletStatus();
         } else {
-            $('#loginModal').modal("open");
+            M.Modal.init(document.getElementById('loginModal')).open();
             $(".balance-coins").html("login");
         }
 
