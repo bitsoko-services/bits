@@ -94,7 +94,7 @@ function starting() {
     //    loadWallet();
     initializePdf();
     callMerchant();
-    $(".collapsible").collapsible();
+    collapsibleInstances = M.Collapsible.init(document.querySelectorAll('.collapsible'), {accordion:true});
     $(".modal").modal();
 
 
