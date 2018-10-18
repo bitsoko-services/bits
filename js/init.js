@@ -94,14 +94,16 @@ function starting() {
     //    loadWallet();
     initializePdf();
     callMerchant();
-    M.Collapsible.init(document.querySelectorAll('.collapsible'),{accordion:true});
-    M.Modal.init(document.querySelectorAll('.modal'));
+    collapsibleInstances = M.Collapsible.init(document.querySelectorAll('.collapsible'), {accordion:true});
+    modalInstances = M.Modal.init(document.querySelectorAll('.modal'), {});
+
 
     tBal = 0;
 
     if (checkanon()) {
 
-        $(".balance-coins").html("locked");
+       // $(".balance-coins").html("locked");
+	    document.querySelector('.balance-coins').innerHTML='locked';
 
         /////////////////////////////////// update exchange rates
 
@@ -114,9 +116,9 @@ function starting() {
             window.setInterval(function() {
                 updateEarnedTokens();
             }, 20000);
-
-            $(".conf-curr").html(e.data.baseCd);
-            $(".localCurr").html(baseCd + " ");
+document.querySelector('.conf-curr').innerHTML=e.data.baseCd;
+document.querySelector('.localCurr').innerHTML=baseCd + " ";
+           
         });
 
     }
