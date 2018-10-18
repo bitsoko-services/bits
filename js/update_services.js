@@ -3,7 +3,7 @@ var showDeliverBtn;
 var showSokoBtn;
 var deliveryRadius;
 var shopCategory;
-var shopClosed = true;
+var shopClosed = false;
 //-----------------------------------------updating service list function-------------------------------------------------------------------------------------------
 function updateServicelist() {
     activeService = $('#serviceModal').attr('service');
