@@ -1961,7 +1961,7 @@
             //request persistent storage
             requestPersist();
             try {
-                $('.sidenav').sidenav();
+                M.Sidenav.init(document.querySelectorAll('.sidenav'));
             } catch (err) {
                 console.log(err)
             }

@@ -1075,7 +1075,6 @@ function getProdss(orderArrayx, costofItems) {
     }).then(function(r) {
         var costofItems = 0;
         ////console.log(r);
-        $('#products').html('');
         for (var o in r) {
             for (var oo in orderArrayx) {
                 ////console.log("------------------------------------->>", r[o].id, orderArrayx[oo].count)
@@ -1109,6 +1108,7 @@ bp = 0
 dis = 0
 
 function buyPromo(clicked_id, promoOder) {
+    console.log(promoOder)
     promoModalActive = true
     //clearCart();
     bp = 1

@@ -149,29 +149,31 @@ function doSubscribe() {
 
 setTimeout(function(e) {
     //Subscribe to shop
-    $("#shopSubscribe").bind("touchstart click", function(event, ui) {
-        if (checkanon()) {
-            doFetch({
-                action: 'doSubscription',
-                sid: localStorage.getItem('bits-active-service'),
-                uid: localStorage.getItem('bits-user-name')
-            }).then(function(e) {
-                if (e.status == "ok") {
-                    M.toast({
-                        html: 'Subscribed successfully'
-                    })
-                } else if (e.status == "bad") {
-                    M.toast({
-                        html: 'Error! Try again later'
-                    })
-                }
-            })
-        } else {
-            //        console.log("loged out");
-            $("#loginModal").modal("open");
-        }
+    if (document.getElementById("#shopSubscribe") != null) {
+        document.getElementById("#shopSubscribe").bind("touchstart click", function(event, ui) {
+            if (checkanon()) {
+                doFetch({
+                    action: 'doSubscription',
+                    sid: localStorage.getItem('bits-active-service'),
+                    uid: localStorage.getItem('bits-user-name')
+                }).then(function(e) {
+                    if (e.status == "ok") {
+                        M.toast({
+                            html: 'Subscribed successfully'
+                        })
+                    } else if (e.status == "bad") {
+                        M.toast({
+                            html: 'Error! Try again later'
+                        })
+                    }
+                })
+            } else {
+                //        console.log("loged out");
+                $("#loginModal").modal("open");
+            }
 
-    })
+        })
+    }
     //Multiple promo function
     $(document).on("click", ".promoPlusBtn ", function() {
         var promoInput = $(this).parent().parent().find(".inputNo");
@@ -617,7 +619,7 @@ function populateService(mDet) {
         // 	 };
         bitsTheme(mDet.theme);
         sortListDir();
-        $('.materialboxed').materialbox();
+        M.Materialbox.init(document.querySelectorAll('.materialboxed'));
         var addproducts = document.querySelectorAll(".bitsInputQty");
         for (var i = 0; i < addproducts.length; ++i) {
             addproducts[i].addEventListener("change", tabulateTotals, false);
