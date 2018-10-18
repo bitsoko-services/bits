@@ -265,52 +265,57 @@ function servicePageLoader() {
                     initializeTabs();
                 }, 3000)
             } catch (err) {
-                var re = /&quot;/gi;
-                var str = document.getElementById('storeMeta').innerHTML;
-                var newstr = str.replace(re, '"');
-                $("#preloader").fadeOut(1000);
-                try {
-                    populateService(JSON.parse(newstr).res);
-                    populated = true;
+                fetchServiceProfile.then(function(e) {
+                    var storeTheme = e.data.theme
+                    $("#preloader").fadeOut(1000);
+                    try {
+                        populateService(e.data);
+                        populated = true;
 
-                    var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(newstr.res), 'bits-merchant-id-' + getBitsWinOpt('s'));
-                    svReq.onsuccess = function(e) {
-                        setTimeout(function(e) {
-                            $('.prdTabs').tabs();
+                        var svReq = getObjectStore('data', 'readwrite').put(JSON.stringify(e.data), 'bits-merchant-id-' + getBitsWinOpt('s'));
+                        svReq.onsuccess = function(e) {
+                            setTimeout(function(e) {
+                                $('.prdTabs').tabs();
 
-                            //Get Tab Content
-                            initializeTabs();
-                        }, 3000)
-                    };
-                    svReq.onerror = function() {
-                        ////console.log('err not saved store info to db')
+                                //Get Tab Content
+                                initializeTabs();
+                            }, 3000)
+                        };
+                        svReq.onerror = function() {
+                            ////console.log('err not saved store info to db')
+                        }
+
+                    } catch (err) {
+                        console.log(err)
+                        if (loadedServiceProfile == false) {
+                            setTimeout(function() {
+                                servicePageLoader();
+                            }, 3000);
+                        }
                     }
-
-                } catch (err) {
-                    console.log(err)
-                    if (loadedServiceProfile == false) {
-                        setTimeout(function() {
-                            servicePageLoader();
-                        }, 3000);
-                    }
-                }
+                    setTimeout(function(e) {
+                        $(".bits").css("background-color", storeTheme)
+                    }, 2000)
+                })
             }
         };
         svReq.onerror = function() {
 
             ////console.log('service not found in db. perhaps trying from DOM 2');
-            var re = /&quot;/gi;
-            var str = document.getElementById('storeMeta').innerHTML;
-            var newstr = str.replace(re, '"');
             $("#preloader").fadeOut(1000);
-            populateService(JSON.parse(newstr).res);
-            populated = true;
+            fetchServiceProfile.then(function(e) {
+                populateService(e.data);
+                populated = true;
+            })
         }
-        doFetch({
+
+        fetchServiceProfile = doFetch({
             action: 'serviceProfile',
             id: servID,
             service: getBitsWinOpt('s')
-        }).then(function(e) {
+        })
+
+        fetchServiceProfile.then(function(e) {
             if (e.status == "ok") {
                 loadedServiceProfile = true;
                 shopData = e.data
@@ -348,7 +353,6 @@ function servicePageLoader() {
                         }, 1000);
                     }
                 }
-                $(".bits").css("background-color", e.data.theme)
 
                 deliveryRadius = e.data.deliveryRadius
                 var svReq = getObjectStore('data', 'readwrite').put(e.data, 'bits-merchant-id-' + e.data.id);

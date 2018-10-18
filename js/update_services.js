@@ -23,19 +23,19 @@ function updateServicelist() {
 //-----------------------------------------------save to local storage------------------------------------------------------------------
 function serviceOpener() {
     console.log('serviceOpener()..');
-	  //Check User Phone Number
-        doFetch({
-            action: 'userVerified',
-            uid: localStorage.getItem("bits-user-name")
-        }).then(function(e) {
-            if (e.status == "ok") {
+    //Check User Phone Number
+    doFetch({
+        action: 'userVerified',
+        uid: localStorage.getItem("bits-user-name")
+    }).then(function(e) {
+        if (e.status == "ok") {
 
-                localStorage.setItem('userVerifiedNumber', e.phone);
-            } else {
-                localStorage.setItem('userVerifiedNumber', 'false');
+            localStorage.setItem('userVerifiedNumber', e.phone);
+        } else {
+            localStorage.setItem('userVerifiedNumber', 'false');
 
-            }
-        })
+        }
+    })
 
     if (getBitsWinOpt('s') != undefined) {
         checkServicePageLoader()
@@ -255,19 +255,19 @@ function populateService(mDet) {
     };
     try {
 
-if(window.origin=="https://supplies.bitsoko.co.ke"){
-var productCategory = JSON.parse(mDet.inventoryCategory);
-}else{
-var productCategory = JSON.parse(mDet.productCategory);
-}
+        if (window.origin == "https://supplies.bitsoko.co.ke") {
+            var productCategory = JSON.parse(mDet.inventoryCategory);
+        } else {
+            var productCategory = JSON.parse(mDet.productCategory);
+        }
 
     } catch (err) {
 
-if(window.origin=="https://supplies.bitsoko.co.ke"){
-var productCategory = mDet.inventoryCategory;
-}else{
-var productCategory = mDet.productCategory;
-}
+        if (window.origin == "https://supplies.bitsoko.co.ke") {
+            var productCategory = mDet.inventoryCategory;
+        } else {
+            var productCategory = mDet.productCategory;
+        }
     }
     checkBrowser()
     //    console.log(mDet.id)
@@ -313,7 +313,7 @@ var productCategory = mDet.productCategory;
         console.log("Is working Hours", currentTime, openingHours)
         $(".shopWorkingHours").html("open - closing: " + closingHours);
         $(".shopWorkingHours").css("color", "green");
-	      shopClosed = false;
+        shopClosed = false;
     } else {
         String.prototype.insert = function(index, string) {
             if (index > 0)
