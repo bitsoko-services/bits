@@ -941,17 +941,29 @@ function makeOrder(orderArrayy, orderLoc) {
                                     }).catch(function(err) {
                                         console.log(err);
                                         // $("#creditTopup").text($("#delPrdTotal")[0].innerHTML)
+                                        if (instorePickup == true) {
+                                            payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML))
+                                        } else {
+                                            payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
+                                        }
 
-                                        payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
                                         //$("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
                                     })
 
                                 } else {
-                                    payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
+                                    if (instorePickup == true) {
+                                        payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML))
+                                    } else {
+                                        payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
+                                    }
                                     //$("#tokenMarketLink").html('<a href="/tm/?cid=' + enterpriseContract + '">Buy from Token Market</a>')
                                 }
                             } else {
-                                payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
+                                if (instorePickup == true) {
+                                    payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML))
+                                } else {
+                                    payUsingMobileMoney(parseFloat($("#totals")[0].innerHTML) + globalDel)
+                                }
                             }
                             return false;
                         })

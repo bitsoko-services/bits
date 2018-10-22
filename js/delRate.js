@@ -72,7 +72,7 @@ function finalCost(costofItems) {
                             $("#inStorePickup").html('Instore Pickup')
                             rates = 0
                         } else {
-                            $("#inStorePickup").html(rates + '<span class=""> /=</span></span>')
+                            $("#inStorePickup").html("Delivery " + rates + '<span class=""> /=</span></span>')
                         }
 
                         //console.log(y);
