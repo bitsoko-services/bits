@@ -1428,3 +1428,7 @@ function selectPaymentMethod() {
         document.getElementById("chooseWalletModal").style.display = "block";
     }
 }
+
+function resendMobiCode(){
+    alert("dfad")
+}
