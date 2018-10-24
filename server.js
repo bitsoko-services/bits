@@ -120,7 +120,7 @@ try {
                             title: "Cancel"
 						}], true, true);
                     } else if (state == 'delivering') {
-                        bitsNotification('Order ' + dat.oid + ' Delivery', 'Your order is being delivered', tg, 'bits/images/Delivered.png', dat.orderImg, [{
+                        bitsNotification('Order ' + dat.oid + ' Delivery', 'Your order is being delivered', tg, 'bits/images/deliveryM.png', dat.orderImg, [{
                             action: 'cancel',
                             title: "Cancel"
 						}, {
@@ -132,7 +132,7 @@ try {
                 case 'delOrder':
                     var tg = "bits-order-" + dat.oid + "-(" + dat.toLoc + ")";
                     var state = dat.state;
-                    bitsNotification('New ' + dat.deliveryPrice + '/= Delivery', 'order number ' + dat.oid, tg, 'bits/images/deliveryM.png', dat.orderImg, [{
+                    bitsNotification('New ' + dat.deliveryPrice + '/= Delivery', 'order number ' + dat.oid, tg, 'bits/images/Delivered.png', dat.orderImg, [{
                         action: 'locate',
                         title: "Location"
 						}, {
