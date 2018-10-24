@@ -18,77 +18,62 @@ function finalCost(costofItems) {
             var str = p;
             x = str.split(",")[0];
             y = str.split(",")[1];
-            getLoc().then(function showPosition(e) {
-                //--geting the shop delivery Rates---------------------------------------------------------------------------------------//
-                console.log("calculating rates")
-                //var distance =getDistanceFromLatLonInKm(from-lat,from-long,to-lat,from-long);
-                getDistanceFromLatLonInKm(e.coords.latitude, e.coords.longitude, x, y).then(function(distance) {
-                    console.log("rates loaded")
-                    $("#ConfirmO").removeAttr("disabled");
 
+            //Calculate Promo Discount
+            var getProdPrice = document.getElementById("totals").innerHTML;
+            promoDiscount = (dis / 100) * getProdPrice
+            $("#promoDiscount").html('<span id="dscnt" style="font-size:2em;">' + promoDiscount + '</span><br>money <br> back');
 
-                    //Calculate Promo Discount
-                    var getProdPrice = document.getElementById("totals").innerHTML;
-                    promoDiscount = (dis / 100) * getProdPrice
-                    $("#promoDiscount").html('<span id="dscnt" style="font-size:2em;">' + promoDiscount + '</span><br>money <br> back');
+            if (instorePickup == true) {
+                $("#ConfirmO").removeAttr("disabled");
+                var divObj = document.getElementById("totals");
+                var totalCost = parseInt(divObj.innerHTML);
 
-                    var dist = distance
-                    try {
-                        //
-                        //
-                        // deliveryRadius = JSON.parse(getDist())
-                        // if (!deliveryRadius.min || !deliveryRadius.max) {
-                        //     var deliveryRadius = {}
-                        //     deliveryRadius.max = p.deliveryRadius.max;
-                        //     deliveryRadius.min = p.deliveryRadius.min;
-                        //
-                        // }
-                        deliveryRadius.max = shopDeliveryRadius.max;
-                        deliveryRadius.min = shopDeliveryRadius.min;
-                    } catch (e) {
-                        console.log(e)
-                        deliveryRadius.max = 10;
-                        deliveryRadius.min = 0.5;
+                $(".confirmText").html('Total: ' + totalCost + '<span class=""> /=</span></span>');
+                $(".totals2").html(parseInt(divObj.innerHTML) + '<span class=""> /=</span></span>');
+                $("#inStorePickup").html('Instore Pickup');
+            } else {
+                getLoc().then(function showPosition(e) {
+                    //--geting the shop delivery Rates---------------------------------------------------------------------------------------//
+                    //var distance =getDistanceFromLatLonInKm(from-lat,from-long,to-lat,from-long);
+                    getDistanceFromLatLonInKm(e.coords.latitude, e.coords.longitude, x, y).then(function(distance) {
+                        $("#ConfirmO").removeAttr("disabled");
 
-                    }
-                    if (dist > deliveryRadius.max) {
-                        console.log("distance is ", dist)
-                        console.log("max distance is ", deliveryRadius.max)
-                        M.toast({
-                            html: 'Ooops! You are out of radius'
-                        })
-                        M.Modal.init(document.getElementById('modalconfirm')).close();
-                        clearCart();
-                    } else {
-                        //--rates
-                        var rates = Math.ceil(d * distance);
-                        if (rates < 100) {
-                            rates = 100
+                        var dist = distance
+                        try {
+                            deliveryRadius.max = shopDeliveryRadius.max;
+                            deliveryRadius.min = shopDeliveryRadius.min;
+                        } catch (e) {
+                            deliveryRadius.max = 10;
+                            deliveryRadius.min = 0.5;
+
                         }
-
-                        globalDel = rates;
-
-                        if (instorePickup == true) {
-                            $("#inStorePickup").html('Delivery 0/=')
-                            rates = 0
+                        if (dist > deliveryRadius.max) {
+                            console.log("distance is ", dist)
+                            console.log("max distance is ", deliveryRadius.max)
+                            M.toast({
+                                html: 'Ooops! You are out of radius'
+                            })
+                            M.Modal.init(document.getElementById('modalconfirm')).close();
+                            clearCart();
                         } else {
+                            //--rates
+                            var rates = Math.ceil(d * distance);
+                            if (rates < 100) {
+                                rates = 100
+                            }
+
+                            globalDel = rates;
+                            var divObj = document.getElementById("totals");
+                            var totalCost = parseInt(divObj.innerHTML) + rates
+
+                            $(".confirmText").html('Total: ' + totalCost + '<span class=""> /=</span></span>')
+                            $(".totals2").html(parseInt(divObj.innerHTML) + '<span class=""> /=</span></span>')
                             $("#inStorePickup").html("Delivery " + rates + '<span class=""> /=</span></span>')
                         }
-
-                        //console.log(y);
-                        //add delivery rate to totals
-                        var divObj = document.getElementById("totals");
-                        var totalCost = parseInt(divObj.innerHTML) + rates
-
-                        //else{Materialize.toast('your order is more than 500KSH ', 1000);}
-
-                        //localStorage.setItem('bits-merchant'+parseInt(getBitsWinOpt('s'))+'-Total cost',totalCost);
-                        $(".confirmText").html('Total: ' + totalCost + '<span class=""> /=</span></span>')
-                        $(".totals2").html(parseInt(divObj.innerHTML) + '<span class=""> /=</span></span>')
-                        $(".del").html(rates + '<span class=""> /=</span></span>')
-                    }
-                });
-            })
+                    });
+                })
+            }
         })
 }
 
