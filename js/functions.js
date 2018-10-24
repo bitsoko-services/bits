@@ -892,7 +892,7 @@ function makeOrder(orderArrayy, orderLoc) {
                                     $(".mapText").html("")
                                     $(".orderModalMap").html('<img class="mapdata" src="' + mapData[0] + '" style="width:100%;height: 200px; object-fit: cover;">');
                                     console.log(mapData[1])
-                                    $(".mapText").append("Pick up / Drop off :" + mapData[1].results[0].formatted_address);
+                                    $(".mapText").append(mapData[1].results[0].formatted_address);
                                     M.Modal.init(document.getElementById('modalconfirm'), {
                                         onOpenEnd: $("#totals").parent().removeClass("granted"),
                                         onOpenEnd: $('.spinnerCheckout').css("display", "none"),
@@ -997,7 +997,7 @@ function makeOrder(orderArrayy, orderLoc) {
                     $(".del").append()
                     $(".mapText").html("")
                     $(".orderModalMap").html('<p onclick="deliverItems()" style="text-align: center; vertical-align: middle; line-height: 160px; padding: 2%; display: block; margin-left: auto; margin-right: auto; color: white; background: #8c8c8c;">Click here to deliver the items to your location</p>');
-                    $(".mapText").append("Instore Pick up");
+                    $(".mapText").append("delivery not included!");
                     M.Modal.init(document.getElementById('modalconfirm'), {
                         onOpenEnd: $("#totals").parent().removeClass("granted"),
                         onOpenEnd: $('.spinnerCheckout').css("display", "none"),

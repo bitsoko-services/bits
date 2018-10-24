@@ -69,7 +69,7 @@ function finalCost(costofItems) {
                         globalDel = rates;
 
                         if (instorePickup == true) {
-                            $("#inStorePickup").html('Instore Pickup')
+                            $("#inStorePickup").html('Delivery 0/=')
                             rates = 0
                         } else {
                             $("#inStorePickup").html("Delivery " + rates + '<span class=""> /=</span></span>')
