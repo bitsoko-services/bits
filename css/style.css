@@ -28,12 +28,17 @@ blockquote {
     background: #0f5f760d !important;
     padding: 10px !important;
 }
+
 #pendingOrderModal {
     overflow: initial !important;
 }
 
 #walletList>li {
     margin: 0px 20px;
+}
+
+#MobileModal {
+    overflow: initial;
 }
 
 @-webkit-keyframes dot-keyframes {
