@@ -118,7 +118,7 @@ function starting() {
             }, 20000);
 document.querySelector('.conf-curr').innerHTML=e.data.baseCd;
 document.querySelector('.localCurr').innerHTML=baseCd + " ";
-           
+
         });
 
     }
