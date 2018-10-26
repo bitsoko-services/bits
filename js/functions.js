@@ -1121,6 +1121,7 @@ bp = 0
 dis = 0
 
 function buyPromo(clicked_id, promoOder) {
+    clearCart();
     promoModalActive = true
     //clearCart();
     bp = 1
