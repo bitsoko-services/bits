@@ -711,6 +711,7 @@ function makeOrder(orderArrayy, orderLoc) {
     instorePickup = true;
     locOrigin = 'instore';
     locString = 'instore';
+    globalDel = 0;
 
     if (shopClosed == true) {
         M.toast({
