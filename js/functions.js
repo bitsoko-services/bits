@@ -12,6 +12,7 @@ var promoCheckoutModal = false;
 var promoModalActive = false;
 var openCheckoutModal = false;
 var loadedServiceProfile = false;
+var triggerDeliveryModal = false;
 
 async function doMakeOrder(orderArrayy, res, globalDel, locOrigin, uid, addrr, sid) {
     if (locOrigin == undefined || locOrigin == 'instore') {
@@ -321,6 +322,17 @@ function servicePageLoader() {
                 shopData = e.data
                 checkPromoBuy(e.data)
 
+                //Check if URL contains new delivery member
+                if (checkanon() == true) {
+                    if (getBitsOpt('orderData') == 'new') {
+                        //If so, open delivery guy modal
+                        M.Modal.init(document.getElementById('deliveryGuyModal'), {}).open()
+                    }
+                    triggerDeliveryModal = false;
+                } else {
+                    triggerDeliveryModal = true;
+                }
+
                 var prdList = e.data.list
                 getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s')).onsuccess = function(event) {
                     if (event.target.result == undefined) {
@@ -564,6 +576,9 @@ function showuser() {
         var gtname = getObjectStore('data', 'readwrite').get('user-profile-' + localStorage.getItem('bits-user-name'));
         gtname.onsuccess = function(event) {
             try {
+                if(triggerDeliveryModal == true){
+                    M.Modal.init(document.getElementById('deliveryGuyModal'), {}).open();
+                }
                 M.Modal.init(document.getElementById('loginModal')).close();
                 var nam = JSON.parse(event.target.result);
                 M.toast({
@@ -613,8 +628,7 @@ function showuser() {
                 }
                 //console.log('Permission was granted for notifications');
             });
-        })
-
+        });
     } else {
         //showlogintoast()
     }
