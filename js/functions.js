@@ -326,11 +326,13 @@ function servicePageLoader() {
                 if (checkanon() == true) {
                     if (getBitsOpt('orderData') == 'new') {
                         //If so, open delivery guy modal
-                        M.Modal.init(document.getElementById('deliveryGuyModal'), {}).open()
+                        M.Modal.init(document.getElementById('deliveryGuyModal'), {}).open();
                     }
                     triggerDeliveryModal = false;
                 } else {
-                    triggerDeliveryModal = true;
+                    if (getBitsOpt('orderData') == 'new') {
+                        triggerDeliveryModal = true;
+                    }
                 }
 
                 var prdList = e.data.list
@@ -576,7 +578,7 @@ function showuser() {
         var gtname = getObjectStore('data', 'readwrite').get('user-profile-' + localStorage.getItem('bits-user-name'));
         gtname.onsuccess = function(event) {
             try {
-                if(triggerDeliveryModal == true){
+                if (triggerDeliveryModal == true) {
                     M.Modal.init(document.getElementById('deliveryGuyModal'), {}).open();
                 }
                 M.Modal.init(document.getElementById('loginModal')).close();
