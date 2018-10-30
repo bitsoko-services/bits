@@ -29,11 +29,9 @@ function serviceOpener() {
         uid: localStorage.getItem("bits-user-name")
     }).then(function(e) {
         if (e.status == "ok") {
-
-            localStorage.setItem('userVerifiedNumber', e.phone);
+            localStorage.setItem('userVerifiedNumber', true);
         } else {
             localStorage.setItem('userVerifiedNumber', 'false');
-
         }
     })
 

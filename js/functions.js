@@ -729,7 +729,7 @@ function makeOrder(orderArrayy, orderLoc) {
     locString = 'instore';
     globalDel = 0;
 
-    if (shopClosed != true) {
+    if (shopClosed == true) {
         M.toast({
             html: 'Shop closed! Try again later',
             displayLength: 5000
