@@ -92,7 +92,7 @@ function starting() {
     showlogintoast();
     loadProfData();
     //    loadWallet();
-    initializePdf();
+    // initializePdf();
     callMerchant();
     collapsibleInstances = M.Collapsible.init(document.querySelectorAll('.collapsible'), {accordion:true});
     modalInstances = M.Modal.init(document.querySelectorAll('.modal'), {});
