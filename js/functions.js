@@ -729,7 +729,7 @@ function makeOrder(orderArrayy, orderLoc) {
     locString = 'instore';
     globalDel = 0;
 
-    if (shopClosed == true) {
+    if (shopClosed != true) {
         M.toast({
             html: 'Shop closed! Try again later',
             displayLength: 5000
@@ -1445,3 +1445,11 @@ function selectPaymentMethod() {
         document.getElementById("chooseWalletModal").style.display = "block";
     }
 }
+
+//Login Button
+$(document).on("click", ".loginBtn", function(e) {
+    $('#loginWait').html('<span style=" float: left;" id="loginWait">Logging In</span><div class="loading-dots"> <div class="loading-dots--dot" style=" background: white; margin-right: 5px;"></div><div class="loading-dots--dot" style=" background: white; margin-right: 5px;"></div><div class="loading-dots--dot" style=" background: white; margin-right: 5px;"></div></div>');
+    M.Modal.getInstance(document.getElementById('loginModal')).options.onCloseEnd = function() {
+        $('#loginWait').html('<span class="buttonText" id="loginWait" style="width: 100%">Google Sign in</span>');
+    }
+})
