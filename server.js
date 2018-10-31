@@ -282,7 +282,11 @@ try {
             actions: actions,
             sticky: sticky,
             silent: silent
-        });
+        }).then(function(notificationEvent){
+       setTimeout(function(){
+       notificationEvent.notification.close();
+       }, 40000);
+    });
     }
     bitsFetch = function (event, cache) {
         //console.log(resolve);
