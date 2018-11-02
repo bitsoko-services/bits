@@ -281,8 +281,9 @@ function populateService(mDet) {
     document.querySelector('#getStoreName').innerHTML = mDet.name;
     document.querySelector('.serviceName2').innerHTML = mDet.name;
     // document.querySelector('.cardimage').src = mDet.bannerPath;
+    $('.bannerSlider').html('');
     for (img in mDet.bannerPath){
-        $('.bannerSlider').append('<a class="carousel-item" href="#one!"><img alt="" class="cardimage service-banner" src="' + mDet.bannerPath[img] + '" style="border-radius: 0px; height: 200px;"></a><a class="carousel-item" href="#two!"><img alt="" class="cardimage service-banner" src="' + mDet.bannerPath[img] + '" style="border-radius: 0px; height: 200px;"></a><a class="carousel-item" href="#three!"><img alt="" class="cardimage service-banner" src="' + mDet.bannerPath[img] + '" style="border-radius: 0px; height: 200px;"></a><a class="carousel-item" href="#four!"><img alt="" class="cardimage service-banner" src="' + mDet.bannerPath[img] + '" style="border-radius: 0px; height: 200px;"></a><a class="carousel-item" href="#five!"><img alt="" class="cardimage service-banner" src="' + mDet.bannerPath[img] + '" style="border-radius: 0px; height: 200px;"></a>');
+        $('.bannerSlider').append('<a class="carousel-item" href="#one!"><img alt="" class="cardimage service-banner" src="' + mDet.bannerPath[img] + '" style="border-radius: 0px; height: 200px;"></a');
     }
     M.Carousel.init(document.querySelectorAll('.carousel')[0], {
         indicators: true,
