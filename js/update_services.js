@@ -280,7 +280,17 @@ function populateService(mDet) {
     document.querySelector('.serviceName').innerHTML = mDet.name;
     document.querySelector('#getStoreName').innerHTML = mDet.name;
     document.querySelector('.serviceName2').innerHTML = mDet.name;
-    document.querySelector('.cardimage').src = mDet.bannerPath;
+    // document.querySelector('.cardimage').src = mDet.bannerPath;
+    for (img in mDet.bannerPath){
+        $('.bannerSlider').append('<a class="carousel-item" href="#one!"><img alt="" class="cardimage service-banner" src="' + mDet.bannerPath[img] + '" style="border-radius: 0px; height: 200px;"></a><a class="carousel-item" href="#two!"><img alt="" class="cardimage service-banner" src="' + mDet.bannerPath[img] + '" style="border-radius: 0px; height: 200px;"></a><a class="carousel-item" href="#three!"><img alt="" class="cardimage service-banner" src="' + mDet.bannerPath[img] + '" style="border-radius: 0px; height: 200px;"></a><a class="carousel-item" href="#four!"><img alt="" class="cardimage service-banner" src="' + mDet.bannerPath[img] + '" style="border-radius: 0px; height: 200px;"></a><a class="carousel-item" href="#five!"><img alt="" class="cardimage service-banner" src="' + mDet.bannerPath[img] + '" style="border-radius: 0px; height: 200px;"></a>');
+    }
+    M.Carousel.init(document.querySelectorAll('.carousel')[0], {
+        indicators: true,
+         fullWidth: true
+    });
+    setInterval(function(){
+        M.Carousel.getInstance(document.querySelectorAll('.carousel')[0]).next()
+    }, 3000)
     deliveryRadius = mDet.deliveryRadius
     var slogo = document.querySelectorAll('.shopLogo')
     for (var i = 0; i < slogo.length; ++i) {
@@ -436,8 +446,8 @@ function populateService(mDet) {
             bitsTheme(mDet.theme);
             var dailyCost = (parseInt(mDet.promotions[ii].discount) / 100) * mDet.promotions[ii].promoPrice;
             $('.merchPromo').append('<li class="avatar bits-max promo-collection ">' +
-                '<a href="#" id="burst-12" class="waves-effect waves-light accent-2"><span style=""class="topdata"><span class="topdataVal" percOff="' + percOff + '">' + percOff +
-                '</span><br/> off</span></a><div class="container1"><img src="' + mDet.promotions[ii].promoBanner +
+                '<a href="#" id="burst-12" class="waves-effect waves-light accent-2 shake" style="padding-top: 4px; font-size: 0.7em;"><span style=""class="topdata">money<br><span class="topdataVal" style="font-size: 17px;" percOff="' + percOff + '">' + percOff +
+                '</span><br/>  back</span></a><div class="container1"><img src="' + mDet.promotions[ii].promoBanner +
                 '" style="margin-top:-50px ; height: 92px; width: 100%;" data-caption="' + mDet.promotions[ii].promoName + '" alt="' + mDet.promotions[ii].promoDesc +
                 '" class="materialboxed p' + mDet.promotions[ii].id + '"><div class="overlaypromo"><div class="text">' + mDet.promotions[ii].promoDesc +
                 '</div></div></div><div class="serviceListTitle bits-ellipsis" style="margin-top: ;width: 100%;position: relative;text-align: center;background: rgba(255, 255, 255, 0.87);"> ' + mDet.promotions[ii].promoName +
