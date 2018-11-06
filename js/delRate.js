@@ -2,6 +2,7 @@
 /////////////////////////////////////--calculates the delivery rate of shop --////////////////////////////////////////////////
 
 var globalDel;
+var delRate;
 
 
 function finalCost(costofItems) {
@@ -13,7 +14,7 @@ function finalCost(costofItems) {
     actvServ().then(
         function(p) {
             var shopDeliveryRadius = p.deliveryRadius
-            var d = p.deliveryRate
+            delRate = p.deliveryRate
             var p = p.lonlat
             var str = p;
             x = str.split(",")[0];
@@ -58,7 +59,7 @@ function finalCost(costofItems) {
                             clearCart();
                         } else {
                             //--rates
-                            var rates = Math.ceil(d * distance);
+                            var rates = Math.ceil(delRate * distance);
                             if (rates < 100) {
                                 rates = 100
                             }
