@@ -1013,7 +1013,7 @@ function makeOrder(orderArrayy, orderLoc) {
                     $(".del").html("");
                     $(".del").append();
                     $(".orderModalMap").html('<p onclick="deliverItems()" style="text-align: center; vertical-align: middle; line-height: 160px; padding: 2%; display: block; margin-left: auto; margin-right: auto; color: white; background: #8c8c8c;">'+
-                                             '<span style="border: 1px white solid;padding: 10px;">request delivery  <i class="material-icons" style="margin-top: 50px;position: relative;top: 15px;right: -5px;color: white;">motorcycle</i></span></p>');
+                                             '<span style="border: 1px white solid;padding: 10px;">request delivery  <i class="material-icons" style="margin-top: 50px;position: relative;top: 15px;right: -5px;color: white;">motorcycle</i> '+delrate+'/= '+baseCd+' per KM</span></p>');
                     $(".mapText").html("delivery not included!");
                     M.Modal.init(document.getElementById('modalconfirm'), {
                         onOpenEnd: $("#totals").parent().removeClass("granted"),
