@@ -53,7 +53,7 @@ function finalCost(costofItems) {
                             console.log("distance is ", dist)
                             console.log("max distance is ", deliveryRadius.max)
                             M.toast({
-                                html: 'Ooops! You are out of radius'
+                                html: 'Ooops! You are out of delivery range..'
                             })
                             M.Modal.init(document.getElementById('modalconfirm')).close();
                             clearCart();
