@@ -57,7 +57,6 @@ function oid() {
 
 
 function getUserOders(f) {
-
     doFetch({
         action: 'getAllOrders',
         uid: localStorage.getItem("bits-user-name")
@@ -85,16 +84,15 @@ function getUserOders(f) {
                 }
 
                 //list orders for this service
-                //
 
                 if (parseInt(getBitsWinOpt('s')) == userOrders[ordersPending].toservice) {
                     if (userOrders[ordersPending].state == 'pending') {
-                        $(".allUserOrders").html('<li class="collection-item avatar">' +
-                            '<i class="material-icons circle">' + typeIcn + '</i>' +
-                            '<span class="title">' + (parseInt(userOrders[ordersPending].delPrice) + parseInt(userOrders[ordersPending].proPrice)) + '/= </span>' +
-                            '<p>' + userOrders[ordersPending].items + '<br>' + userOrders[ordersPending].state + ' - ' + moment(userOrders[ordersPending].date).fromNow() + '</p>' +
-                            '<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>' +
-                            '</li>');
+                        var orderDetails = userOrders[ordersPending];
+                        if (userOrders[ordersPending].delPrice == "") {
+                            userOrders[ordersPending].delPrice = 0
+                        }
+                        var totalPrice = parseInt(userOrders[ordersPending].proPrice) + parseInt(userOrders[ordersPending].delPrice);
+                        $(".allUserOrders").append('<li id="' + userOrders[ordersPending].id + '" class="row" style=" background: #e2e2e2; border-radius: 3px; padding: 2px 10px; margin-bottom: 0px;"> <h6 style=" font-size: 1em;"><span style=" font-weight: bold;">Order ID:</span> ' + userOrders[ordersPending].id + '</h6><p style=" margin: 0px;"><span style=" font-weight: bold;">Item Price: </span> ' + userOrders[ordersPending].proPrice + '</p><p style=" margin: 0px;"><span style=" font-weight: bold;">Delivery Price: </span> ' + userOrders[ordersPending].delPrice + '</p><p style=" margin: 0px;"><span style=" font-weight: bold;">Total Price: </span> ' + totalPrice + '</p><p></p><button class="btn bits completeOrder" style=" display: block; margin-left: auto; margin-right: auto; margin-bottom: 10px;" onclick="completeOrder(' + orderDetails.id + ', ' + orderDetails.fromU + ', ' + orderDetails.toservice + ')">complete order</button> </li>');
                     }
                 }
 
@@ -179,9 +177,28 @@ function getUserOders(f) {
             swal("Cancelled", "an error occcured", "error");
         }
     })
-
-
 }
+
+//Complete Orders function
+function completeOrder(orderId, user, shop) {
+    doFetch({
+        action: 'completeOrder',
+        id: orderId,
+        user: user,
+        shop: shop
+    }).then(function(e) {
+        if (e.status == 'ok') {
+            M.toast({
+                html: 'Order completed successfully'
+            });
+        } else {
+            M.toast({
+                html: 'Error! Try again later'
+            });
+        }
+    })
+}
+
 // 		var gtod = localStorage.getItem('bits-user-orders-'+localStorage.getItem("bits-user-name"));
 //
 function updateEarnedTokens(f) {
