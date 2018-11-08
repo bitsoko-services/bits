@@ -251,6 +251,23 @@ function servicePageLoader() {
     if (parseInt(getBitsWinOpt('s')) == 2) {
         contact();
     }
+
+    //Rename Attribute function
+    jQuery.fn.extend({
+        renameAttr: function(name, newName, removeData) {
+            var val;
+            return this.each(function() {
+                val = jQuery.attr(this, name);
+                jQuery.attr(this, newName, val);
+                jQuery.removeAttr(this, name);
+                // remove original data
+                if (removeData !== false) {
+                    jQuery.removeData(this, name.replace('data-', ''));
+                }
+            });
+        }
+    });
+
     if (parseInt(getBitsWinOpt('s')) > 2) {
         //merchants options start;
         $(".serviceListHolder").show();
@@ -512,6 +529,17 @@ function checkServicePageLoader() {
         servicePageLoader()
     }
 }
+
+//Materialbox replace srcSetPth
+$(document).on('click touchstart', '.materialboxed', function(e) {
+    var clickedMaterialBox = $(this)
+    M.Materialbox.getInstance(clickedMaterialBox).options.onOpenEnd = function(e) {
+        jQuery(e).renameAttr('srcset', 'srcsetd')
+    }
+    M.Materialbox.getInstance(clickedMaterialBox).options.onCloseEnd = function(e) {
+        jQuery(e).renameAttr('srcsetd', 'srcset')
+    }
+})
 
 // scroll function....................................................................................................................
 // $(window).scroll(function scroll (){
