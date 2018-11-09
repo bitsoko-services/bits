@@ -54,7 +54,7 @@ function showPosition(position) {
                                     console.log('updated location');
                                     document.querySelector('.js-loc-button-notification').checked = true;
                                     try {
-                                        $('#locationModal').modal("close");
+                                        M.Modal.getInstance(document.getElementById('locationModal'), {}).close();
                                     } catch (err) {
                                         //                                        $('#locationModal').modal("close");
                                         console.log(err)
@@ -65,7 +65,7 @@ function showPosition(position) {
                                 //updatePromos();
                             }
                         } else {
-                            //alert(data.results[0].address_components[i].types[0]);  
+                            //alert(data.results[0].address_components[i].types[0]);
                             //  updatePromos();
                         }
                     }
@@ -107,7 +107,7 @@ function getLoc(retDt) {
                     enableHighAccuracy: true
                 });
             } else if (p.state === 'prompt') {
-                $('#locationModal').modal({
+                M.Modal.getInstance(document.getElementById('locationModal'), {
                     onOpenEnd: function () {
                         $('.spinnerCheckout').css("display", "none");
                         $('.checkoutInfo').css("display", "block");
@@ -116,11 +116,11 @@ function getLoc(retDt) {
                         $('.spinnerCheckout').css("display", "none");
                         $('.checkoutInfo').css("display", "block");
                     }
-                }).modal('open');
+                }).open();
                 $(".createOrderToast").remove();
             } else {
                 reject('request not yet allowed');
-                $('#locationModal').modal({
+                M.Modal.getInstance(document.getElementById('locationModal'), {
                     onOpenEnd: function () {
                         $('.spinnerCheckout').css("display", "none");
                         $('.checkoutInfo').css("display", "block");
@@ -129,7 +129,7 @@ function getLoc(retDt) {
                         $('.spinnerCheckout').css("display", "none");
                         $('.checkoutInfo').css("display", "block");
                     }
-                }).modal('open');
+                }).open();
                 $(".createOrderToast").remove();
             }
         });
@@ -176,7 +176,7 @@ function reqLoc() {
 
         var locButton = document.querySelector('.js-loc-button-notification');
         var locButtonTitle = document.querySelector('.js-loc-button-notification-title');
-        // var locButtonTitleText = document.querySelector('.js-loc-button-notification-title-text');  
+        // var locButtonTitleText = document.querySelector('.js-loc-button-notification-title-text');
         if (p.state === 'granted') {
             getLoc();
             try {
@@ -198,7 +198,7 @@ function reqLoc() {
             try {
                 locButton.checked = false;
                 locButtonTitle.textContent = 'Location Disabled';
-                //locButtonTitleText.textContent = 'change your settings'; 
+                //locButtonTitleText.textContent = 'change your settings';
                 locButton.style.background = "#ddd";
             } catch (e) {}
             //locButton.disabled = true;

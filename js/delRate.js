@@ -83,11 +83,11 @@ function finalCost(costofItems) {
 function delAvail() {
     var delAval = $("#delAvail").is(':checked');
     if (checkanon() == false) {
-        $('#loginModal').modal({
+        M.Modal.getInstance(document.getElementById('loginModal'), {
             onCloseEnd: function() {
                 $(".delivery").click()
             }
-        }).modal("open")
+        }).open();
         return;
     }
     if ($("#delAvail").is(':checked') == true) {

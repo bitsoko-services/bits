@@ -238,7 +238,7 @@ function walletFunctions(uid) {
                                 var randomSeed = JSON.parse(eg.responseText).walletSeed;
                                 var randomSalt = JSON.parse(eg.responseText).walletSalt;
                                 //p = p
-                                //console.log(password,randomSeed);				
+                                //console.log(password,randomSeed);
                                 getUserAd(password, randomSeed, randomSalt).then(function (addresses) {
                                     //console.log(addresses,p);
                                     //console.log("first p " + p);
@@ -427,13 +427,13 @@ function getUserAd(password, randomSeed, randomSalt) {
             $('.addressClass').html('').append('0x' + localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')));
             // Create a custom passwordProvider to prompt the user to enter their
             // password whenever the hooked web3 provider issues a sendTransaction
-            // call.									
-            /*							
+            // call.
+            /*
     var txOptions = {
         to: '0xf1b40f9a11da308d9ee78ecbe04cd83115cf79ea',
         value: 100
     };
- 
+
     var valueTx = new lightwallet.txutils.valueTx(txOptions);
     var signedValueTx = new lightwallet.signing.signTx(global_keystore, pwDerivedKey, valueTx, addr[0]);
  console.log(signedValueTx);
@@ -721,7 +721,7 @@ function checkNewPay() {
                                 if (f.name == 'nobody') {
 
                                 } else {
-                                    //  console.log('adding:: ',f) 
+                                    //  console.log('adding:: ',f)
                                     // addContact(f,template,document);
                                     updContServ(f.uid, f.name, f.code, f.img);
 
@@ -803,15 +803,15 @@ function fetchRatesProc(e) {
 
     /* start ethereum balance
      web3.eth.getBalance("0xEE2635e5b8789Fb7Ef579b448842C373BEf5Bf1b",function(err,res){
- 
+
         var newBalance = res.toString() / 1.0e18;
- 
-             newxrate(newBalance); 
- 
+
+             newxrate(newBalance);
+
 //                 console.log(newBalance)
- 
+
                 });
-	    
+
 	   end ethereum balance */
 
 
@@ -864,7 +864,7 @@ function fetchRatesProc(e) {
         allTokens[contracts[i].name].rate = parseFloat(contracts[i].coinRate.toFixed(8));
 
 
-        // TO-DONE  
+        // TO-DONE
         if (web3.isAddress(contCoAdr)) {
 
             allTokens['allContracts'].push(contCoAdr);
@@ -1160,7 +1160,7 @@ window.onload = function () {
                 if (e.status == 'ok') {
                     console.log('error reported:' + msg);
                     if (msg == 'Uncaught ReferenceError: retrievePageOfFiles is not defined') {
-                        $('#loginModal').modal('open');
+                        M.Modal.getInstance(document.getElementById('loginModal'), {}).open();
                     }
                 }
 
@@ -1223,7 +1223,7 @@ function createWallet(user) {
         /*
     createBTC(user).then(function(e){
 		resolve(e);
-		});	
+		});
 	});
 	*/
         createETH(user).then(function (e) {
@@ -1344,7 +1344,7 @@ function createETH(user) {
                     //  console.log("your wallet is: " +JSON.stringify(walData),password);
                     var walSaving = getObjectStore('data', 'readwrite').put(JSON.stringify(walData), 'bits-wallets-' + user);
                     walSaving.onsuccess = function (event) {
-                        //localStorage.setItem("bits-user-wallet", publicAddress); 
+                        //localStorage.setItem("bits-user-wallet", publicAddress);
 
                         resolve(walData);
                         M.toast({
@@ -1425,7 +1425,7 @@ function createETH(user) {
         //         console.log("your wallet is: " +JSON.stringify(walData),password);
         // var walSaving = getObjectStore('data', 'readwrite').put(JSON.stringify(walData), 'bits-wallets-'+user);
         // 	walSaving.onsuccess = function (event) {
-        // 	//localStorage.setItem("bits-user-wallet", publicAddress); 
+        // 	//localStorage.setItem("bits-user-wallet", publicAddress);
 
         // resolve(walData);
         // Materialize.toast('created new Ethereum wallet', 3000);
@@ -1435,7 +1435,7 @@ function createETH(user) {
         // 		reject('failed to create wallet, please try again');
         // Materialize.toast('failed to create wallet, please try again', 3000);
 
-        // 		}           
+        // 		}
 
         //         });
 

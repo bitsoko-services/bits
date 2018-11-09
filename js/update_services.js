@@ -167,7 +167,7 @@ setTimeout(function(e) {
                 })
             } else {
                 //        console.log("loged out");
-                $("#loginModal").modal("open");
+                M.Modal.getInstance(document.getElementById('loginModal'), {}).open();
             }
 
         })

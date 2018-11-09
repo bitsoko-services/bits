@@ -227,7 +227,7 @@
                                                         </i><span class="bits-13" style=""></span> <span id="btn">Help</span></a>
                                                 </li>
                                                 <li>
-                                                    <a onclick='$("#SetGas").modal("open")'>
+                                                    <a onclick='M.Modal.getInstance(document.getElementById('SetGas'), {}).open()'>
                                                         <i style="line-height: 2.5;">
                                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;width: 25px;" xml:space="preserve">
                                                                 <path d="M438.852,119.191c-3.293-2.163-7.692-1.453-10.137,1.635L216.133,389.353c-6.305,7.919-9.149,17.821-8.007,27.879    s6.132,19.071,14.051,25.376c6.775,5.394,14.998,8.255,23.531,8.255c1.442,0,2.894-0.082,4.347-0.246    c10.058-1.142,19.071-6.132,25.376-14.051c1.671-2.1,3.91-5.765,4.342-6.479c0.068-0.112,0.133-0.225,0.194-0.341l161.409-300.601    C443.24,125.672,442.145,121.353,438.852,119.191z M266.665,422.372c-0.884,1.449-2.373,3.766-3.132,4.721    c-3.775,4.742-9.17,7.73-15.193,8.413c-6.022,0.682-11.95-1.02-16.691-4.795c-4.742-3.776-7.73-9.17-8.413-15.193    c-0.683-6.022,1.019-11.95,4.808-16.707l159.364-201.303L266.665,422.372z"></path>
@@ -821,8 +821,8 @@
         <h5 style="text-align: center; padding: 5%; margin:0px;">Fullscreen Mode</h5>
         <div class="row" style="text-align: center;">
             <p>Use this application in fullscreen mode.</p>
-            <button class="btn opacitySelectedColor" onclick='localStorage.setItem("fullScreenPermission", "false"); $("#fullScreenPermission").modal("close"); fullScreenMode();'>cancel</button>
-            <button class="btn opacitySelectedColor" onclick='localStorage.setItem("fullScreenPermission", "true"); $("#fullScreenPermission").modal("close"); fullScreenMode()'>Ok</button>
+            <button class="btn opacitySelectedColor" onclick='localStorage.setItem("fullScreenPermission", "false"); M.Modal.getInstance(document.getElementById('fullScreenPermission'), {}).close(); fullScreenMode();'>cancel</button>
+            <button class="btn opacitySelectedColor" onclick='localStorage.setItem("fullScreenPermission", "true");  M.Modal.getInstance(document.getElementById('fullScreenPermission'), {}).close(); fullScreenMode()'>Ok</button>
         </div>
     </div>
 
@@ -1954,10 +1954,8 @@
                             console.log('browser compatible');
 
                         } else {
-
-                            $('#updateBrowsermodal').modal({
-                                dismissible: false
-                            }).modal('open');
+                            document.getElementById('preloader').style.display = 'none';
+                            M.Modal.getInstance(document.getElementById('v'), {dismissible: false}).open()
 
                         }
 

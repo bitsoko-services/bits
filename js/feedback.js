@@ -1,7 +1,7 @@
 var functionRun = false;
 
 function feedback() {
-    $("#feedbackModal").modal("open");
+    M.Modal.getInstance(document.getElementById('feedbackModal'), {}).open();
     $("#feedbackText").characterCounter()
     if (functionRun != true) {
         functionRun = true;
@@ -21,7 +21,7 @@ function feedback() {
                 })
             } else {
                 if (checkanon() == false) {
-                    $("#loginModal").modal("open")
+                    M.Modal.getInstance(document.getElementById('loginModal'), {}).open();
                 } else {
                     M.toast({
                         html: 'Sending feedback...'
@@ -37,8 +37,8 @@ function feedback() {
                         if (e.status == "ok") {
                             M.toast({
                                 html: 'Feed back sent successfully'
-                            })
-                            $("#feedbackModal").modal("close")
+                            });
+                            M.Modal.getInstance(document.getElementById('feedbackModal'), {}).close();
                         } else {
                             M.toast({
                                 html: 'Error! Try again later'
