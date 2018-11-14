@@ -1,7 +1,7 @@
 // JavaScript Document
 /*
 	Bitsoko
-    
+
 	Free for personal and commercial use under the CCA 3.0 license (bitsoko/license)
 */
 
@@ -245,7 +245,7 @@ function startPay(name, recp, amount, action, ref) {
         console.log(name, recp, amount, action, ref);
         if (amount <= 0 || amount == "undefined" || amount === undefined || amount === null) {
             currentTransaction.amount = 0;
-            //$( "#conf-iamt" ).focus();   
+            //$( "#conf-iamt" ).focus();
             reject('enter correct amount');
         }
 
@@ -604,7 +604,7 @@ function addrtype(addr) {
 function createKOBO(user,pass){
 var privateKey = new bitcore.PrivateKey();
 var kobocoinAddress =privateKey.toAddress().toString();
-    
+
 console.log(user, bitcoinAddress, bsoko.encoder({"action":"encrypt", "privkey":""+privateKey.toString()+"", "pass":""+pass+""}));
 
 }
@@ -619,9 +619,9 @@ var btcKey = new Bitcoin.ECKey(bytes);
 				var bitcoinAddress = btcKey.getBitcoinAddress();
 				var privAddr = btcKey.getBitcoinWalletImportFormat();
        //var user = $('#user').val();
-        
+
  //localStorage.setItem('bitsoko-actpriv-key', privAddr);
-        
+
  updateWallet(user, bitcoinAddress, bsoko.encoder({'action':'encrypt', 'privkey':''+privAddr+'', 'pass':''+pass+''}));
 
 
@@ -675,10 +675,10 @@ function signTran() {
                     var paid = amount;
                     //var privateKey = bsoko.encoder({'action':'decrypt', 'privkey':''+wallet.privhash+'', 'pass':''+currPass()+''});
                     var privateKey = wallet.privhash;
-                    //console.log($('#conf-ipass').val());  
+                    //console.log($('#conf-ipass').val());
                     currPass("");
-                    //console.log(wallet.privhash);  
-                    //console.log(privateKey);  
+                    //console.log(wallet.privhash);
+                    //console.log(privateKey);
 
 
                     if (!testKey(privateKey)) {
@@ -799,28 +799,28 @@ function signTran() {
 
                         return;
                     }
-                    /*   
-     
-        if (paro.attr('ctype')=='address'){       
-            
+                    /*
+
+        if (paro.attr('ctype')=='address'){
+
     }else if (paro.attr('ctype')=='email'){
-    
+
         console.log('pay to email');
-        
+
          window.location.href='mailto:';
-    
+
     }else if (paro.attr('ctype')=='phone'){
-    
+
         console.log('pay to phone');
         window.location.href='sms:'+paro.attr('cem')+'?body=TransactionID';
-    
+
     }else{
-    
-      
+
+
     }
-    
+
 currPayRef(JSON.stringify({s: 'send', r: paro.attr('cem'), rM: paro.attr('ctype')}));
-    
+
     */
                     //console.log('direct send');
                     isDirect = true;
@@ -847,14 +847,14 @@ currPayRef(JSON.stringify({s: 'send', r: paro.attr('cem'), rM: paro.attr('ctype'
                             amount: txTargetValue
                           }
                         ]
-                      }, function(err, resp) {}));   
+                      }, function(err, resp) {}));
                     */
                     doFetch({
                         action: "getUnspents",
                         address: ecKeyAddress,
                         tamt: tsending
                     }).then(function (e) {
-                        // txTargetValue + fee + 5430    
+                        // txTargetValue + fee + 5430
 
 
 
@@ -1049,7 +1049,7 @@ currPayRef(JSON.stringify({s: 'send', r: paro.attr('cem'), rM: paro.attr('ctype'
 //     //for(hsh = hsh; recast < 3; ++recast) {
 //     //console.log(time);
 
-//       var trns=$.parseJSON(localStorage.getItem('bitsoko-signed-trns'));  
+//       var trns=$.parseJSON(localStorage.getItem('bitsoko-signed-trns'));
 // for(var i = 0, m = null; i < trns.length; ++i) {
 //     //console.log(trns[i].time);
 //     //if(trns[i].trns != hsh)
@@ -1110,7 +1110,7 @@ currPayRef(JSON.stringify({s: 'send', r: paro.attr('cem'), rM: paro.attr('ctype'
 //  console.log('recasting.. ');
 //  //cast(hsh);
 
-//  }     
+//  }
 //       //return true;
 // getBal();
 //   })
@@ -1120,7 +1120,7 @@ currPayRef(JSON.stringify({s: 'send', r: paro.attr('cem'), rM: paro.attr('ctype'
 //   })
 // .always(function() {
 
-//   }); 
+//   });
 
 // //break;
 // }
@@ -1162,7 +1162,7 @@ function updateTransactions(trnsLs) {
         data: trnsLs
     }).then(function (e) {
 
-        //              var e=JSON.parse('{"txid":"50e9d2d51d500797b69d7b1409385260ef5be2ab12c2a175ae4beff38a611780","status":"confirmed","message":"6r376t47r637"}');       
+        //              var e=JSON.parse('{"txid":"50e9d2d51d500797b69d7b1409385260ef5be2ab12c2a175ae4beff38a611780","status":"confirmed","message":"6r376t47r637"}');
         var e = e.data;
         var store = getObjectStore('data', 'readwrite').get("transactions");
         store.onsuccess = function (event) {
@@ -1254,7 +1254,7 @@ window.onload = function () {
     if (typeof localStorage !== 'undefined') {
         if (localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')) == null) {
             $('.addressClass').html("");
-            $('.addressClass').append('Log in to create wallet');
+            $('.addressClass').append('Go to settings > select wallet to unlock');
         } else {
             $('.addressClass').html("");
             $('.addressClass').append('0x' + localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')));

@@ -191,7 +191,7 @@ document.querySelector('.localCurr').innerHTML=baseCd + " ";
         if (typeof localStorage !== 'undefined') {
             if (localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')) == null) {
                 $('.addressClass').html("");
-                $('.addressClass').append('Log in to create wallet');
+                $('.addressClass').append('Go to settings > select wallet to unlock');
             } else {
                 $('.addressClass').html("");
                 $('.addressClass').append('0x' + localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')));
