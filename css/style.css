@@ -23,7 +23,7 @@ body {
 }
 
 ul.indicators {
-    bottom: -15px!important;
+    bottom: -15px !important;
 }
 
 blockquote {
@@ -63,6 +63,10 @@ blockquote {
         -webkit-transform: scale(1, 1);
         transform: scale(1, 1);
     }
+}
+
+#feedbackModal {
+    overflow: initial;
 }
 
 @keyframes dot-keyframes {
