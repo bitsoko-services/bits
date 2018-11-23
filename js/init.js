@@ -192,6 +192,7 @@ document.querySelector('.localCurr').innerHTML=baseCd + " ";
             if (localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')) == null) {
                 $('.addressClass').html("");
                 $('.addressClass').append('Go to settings > select wallet to unlock');
+                document.getElementsByClassName("balance-coins")[1].innerHTML = "locked"
             } else {
                 $('.addressClass').html("");
                 $('.addressClass').append('0x' + localStorage.getItem('bits-user-address-' + localStorage.getItem('bits-user-name')));
