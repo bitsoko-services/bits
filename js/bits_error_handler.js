@@ -1,0 +1,6 @@
+function noPromo(){
+
+}
+function noProducts(){
+    
+}
