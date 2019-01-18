@@ -165,10 +165,10 @@ document.querySelector('.localCurr').innerHTML=baseCd + " ";
         }
 
     });
-/*
+
     setTimeout(function() {
 
-        if (navigator.serviceWorker.controller) {
+        if (navigator.serviceWorker!=undefined && navigator.serviceWorker.controller) {
 
             sendMessage({
                 data: {
@@ -185,7 +185,7 @@ document.querySelector('.localCurr').innerHTML=baseCd + " ";
         }
 
     }, 850);
-*/
+
 
     var LocalStrgInt = setInterval(function(e) {
         if (typeof localStorage !== 'undefined') {
