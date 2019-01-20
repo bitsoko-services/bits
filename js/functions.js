@@ -262,7 +262,8 @@ function servicePageLoader() {
                     var str = document.getElementById('storeMeta').innerHTML;
                     var newstr = str.replace(re, '"');
                     $("#preloader").fadeOut(1000);
-                    populateService(JSON.parse(newstr).res);
+        shopData = JSON.parse(newstr).res;
+                    populateService(shopData);
                     populated = true;
         
                 setTimeout(function(e) {
@@ -270,7 +271,7 @@ function servicePageLoader() {
 
                     //Get Tab Content
                     initializeTabs();
-                }, 3000);
+                }, 250);
         
         //depreciated code
         //used to call server for info. this is now appended to page as above
