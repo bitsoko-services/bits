@@ -265,6 +265,16 @@ function servicePageLoader() {
                     populateService(JSON.parse(newstr).res);
                     populated = true;
         
+                setTimeout(function(e) {
+                    M.Tabs.init(document.querySelectorAll('.prdTabs'))
+
+                    //Get Tab Content
+                    initializeTabs();
+                }, 3000);
+        
+        //depreciated code
+        //used to call server for info. this is now appended to page as above
+        
         /*
         var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
         svReq.onsuccess = function(event) {
