@@ -1981,32 +1981,17 @@
 
         function actvServ() {
             return new Promise(function(resolve, reject) {
-                //serviceOpener()
-                e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
-                e.onsuccess = function(event) {
-                    console.log(e, "***")
-                    try {
-                        var e = event.target.result;
-                        resolve(e);
-                    } catch (err) {
-                        console.log('this service is not in the indexdb!!!! try dom?');
-
+               
+                        try {
+				
                         var re = /&quot;/gi;
                         var str = document.getElementById('storeMeta').innerHTML;
 
                         var newstr = str.replace(re, '"');
-                        try {
                             resolve(JSON.parse(newstr).res);
                         } catch (err) {
-                            console.log(err)
+                             reject(err);
                         }
-
-                    }
-
-                }
-                e.onerror = function(e) {
-                    reject(e);
-                }
 
             });
 
