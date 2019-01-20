@@ -82,7 +82,7 @@ function starting() {
             clearInterval(initAddMobVeri);
         }
     }, 3000);
-    startGoogle();
+    //startGoogle();
     handleCounterFunc();
     serviceOpener();
     //localConverter();
