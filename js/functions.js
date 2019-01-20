@@ -812,14 +812,25 @@ function makeOrder(orderArrayy, orderLoc) {
         if (buywishlist == true) {
             buywishlist = false;
         } else {
-            if (checkanon() == false) {
-                M.Modal.init(document.getElementById('loginModal')).open();
-                openCheckoutModal = true;
-                return;
-            }
+            //if (checkanon() == false) {
+            //    M.Modal.init(document.getElementById('loginModal')).open();
+            //    openCheckoutModal = true;
+            //    return;
+            //}
+            
             if (localStorage.getItem('userVerifiedNumber') == 'false') {
+                function opnCallVer(){
                 M.Modal.init(document.getElementById('MobileModal')).open();
-                return;
+                     M.Modal.init(document.getElementById('modalconfirm')).close();
+            clearCart();
+                }
+                
+                var toastHTML = '<span>You wont be called when order arrives..</span><button class="btn-flat toast-action walletUserUnlock unlockWalToast" onclick="opnCallVer()">Call me!</button>';
+                                                M.toast({
+                                                    html: toastHTML,
+                                                    displayLength: 4000
+                                                });
+                
             }
         }
         if (pendingOrders == true) {
