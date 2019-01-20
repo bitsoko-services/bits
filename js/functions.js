@@ -1150,17 +1150,10 @@ function createOrder() {
 
 function getProdss(orderArrayx, costofItems) {
     new Promise(function(resolve, reject) {
-        e = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + localStorage.getItem('bits-active-service'));
-        e.onsuccess = function(event) {
-            //            console.log(event.target.result)
-            try {
-                var x = event.target.result;
-                resolve(x.list);
-            } catch (err) {
-                console.log(err)
+        actvServ().then(function(x){resolve(x.list)}).catch(function(e){
+        console.log(e)
                 resolve([]);
-            }
-        }
+        })
     }).then(function(r) {
         var costofItems = 0;
         ////console.log(r);
