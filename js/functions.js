@@ -256,6 +256,16 @@ function servicePageLoader() {
         $(".serviceListCard").show();
         $(".promoHolder").hide();
         populated = false;
+        
+        ////console.log('service not found in db. perhaps trying from DOM 3');
+                    var re = /&quot;/gi;
+                    var str = document.getElementById('storeMeta').innerHTML;
+                    var newstr = str.replace(re, '"');
+                    $("#preloader").fadeOut(1000);
+                    populateService(JSON.parse(newstr).res);
+                    populated = true;
+        
+        /*
         var svReq = getObjectStore('data', 'readwrite').get('bits-merchant-id-' + getBitsWinOpt('s'));
         svReq.onsuccess = function(event) {
             try {
@@ -484,6 +494,7 @@ function servicePageLoader() {
             }
         });
         //merchants options end;
+        */
     }
 }
 
