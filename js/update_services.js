@@ -35,13 +35,13 @@ function serviceOpener() {
         }
     })
 
-    if (getBitsWinOpt('s') != undefined) {
-        checkServicePageLoader()
+    if (shopData.id != undefined) {
+        checkServicePageLoader();
         if (getBitsOpt('vid') != undefined) {
             doFetch({
                 action: 'addVisit',
                 vid: getBitsOpt('vid').replace('!', ''),
-                service: getBitsWinOpt('s'),
+                service: shopData.id,
                 user: localStorage.getItem('bits-user-name')
             }).then(function(e) {
                 console.log(e);
