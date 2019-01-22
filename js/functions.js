@@ -240,29 +240,21 @@ function servicePageLoader() {
     servicePageLoader.called = true
     ////console.log('servicePageLoader()..');
     $(".delrow").removeClass("displayNone");
-    if (parseInt(getBitsWinOpt('s')) > 5) {
-        var servID = getBitsWinOpt('s');
+    if (parseInt(shopData.id) > 5) {
+        var servID = shopData.id;
     } else {
         var servID = getBitsWinOpt('a');
     }
     document.querySelector("link[rel='manifest']").href = "/bits/web-manifest.json?s=" + servID;
     localStorage.setItem('bits-active-service', servID);
-    if (parseInt(getBitsWinOpt('s')) == 2) {
+    if (parseInt(shopData.id) == 2) {
         contact();
     }
-    if (parseInt(getBitsWinOpt('s')) > 2) {
+    if (parseInt(shopData.id) > 2) {
         //merchants options start;
         $(".serviceListHolder").show();
         $(".serviceListCard").show();
         $(".promoHolder").hide();
-        populated = false;
-        
-        ////console.log('service not found in db. perhaps trying from DOM 3');
-                    var re = /&quot;/gi;
-                    var str = document.getElementById('storeMeta').innerHTML;
-                    var newstr = str.replace(re, '"');
-                    $("#preloader").fadeOut(1000);
-        shopData = JSON.parse(newstr).res;
                     populateService(shopData);
                     populated = true;
         
@@ -271,8 +263,27 @@ function servicePageLoader() {
 
                     //Get Tab Content
                     initializeTabs();
+                    
+                    $("#preloader").fadeOut(1000);
                 }, 250);
         
+                //Get wishlist
+                if (getBitsWinOpt('wish') != undefined) {
+                    buywishlist = true
+                    $(".checkoutInfo").addClass("granted");
+                    makeOrder([{
+                            pid: "15",
+                            count: "2"
+                        },
+                        {
+                            pid: "16",
+                            count: "1"
+                        }, {
+                            pid: "28",
+                            count: "1"
+                        }
+                    ], "-1.1819233999999998,36.936111499999996")
+                }
         //depreciated code
         //used to call server for info. this is now appended to page as above
         
@@ -429,23 +440,6 @@ function servicePageLoader() {
 
                 }
 
-                //Get wishlist
-                if (getBitsWinOpt('wish') != undefined) {
-                    buywishlist = true
-                    $(".checkoutInfo").addClass("granted");
-                    makeOrder([{
-                            pid: "15",
-                            count: "2"
-                        },
-                        {
-                            pid: "16",
-                            count: "1"
-                        }, {
-                            pid: "28",
-                            count: "1"
-                        }
-                    ], "-1.1819233999999998,36.936111499999996")
-                }
 
                 //Check Tab To activate
 
