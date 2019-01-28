@@ -502,6 +502,7 @@ function populateService(mDet) {
         $('.prod').html('<span class="new badge bits" data-badge-caption="">' + mDet.list.length + '</span>');
         $('.userCont').html("");
         for (var ii = 0; ii < mDet.list.length; ++ii) {
+		if(mDet.list[ii].sponsored=='true')continue;
             $('.userContacts').removeClass('displayNone');
 
             if (mDet.list[ii].metric == null) {
@@ -575,6 +576,8 @@ function populateService(mDet) {
         $('.prod').html('<span class="new badge bits" data-badge-caption="">' + mDet.list.length + '</span>');
         $('.merchproducts').html("");
         for (var ii = 0; ii < mDet.list.length; ++ii) {
+		
+		if(mDet.list[ii].sponsored=='true')continue;
             if (ii == 0) {
                 $('.first-tt').attr('data-activates', 'prod-' + mDet.list[ii].id + '-counter');
             }
