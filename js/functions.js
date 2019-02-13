@@ -1208,7 +1208,9 @@ function buyPromo(clicked_id, promoOder) {
         var pitems = JSON.parse(pd[ixi].promoItems);
         var prid = pd[ixi].id;
         var numbOfPromo = $(".promoInput-" + prid).val();
-        
+        if (parseInt(numbOfPromo) < 1 || parseInt(numbOfPromo) == NaN) {
+            continue;
+        }
         dis = JSON.parse(pd[ixi].discount);
         //console.log("discount is >>>>>>>>>", dis);
         $("#burst-11").css("display", "block");
@@ -1239,6 +1241,7 @@ function buyPromo(clicked_id, promoOder) {
                 newHashmap["count"] = newHashmap["count"] * numbOfPromo
                 multiplePromo.push(newHashmap)
             };
+        console.log(multiplePromo);
             makeOrder(multiplePromo);
         // cop();
     }
