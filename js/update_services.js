@@ -446,8 +446,15 @@ function populateService(mDet) {
             checkPayments();
             bitsTheme(mDet.theme);
             var dailyCost = (parseInt(mDet.promotions[ii].discount) / 100) * mDet.promotions[ii].promoPrice;
+		if(parseInt(percOff)>0){
+		var burst = '<a href="#" id="burst-12" class="waves-effect waves-light accent-2 shake" style="padding-top: 6px; font-size: 0.7em;"><span style=""class="topdata">money<br><span class="topdataVal" style="font-size: 17px;" percOff="' + percOff + '">' + numberify(percOff,'');
+                
+		}else{
+		var burst = '';
+		}
+		
             $('.merchPromo').append('<li class="avatar bits-max promo-collection ">' +
-                '<a href="#" id="burst-12" class="waves-effect waves-light accent-2 shake" style="padding-top: 6px; font-size: 0.7em;"><span style=""class="topdata">money<br><span class="topdataVal" style="font-size: 17px;" percOff="' + percOff + '">' + numberify(percOff,'') +
+                burst +
                 '<span style="font-size: 9px;"> /=</span><span></span></span><br/>  back</span></a><div class="container1"><img src="' + mDet.promotions[ii].promoBanner +
                 '" style="margin-top:-50px ; height: 92px; width: 100%;" data-caption="' + mDet.promotions[ii].promoName + '" alt="' + mDet.promotions[ii].promoDesc +
                 '" class="materialboxed p' + mDet.promotions[ii].id + '"><div class="overlaypromo"><div class="text">' + mDet.promotions[ii].promoDesc +
