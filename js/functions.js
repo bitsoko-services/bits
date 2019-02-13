@@ -1197,7 +1197,6 @@ function buyPromo(clicked_id, promoOder) {
     // 	var lipromo = $(".bpr").attr("id");
     var w = clicked_id
     //console.log(clicked_id);
-    var numbOfPromo = $(".promoInput-" + clicked_id).val();
     $("#totals").parent().addClass("granted");
     // 	//console.log($(".bpr").attr("id"));
     // 	////console.log($(".bpr").attr("promo"));
@@ -1208,15 +1207,13 @@ function buyPromo(clicked_id, promoOder) {
         //console.log("=============== looping ==============================")
         var pitems = JSON.parse(pd[ixi].promoItems);
         var prid = pd[ixi].id;
-        if (clicked_id != prid) {
-            continue;
-        }
+        var numbOfPromo = $(".promoInput-" + prid).val();
+        
         dis = JSON.parse(pd[ixi].discount);
         //console.log("discount is >>>>>>>>>", dis);
         $("#burst-11").css("display", "block");
 
         ////console.log(w , tt , "ww and tt");
-        if (prid == w) {
             //console.log("match");
             var obj = {};
             var p = obj
@@ -1243,9 +1240,6 @@ function buyPromo(clicked_id, promoOder) {
                 multiplePromo.push(newHashmap)
             };
             makeOrder(multiplePromo);
-        } else {
-            //console.log(" no match");
-        }
         // cop();
     }
     //$(".bpromo").attr("id")
