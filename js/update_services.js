@@ -255,6 +255,13 @@ function populateService(mDet) {
         console.log(err)
         shopCategory = "1"
     };
+	if(parseInt(shopCategory)==1){
+	
+	document.querySelector(".prdctTabs").style.display="none";
+		var element = document.querySelector(".checkoutTrigger");
+  element.classList.remove("displayNone");
+	}
+	
     try {
 
         if (window.origin == "https://supplies.bitsoko.co.ke") {
