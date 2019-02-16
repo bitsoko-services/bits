@@ -527,7 +527,7 @@ function checkServicePageLoader() {
         servicePageLoader()
     }
 }
-
+/*
 //Rename Attribute function
 jQuery.fn.extend({
     renameAttr: function(name, newName, removeData) {
@@ -543,7 +543,7 @@ jQuery.fn.extend({
         });
     }
 });
-
+*/
 //Materialbox replace srcSetPth
 $(document).on('click touchstart', '.materialboxed', function(e) {
     var clickedMaterialBox = $(this)
