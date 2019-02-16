@@ -728,7 +728,7 @@ function showlogintoast() {
 }
 orderArray = [];
 //---------------------------------------function gets the totals of all items on a list----------------------------------------------------------------------------
-function tabulateTotals() {
+async function tabulateTotals() {
     ////console.log(this);
     var addproducts = document.querySelectorAll(".bitsInputQty");
     var totals = 0;
