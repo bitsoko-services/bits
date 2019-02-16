@@ -183,7 +183,8 @@ setTimeout(function(e) {
         //promoPercOff.html(JSON.parse(promoPercOff.html()) + JSON.parse(percIncr))
 
         minusBtn.attr("disabled", false)
-        promoInput.val(newPromoVal)
+        promoInput.val(newPromoVal);
+	   tabulateTotals();
     })
     $(document).on("click", ".promoMinusBtn ", function() {
         var minusBtn = $(this)
@@ -197,7 +198,8 @@ setTimeout(function(e) {
         if (promoInput.val() == 2) {
             minusBtn.attr("disabled", true)
         }
-        promoInput.val(newPromoVal)
+        promoInput.val(newPromoVal);
+	     tabulateTotals();
     })
 
     $(document).on("click", ".verifyPhoneNumb ", function() {
