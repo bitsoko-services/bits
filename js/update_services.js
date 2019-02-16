@@ -178,9 +178,9 @@ setTimeout(function(e) {
         var newPromoVal = JSON.parse(promoInput.val()) + 1
         var minusBtn = $(this).parent().parent().find(".promoMinusBtn")
         console.log(minusBtn)
-        var promoPercOff = $(this).parent().parent().parent().parent().parent().find(".topdataVal");
-        var percIncr = $(this).parent().parent().parent().parent().parent().find(".topdataVal").attr('percOff');
-        promoPercOff.html(JSON.parse(promoPercOff.html()) + JSON.parse(percIncr))
+        //var promoPercOff = $(this).parent().parent().parent().parent().parent().find(".topdataVal");
+       // var percIncr = $(this).parent().parent().parent().parent().parent().find(".topdataVal").attr('percOff');
+        //promoPercOff.html(JSON.parse(promoPercOff.html()) + JSON.parse(percIncr))
 
         minusBtn.attr("disabled", false)
         promoInput.val(newPromoVal)
@@ -189,9 +189,9 @@ setTimeout(function(e) {
         var minusBtn = $(this)
         var promoInput = $(this).parent().parent().find(".inputNo");
         var newPromoVal = JSON.parse(promoInput.val()) - 1
-        var promoPercOff = $(this).parent().parent().parent().parent().parent().find(".topdataVal");
-        var percIncr = $(this).parent().parent().parent().parent().parent().find(".topdataVal").attr('percOff');
-        promoPercOff.html(JSON.parse(promoPercOff.html()) - JSON.parse(percIncr))
+        //var promoPercOff = $(this).parent().parent().parent().parent().parent().find(".topdataVal");
+        //var percIncr = $(this).parent().parent().parent().parent().parent().find(".topdataVal").attr('percOff');
+        //promoPercOff.html(JSON.parse(promoPercOff.html()) - JSON.parse(percIncr))
 
 
         if (promoInput.val() == 2) {
