@@ -730,7 +730,7 @@ orderArray = [];
 //---------------------------------------function gets the totals of all items on a list----------------------------------------------------------------------------
 async function tabulateTotals() {
     ////console.log(this);
-    var addproducts = document.querySelectorAll(".bitsInputQty");
+    var allProducts = shopData.list;
     var totals = 0;
     
      var pA=await getPromos();
@@ -739,19 +739,20 @@ async function tabulateTotals() {
     $('.floatingPrice').addClass('shake'), setTimeout(function() {
         $('.floatingPrice').removeClass('shake')
     }, 1000);
-    for (var i = 0; i < addproducts.length; ++i) {
+    for (var i = 0; i < allProducts.length; ++i) {
         try {
-            var itVal = addproducts[i].value ? $(addproducts[i]).val() : 0;
+            var thsVal=document.querySelector("#bitsInputQty"+allProducts[i].id)
+            var itVal = thsVal.value ? $(thsVal).val() : 0;
             if (itVal > 0) {
                 orderArray.push({
-                    pid: addproducts[i].getAttribute('pid'),
+                    pid: thsVal.getAttribute('pid'),
                     count: itVal
                 });
                 ////console.log(orderArray);
                 //Rewards(orderArray);
                 $('.recipt').append('');
             }
-            totals = totals + (parseInt($(addproducts[i]).attr("price")) * parseInt(itVal));
+            totals = totals + (parseInt($(thsVal).attr("price")) * parseInt(itVal));
             ////console.log(totals);
             $(".recipt").html("");
             //M.toast('your total is'+ totals, 1000);delivery
