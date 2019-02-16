@@ -752,14 +752,22 @@ async function tabulateTotals() {
                 //Rewards(orderArray);
                 $('.recipt').append('');
             }
-            totals = totals + (parseInt($(thsVal).attr("price")) * parseInt(itVal));
+            
+            for (var ii in orderArray){
+            if(parseInt(orderArray[ii].pid)==parseInt(allProducts[i].id)){
+               
+            totals = totals + (parseInt(thsVal.getAttribute('price')) * parseFloat(orderArray[ii].count));
+               
+               }
+                
+            }
             ////console.log(totals);
             $(".recipt").html("");
             //M.toast('your total is'+ totals, 1000);delivery
             // 	 $(".delivery").removeClass("displayNone");
             // 	 $(".floatingPrice").removeClass("displayNone");
             $(".totals").html(numberify(totals));
-            var xt = document.getElementById("totals").innerHTML
+            // var xt = document.getElementById("totals").innerHTML
             // 			if (xt == 0) {
             // 				//console.log("minimum value")
             // 				$(".delivery ").removeClass("bits");
