@@ -733,9 +733,9 @@ async function tabulateTotals() {
     var addproducts = document.querySelectorAll(".bitsInputQty");
     var totals = 0;
     
-        console.log('promo list is!  >  '+await getPromos());
-     
-    orderArray = [];
+     var pA=await getPromos();
+        console.log('promo list is!  >  '+pA);
+    orderArray = pA;
     $('.floatingPrice').addClass('shake'), setTimeout(function() {
         $('.floatingPrice').removeClass('shake')
     }, 1000);
