@@ -195,7 +195,7 @@ setTimeout(function(e) {
         //promoPercOff.html(JSON.parse(promoPercOff.html()) - JSON.parse(percIncr))
 
 
-        if (promoInput.val() == 2) {
+        if (promoInput.val() == 1) {
             minusBtn.attr("disabled", true)
         }
         promoInput.val(newPromoVal);
