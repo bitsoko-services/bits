@@ -1196,7 +1196,7 @@ async function getPromos() {
     //promoModalActive = true
     //clearCart();
     bp = 1
-    //promoOder = orderArray
+    promoOder = [];
     // 	var lipromo = $(".bpr").attr("id");
     //var w = clicked_id
     //console.log(clicked_id);
@@ -1236,14 +1236,16 @@ async function getPromos() {
                     for (var iix = 0, j = pitems.length; iix < j; iix++) {}
                 }
             }
-            var hashmap = pitems
-            var multiplePromo = []
+        
+            var hashmap = promoOder;
+            var multiplePromo = [];
 
             for (var i = 0, l = hashmap.length; i < l; i++) {
                 var newHashmap = hashmap[i];
                 newHashmap["count"] = newHashmap["count"] * numbOfPromo
                 multiplePromo.push(newHashmap)
             };
+        
         return multiplePromo;
            // makeOrder(multiplePromo);
         // cop();
