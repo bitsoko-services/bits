@@ -732,6 +732,9 @@ function tabulateTotals() {
     ////console.log(this);
     var addproducts = document.querySelectorAll(".bitsInputQty");
     var totals = 0;
+    
+        console.log('promo list is!  >  '+await getPromos());
+     
     orderArray = [];
     $('.floatingPrice').addClass('shake'), setTimeout(function() {
         $('.floatingPrice').removeClass('shake')
@@ -1188,14 +1191,14 @@ function getProdss(orderArrayx, costofItems) {
 bp = 0
 dis = 0
 
-function buyPromo(clicked_id, promoOder) {
-    clearCart();
-    promoModalActive = true
+async function getPromos() {
+   // clearCart();
+    //promoModalActive = true
     //clearCart();
     bp = 1
-    promoOder = orderArray
+    //promoOder = orderArray
     // 	var lipromo = $(".bpr").attr("id");
-    var w = clicked_id
+    //var w = clicked_id
     //console.log(clicked_id);
     $("#totals").parent().addClass("granted");
     // 	//console.log($(".bpr").attr("id"));
@@ -1233,7 +1236,7 @@ function buyPromo(clicked_id, promoOder) {
                     for (var iix = 0, j = pitems.length; iix < j; iix++) {}
                 }
             }
-            var hashmap = promoOder
+            var hashmap = pitems
             var multiplePromo = []
 
             for (var i = 0, l = hashmap.length; i < l; i++) {
@@ -1241,8 +1244,8 @@ function buyPromo(clicked_id, promoOder) {
                 newHashmap["count"] = newHashmap["count"] * numbOfPromo
                 multiplePromo.push(newHashmap)
             };
-        console.log(multiplePromo);
-            makeOrder(multiplePromo);
+        return multiplePromo;
+           // makeOrder(multiplePromo);
         // cop();
     }
     //$(".bpromo").attr("id")
