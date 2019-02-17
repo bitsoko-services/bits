@@ -250,13 +250,6 @@ function convertTo12Hour(time) {
 
 function populateService(mDet) {
     
-	if(isNaN(parseInt(mDet.category)) || parseInt(mDet)==1){
-	
-	document.querySelector(".prdctTabs").style.display="none";
-		var element = document.querySelector(".checkoutTrigger");
-  element.classList.remove("displayNone");
-	}
-	
     try {
 
         if (window.origin == "https://supplies.bitsoko.co.ke") {
@@ -643,6 +636,14 @@ function populateService(mDet) {
             addproducts[i].addEventListener("change", tabulateTotals, false);
         }
     }
+	
+	if(isNaN(parseInt(mDet.category)) || parseInt(mDet)==1){
+	
+	document.querySelector(".prdctTabs").style.display="none";
+		var element = document.querySelector(".checkoutTrigger");
+  element.classList.remove("displayNone");
+	}
+	
 }
 
 //---------------------------------------------------end populateService function------------------------------------------------------------------------------------------------------------------------
