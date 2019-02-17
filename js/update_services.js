@@ -639,9 +639,11 @@ function populateService(mDet) {
 	
 	if(isNaN(parseInt(mDet.category)) || parseInt(mDet)==1){
 	
+	document.querySelector(".merchantsProducts").style.display="none";
 	document.querySelector(".prdctTabs").style.display="none";
 		var element = document.querySelector(".checkoutTrigger");
   element.classList.remove("displayNone");
+element.classList.remove("pointer-events");
 	}
 	
 }
