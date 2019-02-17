@@ -734,7 +734,7 @@ async function tabulateTotals() {
     var totals = 0;
     
      var pA=await getPromos();
-        console.log('promo list is!  >  '+pA);
+        console.log('promo list is!  >  ',pA);
     orderArray = pA;
     $('.floatingPrice').addClass('shake'), setTimeout(function() {
         $('.floatingPrice').removeClass('shake')
