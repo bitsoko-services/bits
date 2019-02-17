@@ -249,13 +249,8 @@ function convertTo12Hour(time) {
 }
 
 function populateService(mDet) {
-    try {
-        shopCategory = mDet.category
-    } catch (err) {
-        console.log(err)
-        shopCategory = "1"
-    };
-	if(parseInt(shopCategory)==1){
+    
+	if(isNaN(parseInt(shopData.category)) || parseInt(shopCategory)==1){
 	
 	document.querySelector(".prdctTabs").style.display="none";
 		var element = document.querySelector(".checkoutTrigger");
