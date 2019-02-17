@@ -250,7 +250,7 @@ function convertTo12Hour(time) {
 
 function populateService(mDet) {
     
-	if(isNaN(parseInt(shopData.category)) || parseInt(shopCategory)==1){
+	if(isNaN(parseInt(mDet.category)) || parseInt(mDet)==1){
 	
 	document.querySelector(".prdctTabs").style.display="none";
 		var element = document.querySelector(".checkoutTrigger");
