@@ -759,26 +759,14 @@ async function tabulateTotals() {
                }
                 
             }
-            ////console.log(totals);
-            $(".recipt").html("");
-            //M.toast('your total is'+ totals, 1000);delivery
-            // 	 $(".delivery").removeClass("displayNone");
-            // 	 $(".floatingPrice").removeClass("displayNone");
-            $(".totals").html(numberify(totals));
-            // var xt = document.getElementById("totals").innerHTML
-            // 			if (xt == 0) {
-            // 				//console.log("minimum value")
-            // 				$(".delivery ").removeClass("bits");
-            // 				$(".delivery").addClass("pointer-events");
-            // 				$(".bits-main-price").addClass("grey");
-            // 				$(".localCurr").addClass("displayNone");
-            // 				$(".bits-main-price ").removeClass("bits");
-            // 										}
-            //localStorage.setItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')),totals);
+            
         } catch (err) {}
     }
     
     
+            $(".recipt").html("");
+            $(".totals").html(numberify(totals));
+            
     
         console.log('order list is!  >  ', orderArray);
 }
