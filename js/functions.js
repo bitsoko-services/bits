@@ -732,10 +732,7 @@ async function tabulateTotals() {
     ////console.log(this);
     var allProducts = shopData.list;
     var totals = 0;
-    
-     var pA=await getPromos();
-        console.log('promo list is!  >  ',pA);
-    orderArray = pA;
+    orderArray = await getPromos();
     $('.floatingPrice').addClass('shake'), setTimeout(function() {
         $('.floatingPrice').removeClass('shake')
     }, 1000);
@@ -780,6 +777,10 @@ async function tabulateTotals() {
             //localStorage.setItem('bits-merchant-total-cost-'+parseInt(getBitsWinOpt('s')),totals);
         } catch (err) {}
     }
+    
+    
+    
+        console.log('order list is!  >  ', orderArray);
 }
 
 function makeOrder(orderArrayy, orderLoc) {
