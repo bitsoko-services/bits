@@ -1178,7 +1178,7 @@ function getProdss(orderArrayx, costofItems) {
                         var srcSetPth = '';
 
                     }
-                    $("#products").append('<li class="collection-item avatar"style="padding: 3px;margin: 0px;background: none !important;min-height: 10px;"><div class="row" style="line-height: 30px;margin-bottom: 0px;"> <div style="font-size: 75%;" class="col s2">' + numberify((orderArrayx[oo].count*orderArrayx[oo].unit)) + ' ' +orderArrayx[oo].metric+ '</div><div class="col s2"><img  srcset="' + srcSetPth + ' 35w" src="' + r[o].imagePath + '"  style="height: 30px; width: 30px;border-radius:50%;"></div><div class="col s6" style="padding:0px;"><span class="title truncate" style="width: 95%;">' + prdName + ' </span></div><div class="col s2"><div  class="right" style="font-size:0.7em;">' + prdPrice * orderArrayx[oo].count + '/=</div></div></div></li>')
+                    $("#products").append('<li class="collection-item avatar"style="padding: 3px;margin: 0px;background: none !important;min-height: 10px;"><div class="row" style="line-height: 30px;margin-bottom: 0px;"> <div style="font-size: 75%;" class="col s3">' + numberify((orderArrayx[oo].count*orderArrayx[oo].unit)) + ' ' +orderArrayx[oo].metric+ '</div><div class="col s2"><img  srcset="' + srcSetPth + ' 35w" src="' + r[o].imagePath + '"  style="height: 30px; width: 30px;border-radius:50%;"></div><div class="col s5" style="padding:0px;"><span class="title truncate" style="width: 95%;">' + prdName + ' </span></div><div class="col s2"><div  class="right" style="font-size:0.7em;">' + prdPrice * orderArrayx[oo].count + '/=</div></div></div></li>')
                 }
             }
         }
