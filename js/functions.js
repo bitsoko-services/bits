@@ -750,6 +750,9 @@ async function tabulateTotals() {
                 $('.recipt').append('');
             }
             
+        } catch (err) {
+        console.log(err);
+        }  
             for (var ii in orderArray){
             if(parseInt(orderArray[ii].pid)==parseInt(allProducts[i].id)){
                orderArray[ii].metric=allProducts[i].metric;
@@ -759,10 +762,7 @@ async function tabulateTotals() {
                }
                 
             }
-            
-        } catch (err) {
-        console.log(err);
-        }
+          
     }
     
     
