@@ -755,7 +755,8 @@ async function tabulateTotals() {
             
             for (var ii in orderArray){
             if(parseInt(orderArray[ii].pid)==parseInt(allProducts[i].id)){
-               
+               orderArray[ii].metric=allProducts[i].metric;
+               orderArray[ii].unit=parseFloat(allProducts[i].rstQuantity);
             totals = totals + (parseInt(thsVal.getAttribute('price')) * parseFloat(orderArray[ii].count));
                
                }
