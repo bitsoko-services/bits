@@ -760,7 +760,9 @@ async function tabulateTotals() {
                 
             }
             
-        } catch (err) {}
+        } catch (err) {
+        console.log(err);
+        }
     }
     
     
