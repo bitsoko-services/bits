@@ -736,7 +736,7 @@ async function tabulateTotals() {
     $('.floatingPrice').addClass('shake'), setTimeout(function() {
         $('.floatingPrice').removeClass('shake')
     }, 1000);
-    for (var i = 0; i < allProducts.length; ++i) {
+    for (var i = 0,orderArray=orderArray; i < allProducts.length; ++i) {
         try {
             var thsVal=document.querySelector("#bitsInputQty"+allProducts[i].id)
             var itVal = thsVal.value ? $(thsVal).val() : 0;
