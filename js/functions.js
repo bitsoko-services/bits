@@ -728,7 +728,7 @@ function showlogintoast() {
 }
 orderArray = [];
 //---------------------------------------function gets the totals of all items on a list----------------------------------------------------------------------------
-async function tabulateTotals() {
+function tabulateTotals() {
     ////console.log(this);
     var allProducts = shopData.list;
     var totals = 0;
