@@ -732,7 +732,10 @@ function tabulateTotals() {
     ////console.log(this);
     var allProducts = shopData.list;
     var totals = 0;
-    orderArray = await getPromos();
+    
+    getPromos().then(function(ar){
+    orderArray = ar;
+    
     $('.floatingPrice').addClass('shake'), setTimeout(function() {
         $('.floatingPrice').removeClass('shake')
     }, 1000);
@@ -771,6 +774,7 @@ function tabulateTotals() {
             
     
         console.log('order list is!  >  ', orderArray);
+        });
 }
 
 function makeOrder(orderArrayy, orderLoc) {
